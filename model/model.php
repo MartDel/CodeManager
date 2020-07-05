@@ -1,11 +1,24 @@
 <?php
+require("class/user.php");
 
-function dbConnect(){
-	$db = new PDO('mysql:host=localhost;dbname=NAME;charset=utf8', 'USER', 'PWD');
-	return $db;
+/**
+ * Check if there are errors in new user's data
+ * @param  Object $data User's data
+ * @return bool Contain error or not
+ */
+function checkNewUserData($data){
+	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm'])) return false;
+
+	$pseudo = htmlspecialchars($data['pseudo']);
+	$mail = htmlspecialchars($data['mail']);
+	$password = htmlspecialchars($data['password']);
+	$confirm = htmlspecialchars($data['confirm']);
+
+	if($pseudo == "" || $password == "") return false;
+	if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) return false;
+	if($password != $confirm) return false;
+	return User::accountExist($pseudo, $mail);
 }
-
-//FUNCTIONS
 
 /*
 EX :
