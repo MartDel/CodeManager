@@ -347,7 +347,8 @@ select, input{
     float:right;
     padding-left:0.5vw;
     padding-right:0.5vw;
-    margin-top:-1.5vh
+    margin-top:-1.5vh;
+    cursor: pointer;
 }
 #img_menu{
     height:3vh;
