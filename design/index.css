@@ -1,6 +1,7 @@
-html, body{
-    padding:0;
-    margin:0;
+html,
+body {
+    padding: 0;
+    margin: 0;
     background-color: rgb(54, 57, 63);
 }
 
@@ -8,7 +9,16 @@ html, body{
 @font-face {
     font-family: 'happy_monkeyregular';
     src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'),
-         url('fonts/happymonkey-regular-webfont.woff') format('woff');
+        url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'stardos_stencilbold';
+    src: url('fonts/stardos/stardosstencil-bold-webfont.woff2') format('woff2'),
+        url('fonts/stardos/stardosstencil-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -17,366 +27,93 @@ html, body{
 
 
 
-
-#div_menu_de_gauche{
-    height:100vh;
-    width:3.9vw;
-    background-color: rgb(47, 49, 54);
-    position:fixed;
-    transition : all 0.3s ease;
-    transform-origin: left;
-}
-#menu_de_gauche {
-    height:100vh;
-    float:left;
-    width:4vw;
-    background-color: rgb(32, 34, 37);
-    text-align: center;
-}
-#menu_de_gauche2 {
-    height:100vh;
-    float:left;
-    width:auto;
-    background-color: rgb(47, 49, 54);
-    text-align: center;
-    margin-top:0vh;
-    padding-left:1vw
-}
-
-.img_menu_gauche{
-    width:70%;
-    height:auto;
-    margin-top:12%;
-    margin-left:-2%;
-    transition:all 0.3s ease;
-    filter: blur(0px);
-    cursor: pointer;
-    filter:invert(40%);
-    
-    
-}
-.img_menu_gauche:hover{
-    width:95%;
-    height:auto;
-    filter: blur(0px);
-    
-    
-}
-#img_code:hover, #img_list:hover, #img_group:hover, #img_people:hover, #img_network:hover{
-    transition:all 0.3s ease;
-    filter: blur(0px);
-}
-.ligne_menu_gauche{
-    height:10%
-}
-#img_logo{
-    filter:none;
-    margin-left:3%
-}
-#img_logo:hover{
-    width:70%;
-    height:auto;
-}
-.trait_separation{
-    text-align:center;
-    width:60%;
-    margin-left:calc(-3% + 20%);
-    /*margin-left:25%;*/
-    height:3%;
-    background-color: rgb(0, 0, 0);
-    filter:invert(40%);
-    border-radius:25%;
-    transition:all 0.3s ease-in-out
-}
-.div_table_haut{
-    position:fixed;
-    margin-left:4%;
-    height:6vh;
-    width:96vw;
-    float:left;
-    background-color: rgb(54, 57, 63);
-    text-align:center;
-    border-bottom: rgb(32, 34, 37) 2px solid;
-}
-.table_haut{
-    height:100%;
-    width:100%
-}
-.colonne_menu_haut{
-    width:33%;
-    height:100%;
-    font-size:10px;
-}
-#titre_document{
-    color:rgb(255, 255, 255);
-    font-family: 'happy_monkeyregular';
-    font-size:2.5vh;
-    margin-top:1.5vh;
-    letter-spacing: 0px;
-}
-.ligne_button{
-    position:fixed;
-    height:3.5vh;
-    width:96%;
-    background-color: rgb(54, 57, 63);
-    padding:0;
-    color:rgb(96, 125, 139);
-}
-.colonne_ligne_button{
-    width:10%
-}
-.ligne2_menu_haut{
-    height:3vh;
-}
-a{
-    text-decoration: none;
-    
-}
-.button_haut{
-    height:0px;
-    padding:0;
-    font-family: happy_monkeyregular;
-    color:rgb(96, 125, 139);
-    font-size:1.8vh;
-}
-.button_div{
-    width:100%;
-    height:100%;
-    border-bottom:rgba(96, 125, 139, 0) 2px solid ;
-    transition: all 0.3s ease;
-}
-.button_div:hover {
-    border-bottom:rgb(96, 125, 139) 2px solid ;
-    /*background: linear-gradient(rgb(22, 22, 22),75%, rgb(96, 125, 139));*/
-    transition: all 0.3s ease;
-    font-size:2vh;
-}
-#edit_tasks{
-    margin-left:5.5vw;
-    margin-top:7vh;
-    float:left;
-    position:fixed;
-    background-color: rgb(54, 57, 63);
-    height:10vh;
-    width:52vw;
-}
-.edit_tasks_line{
-    height:10vh;
-}
-.edit_tasks_col{
-    height:5vh;
-    cursor: pointer;
-    border-bottom-width:2px;
-    border-bottom-color:rgb(54, 57, 63);
-    border-bottom-style: solid;
-    transition: all 0.2s ease-in-out;
-    transform-origin: center;
+@font-face {
+    font-family: 'stardos_stencilregular';
+    src: url('fonts/stardos/stardosstencil-regular-webfont.woff2') format('woff2'),
+        url('fonts/stardos/stardosstencil-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
 }
-.img_edit_tasks{
-    height:100%;
-    width:auto;
-    float:left;
+
+#img_accueil {
+    width: 100%;
+    height: auto;
+    position: fixed;
 }
-.text_edit_tasks{
-    float:left;
-    font-family: "happy_monkeyregular";
-    margin-top:1.4vh;
-    margin-left:0.5vw;
-    font-size: 1.7vh;
-    color:white;
+
+#div_img_accueil {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /*filter:blur(0px);*/
+    transition: filter 1s ease;
+    transform: scaleX(-1);
+    filter:brightness(70%)
 }
-#text_affichage_gauche1, #text_affichage_gauche2, #text_affichage_gauche3, #text_affichage_gauche4, #text_affichage_gauche5{
-    font-size: 2vh;
-    text-align:left;
-    width:0%;
-    overflow:hidden;
-    color:white;
+
+#top_div_title {
+    height: 10%;
+    position: fixed;
     z-index: 200;
-    transition:all 0.4s ease-in-out;
-    transform-origin: left;
-    font-family: "happy_monkeyregular";
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    color: rgb(91, 92, 96);
 
-}
-#text_affichage_gauchemenu{
-    font-size: 2vh;
-    text-align:left;
-    margin-left:50%;
-    width:100%;
-    overflow:hidden;
-    color:white;
-    z-index: 200;
-    transition:all 0.4s ease-in-out;
-    transform-origin: left;
-    font-family: "happy_monkeyregular";
-}
-#trait_separation_deroulant{
-    width:0%;
-    height:3%;
-    margin-left:30%;
-    background-color: rgb(32, 34, 37);
-    margin-top:-1vh;
-    transition:all ease-in-out;
-    transition-duration: 1s;
-    transform-origin: center;
-    /*background-color: rgb(255, 6, 6);*/
-}
-#affichage_droit_div{
-    margin-left:80vw;
-    height:100vh;
-    width:20vw;
-    border-left:2px rgb(32, 34, 37) solid;
-    position:fixed;
-    color:white;
-    padding-left:10px;
-    padding-right:10px;
-    font-family:happy_monkeyregular;
-    font-size:1.6vh;
-    background-color: rgb(47, 49, 54);
-    margin-top:calc(6vh + 2px);
-}
-#affichage_droit_div #affichage_droit td{
-    height:10vh;
-}
-#refresh{
-    color:white;
-    width:85%;
-    height:auto;
-    text-align: center;
-    margin-left:15%;
-    padding:5px 5px 5px 5px;
-    border: rgb(47, 49, 54) 2px solid;
-    
-}
-#refresh:hover{
-    border:rgb(32, 34, 37) 2px solid;
-    color:white;
-    text-align: center;
-    margin-left:15%;
-    cursor: pointer;
-}
-#add_photo, #delete_photo, #edit_photo{
-    transform:rotate(0deg);
-    transition:all 0.2s ease-in-out;
-    transform-origin: center;
-   
+    font-family: "stardos_stencilregular";
+    font-size: 6vh;
 }
 
-#td1_thead_table_tache, #td2_thead_table_tache, #td3_thead_table_tache{
-    border-left:rgb(32, 34, 37) 2px solid;
-    border-right:rgb(32, 34, 37) 2px solid;
-    border-top:rgb(32, 34, 37) 2px solid;
-    border-bottom:rgb(32, 34, 37) 2px solid;
-    color:white;
-    font-family:happy_monkeyregular;
-    padding-left:10px
+#top_div_title p {
+    margin-top: 1%;
+
+    transition-delay: 1s;
+    float: left;
+
 }
-#td2_thead_table_tache2, #td3_thead_table_tache2{
-    border-left:rgb(32, 34, 37) 2px solid;
-    border-right:rgb(32, 34, 37) 2px solid;
-    border-top:rgb(32, 34, 37) 2px solid;
-    border-bottom:rgb(32, 34, 37) 2px solid;
-    color:white;
-    font-family:happy_monkeyregular;
-    padding-left:10px
-}
-#table_tache{
+
+#videointro {
     position: absolute;
-    margin-left:5.5vw;
-    border:rgb(32, 34, 37) 2px solid;
-    margin-top:20vh;
-    width:72.5vw;
-    color:white;
-    font-family: happy_monkeyregular;
+    height: 40%;
+    margin-left: 30%;
+    z-index: 2;
+    margin-top: 25%
 }
-#table_tache2{
+
+#petite_presentation {
+    color: white;
+    z-index: 2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     position: absolute;
-    margin-left:5.5vw;
-    border:rgb(32, 34, 37) 2px solid;
-    margin-top:35vh;
-    width:72.5vw
-}
-#td1_thead_table_tache{
-    width:10%;
-    text-align:center;
-    padding:0
-}
-#td2_thead_table_tache{
-    width:70%;
-}
-#td3_thead_table_tache{
-    width:20%;
-}
-#td2_thead_table_tache2{
-    width:80%;
-}
-#td3_thead_table_tache2{
-    width:20%;
-}
-#task_input, #selection{
-    width:calc(100% - 20px);
-    background-color: rgb(54, 57, 63);
-    border:none;
-    border-radius: 0;
-    padding-top:5px;
-    padding-bottom:5px;
-}
-#task_input:focus, #selection:focus{
-    width:calc(100% - 20px);
-    background-color: rgb(54, 57, 63);
-    border:none;
-    border-radius: 0;
-    padding-top:5px;
-    padding-bottom:5px;
-
-}
-.td_task{
-    padding-left:10px;
-    padding-top:10px;
-    padding-bottom:10px;
-    color:white;
+    width: 60%;
+    text-align: left;
+    font-size:5vh;
+    margin-left:5%;
+    margin-top:15vh
 }
 
-select, input{
-    color:white;
-    font-family: happy_monkeyregular;
+#top_div_title img {
+    height: 80%;
+    filter: contrast(120%);
+    float: left;
+    margin-left: 1%;
+    margin-top: 0.75%
 }
-.user{
-    height:4vh;
-    width:auto;
-    float:right;
-    padding-left:0.5vw;
-    padding-right:0.5vw;
-    margin-top:-1.5vh;
-    cursor: pointer;
+#seconde_ligne{
+    font-size:3vh;
 }
-#img_menu{
-    height:3vh;
-    width:auto;
-    filter: invert(40%);
-    float:right;
-    margin-right:-2vw;
-    transition:all 0.2s ease-in-out;
-    cursor: pointer;
+#inscription_div{
+    background-color: none;
+    position: absolute;
+    border:2px rgb(255, 255, 255) solid;
+    border-radius: 5px;
+    width:50%;
+    font-size: 2.5vh;
+    padding:10px 10px 10px 10px;
+    text-align: center;
+    margin-top:3vh
 }
-#more_div{
-    margin-top:-13vh;
-    left:0;
-    position:absolute;
-    background-color: rgb(32, 34, 37);
-    width:100%;
-    height:19.8vh;
-    transform: scaleY(0);
-    font-size:0vh;
-    font-family:happy_monkeyregular;
-    transition:transform ease, font-size ease;
-    transition-duration: 0.3s, 0.4s;
-    transition-delay: 0ms, 200ms;
-    transform-origin: bottom;
-    border-bottom:red 1px solid;
-
-    
-}
-#more_div li{
-    padding:1vw 2vw 1vw 2vw;
+#savoir_plus{
+    font-size:1.5vh;
+    margin-top:14vh
 }
