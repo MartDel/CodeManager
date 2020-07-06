@@ -25,6 +25,9 @@ function checkSignIn($post){
   header("Location: index.php");
 }
 
+/**
+ * Check if user's cookies are correct
+ */
 function checkCookie(){
   try {
     checkConnection($_COOKIE['pseudo'], $_COOKIE['password']);
@@ -35,6 +38,14 @@ function checkCookie(){
     header("Location: index.php?action=home");
   }
 
+}
+
+function showMainPage(){
+  $tasks = Task::getAllTasks(0);
+  $to_do = Task::getStat('is_done', 0, 0);
+  $done = Task::getStat('is_done', 1, 0);
+  $percentage = $done / ($to_do + $done) * 100;
+  require('view/main.php');
 }
 
 /**

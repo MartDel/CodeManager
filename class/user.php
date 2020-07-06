@@ -1,5 +1,4 @@
 <?php
-require('DatabaseManager.php');
 
 /**
  * Class to represent users
@@ -8,7 +7,6 @@ class User extends DatabaseManager
 {
   private $pseudo;
   private $mail;
-  private $db;
 
   const TABLE_NAME = "users";
 
@@ -75,18 +73,12 @@ class User extends DatabaseManager
     return new User($data['pseudo'], $data['mail']);
   }
 
-  // GETTERS AND SETTERS
+  // GETTERS
 
   public function getPseudo(){
     return $this->pseudo;
   }
-  public function setPseudo($value){
-    $this->pseudo = $value;
-  }
   public function getMail(){
     return $this->mail;
-  }
-  public function setMail($value){
-    $this->mail = $value;
   }
 }

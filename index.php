@@ -1,7 +1,9 @@
 <?php
 session_start();
 require("controler/controler.php");
-require("class/user.php");
+require("class/DatabaseManager.php");
+require("class/User.php");
+require("class/Task.php");
 
 try{
 	if(isset($_GET['action'])){
@@ -13,8 +15,8 @@ try{
 		elseif ($action == "checkSignIn") checkSignIn($_POST); // Check SignIn
 		elseif ($action == "logout") logout(); // Logout the current user
 	} else{
-		if(isset($_SESSION['pseudo']) && isset($_SESSION['mail'])) {
-			require('view/main.php'); // Connected
+		if(isset($_SESSION['pseudo']) && isset($_SESSION['mail'])) { // Connected
+			showMainPage();
 		} elseif (isset($_COOKIE['pseudo']) && isset($_COOKIE['password'])) {
 			checkCookie();
 		} else require('view/home.php'); // Home page
