@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        CodeManager
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/png" href="" />
+    <script type="text/javascript">
+        function blur1() {
+            document.getElementById("img_code").style.filter = "invert(100%)";
+            document.getElementById("img_list").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur1leave() {
+            document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(0px) invert(40%)";
+            // document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur2() {
+            document.getElementById("img_list").style.filter = "invert(100%)";
+            document.getElementById("img_code").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%) ";
+            document.getElementById("img_people").style.filter = "blur(3px) invert(40%)";
+            // document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur2leave() {
+            document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_code").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(0px) invert(40%)";
+            // document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur3() {
+            document.getElementById("img_group").style.filter = "invert(100%)";
+            document.getElementById("img_code").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(3px) invert(40%)";
+            // document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur3leave() {
+            document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_code").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(0px) invert(40%)";
+            // document.getElementById("img_people").style.filter = "invert(40%) ";
+            document.getElementById("img_network").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur4() {
+            document.getElementById("img_people").style.filter = "invert(100%)";
+            document.getElementById("img_code").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur4leave() {
+            document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_code").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+            document.getElementById("img_network").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_network").style.filter = "invert(40%)";
+        }
+
+        function blur5() {
+            document.getElementById("img_network").style.filter = "invert(100%)";
+            document.getElementById("img_code").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(3px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+        }
+
+        function blur5leave() {
+            document.getElementById("img_network").style.filter = "invert(40%)";
+            document.getElementById("img_code").style.filter = "blur(0px) invert(40%)";
+            // document.getElementById("img_code").style.filter = "invert(40%)";
+            document.getElementById("img_list").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_list").style.filter = "invert(40%)";
+            document.getElementById("img_people").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_people").style.filter = "invert(40%)";
+            document.getElementById("img_group").style.filter = "blur(0px) invert(40%)";
+            //document.getElementById("img_group").style.filter = "invert(40%)";
+        }
+
+        function agrandissement1() {
+
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche1").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+
+        }
+
+        function retrecissement1() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche1").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function agrandissement2() {
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche2").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+        }
+
+        function retrecissement2() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche2").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function agrandissement3() {
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche3").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+        }
+
+        function retrecissement3() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche3").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function agrandissement4() {
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche4").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+        }
+
+        function retrecissement4() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche4").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function agrandissement5() {
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche5").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+        }
+
+        function retrecissement5() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche5").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function demitour1() {
+            document.getElementById("add_photo").style.transform = "rotate(180deg)";
+            document.getElementById("add").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour1leave() {
+            document.getElementById("add_photo").style.transform = "rotate(0deg)";
+            document.getElementById("add").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+
+        function demitour2() {
+            document.getElementById("delete_photo").style.transform = "rotate(180deg)";
+            document.getElementById("delete").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour2leave() {
+            document.getElementById("delete_photo").style.transform = "rotate(0deg)";
+            document.getElementById("delete").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+
+        function demitour3() {
+            document.getElementById("edit_photo").style.transform = "rotate(180deg)";
+            document.getElementById("edit").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour3leave() {
+            document.getElementById("edit_photo").style.transform = "rotate(0deg)";
+            document.getElementById("edit").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+        var tour = 1;
+        function burger_hover() {
+            if (tour==1){
+                document.getElementById("img_menu").style.transform = "rotate(90deg)";
+                document.getElementById("more_div").style.transform = "scaleY(1)";
+                document.getElementById("more_div").style.fontSize = "1.7vh";
+                document.getElementById("more_div").style.transitionDelay = "0ms, 200ms";
+                window["tour"]=0;
+            }else{
+                document.getElementById("img_menu").style.transform = "rotate(0deg)";
+                document.getElementById("more_div").style.transform = "scaleY(0)";
+                document.getElementById("more_div").style.fontSize = "0vh";
+                document.getElementById("more_div").style.transitionDelay = "200ms, 0ms";
+                window["tour"]=1;
+            }
+        }
+    </script>
+</head>
+
+<body id="htmlbody">
+    <div class="div_table_haut">
+        <table class="table_haut">
+            <tr class=ligne_menu_haut>
+                <td class='colonne_menu_haut'>
+
+                </td>
+                <td class='colonne_menu_haut'>
+                    <p id="titre_document"><strong>Tâches - CodeManager</strong></p>
+                </td>
+                <td class='colonne_menu_haut'>
+                    <img class="user" src="img/logout.png">
+                    <img class="user" src="img/web_essentials/png/053-user.png">
+
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+
+
+    <div>
+        <table id="edit_tasks">
+            <tr id="edit_tasks_line">
+                <td class="edit_tasks_col" id="add" onmouseover="demitour1()" onmouseleave="demitour1leave()">
+                    <img class="img_edit_tasks" id="add_photo" src="img/web_essentials/png/066-add.png">
+                    <p class="text_edit_tasks">Ajouter une tâche</p>
+                </td>
+                <td class="edit_tasks_col" id="delete" onmouseover="demitour2()" onmouseleave="demitour2leave()">
+                    <img class="img_edit_tasks" id="delete_photo" src="img/web_essentials/png/059-cancel.png">
+                    <p class="text_edit_tasks">Supprimer la tâche</p>
+                </td>
+                <td class="edit_tasks_col" id="edit" onmouseover="demitour3()" onmouseleave="demitour3leave()">
+                    <img class="img_edit_tasks" id="edit_photo" src="img/web_essentials/png/047-pencil.png">
+                    <p class="text_edit_tasks">Éditer la tâche</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table id="table_tache">
+        <thead id="thead_table_tache">
+            <tr id="tr_thead_table_tache">
+                <td id="td1_thead_table_tache">
+                    Sélection
+                </td>
+                <td id="td2_thead_table_tache">
+                    Tâche
+                </td>
+                <td id="td3_thead_table_tache">
+                    Rôle
+                </td>
+            </tr>
+        </thead>
+        <tbody id="tbody_table_tache">
+            <tr class='tr_task'>
+                <td class="td_task">
+                    H
+                </td>
+                <td class="td_task">
+                    Transformer le index.html
+                </td>
+                <td class="td_task">
+                    Administrateur
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table id="table_tache2">
+        <thead id="thead_table_tache">
+            <tr id="tr_thead_table_tache">
+                <td id="td2_thead_table_tache2">
+                    Tâche
+                </td>
+                <td id="td3_thead_table_tache2">
+                    Rôle
+                </td>
+            </tr>
+        </thead>
+        <tbody id="tbody_table_tache">
+            <tr>
+                <td class="td_task">
+                    <input id="task_input" name="task" placeholder="Tâche à effectuer"></input>
+                </td>
+                <td class="td_task" id="select_td">
+                    <select name="utilise" id="selection">
+                        <option value="toujours">Administrateur</option>
+                        <option value="parfois">Développeur</option>
+                        <option value="jamais">Intégrateur</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <div id="affichage_droit_div">
+        <table id="affichage_droit">
+            <tr>
+                <td>
+                    Nombre de Tâches effectuées : 12
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nombre de Tâches non effectuées : 5
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Progression : 56%
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="more_div">
+                        <li>Actualiser</li>
+                        <li>Tout supprimer</li>
+                    </div>
+                    <img onclick="burger_hover()" id="img_menu" src="img/menu.png">
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="div_menu_de_gauche">
+        <table id="menu_de_gauche">
+            <tbody>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <img class="img_menu_gauche" id="img_logo" src="img/programmer2.png">
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <div class="trait_separation" id="trait_separation"></div>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche class="bon_pour_trait">
+                    <td class="colonne_menu_gauche">
+                        <img onmouseover="blur1(); agrandissement1()" onmouseleave="blur1leave(); retrecissement1()"
+                            class="img_menu_gauche" id="img_code" src="img/list.png">
+                    </td>
+                </tr>
+
+                <tr class=ligne_menu_gauche class="bon_pour_trait">
+                    <td>
+                        <img onmouseover="blur2(); agrandissement2()" onmouseleave="blur2leave(); retrecissement2()"
+                            class="img_menu_gauche" id="img_list" src="img/goal.png">
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche class="bon_pour_trait">
+                    <td>
+                        <img onmouseover="blur3(); agrandissement3()" onmouseleave="blur3leave(); retrecissement3()"
+                            class="img_menu_gauche" id="img_group" src="img/group.png">
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche class="bon_pour_trait">
+                    <td>
+                        <img onmouseover="blur4(); agrandissement4()" onmouseleave="blur4leave(); retrecissement4()"
+                            class="img_menu_gauche" id="img_people" src="img/people.png">
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche class="bon_pour_trait">
+                    <td>
+                        <img onmouseover="blur5(); agrandissement5()" onmouseleave="blur5leave(); retrecissement5()"
+                            class="img_menu_gauche" id="img_network" src="img/network.png">
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <div class="trait_separation" id="trait_separation2"></div>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <table id="menu_de_gauche2">
+            <tbody>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <p id="text_affichage_gauchemenu">Menu</p>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <div id="trait_separation_deroulant"></div>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td class="colonne_menu_gauche">
+                        <p id="text_affichage_gauche1">Tâches</p>
+                    </td>
+                </tr>
+
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <p id="text_affichage_gauche2">Objectifs</p>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <p id="text_affichage_gauche3">Participants</p>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <p id="text_affichage_gauche4">Discussion</p>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+                        <p id="text_affichage_gauche5">Partage</p>
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr class=ligne_menu_gauche>
+                    <td>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
