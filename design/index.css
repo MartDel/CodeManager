@@ -337,8 +337,9 @@ a{
     color:white;
 }
 
-select{
-    color:white
+select, input{
+    color:white;
+    font-family: happy_monkeyregular;
 }
 .user{
     height:4vh;
