@@ -10,6 +10,12 @@ ob_start();
   <br>
   <input type="password" name="password" placeholder="Mot de passe" />
   <br>
+  <label>
+    Connexion automatique
+    <input type="checkbox" name="auto" checked />
+  </label>
+  <br>
+  <br>
   <input type="submit" value="Envoyer" />
 </form>
 

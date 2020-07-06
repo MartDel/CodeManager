@@ -16,12 +16,33 @@ function checkSignUp($post){
  * @param  Object $post All of data
  */
 function checkSignIn($post){
-  checkConnection($post);
-  connectUser(htmlspecialchars($post['login']));
+  if(!isset($post['login']) || !isset($post['password'])) {
+    throw new Exception("Veuillez remplir tous les champs");
+  }
+  checkConnection($post['login'], $post['password']);
+  $hashed_password = password_hash($post['password'], PASSWORD_DEFAULT);
+  connectUser(htmlspecialchars($post['login']), $hashed_password, $post['auto']);
   header("Location: index.php");
 }
 
+function checkCookie(){
+  try {
+    checkConnection($_COOKIE['pseudo'], $_COOKIE['password']);
+    $hashed_password = password_hash($_COOKIE['password'], PASSWORD_DEFAULT);
+    connectUser(htmlspecialchars($_COOKIE['pseudo']), $hashed_password, true);
+    header("Location: index.php");
+  } catch (Exception $e) {
+    header("Location: index.php?action=home");
+  }
+
+}
+
+/**
+ * Logout the current user
+ */
 function logout(){
   session_destroy();
+	setcookie('pseudo', '', time() + 365*24*3600, null, null, false, true);
+	setcookie('password', '', time() + 365*24*3600, null, null, false, true);
   header('Location: index.php');
 }

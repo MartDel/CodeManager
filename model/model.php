@@ -33,15 +33,12 @@ function addUser($data){
 
 /**
  * Check if there are errors in user's data
- * @param Object $data User's data
+ * @param String $l User's pseudo or email
+ * @param String $p User's password
  */
-function checkConnection($data){
-	if(!isset($data['login']) || !isset($data['password'])) {
-		throw new Exception("Veuillez remplir tous les champs");
-	}
-
-	$login = htmlspecialchars($data['login']);
-	$password = $data['password'];
+function checkConnection($l, $p) {
+	$login = htmlspecialchars($l);
+	$password = $p;
 	if($login == "" || $password == "") throw new Exception("Veuillez remplir tous les champs.");
 	if(!User::accountExist($login, $login)) throw new Exception("Aucun compte n'existe avec ces identifiants.");
 
@@ -53,9 +50,15 @@ function checkConnection($data){
 /**
  * Connect an user with his login
  * @param String $login User's pseudo or email
+ * @param String $login User's password
+ * @param boolean $auto Autoconnection checkbox value
  */
-function connectUser($login){
+function connectUser($login, $password, $auto){
 	$user = User::getUserByLogin($login);
 	$_SESSION['pseudo'] = $user->getPseudo();
 	$_SESSION['mail'] = $user->getMail();
+	if($auto){
+		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, null, null, false, true);
+		setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
+	}
 }
