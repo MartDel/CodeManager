@@ -284,6 +284,7 @@ a{
     border:rgb(32, 34, 37) 2px solid;
     margin-top:20vh;
     width:72.5vw;
+    height:5.9vh;
     color:white;
     font-family: happy_monkeyregular;
 }
@@ -386,14 +387,20 @@ select, input{
 }
 #expand_div_task{
     padding:1vh 1vh 1vh 1vh;
-    width:71.10vw;
-    height:15vh;
+    width:0vw;
+    height:0vh;
+    font-size:2vh;
     position:absolute;
-    border:rgb(32, 34, 37) 2px solid;
+    border-left:rgb(32, 34, 37) 2px solid;
+    border-right:rgb(32, 34, 37) 2px solid;
+    border-bottom:rgb(32, 34, 37) 2px solid;
     margin-left:5.5vw;
     margin-top:calc(26vh - 0px);
     color:rgb(255, 255, 255);
     font-family:happy_monkeyregular;
+    transition: all 0.3s;
+    transform:scaleX(0);
+    transform: scaleY(0)
 }
 #desc_tache_div{
     float:left;
@@ -410,5 +417,49 @@ select, input{
 }
 #expand_div_task li{
     margin-left:70%;
-    padding-bottom:2vh
+    padding-bottom:2vh;
+    margin-top:-2vh;
+}
+#tbody_table_tache{
+    cursor: pointer;
+}
+#delete_edit_table{
+    position: absolute;
+    margin-top:37vh;
+    margin-left:55vw;
+    transform: scaleX(0);
+    transition-delay: 400ms;
+    transition:0.2s;
+}
+#delete_photo, #edit_photo{
+    width:2vw;
+    margin-top:0.7vh;
+    height:auto
+}
+#burger_tache_droit{
+    border-right:rgb(32, 34, 37) 2px solid;
+    width:10vw;
+    position:absolute;
+    margin-left:67.85vw;
+    margin-top:26.2vh;
+    transform: scaleX(0);
+    transform: scaleY(0);
+    transition:transform 0.4s, color 0.4s;
+    color:rgb(54, 57, 63);
+    transition-delay:0ms, 400ms;
+    
+}
+#burger_tache_droit_table td:hover{
+    background-color: rgb(135, 142, 151);
+    cursor: pointer;
+}
+#burger_tache_droit_table td{
+    width:10vw;
+    
+    height:5vh;
+    padding-left:10px
+}
+#td_menu_burger{
+    width:1vw;
+    
 }
