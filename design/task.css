@@ -156,7 +156,7 @@ a{
     position:fixed;
     background-color: rgb(54, 57, 63);
     height:10vh;
-    width:52vw;
+    width:15vw;
 }
 .edit_tasks_line{
     height:10vh;
@@ -371,10 +371,44 @@ select, input{
     transition-duration: 0.3s, 0.4s;
     transition-delay: 0ms, 200ms;
     transform-origin: bottom;
-    border-bottom:red 1px solid;
+    border-bottom:rgb(255, 0, 0) 1px solid;
 
     
 }
 #more_div li{
     padding:1vw 2vw 1vw 2vw;
+}
+#expand_menu{
+    height:2.5vh;
+    float:right;
+    filter: invert(40%);
+    
+}
+#expand_div_task{
+    padding:1vh 1vh 1vh 1vh;
+    width:71.10vw;
+    height:15vh;
+    position:absolute;
+    border:rgb(32, 34, 37) 2px solid;
+    margin-left:5.5vw;
+    margin-top:calc(26vh - 0px);
+    color:rgb(255, 255, 255);
+    font-family:happy_monkeyregular;
+}
+#desc_tache_div{
+    float:left;
+    width:60%;
+    margin-left:1vh;
+    height:8vh;
+    border-left:rgb(32, 34, 37) 2px solid;
+    position:absolute;
+    padding:1vh 1vh 1vh 1vh
+
+}
+#nom_tache{
+    height:20%;
+}
+#expand_div_task li{
+    margin-left:70%;
+    padding-bottom:2vh
 }
