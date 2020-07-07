@@ -5,9 +5,9 @@ ob_start();
 
 ?>
 
-<a href="index.php?action=signup">S'incrire</a>
+<a href="index.php?action=signup" style="color:#fff;">S'incrire</a>
 <br><br>
-<a href="index.php?action=signin">Se connecter</a>
+<a href="index.php?action=signin" style="color:#fff;">Se connecter</a>
 
 <?php
 

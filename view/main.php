@@ -48,7 +48,9 @@ ob_start();
     <thead id="thead_table_tache">
         <tr id="tr_thead_table_tache">
             <td id="td1_thead_table_tache">Nom</td>
-            <td id="td2_thead_table_tache">Description</td>
+            <td id="td2_thead_table_tache">
+              <a href="index.php?action=logout" style="color:#fff;">Se déconnecter</a>
+            </td>
             <td id="td3_thead_table_tache">Date</td>
         </tr>
     </thead>
