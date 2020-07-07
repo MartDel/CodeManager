@@ -293,19 +293,20 @@
             document.getElementById("edit").style.borderBottomColor = "rgb(54, 57, 63)";
         }
         var tour = 1;
+
         function burger_hover() {
-            if (tour==1){
+            if (tour == 1) {
                 document.getElementById("img_menu").style.transform = "rotate(90deg)";
                 document.getElementById("more_div").style.transform = "scaleY(1)";
                 document.getElementById("more_div").style.fontSize = "1.7vh";
                 document.getElementById("more_div").style.transitionDelay = "0ms, 200ms";
-                window["tour"]=0;
-            }else{
+                window["tour"] = 0;
+            } else {
                 document.getElementById("img_menu").style.transform = "rotate(0deg)";
                 document.getElementById("more_div").style.transform = "scaleY(0)";
                 document.getElementById("more_div").style.fontSize = "0vh";
                 document.getElementById("more_div").style.transitionDelay = "200ms, 0ms";
-                window["tour"]=1;
+                window["tour"] = 1;
             }
         }
     </script>
@@ -340,49 +341,49 @@
                     <img class="img_edit_tasks" id="add_photo" src="img/web_essentials/png/066-add.png">
                     <p class="text_edit_tasks">Ajouter une tâche</p>
                 </td>
-                <td class="edit_tasks_col" id="delete" onmouseover="demitour2()" onmouseleave="demitour2leave()">
+                <!--<td class="edit_tasks_col" id="delete" onmouseover="demitour2()" onmouseleave="demitour2leave()">
                     <img class="img_edit_tasks" id="delete_photo" src="img/web_essentials/png/059-cancel.png">
                     <p class="text_edit_tasks">Supprimer la tâche</p>
                 </td>
                 <td class="edit_tasks_col" id="edit" onmouseover="demitour3()" onmouseleave="demitour3leave()">
                     <img class="img_edit_tasks" id="edit_photo" src="img/web_essentials/png/047-pencil.png">
                     <p class="text_edit_tasks">Éditer la tâche</p>
-                </td>
+                </td>-->
             </tr>
         </table>
     </div>
 
     <table id="table_tache">
-        <thead id="thead_table_tache">
-            <tr id="tr_thead_table_tache">
-                <td id="td1_thead_table_tache">
-                    Sélection
-                </td>
-                <td id="td2_thead_table_tache">
-                    Tâche
-                </td>
-                <td id="td3_thead_table_tache">
-                    Rôle
-                </td>
-            </tr>
-        </thead>
         <tbody id="tbody_table_tache">
             <tr class='tr_task'>
                 <td class="td_task">
-                    H
+                    ☼
                 </td>
                 <td class="td_task">
-                    Transformer le index.html
+                    Nom de la tâche
                 </td>
                 <td class="td_task">
-                    Administrateur
+                    <img id="expand_menu" src="img/menu.png">
                 </td>
+                <div id="expand_div_task">
+                    <div id="nom_tache">Nom de la tâche</div>
+                    <div id="desc_tache_div">Description</div>
+                    
+                    <div>
+                        <li>
+                            Créateur
+                        </li>
+                        <li>
+                            Date de création
+                        </li>
+                    </div>
+                </div>
             </tr>
         </tbody>
     </table>
 
 
-    <table id="table_tache2">
+    <!--<table id="table_tache2">
         <thead id="thead_table_tache">
             <tr id="tr_thead_table_tache">
                 <td id="td2_thead_table_tache2">
@@ -407,7 +408,7 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+    </table>-->
 
 
 
@@ -476,7 +477,7 @@
 
 
 
-    
+
     <div id="div_menu_de_gauche">
         <table id="menu_de_gauche">
             <tbody>
