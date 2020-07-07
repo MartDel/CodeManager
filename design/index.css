@@ -59,16 +59,16 @@ body {
     background-color: rgb(255, 255, 255);
     width: 100%;
     color: rgb(91, 92, 96);
-
-    font-family: "stardos_stencilregular";
-    font-size: 6vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
 }
-
-#top_div_title p {
-    margin-top: 1%;
-
+#top_div_title_p {
+    position:fixed;
+    margin-top: 2vh;
+    margin-left:5vw;
+    font-size: 4vh;
     transition-delay: 1s;
-    float: left;
+    
 
 }
 
@@ -93,11 +93,12 @@ body {
 }
 
 #top_div_title img {
-    height: 80%;
+    height: 60%;
     filter: contrast(120%);
     float: left;
     margin-left: 1%;
-    margin-top: 0.75%
+    margin-top:1.2%;
+    padding-right:0.7vw
 }
 #seconde_ligne{
     font-size:3vh;
@@ -111,9 +112,70 @@ body {
     font-size: 2.5vh;
     padding:10px 10px 10px 10px;
     text-align: center;
-    margin-top:3vh
+    margin-top:3vh;
+    transition:all 0.2;
 }
+
 #savoir_plus{
     font-size:1.5vh;
     margin-top:14vh
+}
+/*#div_général_connexion{
+    width:50vw;
+    float:right
+}
+#div_général_connexion p{
+    float:right
+}*/
+#se_connecter{
+    border:rgb(91, 92, 96) 2px solid;
+    position:absolute;
+    font-size:2vh;
+    text-align: center;
+    margin-left:88vw;
+    width:10vw;
+    margin-top:1vh;
+    
+}
+#se_connecter p{
+    padding:0;
+    padding-top:0vh;
+    text-align: center;
+}
+#enregistrer{
+    border:rgb(255, 255, 255) 2px solid;
+    position:absolute;
+    font-size:2vh;
+    text-align: center;
+    margin-left:75vw;
+    width:10vw;
+    margin-top:1vh;
+    
+}
+#enregistrer p{
+    padding:0;
+    padding-top:0vh;
+    text-align: center;
+}
+#ou{
+    border:rgb(255, 255, 255) 2px solid;
+    position:absolute;
+    font-size:2vh;
+    text-align: center;
+    margin-left:84vw;
+    width:3vw;
+    margin-top:1vh;
+    
+}
+#ou p{
+    padding:0;
+    padding-top:0vh;
+    text-align: center;
+}
+
+#disponible{
+    font-style: italic;
+    font-family:georgia, "times new roman", norasi, serif;
+    font-size:2.2vh;
+    margin-top:25vh;
 }
