@@ -6,6 +6,7 @@ require("class/User.php");
 require("class/Task.php");
 
 try{
+	date_default_timezone_set('UTC');
 	if(isset($_GET['action'])){
 		$action = htmlspecialchars($_GET["action"]);
 		if($action == "home") require('view/home.php');
@@ -14,6 +15,7 @@ try{
 		elseif ($action == "signin") require('view/signin.php'); // SignIn page
 		elseif ($action == "checkSignIn") checkSignIn($_POST); // Check SignIn
 		elseif ($action == "logout") logout(); // Logout the current user
+		elseif ($action == "commits") showProjectCommit(); // Logout the current user
 	} else{
 		if(isset($_SESSION['pseudo']) && isset($_SESSION['mail'])) { // Connected
 			showMainPage();

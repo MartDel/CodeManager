@@ -62,3 +62,23 @@ function connectUser($login, $password, $auto){
 		setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
 	}
 }
+
+/**
+ * Get all of project commits
+ * @param String $github_user Current project owner (GitHub username)
+ * @param String $project_name Current project name
+ * @return JsonObject[] All of GitHub commits
+ */
+function getCommits($github_user, $project_name){
+	$opts = array(
+	  'http'=>array(
+	    'method'=>"GET",
+	    'header'=>"User-Agent: martdel\r\n"
+	  )
+	);
+	$context = stream_context_create($opts);
+	$url = "https://api.github.com/repos/" . $github_user . "/" . $project_name . "/commits";
+  $raw = file_get_contents($url, false, $context);
+  $json = json_decode($raw);
+	return $json;
+}

@@ -40,12 +40,30 @@ function checkCookie(){
 
 }
 
-function showMainPage(){
-  $tasks = Task::getAllTasks(0);
-  $to_do = Task::getStat('is_done', 0, 0);
-  $done = Task::getStat('is_done', 1, 0);
+/**
+ * Get tasks stats and show them
+ * @param int $project_id Current project id
+ */
+function showMainPage($project_id = 0){
+  $tasks = Task::getAllTasks($project_id);
+  $to_do = Task::getStat('is_done', 0, $project_id);
+  $done = Task::getStat('is_done', 1, $project_id);
   $percentage = $done / ($to_do + $done) * 100;
   require('view/main.php');
+}
+
+/**
+ * Get all of project commits and show them
+ */
+function showProjectCommit(){
+  $github_user = 'MartDel';
+  $project_name = 'CodeManager';
+  $commits = getCommits($github_user, $project_name);
+  foreach ($commits as $key => $commit) {
+    $current = $commit->commit;
+    $author = $current->author;
+    echo $author->name . ' : ' . $current->message . ' | Date : ' . date("H:i:s d/m/Y", strtotime($author->date)) . '<br>';
+  }
 }
 
 /**
