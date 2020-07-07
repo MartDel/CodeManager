@@ -383,7 +383,7 @@ select, input{
     height:2.5vh;
     float:right;
     filter: invert(40%);
-    
+    transition:all 0.3s
 }
 #expand_div_task{
     padding:1vh 1vh 1vh 1vh;
@@ -429,7 +429,7 @@ select, input{
     margin-left:55vw;
     transform: scaleX(0);
     transition-delay: 400ms;
-    transition:0.2s;
+    transition:0.3s;
 }
 #delete_photo, #edit_photo{
     width:2vw;
