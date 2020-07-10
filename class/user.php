@@ -7,6 +7,7 @@ class User extends DatabaseManager
 {
   private $pseudo;
   private $mail;
+  private $role;
 
   const TABLE_NAME = "users";
 
@@ -80,5 +81,8 @@ class User extends DatabaseManager
   }
   public function getMail(){
     return $this->mail;
+  }
+  public function getRole(){
+    return $this->role;
   }
 }

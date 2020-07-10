@@ -19,9 +19,8 @@ function checkSignIn($post){
   if(!isset($post['login']) || !isset($post['password'])) {
     throw new Exception("Veuillez remplir tous les champs");
   }
-  checkConnection($post['login'], $post['password']);
-  $hashed_password = password_hash($post['password'], PASSWORD_DEFAULT);
-  connectUser(htmlspecialchars($post['login']), $hashed_password, $post['auto']);
+  checkConnection($post['login'], $post['password'], false);
+  connectUser(htmlspecialchars($post['login']), $post['auto']);
   header("Location: index.php");
 }
 
@@ -30,14 +29,13 @@ function checkSignIn($post){
  */
 function checkCookie(){
   try {
-    checkConnection($_COOKIE['pseudo'], $_COOKIE['password']);
-    $hashed_password = password_hash($_COOKIE['password'], PASSWORD_DEFAULT);
-    connectUser(htmlspecialchars($_COOKIE['pseudo']), $hashed_password, true);
+    checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
+    connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
     header("Location: index.php");
   } catch (Exception $e) {
+    logout();
     header("Location: index.php?action=home");
   }
-
 }
 
 /**

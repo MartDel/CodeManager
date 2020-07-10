@@ -5,6 +5,7 @@ require("class/simple_html_dom.php");
 require("class/DatabaseManager.php");
 require("class/User.php");
 require("class/Task.php");
+require("class/Role.php");
 
 try{
 	date_default_timezone_set('UTC');

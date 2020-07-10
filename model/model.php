@@ -35,16 +35,22 @@ function addUser($data){
  * Check if there are errors in user's data
  * @param String $l User's pseudo or email
  * @param String $p User's password
+ * @param boolean $is_hashed True if the password is hashed
  */
-function checkConnection($l, $p) {
+function checkConnection($l, $p, $is_hashed) {
 	$login = htmlspecialchars($l);
 	$password = $p;
-	if($login == "" || $password == "") throw new Exception("Veuillez remplir tous les champs.");
 	if(!User::accountExist($login, $login)) throw new Exception("Aucun compte n'existe avec ces identifiants.");
 
 	$correct_password = User::getPassword($login);
-	if($correct_password == null) throw new Exception("Un problème est survenu");
-	if(!password_verify($password, $correct_password)) throw new Exception("Le mot de passe n'est pas correct");
+	if($correct_password == null) throw new Exception("Un problème est survenu.");
+
+	if($is_hashed){
+		if($password != $correct_password) throw new Exception("Le mot de passe n'est pas correct.");
+	} else {
+		if($login == "" || $password == "") throw new Exception("Veuillez remplir tous les champs.");
+		if(!password_verify($password, $correct_password)) throw new Exception("Le mot de passe n'est pas correct.");
+	}
 }
 
 /**
@@ -53,13 +59,13 @@ function checkConnection($l, $p) {
  * @param String $login User's password
  * @param boolean $auto Autoconnection checkbox value
  */
-function connectUser($login, $password, $auto){
+function connectUser($login, $auto){
 	$user = User::getUserByLogin($login);
 	$_SESSION['pseudo'] = $user->getPseudo();
 	$_SESSION['mail'] = $user->getMail();
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, null, null, false, true);
-		setcookie('password', $password, time() + 365*24*3600, null, null, false, true);
+		setcookie('password', User::getPassword($login), time() + 365*24*3600, null, null, false, true);
 	}
 }
 
