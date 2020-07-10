@@ -360,6 +360,155 @@
         }
     }
 
+<<<<<<< HEAD
+=======
+        function agrandissement5() {
+            document.getElementById("div_menu_de_gauche").style.width = "15%";
+            document.getElementById("text_affichage_gauche5").style.width = "100%";
+            document.getElementById("trait_separation").style.width = "5%";
+            document.getElementById("trait_separation").style.height = "40%";
+            document.getElementById("trait_separation").style.marginLeft = "45%";
+            document.getElementById("trait_separation2").style.width = "5%";
+            document.getElementById("trait_separation2").style.height = "40%";
+            document.getElementById("trait_separation2").style.marginLeft = "45%";
+            document.getElementById("trait_separation_deroulant").style.width = "85%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "1s";
+        }
+
+        function retrecissement5() {
+            document.getElementById("div_menu_de_gauche").style.width = "4%";
+            document.getElementById("text_affichage_gauche5").style.width = "0%";
+            document.getElementById("trait_separation").style.width = "60%";
+            document.getElementById("trait_separation").style.height = "3%";
+            document.getElementById("trait_separation").style.marginLeft = "17%";
+            document.getElementById("trait_separation2").style.width = "60%";
+            document.getElementById("trait_separation2").style.height = "3%";
+            document.getElementById("trait_separation2").style.marginLeft = "17%";
+            document.getElementById("trait_separation_deroulant").style.width = "0%";
+            document.getElementById("trait_separation_deroulant").style.transitionDuration = "0s";
+        }
+
+        function demitour1() {
+            document.getElementById("add_photo").style.transform = "rotate(180deg)";
+            document.getElementById("add").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour1leave() {
+            document.getElementById("add_photo").style.transform = "rotate(0deg)";
+            document.getElementById("add").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+
+        function demitour2() {
+            document.getElementById("delete_photo").style.transform = "rotate(180deg)";
+            document.getElementById("delete").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour2leave() {
+            document.getElementById("delete_photo").style.transform = "rotate(0deg)";
+            document.getElementById("delete").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+
+        function demitour3() {
+            document.getElementById("edit_photo").style.transform = "rotate(180deg)";
+            document.getElementById("edit").style.borderBottomColor = "rgb(32, 34, 37)";
+        }
+
+        function demitour3leave() {
+            document.getElementById("edit_photo").style.transform = "rotate(0deg)";
+            document.getElementById("edit").style.borderBottomColor = "rgb(54, 57, 63)";
+        }
+        var tour = 1;
+
+        function burger_hover() {
+            if (tour == 1) {
+                document.getElementById("img_menu").style.transform = "rotate(90deg)";
+                document.getElementById("more_div").style.transform = "scaleY(1)";
+                document.getElementById("more_div").style.fontSize = "1.7vh";
+                document.getElementById("more_div").style.transitionDelay = "0ms, 200ms";
+                window["tour"] = 0;
+            } else {
+                document.getElementById("img_menu").style.transform = "rotate(0deg)";
+                document.getElementById("more_div").style.transform = "scaleY(0)";
+                document.getElementById("more_div").style.fontSize = "0vh";
+                document.getElementById("more_div").style.transitionDelay = "200ms, 0ms";
+                window["tour"] = 1;
+            }
+        }
+        var expand = 1;
+
+        function expand_menu() {
+            if (expand == 1) {
+                document.getElementById("expand_div_task").style.transform = "scaleX(1)";
+                document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+                document.getElementById("expand_div_task").style.height = "15vh";
+                document.getElementById("expand_div_task").style.width = "71.10vw";
+                document.getElementById("delete_edit_table").style.transform = "scaleX(1)";
+                document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+                document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+                window["expand"] = 0;
+            } else {
+                document.getElementById("expand_div_task").style.transform = "scaleX(0)";
+                document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+                document.getElementById("expand_div_task").style.height = "0vh";
+                document.getElementById("expand_div_task").style.width = "0vw";
+                document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+                document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+                document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+                window["expand"] = 1;
+            }
+        }
+        var expand2 = 1;
+
+        function expand_menu2() {
+            if (expand2 == 1) {
+                document.getElementById("expand_div_task2").style.transform = "scaleX(1)";
+                document.getElementById("expand_div_task2").style.transform = "scaleY(1)";
+                document.getElementById("expand_div_task2").style.height = "15vh";
+                document.getElementById("expand_div_task2").style.width = "71.10vw";
+                document.getElementById("delete_edit_table2").style.transform = "scaleX(1)";
+                document.getElementById("delete_edit_table2").style.transitionDelay = "400ms";
+                document.getElementById("expand_div_task2").style.transitionDelay = "0ms";
+                window["expand2"] = 0;
+            } else {
+                document.getElementById("expand_div_task2").style.transform = "scaleX(0)";
+                document.getElementById("expand_div_task2").style.transform = "scaleY(0)";
+                document.getElementById("expand_div_task2").style.height = "0vh";
+                document.getElementById("expand_div_task2").style.width = "0vw";
+                document.getElementById("delete_edit_table2").style.transform = "scaleX(0)";
+                document.getElementById("delete_edit_table2").style.transitionDelay = "0ms";
+                document.getElementById("expand_div_task2").style.transitionDelay = "200ms";
+                window["expand2"] = 1;
+            }
+        }
+
+        var bgggg = 1;
+
+        function burgerclicktask() {
+            if (bgggg == 1) {
+                document.getElementById("burger_tache_droit").style.transform = "scaleX(1)";
+                document.getElementById("burger_tache_droit").style.transform = "scaleY(1)";
+                document.getElementById("burger_tache_droit").style.color = "white";
+                document.getElementById("burger_tache_droit").style.transitionDelay = "0ms, 400ms";
+                document.getElementById("expand_menu").style.transform = "rotate(90deg)";
+                //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+                //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+                //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+                window["bgggg"] = 0;
+            } else {
+                document.getElementById("burger_tache_droit").style.transform = "scaleX(0)";
+                document.getElementById("burger_tache_droit").style.transform = "scaleY(0)";
+                document.getElementById("burger_tache_droit").style.color = "rgb(54, 57, 63)";
+                document.getElementById("burger_tache_droit").style.transitionDelay = "0ms, 0ms";
+                document.getElementById("expand_menu").style.transform = "rotate(0deg)";
+                //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+                //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+                //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+                //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+                window["bgggg"] = 1;
+            }
+        }
+>>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
     </script>
 </head>
 
@@ -402,64 +551,134 @@
             </tr>
         </table>
     </div>
+    <div id="test">
+        <table id="table_tache">
+            <tbody id="tbody_table_tache">
+                <tr class='tr_task'>
+                    <td class="td_task">
+                        <input type="checkbox">
+                    </td>
+                    <td class="td_task" onclick="expand_menu()">
+                        Nom de la tâche
+                    </td>
+                    <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
+                        <img id="expand_menu" src="img/menu.png">
+                    </td>
 
-    <table id="table_tache">
-        <tbody id="tbody_table_tache">
-            <tr class='tr_task'>
-                <td class="td_task">
-                    ☼
-                </td>
-                <td class="td_task" onclick="expand_menu()">
-                    Nom de la tâche
-                </td>
-                <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
-                    <img id="expand_menu" src="img/menu.png">
-                </td>
-
-            </tr>
+                </tr>
 
 
 
-            <tr>
-                <div id="expand_div_task">
-                    <div id="nom_tache">Nom de la tâche</div>
-                    <div id="desc_tache_div">Description</div>
+                <tr>
+                    <div id="expand_div_task">
+                        <div id="nom_tache">Nom de la tâche</div>
+                        <div id="desc_tache_div">
+                            DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+                        </div>
 
-                    <div>
-                        <li>
-                            Créateur
-                        </li>
-                        <li>
-                            Date de création
-                        </li>
-                        <table id="delete_edit_table">
-                            <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
-                                onmouseleave="demitour2leave()">
-                                <img class="img_edit_tasks" id="delete_photo"
-                                    src="img/web_essentials/png/059-cancel.png">
-                                <p class="text_edit_tasks">Supprimer la tâche</p>
-                            </td>
-                            <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
-                                onmouseleave="demitour3leave()">
-                                <img class="img_edit_tasks" id="edit_photo" src="img/web_essentials/png/047-pencil.png">
-                                <p class="text_edit_tasks">Éditer la tâche</p>
-                            </td>
-                        </table>
+                        <div>
+                            <li>
+                                Créateur
+                            </li>
+                            <li>
+                                Date de création
+                            </li>
+                            <table id="delete_edit_table">
+                                <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
+                                    onmouseleave="demitour2leave()">
+                                    <img class="img_edit_tasks" id="delete_photo"
+                                        src="img/web_essentials/png/059-cancel.png">
+                                    <p class="text_edit_tasks">Supprimer la tâche</p>
+                                </td>
+                                <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
+                                    onmouseleave="demitour3leave()">
+                                    <img class="img_edit_tasks" id="edit_photo"
+                                        src="img/web_essentials/png/047-pencil.png">
+                                    <p class="text_edit_tasks">Éditer la tâche</p>
+                                </td>
+                            </table>
+                        </div>
                     </div>
+                </tr>
+                <div id="burger_tache_droit">
+                    <table id="burger_tache_droit_table">
+                        <tr>
+                            <td>Éditer</td>
+                        </tr>
+                        <tr>
+                            <td>Supprimer</td>
+                        </tr>
+                    </table>
                 </div>
-            </tr>
-            <div id="burger_tache_droit">
-                <table id="burger_tache_droit_table">
-                    <tr>
-                        <td>Éditer</td>
-                    </tr>
-                    <tr>
-                        <td>Supprimer</td>
-                    </tr>
-                </table>
-            </div>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <!--<div id="test2">
+        <table id="table_tache">
+            <tbody id="tbody_table_tache">
+                <tr class='tr_task'>
+                    <td class="td_task">
+                        <input type="checkbox">
+                    </td>
+                    <td class="td_task" onclick="expand_menu2()">
+                        Nom de la tâche
+                    </td>
+                    <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
+                        <img id="expand_menu" src="img/menu.png">
+                    </td>
+
+                </tr>
+
+
+
+                <tr>
+                    <div id="expand_div_task2">
+                        <div id="nom_tache">Nom de la tâche</div>
+                        <div id="desc_tache_div">
+                            DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+                        </div>
+
+                        <div>
+                            <li>
+                                Créateur
+                            </li>
+                            <li>
+                                Date de création
+                            </li>
+                            <table id="delete_edit_table2">
+                                <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
+                                    onmouseleave="demitour2leave()">
+                                    <img class="img_edit_tasks" id="delete_photo"
+                                        src="img/web_essentials/png/059-cancel.png">
+                                    <p class="text_edit_tasks">Supprimer la tâche</p>
+                                </td>
+                                <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
+                                    onmouseleave="demitour3leave()">
+                                    <img class="img_edit_tasks" id="edit_photo"
+                                        src="img/web_essentials/png/047-pencil.png">
+                                    <p class="text_edit_tasks">Éditer la tâche</p>
+                                </td>
+                            </table>
+                        </div>
+                    </div>
+                </tr>
+                <div id="burger_tache_droit">
+                    <table id="burger_tache_droit_table">
+                        <tr>
+                            <td>Éditer</td>
+                        </tr>
+                        <tr>
+                            <td>Supprimer</td>
+                        </tr>
+                    </table>
+                </div>
+            </tbody>
+        </table>
+    </div>-->
+
+
+
+
 
 
     <!--<table id="table_tache2">
