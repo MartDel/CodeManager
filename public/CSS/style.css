@@ -7,8 +7,8 @@ html, body{
 
 @font-face {
     font-family: 'happy_monkeyregular';
-    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'),
-         url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    src: url('../fonts/happymonkey-regular-webfont.woff2') format('woff2'),
+         url('../fonts/happymonkey-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

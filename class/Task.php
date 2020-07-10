@@ -71,10 +71,10 @@ class Task extends DatabaseManager
     return $this->is_done;
   }
   public function getCreateDate(){
-    return $this->create_date;
+    return date("d/m/Y", strtotime($this->create_date));
   }
   public function getAuthor(){
-    return $this->auhor;
+    return $this->author;
   }
   public function getDescription(){
     return $this->description;

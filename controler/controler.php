@@ -48,7 +48,8 @@ function showMainPage($project_id = 0){
   $tasks = Task::getAllTasks($project_id);
   $to_do = Task::getStat('is_done', 0, $project_id);
   $done = Task::getStat('is_done', 1, $project_id);
-  $percentage = $done / ($to_do + $done) * 100;
+  if($to_do + $done != 0) $percentage = $done / ($to_do + $done) * 100;
+  else $percentage = 0;
   require('view/main.php');
 }
 
