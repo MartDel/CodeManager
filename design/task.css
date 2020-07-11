@@ -66,11 +66,7 @@ body {
     transition: all 0.3s ease;
     filter: blur(0px);
     cursor: pointer;
-<<<<<<< HEAD
-    filter:invert(40%);
-=======
     filter: invert(40%);
->>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
 
 
 }
@@ -321,34 +317,6 @@ a {
 
 }
 
-<<<<<<< HEAD
-#td1_thead_table_tache, #td2_thead_table_tache, #td3_thead_table_tache{
-    border-left:rgb(32, 34, 37) 2px solid;
-    border-right:rgb(32, 34, 37) 2px solid;
-    border-top:rgb(32, 34, 37) 2px solid;
-    border-bottom:rgb(32, 34, 37) 2px solid;
-    color:white;
-    font-family:happy_monkeyregular;
-    padding-left:10px
-}
-#td2_thead_table_tache2, #td3_thead_table_tache2{
-    border-left:rgb(32, 34, 37) 2px solid;
-    border-right:rgb(32, 34, 37) 2px solid;
-    border-top:rgb(32, 34, 37) 2px solid;
-    border-bottom:rgb(32, 34, 37) 2px solid;
-    color:white;
-    font-family:happy_monkeyregular;
-    padding-left:10px
-}
-#table_tache{
-    position: absolute;
-    margin-left:5.5vw;
-    border:rgb(32, 34, 37) 2px solid;
-    margin-top:20vh;
-    width:72.5vw;
-    height:5.9vh;
-    color:white;
-=======
 #td1_thead_table_tache,
 #td2_thead_table_tache,
 #td3_thead_table_tache {
@@ -357,7 +325,6 @@ a {
     border-top: rgb(32, 34, 37) 2px solid;
     border-bottom: rgb(32, 34, 37) 2px solid;
     color: white;
->>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
     font-family: happy_monkeyregular;
     padding-left: 10px
 }
@@ -468,10 +435,6 @@ input {
     border-bottom: rgb(255, 0, 0) 1px solid;
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
 }
 
 #more_div li {
@@ -535,6 +498,7 @@ input {
 #td_menu_burger {
     width: 1vw;
 }
+
 #expand_menu {
 
     height: 2.5vh;
@@ -553,7 +517,7 @@ input {
     border-right: rgb(32, 34, 37) 2px solid;
     border-bottom: rgb(32, 34, 37) 2px solid;
     margin-left: 0vw;
-    margin-top:6vh;
+    margin-top: 6vh;
     color: rgb(255, 255, 255);
     font-family: happy_monkeyregular;
     transition: all 0.3s;
@@ -562,6 +526,7 @@ input {
     background-color: rgb(54, 57, 63);
     z-index: 100;
 }
+
 #expand_div_task2 {
     padding: 1vh 1vh 1vh 1vh;
     width: 0vw;
@@ -572,21 +537,14 @@ input {
     border-right: rgb(32, 34, 37) 2px solid;
     border-bottom: rgb(32, 34, 37) 2px solid;
     margin-left: 0vw;
-    margin-top:6vh;
+    margin-top: 6vh;
     color: rgb(255, 255, 255);
     font-family: happy_monkeyregular;
     transition: all 0.3s;
     transform: scaleX(0);
     transform: scaleY(0);
-<<<<<<< HEAD
-    transition:transform 0.4s, color 0.4s;
-    color:rgb(54, 57, 63);
-    transition-delay:0ms, 400ms;
-
-=======
     background-color: rgb(54, 57, 63);
     z-index: 100;
->>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
 }
 
 #desc_tache_div {
@@ -601,6 +559,7 @@ input {
     overflow-y: scroll;
 
 }
+
 #table_tache {
     position: absolute;
     /*margin-left: 5.5vw;*/
@@ -611,7 +570,19 @@ input {
     color: white;
     font-family: happy_monkeyregular;
 }
+
 #delete_edit_table {
+    width: 25vw;
+    position: absolute;
+    margin-top: 17vh;
+    margin-left: 48vw;
+    transform: scaleX(0);
+    transition-delay: 400ms;
+    transition: 0.3s;
+    z-index: 110;
+}
+
+#delete_edit_table2 {
     width:25vw;
     position: absolute;
     margin-top: 17vh;
@@ -621,46 +592,30 @@ input {
     transition: 0.3s;
     z-index: 110;
 }
-<<<<<<< HEAD
-#burger_tache_droit_table td{
-    width:10vw;
-
-    height:5vh;
-    padding-left:10px
-}
-#td_menu_burger{
-    width:1vw;
-
-}
-=======
-/*#delete_edit_table2 {
-    width:25vw;
-    position: absolute;
-    margin-top: 17vh;
-    margin-left: 48vw;
-    transform: scaleX(0);
-    transition-delay: 400ms;
-    transition: 0.3s;
-    z-index: 110;
-}*/
-#test{
-    border:red 2px solid;
+#test {
+    border: red 2px solid;
     margin-left: 5.5vw;
     margin-top: 20vh;
     width: 72.5vw;
     height: 5.9vh;
     color: white;
     font-family: happy_monkeyregular;
-    position:absolute;
+    /*position: absolute;*/
+    
 }
-#test2{
-    border:red 2px solid;
+
+#test2 {
+    border: red 2px solid;
     margin-left: 5.5vw;
-    margin-top: 30vh;
+    margin-top: 5vh;
     width: 72.5vw;
     height: 5.9vh;
     color: white;
     font-family: happy_monkeyregular;
-    position:absolute;
+    /*position: relative;*/
+    
 }
->>>>>>> 95b3b8b98795a5517b0f690c0eadc0ad16f9ad1f
+#flex{
+    display:flex;
+    
+}
