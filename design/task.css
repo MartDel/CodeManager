@@ -36,6 +36,7 @@ body {
     width: 3.9vw;
     background-color: rgb(47, 49, 54);
     position: fixed;
+    z-index: 500;
     transition: all 0.3s ease;
     transform-origin: left;
 }
@@ -46,16 +47,20 @@ body {
     width: 4vw;
     background-color: rgb(32, 34, 37);
     text-align: center;
+    z-index: 500;
+    position: relative;
 }
 
 #menu_de_gauche2 {
     height: 100vh;
     float: left;
+    position: relative;
     width: auto;
     background-color: rgb(47, 49, 54);
     text-align: center;
     margin-top: 0vh;
-    padding-left: 1vw
+    padding-left: 1vw;
+    z-index: 500;
 }
 
 .img_menu_gauche {
@@ -238,7 +243,7 @@ a {
     width: 0%;
     overflow: hidden;
     color: white;
-    z-index: 200;
+    z-index: 300;
     transition: all 0.4s ease-in-out;
     transform-origin: left;
     font-family: "happy_monkeyregular";
@@ -252,10 +257,11 @@ a {
     width: 100%;
     overflow: hidden;
     color: white;
-    z-index: 200;
+    z-index: 300;
     transition: all 0.4s ease-in-out;
     transform-origin: left;
     font-family: "happy_monkeyregular";
+    position: relative;
 }
 
 #trait_separation_deroulant {
@@ -391,6 +397,9 @@ a {
     padding-bottom: 10px;
     color: white;
 }
+#td_width{
+    width:2%
+}
 
 select,
 input {
@@ -447,11 +456,7 @@ input {
     height: 20%;
 }
 
-#expand_div_task li {
-    margin-left: 70%;
-    padding-bottom: 2vh;
-    margin-top: -2vh;
-}
+
 
 #tbody_table_tache {
     cursor: pointer;
@@ -566,7 +571,7 @@ input {
 
 
 #test {
-    border: red 2px solid;
+    border: rgba(255, 0, 0, 0) 2px solid;
     margin-left: 5.5vw;
     margin-top: 20vh;
     width: 72.5vw;
@@ -578,7 +583,7 @@ input {
 }
 
 #test2 {
-    border: red 2px solid;
+    border: rgba(255, 0, 0, 0) 2px solid;
     margin-left: 5.5vw;
     margin-top: 5vh;
     width: 72.5vw;
@@ -591,9 +596,12 @@ input {
 
 #flex {
     display: flex;
-
 }
-
+#expand_div_task li {
+    margin-left: 70%;
+    padding-bottom: 2vh;
+    margin-top: -2vh;
+}
 #expand_div_task2,
 #expand_div_task3,
 #expand_div_task4,
@@ -632,11 +640,42 @@ input {
 #delete_edit_table9
     {
     width: 25vw;
-    position: absolute;
+    position: relative;
     margin-top: 17vh;
     margin-left: 48vw;
     transform: scaleX(0);
     transition-delay: 400ms;
     transition: 0.3s;
     z-index: 110;
+}
+#createur_date{
+    margin-left: 70%;
+    padding-bottom: 2vh;
+    margin-top: -2vh;
+}
+
+
+input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    
+}
+
+input[type=checkbox] {
+    padding:0;
+    margin:0;
+    border-radius: 4px;
+    height: 13px;
+    width: 13px;
+    background: rgb(160, 160, 160);
+    border: 1px solid #ccc;
+    margin-top:30%
+}
+
+input[type="checkbox"]:checked {
+  background: rgb(54, 57, 63);
+  /*margin:0px;*/
+  position: relative;
+  
 }
