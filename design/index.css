@@ -177,3 +177,36 @@ body {
     font-size:2.2vh;
     margin-top:25vh;
 }
+#infos_generales_site{
+    display:flex;
+    background-color: red;
+
+}
+.flex_horizon{
+    display:flex;
+    flex-direction: row;
+    margin-top:10vh;
+}
+.img_index_desc{
+    height:25vh;
+    width:auto;
+    filter:invert(40%);
+    margin-left:7.7vh;
+    margin-top:5vh;
+    
+}
+.img_index_desc_div{
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    height:40vh;
+    width:40vh;
+}
+.flex_horizon p{
+    margin-left:5%;;
+    font-family:georgia, "times new roman", norasi, serif;
+    font-style: italic;
+    width:70vw;
+    font-size:20px;
+    color:white;
+    margin-top: 15vh;
+}
