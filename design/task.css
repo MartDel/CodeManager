@@ -527,25 +527,7 @@ input {
     z-index: 100;
 }
 
-#expand_div_task2 {
-    padding: 1vh 1vh 1vh 1vh;
-    width: 0vw;
-    height: 0vh;
-    font-size: 2vh;
-    position: absolute;
-    border-left: rgb(32, 34, 37) 2px solid;
-    border-right: rgb(32, 34, 37) 2px solid;
-    border-bottom: rgb(32, 34, 37) 2px solid;
-    margin-left: 0vw;
-    margin-top: 6vh;
-    color: rgb(255, 255, 255);
-    font-family: happy_monkeyregular;
-    transition: all 0.3s;
-    transform: scaleX(0);
-    transform: scaleY(0);
-    background-color: rgb(54, 57, 63);
-    z-index: 100;
-}
+
 
 #desc_tache_div {
     float: left;
@@ -582,16 +564,7 @@ input {
     z-index: 110;
 }
 
-#delete_edit_table2 {
-    width:25vw;
-    position: absolute;
-    margin-top: 17vh;
-    margin-left: 48vw;
-    transform: scaleX(0);
-    transition-delay: 400ms;
-    transition: 0.3s;
-    z-index: 110;
-}
+
 #test {
     border: red 2px solid;
     margin-left: 5.5vw;
@@ -601,7 +574,7 @@ input {
     color: white;
     font-family: happy_monkeyregular;
     /*position: absolute;*/
-    
+
 }
 
 #test2 {
@@ -613,9 +586,57 @@ input {
     color: white;
     font-family: happy_monkeyregular;
     /*position: relative;*/
-    
+
 }
-#flex{
-    display:flex;
-    
+
+#flex {
+    display: flex;
+
+}
+
+#expand_div_task2,
+#expand_div_task3,
+#expand_div_task4,
+#expand_div_task5,
+#expand_div_task6,
+#expand_div_task7,
+#expand_div_task8,
+#expand_div_task9
+    {
+    padding: 1vh 1vh 1vh 1vh;
+    width: 0vw;
+    height: 0vh;
+    font-size: 2vh;
+    position: absolute;
+    border-left: rgb(32, 34, 37) 2px solid;
+    border-right: rgb(32, 34, 37) 2px solid;
+    border-bottom: rgb(32, 34, 37) 2px solid;
+    margin-left: 0vw;
+    margin-top: 6vh;
+    color: rgb(255, 255, 255);
+    font-family: happy_monkeyregular;
+    transition: all 0.3s;
+    transform: scaleX(0);
+    transform: scaleY(0);
+    background-color: rgb(54, 57, 63);
+    z-index: 100;
+}
+
+#delete_edit_table2,
+#delete_edit_table3,
+#delete_edit_table4,
+#delete_edit_table5,
+#delete_edit_table6,
+#delete_edit_table7,
+#delete_edit_table8,
+#delete_edit_table9
+    {
+    width: 25vw;
+    position: absolute;
+    margin-top: 17vh;
+    margin-left: 48vw;
+    transform: scaleX(0);
+    transition-delay: 400ms;
+    transition: 0.3s;
+    z-index: 110;
 }
