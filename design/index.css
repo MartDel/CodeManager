@@ -4,6 +4,9 @@ body {
     margin: 0;
     background-color: rgb(54, 57, 63);
 }
+html {
+    scroll-behavior: smooth;
+  }
 
 
 @font-face {
@@ -179,6 +182,7 @@ body {
 }
 #infos_generales_site{
     display:flex;
+    flex-direction: column;
     background-color: rgb(247, 247, 247);
 
 }
@@ -206,7 +210,7 @@ body {
 .flex_horizon p{
     padding-left:2%;
     padding-right:2%;
-    font-family:georgia, "times new roman", norasi, serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: italic;
     width:70vw;
     font-size:20px;
@@ -224,4 +228,68 @@ body {
     width:80vw;
     margin-left:10vw;
     text-align: center;
+}
+.fonctionnalites{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left:2%;
+    padding-right:2%;
+    width:100%;
+    font-size:20px;
+    color:rgb(46, 46, 46);
+    /*margin-top: 15vh;*/
+    left:0
+}
+.flexcol{
+    display: flex;
+    flex-direction: column;
+    width:33%
+}
+.flexcol img{
+    width:20%;
+    margin:0;
+    margin-left:calc(50% - 8%);
+}
+#espace_div_bcc{
+    background-color: rgb(236, 236, 236);
+    width:100%;
+    height:90vh;
+    display: flex;
+    flex-direction: row;
+    color:rgb(0, 0, 0);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:2.2vh;
+}
+#espace_div_bcc div{
+    width:50%;
+    padding-left:10vw;
+    padding-top:5vh;
+    margin-top: 10vh;
+}
+#espace_div_bcc img{
+    width:25%;
+    height:50%;
+    margin-top: 23vh;
+    margin-left:3vw;
+    filter:invert(5%)
+}
+#button_espace{
+    width:33vw;
+    background-color: rgb(91, 92, 96);
+    color:white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size:2vh;
+    border:rgb(91, 92, 96) 3px solid;
+}
+#button_espace:hover{
+    cursor: pointer;
+}
+#button_espace:focus{
+    border:rgb(83, 84, 88) 3px solid;
+    border-radius: 0px;
+    background-color: rgb(83, 84, 88);
+}
+#p_different{
+    font-size:1.5vh;
+    text-transform: uppercase;
 }
