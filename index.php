@@ -6,6 +6,7 @@ require("class/DatabaseManager.php");
 require("class/User.php");
 require("class/Task.php");
 require("class/Role.php");
+$hostname = 'localhost/CodeManager';
 
 try{
 	date_default_timezone_set('UTC');
@@ -23,18 +24,49 @@ try{
 			$action = htmlspecialchars($_GET["action"]);
 			if ($action == "signup") require('view/signup.php'); // SignUp page
 			elseif ($action == 'test') {
-				$url = 'http://localhost/CodeManager/design/index.html';
-				$split_url = preg_split('[/]', $url);
-				$path = "";
-				for ($i=0; $i < count($split_url) - 1; $i++) {
-					$path .= $split_url[$i] . "/";
+				// https://www.ecosia.org
+				// https://www.google.com
+				// https://github.com/MartDel/CodeManager
+				$url = 'https://www.google.com';
+				// Get url infos
+				$scheme = parse_url($url)['scheme'] . '://';
+				$host = $scheme . parse_url($url)['host'];
+				if(isset(parse_url($url)['path'])){
+					$path = $host . pathinfo(parse_url($url)['path'])['dirname'];
+				} else {
+					$path = $host . '/';
 				}
-				echo $path;
-				echo "<br>";
+
 				$html = file_get_html($url);
-				foreach($html->find('img') as $element) {
-					echo '<img src="' . $path . $element->src . '" alt="" /><br>';
-				}
+				$title = $html->find('title')[0]->plaintext;
+				// Get website icon
+				if($html->find('link') != null){
+					foreach ($html->find('link') as $element) {
+						if(strpos($element->rel, 'icon')){
+							$href = $element->href;
+							if(strpos($href, '://')){
+								$icon = $href;
+							} else {
+								$icon = $path . $href;
+							}
+						}
+					}
+				} else $icon = $host . '/favicon.ico';
+
+				// Change icon if it isn't correct
+				set_error_handler(function() {
+					global $hostname, $icon;
+					$icon = 'http://' . $hostname . '/public/img/unknown_icon.svg';
+				});
+				file_get_contents($icon);
+				restore_error_handler();
+
+				echo 'url: ' . $url . '<br>';
+				echo 'host: ' . $host . '<br>';
+				echo 'path: ' . $path . '<br>';
+				echo 'title: ' . $title . '<br>';
+				echo 'icon: ' . $icon . '<br>';
+				echo '<img src="' . $icon . '" />';
 			}
 			elseif ($action == "checkSignUp") checkSignUp($_POST); // Check SignUp
 			elseif ($action == "signin") require('view/signin.php'); // SignIn page
