@@ -472,12 +472,21 @@ input {
 
 }
 
-#burger_tache_droit {
+#burger_tache_droit, 
+#burger_tache_droit2, 
+#burger_tache_droit3, 
+#burger_tache_droit4, 
+#burger_tache_droit5, 
+#burger_tache_droit6, 
+#burger_tache_droit7, 
+#burger_tache_droit8, 
+#burger_tache_droit9, 
+#burger_tache_droit10  {
     border-right: rgb(32, 34, 37) 2px solid;
     width: 10vw;
     position: absolute;
-    margin-left: 67.85vw;
-    margin-top: 26.2vh;
+    margin-left: 68vw;
+    margin-top: 0.4vh;
     transform: scaleX(0);
     transform: scaleY(0);
     transition: transform 0.4s, color 0.4s;
@@ -486,6 +495,21 @@ input {
     background-color: rgb(54, 57, 63);
     z-index: 120;
 
+}
+#expand_menu, 
+#expand_menu2, 
+#expand_menu3, 
+#expand_menu4, 
+#expand_menu5, 
+#expand_menu6, 
+#expand_menu7, 
+#expand_menu8, 
+#expand_menu9, 
+#expand_menu10 {
+    height: 2.5vh;
+    float: right;
+    filter: invert(40%);
+    transition: all 0.3s
 }
 
 #burger_tache_droit_table td:hover {
@@ -504,13 +528,7 @@ input {
     width: 1vw;
 }
 
-#expand_menu {
 
-    height: 2.5vh;
-    float: right;
-    filter: invert(40%);
-    transition: all 0.3s
-}
 
 #expand_div_task {
     padding: 1vh 1vh 1vh 1vh;

@@ -419,10 +419,10 @@ function burger_hover() {
         window["tour"] = 1;
     }
 }
-var bgggg = 1;
+var bga = 1;
 
 function burgerclicktask() {
-    if (bgggg == 1) {
+    if (bga == 1) {
         document.getElementById("burger_tache_droit").style.transform = "scaleX(1)";
         document.getElementById("burger_tache_droit").style.transform = "scaleY(1)";
         document.getElementById("burger_tache_droit").style.color = "white";
@@ -431,7 +431,7 @@ function burgerclicktask() {
         //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
         //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
         //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
-        window["bgggg"] = 0;
+        window["bga"] = 0;
     } else {
         document.getElementById("burger_tache_droit").style.transform = "scaleX(0)";
         document.getElementById("burger_tache_droit").style.transform = "scaleY(0)";
@@ -443,7 +443,250 @@ function burgerclicktask() {
         //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
         //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
         //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
-        window["bgggg"] = 1;
+        window["bga"] = 1;
+    }
+}
+var bgb = 1;
+
+function burgerclicktask2() {
+    if (bgb == 1) {
+        document.getElementById("burger_tache_droit2").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit2").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit2").style.color = "white";
+        document.getElementById("burger_tache_droit2").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu2").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgb"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit2").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit2").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit2").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit2").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu2").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgb"] = 1;
+    }
+}
+var bgc = 1;
+
+function burgerclicktask3() {
+    if (bgc == 1) {
+        document.getElementById("burger_tache_droit3").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit3").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit3").style.color = "white";
+        document.getElementById("burger_tache_droit3").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu3").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgc"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit3").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit3").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit3").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit3").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu3").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgc"] = 1;
+    }
+}
+var bgd = 1;
+
+function burgerclicktask4() {
+    if (bgd == 1) {
+        document.getElementById("burger_tache_droit4").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit4").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit4").style.color = "white";
+        document.getElementById("burger_tache_droit4").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu4").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgd"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit4").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit4").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit4").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit4").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu4").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgd"] = 1;
+    }
+}
+var bge = 1;
+
+function burgerclicktask5() {
+    if (bge == 1) {
+        document.getElementById("burger_tache_droit5").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit5").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit5").style.color = "white";
+        document.getElementById("burger_tache_droit5").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu5").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bge"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit5").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit5").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit5").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit5").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu5").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bge"] = 1;
+    }
+}
+var bgf = 1;
+
+function burgerclicktask6() {
+    if (bgf == 1) {
+        document.getElementById("burger_tache_droit6").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit6").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit6").style.color = "white";
+        document.getElementById("burger_tache_droit6").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu6").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgf"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit6").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit6").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit6").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit6").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu6").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgf"] = 1;
+    }
+}
+var bgg = 1;
+
+function burgerclicktask7() {
+    if (bgg == 1) {
+        document.getElementById("burger_tache_droit7").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit7").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit7").style.color = "white";
+        document.getElementById("burger_tache_droit7").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu7").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgg"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit7").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit7").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit7").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit7").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu7").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgg"] = 1;
+    }
+}
+var bgh = 1;
+
+function burgerclicktask8() {
+    if (bgh == 1) {
+        document.getElementById("burger_tache_droit8").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit8").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit8").style.color = "white";
+        document.getElementById("burger_tache_droit8").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu8").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgh"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit8").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit8").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit8").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit8").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu8").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgh"] = 1;
+    }
+}
+var bgi = 1;
+
+function burgerclicktask9() {
+    if (bgi == 1) {
+        document.getElementById("burger_tache_droit9").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit9").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit9").style.color = "white";
+        document.getElementById("burger_tache_droit9").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu9").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgi"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit9").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit9").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit9").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit9").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu9").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgi"] = 1;
+    }
+}
+var bgj = 1;
+
+function burgerclicktask10() {
+    if (bgj == 1) {
+        document.getElementById("burger_tache_droit10").style.transform = "scaleX(1)";
+        document.getElementById("burger_tache_droit10").style.transform = "scaleY(1)";
+        document.getElementById("burger_tache_droit10").style.color = "white";
+        document.getElementById("burger_tache_droit10").style.transitionDelay = "0ms, 400ms";
+        document.getElementById("expand_menu10").style.transform = "rotate(90deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(1)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "400ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "0ms";
+        window["bgj"] = 0;
+    } else {
+        document.getElementById("burger_tache_droit10").style.transform = "scaleX(0)";
+        document.getElementById("burger_tache_droit10").style.transform = "scaleY(0)";
+        document.getElementById("burger_tache_droit10").style.color = "rgb(54, 57, 63)";
+        document.getElementById("burger_tache_droit10").style.transitionDelay = "0ms, 0ms";
+        document.getElementById("expand_menu10").style.transform = "rotate(0deg)";
+        //document.getElementById("expand_div_task").style.transform = "scaleY(0)";
+
+        //document.getElementById("delete_edit_table").style.transform = "scaleX(0)";
+        //document.getElementById("delete_edit_table").style.transitionDelay = "0ms";
+        //document.getElementById("expand_div_task").style.transitionDelay = "200ms";
+        window["bgj"] = 1;
     }
 }
 
