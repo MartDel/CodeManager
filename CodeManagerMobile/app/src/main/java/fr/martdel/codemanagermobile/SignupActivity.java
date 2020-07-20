@@ -1,47 +1,42 @@
 package fr.martdel.codemanagermobile;
 
-import android.content.Context;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class SigninActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     private AppCompatActivity activity;
 
-    private EditText loginView, passwordView;
-    private CheckBox keepConnectedView;
+    private EditText pseudoView, mailView;
+    private EditText passwordView, confirmPasswordView;
     private Button submitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_signup);
         this.activity = this;
 
-        this.loginView = findViewById(R.id.loginInput);
+        this.pseudoView = findViewById(R.id.pseudoInput);
+        this.mailView = findViewById(R.id.mailInput);
         this.passwordView = findViewById(R.id.passwordInput);
-        this.keepConnectedView = findViewById(R.id.keepConnectedCheckBox);
+        this.confirmPasswordView = findViewById(R.id.confirmPasswordInput);
         this.submitBtn = findViewById(R.id.submitBtn);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // User tries to connect
+                // User sign up
                 if(!Internet.isOnline(activity)){
                     Internet.errorConnection(activity);
                     return;
                 }
-
             }
         });
     }
