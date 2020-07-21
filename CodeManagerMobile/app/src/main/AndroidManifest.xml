@@ -3,6 +3,7 @@
     package="fr.martdel.codemanagermobile">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -10,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignupActivity"></activity>
+        <activity android:name=".GitHubActivity"></activity>
+        <activity android:name=".SignupActivity" />
         <activity android:name=".SigninActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

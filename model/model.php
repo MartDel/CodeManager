@@ -84,7 +84,7 @@ function getCommits($github_user, $project_name){
 	);
 	$context = stream_context_create($opts);
 	$url = "https://api.github.com/repos/" . $github_user . "/" . $project_name . "/commits";
-  $raw = file_get_contents($url, false, $context);
-  $json = json_decode($raw);
+  	$raw = file_get_contents($url, false, $context);
+  	$json = json_decode($raw);
 	return $json;
 }
