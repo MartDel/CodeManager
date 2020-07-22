@@ -1,18 +1,36 @@
 package fr.martdel.codemanagermobile;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
+import com.android.volley.toolbox.Volley;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public abstract class Internet {
 
@@ -34,34 +52,19 @@ public abstract class Internet {
         }
     }
 
-    public static String doGetRequest(String target){
-        HttpURLConnection connection = null;
-
-        try {
-            //Create connection
-            URL url = new URL(target);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setDoOutput(true);
-
-            //Get Response
-            InputStream is = connection.getInputStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
-            String line;
-            while ((line = rd.readLine()) != null) {
-                response.append(line);
-                response.append('\r');
-            }
-            rd.close();
-            return response.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
+    public static void doGetRequest(String target, Callback callback){
+        try{
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(target)
+                    .method("GET", null)
+                    .addHeader("Cache-Control", "no-cache")
+                    .addHeader("User-Agent", "martdel")
+                    .build();
+            client.newCall(request).enqueue(callback);
+        } catch (Exception e){
+            System.out.println("ERROR");
+            System.out.println(e.getMessage());
         }
     }
 
