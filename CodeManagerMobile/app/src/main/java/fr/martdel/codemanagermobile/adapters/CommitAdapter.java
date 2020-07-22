@@ -8,6 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import fr.martdel.codemanagermobile.R;
@@ -16,10 +20,10 @@ import fr.martdel.codemanagermobile.models.Commit;
 public class CommitAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Commit> commits;
+    private JSONArray commits;
     private LayoutInflater inflater;
 
-    public CommitAdapter(Context context, List<Commit> commits) {
+    public CommitAdapter(Context context, JSONArray commits) {
         this.context = context;
         this.commits = commits;
         this.inflater = LayoutInflater.from(context);
@@ -27,12 +31,22 @@ public class CommitAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return commits.size();
+        return commits.length();
     }
 
     @Override
     public Commit getItem(int position) {
-        return commits.get(position);
+        try {
+            JSONObject commit = commits.getJSONObject(position);
+            String message = commit.getString("message");
+            String author = commit.getString("author");
+            String date = commit.getString("date");
+            boolean last = commit.getBoolean("last");
+            return new Commit(message, author, date, last);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

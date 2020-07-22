@@ -7,11 +7,29 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.martdel.codemanagermobile.adapters.CommitAdapter;
+import fr.martdel.codemanagermobile.models.Commit;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
 // First activity
 public class LoadingActivity extends AppCompatActivity {
+
+    private AppCompatActivity activity;
 
     private LinearLayout loadingLayout;
     private ProgressBar loadingProgress;
@@ -21,6 +39,7 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        this.activity = this;
 
         this.loadingLayout = findViewById(R.id.loading_layout);
         this.loadingProgress = findViewById(R.id.loading_progress);
@@ -50,20 +69,52 @@ public class LoadingActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(connected){
+                    // Check internet connection
+                    if(!Internet.isOnline(activity)){
+                        Internet.errorConnectionPopUp(activity);
+                        return;
+                    }
+
                     AlphaAnimation animationText = new AlphaAnimation(0f, 1f);
                     animationText.setDuration(1000);
                     loadingText.setAlpha(1);
                     loadingText.startAnimation(animationText);
 
-                    // Check internet connection
-                    new Handler().postDelayed(new Runnable() {
+                    Internet.doGetRequest("https://api.github.com/repos/MartDel/CodeManager/commits", new Callback() {
                         @Override
-                        public void run() {
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            System.out.println("Error...");
+                        }
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            final List<Commit> commits = new ArrayList<>();
+
+                            try {
+                                JSONArray data = new JSONArray(response.body().string());
+                                for(int i = 0; i < data.length(); i++){
+                                    JSONObject commit = data.getJSONObject(i).getJSONObject("commit");
+                                    String commitMessage = commit.getString("message");
+                                    String commitAuthor = commit.getJSONObject("author").getString("name");
+                                    String commitDate = commit.getJSONObject("author").getString("date");
+
+                                    boolean last = false;
+                                    if(i == 0){
+                                        last = true;
+                                    }
+
+                                    Commit currentCommit = new Commit(commitMessage, commitAuthor, commitDate, last);
+                                    commits.add(currentCommit);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                             Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
+                            githubActivity.putExtra("commits", Commit.serializeListToJSON(commits));
                             startActivity(githubActivity);
                             finish();
                         }
-                    }, 1000);
+                    });
                 } else {
                     Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(mainActivity);
