@@ -47,7 +47,12 @@ public class GitHubActivity extends AppCompatActivity {
                         String commitAuthor = commit.getJSONObject("author").getString("name");
                         String commitDate = commit.getJSONObject("author").getString("date");
 
-                        Commit currentCommit = new Commit(commitMessage, commitAuthor, commitDate);
+                        boolean last = false;
+                        if(i == 0){
+                            last = true;
+                        }
+
+                        Commit currentCommit = new Commit(commitMessage, commitAuthor, commitDate, last);
                         commits.add(currentCommit);
                     }
                 } catch (JSONException e) {

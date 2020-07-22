@@ -1,11 +1,11 @@
 package fr.martdel.codemanagermobile.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -51,13 +51,17 @@ public class CommitAdapter extends BaseAdapter {
 
         TextView commitMessageView = view.findViewById(R.id.message);
         commitMessageView.setText(commitMessage);
-        System.out.println(commitMessageView.getLineCount());
 
         TextView commitAuthorView = view.findViewById(R.id.author);
         commitAuthorView.setText(commitAuthor);
 
         TextView commitDateView = view.findViewById(R.id.date);
         commitDateView.setText(commitDate);
+
+        if(currentCommit.getLast()){
+            ImageView commitIconView = view.findViewById(R.id.commit_icon);
+            commitIconView.setImageResource(R.drawable.start_commit_icon);
+        }
 
         return view;
     }

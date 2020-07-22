@@ -9,8 +9,9 @@ public class Commit {
     private String message;
     private String author;
     private String date;
+    private boolean last;
 
-    public Commit(String message, String author, String date_str){
+    public Commit(String message, String author, String date_str, boolean last){
         this.message = message;
         this.author = author;
         String final_date = null;
@@ -23,6 +24,7 @@ public class Commit {
             e.printStackTrace();
         }
         this.date = final_date;
+        this.last = last;
     }
 
     public String getMessage() {
@@ -35,5 +37,9 @@ public class Commit {
 
     public String getDate() {
         return date;
+    }
+
+    public boolean getLast() {
+        return last;
     }
 }
