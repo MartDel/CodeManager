@@ -13,6 +13,14 @@
         android:layout_marginTop="5dp"
         android:src="@drawable/github_logo" />
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/githubSecondary"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/listCommit"
         android:layout_width="match_parent"

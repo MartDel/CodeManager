@@ -80,41 +80,10 @@ public class LoadingActivity extends AppCompatActivity {
                     loadingText.setAlpha(1);
                     loadingText.startAnimation(animationText);
 
-                    Internet.doGetRequest("https://api.github.com/repos/MartDel/CodeManager/commits", new Callback() {
-                        @Override
-                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                            System.out.println("Error...");
-                        }
-                        @Override
-                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                            final List<Commit> commits = new ArrayList<>();
-
-                            try {
-                                JSONArray data = new JSONArray(response.body().string());
-                                for(int i = 0; i < data.length(); i++){
-                                    JSONObject commit = data.getJSONObject(i).getJSONObject("commit");
-                                    String commitMessage = commit.getString("message");
-                                    String commitAuthor = commit.getJSONObject("author").getString("name");
-                                    String commitDate = commit.getJSONObject("author").getString("date");
-
-                                    boolean last = false;
-                                    if(i == 0){
-                                        last = true;
-                                    }
-
-                                    Commit currentCommit = new Commit(commitMessage, commitAuthor, commitDate, last);
-                                    commits.add(currentCommit);
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
-                            githubActivity.putExtra("commits", Commit.serializeListToJSON(commits));
-                            startActivity(githubActivity);
-                            finish();
-                        }
-                    });
+                    Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
+                    // githubActivity.putExtra("commits", Commit.serializeListToJSON(commits));
+                    startActivity(githubActivity);
+                    finish();
                 } else {
                     Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(mainActivity);
