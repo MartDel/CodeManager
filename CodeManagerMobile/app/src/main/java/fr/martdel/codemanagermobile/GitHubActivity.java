@@ -1,7 +1,6 @@
 package fr.martdel.codemanagermobile;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -40,7 +39,7 @@ public class GitHubActivity extends AppCompatActivity {
         Internet.doGetRequest("https://api.github.com/repos/MartDel/CodeManager/commits", new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                System.out.println("Error...");
+                Internet.errorRequestPopUp(activity);
             }
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -49,7 +48,9 @@ public class GitHubActivity extends AppCompatActivity {
                 try {
                     JSONArray data = new JSONArray(response.body().string());
                     for(int i = 0; i < data.length(); i++){
-                        JSONObject commit = data.getJSONObject(i).getJSONObject("commit");
+                        JSONObject current_commit = data.getJSONObject(i);
+                        JSONObject commit = current_commit.getJSONObject("commit");
+                        String commitSha = current_commit.getString("sha");
                         String commitMessage = commit.getString("message");
                         String commitAuthor = commit.getJSONObject("author").getString("name");
                         String commitDate = commit.getJSONObject("author").getString("date");
@@ -59,7 +60,7 @@ public class GitHubActivity extends AppCompatActivity {
                             last = true;
                         }
 
-                        Commit currentCommit = new Commit(commitMessage, commitAuthor, commitDate, last);
+                        Commit currentCommit = new Commit(commitSha.substring(0, 7), commitMessage, commitAuthor, commitDate, last);
                         commits.add(currentCommit);
                     }
                 } catch (JSONException e) {

@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:indeterminate="true"
-            android:indeterminateTint="@color/colorSecondary" />
+            android:indeterminateTint="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/loading_text"

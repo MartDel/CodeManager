@@ -67,6 +67,10 @@ public abstract class Internet {
         Toast.makeText(activity.getApplicationContext(), "Vous n'êtes pas connecté à Internet.", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Show an error popup about no connection
+     * @param activity
+     */
     public static void errorConnectionPopUp(final AppCompatActivity activity){
         AlertDialog.Builder alert = new AlertDialog.Builder(activity);
         alert.setTitle("Pas de connexion Internet !");
@@ -80,4 +84,20 @@ public abstract class Internet {
         alert.show();
     }
 
+    /**
+     * Show an error popup about request failed
+     * @param activity
+     */
+    public static void errorRequestPopUp(final AppCompatActivity activity){
+        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+        alert.setTitle("Un problème est survenu !");
+        alert.setMessage("Un problème est survenu lors de la récupération des données. Veuillez vérifier votre connexion Internet puis réessayer.");
+        alert.setNegativeButton("QUITTER", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                activity.finish();
+            }
+        });
+        alert.show();
+    }
 }

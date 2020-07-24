@@ -7,12 +7,14 @@ import java.util.List;
 
 public class Commit {
 
+    private String sha;
     private String message;
     private String author;
     private String date;
     private boolean last;
 
-    public Commit(String message, String author, String date, boolean last){
+    public Commit(String sha, String message, String author, String date, boolean last){
+        this.sha = sha;
         this.message = message;
         this.author = author;
         this.date = date;
@@ -23,13 +25,14 @@ public class Commit {
      * Serialize the commit object to a JSON string
      * @return JSON string
      */
-    public String serializetoJSON(){
+    public String serializeToJSON(){
         String commit =
         "{" +
-            "message:\"" + message + "\"" +
-            ",author:\"" + author + "\"" +
-            ",date:\"" + date + "\"" +
-            ",last:" + last +
+            "sha:\"" + sha + "\"," +
+            "message:\"" + message + "\"," +
+            "author:\"" + author + "\"," +
+            "date:\"" + date + "\"," +
+            "last:" + last +
         "}";
         return commit;
     }
@@ -43,10 +46,14 @@ public class Commit {
         String json = "[";
         for(int i = 0; i < list.size(); i++){
             Commit commit = list.get(i);
-            json = json + commit.serializetoJSON();
+            json = json + commit.serializeToJSON();
             if(i != (list.size() - 1)) json = json + ",";
         }
         return json + "]";
+    }
+
+    public String getSha() {
+        return sha;
     }
 
     public String getMessage() {
