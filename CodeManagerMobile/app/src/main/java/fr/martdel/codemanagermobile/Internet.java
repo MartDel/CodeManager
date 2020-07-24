@@ -4,16 +4,29 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.JsonToken;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import fr.martdel.codemanagermobile.models.Passwords;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
+import okio.BufferedSink;
 
 public abstract class Internet {
+
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     /**
      * Check if internet connection is available
@@ -51,6 +64,24 @@ public abstract class Internet {
                     .method("GET", null)
                     .addHeader("Cache-Control", "no-cache")
                     .addHeader("User-Agent", "martdel")
+                    .build();
+            client.newCall(request).enqueue(callback);
+        } catch (Exception e){
+            System.out.println("ERROR");
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+    public static void doAPIRequest(String method, JSONObject body, String getParams, Callback callback){
+        try{
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url("codemanagermartdel.000webhostapp.com/api.php" + getParams)
+                    .method(method, RequestBody.create(body.toString(), JSON))
+                    .addHeader("Cache-Control", "no-cache")
+                    .addHeader("User-Agent", "martdel")
+                    .addHeader("Authorization", "Bearer " + Passwords.API_TOKEN)
                     .build();
             client.newCall(request).enqueue(callback);
         } catch (Exception e){

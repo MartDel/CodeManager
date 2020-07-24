@@ -2,6 +2,7 @@ package fr.martdel.codemanagermobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.JsonToken;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -9,6 +10,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SigninActivity extends AppCompatActivity {
 
@@ -40,9 +45,28 @@ public class SigninActivity extends AppCompatActivity {
                     return;
                 }
 
-                Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
+                JSONObject body = new JSONObject();
+                try {
+                    body.put("table", "users");
+
+                    JSONArray wheres = new JSONArray();
+
+                    JSONObject where1 = new JSONObject();
+                    where1.put("key", "pseudo");
+                    where1.put("value", "MartDel");
+
+                    wheres.put(where1);
+
+                    body.put("where", wheres);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(body.toString());
+
+                /*Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
                 startActivity(githubActivity);
-                finish();
+                finish();*/
             }
         });
 
