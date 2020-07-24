@@ -72,13 +72,26 @@ public abstract class Internet {
         }
     }
 
-
+    /**
+     * Do a HTTP request to app database
+     * @param method Action
+     * @param body Data to send
+     * @param getParams Params to send
+     * @param callback When get response
+     */
     public static void doAPIRequest(String method, JSONObject body, String getParams, Callback callback){
         try{
+            RequestBody json = null;
+            if(method != "GET") {
+                json = RequestBody.create(body.toString(), JSON);
+            }
+
+            if(getParams == null) getParams = "?request=" + body.toString();
+
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("codemanagermartdel.000webhostapp.com/api.php" + getParams)
-                    .method(method, RequestBody.create(body.toString(), JSON))
+                    .url("http://codemanagermartdel.000webhostapp.com/api.php" + getParams)
+                    .method(method, json)
                     .addHeader("Cache-Control", "no-cache")
                     .addHeader("User-Agent", "martdel")
                     .addHeader("Authorization", "Bearer " + Passwords.API_TOKEN)

@@ -4,6 +4,9 @@ require('class/User.php');
 require('class/Passwords.php');
 
 try {
+    http_response_code(200);
+    header('Content-Type: application/json');
+
     $headers = getallheaders();
     if(isset($headers['Authorization'])){
         $current_token = getallheaders()['Authorization'];
@@ -26,14 +29,15 @@ try {
             	$correct_password = User::getPassword($pseudo);
             	if($correct_password == null) throw new Exception("Un problème est survenu.", 500);
         		echo '{"result":' . (password_verify($password, $correct_password) ? 'true' : 'false') . '}';
-            } else {
-                $table = $body['table'];
+            } else if(isset($_GET['request'])){
+                $request = json_decode($_GET['request'], true);
+                $table = $request['table'];
 
                 $where_str = '';
                 $values = array();
-                if($body['where'] != null){
+                if($request['where'] != null){
                     $keys = array();
-                    foreach ($body['where'] as $condition) {
+                    foreach ($request['where'] as $condition) {
                         array_push($keys, $condition['key']);
                         array_push($values, $condition['value']);
                     }
@@ -59,9 +63,7 @@ try {
                 $json_str = substr($json_str, 0, -1);
 
                 echo '[' . $json_str . ']';
-            }
-            http_response_code(200);
-            header('Content-Type: application/json');
+            } else throw new Exception("Aucune donnée reçue", 400);
             break;
         case 'POST':
             // POST data

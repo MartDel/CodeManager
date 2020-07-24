@@ -11,9 +11,16 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class SigninActivity extends AppCompatActivity {
 
@@ -62,7 +69,17 @@ public class SigninActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                System.out.println(body.toString());
+                Internet.doAPIRequest("GET", body, null, new Callback() {
+                    @Override
+                    public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                        Internet.errorRequestPopUp(activity);
+                    }
+
+                    @Override
+                    public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                        System.out.println(response.body().string());
+                    }
+                });
 
                 /*Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
                 startActivity(githubActivity);
