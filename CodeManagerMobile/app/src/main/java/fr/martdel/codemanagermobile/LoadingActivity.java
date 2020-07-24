@@ -49,7 +49,7 @@ public class LoadingActivity extends AppCompatActivity {
         loadingText.setAlpha(0);
 
         // Check connection
-        final boolean connected = false;
+        final boolean connected = true;
 
         AlphaAnimation animationLayout = new AlphaAnimation(0f, 1f);
         animationLayout.setDuration(2000);
