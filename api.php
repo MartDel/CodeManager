@@ -35,18 +35,20 @@ try {
 
                 $where_str = '';
                 $values = array();
-                if($request['where'] != null){
-                    $keys = array();
-                    foreach ($request['where'] as $condition) {
-                        array_push($keys, $condition['key']);
-                        array_push($values, $condition['value']);
-                    }
+                if(isset($request['where'])){
+                    if($request['where'] != null){
+                        $keys = array();
+                        foreach ($request['where'] as $condition) {
+                            array_push($keys, $condition['key']);
+                            array_push($values, $condition['value']);
+                        }
 
-                    $where_str = ' WHERE ';
-                    for ($i=0; $i < count($keys); $i++) {
-                        $where_str .= $keys[$i] . '=?';
-                        if($i != (count($keys) - 1)){
-                            $where_str .= ' AND ';
+                        $where_str = ' WHERE ';
+                        for ($i=0; $i < count($keys); $i++) {
+                            $where_str .= $keys[$i] . '=?';
+                            if($i != (count($keys) - 1)){
+                                $where_str .= ' AND ';
+                            }
                         }
                     }
                 }

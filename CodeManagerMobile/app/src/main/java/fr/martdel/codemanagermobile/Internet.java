@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.JsonToken;
 import android.widget.Toast;
 
@@ -15,6 +16,10 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 import fr.martdel.codemanagermobile.models.Passwords;
 import okhttp3.Callback;
@@ -86,7 +91,7 @@ public abstract class Internet {
                 json = RequestBody.create(body.toString(), JSON);
             }
 
-            if(getParams == null) getParams = "?request=" + body.toString();
+            if(getParams == null) getParams = "?request=" + urlEncode(body.toString());
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -101,6 +106,34 @@ public abstract class Internet {
             System.out.println("ERROR");
             System.out.println(e.getMessage());
         }
+    }
+
+    /**
+     * Encode a string to send it in a url
+     * @param str String to encode
+     * @return Encoded string
+     */
+    public static String urlEncode(String str){
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                return URLEncoder.encode(str, StandardCharsets.UTF_8.toString());
+            }
+        } catch (UnsupportedEncodingException ex) {
+            throw new RuntimeException(ex.getCause());
+        }
+        return str;
+    }
+
+    /**
+     * Encode a string with Base64
+     * @param str String to encode
+     * @return Encoded string
+     */
+    public static String encodeBase64(String str){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Base64.getEncoder().encodeToString(str.getBytes());
+        }
+        return str;
     }
 
     /**

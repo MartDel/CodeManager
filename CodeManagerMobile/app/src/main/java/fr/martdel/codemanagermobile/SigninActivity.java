@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,19 +53,19 @@ public class SigninActivity extends AppCompatActivity {
                     return;
                 }
 
+                final String login = loginView.getText().toString();
+                final String password = passwordView.getText().toString();
+
+                // Check data
+                if(login.length() == 0 || password.length() == 0) {
+                    alert("Veuillez remplir tous les champs.");
+                    return;
+                }
+
                 JSONObject body = new JSONObject();
                 try {
                     body.put("table", "users");
-
-                    JSONArray wheres = new JSONArray();
-
-                    JSONObject where1 = new JSONObject();
-                    where1.put("key", "pseudo");
-                    where1.put("value", "MartDel");
-
-                    wheres.put(where1);
-
-                    body.put("where", wheres);
+                    body.put("where", null);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -77,13 +78,50 @@ public class SigninActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                        System.out.println(response.body().string());
+                        try {
+                            JSONArray users = new JSONArray(response.body().string());
+                            boolean user_exist = false;
+                            for (int i = 0; i < users.length(); i++){
+                                JSONObject user = users.getJSONObject(i);
+                                String current_pseudo = user.getString("pseudo");
+                                String current_email = user.getString("mail");
+                                if(current_pseudo.equalsIgnoreCase(login) || current_email.equalsIgnoreCase(login)){
+                                    // Correct login
+                                    user_exist = true;
+                                    Internet.doAPIRequest("GET", null, "?pseudo=" + Internet.urlEncode(current_pseudo) + "&password=" + Internet.urlEncode(Internet.encodeBase64(password)), new Callback() {
+                                        @Override
+                                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                                            Internet.errorRequestPopUp(activity);
+                                        }
+
+                                        @Override
+                                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                                            try {
+                                                boolean result = new JSONObject(response.body().string()).getBoolean("result");
+                                                if(result){
+                                                    // Correct password
+                                                    alert("Connexion...");
+                                                    return;
+                                                } else {
+                                                    alert("Le mot de passe n'est pas correct.");
+                                                    return;
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                            if(!user_exist){
+                                alert("Aucun compte utilisateur trouvé avec ce login.");
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-
-                /*Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
-                startActivity(githubActivity);
-                finish();*/
             }
         });
 
@@ -102,5 +140,19 @@ public class SigninActivity extends AppCompatActivity {
         Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainActivity);
         finish();
+    }
+
+    /**
+     * Show toast message (long toast)
+     * @param msg The printed message
+     */
+    public void alert(String msg){
+        final String message = msg;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
