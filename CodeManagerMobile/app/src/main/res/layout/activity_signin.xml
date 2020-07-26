@@ -56,6 +56,14 @@
             tools:layout_editor_absoluteX="122dp"
             tools:layout_editor_absoluteY="387dp" />
 
+        <ProgressBar
+            android:id="@+id/loadingSignin"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,6 +32,7 @@ public class SigninActivity extends AppCompatActivity {
     private EditText loginView, passwordView;
     private Button submitBtn;
     private ImageView homeBtn;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

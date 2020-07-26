@@ -48,7 +48,6 @@ public class GitHubActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREF_USER, 0);
         String pseudo = settings.getString("pseudo", getResources().getString(R.string.pseudo_default));
         String mail = settings.getString("mail", getResources().getString(R.string.mail_default));
-        // Create user
         this.current_user = new User(pseudo, mail);
 
         Internet.doGetRequest("https://api.github.com/repos/MartDel/CodeManager/commits", new Callback() {
@@ -71,9 +70,7 @@ public class GitHubActivity extends AppCompatActivity {
                         String commitDate = commit.getJSONObject("author").getString("date");
 
                         boolean last = false;
-                        if(i == 0){
-                            last = true;
-                        }
+                        if(i == 0) last = true;
 
                         Commit currentCommit = new Commit(commitSha.substring(0, 7), commitMessage, commitAuthor, commitDate, last);
                         commits.add(currentCommit);
