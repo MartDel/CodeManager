@@ -1,4 +1,4 @@
-package fr.martdel.codemanagermobile;
+package fr.martdel.codemanagermobile.controlers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,24 +7,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import fr.martdel.codemanagermobile.adapters.CommitAdapter;
-import fr.martdel.codemanagermobile.models.Commit;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import fr.martdel.codemanagermobile.R;
+import fr.martdel.codemanagermobile.models.Internet;
 
 // First activity
 public class LoadingActivity extends AppCompatActivity {

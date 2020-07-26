@@ -1,4 +1,4 @@
-package fr.martdel.codemanagermobile;
+package fr.martdel.codemanagermobile.models;
 
 import android.content.Context;
 import android.content.DialogInterface;

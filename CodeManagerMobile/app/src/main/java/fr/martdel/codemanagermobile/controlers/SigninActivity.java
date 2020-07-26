@@ -1,11 +1,10 @@
-package fr.martdel.codemanagermobile;
+package fr.martdel.codemanagermobile.controlers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.JsonToken;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,6 +18,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import fr.martdel.codemanagermobile.R;
+import fr.martdel.codemanagermobile.models.Internet;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -26,9 +27,9 @@ import okhttp3.Response;
 public class SigninActivity extends AppCompatActivity {
 
     private AppCompatActivity activity;
+    public static final String PREF_USER = "UsersPreferences";
 
     private EditText loginView, passwordView;
-    private CheckBox keepConnectedView;
     private Button submitBtn;
     private ImageView homeBtn;
 
@@ -40,7 +41,6 @@ public class SigninActivity extends AppCompatActivity {
 
         this.loginView = findViewById(R.id.loginInput);
         this.passwordView = findViewById(R.id.passwordInput);
-        this.keepConnectedView = findViewById(R.id.keepConnectedCheckBox);
         this.submitBtn = findViewById(R.id.submitBtn);
         this.homeBtn = findViewById(R.id.homeBtn);
 
@@ -83,8 +83,8 @@ public class SigninActivity extends AppCompatActivity {
                             boolean user_exist = false;
                             for (int i = 0; i < users.length(); i++){
                                 JSONObject user = users.getJSONObject(i);
-                                String current_pseudo = user.getString("pseudo");
-                                String current_email = user.getString("mail");
+                                final String current_pseudo = user.getString("pseudo");
+                                final String current_email = user.getString("mail");
                                 if(current_pseudo.equalsIgnoreCase(login) || current_email.equalsIgnoreCase(login)){
                                     // Correct login
                                     user_exist = true;
@@ -100,11 +100,22 @@ public class SigninActivity extends AppCompatActivity {
                                                 boolean result = new JSONObject(response.body().string()).getBoolean("result");
                                                 if(result){
                                                     // Correct password
-                                                    alert("Connexion...");
-                                                    return;
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            SharedPreferences settings = getSharedPreferences(PREF_USER, 0);
+                                                            SharedPreferences.Editor editor = settings.edit();
+                                                            editor.putString("pseudo", current_pseudo);
+                                                            editor.putString("mail", current_email);
+                                                            editor.apply();
+
+                                                            Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
+                                                            startActivity(githubActivity);
+                                                            finish();
+                                                        }
+                                                    });
                                                 } else {
                                                     alert("Le mot de passe n'est pas correct.");
-                                                    return;
                                                 }
                                             } catch (JSONException e) {
                                                 e.printStackTrace();
@@ -115,7 +126,6 @@ public class SigninActivity extends AppCompatActivity {
                             }
                             if(!user_exist){
                                 alert("Aucun compte utilisateur trouvé avec ce login.");
-                                return;
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

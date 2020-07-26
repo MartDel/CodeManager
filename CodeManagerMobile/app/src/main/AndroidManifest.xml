@@ -13,17 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name=".LoadingActivity" >
+        <activity android:name=".controlers.LoadingActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GitHubActivity" />
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".SigninActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".controlers.GitHubActivity" />
+        <activity android:name=".controlers.SignupActivity" />
+        <activity android:name=".controlers.SigninActivity" />
+        <activity android:name=".controlers.MainActivity" />
     </application>
 
 </manifest>

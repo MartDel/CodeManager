@@ -1,4 +1,4 @@
-package fr.martdel.codemanagermobile;
+package fr.martdel.codemanagermobile.controlers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import fr.martdel.codemanagermobile.R;
+import fr.martdel.codemanagermobile.models.Internet;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,5 +1,6 @@
-package fr.martdel.codemanagermobile;
+package fr.martdel.codemanagermobile.controlers;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -16,17 +17,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.martdel.codemanagermobile.R;
 import fr.martdel.codemanagermobile.adapters.CommitAdapter;
 import fr.martdel.codemanagermobile.models.Commit;
+import fr.martdel.codemanagermobile.models.Internet;
+import fr.martdel.codemanagermobile.models.User;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GitHubActivity extends AppCompatActivity {
 
+    public static final String PREF_USER = "UsersPreferences";
     private AppCompatActivity activity;
+
     private ProgressBar loading;
     private ListView commitsListView;
+
+    private User current_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,13 @@ public class GitHubActivity extends AppCompatActivity {
         this.activity = this;
         this.loading = findViewById(R.id.loading);
         this.commitsListView = findViewById(R.id.listCommit);
+
+        // Get current user
+        SharedPreferences settings = getSharedPreferences(PREF_USER, 0);
+        String pseudo = settings.getString("pseudo", getResources().getString(R.string.pseudo_default));
+        String mail = settings.getString("mail", getResources().getString(R.string.mail_default));
+        // Create user
+        this.current_user = new User(pseudo, mail);
 
         Internet.doGetRequest("https://api.github.com/repos/MartDel/CodeManager/commits", new Callback() {
             @Override
