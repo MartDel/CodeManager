@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,10 +31,11 @@ public class SigninActivity extends AppCompatActivity {
     private AppCompatActivity activity;
     public static final String PREF_USER = "UsersPreferences";
 
+    private LinearLayout signinLayout;
     private EditText loginView, passwordView;
     private Button submitBtn;
     private ImageView homeBtn;
-    
+    private ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +43,14 @@ public class SigninActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
         this.activity = this;
 
+        this.signinLayout = findViewById(R.id.signinLayout);
         this.loginView = findViewById(R.id.loginInput);
         this.passwordView = findViewById(R.id.passwordInput);
         this.submitBtn = findViewById(R.id.submitBtn);
         this.homeBtn = findViewById(R.id.homeBtn);
+        this.loading = findViewById(R.id.loadingSignin);
+
+        signinLayout.removeView(loading);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +61,8 @@ public class SigninActivity extends AppCompatActivity {
                     return;
                 }
 
+                signinLayout.addView(loading);
+                signinLayout.removeView(submitBtn);
                 final String login = loginView.getText().toString();
                 final String password = passwordView.getText().toString();
 
@@ -163,6 +172,8 @@ public class SigninActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                signinLayout.removeView(loading);
+                signinLayout.addView(submitBtn);
             }
         });
     }

@@ -5,29 +5,24 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
-import android.util.JsonToken;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 
-import fr.martdel.codemanagermobile.models.Passwords;
 import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okio.BufferedSink;
+
+import fr.martdel.codemanagermobile.Base64.Base64;
 
 public abstract class Internet {
 
@@ -92,6 +87,7 @@ public abstract class Internet {
             }
 
             if(getParams == null) getParams = "?request=" + urlEncode(body.toString());
+            System.out.println(getParams);
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -130,10 +126,7 @@ public abstract class Internet {
      * @return Encoded string
      */
     public static String encodeBase64(String str){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return Base64.getEncoder().encodeToString(str.getBytes());
-        }
-        return str;
+        return Base64.encodeBytes(str.getBytes());
     }
 
     /**
@@ -166,15 +159,20 @@ public abstract class Internet {
      * @param activity
      */
     public static void errorRequestPopUp(final AppCompatActivity activity){
-        AlertDialog.Builder alert = new AlertDialog.Builder(activity);
-        alert.setTitle("Un problème est survenu !");
-        alert.setMessage("Un problème est survenu lors de la récupération des données. Veuillez vérifier votre connexion Internet puis réessayer.");
-        alert.setNegativeButton("QUITTER", new DialogInterface.OnClickListener() {
+        activity.runOnUiThread(new Runnable() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                activity.finish();
+            public void run() {
+                AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+                alert.setTitle("Un problème est survenu !");
+                alert.setMessage("Un problème est survenu lors de la récupération des données. Veuillez vérifier votre connexion Internet puis réessayer.");
+                alert.setNegativeButton("QUITTER", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        activity.finish();
+                    }
+                });
+                alert.show();
             }
         });
-        alert.show();
     }
 }
