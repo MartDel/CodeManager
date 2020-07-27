@@ -28,8 +28,8 @@ import okhttp3.Response;
 
 public class SigninActivity extends AppCompatActivity {
 
-    private AppCompatActivity activity;
     public static final String PREF_USER = "UsersPreferences";
+    private AppCompatActivity activity;
 
     private LinearLayout signinLayout;
     private EditText loginView, passwordView;
@@ -166,12 +166,11 @@ public class SigninActivity extends AppCompatActivity {
      * Show toast message (long toast)
      * @param msg The printed message
      */
-    public void alert(String msg){
-        final String message = msg;
+    public void alert(final String msg){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                 signinLayout.removeView(loading);
                 signinLayout.addView(submitBtn);
             }

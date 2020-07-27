@@ -69,6 +69,22 @@ try {
             break;
         case 'POST':
             // POST data
+            $table = $body['table'];
+            $data = $body['data'];
+
+            $pseudo = $data['pseudo'];
+            $mail = $data['mail'];
+            $password = base64_decode($data['password']);
+
+            $db = DatabaseManager::dbConnect();
+            $req = $db->prepare('INSERT INTO ' . $table . '(pseudo, mail, password) VALUES(:pseudo, :mail, :password)');
+            $req->execute(array(
+                'pseudo' => $pseudo,
+                'mail' => $mail,
+                'password' => password_hash($password, PASSWORD_DEFAULT)
+        	));
+
+            echo '{"message": "Data sent."}';
             break;
     }
 } catch (Exception $e) {

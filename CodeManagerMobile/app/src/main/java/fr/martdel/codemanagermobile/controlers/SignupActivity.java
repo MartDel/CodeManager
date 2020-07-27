@@ -3,6 +3,7 @@ package fr.martdel.codemanagermobile.controlers;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +11,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.util.regex.Pattern;
 
 import fr.martdel.codemanagermobile.R;
+import fr.martdel.codemanagermobile.models.CustomCallback;
 import fr.martdel.codemanagermobile.models.Internet;
+import fr.martdel.codemanagermobile.models.User;
 
 public class SignupActivity extends AppCompatActivity {
 
+    public static final String PREF_USER = "UsersPreferences";
     private AppCompatActivity activity;
 
     private EditText pseudoView, mailView;
@@ -50,20 +56,52 @@ public class SignupActivity extends AppCompatActivity {
 
                 String pseudo = pseudoView.getText().toString();
                 String mail = mailView.getText().toString();
-                String password = passwordView.getText().toString();
+                final String password = passwordView.getText().toString();
                 String confirm = confirmPasswordView.getText().toString();
 
                 // Check data
                 try {
                     if(pseudo.length() == 0 || mail.length() == 0 || password.length() == 0 || confirm.length() == 0) throw new Exception("Veuillez remplir tous les champs.");
                     if(!isEmail(mail)) throw new Exception("L'addresse e-mail n'est pas correct.");
-                    if(!password.equalsIgnoreCase(confirm)) throw new Exception("Les mots des passes ne sont pas identiques");
+                    if(!password.equalsIgnoreCase(confirm)) throw new Exception("Les mots des passes ne sont pas identiques.");
                 } catch (Exception e){
                     alert(e.getMessage());
                     return;
                 }
 
-                alert("Création du compte...");
+                final User user = new User(pseudo, mail);
+                user.accountExist(activity, new CustomCallback() {
+                    @Override
+                    public void run() {
+                        // Account doesn't exist
+                        // Creating user
+                        user.create(activity, password, new CustomCallback() {
+                            @Override
+                            public void run() {
+                                // User created
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        SharedPreferences settings = getSharedPreferences(PREF_USER, 0);
+                                        SharedPreferences.Editor editor = settings.edit();
+                                        editor.putString("pseudo", user.getPseudo());
+                                        editor.putString("mail", user.getMail());
+                                        editor.apply();
+
+                                        Intent githubActivity = new Intent(getApplicationContext(), GitHubActivity.class);
+                                        startActivity(githubActivity);
+                                        finish();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }, new CustomCallback() {
+                    @Override
+                    public void run() {
+                        alert("L'identifiant est déjà renseigné pour un compte existant.");
+                    }
+                });
             }
         });
 
@@ -88,8 +126,13 @@ public class SignupActivity extends AppCompatActivity {
      * Show toast message (long toast)
      * @param msg The printed message
      */
-    public void alert(String msg){
-        Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    public void alert(final String msg){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(activity.getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**
@@ -99,7 +142,8 @@ public class SignupActivity extends AppCompatActivity {
      */
     public static boolean isEmail(String email)
     {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+        String emailRegex =
+                "^[a-zA-Z0-9_+&*-]+(?:\\." +
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
                 "A-Z]{2,7}$";

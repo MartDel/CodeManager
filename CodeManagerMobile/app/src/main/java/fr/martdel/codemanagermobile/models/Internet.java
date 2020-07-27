@@ -44,11 +44,7 @@ public abstract class Internet {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-        if (info == null || !info.isConnected() || !info.isAvailable()) {
-            return false;
-        } else {
-            return true;
-        }
+        return info != null && info.isConnected() && info.isAvailable();
     }
 
     /**
@@ -82,12 +78,11 @@ public abstract class Internet {
     public static void doAPIRequest(String method, JSONObject body, String getParams, Callback callback){
         try{
             RequestBody json = null;
-            if(method != "GET") {
+            if(!method.equalsIgnoreCase("GET")) {
                 json = RequestBody.create(body.toString(), JSON);
             }
 
-            if(getParams == null) getParams = "?request=" + urlEncode(body.toString());
-            System.out.println(getParams);
+            if(getParams == null && method.equalsIgnoreCase("GET")) getParams = "?request=" + urlEncode(body.toString());
 
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
