@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<head>
-    <title>
-        Tâches
-    </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="public/CSS/task.css" />
-    <link rel="icon" type="image/png" href="" />
-    <link rel="shortcut icon" href="public/img/programmer2.png">
-    <script type="text/javascript" src="public/JS/tasksjs.js"></script>
-</head>
+$title = "Tâches | CodeManager";
+$cssfile = "task";
+$jsfile = "tasksjs";
+ob_start();
+
+?>
 
 <body id="htmlbody">
 
@@ -25,7 +19,7 @@
                     <p id="titre_document"><strong>Tâches - CodeManager</strong></p>
                 </td>
                 <td class='colonne_menu_haut'>
-                    <a href=""><img class="user" src="public/img/logout.png"></a>
+                    <a href="index.php?action=logout"><img class="user" src="public/img/logout.png"></a>
                     <a href=""><img class="user" src="public/img/web_essentials/png/053-user.png"></a>
                 </td>
             </tr>
@@ -62,17 +56,17 @@
         <table id="affichage_droit">
             <tr>
                 <td>
-                    Nombre de Tâches effectuées : 12
+                    Nombre de Tâches effectuées : <?= $done ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Nombre de Tâches non effectuées : 5
+                    Nombre de Tâches non effectuées : <?= $to_do ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Progression : 56%
+                    Progression : <?= $percentage ?>%
                 </td>
             </tr>
             <tr>
@@ -116,11 +110,7 @@
             </tr>
         </table>
     </div>
-
-
-
-
-
+    
     <div id="div_menu_de_gauche">
         <table id="menu_de_gauche">
             <tbody>
@@ -371,4 +361,9 @@
     </div>
 </body>
 
-</html>
+<?php
+
+$content = ob_get_clean();
+require('template/template.php');
+
+?>
