@@ -72,18 +72,32 @@ try {
             $table = $body['table'];
             $data = $body['data'];
 
-            $pseudo = $data['pseudo'];
-            $mail = $data['mail'];
-            $password = base64_decode($data['password']);
+            $values = array();
+            $values_str = 'VALUES(';
+            $keys_str = '(';
+            foreach ($data as $key => $value) {
+                // Check if key == password
+                if($key == "password"){
+                    array_push($values, password_hash(base64_decode($value), PASSWORD_DEFAULT));
+                } else {
+                    array_push($values, $value);
+                }
+                $values_str .= '?,';
+                $keys_str .= $key . ',';
+            }
+            $values_str = substr($values_str, 0, -1);
+            $keys_str = substr($keys_str, 0, -1);
+            $values_str .= ')';
+            $keys_str .= ')';
 
             $db = DatabaseManager::dbConnect();
-            $req = $db->prepare('INSERT INTO ' . $table . '(pseudo, mail, password) VALUES(:pseudo, :mail, :password)');
-            $req->execute(array(
-                'pseudo' => $pseudo,
-                'mail' => $mail,
-                'password' => password_hash($password, PASSWORD_DEFAULT)
-        	));
+            $req = $db->prepare('INSERT INTO ' . $table . $keys_str . ' ' . $values_str);
+            if (!$req) {
+                print_r($db->errorInfo());
+            }
+            $req->execute($values);
 
+            var_dump($values);
             echo '{"message": "Data sent."}';
             break;
     }
