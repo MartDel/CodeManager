@@ -1,13 +1,20 @@
-<?php
+<!DOCTYPE html>
+<html>
 
-$title = "CodeManager";
-$css = "task";
-
-ob_start();
-
-?>
+<head>
+    <title>
+        Tâches
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="public/CSS/task.css" />
+    <link rel="icon" type="image/png" href="" />
+    <link rel="shortcut icon" href="public/img/programmer2.png">
+    <script type="text/javascript" src="public/JS/tasksjs.js"></script>
+</head>
 
 <body id="htmlbody">
+
     <div class="div_table_haut">
         <table class="table_haut">
             <tr class=ligne_menu_haut>
@@ -18,7 +25,7 @@ ob_start();
                     <p id="titre_document"><strong>Tâches - CodeManager</strong></p>
                 </td>
                 <td class='colonne_menu_haut'>
-                    <a href="index.php?action=logout"><img class="user" src="public/img/logout.png"></a>
+                    <a href=""><img class="user" src="public/img/logout.png"></a>
                     <a href=""><img class="user" src="public/img/web_essentials/png/053-user.png"></a>
                 </td>
             </tr>
@@ -47,114 +54,6 @@ ob_start();
         </table>
     </div>
 
-    <table id="table_tache">
-        <tbody id="tbody_table_tache">
-          <?php
-          if($tasks == null){
-          ?>
-          <tr class='tr_task'>
-              <td class="td_task">
-                Il n'y a rien à faire ! Mais ça ne durera pas...
-              </td>
-          </tr>
-          <?php
-          } else {
-            foreach ($tasks as $key => $task) {
-          ?>
-          <tr class='tr_task'>
-              <td class="td_task">
-                  ☼
-              </td>
-              <td class="td_task" onclick="expand_menu()">
-                  <?= $task->getName() ?>
-              </td>
-              <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
-                  <img id="expand_menu" src="public/img/menu.png">
-              </td>
-
-          </tr>
-          <tr>
-              <div id="expand_div_task">
-                  <div id="nom_tache"><?= $task->getName() ?></div>
-                  <div id="desc_tache_div">
-                    <?php
-                    if($task->getDescription() == null){
-                      echo "Aucune description, pour l'instant...";
-                    } else {
-                      echo $task->getDescription();
-                    }
-                    ?>
-                  </div>
-
-                  <div>
-                      <li>
-                          <?= $task->getAuthor() ?>
-                      </li>
-                      <li>
-                          Créée le <?= $task->getCreateDate() ?>
-                      </li>
-                      <table id="delete_edit_table">
-                          <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
-                              onmouseleave="demitour2leave()">
-                              <img class="img_edit_tasks" id="delete_photo"
-                                  src="public/img/web_essentials/png/059-cancel.png">
-                              <p class="text_edit_tasks">Supprimer la tâche</p>
-                          </td>
-                          <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
-                              onmouseleave="demitour3leave()">
-                              <img class="img_edit_tasks" id="edit_photo" src="public/img/web_essentials/png/047-pencil.png">
-                              <p class="text_edit_tasks">Éditer la tâche</p>
-                          </td>
-                      </table>
-                  </div>
-              </div>
-          </tr>
-          <div id="burger_tache_droit">
-              <table id="burger_tache_droit_table">
-                  <tr>
-                      <td>Éditer</td>
-                  </tr>
-                  <tr>
-                      <td>Supprimer</td>
-                  </tr>
-              </table>
-          </div>
-          <?php
-            }
-          }
-          ?>
-        </tbody>
-    </table>
-
-
-    <!--<table id="table_tache2">
-        <thead id="thead_table_tache">
-            <tr id="tr_thead_table_tache">
-                <td id="td2_thead_table_tache2">
-                    Tâche
-                </td>
-                <td id="td3_thead_table_tache2">
-                    Rôle
-                </td>
-            </tr>
-        </thead>
-        <tbody id="tbody_table_tache">
-            <tr>
-                <td class="td_task">
-                    <input id="task_input" name="task" placeholder="Tâche à effectuer"></input>
-                </td>
-                <td class="td_task" id="select_td">
-                    <select name="utilise" id="selection">
-                        <option value="toujours">Administrateur</option>
-                        <option value="parfois">Développeur</option>
-                        <option value="jamais">Intégrateur</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>-->
-
-
 
 
 
@@ -163,17 +62,17 @@ ob_start();
         <table id="affichage_droit">
             <tr>
                 <td>
-                    Nombre de Tâches effectuées : <?= $done ?>
+                    Nombre de Tâches effectuées : 12
                 </td>
             </tr>
             <tr>
                 <td>
-                    Nombre de Tâches non effectuées : <?= $to_do ?>
+                    Nombre de Tâches non effectuées : 5
                 </td>
             </tr>
             <tr>
                 <td>
-                    Progression : <?= $percentage ?>%
+                    Progression : 56%
                 </td>
             </tr>
             <tr>
@@ -237,8 +136,8 @@ ob_start();
                 </tr>
                 <tr class=ligne_menu_gauche class="bon_pour_trait">
                     <td class="colonne_menu_gauche">
-                        <img onmouseover="blur1(); agrandissement1()" onmouseleave="blur1leave(); retrecissement1()"
-                            class="img_menu_gauche" id="img_code" src="public/img/list.png">
+                        <a href="task.html"><img onmouseover="blur1(); agrandissement1()" onmouseleave="blur1leave(); retrecissement1()"
+                            class="img_menu_gauche" id="img_code" src="public/img/list.png"></a>
                     </td>
                 </tr>
 
@@ -341,12 +240,135 @@ ob_start();
             </tbody>
         </table>
     </div>
-    <script type="text/javascript" src="public/tasks.js"></script>
+    <div id="flex">
+        <div id="test">
+            <table id="table_tache">
+                <tbody id="tbody_table_tache">
+                    <tr class='tr_task'>
+                        <td class="td_task" id="td_width">
+                            <input type="checkbox" id="checkbox">
+                        </td>
+                        <td class="td_task" onclick="expand_menu()">
+                            Nom de la tâche
+                        </td>
+                        <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
+                            <img id="expand_menu" src="public/img/menu.png">
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <div id="expand_div_task">
+                            <div id="nom_tache">Nom de la tâche</div>
+                            <div id="desc_tache_div">
+                                DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+                            </div>
+
+                            <div>
+                                <li>
+                                    Créateur
+                                </li>
+                                <li>
+                                    Date de création
+                                </li>
+                                <table id="delete_edit_table">
+                                    <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
+                                        onmouseleave="demitour2leave()">
+                                        <img class="img_edit_tasks" id="delete_photo"
+                                            src="public/img/web_essentials/png/059-cancel.png">
+                                        <p class="text_edit_tasks">Supprimer la tâche</p>
+                                    </td>
+                                    <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
+                                        onmouseleave="demitour3leave()">
+                                        <img class="img_edit_tasks" id="edit_photo"
+                                            src="public/img/web_essentials/png/047-pencil.png">
+                                        <p class="text_edit_tasks">Éditer la tâche</p>
+                                    </td>
+                                </table>
+                            </div>
+                        </div>
+                    </tr>
+                    <div id="burger_tache_droit">
+                        <table id="burger_tache_droit_table">
+                            <tr>
+                                <td>Éditer</td>
+                            </tr>
+                            <tr>
+                                <td>Supprimer</td>
+                            </tr>
+                        </table>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div id="test2">
+            <table id="table_tache">
+                <tbody id="tbody_table_tache">
+                    <tr class='tr_task'>
+                        <td class="td_task"id="td_width">
+                            <input type="checkbox">
+                        </td>
+                        <td class="td_task" onclick="expand_menu2()">
+                            Nom de la tâche
+                        </td>
+                        <td class="td_task" id="td_menu_burger" onclick="burgerclicktask2()">
+                            <img id="expand_menu2" src="public/img/menu.png">
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+                        <div id="expand_div_task2">
+                            <div id="nom_tache">Nom de la tâche</div>
+                            <div id="desc_tache_div">
+                                DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+                            </div>
+
+                            <div id="createur_date">
+                                <li>
+                                    Créateur
+                                </li>
+                                <li>
+                                    Date de création
+                                </li>
+                                <table id="delete_edit_table2">
+                                    <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
+                                        onmouseleave="demitour2leave()">
+                                        <img class="img_edit_tasks" id="delete_photo"
+                                            src="public/img/web_essentials/png/059-cancel.png">
+                                        <p class="text_edit_tasks">Supprimer la tâche</p>
+                                    </td>
+                                    <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
+                                        onmouseleave="demitour3leave()">
+                                        <img class="img_edit_tasks" id="edit_photo"
+                                            src="public/img/web_essentials/png/047-pencil.png">
+                                        <p class="text_edit_tasks">Éditer la tâche</p>
+                                    </td>
+                                </table>
+                            </div>
+                        </div>
+                    </tr>
+                    <div id="burger_tache_droit2">
+                        <table id="burger_tache_droit_table">
+                            <tr>
+                                <td>Éditer</td>
+                            </tr>
+                            <tr>
+                                <td>Supprimer</td>
+                            </tr>
+                        </table>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
-<?php
-
-$content = ob_get_clean();
-require('template/template.php');
-
-?>
+</html>

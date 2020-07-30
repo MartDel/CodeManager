@@ -472,15 +472,15 @@ input {
 
 }
 
-#burger_tache_droit, 
-#burger_tache_droit2, 
-#burger_tache_droit3, 
-#burger_tache_droit4, 
-#burger_tache_droit5, 
-#burger_tache_droit6, 
-#burger_tache_droit7, 
-#burger_tache_droit8, 
-#burger_tache_droit9, 
+#burger_tache_droit,
+#burger_tache_droit2,
+#burger_tache_droit3,
+#burger_tache_droit4,
+#burger_tache_droit5,
+#burger_tache_droit6,
+#burger_tache_droit7,
+#burger_tache_droit8,
+#burger_tache_droit9,
 #burger_tache_droit10  {
     border-right: rgb(32, 34, 37) 2px solid;
     width: 10vw;
@@ -496,15 +496,15 @@ input {
     z-index: 120;
 
 }
-#expand_menu, 
-#expand_menu2, 
-#expand_menu3, 
-#expand_menu4, 
-#expand_menu5, 
-#expand_menu6, 
-#expand_menu7, 
-#expand_menu8, 
-#expand_menu9, 
+#expand_menu,
+#expand_menu2,
+#expand_menu3,
+#expand_menu4,
+#expand_menu5,
+#expand_menu6,
+#expand_menu7,
+#expand_menu8,
+#expand_menu9,
 #expand_menu10 {
     height: 2.5vh;
     float: right;
@@ -677,7 +677,7 @@ input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
-    
+
 }
 
 input[type=checkbox] {
@@ -695,5 +695,5 @@ input[type="checkbox"]:checked {
   background: rgb(54, 57, 63);
   /*margin:0px;*/
   position: relative;
-  
+
 }
