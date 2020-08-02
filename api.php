@@ -7,20 +7,20 @@ try {
     http_response_code(200);
     header('Content-Type: application/json');
 
+    // Check authorization
     $headers = getallheaders();
-    if(isset($headers['Authorization'])){
-        $current_token = getallheaders()['Authorization'];
-        if($current_token != ('Bearer ' . Passwords::API_TOKEN)){
-            throw new Exception("Token is not correct.", 401);
-        }
-    } else throw new Exception("Token is not correct.", 401);
+    if(!isset($headers['Authorization'])) throw new Exception("Token is not correct.", 401);
+    if($headers['Authorization'] != ('Bearer ' . Passwords::API_TOKEN)) throw new Exception("Token is not correct.", 401);
 
     $method = $_SERVER['REQUEST_METHOD'];
     $body = json_decode(file_get_contents('php://input'), true);
+    $db = DatabaseManager::dbConnect();
 
     switch ($method) {
         case 'GET':
-            // GET data
+            /*
+             * GET data
+             */
             if (isset($_GET['pseudo']) && isset($_GET['password'])) {
                 // password verify
                 $pseudo = htmlspecialchars($_GET['pseudo']);
@@ -30,9 +30,11 @@ try {
             	if($correct_password == null) throw new Exception("Un problème est survenu.", 500);
         		echo '{"result":' . (password_verify($password, $correct_password) ? 'true' : 'false') . '}';
             } else if(isset($_GET['request'])){
+                // Get data from DB
                 $request = json_decode($_GET['request'], true);
                 $table = $request['table'];
 
+                // Build SQL request
                 $where_str = '';
                 $values = array();
                 if(isset($request['where'])){
@@ -53,10 +55,11 @@ try {
                     }
                 }
 
-                $db = DatabaseManager::dbConnect();
+                // Send request
                 $query = $db->prepare('SELECT * FROM ' . $table . $where_str);
                 $query->execute($values);
 
+                // Build response
                 $json_str = '';
                 while($data = $query->fetch(PDO::FETCH_ASSOC)){
                     $json_str .= json_encode($data);
@@ -68,15 +71,17 @@ try {
             } else throw new Exception("Aucune donnée reçue", 400);
             break;
         case 'POST':
-            // POST data
+            /*
+             * POST data
+             */
             $table = $body['table'];
             $data = $body['data'];
 
+            // Build SQL request
             $values = array();
             $values_str = 'VALUES(';
             $keys_str = '(';
             foreach ($data as $key => $value) {
-                // Check if key == password
                 if($key == "password"){
                     array_push($values, password_hash(base64_decode($value), PASSWORD_DEFAULT));
                 } else {
@@ -90,14 +95,10 @@ try {
             $values_str .= ')';
             $keys_str .= ')';
 
-            $db = DatabaseManager::dbConnect();
+            // Send request
             $req = $db->prepare('INSERT INTO ' . $table . $keys_str . ' ' . $values_str);
-            if (!$req) {
-                print_r($db->errorInfo());
-            }
             $req->execute($values);
 
-            var_dump($values);
             echo '{"message": "Data sent."}';
             break;
     }
