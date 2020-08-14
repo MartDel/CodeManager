@@ -6,6 +6,7 @@
     <color name="orange">#FFC03A</color>
 
     <color name="dark_background">#333333</color>
+    <color name="taskbar_background">#222222</color>
     <color name="grey">#666</color>
 
     <color name="black">#000</color>
