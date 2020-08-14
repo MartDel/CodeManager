@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Tâches
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="task2.css" />
+    <link rel="icon" type="image/png" href="" />
+    <link rel="shortcut icon" href="img/programmer2.png">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--MENU DU HAUT-->
+    <div id="menu_haut">
+        <img id="burger" src="img/burgermenugauche.png">
+        <img id="logo" src="img/essai_logo.png">
+        <input type="text" placeholder="Rechercher dans les tâches" />
+        <img id="help_logo_img" src="img/question.png" alt="">
+        <img id="account_logo_img" src="img/switzerland.png" />
+        <img id="gear_logo_img" src="img/gear.png" />
+    </div>
+
+    <!--MENU DE GAUCHE-->
+    <section class="section_en_dessous_menu">
+        <div id="menu_gauche">
+            <div class="new_task">
+                <img src="img/plusadd.png" alt="">
+                <p>Nouvelle tâche</p>
+            </div>
+            <ul>
+                <li class="selectedmenu"><img src="img/listindex.png" alt=""> Tâches</li>
+                <li class="notselectedmenu"><img src="img/objectiveindex.png" alt=""> Objectifs</li>
+                <li class="notselectedmenu"><img src="img/group.png" alt=""> Team</li>
+                <li class="notselectedmenu"><img src="img/people.png" alt=""> Discussion</li>
+                <li class="notselectedmenu"><img src="img/network.png" alt=""> GitHub</li>
+            </ul>
+        </div>
+
+
+        <!--LIGNE SELECTION TACHES-->
+        <section class="ligne_et_taches">
+            <div class="ligne_haut_tache">
+                <span title="Tout sélectionner"><input type="checkbox"></span>
+                <span title="Rafraîchir"><img src="img/refresh.png" alt=""></span>
+                <span title="Tâches effectuées"><img class="tasks_done" src="img/tick.png" alt=""></span>
+
+            </div>
+
+
+
+            <!--PARTI TACHES NON REALISEES-->
+            <ul class="liste_taches">
+
+                <button id="myBtn">
+                    <li>
+                        <span class="span_input_img" title="Sélectionner"><input class="input_img"
+                                type="checkbox"></span>
+                        <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img" id="tick"
+                                src="img/tick.png" alt=""></span>
+                        <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme sympa
+                            (c'est toujours un test de bug eheh)</span>
+                        <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la longueur
+                            dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
+                            c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
+                        <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
+                            savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et autres
+                            puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans etre
+                            forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                        <span class="date">11/08/2020</span>
+                    </li>
+                </button>
+
+
+            </ul>
+        </section>
+    </section>
+
+
+    <!--MODAL CONTENT-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
+            <section class="header_popup">
+                <img id="logo_popup" src="img/essai_logo.png">
+                <p><strong>Tâche</strong></p>
+            </section>
+
+            <section class="titre_popup">
+
+                <strong>Ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
+                    surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
+                    tests de bug comme Martin me l'avait conséillé</strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit
+                pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut
+                parler. il faut que ca soit detaillé sans etre forcement trop long pour pas avoir la flemme de lire tout
+                ce bazar.
+                <br><br>
+                <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
+                    bug eheh) le 11/08/2020</i>
+            </section>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="tasksjs2.js"></script>

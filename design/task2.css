@@ -1,0 +1,495 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+}
+
+*{
+   
+}
+
+@font-face {
+    font-family: 'happy_monkeyregular';
+    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'),
+        url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Product Sans Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Italic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Thin Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Thin Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Thin.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Light Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Light Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Light.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Medium Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Medium Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Medium.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Black Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Black Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Black.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Thin Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Thin Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-ThinItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Light Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Light Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-LightItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Medium Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Medium Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-MediumItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Bold'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Bold.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Bold Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BoldItalic.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Product Sans Black Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Black Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BlackItalic.woff') format('woff');
+}
+
+/*MENU HAUT*/
+
+
+#menu_haut {
+    background-color: rgb(255, 255, 255);
+    border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+#menu_haut #burger {
+    height: 20px;
+    filter: hue-rotate(70deg) brightness(110%);
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+#menu_haut #logo {
+    height: 45px;
+    margin-left: 30px;
+    /*border:black 1px solid;*/
+
+}
+
+#menu_haut input {
+    background-color: #f1f3f4;
+    border: #f1f3f4 1px solid;
+    border-radius: 10px;
+    background-image: url(img/search.png);
+    background-position: 3.5%;
+    background-repeat: no-repeat;
+    background-size: 2.5%;
+    padding-left: 4%;
+    height: auto;
+    margin-left: 3%;
+    width: 40%;
+    font-family: "Product Sans Regular";
+    font-size: 16px
+}
+
+#menu_haut input:focus {
+    background-color: #ffffff;
+    border: #ffffff 1px solid;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0.5px 0.5px 5px #555;
+    transition: all 0.25s ease;
+}
+
+#menu_haut #account_logo_img {
+    height: 30px;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+    margin-right: 13px;
+    border-radius: 50%;
+}
+
+#menu_haut #help_logo_img {
+    height: 20px;
+    margin-top: 15px;
+    position: absolute;
+    right: 0;
+    margin-right: 60px;
+    filter: invert(25%)
+}
+
+#menu_haut #gear_logo_img {
+    height: 20px;
+    margin-top: 15px;
+    position: absolute;
+    right: 0;
+    margin-right: 100px;
+    filter: invert(25%)
+}
+
+
+/*MENU DE GAUCHE*/
+
+
+#menu_gauche {
+    background-color: rgb(255, 255, 255);
+    width: 260px;
+    margin-top: -0px;
+    height: 100vh;
+    position: relative;
+}
+
+.new_task {
+    margin-top: 25px;
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    margin-left: 15%;
+    padding: 2px 0px 2px 0px;
+    border-radius: 40px;
+    text-align: center;
+    font-family: "Product Sans Regular";
+    font-size: .875rem;
+    letter-spacing: .25px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0.5px 0.5px 3px #555;
+}
+
+.new_task img {
+    height: 35px;
+    margin-left: 15px;
+    margin-top: 5px;
+    padding-right: 15px;
+
+}
+
+ul {
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+#menu_gauche ul li img {
+    height: 50px;
+    filter: invert(50%) brightness(0%);
+    height: 20px;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    margin-right: 18px;
+}
+
+#menu_gauche ul li {
+    display: flex;
+    flex-direction: row;
+    font-size: .875rem;
+    letter-spacing: .2px;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 35px;
+    padding-left: 71px;
+    padding-right: 90px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+}
+
+#menu_gauche ul .notselectedmenu:hover {
+    background-color: #f1f3f4;
+    align-items: center;
+    cursor: pointer;
+}
+
+#menu_gauche ul {
+    margin-left: -50px;
+}
+
+.selectedmenu {
+    color: #b41e10;
+    background-color: #fce8e6;
+    font-weight: bold;
+}
+
+.selectedmenu:hover {
+    color: #b41e10;
+    background-color: #fce8e6;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/*LIGNE HAUT TACHE*/
+.section_en_dessous_menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.ligne_haut_tache {
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    align-items: center;
+    border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+    padding-left: 20px;
+}
+
+.ligne_haut_tache img {
+    height: 15px;
+    margin-top: 12.5px;
+    margin-left: 15px;
+}
+
+.ligne_haut_tache input {
+    height: 15px;
+    width: 15px;
+}
+
+.tasks_done {
+    float: right;
+    margin-right: 21px;
+}
+
+.ligne_et_taches {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 255px);
+    overflow-y: hidden;
+
+}
+
+
+/*PARTIE TACHES NON EFFECTUEES*/
+
+
+.liste_taches {
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    padding: 0px 0px 0px 0px;
+    margin-top: 0px;
+}
+
+.liste_taches li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    height: 25px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+    padding-left: 20px;
+}
+
+.liste_taches li:hover {
+    box-shadow: 0.5px 0.5px 1px #555;
+    cursor: pointer;
+}
+
+.titre_tache,
+.utilisateur,
+.desc_tache,
+.date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: none;
+    font-size: .8rem;
+    letter-spacing: .2px;
+}
+
+.utilisateur {
+    width: 15%;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.titre_tache {
+    width: 30%;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.desc_tache {
+    margin-left: 20px;
+    width: 40%
+}
+
+.date {
+    margin-right: 20px;
+    text-align: right;
+    width: 15%;
+}
+
+.input_img {
+    height: 15px;
+    width: 15px;
+}
+
+#tick {
+    margin-left: 19px;
+    margin-top: 3px;
+}
+
+
+
+/*MODAL*/
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    transition:all 1s;
+    
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px ;
+    border: 1px solid #888;
+    width: 80%;
+    
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top:-5px;;
+}
+
+.close:hover,
+.close:focus {
+    color: #b41e10;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#myBtn {
+    background-color: transparent;
+    border:none;
+    border-radius: 0px;
+    padding: 0;
+    width: calc(100vw - 255px);
+    outline: none;
+}
+.modal-content{
+    font-family: "Product Sans Regular";
+    font-size: .875rem;
+    letter-spacing: .5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.titre_popup{
+    width: 97%;
+    white-space: initial;
+    overflow: hidden;
+    margin-top:20px;
+    font-size:1rem
+}
+.descriptif_popup{
+    width: 97%;
+    white-space: initial;
+    overflow: hidden;
+}
+.line_popup{
+    background-color: rgba(141, 141, 141, 0.342);
+    margin-top:10px;
+    margin-bottom:10px;
+    height:1px;
+    width:97%;
+}
+#logo_popup{
+    width:auto;
+    height:50px;
+}
+.header_popup{
+    display: flex;
+    flex-direction: row;
+    font-family: "Product Sans Regular";
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    margin-top:-15px;
+    align-items: center;
+    color:#b41e10
+}
+.header_popup p {
+    text-align:center;
+    margin-left:36%
+}
