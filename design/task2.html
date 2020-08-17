@@ -19,7 +19,15 @@
 
     <!--MENU DU HAUT-->
     <div id="menu_haut">
-        <img id="burger" src="img/burgermenugauche.png">
+        <!--<img id="burger" src="img/burgermenugauche.png">-->
+        <div id="webapp_cover">
+            <div id="menu_button">
+                <input type="checkbox" id="menu_checkbox">
+                <label for="menu_checkbox" id="menu_label">
+                    <div id="menu_text_bar"></div>
+                </label>
+            </div>
+        </div>
         <a href="./index.html"><img id="logo" src="img/essai_logo.png"></a>
         <input type="text" placeholder="Rechercher dans les tâches" />
         <img id="help_logo_img" src="img/question.png" alt="">
@@ -35,29 +43,41 @@
                 <p id="new_task_text">Nouvelle tâche</p>
             </div>
             <ul>
-                <a href="./task2.html"><li class="selectedmenu"><img class="img_menu_gauche_js" src="img/listindex.png" alt=""><p id="text_menu_left_1">Tâches</p></li></a>
-                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/objectiveindex.png" alt=""><p id="text_menu_left_2">Objectifs</p></li>
-                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/group.png" alt=""><p id="text_menu_left_3">Team</p></li>
-                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/people.png" alt=""><p id="text_menu_left_4">Discussion</p></li>
-                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/network.png" alt=""><p id="text_menu_left_5">GitHub</p></li>
+                <a href="./task2.html">
+                    <li class="selectedmenu"><img class="img_menu_gauche_js" src="img/listindex.png" alt="">
+                        <p id="text_menu_left_1">Tâches</p>
+                    </li>
+                </a>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/objectiveindex.png" alt="">
+                    <p id="text_menu_left_2">Objectifs</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/group.png" alt="">
+                    <p id="text_menu_left_3">Team</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/people.png" alt="">
+                    <p id="text_menu_left_4">Discussion</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="img/network.png" alt="">
+                    <p id="text_menu_left_5">GitHub</p>
+                </li>
             </ul>
         </div>
 
 
         <!--LIGNE SELECTION TACHES-->
         <section class="ligne_et_taches">
-            
-                <div id="ligne_haut_tache_id" class="ligne_haut_tache">
-                    <span title="Tout sélectionner"><input type="checkbox"></span>
-                    <span title="Rafraîchir"><img src="img/refresh.png" alt=""></span>
-                    <span title="Tâches effectuées"><img class="tasks_done" src="img/tick.png" alt=""></span>
 
-                </div>
+            <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+                <span title="Tout sélectionner"><input type="checkbox"></span>
+                <span title="Rafraîchir"><img src="img/refresh.png" alt=""></span>
+                <span title="Tâches effectuées"><img class="tasks_done" src="img/tick.png" alt=""></span>
+
+            </div>
 
 
 
-                <!--PARTI TACHES NON REALISEES-->
-
+            <!--PARTI TACHES NON REALISEES-->
+            <section class=list_task">
                 <ul id="liste_taches" class="liste_taches">
 
                     <button class="myBtn" id="myBtn">
@@ -160,7 +180,7 @@
                         </li>
                     </button>
                 </ul>
-            
+            </section>
         </section>
     </section>
 
@@ -194,6 +214,7 @@
             </section>
         </div>
     </div>
+
 
 
 

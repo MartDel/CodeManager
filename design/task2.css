@@ -12,7 +12,7 @@ body {
 }
 
 html {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 a {
@@ -130,6 +130,7 @@ a {
     background-color: rgb(255, 255, 255);
     border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
     padding: 8px;
+    padding-left: 50px;
     display: flex;
     flex-direction: row;
     height: 45px;
@@ -334,8 +335,8 @@ ul {
     align-items: center;
     border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
     padding-left: 20px;
-    width:auto;
-    transition:width 3s ease;
+    width: auto;
+    transition: width 3s ease;
 }
 
 .ligne_haut_tache img {
@@ -357,7 +358,11 @@ ul {
 .ligne_et_taches {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    flex-grow: 1;
+    position: absolute;
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    transition: all 0.3s ease;
 }
 
 
@@ -375,11 +380,11 @@ ul {
     overflow-y: scroll;
     overflow-x: hidden;
     margin-block-end: 0;
-    transition:width 3s ease;
-    display:flex;
+    transition: width 3s ease;
+    display: flex;
     flex-direction: column;
-    left:0;
-    right:0
+    left: 0;
+    right: 0
 }
 
 /*#test_ul {
@@ -397,6 +402,7 @@ ul {
     padding-top: 10px;
     border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
     padding-left: 20px;
+    width: 100%;
 }
 
 .liste_taches li:hover {
@@ -415,30 +421,31 @@ ul {
     text-shadow: none;
     font-size: .8rem;
     letter-spacing: .2px;
+    width: 100%;
 }
 
 .utilisateur {
-    width: 4%;
+    width: 80%;
     margin-left: 20px;
     font-weight: bold;
 }
 
 .titre_tache {
-    width: 7%;
+    width: 200%;
     margin-left: 20px;
     font-weight: bold;
 }
 
 .desc_tache {
     margin-left: 20px;
-    width: 7%
+    width: 250%;
 }
 
 .date {
-    margin-right: 30px;
+    margin-right: 40px;
     text-align: right;
-    width:auto;
-    background-color: rgb(255, 0, 0);
+    width: 100%;
+    /*background-color: rgb(255, 0, 0);*/
 }
 
 .input_img {
@@ -494,7 +501,7 @@ ul {
     font-size: 28px;
     font-weight: bold;
     margin-top: -5px;
-    
+
 }
 
 .close:hover,
@@ -509,9 +516,15 @@ ul {
     border: none;
     border-radius: 0px;
     padding: 0;
-    width:calc(100vw - 259px);
+    width: auto;
     outline: none;
-    border-right: red 5px solid;
+    /*border-right: red 5px solid;*/
+}
+
+.list_task {
+    display: flex;
+    flex-direction: column;
+    width: auto;
 }
 
 
@@ -565,4 +578,146 @@ ul {
 .header_popup p {
     text-align: center;
     margin-left: 36%
+}
+
+
+/*MENU BURGER ICON*/
+*:focus {
+    outline: none;
+}
+
+#webapp_cover {
+    position: absolute;
+    top: 30px;
+
+    width: 10px;
+    margin: 0 auto;
+    margin-left: -18px;
+    transform: translateY(-50%) scale(0.7);
+    background-color: rgb(255, 255, 255);
+}
+
+#menu_button {
+    width: 39px;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+}
+
+#menu_checkbox {
+    display: none;
+}
+
+#menu_label {
+    position: relative;
+    display: block;
+    height: 29px;
+    cursor: pointer;
+
+}
+
+#menu_label:before,
+#menu_label:after,
+#menu_text_bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #b41e10;
+}
+
+#menu_label:before,
+#menu_label:after {
+    content: '';
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
+}
+
+#menu_label:before {
+    top: 0;
+}
+
+#menu_label:after {
+    top: 12px;
+}
+
+#menu_text_bar {
+    top: 24px;
+}
+
+#menu_text_bar:before {
+    content: 'MENU';
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 0;
+    color: #b41e10;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#menu_checkbox:checked+#menu_label:before {
+    left: -39px;
+}
+
+#menu_checkbox:checked+#menu_label:after {
+    left: 39px;
+}
+
+#menu_checkbox:checked+#menu_label #menu_text_bar:before {
+    animation: moveUpThenDown 0.5s ease 0.2s forwards, shakeWhileMovingUp 0.5s ease 0.2s forwards, shakeWhileMovingDown 0.2s ease 0.5s forwards;
+}
+
+@keyframes moveUpThenDown {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -27px;
+    }
+
+    100% {
+        top: -14px;
+    }
+}
+
+@keyframes shakeWhileMovingUp {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    25% {
+        transform: rotateZ(-10deg);
+    }
+
+    50% {
+        transform: rotateZ(0deg);
+    }
+
+    75% {
+        transform: rotateZ(10deg);
+    }
+
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+@keyframes shakeWhileMovingDown {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    80% {
+        transform: rotateZ(3deg);
+    }
+
+    90% {
+        transform: rotateZ(-3deg);
+    }
+
+    100% {
+        transform: rotateZ(0);
+    }
 }
