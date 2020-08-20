@@ -146,7 +146,7 @@ function all() {
 
 /*MENU ANIMATIONS*/
 /*var menu_opener_count = 1;*/
-localStorage.setItem("bgcolor", 0);
+localStorage.setItem("bgcolor", 1);
 /*localStorage.getItem('bgcolor')*/
 
 burger.onclick = () => {
