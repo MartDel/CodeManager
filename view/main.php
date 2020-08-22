@@ -7,358 +7,259 @@ ob_start();
 
 ?>
 
-<body id="htmlbody">
+<body id="body">
 
-    <div class="div_table_haut">
-        <table class="table_haut">
-            <tr class=ligne_menu_haut>
-                <td class='colonne_menu_haut'>
-
-                </td>
-                <td class='colonne_menu_haut'>
-                    <p id="titre_document"><strong>Tâches - CodeManager</strong></p>
-                </td>
-                <td class='colonne_menu_haut'>
-                    <a href="index.php?action=logout"><img class="user" src="public/img/logout.png"></a>
-                    <a href=""><img class="user" src="public/img/web_essentials/png/053-user.png"></a>
-                </td>
-            </tr>
-
-
-        </table>
-    </div>
-
-
-    <div>
-        <table id="edit_tasks">
-            <tr id="edit_tasks_line">
-                <td class="edit_tasks_col" id="add" onmouseover="demitour1()" onmouseleave="demitour1leave()">
-                    <img class="img_edit_tasks" id="add_photo" src="public/img/web_essentials/png/066-add.png">
-                    <p class="text_edit_tasks">Ajouter une tâche</p>
-                </td>
-                <!--<td class="edit_tasks_col" id="delete" onmouseover="demitour2()" onmouseleave="demitour2leave()">
-                    <img class="img_edit_tasks" id="delete_photo" src="public/img/web_essentials/png/059-cancel.png">
-                    <p class="text_edit_tasks">Supprimer la tâche</p>
-                </td>
-                <td class="edit_tasks_col" id="edit" onmouseover="demitour3()" onmouseleave="demitour3leave()">
-                    <img class="img_edit_tasks" id="edit_photo" src="public/img/web_essentials/png/047-pencil.png">
-                    <p class="text_edit_tasks">Éditer la tâche</p>
-                </td>-->
-            </tr>
-        </table>
-    </div>
-
-
-
-
-
-    <div id="affichage_droit_div">
-        <table id="affichage_droit">
-            <tr>
-                <td>
-                    Nombre de Tâches effectuées : <?= $done ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Nombre de Tâches non effectuées : <?= $to_do ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Progression : <?= $percentage ?>%
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div id="more_div">
-                        <li>Actualiser</li>
-                        <li>Tout supprimer</li>
-                    </div>
-                    <img onclick="burger_hover()" id="img_menu" src="public/img/menu.png">
-                </td>
-            </tr>
-            <tr>
-                <td>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-    
-    <div id="div_menu_de_gauche">
-        <table id="menu_de_gauche">
-            <tbody>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <img class="img_menu_gauche" id="img_logo" src="public/img/programmer2.png">
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <div class="trait_separation" id="trait_separation"></div>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche class="bon_pour_trait">
-                    <td class="colonne_menu_gauche">
-                        <a href="task.html"><img onmouseover="blur1(); agrandissement1()" onmouseleave="blur1leave(); retrecissement1()"
-                            class="img_menu_gauche" id="img_code" src="public/img/list.png"></a>
-                    </td>
-                </tr>
-
-                <tr class=ligne_menu_gauche class="bon_pour_trait">
-                    <td>
-                        <img onmouseover="blur2(); agrandissement2()" onmouseleave="blur2leave(); retrecissement2()"
-                            class="img_menu_gauche" id="img_list" src="public/img/goal.png">
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche class="bon_pour_trait">
-                    <td>
-                        <img onmouseover="blur3(); agrandissement3()" onmouseleave="blur3leave(); retrecissement3()"
-                            class="img_menu_gauche" id="img_group" src="public/img/group.png">
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche class="bon_pour_trait">
-                    <td>
-                        <img onmouseover="blur4(); agrandissement4()" onmouseleave="blur4leave(); retrecissement4()"
-                            class="img_menu_gauche" id="img_people" src="public/img/people.png">
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche class="bon_pour_trait">
-                    <td>
-                        <img onmouseover="blur5(); agrandissement5()" onmouseleave="blur5leave(); retrecissement5()"
-                            class="img_menu_gauche" id="img_network" src="public/img/network.png">
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <div class="trait_separation" id="trait_separation2"></div>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-
-        <table id="menu_de_gauche2">
-            <tbody>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <p id="text_affichage_gauchemenu">Menu</p>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <div id="trait_separation_deroulant"></div>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td class="colonne_menu_gauche">
-                        <p id="text_affichage_gauche1">Tâches</p>
-                    </td>
-                </tr>
-
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <p id="text_affichage_gauche2">Objectifs</p>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <p id="text_affichage_gauche3">Participants</p>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <p id="text_affichage_gauche4">Discussion</p>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-                        <p id="text_affichage_gauche5">GitHub</p>
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr class=ligne_menu_gauche>
-                    <td>
-
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="flex">
-        <div id="test">
-            <table id="table_tache">
-                <tbody id="tbody_table_tache">
-                    <tr class='tr_task'>
-                        <td class="td_task" id="td_width">
-                            <input type="checkbox" id="checkbox">
-                        </td>
-                        <td class="td_task" onclick="expand_menu()">
-                            Nom de la tâche
-                        </td>
-                        <td class="td_task" id="td_menu_burger" onclick="burgerclicktask()">
-                            <img id="expand_menu" src="public/img/menu.png">
-                        </td>
-
-                    </tr>
-
-
-
-                    <tr>
-                        <div id="expand_div_task">
-                            <div id="nom_tache">Nom de la tâche</div>
-                            <div id="desc_tache_div">
-                                DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                            </div>
-
-                            <div>
-                                <li>
-                                    Créateur
-                                </li>
-                                <li>
-                                    Date de création
-                                </li>
-                                <table id="delete_edit_table">
-                                    <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
-                                        onmouseleave="demitour2leave()">
-                                        <img class="img_edit_tasks" id="delete_photo"
-                                            src="public/img/web_essentials/png/059-cancel.png">
-                                        <p class="text_edit_tasks">Supprimer la tâche</p>
-                                    </td>
-                                    <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
-                                        onmouseleave="demitour3leave()">
-                                        <img class="img_edit_tasks" id="edit_photo"
-                                            src="public/img/web_essentials/png/047-pencil.png">
-                                        <p class="text_edit_tasks">Éditer la tâche</p>
-                                    </td>
-                                </table>
-                            </div>
-                        </div>
-                    </tr>
-                    <div id="burger_tache_droit">
-                        <table id="burger_tache_droit_table">
-                            <tr>
-                                <td>Éditer</td>
-                            </tr>
-                            <tr>
-                                <td>Supprimer</td>
-                            </tr>
-                        </table>
-                    </div>
-                </tbody>
-            </table>
+    <!--MENU DU HAUT-->
+    <div id="menu_haut">
+        <!--<img id="burger" src="public/img/burgermenugauche.png">-->
+        <div id="webapp_cover">
+            <div id="menu_button">
+                <input type="checkbox" id="menu_checkbox">
+                <label for="menu_checkbox" id="menu_label">
+                    <div id="menu_text_bar"></div>
+                </label>
+            </div>
         </div>
+        <a id="logo_a" href="./index.html"><img id="logo" src="public/img/essai_logo.png"></a>
+        <input type="text" placeholder="Rechercher dans les tâches" />
+        <img id="help_logo_img" src="public/img/question.png" alt="">
+        <img id="account_logo_img" src="public/img/switzerland.png" />
+        <img id="gear_logo_img" src="public/img/gear.png" />
+    </div>
+
+    <!--MENU DE GAUCHE-->
+    <section class="section_en_dessous_menu">
+        <div id="menu_gauche">
+            <div id="new_task_div" class="new_task">
+                <img id="new_task_img" src="public/img/plusadd.png" alt="">
+                <p id="new_task_text">Nouvelle tâche</p>
+            </div>
+            <ul>
+                <a href="./task2.html">
+                    <li class="selectedmenu"><img class="img_menu_gauche_js" src="public/img/listindex.png" alt="">
+                        <p id="text_menu_left_1">Tâches</p>
+                    </li>
+                </a>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="">
+                    <p id="text_menu_left_2">Objectifs</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="public/img/group.png" alt="">
+                    <p id="text_menu_left_3">Team</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="public/img/people.png" alt="">
+                    <p id="text_menu_left_4">Discussion</p>
+                </li>
+                <li class="notselectedmenu"><img class="img_menu_gauche_js" src="public/img/network.png" alt="">
+                    <p id="text_menu_left_5">GitHub</p>
+                </li>
+            </ul>
+        </div>
+        <section id="copyright">
+            <p>Copyright ® 2020 CodeManager. All Rights Reserved</p>
+        </section>
+
+
+        <!--LIGNE SELECTION TACHES-->
+        <section class="ligne_et_taches">
+
+            <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+                <span title="Tout sélectionner"><input name="sample" onclick="all()" id="selectall"
+                        type="checkbox"></span>
+                <span title="Rafraîchir"><img id="refresh" src="public/img/refresh.png" alt="" onclick="refresh()">
+                    <span title="Tâches effectuées"><img class="tasks_done" src="public/img/tick.png" alt=""></span>
+
+            </div>
 
 
 
-        <div id="test2">
-            <table id="table_tache">
-                <tbody id="tbody_table_tache">
-                    <tr class='tr_task'>
-                        <td class="td_task"id="td_width">
-                            <input type="checkbox">
-                        </td>
-                        <td class="td_task" onclick="expand_menu2()">
-                            Nom de la tâche
-                        </td>
-                        <td class="td_task" id="td_menu_burger" onclick="burgerclicktask2()">
-                            <img id="expand_menu2" src="public/img/menu.png">
-                        </td>
+            <!--PARTI TACHES NON REALISEES-->
+            <section class="list_task">
+                <ul id="liste_taches" class="liste_taches">
 
-                    </tr>
+                    <button name="myBtn" class="myBtn" id="myBtn">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
+                                    id="tick" src="public/img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
+                                    src="public/img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
+                                sympa
+                                (c'est toujours un test de bug eheh)</span>
+                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
+                                longueur
+                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
+                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
+                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
+                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
+                                autres
+                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
+                                etre
+                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
+                    <button name="myBtn" class="myBtn" id="myBtn">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
+                                    id="tick" src="public/img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
+                                    src="public/img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
+                                sympa
+                                (c'est toujours un test de bug eheh)</span>
+                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
+                                longueur
+                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
+                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
+                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
+                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
+                                autres
+                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
+                                etre
+                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
 
 
+                </ul>
+            </section>
+        </section>
+    </section>
 
-                    <tr>
-                        <div id="expand_div_task2">
-                            <div id="nom_tache">Nom de la tâche</div>
-                            <div id="desc_tache_div">
-                                DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                            </div>
 
-                            <div id="createur_date">
-                                <li>
-                                    Créateur
-                                </li>
-                                <li>
-                                    Date de création
-                                </li>
-                                <table id="delete_edit_table2">
-                                    <td class="edit_tasks_col" id="delete" onmouseover="demitour2()"
-                                        onmouseleave="demitour2leave()">
-                                        <img class="img_edit_tasks" id="delete_photo"
-                                            src="public/img/web_essentials/png/059-cancel.png">
-                                        <p class="text_edit_tasks">Supprimer la tâche</p>
-                                    </td>
-                                    <td class="edit_tasks_col" id="edit" onmouseover="demitour3()"
-                                        onmouseleave="demitour3leave()">
-                                        <img class="img_edit_tasks" id="edit_photo"
-                                            src="public/img/web_essentials/png/047-pencil.png">
-                                        <p class="text_edit_tasks">Éditer la tâche</p>
-                                    </td>
-                                </table>
-                            </div>
-                        </div>
-                    </tr>
-                    <div id="burger_tache_droit2">
-                        <table id="burger_tache_droit_table">
-                            <tr>
-                                <td>Éditer</td>
-                            </tr>
-                            <tr>
-                                <td>Supprimer</td>
-                            </tr>
-                        </table>
-                    </div>
-                </tbody>
-            </table>
+    <!--MODAL CONTENT-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
+            <section class="header_popup">
+                <img id="logo_popup" src="public/img/essai_logo.png">
+                <p><strong>Tâche</strong></p>
+            </section>
+
+            <section class="titre_popup">
+
+                <strong>Ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
+                    surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
+                    tests de bug comme Martin me l'avait conséillé</strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit
+                pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut
+                parler. il faut que ca soit detaillé sans etre forcement trop long pour pas avoir la flemme de lire tout
+                ce bazar.
+                <br><br>
+                <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
+                    bug eheh) le 11/08/2020</i>
+            </section>
         </div>
     </div>
+
+
+    <!--ADD TASK MODAL-->
+    <div id="add_task_modal_general">
+        <div id="add_task_modal">
+            <section id="section_ligne_haut">
+                <img id="logo_add_task" src="public/img/essai_logo.png" alt="">
+                <p><strong>Ajouter une tâche</strong></p>
+                <span id="close_add" class="close_add">&times;</span>
+            </section>
+            <section id="section_ligne_bas">
+                <form>
+                    <h1>Titre de la tâche (80 caractères maximum)</h1>
+                    <textarea id="textarea_title" name="textarea_title" type="text" placeholder="Titre"
+                        maxlength="80"></textarea>
+                    <h1>Description de la tâche</h1>
+                    <textarea id="textarea_desc" name="textarea_desc" type="text" placeholder="Description"></textarea>
+                    <h2>Par Utilisateur le 18/08/2020</h2>
+                    <section id="button_line">
+                        <button name="cancel_button" onclick="clear_content_add();" type="button">Annuler</button>
+                        <button name="submit_button" type="submit">Valider</button>
+                    </section>
+                </form>
+            </section>
+        </div>
+    </div>
+
+
+    <!--SETTINGS MODAL-->
+
+
+    <div id="bcc_settings">
+        <div id="settings_modal">
+            <div id="settings_title">
+                Réglages
+            </div>
+            <span id="close_settings" onclick="clear_content_bug();" class="close_settings">&times;</span>
+            <div class="row_settings">
+                <p>Mode Sombre : </p>
+                <input class="apple-switch" id="dark_mode" type="checkbox">
+            </div>
+            <div class="row_settings">
+                <p>Night Shift : </p>
+                <input class="apple-switch" id="night_shift" type="checkbox">
+            </div>
+            <div class="row_settings" id="col_settings">
+                <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
+                <textarea id="textarea_bug" placeholder="Message" name="" id=""></textarea>
+                <button type="submit" id="bug_submission">Envoyer</button>
+                <br>
+            </div>
+        </div>
+    </div>
+
+
+    <!--HELP MODAL-->
+    <div id="help_modal">
+        <h1>AIDE</h1>
+        <span id="close_help" class="close_help">&times;</span>
+        <span class="span_help"><img src="public/img/plusadd.png" alt="">
+            <p> Ajouter une tâche</p>
+        </span>
+        <span class="span_help"><img src="public/img/checkbox.png" alt="">
+            <p> Tout sélectionner</p>
+        </span>
+        <span class="span_help"><img src="public/img/refresh.png" alt="">
+            <p> Rafraîchir</p>
+        </span>
+        <span class="span_help"><img src="public/img/tick.png" alt="">
+            <p> Voir les tâches effectuées / Marquer comme effectuée</p>
+        </span>
+        <span class="span_help"><img src="public/img/edit_task_bar.png" alt="">
+            <p> Éditer la tâche</p>
+        </span>
+        <span class="span_help"><img src="public/img/gear.png" alt="">
+            <p> Réglages</p>
+        </span>
+
+    </div>
+
+
+    <!--ACCOUNT MODAL-->
+
+    <div id="account_modal">
+        <p id="account_title">Mon Compte</p>
+        <section id="account_section">
+            <img id="user_img" src="public/img/switzerland.png" alt="">
+            <p id="user">Utilisateur</p>
+        </section>
+        <section id="body_account">
+            <p id="name_user">Tom Mullier</p>
+            <p id="mail_user">tom.mullier@outlook.fr</>
+                <section id="section_button">
+                    <button id="account_button">Mon compte</button>
+                    <button id="deconnect_button">Déconnexion</button>
+                </section>
+        </section>
+    </div>
+
 </body>
 
 <?php

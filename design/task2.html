@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="task2.css" />
+    <link rel="stylesheet" href="transition.css" />
     <link rel="icon" type="image/png" href="" />
     <link rel="shortcut icon" href="img/programmer2.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -86,7 +87,7 @@
             <div id="ligne_haut_tache_id" class="ligne_haut_tache">
                 <span title="Tout sélectionner"><input name="sample" onclick="all()" id="selectall"
                         type="checkbox"></span>
-                <span title="Rafraîchir"><img id="refresh" src="img/refresh.png" alt="" onclick="refresh()">
+                <span title="Rafraîchir"><img id="refresh" src="img/refresh.png" alt="" onclick="location.reload()">
                     <span title="Tâches effectuées"><img class="tasks_done" src="img/tick.png" alt=""></span>
 
             </div>
@@ -94,40 +95,16 @@
 
 
             <!--PARTI TACHES NON REALISEES-->
-            <section class=list_task">
+            <section class="list_task">
                 <ul id="liste_taches" class="liste_taches">
 
-                    <button name="myBtn" class="myBtn" id="myBtn">
+                    <button name="task" class="myBtn" id="task1">
                         <li>
-                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js"
                                     type="checkbox"></span>
-                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
-                                    id="tick" src="img/tick.png" alt=""></span>
-                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
-                                    src="img/edit_task_bar.png" alt=""></span>
-                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                                sympa
-                                (c'est toujours un test de bug eheh)</span>
-                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
-                                longueur
-                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                                autres
-                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                                etre
-                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                            <span class="date">11/08/2020</span>
-                        </li>
-                    </button>
-                    <button name="myBtn" class="myBtn" id="myBtn">
-                        <li>
-                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
-                                    type="checkbox"></span>
-                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
-                                    id="tick" src="img/tick.png" alt=""></span>
-                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
+                                    src="img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img tick2"
                                     src="img/edit_task_bar.png" alt=""></span>
                             <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
                                 sympa
@@ -146,6 +123,57 @@
                         </li>
                     </button>
 
+                    <button name="task" class="myBtn" id="task2">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
+                                    src="img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img tick2"
+                                    src="img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
+                                sympa
+                                (c'est toujours un test de bug eheh)</span>
+                            <span class="titre_tache">Coucou, ceci est un titre bien trop long pour l'écrire sur toute la
+                                longueur
+                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
+                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
+                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
+                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
+                                autres
+                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
+                                etre
+                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
+
+                    <!--
+                    <button name="task" class="myBtn" id="task2">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
+                                    id="tick" src="img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
+                                    src="img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
+                                sympa
+                                (c'est toujours un test de bug eheh)</span>
+                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
+                                longueur
+                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
+                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
+                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
+                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
+                                autres
+                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
+                                etre
+                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
+                    -->
 
                 </ul>
             </section>
@@ -154,7 +182,7 @@
 
 
     <!--MODAL CONTENT-->
-    <div id="myModal" class="modal">
+    <div id="task1_modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
 
@@ -167,6 +195,34 @@
             <section class="titre_popup">
 
                 <strong>Ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
+                    surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
+                    tests de bug comme Martin me l'avait conséillé</strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit
+                pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut
+                parler. il faut que ca soit detaillé sans etre forcement trop long pour pas avoir la flemme de lire tout
+                ce bazar.
+                <br><br>
+                <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
+                    bug eheh) le 11/08/2020</i>
+            </section>
+        </div>
+    </div>
+    <div id="task2_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
+            <section class="header_popup">
+                <img id="logo_popup" src="img/essai_logo.png">
+                <p><strong>Tâche</strong></p>
+            </section>
+
+            <section class="titre_popup">
+
+                <strong>Coucou, ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
                     surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
                     tests de bug comme Martin me l'avait conséillé</strong>
             </section>
@@ -201,7 +257,7 @@
                     <textarea id="textarea_desc" name="textarea_desc" type="text" placeholder="Description"></textarea>
                     <h2>Par Utilisateur le 18/08/2020</h2>
                     <section id="button_line">
-                        <button name="cancel_button" onclick="clear_content_add();" type="button">Annuler</button>
+                        <button name="cancel_button" id="addtask_cancel" type="button">Annuler</button>
                         <button name="submit_button" type="submit">Valider</button>
                     </section>
                 </form>
@@ -218,7 +274,7 @@
             <div id="settings_title">
                 Réglages
             </div>
-            <span id="close_settings" onclick="clear_content_bug();" class="close_settings">&times;</span>
+            <span id="close_settings" class="close_settings">&times;</span>
             <div class="row_settings">
                 <p>Mode Sombre : </p>
                 <input class="apple-switch" id="dark_mode" type="checkbox">
@@ -245,7 +301,7 @@
             <p> Ajouter une tâche</p>
         </span>
         <span class="span_help"><img src="img/checkbox.png" alt="">
-            <p> Tout sélectionner</p>
+            <p> Sélectionner / Tout sélectionner</p>
         </span>
         <span class="span_help"><img src="img/refresh.png" alt="">
             <p> Rafraîchir</p>
@@ -281,7 +337,7 @@
         </section>
     </div>
 
-    <script type="text/javascript" src="tasksjs2.js"></script>
+    <script type="text/javascript" src="tasksjs2_compact.js"></script>
 </body>
 
 </html>

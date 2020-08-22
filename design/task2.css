@@ -341,7 +341,7 @@ ul {
     font-size:10px;
     color: rgba(0, 0, 0, 0.342);
     position:absolute;
-    
+
     bottom:0;
     left:10px;
 }
@@ -417,7 +417,7 @@ ul {
 /*#test_ul {
     padding: 0;
     background-color: rgb(255, 0, 0);
-    
+
 }
 */
 .liste_taches li {
@@ -480,12 +480,12 @@ ul {
     width: 15px;
 }
 
-#tick {
+.tick {
     margin-left: 19px;
     margin-top: 3px;
 }
 
-#tick2 {
+.tick2 {
     margin-left: 19px;
     margin-top: 3px;
 }
@@ -538,7 +538,7 @@ ul {
     cursor: pointer;
 }
 
-#myBtn {
+.myBtn {
     background-color: transparent;
     border: none;
     border-radius: 0px;
@@ -875,7 +875,7 @@ ul {
     color: #aaa;
     position: absolute;
     background-color: rgba(255, 255, 255, 0);
-    
+
     text-align: right;
     right: 0;
     margin-right: 30px;
@@ -965,7 +965,7 @@ ul {
     background-color: rgba(255, 255, 255, 0);
     right:0;
     text-align: right;
-    
+
     margin-right: 50px;
     font-size: 28px;
     font-weight: bold;
@@ -1053,7 +1053,7 @@ input.apple-switch:checked:after {
     /*border: 1px solid #b41e10;*/
     display: none;
     box-shadow: 0px 0px 3px black;
-    
+
 }
 
 #help_modal img {
