@@ -1,77 +1,76 @@
 // Tasks elements
-var tasks = document.getElementsByName("task")
+var tasks = document.getElementsByName("task");
 var tasks_btn = {
-    check_js: document.getElementsByClassName("check_js"),
-    tick: document.getElementsByClassName("tick"),
-    tick2: document.getElementsByClassName("tick2")
-}
+  check_js: document.getElementsByClassName("check_js"),
+  tick: document.getElementsByClassName("tick"),
+  tick2: document.getElementsByClassName("tick2"),
+};
 
 // 'Add task' elements
 var addtask = {
-    modal: document.getElementById("add_task_modal_general"),
-    show_btn: document.getElementById("new_task_div"),
-    close_btn: document.getElementById("close_add"),
-    cancel_btn: document.getElementById("addtask_cancel"),
-    title_input: document.getElementById("textarea_title"),
-    desc_input: document.getElementById("textarea_desc")
-}
+  modal: document.getElementById("add_task_modal_general"),
+  show_btn: document.getElementById("new_task_div"),
+  close_btn: document.getElementById("close_add"),
+  cancel_btn: document.getElementById("addtask_cancel"),
+  title_input: document.getElementById("textarea_title"),
+  desc_input: document.getElementById("textarea_desc"),
+};
 
 // Settings elements
 var settings = {
-    modal: document.getElementById("bcc_settings"),
-    show_btn: document.getElementById("gear_logo_img"),
-    close_btn: document.getElementById("close_settings"),
-    dark_mode_btn: document.getElementById("dark_mode"),
-    night_shift_btn: document.getElementById("night_shift"),
-    bug_input: document.getElementById("textarea_bug")
-}
+  modal: document.getElementById("bcc_settings"),
+  show_btn: document.getElementById("gear_logo_img"),
+  close_btn: document.getElementById("close_settings"),
+  dark_mode_btn: document.getElementById("dark_mode"),
+  night_shift_btn: document.getElementById("night_shift"),
+  bug_input: document.getElementById("textarea_bug"),
+};
 
 // Help elements
 var help = {
-    modal: document.getElementById("help_modal"),
-    show_btn: document.getElementById("help_logo_img")
-}
+  modal: document.getElementById("help_modal"),
+  show_btn: document.getElementById("help_logo_img"),
+};
 
 // Account elements
 var account = {
-    modal: document.getElementById("account_modal"),
-    show_btn: document.getElementById("account_logo_img")
-}
+  modal: document.getElementById("account_modal"),
+  show_btn: document.getElementById("account_logo_img"),
+};
 
 // Menu element
-var open = false
+var open = false;
 var menu = {
-    main_div: document.getElementById("menu_gauche"),
-    text: [
-        // Là je pense que tu peux dégager tous les id
-        // et juste donner la class 'text_menu_left'
-        // pour tous les textes du menu
-        // (je pense que c'est plus simple et rapide)
-        // Comme ça tu fais la même chose que pour
-        // la variable 'menu.img'
-        document.getElementById("text_menu_left_1"),
-        document.getElementById("text_menu_left_2"),
-        document.getElementById("text_menu_left_3"),
-        document.getElementById("text_menu_left_4"),
-        document.getElementById("text_menu_left_5"),
-        document.getElementById("new_task_text")
-    ],
-    img: document.getElementsByClassName("img_menu_gauche_js"), // Array
-    selected: document.getElementsByClassName("selectedmenu")[0],
-    not_selected: document.getElementsByClassName("notselectedmenu"), // Array
-    selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
-    selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
-    add_task_logo: document.getElementById("new_task_img"),
-    add_task_div: document.getElementById("new_task_div")
-}
+  main_div: document.getElementById("menu_gauche"),
+  text: [
+    // Là je pense que tu peux dégager tous les id
+    // et juste donner la class 'text_menu_left'
+    // pour tous les textes du menu
+    // (je pense que c'est plus simple et rapide)
+    // Comme ça tu fais la même chose que pour
+    // la variable 'menu.img'
+    document.getElementById("text_menu_left_1"),
+    document.getElementById("text_menu_left_2"),
+    document.getElementById("text_menu_left_3"),
+    document.getElementById("text_menu_left_4"),
+    document.getElementById("text_menu_left_5"),
+    document.getElementById("new_task_text"),
+  ],
+  img: document.getElementsByClassName("img_menu_gauche_js"), // Array
+  selected: document.getElementsByClassName("selectedmenu")[0],
+  not_selected: document.getElementsByClassName("notselectedmenu"), // Array
+  selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
+  selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
+  add_task_logo: document.getElementById("new_task_img"),
+  add_task_div: document.getElementById("new_task_div"),
+};
 
-var close_btn = document.getElementsByClassName("close")
-var body = document.getElementsByTagName("body")[0]
-var account_logo = document.getElementById("account_logo_img")
+var close_btn = document.getElementsByClassName("close");
+var body = document.getElementsByTagName("body")[0];
+var account_logo = document.getElementById("account_logo_img");
 
-var burger = document.getElementById("menu_checkbox")
-var modaladd = document.getElementById("add_task_modal")
-
+var burger = document.getElementById("menu_checkbox");
+var modaladd = document.getElementById("add_task_modal");
 
 /*
 =========================
@@ -79,55 +78,60 @@ var modaladd = document.getElementById("add_task_modal")
 =========================
 */
 
-
 /*
  * MODAL TASK
  */
 for (var i = 0; i < tasks.length; i++) {
-    tasks[i].onclick = (event) => {
-        // Get task id
-        var id = null
-        var path = event.path
-        for (var i = 0; i < path.length; i++) {
-            var current_id = path[i].id
-            if(current_id !== undefined){
-                if(current_id.indexOf("task") !== -1) id = current_id
-            }
-        }
-
-        // Get modal
-        var modal = document.getElementById(id + "_modal")
-
-        if(!contain(tasks_btn.check_js, event.target)
-        && !contain(tasks_btn.tick, event.target)
-        && !contain(tasks_btn.tick2, event.target)){
-            // Everythings is ok, let's go show the popup
-            show(modal)
-        }
+  tasks[i].onclick = (event) => {
+    // Get task id
+    var id = null;
+    var path = event.path;
+    for (var i = 0; i < path.length; i++) {
+      var current_id = path[i].id;
+      if (current_id !== undefined) {
+        if (current_id.indexOf("task") !== -1) id = current_id;
+      }
     }
-}
 
+    // Get modal
+    var modal = document.getElementById(id + "_modal");
+
+    if (
+      !contain(tasks_btn.check_js, event.target) &&
+      !contain(tasks_btn.tick, event.target) &&
+      !contain(tasks_btn.tick2, event.target)
+    ) {
+      // Everythings is ok, let's go show the popup
+      show(modal);
+    }
+  };
+}
 
 /*
  * ADD TASK MODAL
  */
-addtask.show_btn.onclick = () => { show(addtask.modal) }
-addtask.close_btn.onclick = () => { erase(addtask.modal) }
+addtask.show_btn.onclick = () => {
+  show(addtask.modal);
+};
+addtask.close_btn.onclick = () => {
+  erase(addtask.modal);
+};
 addtask.cancel_btn.onclick = (event) => {
-    addtask.title_input.value = ""
-    addtask.desc_input.value = ""
-    erase(addtask.modal)
-}
-
+  addtask.title_input.value = "";
+  addtask.desc_input.value = "";
+  erase(addtask.modal);
+};
 
 /*
  * SETTINGS MODAL
  */
-settings.show_btn.onclick = () => { show(settings.modal) }
+settings.show_btn.onclick = () => {
+  show(settings.modal);
+};
 settings.close_btn.onclick = () => {
-    settings.bug_input.value = ""
-    erase(settings.modal)
-}
+  settings.bug_input.value = "";
+  erase(settings.modal);
+};
 
 // Dark mode
 // Il faut gérer le fait que la config 'dark-mode'
@@ -135,59 +139,59 @@ settings.close_btn.onclick = () => {
 // Du coup faut utiliser soit les cookies
 // soit le localStorage
 settings.dark_mode_btn.onchange = () => {
-    if (settings.dark_mode_btn.checked == true) {
-        body.style.filter = "invert(100%) hue-rotate(200deg)"
-        account_logo.style.filter = "invert(100%) hue-rotate(-200deg)"
-        settings.night_shift_btn.checked = false
-    } else {
-        body.style.filter = "invert(0%) hue-rotate(0deg)"
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)"
-    }
-}
+  if (settings.dark_mode_btn.checked == true) {
+    body.style.filter = "invert(100%) hue-rotate(200deg)";
+    account_logo.style.filter = "invert(100%) hue-rotate(-200deg)";
+    settings.night_shift_btn.checked = false;
+  } else {
+    body.style.filter = "invert(0%) hue-rotate(0deg)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+  }
+};
 
 // Night shift
 settings.night_shift_btn.onchange = () => {
-    if (settings.night_shift_btn.checked == true) {
-        body.style.filter = "sepia(70%)"
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)"
-        settings.dark_mode_btn.checked = false
-    } else {
-        body.style.filter = "sepia(0%)"
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)"
-    }
-}
-
+  if (settings.night_shift_btn.checked == true) {
+    body.style.filter = "sepia(70%)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    settings.dark_mode_btn.checked = false;
+  } else {
+    body.style.filter = "sepia(0%)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+  }
+};
 
 /*
  * HELP MODAL
  */
 help.show_btn.onclick = () => {
-    // Là je modifie le CSS dynamiquement avec classList
-    // en gros tu crée une class CSS qui contient
-    // les nouvelles valeurs de l'élement
-    // (je vais les écrire dans un fichier à part -> transition.css)
-    // (et on oublie pas de le lier au code HTML évidemment)
-    // on va appeler la class 'help_logo_onclick'
-    // histoire de faire simple ;)
-    // Tu peux dégager ces commentaires une fois lus stv
-    help.show_btn.classList.add("help_logo_onclick")
+  // Là je modifie le CSS dynamiquement avec classList
+  // en gros tu crée une class CSS qui contient
+  // les nouvelles valeurs de l'élement
+  // (je vais les écrire dans un fichier à part -> transition.css)
+  // (et on oublie pas de le lier au code HTML évidemment)
+  // on va appeler la class 'help_logo_onclick'
+  // histoire de faire simple ;)
+  // Tu peux dégager ces commentaires une fois lus stv
+  help.show_btn.classList.add("help_logo_onclick");
 
-    // Comme t'as designé le logo avec un id dans ton CSS
-    // la fonction ne marche pas entierement.
-    // Du coup je dois faire ça :
-    help.show_btn.style.filter = "invert(100%) hue-rotate(160deg) grayscale(100%)"
-    // Mais le plus simple aurait été de designé le logo
-    // avec une class comme ça t'es pas emmerdé
+  // Comme t'as designé le logo avec un id dans ton CSS
+  // la fonction ne marche pas entierement.
+  // Du coup je dois faire ça :
+  help.show_btn.style.filter =
+    "invert(100%) hue-rotate(160deg) grayscale(100%)";
+  // Mais le plus simple aurait été de designé le logo
+  // avec une class comme ça t'es pas emmerdé
 
-    show(help.modal)
-}
-
+  show(help.modal);
+};
 
 /*
  * ACCOUNT MODAL
  */
-account.show_btn.onclick = () => { show(account.modal) }
-
+account.show_btn.onclick = () => {
+  show(account.modal);
+};
 
 /*
  * LEFT MENU
@@ -199,118 +203,149 @@ account.show_btn.onclick = () => { show(account.modal) }
 // (Bon en fait j'ai surtout la flemme de le faire)
 
 // Close menu when JS is loaded
-window.onload = () => { closeMenu() }
+window.onload = () => {
+  closeMenu();
+};
 
 burger.onclick = () => {
-    if (open) {
-        window.open = false
-        closeMenu()
-    } else {
-        window.open = true
-        openMenu()
-    }
-}
+  if (open) {
+    window.open = false;
+    closeMenu();
+  } else {
+    window.open = true;
+    openMenu();
+  }
+};
 
 // Close menu
 var closeMenu = () => {
-    for (var i = 0; i < menu.text.length; i++) {
-        menu.text[i].style.opacity = "0"
-        erase(menu.text[i])
-    }
+  for (var i = 0; i < menu.text.length; i++) {
+    menu.text[i].style.opacity = "0";
+    erase(menu.text[i]);
+  }
 
-    menu.add_task_div.style.paddingBottom = "7px"
-    menu.add_task_div.style.marginLeft = "23px"
-    menu.add_task_div.style.width = "50px"
+  menu.add_task_div.style.paddingBottom = "7px";
+  menu.add_task_div.style.marginLeft = "23px";
+  menu.add_task_div.style.width = "50px";
 
-    menu.add_task_logo.style.marginLeft = "8px"
+  menu.add_task_logo.style.marginLeft = "8px";
 
-    for (var i = 0; i < menu.img.length; i++) {
-        menu.img[i].style.marginLeft = "-23px"
-    }
+  for (var i = 0; i < menu.img.length; i++) {
+    menu.img[i].style.marginLeft = "-23px";
+  }
 
-    menu.selected_ligne.style.marginLeft = "100px"
-    menu.selected_ligne.style.width = "calc(100% - 100px)"
+  menu.selected_ligne.style.marginLeft = "100px";
+  menu.selected_ligne.style.width = "calc(100% - 100px)";
 
-    menu.main_div.style.width = "100px"
+  menu.main_div.style.width = "100px";
 
-    menu.selected.style.paddingRight = "0px"
+  menu.selected.style.paddingRight = "0px";
 
-    for (var i = 0; i < menu.not_selected.length; i++) {
-        menu.not_selected[i].style.paddingRight = "0px"
-    }
-}
+  for (var i = 0; i < menu.not_selected.length; i++) {
+    menu.not_selected[i].style.paddingRight = "0px";
+  }
+};
 
 // Open menu
 var openMenu = () => {
-    setTimeout(() => {
-        for (var i = 0; i < menu.text.length; i++) {
-            show(menu.text[i])
-        }
-        menu.add_task_div.style.paddingBottom = "2px"
-    }, 300);
-
-    setTimeout(() => {
-        for (var i = 0; i < menu.text.length; i++) {
-            menu.text[i].style.opacity = "1"
-        }
-    }, 310);
-
-    menu.add_task_div.style.marginLeft = "23px"
-    menu.add_task_div.style.width = "210px"
-
-    menu.add_task_logo.style.marginLeft = "8px"
-
-    for (var i = 0; i < menu.img.length; i++) {
-        menu.img[i].style.marginLeft = "0px"
+  setTimeout(() => {
+    for (var i = 0; i < menu.text.length; i++) {
+      show(menu.text[i]);
     }
+    menu.add_task_div.style.paddingBottom = "2px";
+  }, 300);
 
-    menu.selected_ligne.style.marginLeft = "260px"
-    menu.selected_ligne.style.width = "calc(100% - 260px)"
-
-    menu.main_div.style.width = "260px"
-
-    menu.selected.style.paddingRight = "90px"
-
-    for (var i = 0; i < menu.not_selected.length; i++) {
-        menu.not_selected[i].style.paddingRight = "90px"
+  setTimeout(() => {
+    for (var i = 0; i < menu.text.length; i++) {
+      menu.text[i].style.opacity = "1";
     }
+  }, 310);
 
-    menu.selected_ligne_header.style.width = "auto"
-}
+  menu.add_task_div.style.marginLeft = "23px";
+  menu.add_task_div.style.width = "210px";
+
+  menu.add_task_logo.style.marginLeft = "8px";
+
+  for (var i = 0; i < menu.img.length; i++) {
+    menu.img[i].style.marginLeft = "0px";
+  }
+
+  menu.selected_ligne.style.marginLeft = "260px";
+  menu.selected_ligne.style.width = "calc(100% - 260px)";
+
+  menu.main_div.style.width = "260px";
+
+  menu.selected.style.paddingRight = "90px";
+
+  for (var i = 0; i < menu.not_selected.length; i++) {
+    menu.not_selected[i].style.paddingRight = "90px";
+  }
+
+  menu.selected_ligne_header.style.width = "auto";
+};
 
 /*
  * CLOSE MODALS
  */
 for (var i = 0; i < close_btn.length; i++) {
-    close_btn[i].onclick = (event) => {
-        var close = event.target
-        var modal = close.parentElement.parentElement
-        modal.style.display = "none"
-    }
+  close_btn[i].onclick = (event) => {
+    var close = event.target;
+    var modal = close.parentElement.parentElement;
+    modal.style.display = "none";
+  };
 }
 // To improve...
 window.addEventListener("click", (event) => {
-    if (help.modal.style.display === "block" && event.target !== help.show_btn){
-        // Close help modal
-        help.show_btn.classList.remove("help_logo_onclick")
+  if (help.modal.style.display === "block" && event.target !== help.show_btn) {
+    // Close help modal
+    help.show_btn.classList.remove("help_logo_onclick");
 
-        // Même problème que la fonction 'help.show_btn.onclick'
-        help.show_btn.style.filter = "invert(25%)"
+    // Même problème que la fonction 'help.show_btn.onclick'
+    help.show_btn.style.filter = "invert(25%)";
 
-        erase(help.modal)
-    } else if(account.modal.style.display === "block" && !contain(event.path, account.modal) && event.target !== account.show_btn){
-        // Close account modal
-        erase(account.modal)
+    erase(help.modal);
+  } else if (
+    account.modal.style.display === "block" &&
+    !contain(event.path, account.modal) &&
+    event.target !== account.show_btn
+  ) {
+    // Close account modal
+    erase(account.modal);
+  }
+});
+
+/*
+ * Selectall task
+ */
+
+var select_all = document.getElementById("select_all");
+var checkbox = document.getElementsByClassName("to_check");
+var trash = document.getElementsByClassName("trash");
+
+select_all.onclick = () => {
+  for (var i = 0; i < checkbox.length; i++) {
+    checkbox[i].checked = select_all.checked;
+  }
+  if (select_all.checked) {
+    trash[0].style.display = "inline-block";
+  } else {
+    trash[0].style.display = "none";
+  }
+};
+for (var i = 0; i < checkbox.length; i++) {
+  checkbox[i].onclick = (event) => {
+    var path = event.path;
+    for (var i = 0; i < path.length; i++) {
+      
     }
-})
-
+  };
+}
 
 /*
 =========================
 ======= FUNCTIONS =======
 =========================
 */
-
 
 /**
  * Check if a value is contained in a specific array
@@ -319,27 +354,27 @@ window.addEventListener("click", (event) => {
  * @return {Boolean}
  */
 var contain = (array, value) => {
-    var r = false
-    for (var i = 0; i < array.length; i++) {
-        if(array[i] === value) r = true
-    }
-    return r
-}
+  var r = false;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === value) r = true;
+  }
+  return r;
+};
 
 /**
  * Show a specific element
  * @param  {DOM element} element Element to show
  */
 var show = (element) => {
-    element.style.display = "block"
-}
+  element.style.display = "block";
+};
 
 /**
  * Don't show a specific element anymore
  * @param  {DOM element} element Element to erase
  */
 var erase = (element) => {
-    element.style.display = "none"
-}
+  element.style.display = "none";
+};
 
 // J'ai créé le système de CHECK-ALL dans le fichier 'demo.html' ;)

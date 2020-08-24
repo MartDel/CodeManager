@@ -85,10 +85,11 @@
         <section class="ligne_et_taches">
 
             <div id="ligne_haut_tache_id" class="ligne_haut_tache">
-                <span title="Tout sélectionner"><input name="sample" onclick="all()" id="selectall"
-                        type="checkbox"></span>
-                <span title="Rafraîchir"><img id="refresh" src="img/refresh.png" alt="" onclick="location.reload()">
-                    <span title="Tâches effectuées"><img class="tasks_done" src="img/tick.png" alt=""></span>
+                <span title="Tout sélectionner"><input name="sample" id="select_all" type="checkbox"></span>
+                <span title="Rafraîchir"><img id="refresh" src="img/refresh.png" alt=""
+                        onclick="location.reload()"></span>
+                <span title="Tâches effectuées"><img class="tasks_done" src="img/task_done.png" alt=""></span>
+                <span title="Supprimer la tâche"><img class="trash" src="img/trash.png" alt=""></span>
 
             </div>
 
@@ -100,7 +101,7 @@
 
                     <button name="task" class="myBtn" id="task1">
                         <li>
-                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js"
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
                                     type="checkbox"></span>
                             <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
                                     src="img/tick.png" alt=""></span>
@@ -125,7 +126,7 @@
 
                     <button name="task" class="myBtn" id="task2">
                         <li>
-                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js"
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
                                     type="checkbox"></span>
                             <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
                                     src="img/tick.png" alt=""></span>
@@ -134,7 +135,8 @@
                             <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
                                 sympa
                                 (c'est toujours un test de bug eheh)</span>
-                            <span class="titre_tache">Coucou, ceci est un titre bien trop long pour l'écrire sur toute la
+                            <span class="titre_tache">Coucou, ceci est un titre bien trop long pour l'écrire sur toute
+                                la
                                 longueur
                                 dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
                                 c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
@@ -147,34 +149,6 @@
                             <span class="date">11/08/2020</span>
                         </li>
                     </button>
-
-                    <!--
-                    <button name="task" class="myBtn" id="task2">
-                        <li>
-                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
-                                    type="checkbox"></span>
-                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
-                                    id="tick" src="img/tick.png" alt=""></span>
-                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
-                                    src="img/edit_task_bar.png" alt=""></span>
-                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                                sympa
-                                (c'est toujours un test de bug eheh)</span>
-                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
-                                longueur
-                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                                autres
-                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                                etre
-                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                            <span class="date">11/08/2020</span>
-                        </li>
-                    </button>
-                    -->
-
                 </ul>
             </section>
         </section>
