@@ -54,7 +54,7 @@ var menu = {
     document.getElementById("text_menu_left_3"),
     document.getElementById("text_menu_left_4"),
     document.getElementById("text_menu_left_5"),
-    document.getElementById("new_task_text")
+    document.getElementById("new_task_text"),
   ],
   img: document.getElementsByClassName("img_menu_gauche_js"), // Array
   selected: document.getElementsByClassName("selectedmenu")[0],
@@ -62,15 +62,15 @@ var menu = {
   selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
   selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
   add_task_logo: document.getElementById("new_task_img"),
-  add_task_div: document.getElementById("new_task_div")
-}
+  add_task_div: document.getElementById("new_task_div"),
+};
 
 // Selectall
 var select_all = {
-    select_all: document.getElementById("select_all"),
-    checkbox: document.getElementsByClassName("to_check"),
-    trash: document.getElementsByClassName("trash")[0]
-}
+  select_all: document.getElementById("select_all"),
+  checkbox: document.getElementsByClassName("to_check"),
+  trash: document.getElementsByClassName("trash")[0],
+};
 
 var close_btn = document.getElementsByClassName("close");
 var body = document.getElementsByTagName("body")[0];
@@ -324,28 +324,33 @@ window.addEventListener("click", (event) => {
 /*
  * Selectall task
  */
-select_all.onclick = () => {
-    for (var i = 0; i < checkbox.length; i++) {
-        checkbox[i].checked = select_all.checked
-    }
-    if (select_all.checked) {
-        trash[0].style.display = "inline-block"
+select_all.select_all.onclick = () => {
+  for (var i = 0; i < select_all.checkbox.length; i++) {
+    select_all.checkbox[i].checked = select_all.select_all.checked;
+  }
+  if (select_all.select_all.checked) {
+    select_all.trash.style.display = "inline-block";
+  } else {
+    select_all.trash.style.display = "none";
+  }
+};
+for (var i = 0; i < select_all.checkbox.length; i++) {
+  select_all.checkbox[i].onclick = (event) => {
+    var c_checkbox = event.target;
+    console.log(c_checkbox);
+    if (c_checkbox.checked) {
+      // Show trash or do nothing
+      select_all.trash.style.display = "inline-block";
     } else {
-        trash[0].style.display = "none"
-    }
-}
-for (var i = 0; i < checkbox.length; i++) {
-    checkbox[i].onclick = (event) => {
-        var c_checkbox = event.target
-        console.log(c_checkbox)
-        if(c_checkbox.checked){
-            // Show trash or do nothing
-
-        } else {
-            // Remove trash or do nothing
-
+      for (var i = 0; i < select_all.checkbox.length; i++) {
+        if (select_all.checkbox[i].checked){
+          select_all.trash.style.display = "inline-block";
+        }else {
+          select_all.trash.style.display = "none";
         }
+      }
     }
+  };
 }
 
 /*
