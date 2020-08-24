@@ -3,7 +3,7 @@ var tasks = document.getElementsByName("task");
 var tasks_btn = {
   check_js: document.getElementsByClassName("check_js"),
   tick: document.getElementsByClassName("tick"),
-  tick2: document.getElementsByClassName("tick2"),
+  tick2: document.getElementsByClassName("tick2")
 };
 
 // 'Add task' elements
@@ -13,7 +13,7 @@ var addtask = {
   close_btn: document.getElementById("close_add"),
   cancel_btn: document.getElementById("addtask_cancel"),
   title_input: document.getElementById("textarea_title"),
-  desc_input: document.getElementById("textarea_desc"),
+  desc_input: document.getElementById("textarea_desc")
 };
 
 // Settings elements
@@ -23,19 +23,19 @@ var settings = {
   close_btn: document.getElementById("close_settings"),
   dark_mode_btn: document.getElementById("dark_mode"),
   night_shift_btn: document.getElementById("night_shift"),
-  bug_input: document.getElementById("textarea_bug"),
+  bug_input: document.getElementById("textarea_bug")
 };
 
 // Help elements
 var help = {
   modal: document.getElementById("help_modal"),
-  show_btn: document.getElementById("help_logo_img"),
+  show_btn: document.getElementById("help_logo_img")
 };
 
 // Account elements
 var account = {
   modal: document.getElementById("account_modal"),
-  show_btn: document.getElementById("account_logo_img"),
+  show_btn: document.getElementById("account_logo_img")
 };
 
 // Menu element
@@ -54,7 +54,7 @@ var menu = {
     document.getElementById("text_menu_left_3"),
     document.getElementById("text_menu_left_4"),
     document.getElementById("text_menu_left_5"),
-    document.getElementById("new_task_text"),
+    document.getElementById("new_task_text")
   ],
   img: document.getElementsByClassName("img_menu_gauche_js"), // Array
   selected: document.getElementsByClassName("selectedmenu")[0],
@@ -62,14 +62,14 @@ var menu = {
   selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
   selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
   add_task_logo: document.getElementById("new_task_img"),
-  add_task_div: document.getElementById("new_task_div"),
+  add_task_div: document.getElementById("new_task_div")
 };
 
 // Selectall
 var select_all = {
   select_all: document.getElementById("select_all"),
   checkbox: document.getElementsByClassName("to_check"),
-  trash: document.getElementsByClassName("trash")[0],
+  trash: document.getElementsByClassName("trash")[0]
 };
 
 var close_btn = document.getElementsByClassName("close");
@@ -331,24 +331,22 @@ select_all.select_all.onclick = () => {
   if (select_all.select_all.checked) {
     select_all.trash.style.display = "inline-block";
   } else {
-    select_all.trash.style.display = "none";
+    erase(select_all.trash)
   }
 };
 for (var i = 0; i < select_all.checkbox.length; i++) {
   select_all.checkbox[i].onclick = (event) => {
     var c_checkbox = event.target;
-    console.log(c_checkbox);
+    // console.log(c_checkbox);
     if (c_checkbox.checked) {
       // Show trash or do nothing
       select_all.trash.style.display = "inline-block";
     } else {
+        hide = true
       for (var i = 0; i < select_all.checkbox.length; i++) {
-        if (select_all.checkbox[i].checked){
-          select_all.trash.style.display = "inline-block";
-        }else {
-          select_all.trash.style.display = "none";
-        }
+        if (select_all.checkbox[i].checked) hide = false
       }
+      if(hide) erase(select_all.trash)
     }
   };
 }
