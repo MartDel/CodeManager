@@ -3,7 +3,7 @@ var tasks = document.getElementsByName("task");
 var tasks_btn = {
   check_js: document.getElementsByClassName("check_js"),
   tick: document.getElementsByClassName("tick"),
-  tick2: document.getElementsByClassName("tick2")
+  tick2: document.getElementsByClassName("tick2"),
 };
 
 // 'Add task' elements
@@ -13,7 +13,7 @@ var addtask = {
   close_btn: document.getElementById("close_add"),
   cancel_btn: document.getElementById("addtask_cancel"),
   title_input: document.getElementById("textarea_title"),
-  desc_input: document.getElementById("textarea_desc")
+  desc_input: document.getElementById("textarea_desc"),
 };
 
 // Settings elements
@@ -23,19 +23,19 @@ var settings = {
   close_btn: document.getElementById("close_settings"),
   dark_mode_btn: document.getElementById("dark_mode"),
   night_shift_btn: document.getElementById("night_shift"),
-  bug_input: document.getElementById("textarea_bug")
+  bug_input: document.getElementById("textarea_bug"),
 };
 
 // Help elements
 var help = {
   modal: document.getElementById("help_modal"),
-  show_btn: document.getElementById("help_logo_img")
+  show_btn: document.getElementById("help_logo_img"),
 };
 
 // Account elements
 var account = {
   modal: document.getElementById("account_modal"),
-  show_btn: document.getElementById("account_logo_img")
+  show_btn: document.getElementById("account_logo_img"),
 };
 
 // Menu element
@@ -54,7 +54,7 @@ var menu = {
     document.getElementById("text_menu_left_3"),
     document.getElementById("text_menu_left_4"),
     document.getElementById("text_menu_left_5"),
-    document.getElementById("new_task_text")
+    document.getElementById("new_task_text"),
   ],
   img: document.getElementsByClassName("img_menu_gauche_js"), // Array
   selected: document.getElementsByClassName("selectedmenu")[0],
@@ -62,15 +62,25 @@ var menu = {
   selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
   selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
   add_task_logo: document.getElementById("new_task_img"),
-  add_task_div: document.getElementById("new_task_div")
+  add_task_div: document.getElementById("new_task_div"),
 };
 
 // Selectall
 var select_all = {
   select_all: document.getElementById("select_all"),
   checkbox: document.getElementsByClassName("to_check"),
-  trash: document.getElementsByClassName("trash")[0]
+  trash: document.getElementsByClassName("trash")[0],
 };
+
+//SWAP PROJECT MODAL
+var swap = {
+  master: document.getElementById("projet_princ"),
+  list: document.getElementById("ul_swap"),
+  li: document.getElementsByClassName("li_swap"),
+  arrow: document.getElementById("arrow"),
+};
+var modal_swap = document.getElementById("project_modal_container");
+var modal_swap_icon = document.getElementById("switch_logo_img");
 
 var close_btn = document.getElementsByClassName("close");
 var body = document.getElementsByTagName("body")[0];
@@ -331,7 +341,7 @@ select_all.select_all.onclick = () => {
   if (select_all.select_all.checked) {
     select_all.trash.style.display = "inline-block";
   } else {
-    erase(select_all.trash)
+    erase(select_all.trash);
   }
 };
 for (var i = 0; i < select_all.checkbox.length; i++) {
@@ -342,13 +352,67 @@ for (var i = 0; i < select_all.checkbox.length; i++) {
       // Show trash or do nothing
       select_all.trash.style.display = "inline-block";
     } else {
-        hide = true
+      hide = true;
       for (var i = 0; i < select_all.checkbox.length; i++) {
-        if (select_all.checkbox[i].checked) hide = false
+        if (select_all.checkbox[i].checked) hide = false;
       }
-      if(hide) erase(select_all.trash)
+      if (hide) erase(select_all.trash);
     }
   };
+}
+
+//SWAP PROJECT MODAL
+
+window.onclick = (event) => {
+  var w_window = event.target;
+  if (
+    w_window !== swap.master &&
+    w_window !== swap.list &&
+    swap.list.style.display == "block"
+  ) {
+    swap.list.style.display = "none";
+    swap.master.style.border = "rgb(190, 190, 190) 2px solid";
+    swap.arrow.innerHTML = "&#x25BC;";
+  }
+};
+
+swap.master.onclick = () => {
+  if (swap.list.style.display == "block") {
+    swap.list.style.display = "none";
+    //swap.master.style.border = "white 2px solid";
+    swap.arrow.innerHTML = "&#x25BC;";
+  } else {
+    swap.list.style.display = "block";
+    swap.master.style.borderLeft = "rgb(190, 190, 190) 2px solid";
+    swap.master.style.borderRight = "rgb(190, 190, 190) 2px solid";
+    swap.master.style.borderTop = "rgb(190, 190, 190) 2px solid";
+    swap.arrow.innerHTML = "&#9650;";
+  }
+};
+
+for (var i = 0; i < swap.li.length; i++) {
+  swap.li[i].onclick = (event) => {
+    var swap_l_li = event.target;
+    swap.master.innerHTML = swap_l_li.innerHTML;
+    swap.list.style.display = "none";
+    swap.arrow.innerHTML = "&#x25BC;";
+    for (var i = 0; i < swap.li.length; i++) {
+      if (swap.master.innerHTML == swap.li[i].innerHTML) {
+        swap.li[i].style.backgroundColor = "rgb(190, 190, 190)";
+        swap.master.style.border = "rgb(190, 190, 190) 2px solid";
+      } else {
+        swap.li[i].style.backgroundColor = "white";
+      }
+    }
+  };
+}
+
+document.getElementById("close_swap").onclick = () => {
+  erase(modal_swap);
+};
+
+modal_swap_icon.onclick = () => {
+  show(modal_swap)
 }
 
 /*

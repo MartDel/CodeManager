@@ -47,12 +47,7 @@
         <img id="help_logo_img" src="img/question.png" alt="">
         <img id="account_logo_img" src="img/switzerland.png" />
         <img id="gear_logo_img" src="img/gear.png" />
-        <!--<img id="switch_logo_img" src="img/file_swap.png" alt="">-->
-        <select name="project_switch">
-            <option>Projet 1</option>
-            <option selected="yes">Projet 2</option>
-            <option>Projet 3</option>
-        </select>
+        <img id="switch_logo_img" src="img/file_swap.png" alt="">
     </div>
 
     <!--MENU DE GAUCHE-->
@@ -323,6 +318,58 @@
         </section>
     </div>
 
+
+
+    <!--SWAP PROJECT MODAL-->
+    <div id="project_modal_container">
+        <div id="project_modal">
+            <section id="header_project_modal">
+                <img src="img/essai_logo.png" alt="">
+                <p>Changer de projet</p>
+                <span id="close_swap" class="close_swap">&times;</span>
+            </section>
+            <br><br><br><br>
+            <section id="body_project_modal">
+                <section id="flex_arrow">
+                    <p id="change_title">Changer de projet :</p>
+                    <section>
+                        <div id="projet_princ">Projet 123</div>
+                        <p id="arrow">&#x25BC;</p>
+                    </section>
+                </section>
+
+                <ul id="ul_swap">
+                    <li class="li_swap">Projet 1</li>
+                    <li class="li_swap">Projet 2</li>
+                    <li class="li_swap">Projet 3</li>
+                    <li class="li_swap">Projet 4</li>
+                    <li class="li_swap">Projet 5</li>
+                    <li class="li_swap">Projet 6</li>
+                    <li class="li_swap">Projet 7</li>
+                    <li class="li_swap">Projet 8</li>
+                    <li class="li_swap">Projet 1</li>
+                    <li class="li_swap">Projet 2</li>
+                    <li class="li_swap">Projet 3</li>
+                    <li class="li_swap">Projet 4</li>
+                    <li class="li_swap">Projet 5</li>
+                    <li class="li_swap">Projet 6</li>
+                    <li class="li_swap">Projet 7</li>
+                    <li class="li_swap">Projet 8</li>
+                </ul>
+                <br><br><br><br>
+                <div id="div_form_new_project"></div>
+                <br><br>
+                    <h1>Nom du Projet (80 caractères max.)</h1>
+                    <textarea name="" id="new_project_name" maxlength="80"></textarea>
+                    <h1>Description du projet (optionnel)</h1>
+                    <textarea name="" id="new_project_desc" maxlength="80"></textarea>
+                    <h2>Lien GitHub (optionnel)</h2>
+                    <textarea name="" id="new_project_git" maxlength="80"></textarea>
+                    <button id="create_project">Créer un nouveau projet</button>
+                
+            </section>
+        </div>
+    </div>
     <script type="text/javascript" src="tasksjs2_compact.js"></script>
 </body>
 
