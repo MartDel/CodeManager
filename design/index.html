@@ -11,11 +11,23 @@
     <link rel="icon" type="image/png" href="" />
     <link rel="shortcut icon" href="img/programmer2.png">
     <script type="text/javascript">
-        window.onload = function () {
-            //document.getElementById("div_img_accueil").style.filter = "blur(3px)";
-            //document.getElementById("top_div_title").style.height = "10%";
-            //document.getElementById("top_div_title_p").style.marginTop = "2%";
+        document.body.style.cursor = 'wait';
+        window.onload = () => {
+            document.body.style.cursor = 'default';
         }
+    </script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5f3cf6161e7ade5df442289f/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
     </script>
 </head>
 
@@ -24,14 +36,22 @@
         <!--<img src="img/programmer2.png">
         <p id="top_div_title_p"><strong>CODEMANAGER</strong></p>-->
         <a href="index.html"><img src="img/essai_logo.png" alt=""></a>
-        <div id="enregistrer">
-            <p>S'enregistrer</p>
-        </div>
-        <div id="ou">
-            <p>ou</p>
-        </div>
-        <div id="se_connecter">
-            <p>Se connecter</p>
+        <div id="button_div">
+            <button id="enregistrer">
+                <div>
+                    <p>S'enregistrer</p>
+                </div>
+            </button>
+            <button id="ou">
+                <div>
+                    <p>ou</p>
+                </div>
+            </button>
+            <button id="se_connecter">
+                <div>
+                    <p>Se connecter</p>
+                </div>
+            </button>
         </div>
     </div>
     <div id="petite_presentation">
@@ -41,13 +61,18 @@
         <button id="inscription_div">
             INSCRIVEZ-VOUS GRATUITEMENT
         </button>
-        <a href="#infos_generales_site" ><p id="savoir_plus">EN SAVOIR PLUS ></p></a>
-        <p id="disponible">Désormais disponible sur tous les navigateurs, <br>et à utiliser sans modération pour tous
-            vos projets</p>
+        <a href="#infos_generales_site">
+            <p id="savoir_plus">EN SAVOIR PLUS ></p>
+        </a>
+        <div id="disponible_div">
+            <p id="disponible">Désormais disponible sur tous les navigateurs, <br>et à utiliser sans modération pour
+                tous
+                vos projets</p>
+        </div>
     </div>
     <!--<video id="videointro" src="img/Codes.mp4" loop autoplay></video>-->
     <div id="div_img_accueil">
-        <img id="img_accueil" src="img/codebcc.jpg">
+        <!--<img id="img_accueil" src="img/codebcc.jpg">-->
     </div>
 
     <div id="infos_generales_site">
@@ -59,7 +84,9 @@
                 <p>Un projet commun.<br>Le partage entre les participants.</p>
                 <p>Un outil pour répartir le travail, partager ses documents et suivre l'avancement du projet.</p>
             </div>
-            <br><br><br><br><br><br>
+            <br><br><br>
+            <div class="séparation"></div>
+            <br><br><br>
             <img class="img_index_desc" src="img/objectiveindex.png">
             <h1>Atteignez vos objectifs</h1>
             <div id="flex_p">
@@ -68,26 +95,30 @@
                     projet</p>
                 <p>Des objectifs à atteidre pour avancer et pour terminer votre projet sans retard.</p>
             </div>
-            <br><br><br><br><br><br>
-
-            <h1>Des fonctionnalités pour faciliter et sécuriser le travail</h1>
             <br><br><br>
-            <div id="flex_p">
-                <div class="flexcol">
-                    <img src="img/documentindex.png">
-                    <h2 class="fonctionnalites"><strong>Fichiers à la demande</strong></h2>
-                </div>
-                <div class="flexcol">
-                    <img src="img/listindex.png">
-                    <h2 class="fonctionnalites"><strong>Des tâches et objectifs pour avancer rapidement</strong></h2>
-                </div>
-                <div class="flexcol">
-                    <img src="img/uploadindex.png">
-                    <h2 class="fonctionnalites"><strong>Plusieurs fichiers de sauvegarde</strong></h2>
+            <!--<div class="séparation"></div>-->
+            <br><br><br>
+            <div id="bcc_icons">
+                <h1>Des fonctionnalités pour faciliter et sécuriser le travail</h1>
+                <br><br><br>
+                <div id="flex_p">
+                    <div class="flexcol">
+                        <img src="img/documentindex.png">
+                        <h2 class="fonctionnalites"><strong>Fichiers à la demande</strong></h2>
+                    </div>
+                    <div class="flexcol">
+                        <img src="img/listindex.png">
+                        <h2 class="fonctionnalites"><strong>Des tâches et objectifs pour avancer rapidement</strong>
+                        </h2>
+                    </div>
+                    <div class="flexcol">
+                        <img src="img/uploadindex.png">
+                        <h2 class="fonctionnalites"><strong>Plusieurs fichiers de sauvegarde</strong></h2>
+                    </div>
                 </div>
             </div>
         </div>
-        <br><br><br>
+
         <div id="espace_div_bcc">
             <div>
                 <h1><strong>Lancez-vous dès à présent ou <br>continuez un projet existant</strong></h1><br><br><br>

@@ -211,9 +211,29 @@ a {
     margin-right: 100px;
     filter: invert(25%)
 }
+#menu_haut #switch_logo_img {
+    height: 20px;
+    margin-top: 15px;
+    position: absolute;
+    right: 0;
+    margin-right: 140px;
+    filter: invert(25%)
+}
 
 #menu_haut #gear_logo_img:hover {
     cursor: pointer;
+}
+
+select{
+    background-color:rgb(255, 255, 255);
+    font-family: "Product Sans Regular";
+    font-size: 16px;
+    border:none;    
+    height: 20px;
+    margin-top: 15px;
+    position: absolute;
+    right: 0;
+    margin-right: 140px;
 }
 
 

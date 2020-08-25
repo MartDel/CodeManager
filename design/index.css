@@ -43,6 +43,21 @@ a{
     font-style: normal;
 
 }
+body{
+    background-image: url(img/codebcc2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+#bcc_icons{
+    background-image: url(img/office2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top:120px;
+    padding-bottom:120px;
+}
 
 #img_accueil {
     width: 100%;
@@ -57,7 +72,8 @@ a{
     /*filter:blur(0px);*/
     transition: filter 1s ease;
     /*transform: scaleX(-1);*/
-    filter: brightness(50%);
+    /*filter: brightness(50%);*/
+    background-color: rgba(255, 255, 255, 0);
 }
 
 #top_div_title {
@@ -98,7 +114,9 @@ a{
     text-align: left;
     font-size: 35px;
     margin-left: 5%;
-    margin-top: 15vh
+    margin-top: 15vh;
+    /*background-color: #fff;*/
+    height:80%;
 }
 
 #top_div_title img {
@@ -131,10 +149,11 @@ a{
 
 #inscription_div:hover {
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.082);
 }
 
 #inscription_div:focus {
-    background-color: rgba(255, 255, 255, 0.144);
+    background-color: rgba(255, 255, 255, 0.281);
 }
 
 #savoir_plus {
@@ -150,34 +169,55 @@ a{
 #div_général_connexion p{
     float:right
 }*/
+#button_div{
+    background-color: rgba(255, 0, 0, 0);
+    right:0;
+    position: absolute;
+    width:30%;
+    height:100%;
+    align-items: center;
+}
+#button_div button{
+    height:80%;
+    outline:none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
 #se_connecter {
     border: rgb(91, 92, 96) 2px solid;
     position: absolute;
     font-size: 16px;
     text-align: center;
-    margin-left: 88vw;
+    margin-left: 10%;
     width: 10vw;
     margin-top: 1vh;
 
 }
 
+#se_connecter:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.04);
+}
 #se_connecter p {
     text-align: center;
 }
 
 #enregistrer {
     border: rgb(255, 255, 255) 2px solid;
+    
     position: absolute;
     font-size: 16px;
     text-align: center;
-    margin-left: 75vw;
+    margin-left: 60%;
     width: 10vw;
     margin-top: 1vh;
-    
-
 }
-
-#enregistrer p {
+#enregistrer:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.04);
+    border: rgb(91, 92, 96) 2px solid;
+}
+#enregistrer{
     padding: 0;
     padding-top: 0vh;
     text-align: center;
@@ -188,13 +228,16 @@ a{
     position: absolute;
     font-size: 16px;
     text-align: center;
-    margin-left: 84vw;
+    margin-left: calc(50% - 2px);
     width: 3vw;
     margin-top: 1vh;
-
+    height:70%;
 
 }
 
+#ou:hover{
+    cursor: default;
+}
 #ou p {
     padding: 0;
     padding-top: 0vh;
@@ -205,7 +248,12 @@ a{
     font-style: italic;
     font-family: georgia, "times new roman", norasi, serif;
     font-size: 17px;
-    margin-top: 25vh;
+    /*margin-top: 25vh;*/
+}
+#disponible_div{
+    position: absolute;
+    bottom:0px;
+    /*background-color: rgb(255, 0, 0);*/
 }
 
 #infos_generales_site {
@@ -337,7 +385,19 @@ a{
     text-transform: uppercase;
 }
 
+.séparation{
+    background-color: rgba(0, 0, 0, 0.164);
+    height:2px;
+    width:70%;
+    margin-left:15%
+}
 
+#bcc_icons h1, #bcc_icons h2{
+    color: white;
+}
+#bcc_icons img{
+    filter:invert(100%)
+}
 
 /*ANIMATIONS*/
 
