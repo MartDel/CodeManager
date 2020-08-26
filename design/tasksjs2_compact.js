@@ -406,9 +406,17 @@ for (var i = 0; i < swap.li.length; i++) {
     }
   };
 }
+var name_new_pro = document.getElementById("new_project_name");
+var desc_new_pro = document.getElementById("new_project_desc");
+var git_new_pro = document.getElementById("new_project_git");
+
 
 document.getElementById("close_swap").onclick = () => {
   erase(modal_swap);
+  name_new_pro.value= "";
+  desc_new_pro.value = "";
+  git_new_pro.value = "";
+
 };
 
 modal_swap_icon.onclick = () => {

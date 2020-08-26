@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="img/programmer2.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {},
@@ -21,12 +22,14 @@
             var s1 = document.createElement("script"),
                 s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
-            s1.src = 'https://embed.tawk.to/5f3cf6161e7ade5df442289f/default';
+            s1.src = 'https://embed.tawk.to/5f3cf6161e7ade5df442289f/1egl19u2n';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
+    <!--End of Tawk.to Script-->
+
 </head>
 
 <body id="body">
@@ -48,6 +51,7 @@
         <img id="account_logo_img" src="img/switzerland.png" />
         <img id="gear_logo_img" src="img/gear.png" />
         <img id="switch_logo_img" src="img/file_swap.png" alt="">
+        <p id="project_actual">Projet en cours</p>
     </div>
 
     <!--MENU DE GAUCHE-->
@@ -333,7 +337,7 @@
                 <section id="flex_arrow">
                     <p id="change_title">Changer de projet :</p>
                     <section>
-                        <div id="projet_princ">Projet 123</div>
+                        <div id="projet_princ">Changer de projet</div>
                         <p id="arrow">&#x25BC;</p>
                     </section>
                 </section>
@@ -356,17 +360,17 @@
                     <li class="li_swap">Projet 7</li>
                     <li class="li_swap">Projet 8</li>
                 </ul>
-                <br><br><br><br>
+                <br><br>
                 <div id="div_form_new_project"></div>
                 <br><br>
-                    <h1>Nom du Projet (80 caractères max.)</h1>
-                    <textarea name="" id="new_project_name" maxlength="80"></textarea>
-                    <h1>Description du projet (optionnel)</h1>
-                    <textarea name="" id="new_project_desc" maxlength="80"></textarea>
-                    <h2>Lien GitHub (optionnel)</h2>
-                    <textarea name="" id="new_project_git" maxlength="80"></textarea>
-                    <button id="create_project">Créer un nouveau projet</button>
-                
+                <h1>Nom du Projet (20 caractères max.)</h1>
+                <textarea name="" id="new_project_name" maxlength="20" placeholder="Nom du projet"></textarea>
+                <h1>Description du projet (optionnel)</h1>
+                <textarea name="" id="new_project_desc" placeholder="Description du projet"></textarea>
+                <h2>Lien GitHub (optionnel)</h2>
+                <textarea name="" id="new_project_git" placeholder="Lien GitHub"></textarea>
+                <button id="create_project">Créer un nouveau projet</button>
+
             </section>
         </div>
     </div>
@@ -374,5 +378,3 @@
 </body>
 
 </html>
-<!-- Met pas ta balise script en dehors de ton code html -->
-<!-- Oupsiiii-->

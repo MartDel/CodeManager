@@ -229,6 +229,14 @@ a {
     cursor: pointer;
 }
 
+#project_actual{
+    font-family: "Product Sans Regular";
+    font-size: 15px;
+    color:black;
+    right:0;
+    position: absolute;
+    margin-right: 180px;
+}
 
 /*MENU DE GAUCHE*/
 
@@ -1280,7 +1288,7 @@ input.apple-switch:checked:after {
     /*border: white 2px solid;*/
     font-family: "Product Sans Regular";
     font-size: 1.1rem;
-    width: 50%;
+    width: 300px;
     text-align: center;
     padding: 10px;
     border: rgb(190, 190, 190) 2px solid;
@@ -1302,7 +1310,7 @@ input.apple-switch:checked:after {
     border-bottom: rgb(190, 190, 190) 2px solid;
     font-family: "Product Sans Regular";
     font-size: 1.1rem;
-    width: 100px;
+    width: 300px;
     text-align: center;
     padding: 10px;
     display: none;
@@ -1346,7 +1354,7 @@ input.apple-switch:checked:after {
     display: flex;
     flex-direction: row;
     text-align: right;
-    width:200px;
+    width:400px;
     background-color: rgba(255, 0, 0, 0);
 }
 
@@ -1385,7 +1393,7 @@ input.apple-switch:checked:after {
     color:black;
     margin-left:10%
 }
-#project_modal textarea{
+#new_project_name, #new_project_git{
     resize: none;
     width:80%;
     margin-left:10%;
@@ -1395,7 +1403,8 @@ input.apple-switch:checked:after {
     font-weight: lighter;
     color:black;
     padding:10px;
-    border-radius: 10px;;
+    border-radius: 10px;
+    
 }
 
 #div_form_new_project{
@@ -1403,5 +1412,16 @@ input.apple-switch:checked:after {
     height:2px;
     width:60%;
     margin-left:20%;
-    
+}
+#new_project_desc{
+    resize: none;
+    width:80%;
+    margin-left:10%;
+    font-family: "Product Sans Regular";
+    font-size: 0.8rem;
+    height:6rem;
+    font-weight: lighter;
+    color:black;
+    padding:10px;
+    border-radius: 10px;
 }
