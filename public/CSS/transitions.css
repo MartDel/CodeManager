@@ -1,0 +1,11 @@
+.help_logo_onclick{
+    background-color: red;
+    border-radius: 30%;
+    /*filter: invert(100%) hue-rotate(160deg) grayscale(100%);*/
+}
+
+.addtask_div_close{
+    padding-bottom: 7px;
+    margin-left: 23px;
+    width: 50px;
+}

@@ -6,9 +6,9 @@ require('model/model.php');
  * @param  Object $post All of data
  */
 function checkSignUp($post){
-  checkNewUserData($post);
-  addUser($post);
-  header("Location: index.php");
+    checkNewUserData($post);
+    addUser($post);
+    header("Location: index.php");
 }
 
 /**
@@ -16,26 +16,26 @@ function checkSignUp($post){
  * @param  Object $post All of data
  */
 function checkSignIn($post){
-  if(!isset($post['login']) || !isset($post['password'])) {
-    throw new Exception("Veuillez remplir tous les champs");
-  }
-  checkConnection($post['login'], $post['password'], false);
-  connectUser(htmlspecialchars($post['login']), $post['auto']);
-  header("Location: index.php");
+    if(!isset($post['login']) || !isset($post['password'])) {
+        throw new Exception("Veuillez remplir tous les champs");
+    }
+    checkConnection($post['login'], $post['password'], false);
+    connectUser(htmlspecialchars($post['login']), $post['auto']);
+    header("Location: index.php");
 }
 
 /**
  * Check if user's cookies are correct
  */
 function checkCookie(){
-  try {
-    checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
-    connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
-    header("Location: index.php");
-  } catch (Exception $e) {
-    logout();
-    header("Location: index.php?action=home");
-  }
+    try {
+        checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
+        connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
+        header("Location: index.php");
+    } catch (Exception $e) {
+        logout();
+        header("Location: index.php?action=home");
+    }
 }
 
 /**
@@ -43,34 +43,34 @@ function checkCookie(){
  * @param int $project_id Current project id
  */
 function showMainPage($project_id = 0){
-  $tasks = Task::getAllTasks($project_id);
-  $to_do = Task::getStat('is_done', 0, $project_id);
-  $done = Task::getStat('is_done', 1, $project_id);
-  if($to_do + $done != 0) $percentage = $done / ($to_do + $done) * 100;
-  else $percentage = 0;
-  require('view/main.php');
+    $tasks = Task::getAllTasks($project_id);
+    $to_do = Task::getStat('is_done', 0, $project_id);
+    $done = Task::getStat('is_done', 1, $project_id);
+    if($to_do + $done != 0) $percentage = $done / ($to_do + $done) * 100;
+    else $percentage = 0;
+    require('view/main.php');
 }
 
 /**
  * Get all of project commits and show them
  */
 function showProjectCommit(){
-  $github_user = 'MartDel';
-  $project_name = 'CodeManager';
-  $commits = getCommits($github_user, $project_name);
-  foreach ($commits as $key => $commit) {
-    $current = $commit->commit;
-    $author = $current->author;
-    echo $author->name . ' : ' . $current->message . ' | Date : ' . date("H:i:s d/m/Y", strtotime($author->date)) . '<br>';
-  }
+    $github_user = 'MartDel';
+    $project_name = 'CodeManager';
+    $commits = getCommits($github_user, $project_name);
+    foreach ($commits as $key => $commit) {
+        $current = $commit->commit;
+        $author = $current->author;
+        echo $author->name . ' : ' . $current->message . ' | Date : ' . date("H:i:s d/m/Y", strtotime($author->date)) . '<br>';
+    }
 }
 
 /**
  * Logout the current user
  */
 function logout(){
-  session_destroy();
+    session_destroy();
 	setcookie('pseudo', '', time() + 365*24*3600, null, null, false, true);
 	setcookie('password', '', time() + 365*24*3600, null, null, false, true);
-  header('Location: index.php');
+    header('Location: index.php');
 }

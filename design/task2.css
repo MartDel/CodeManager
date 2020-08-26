@@ -161,7 +161,7 @@ a {
     background-color: #f1f3f4;
     border: #f1f3f4 1px solid;
     border-radius: 10px;
-    background-image: url(img/search.png);
+    background-image: url(public/img/search.png);
     background-position: 3.5%;
     background-repeat: no-repeat;
     background-size: 2.5%;
@@ -1373,7 +1373,7 @@ input.apple-switch:checked:after {
     margin-bottom:20px;
 }
 #create_project:hover{
-    
+
     background-color: #b41e10;
     color:white;
     cursor: pointer;
@@ -1404,7 +1404,7 @@ input.apple-switch:checked:after {
     color:black;
     padding:10px;
     border-radius: 10px;
-    
+
 }
 
 #div_form_new_project{

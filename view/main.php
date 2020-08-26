@@ -1,7 +1,7 @@
 <?php
 
-$title = "Tâches | CodeManager";
-$cssfile = "task";
+$title = "Tâches | ProjectName";
+$cssfile = "tasks";
 $jsfile = "tasksjs";
 ob_start();
 
@@ -25,6 +25,8 @@ ob_start();
         <img id="help_logo_img" src="public/img/question.png" alt="">
         <img id="account_logo_img" src="public/img/switzerland.png" />
         <img id="gear_logo_img" src="public/img/gear.png" />
+        <img id="switch_logo_img" src="public/img/file_swap.png" alt="">
+        <p id="project_actual">Projet en cours</p>
     </div>
 
     <!--MENU DE GAUCHE-->
@@ -63,10 +65,11 @@ ob_start();
         <section class="ligne_et_taches">
 
             <div id="ligne_haut_tache_id" class="ligne_haut_tache">
-                <span title="Tout sélectionner"><input name="sample" onclick="all()" id="selectall"
-                        type="checkbox"></span>
-                <span title="Rafraîchir"><img id="refresh" src="public/img/refresh.png" alt="" onclick="refresh()">
-                    <span title="Tâches effectuées"><img class="tasks_done" src="public/img/tick.png" alt=""></span>
+                <span title="Tout sélectionner"><input name="sample" id="select_all" type="checkbox"></span>
+                <span title="Rafraîchir"><img id="refresh" src="public/img/refresh.png" alt=""
+                        onclick="location.reload()"></span>
+                <span title="Tâches effectuées"><img class="tasks_done" src="public/img/task_done.png" alt=""></span>
+                <span title="Supprimer"><img class="trash" src="public/img/trash.png" alt=""></span>
 
             </div>
 
@@ -76,55 +79,30 @@ ob_start();
             <section class="list_task">
                 <ul id="liste_taches" class="liste_taches">
 
-                    <button name="myBtn" class="myBtn" id="myBtn">
+                    <?php
+                    $i = 0;
+                    foreach ($tasks as $task) {
+                        if (!$task->getIsDone()) {
+                    ?>
+                    <button name="task" class="myBtn" id="task<?= $i ?>">
                         <li>
-                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
                                     type="checkbox"></span>
-                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
-                                    id="tick" src="public/img/tick.png" alt=""></span>
-                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
+                                    src="public/img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img tick2"
                                     src="public/img/edit_task_bar.png" alt=""></span>
-                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                                sympa
-                                (c'est toujours un test de bug eheh)</span>
-                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
-                                longueur
-                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                                autres
-                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                                etre
-                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                            <span class="date">11/08/2020</span>
+                            <span class="utilisateur"><?= $task->getAuthor() ?></span>
+                            <span class="titre_tache"><?= $task->getName() ?></span>
+                            <span class="desc_tache"><?= $task->getDescription() ?></span>
+                            <span class="date"><?= $task->getCreateDate() ?></span>
                         </li>
                     </button>
-                    <button name="myBtn" class="myBtn" id="myBtn">
-                        <li>
-                            <span class="span_input_img" title="Sélectionner"><input id="check_js" class="input_img"
-                                    type="checkbox"></span>
-                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img"
-                                    id="tick" src="public/img/tick.png" alt=""></span>
-                            <span class="span_input_img" title="Éditer"><img class="input_img" id="tick2"
-                                    src="public/img/edit_task_bar.png" alt=""></span>
-                            <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                                sympa
-                                (c'est toujours un test de bug eheh)</span>
-                            <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
-                                longueur
-                                dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                                c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                            <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                                savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                                autres
-                                puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                                etre
-                                forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                            <span class="date">11/08/2020</span>
-                        </li>
-                    </button>
-
+                    <?php
+                            $i++;
+                        }
+                    }
+                    ?>
 
                 </ul>
             </section>
@@ -133,7 +111,11 @@ ob_start();
 
 
     <!--MODAL CONTENT-->
-    <div id="myModal" class="modal">
+    <?php
+    $i = 0;
+    foreach ($tasks as $task) {
+    ?>
+    <div id="task<?= $i ?>_modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
 
@@ -144,24 +126,20 @@ ob_start();
             </section>
 
             <section class="titre_popup">
-
-                <strong>Ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
-                    surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
-                    tests de bug comme Martin me l'avait conséillé</strong>
+                <strong><?= $task->getName() ?></strong>
             </section>
             <div class="line_popup"></div>
             <section class="descriptif_popup">
-                Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit
-                pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut
-                parler. il faut que ca soit detaillé sans etre forcement trop long pour pas avoir la flemme de lire tout
-                ce bazar.
+                <?= $task->getDescription() ?>
                 <br><br>
-                <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
-                    bug eheh) le 11/08/2020</i>
+                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
         </div>
     </div>
-
+    <?php
+        $i++;
+    }
+    ?>
 
     <!--ADD TASK MODAL-->
     <div id="add_task_modal_general">
@@ -178,9 +156,9 @@ ob_start();
                         maxlength="80"></textarea>
                     <h1>Description de la tâche</h1>
                     <textarea id="textarea_desc" name="textarea_desc" type="text" placeholder="Description"></textarea>
-                    <h2>Par Utilisateur le 18/08/2020</h2>
+                    <h2></h2>
                     <section id="button_line">
-                        <button name="cancel_button" onclick="clear_content_add();" type="button">Annuler</button>
+                        <button name="cancel_button" id="addtask_cancel" type="button">Annuler</button>
                         <button name="submit_button" type="submit">Valider</button>
                     </section>
                 </form>
@@ -197,7 +175,7 @@ ob_start();
             <div id="settings_title">
                 Réglages
             </div>
-            <span id="close_settings" onclick="clear_content_bug();" class="close_settings">&times;</span>
+            <span id="close_settings" class="close_settings">&times;</span>
             <div class="row_settings">
                 <p>Mode Sombre : </p>
                 <input class="apple-switch" id="dark_mode" type="checkbox">
@@ -224,16 +202,22 @@ ob_start();
             <p> Ajouter une tâche</p>
         </span>
         <span class="span_help"><img src="public/img/checkbox.png" alt="">
-            <p> Tout sélectionner</p>
+            <p> Sélectionner / Tout sélectionner</p>
         </span>
         <span class="span_help"><img src="public/img/refresh.png" alt="">
             <p> Rafraîchir</p>
         </span>
         <span class="span_help"><img src="public/img/tick.png" alt="">
-            <p> Voir les tâches effectuées / Marquer comme effectuée</p>
+            <p>Marquer comme effectuée</p>
+        </span>
+        <span class="span_help"><img src="public/img/task_done.png" alt="">
+            <p>Voir les tâches effectuées</p>
         </span>
         <span class="span_help"><img src="public/img/edit_task_bar.png" alt="">
             <p> Éditer la tâche</p>
+        </span>
+        <span class="span_help"><img src="public/img/trash.png" alt="">
+            <p> Supprimer la/les tâche(s)</p>
         </span>
         <span class="span_help"><img src="public/img/gear.png" alt="">
             <p> Réglages</p>
@@ -248,11 +232,11 @@ ob_start();
         <p id="account_title">Mon Compte</p>
         <section id="account_section">
             <img id="user_img" src="public/img/switzerland.png" alt="">
-            <p id="user">Utilisateur</p>
+            <p id="user"><?= $_SESSION['pseudo'] ?></p>
         </section>
         <section id="body_account">
-            <p id="name_user">Tom Mullier</p>
-            <p id="mail_user">tom.mullier@outlook.fr</>
+            <p id="name_user">Nom Complet</p>
+            <p id="mail_user"><?= $_SESSION['mail'] ?></p>
                 <section id="section_button">
                     <button id="account_button">Mon compte</button>
                     <button id="deconnect_button">Déconnexion</button>
@@ -260,11 +244,61 @@ ob_start();
         </section>
     </div>
 
+
+
+    <!--SWAP PROJECT MODAL-->
+    <div id="project_modal_container">
+        <div id="project_modal">
+            <section id="header_project_modal">
+                <img src="public/img/essai_logo.png" alt="">
+                <p>Changer de projet</p>
+                <span id="close_swap" class="close_swap">&times;</span>
+            </section>
+            <br><br><br><br>
+            <section id="body_project_modal">
+                <section id="flex_arrow">
+                    <p id="change_title">Changer de projet :</p>
+                    <section>
+                        <div id="projet_princ">Changer de projet</div>
+                        <p id="arrow">&#x25BC;</p>
+                    </section>
+                </section>
+
+                <ul id="ul_swap">
+                    <li class="li_swap">Projet 1</li>
+                    <li class="li_swap">Projet 2</li>
+                    <li class="li_swap">Projet 3</li>
+                    <li class="li_swap">Projet 4</li>
+                    <li class="li_swap">Projet 5</li>
+                    <li class="li_swap">Projet 6</li>
+                    <li class="li_swap">Projet 7</li>
+                    <li class="li_swap">Projet 8</li>
+                    <li class="li_swap">Projet 1</li>
+                    <li class="li_swap">Projet 2</li>
+                    <li class="li_swap">Projet 3</li>
+                    <li class="li_swap">Projet 4</li>
+                    <li class="li_swap">Projet 5</li>
+                    <li class="li_swap">Projet 6</li>
+                    <li class="li_swap">Projet 7</li>
+                    <li class="li_swap">Projet 8</li>
+                </ul>
+                <br><br>
+                <div id="div_form_new_project"></div>
+                <br><br>
+                <h1>Nom du Projet (20 caractères max.)</h1>
+                <textarea name="" id="new_project_name" maxlength="20" placeholder="Nom du projet"></textarea>
+                <h1>Description du projet (optionnel)</h1>
+                <textarea name="" id="new_project_desc" placeholder="Description du projet"></textarea>
+                <h2>Lien GitHub (optionnel)</h2>
+                <textarea name="" id="new_project_git" placeholder="Lien GitHub"></textarea>
+                <button id="create_project">Créer un nouveau projet</button>
+
+            </section>
+        </div>
+    </div>
 </body>
 
 <?php
 
 $content = ob_get_clean();
 require('template/template.php');
-
-?>
