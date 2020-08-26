@@ -24,6 +24,6 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require('template/template.php');
+require('template/home.php');
 
 ?>
