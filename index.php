@@ -14,7 +14,7 @@ try{
 		if(isset($_GET['action'])){
 			$action = htmlspecialchars($_GET["action"]);
 			if ($action == "logout") logout(); // Logout the current user
-			elseif ($action == "commits") showProjectCommit(); // GitHub page
+			elseif ($action == "commits") showProjectCommits(); // GitHub page
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page

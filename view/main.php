@@ -235,7 +235,7 @@ ob_start();
             <p id="user"><?= $_SESSION['pseudo'] ?></p>
         </section>
         <section id="body_account">
-            <p id="name_user">Nom Complet</p>
+            <p id="name_user"><?= $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></p>
             <p id="mail_user"><?= $_SESSION['mail'] ?></p>
                 <section id="section_button">
                     <button id="account_button">Mon compte</button>

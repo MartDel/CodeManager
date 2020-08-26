@@ -5,17 +5,19 @@
  * @param Object $data User's data
  */
 function checkNewUserData($data){
-	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm'])) {
+	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
 		throw new Exception("Veuillez remplir tous les champs");
 	}
 	$pseudo = htmlspecialchars($data['pseudo']);
 	$mail = htmlspecialchars($data['mail']);
+	$firstname = htmlspecialchars($data['firstname']);
+	$lastname = htmlspecialchars($data['lastname']);
 	$password = $data['password'];
 	$confirm = $data['confirm'];
-	if($pseudo == "" || $mail == "" || $password == "") throw new Exception("Veuillez remplir tous les champs.");
+	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") throw new Exception("Veuillez remplir tous les champs.");
 	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) throw new Exception("Addresse mail non valide.");
 	if($password != $confirm) throw new Exception("Mot de passe non valide.");
-	if(User::accountExist($pseudo, $mail)) throw new Exception("Ce compte existe déjà.");
+	if(User::accountExist($pseudo, $mail, $firstname, $lastname)) throw new Exception("Ce compte existe déjà.");
 }
 
 /**
@@ -25,10 +27,14 @@ function checkNewUserData($data){
 function addUser($data){
 	$pseudo = htmlspecialchars($data['pseudo']);
 	$mail = htmlspecialchars($data['mail']);
-	$user = new User($pseudo, $mail);
+	$firstname = htmlspecialchars($data['firstname']);
+	$lastname = htmlspecialchars($data['lastname']);
+	$user = new User($pseudo, $mail, $firstname, $lastname);
 	$user->pushToDB($data['password']);
 	$_SESSION['pseudo'] = $user->getPseudo();
 	$_SESSION['mail'] = $user->getMail();
+	$_SESSION['firstname'] = $user->getFirstname();
+	$_SESSION['lastname'] = $user->getLastname();
 }
 
 /**
@@ -40,7 +46,7 @@ function addUser($data){
 function checkConnection($l, $p, $is_hashed) {
 	$login = htmlspecialchars($l);
 	$password = $p;
-	if(!User::accountExist($login, $login)) throw new Exception("Aucun compte n'existe avec ces identifiants.");
+	if(!User::accountExist($login, $login, "", "")) throw new Exception("Aucun compte n'existe avec ces identifiants.");
 
 	$correct_password = User::getPassword($login);
 	if($correct_password == null) throw new Exception("Un problème est survenu.");
@@ -63,6 +69,8 @@ function connectUser($login, $auto){
 	$user = User::getUserByLogin($login);
 	$_SESSION['pseudo'] = $user->getPseudo();
 	$_SESSION['mail'] = $user->getMail();
+	$_SESSION['firstname'] = $user->getFirstname();
+	$_SESSION['lastname'] = $user->getLastname();	
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, null, null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, null, null, false, true);
