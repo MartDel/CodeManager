@@ -40,6 +40,7 @@ class User extends DatabaseManager
 
     /**
     * Check if an account already exists
+    * CAN BE OPTIMISE : NOT STATIC BUT OBJECT FUNCTION
     * @param String $pseudo The user's pseudo
     * @param String $mail The user's email
     * @param String $firstname The user's firstname
@@ -65,8 +66,9 @@ class User extends DatabaseManager
         $pass_query = $db->prepare('SELECT password FROM ' . self::TABLE_NAME . ' WHERE pseudo=? OR mail=?');
         $pass_query->execute([$login, $login]);
         $data = $pass_query->fetch();
-        if(isset($data['password'])) return $data['password'];
-        else return null;
+        return isset($data['password']) ? $data['password'] : null;
+        // if(isset($data['password'])) return $data['password'];
+        // else return null;
     }
 
     /**
