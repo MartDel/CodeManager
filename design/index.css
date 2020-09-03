@@ -9,54 +9,45 @@ html {
     scroll-behavior: smooth;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-
 @font-face {
     font-family: 'happy_monkeyregular';
-    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'),
-        url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'), url('fonts/happymonkey-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
     font-family: 'stardos_stencilbold';
-    src: url('fonts/stardos/stardosstencil-bold-webfont.woff2') format('woff2'),
-        url('fonts/stardos/stardosstencil-bold-webfont.woff') format('woff');
+    src: url('fonts/stardos/stardosstencil-bold-webfont.woff2') format('woff2'), url('fonts/stardos/stardosstencil-bold-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
-
-
-
 
 @font-face {
     font-family: 'stardos_stencilregular';
-    src: url('fonts/stardos/stardosstencil-regular-webfont.woff2') format('woff2'),
-        url('fonts/stardos/stardosstencil-regular-webfont.woff') format('woff');
+    src: url('fonts/stardos/stardosstencil-regular-webfont.woff2') format('woff2'), url('fonts/stardos/stardosstencil-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
-body{
+
+body {
     background-image: url(img/codebcc2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    
 }
-#bcc_icons{
+
+#bcc_icons {
     background-image: url(img/office2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding-top:120px;
-    padding-bottom:120px;
+    padding-top: 120px;
+    padding-bottom: 120px;
 }
 
 #img_accueil {
@@ -84,7 +75,6 @@ body{
     width: 100%;
     color: rgb(91, 92, 96);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 }
 
 #top_div_title_p {
@@ -93,8 +83,6 @@ body{
     margin-left: 5vw;
     font-size: 4vh;
     transition-delay: 1s;
-
-
 }
 
 #videointro {
@@ -116,7 +104,7 @@ body{
     margin-left: 5%;
     margin-top: 15vh;
     /*background-color: #fff;*/
-    height:80%;
+    height: 80%;
 }
 
 #top_div_title img {
@@ -159,8 +147,9 @@ body{
 #savoir_plus {
     font-size: 1.5vh;
     margin-top: 14vh;
-    color:white;
+    color: white;
 }
+
 
 /*#div_général_connexion{
     width:50vw;
@@ -169,17 +158,19 @@ body{
 #div_général_connexion p{
     float:right
 }*/
-#button_div{
+
+#button_div {
     background-color: rgba(255, 0, 0, 0);
-    right:0;
+    right: 0;
     position: absolute;
-    width:30%;
-    height:100%;
+    width: 30%;
+    height: 100%;
     align-items: center;
 }
-#button_div button{
-    height:80%;
-    outline:none;
+
+#button_div button {
+    height: 80%;
+    outline: none;
     background-color: rgba(255, 255, 255, 0);
 }
 
@@ -191,20 +182,19 @@ body{
     margin-left: 10%;
     width: 10vw;
     margin-top: 1vh;
-
 }
 
-#se_connecter:hover{
+#se_connecter:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.04);
 }
+
 #se_connecter p {
     text-align: center;
 }
 
 #enregistrer {
     border: rgb(255, 255, 255) 2px solid;
-    
     position: absolute;
     font-size: 16px;
     text-align: center;
@@ -212,12 +202,14 @@ body{
     width: 10vw;
     margin-top: 1vh;
 }
-#enregistrer:hover{
+
+#enregistrer:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.04);
     border: rgb(91, 92, 96) 2px solid;
 }
-#enregistrer{
+
+#enregistrer {
     padding: 0;
     padding-top: 0vh;
     text-align: center;
@@ -231,13 +223,13 @@ body{
     margin-left: calc(50% - 2px);
     width: 3vw;
     margin-top: 1vh;
-    height:70%;
-
+    height: 70%;
 }
 
-#ou:hover{
+#ou:hover {
     cursor: default;
 }
+
 #ou p {
     padding: 0;
     padding-top: 0vh;
@@ -250,9 +242,10 @@ body{
     font-size: 17px;
     /*margin-top: 25vh;*/
 }
-#disponible_div{
+
+#disponible_div {
     position: absolute;
-    bottom:0px;
+    bottom: 0px;
     /*background-color: rgb(255, 0, 0);*/
 }
 
@@ -260,7 +253,6 @@ body{
     display: flex;
     flex-direction: column;
     background-color: rgb(247, 247, 247);
-
 }
 
 .flex_horizon {
@@ -279,12 +271,14 @@ body{
     margin-left: calc(50% - 10vh)
 }
 
+
 /*.img_index_desc_div{
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     height:40vh;
     width:40vh;
 }*/
+
 .flex_horizon p {
     padding-left: 2%;
     padding-right: 2%;
@@ -299,7 +293,6 @@ body{
 .flex_horizon h1 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-
 }
 
 #flex_p {
@@ -385,31 +378,34 @@ body{
     text-transform: uppercase;
 }
 
-.séparation{
+.séparation {
     background-color: rgba(0, 0, 0, 0.164);
-    height:2px;
-    width:70%;
-    margin-left:15%
+    height: 2px;
+    width: 70%;
+    margin-left: 15%
 }
 
-#bcc_icons h1, #bcc_icons h2{
+#bcc_icons h1,
+#bcc_icons h2 {
     color: white;
 }
-#bcc_icons img{
-    filter:invert(100%)
+
+#bcc_icons img {
+    filter: invert(100%)
 }
 
-/*ANIMATIONS*/
 
+/*ANIMATIONS*/
 
 #petite_presentation {
     animation: fadein 2s;
 }
+
 @keyframes fadein {
     from {
-        opacity:0;
+        opacity: 0;
     }
     to {
-        opacity:1;
+        opacity: 1;
     }
 }
