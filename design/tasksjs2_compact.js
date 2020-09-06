@@ -389,6 +389,7 @@ swap.master.onclick = () => {
     }
 };
 
+
 for (var i = 0; i < swap.li.length; i++) {
     swap.li[i].onclick = (event) => {
         var swap_l_li = event.target;

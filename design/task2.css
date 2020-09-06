@@ -5,13 +5,10 @@ body {
     background-color: #ffffff;
     transition: background 1s ease;
     height: 100%;
-
 }
 
 .liste_taches::-webkit-scrollbar {
-
     display: none;
-
 }
 
 html {
@@ -24,11 +21,9 @@ a {
 
 @font-face {
     font-family: 'happy_monkeyregular';
-    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'),
-        url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'), url('fonts/happymonkey-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -38,14 +33,12 @@ a {
     src: local('Product Sans Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Regular.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Italic';
     font-style: normal;
     font-weight: normal;
     src: local('Product Sans Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Italic.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'Product Sans Thin Regular';
@@ -54,14 +47,12 @@ a {
     src: local('Product Sans Thin Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Thin.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Light Regular';
     font-style: normal;
     font-weight: normal;
     src: local('Product Sans Light Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Light.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'Product Sans Medium Regular';
@@ -70,14 +61,12 @@ a {
     src: local('Product Sans Medium Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Medium.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Black Regular';
     font-style: normal;
     font-weight: normal;
     src: local('Product Sans Black Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Black.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'Product Sans Thin Italic';
@@ -86,14 +75,12 @@ a {
     src: local('Product Sans Thin Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-ThinItalic.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Light Italic';
     font-style: normal;
     font-weight: normal;
     src: local('Product Sans Light Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-LightItalic.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'Product Sans Medium Italic';
@@ -102,14 +89,12 @@ a {
     src: local('Product Sans Medium Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-MediumItalic.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Bold';
     font-style: normal;
     font-weight: normal;
     src: local('Product Sans Bold'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Bold.woff') format('woff');
 }
-
 
 @font-face {
     font-family: 'Product Sans Bold Italic';
@@ -118,7 +103,6 @@ a {
     src: local('Product Sans Bold Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BoldItalic.woff') format('woff');
 }
 
-
 @font-face {
     font-family: 'Product Sans Black Italic';
     font-style: normal;
@@ -126,8 +110,8 @@ a {
     src: local('Product Sans Black Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BlackItalic.woff') format('woff');
 }
 
-/*MENU HAUT*/
 
+/*MENU HAUT*/
 
 #menu_haut {
     background-color: rgba(255, 255, 255, 0);
@@ -150,7 +134,6 @@ a {
     height: 45px;
     /*margin-left: 30px;*/
     /*border:black 1px solid;*/
-
 }
 
 #logo_a {
@@ -221,6 +204,7 @@ a {
     margin-right: 140px;
     filter: invert(25%)
 }
+
 #menu_haut #switch_logo_img:hover {
     cursor: pointer;
 }
@@ -229,17 +213,17 @@ a {
     cursor: pointer;
 }
 
-#project_actual{
+#project_actual {
     font-family: "Product Sans Regular";
     font-size: 15px;
-    color:black;
-    right:0;
+    color: black;
+    right: 0;
     position: absolute;
     margin-right: 180px;
 }
 
-/*MENU DE GAUCHE*/
 
+/*MENU DE GAUCHE*/
 
 #menu_gauche {
     background-color: rgba(255, 255, 255, 0);
@@ -330,8 +314,6 @@ ul {
     padding-right: 90px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-
-
 }
 
 #menu_gauche ul .notselectedmenu:hover {
@@ -348,7 +330,6 @@ ul {
     color: #b41e10;
     background-color: #fce8e6;
     font-weight: bold;
-
 }
 
 .selectedmenu:hover {
@@ -363,12 +344,13 @@ ul {
     font-size: 10px;
     color: rgba(0, 0, 0, 0.342);
     position: absolute;
-
     bottom: 0;
     left: 10px;
 }
 
+
 /*LIGNE HAUT TACHE*/
+
 .section_en_dessous_menu {
     display: flex;
     flex-direction: row;
@@ -426,7 +408,6 @@ ul {
 
 /*PARTIE TACHES NON EFFECTUEES*/
 
-
 .liste_taches {
     background-color: rgba(255, 255, 255, 0);
     padding: 0;
@@ -445,12 +426,14 @@ ul {
     right: 0
 }
 
+
 /*#test_ul {
     padding: 0;
     background-color: rgb(255, 0, 0);
 
 }
 */
+
 .liste_taches li {
     display: flex;
     flex-direction: row;
@@ -522,10 +505,7 @@ ul {
 }
 
 
-
 /*MODAL*/
-
-
 
 .modal {
     display: none;
@@ -539,27 +519,28 @@ ul {
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
     transition: all 1s;
-
 }
 
+
 /* Modal Content/Box */
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     margin-top: -5px;
-
 }
 
 .close:hover,
@@ -584,7 +565,6 @@ ul {
     flex-direction: column;
     width: auto;
 }
-
 
 .modal-content {
     font-family: "Product Sans Regular";
@@ -641,7 +621,6 @@ ul {
 
 /*MENU BURGER ICON*/
 
-
 *:focus {
     outline: none;
 }
@@ -649,7 +628,6 @@ ul {
 #webapp_cover {
     position: absolute;
     top: 30px;
-
     width: 10px;
     margin: 0 auto;
     margin-left: -18px;
@@ -672,8 +650,6 @@ ul {
     display: block;
     height: 29px;
     cursor: pointer;
-
-
 }
 
 #menu_label:before,
@@ -684,8 +660,6 @@ ul {
     width: 100%;
     height: 5px;
     background-color: #b41e10;
-
-
 }
 
 #menu_label:before,
@@ -697,12 +671,10 @@ ul {
 
 #menu_label:before {
     top: 0;
-
 }
 
 #menu_label:after {
     top: 12px;
-
 }
 
 #menu_text_bar {
@@ -739,11 +711,9 @@ ul {
     0% {
         top: 0;
     }
-
     50% {
         top: -27px;
     }
-
     100% {
         top: -14px;
     }
@@ -753,19 +723,15 @@ ul {
     0% {
         transform: rotateZ(0);
     }
-
     25% {
         transform: rotateZ(-10deg);
     }
-
     50% {
         transform: rotateZ(0deg);
     }
-
     75% {
         transform: rotateZ(10deg);
     }
-
     100% {
         transform: rotateZ(0);
     }
@@ -775,19 +741,17 @@ ul {
     0% {
         transform: rotateZ(0);
     }
-
     80% {
         transform: rotateZ(3deg);
     }
-
     90% {
         transform: rotateZ(-3deg);
     }
-
     100% {
         transform: rotateZ(0);
     }
 }
+
 
 /*ADD TASK MODAL*/
 
@@ -800,11 +764,9 @@ ul {
     top: 10%;
     left: 10%;
     /*border: 2px solid black*/
-
 }
 
 #add_task_modal_general {
-
     background-color: rgba(0, 0, 0, 0.4);
     height: 100%;
     width: 100%;
@@ -882,7 +844,6 @@ ul {
     font-family: "Product Sans Regular";
     font-size: 1rem;
     font-weight: 500;
-
 }
 
 #section_ligne_bas button:hover {
@@ -906,13 +867,11 @@ ul {
     color: #aaa;
     position: absolute;
     background-color: rgba(255, 255, 255, 0);
-
     text-align: right;
     right: 0;
     margin-right: 30px;
     font-size: 28px;
     font-weight: bold;
-
 }
 
 .close_add:hover,
@@ -921,7 +880,6 @@ ul {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 
 /*SETTINGS*/
@@ -982,13 +940,11 @@ ul {
     font-family: "Product Sans Regular";
     font-size: 0.9rem;
     padding: 20px;
-
 }
 
 .row_settings p {
     margin-left: 20px;
 }
-
 
 .close_settings {
     color: #aaa;
@@ -996,12 +952,10 @@ ul {
     background-color: rgba(255, 255, 255, 0);
     right: 0;
     text-align: right;
-
     margin-right: 50px;
     font-size: 28px;
     font-weight: bold;
     top: 15px;
-
 }
 
 .close_settings:hover,
@@ -1024,7 +978,6 @@ input.apple-switch {
     transition-duration: 200ms;
     right: 0;
     margin-right: 20px;
-
 }
 
 input.apple-switch:hover {
@@ -1052,7 +1005,6 @@ input.apple-switch:checked:after {
     font-size: 1rem;
     font-weight: 500;
     margin-top: 20px;
-
 }
 
 #bug_submission:hover {
@@ -1085,7 +1037,6 @@ input.apple-switch:checked:after {
     /*border: 1px solid #b41e10;*/
     display: none;
     box-shadow: 0px 0px 3px black;
-
 }
 
 #help_modal img {
@@ -1114,7 +1065,6 @@ input.apple-switch:checked:after {
     font-weight: bold;
     top: 15px;
     text-align: right;
-
 }
 
 .close_help:hover,
@@ -1185,7 +1135,6 @@ input.apple-switch:checked:after {
     font-size: 1rem;
     font-weight: 500;
     margin-top: 20px;
-
 }
 
 #section_button button:hover {
@@ -1204,7 +1153,6 @@ input.apple-switch:checked:after {
 
 /*MODAL SWAP PROJECT*/
 
-
 #project_modal_container {
     position: absolute;
     top: 0;
@@ -1222,7 +1170,7 @@ input.apple-switch:checked:after {
     height: 90%;
     top: 5%;
     left: 15%;
-
+    overflow-y: auto;
 }
 
 #header_project_modal {
@@ -1252,7 +1200,7 @@ input.apple-switch:checked:after {
 
 #header_project_modal span {
     position: absolute;
-    width: 100%;
+    width: 2%;
     background-color: rgba(0, 255, 98, 0);
     text-align: right;
     padding-right: 20px;
@@ -1265,6 +1213,7 @@ input.apple-switch:checked:after {
     font-weight: bold;
     font-size: 28px;
 }
+
 #header_project_modal span:hover {
     position: absolute;
     cursor: pointer;
@@ -1294,12 +1243,11 @@ input.apple-switch:checked:after {
     border: rgb(190, 190, 190) 2px solid;
     position: absolute;
     right: 0;
-    margin-right:45px
+    margin-right: 45px
 }
 
 #projet_princ:hover {
     cursor: pointer;
-
 }
 
 #body_project_modal ul {
@@ -1316,8 +1264,8 @@ input.apple-switch:checked:after {
     display: none;
     margin-top: -11px;
     position: absolute;
-    right:0;
-    margin-right:45px;
+    right: 0;
+    margin-right: 45px;
     z-index: 999;
     height: 100px;
     overflow-y: scroll;
@@ -1345,83 +1293,89 @@ input.apple-switch:checked:after {
 #change_title {
     font-family: "Product Sans Regular";
     font-size: 1.1rem;
-    color:black;
-    margin-left: 20px;;
+    color: black;
+    margin-left: 20px;
+    ;
 }
-#flex_arrow section{
-    right:0;
+
+#flex_arrow section {
+    right: 0;
     position: absolute;
     display: flex;
     flex-direction: row;
     text-align: right;
-    width:400px;
+    width: 400px;
     background-color: rgba(255, 0, 0, 0);
 }
 
-#create_project{
+#create_project {
     font-family: "Product Sans Regular";
     font-size: 1rem;
-    color:black;
+    color: black;
     background-color: rgba(255, 255, 255, 0);
-    outline:none;
-    border:none;
-    padding:20px;
-    position: absolute;
-    bottom:0;
-    right:0;
-    margin-right:20px;
-    margin-bottom:20px;
+    outline: none;
+    border: none;
+    padding: 20px;
+    float: right;
+    margin-top: 20px;
+    bottom: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
-#create_project:hover{
 
+#create_project:hover {
     background-color: #b41e10;
-    color:white;
+    color: white;
     cursor: pointer;
 }
 
-#project_modal h1{
+#project_modal h1 {
     font-family: "Product Sans Regular";
     font-size: 1rem;
     font-weight: lighter;
-    color:black;
-    margin-left:10%
+    color: black;
+    margin-left: 10%
 }
-#project_modal h2{
+
+#project_modal h2 {
     font-family: "Product Sans Regular";
     font-size: 0.8rem;
     font-weight: lighter;
-    color:black;
-    margin-left:10%
+    color: black;
+    margin-left: 10%
 }
-#new_project_name, #new_project_git{
+
+#new_project_name,
+#new_project_git {
     resize: none;
-    width:80%;
-    margin-left:10%;
+    width: 80%;
+    margin-left: 10%;
     font-family: "Product Sans Regular";
     font-size: 0.8rem;
-    height:1rem;
+    height: 1rem;
     font-weight: lighter;
-    color:black;
-    padding:10px;
+    color: black;
+    padding: 10px;
     border-radius: 10px;
-
 }
 
-#div_form_new_project{
+#div_form_new_project {
     background-color: #b41e10;
-    height:2px;
-    width:60%;
-    margin-left:20%;
+    height: 2px;
+    width: 60%;
+    margin-left: 20%;
 }
-#new_project_desc{
+
+#new_project_desc {
     resize: none;
-    width:80%;
-    margin-left:10%;
+    width: 80%;
+    margin-left: 10%;
     font-family: "Product Sans Regular";
     font-size: 0.8rem;
-    height:6rem;
+    height: 6rem;
     font-weight: lighter;
-    color:black;
-    padding:10px;
+    color: black;
+    padding: 10px;
     border-radius: 10px;
 }
