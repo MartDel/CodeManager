@@ -140,14 +140,14 @@ a {
     margin-left: 30px;
 }
 
-#menu_haut input {
+#menu_haut #findField {
     background-color: #f1f3f4;
     border: #f1f3f4 1px solid;
     border-radius: 10px;
-    background-image: url(public/img/search.png);
+    background-image: url(img/search.png);
     background-position: 3.5%;
     background-repeat: no-repeat;
-    background-size: 2.5%;
+    background-size: 15px;
     padding-left: 4%;
     height: auto;
     margin-left: 3%;
@@ -156,7 +156,14 @@ a {
     font-size: 16px
 }
 
-#menu_haut input:focus {
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+#menu_haut #findField:focus {
     background-color: #ffffff;
     border: #ffffff 1px solid;
     border-radius: 10px;
@@ -213,6 +220,11 @@ a {
     cursor: pointer;
 }
 
+#project_actual:hover {
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.377);
+}
+
 #project_actual {
     font-family: "Product Sans Regular";
     font-size: 15px;
@@ -220,6 +232,12 @@ a {
     right: 0;
     position: absolute;
     margin-right: 180px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid transparent;
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+    margin-top: 8px;
 }
 
 
@@ -942,6 +960,15 @@ ul {
     padding: 20px;
 }
 
+#col_settings textarea:focus {
+    background-color: #ffffff;
+    border: #ffffff 1px solid;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0.5px 0.5px 5px #555;
+    transition: all 0.25s ease;
+}
+
 .row_settings p {
     margin-left: 20px;
 }
@@ -1358,6 +1385,17 @@ input.apple-switch:checked:after {
     color: black;
     padding: 10px;
     border-radius: 10px;
+}
+
+#new_project_name:focus,
+#new_project_git:focus,
+#new_project_desc:focus {
+    background-color: #ffffff;
+    border: #ffffff 1px solid;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 0.5px 0.5px 5px #555;
+    transition: all 0.25s ease;
 }
 
 #div_form_new_project {

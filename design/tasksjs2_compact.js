@@ -43,12 +43,6 @@ var open = false;
 var menu = {
     main_div: document.getElementById("menu_gauche"),
     text: [
-        // Là je pense que tu peux dégager tous les id
-        // et juste donner la class 'text_menu_left'
-        // pour tous les textes du menu
-        // (je pense que c'est plus simple et rapide)
-        // Comme ça tu fais la même chose que pour
-        // la variable 'menu.img'
         document.getElementById("text_menu_left_1"),
         document.getElementById("text_menu_left_2"),
         document.getElementById("text_menu_left_3"),
@@ -80,6 +74,7 @@ var swap = {
     arrow: document.getElementById("arrow"),
 };
 var modal_swap = document.getElementById("project_modal_container");
+var modal_swap_modal = document.getElementById("project_modal");
 var modal_swap_icon = document.getElementById("switch_logo_img");
 
 var close_btn = document.getElementsByClassName("close");
@@ -150,10 +145,7 @@ settings.close_btn.onclick = () => {
 };
 
 // Dark mode
-// Il faut gérer le fait que la config 'dark-mode'
-// soit concervé sur les autres pages
-// Du coup faut utiliser soit les cookies
-// soit le localStorage
+
 settings.dark_mode_btn.onchange = () => {
     if (settings.dark_mode_btn.checked == true) {
         body.style.filter = "invert(100%) hue-rotate(200deg)";
@@ -181,24 +173,9 @@ settings.night_shift_btn.onchange = () => {
  * HELP MODAL
  */
 help.show_btn.onclick = () => {
-    // Là je modifie le CSS dynamiquement avec classList
-    // en gros tu crée une class CSS qui contient
-    // les nouvelles valeurs de l'élement
-    // (je vais les écrire dans un fichier à part -> transition.css)
-    // (et on oublie pas de le lier au code HTML évidemment)
-    // on va appeler la class 'help_logo_onclick'
-    // histoire de faire simple ;)
-    // Tu peux dégager ces commentaires une fois lus stv
     help.show_btn.classList.add("help_logo_onclick");
-
-    // Comme t'as designé le logo avec un id dans ton CSS
-    // la fonction ne marche pas entierement.
-    // Du coup je dois faire ça :
     help.show_btn.style.filter =
         "invert(100%) hue-rotate(160deg) grayscale(100%)";
-    // Mais le plus simple aurait été de designé le logo
-    // avec une class comme ça t'es pas emmerdé
-
     show(help.modal);
 };
 
@@ -212,12 +189,6 @@ account.show_btn.onclick = () => {
 /*
  * LEFT MENU
  */
-// J'ai créé des foncions pour ouvrir/fermer le menu
-// du coup c'est plus simple pour gérer l'état du menu
-// et donc aussi pour gérer son état avec le localStorage
-// Je te laisse réfléchir pour cette partie !
-// (Bon en fait j'ai surtout la flemme de le faire)
-
 // Close menu when JS is loaded
 window.onload = () => {
     closeMenu();
@@ -315,8 +286,6 @@ window.addEventListener("click", (event) => {
     if (help.modal.style.display === "block" && event.target !== help.show_btn) {
         // Close help modal
         help.show_btn.classList.remove("help_logo_onclick");
-
-        // Même problème que la fonction 'help.show_btn.onclick'
         help.show_btn.style.filter = "invert(25%)";
 
         erase(help.modal);
@@ -423,6 +392,59 @@ modal_swap_icon.onclick = () => {
     show(modal_swap)
 }
 
+var input_search = document.getElementById("findField");
+
+input_search.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        FindNext();
+    }
+});
+
+function FindNext() {
+    //If void
+    var str = document.getElementById("findField").value;
+    if (str == "") {
+        alert("Please enter some text to search!");
+        return;
+    }
+
+    var supported = false;
+    var found = false;
+    if (window.find) {
+        supported = true;
+        // if some content is selected, the start position of the search 
+        // will be the end position of the selection
+        found = window.find(str);
+    } else {
+        if (document.selection && document.selection.createRange) {
+            var textRange = document.selection.createRange();
+            if (textRange.findText) {
+                supported = true;
+                // if some content is selected, the start position of the search 
+                // will be the position after the start position of the selection
+                if (textRange.text.length > 0) {
+                    textRange.collapse(true);
+                    textRange.move("character", 1);
+                }
+
+                found = textRange.findText(str);
+                if (found) {
+                    textRange.select();
+                }
+            }
+        }
+    }
+
+    if (supported) {
+        if (!found) {
+            alert("The following text was not found:\n" + str);
+        }
+    } else {
+        alert("Your browser does not support this example!");
+    }
+}
+
 /*
 =========================
 ======= FUNCTIONS =======
@@ -449,7 +471,23 @@ var contain = (array, value) => {
  */
 var show = (element) => {
     element.style.display = "block";
+    element.style.transitionProperty = "visibility";
+    element.style.transitionDuration = "50s";
+    element.style.visibility = "visible";
 };
+
+/**
+ * Show a specific element
+ * @param  {DOM element} element Element to erase when clicked outside
+ */
+/*
+var outside = (element) => {
+    window.onclick = (event) => {
+        if (event.target !== element) {
+            erase(element);
+        }
+    }
+}*/
 
 /**
  * Don't show a specific element anymore
@@ -457,6 +495,5 @@ var show = (element) => {
  */
 var erase = (element) => {
     element.style.display = "none";
-};
 
-// J'ai créé le système de CHECK-ALL dans le fichier 'demo.html' ;)
+};
