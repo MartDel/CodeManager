@@ -34,8 +34,10 @@ var help = {
 
 // Account elements
 var account = {
-    modal: document.getElementById("account_modal"),
+    modal: document.getElementById("account_background"),
     show_btn: document.getElementById("account_logo_img"),
+    close: document.getElementById("close_account_modal"),
+    option: document.getElementById("button_option")
 };
 
 // Menu element
@@ -184,6 +186,13 @@ help.show_btn.onclick = () => {
  */
 account.show_btn.onclick = () => {
     show(account.modal);
+};
+account.close.onclick = () => {
+    erase(account.modal);
+};
+account.option.onclick = () => {
+    erase(account.modal);
+    show(settings.modal);
 };
 
 /*
