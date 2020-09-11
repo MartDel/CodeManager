@@ -70,3 +70,49 @@ function logout(){
 	setcookie('password', '', time() + 365*24*3600, null, null, false, true);
     header('Location: index.php');
 }
+
+function test(){
+    // $url = 'https://www.ecosia.org';
+    // $url = 'https://www.google.com';
+    $url = 'https://github.com/MartDel/CodeManager';
+    
+    // Get url infos
+    $scheme = parse_url($url)['scheme'] . '://';
+    $host = $scheme . parse_url($url)['host'];
+    if(isset(parse_url($url)['path'])){
+        $path = $host . pathinfo(parse_url($url)['path'])['dirname'];
+    } else {
+        $path = $host . '/';
+    }
+
+    $html = file_get_html($url);
+    $title = $html->find('title')[0]->plaintext;
+    // Get website icon
+    if($html->find('link') != null){
+        foreach ($html->find('link') as $element) {
+            if(strpos($element->rel, 'icon')){
+                $href = $element->href;
+                if(strpos($href, '://')){
+                    $icon = $href;
+                } else {
+                    $icon = $path . $href;
+                }
+            }
+        }
+    } else $icon = $host . '/favicon.ico';
+
+    // Change icon if it isn't correct
+    set_error_handler(function() {
+        global $hostname, $icon;
+        $icon = 'http://' . $hostname . '/public/img/unknown_icon.svg';
+    });
+    file_get_contents($icon);
+    restore_error_handler();
+
+    echo 'url: ' . $url . '<br>';
+    echo 'host: ' . $host . '<br>';
+    echo 'path: ' . $path . '<br>';
+    echo 'title: ' . $title . '<br>';
+    echo 'icon: ' . $icon . '<br>';
+    echo '<img src="' . $icon . '" />';
+}
