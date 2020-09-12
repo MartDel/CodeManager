@@ -86,6 +86,8 @@ var account_logo = document.getElementById("account_logo_img");
 var burger = document.getElementById("menu_checkbox");
 var modaladd = document.getElementById("add_task_modal");
 
+var projectactual = document.getElementById("project_actual");
+
 /*
 =========================
 ======= MAIN CODE =======
@@ -401,6 +403,12 @@ modal_swap_icon.onclick = () => {
     show(modal_swap)
 }
 
+projectactual.onclick = () => {
+    show(modal_swap);
+}
+
+//SEARCH BAR
+
 var input_search = document.getElementById("findField");
 
 input_search.addEventListener("keyup", function(event) {
@@ -414,7 +422,7 @@ function FindNext() {
     //If void
     var str = document.getElementById("findField").value;
     if (str == "") {
-        alert("Please enter some text to search!");
+        alert("Veuillez entrer du texte");
         return;
     }
 
@@ -480,9 +488,6 @@ var contain = (array, value) => {
  */
 var show = (element) => {
     element.style.display = "block";
-    element.style.transitionProperty = "visibility";
-    element.style.transitionDuration = "50s";
-    element.style.visibility = "visible";
 };
 
 /**
