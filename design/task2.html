@@ -41,7 +41,7 @@
             </div>
         </div>
         <a id="logo_a" href="./index.html"><img id="logo" src="img/essai_logo.png"></a>
-        <input type="search" id="findField" placeholder="Rechercher dans les tâches" />
+        <input type="search" autocomplete="off" id="findField" placeholder="Rechercher dans les tâches" />
         <img id="help_logo_img" src="img/question.png" alt="">
         <img id="account_logo_img" src="img/switzerland.png" />
         <img id="gear_logo_img" src="img/gear.png" />
@@ -210,6 +210,7 @@
     </div>
 
 
+
     <!--ADD TASK MODAL-->
     <div id="add_task_modal_general">
         <div id="add_task_modal">
@@ -293,7 +294,7 @@
     <!--ACCOUNT MODAL-->
 
     <div id="account_background">
-        <div id="account_white_bc">
+        <div class="whitecolor" id="account_white_bc">
             <div id="bc_img_logo_account">
             </div>
             <span id="close_account_modal" class="close_account_modal">&times;</span>
@@ -360,6 +361,7 @@
         </div>
     </div>
     <script type="text/javascript" src="js/tasksjs2_compact.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </body>
 
 </html>

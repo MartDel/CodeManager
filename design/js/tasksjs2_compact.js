@@ -34,10 +34,11 @@ var help = {
 
 // Account elements
 var account = {
-    modal: document.getElementById("account_background"),
+    modal: document.getElementById("account_white_bc"),
     show_btn: document.getElementById("account_logo_img"),
     close: document.getElementById("close_account_modal"),
-    option: document.getElementById("button_option")
+    option: document.getElementById("button_option"),
+    back: document.getElementById("account_background")
 };
 
 // Menu element
@@ -187,13 +188,14 @@ help.show_btn.onclick = () => {
  * ACCOUNT MODAL
  */
 account.show_btn.onclick = () => {
-    show(account.modal);
+    show(account.back);
+    account.modal.style.animation = "1.5s linear 0s ModalComingBoth";
 };
 account.close.onclick = () => {
-    erase(account.modal);
+    erase(account.back);
 };
 account.option.onclick = () => {
-    erase(account.modal);
+    erase(account.back);
     show(settings.modal);
 };
 
@@ -301,12 +303,12 @@ window.addEventListener("click", (event) => {
 
         erase(help.modal);
     } else if (
-        account.modal.style.display === "block" &&
-        !contain(event.path, account.modal) &&
+        account.back.style.display === "block" &&
+        !contain(event.path, account.back) &&
         event.target !== account.show_btn
     ) {
         // Close account modal
-        erase(account.modal);
+        erase(account.back);
     }
 });
 
@@ -488,6 +490,9 @@ var contain = (array, value) => {
  */
 var show = (element) => {
     element.style.display = "block";
+    element.style.animation = "1s ease 0s ModalComing";
+    //account.modal.style.animation = "10s ease 5s ModalComing";
+
 };
 
 /**
@@ -508,6 +513,6 @@ var outside = (element) => {
  * @param  {DOM element} element Element to erase
  */
 var erase = (element) => {
-    element.style.display = "none";
-
+    element.style.animation = "1s ease 0s ModalLeaving";
+    //element.style.display = "none";
 };

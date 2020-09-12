@@ -1639,4 +1639,88 @@ input.apple-switch:checked:after {
   color: #b41e10;
   cursor: pointer;
 }
+
+@-webkit-keyframes ModalComing {
+  0% {
+    display: block;
+    -webkit-transform: scaleX(0) scaleY(0);
+            transform: scaleX(0) scaleY(0);
+  }
+  10% {
+    -webkit-transform: scaleX(0) scaleY(0.1);
+            transform: scaleX(0) scaleY(0.1);
+  }
+  50% {
+    -webkit-transform: scaleX(1) scaleY(0.1);
+            transform: scaleX(1) scaleY(0.1);
+  }
+  100% {
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
+  }
+}
+
+@keyframes ModalComing {
+  0% {
+    display: block;
+    -webkit-transform: scaleX(0) scaleY(0);
+            transform: scaleX(0) scaleY(0);
+  }
+  10% {
+    -webkit-transform: scaleX(0) scaleY(0.1);
+            transform: scaleX(0) scaleY(0.1);
+  }
+  50% {
+    -webkit-transform: scaleX(1) scaleY(0.1);
+            transform: scaleX(1) scaleY(0.1);
+  }
+  100% {
+    -webkit-transform: scaleX(1) scaleY(1);
+            transform: scaleX(1) scaleY(1);
+  }
+}
+
+@-webkit-keyframes ModalComingBoth {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ModalComingBoth {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes ModalLeaving {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes ModalLeaving {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
 /*# sourceMappingURL=task2.css.map */

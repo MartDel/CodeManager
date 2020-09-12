@@ -1373,7 +1373,7 @@ input.apple-switch:checked:after {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    display: none
+    display: none;
 }
 
 #account_white_bc {
@@ -1452,4 +1452,42 @@ input.apple-switch:checked:after {
 .close_account_modal:hover {
     color: #b41e10;
     cursor: pointer;
+}
+
+@keyframes ModalComing {
+    0% {
+        display: block;
+        transform: scaleX(0) scaleY(0);
+    }
+    10% {
+        transform: scaleX(0) scaleY(0.1);
+    }
+    50% {
+        transform: scaleX(1) scaleY(0.1);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
+@keyframes ModalComingBoth {
+    0% {
+        opacity: 0
+    }
+    60% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes ModalLeaving {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
