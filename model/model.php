@@ -31,10 +31,7 @@ function addUser($data){
 	$lastname = htmlspecialchars($data['lastname']);
 	$user = new User($pseudo, $mail, $firstname, $lastname);
 	$user->pushToDB($data['password']);
-	$_SESSION['pseudo'] = $user->getPseudo();
-	$_SESSION['mail'] = $user->getMail();
-	$_SESSION['firstname'] = $user->getFirstname();
-	$_SESSION['lastname'] = $user->getLastname();
+	connectUser($data['pseudo'], true);
 }
 
 /**
@@ -46,7 +43,8 @@ function addUser($data){
 function checkConnection($l, $p, $is_hashed) {
 	$login = htmlspecialchars($l);
 	$password = $p;
-	if(!User::accountExist($login, $login, "", "")) throw new Exception("Aucun compte n'existe avec ces identifiants.");
+	$user = new User($l, $l, '', '');
+	if(!$user->accountExist()) throw new Exception("Aucun compte n'existe avec ces identifiants.");
 
 	$correct_password = User::getPassword($login);
 	if($correct_password == null) throw new Exception("Un problème est survenu.");
@@ -67,10 +65,13 @@ function checkConnection($l, $p, $is_hashed) {
  */
 function connectUser($login, $auto){
 	$user = User::getUserByLogin($login);
+	$user_id = $user->getId();
+	$_SESSION['user_id'] = $user_id;
 	$_SESSION['pseudo'] = $user->getPseudo();
 	$_SESSION['mail'] = $user->getMail();
 	$_SESSION['firstname'] = $user->getFirstname();
-	$_SESSION['lastname'] = $user->getLastname();	
+	$_SESSION['lastname'] = $user->getLastname();
+	$_SESSION['project_id'] = Project::getFirstProject($user_id)->getId();
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, null, null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, null, null, false, true);
