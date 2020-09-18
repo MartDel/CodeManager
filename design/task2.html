@@ -7,8 +7,8 @@
     </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="task2.css" />
-    <link rel="stylesheet" href="transition.css" />
+    <link rel="stylesheet" href="css/task2.css" />
+    <link rel="stylesheet" href="css/transition.css" />
     <link rel="icon" type="image/png" href="" />
     <link rel="shortcut icon" href="img/programmer2.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <a id="logo_a" href="./index.html"><img id="logo" src="img/essai_logo.png"></a>
-        <input type="search" id="findField" placeholder="Rechercher dans les tâches" />
+        <input type="search" autocomplete="off" id="findField" placeholder="Rechercher dans les tâches" />
         <img id="help_logo_img" src="img/question.png" alt="">
         <img id="account_logo_img" src="img/switzerland.png" />
         <img id="gear_logo_img" src="img/gear.png" />
@@ -210,6 +210,7 @@
     </div>
 
 
+
     <!--ADD TASK MODAL-->
     <div id="add_task_modal_general">
         <div id="add_task_modal">
@@ -264,8 +265,6 @@
 
     <!--HELP MODAL-->
     <div id="help_modal">
-        <h1>AIDE</h1>
-        <span id="close_help" class="close_help">&times;</span>
         <span class="span_help"><img src="img/plusadd.png" alt="">
             <p> Ajouter une tâche</p>
         </span>
@@ -292,29 +291,10 @@
         </span>
 
     </div>
-
-
     <!--ACCOUNT MODAL-->
 
-    <!--<div id="account_modal">
-        <p id="account_title">Mon Compte</p>
-        <section id="account_section">
-            <img id="user_img" src="img/switzerland.png" alt="">
-            <p id="user">Utilisateur</p>
-        </section>
-        <section id="body_account">
-            <p id="name_user">Tom Mullier</p>
-            <p id="mail_user">tom.mullier@outlook.fr
-                </>
-                <section id="section_button">
-                    <button id="account_button">Mon compte</button>
-                    <button id="deconnect_button">Déconnexion</button>
-                </section>
-        </section>
-    </div>-->
-
     <div id="account_background">
-        <div id="account_white_bc">
+        <div class="whitecolor" id="account_white_bc">
             <div id="bc_img_logo_account">
             </div>
             <span id="close_account_modal" class="close_account_modal">&times;</span>
@@ -380,7 +360,8 @@
             </section>
         </div>
     </div>
-    <script type="text/javascript" src="tasksjs2_compact.js"></script>
+    <script type="text/javascript" src="js/tasksjs2_compact.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </body>
 
 </html>

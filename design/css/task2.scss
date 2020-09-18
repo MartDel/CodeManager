@@ -21,7 +21,7 @@ a {
 
 @font-face {
     font-family: 'happy_monkeyregular';
-    src: url('fonts/happymonkey-regular-webfont.woff2') format('woff2'), url('fonts/happymonkey-regular-webfont.woff') format('woff');
+    src: url('../fonts/happymonkey-regular-webfont.woff2') format('woff2'), url('../fonts/happymonkey-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -30,84 +30,84 @@ a {
     font-family: 'Product Sans Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Regular.woff') format('woff');
+    src: local('Product Sans Regular'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Regular.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Italic.woff') format('woff');
+    src: local('Product Sans Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Italic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Thin Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Thin Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Thin.woff') format('woff');
+    src: local('Product Sans Thin Regular'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Thin.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Light Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Light Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Light.woff') format('woff');
+    src: local('Product Sans Light Regular'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Light.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Medium Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Medium Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Medium.woff') format('woff');
+    src: local('Product Sans Medium Regular'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Medium.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Black Regular';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Black Regular'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Black.woff') format('woff');
+    src: local('Product Sans Black Regular'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Black.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Thin Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Thin Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-ThinItalic.woff') format('woff');
+    src: local('Product Sans Thin Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-ThinItalic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Light Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Light Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-LightItalic.woff') format('woff');
+    src: local('Product Sans Light Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-LightItalic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Medium Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Medium Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-MediumItalic.woff') format('woff');
+    src: local('Product Sans Medium Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-MediumItalic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Bold'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-Bold.woff') format('woff');
+    src: local('Product Sans Bold'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-Bold.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Bold Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Bold Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BoldItalic.woff') format('woff');
+    src: local('Product Sans Bold Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-BoldItalic.woff') format('woff');
 }
 
 @font-face {
     font-family: 'Product Sans Black Italic';
     font-style: normal;
     font-weight: normal;
-    src: local('Product Sans Black Italic'), url('fonts/google-sans-cufonfonts-webfont/ProductSans-BlackItalic.woff') format('woff');
+    src: local('Product Sans Black Italic'), url('../fonts/google-sans-cufonfonts-webfont/ProductSans-BlackItalic.woff') format('woff');
 }
 
 
@@ -144,7 +144,7 @@ a {
     background-color: #f1f3f4;
     border: #f1f3f4 1px solid;
     border-radius: 10px;
-    background-image: url(img/search.png);
+    background-image: url(../img/search.png);
     background-position: 3.5%;
     background-repeat: no-repeat;
     background-size: 15px;
@@ -222,7 +222,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 #project_actual:hover {
     cursor: pointer;
-    border: 2px solid rgba(0, 0, 0, 0.377);
+    border: 2px solid rgba(0, 0, 0, 0.164);
 }
 
 #project_actual {
@@ -778,10 +778,11 @@ ul {
     display: block;
     position: absolute;
     width: 80%;
-    height: 80%;
-    top: 10%;
+    height: 65%;
+    top: 17%;
     left: 10%;
     /*border: 2px solid black*/
+    box-shadow: rgb(75, 75, 75) 0px 0px 15px;
 }
 
 #add_task_modal_general {
@@ -819,7 +820,7 @@ ul {
     display: flex;
     flex-direction: column;
     margin-top: 50px;
-    margin-left: 10%;
+    width: 100%;
 }
 
 #section_ligne_bas h1 {
@@ -835,13 +836,21 @@ ul {
     color: #d4d1d1;
 }
 
+#section_ligne_bas form {
+    margin-left: 10%;
+    width: 80%;
+}
+
 #section_ligne_bas textarea {
     resize: none;
     font-family: "Product Sans Regular";
     font-size: 0.9rem;
     color: black;
-    width: 80%;
-    padding: 10px;
+    width: 100%;
+    padding: 10PX;
+    left: 0;
+    border-radius: 10px;
+    ;
 }
 
 #section_ligne_bas textarea[name="textarea_title"] {
@@ -878,7 +887,13 @@ ul {
 }
 
 #button_line {
-    margin-left: 62.5%
+    right: 0;
+    float: right;
+    padding: 0;
+    bottom: 0;
+    position: absolute;
+    margin-right: 9%;
+    margin-bottom: 50px;
 }
 
 .close_add {
@@ -922,6 +937,7 @@ ul {
     font-size: 1rem;
     font-weight: 500;
     align-items: center;
+    box-shadow: rgb(75, 75, 75) 0px 0px 15px;
 }
 
 #settings_title {
@@ -1063,7 +1079,7 @@ input.apple-switch:checked:after {
     color: #b41e10;
     /*border: 1px solid #b41e10;*/
     display: none;
-    box-shadow: 0px 0px 3px black;
+    box-shadow: rgb(75, 75, 75) 0px 0px 15px;
 }
 
 #help_modal img {
@@ -1106,78 +1122,6 @@ input.apple-switch:checked:after {
 }
 
 
-/*ACCOUNT MODAL*/
-
-#account_modal {
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    top: 0;
-    margin-top: 61px;
-    right: 0;
-    margin-right: 10px;
-    ;
-    font-family: "Product Sans Regular";
-    font-size: 0.8rem;
-    padding: 30px;
-    box-shadow: 0px 0px 3px black;
-    display: none;
-    z-index: 999;
-}
-
-#account_title {
-    color: #b41e10;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-#account_section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-bottom: 50px
-}
-
-#account_section img {
-    border-radius: 50%;
-    width: 50px;
-}
-
-#account_section p {
-    margin-left: 30px;
-}
-
-#section_button {
-    margin-top: 50px;
-}
-
-#section_button button {
-    height: 40px;
-    width: 100px;
-    background-color: rgb(255, 255, 255);
-    color: #b41e10;
-    outline: none;
-    border: none;
-    font-family: "Product Sans Regular";
-    font-size: 1rem;
-    font-weight: 500;
-    margin-top: 20px;
-}
-
-#section_button button:hover {
-    height: 40px;
-    width: 100px;
-    background-color: #b41e10;
-    color: #ffffff;
-    outline: none;
-    border: none;
-    font-family: "Product Sans Regular";
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-
 /*MODAL SWAP PROJECT*/
 
 #project_modal_container {
@@ -1198,6 +1142,7 @@ input.apple-switch:checked:after {
     top: 5%;
     left: 15%;
     overflow-y: auto;
+    box-shadow: rgb(75, 75, 75) 0px 0px 15px;
 }
 
 #header_project_modal {
@@ -1344,10 +1289,10 @@ input.apple-switch:checked:after {
     border: none;
     padding: 20px;
     float: right;
-    margin-top: 20px;
+    margin-top: 50px;
     bottom: 0;
     right: 0;
-    margin-right: 20px;
+    margin-right: 8.5%;
     margin-bottom: 20px;
 }
 
@@ -1428,7 +1373,7 @@ input.apple-switch:checked:after {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    display: none
+    display: none;
 }
 
 #account_white_bc {
@@ -1442,7 +1387,7 @@ input.apple-switch:checked:after {
 }
 
 #bc_img_logo_account {
-    background-image: url(img/switzerland.png);
+    background-image: url(../img/switzerland.png);
     background-size: cover;
     height: 125px;
     width: 125px;
@@ -1507,4 +1452,42 @@ input.apple-switch:checked:after {
 .close_account_modal:hover {
     color: #b41e10;
     cursor: pointer;
+}
+
+@keyframes ModalComing {
+    0% {
+        display: block;
+        transform: scaleX(0) scaleY(0);
+    }
+    10% {
+        transform: scaleX(0) scaleY(0.1);
+    }
+    50% {
+        transform: scaleX(1) scaleY(0.1);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
+@keyframes ModalComingBoth {
+    0% {
+        opacity: 0
+    }
+    60% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes ModalLeaving {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
