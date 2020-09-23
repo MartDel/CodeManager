@@ -98,7 +98,7 @@ ob_start();
                                     src="public/img/edit_task_bar.png" alt=""></span>
                             <span class="utilisateur"><?= $task->getAuthor() ?></span>
                             <span class="titre_tache"><?= $task->getName() ?></span>
-                            <span class="desc_tache"><?= $task->getDescription() ?></span>
+                            <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Aucune description</i>' ?></span>
                             <span class="date"><?= $task->getCreateDate() ?></span>
                         </li>
                     </button>
@@ -136,7 +136,7 @@ if($tasks){
             </section>
             <div class="line_popup"></div>
             <section class="descriptif_popup">
-                <?= $task->getDescription() ?>
+                <?= $task->getDescription() ? $task->getDescription() : '<i>Aucune description</i>' ?>
                 <br><br>
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
@@ -157,12 +157,11 @@ if($tasks){
                 <span id="close_add" class="close_add">&times;</span>
             </section>
             <section id="section_ligne_bas">
-                <form>
+                <form action="index.php?action=addtask" method="post">
                     <h1>Titre de la tâche (80 caractères maximum)</h1>
-                    <textarea id="textarea_title" name="textarea_title" type="text" placeholder="Titre"
-                        maxlength="80"></textarea>
+                    <textarea id="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></textarea>
                     <h1>Description de la tâche</h1>
-                    <textarea id="textarea_desc" name="textarea_desc" type="text" placeholder="Description"></textarea>
+                    <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                     <h2></h2>
                     <section id="button_line">
                         <button name="cancel_button" id="addtask_cancel" type="button">Annuler</button>
@@ -246,7 +245,7 @@ if($tasks){
             <p id="mail_user"><?= $_SESSION['mail'] ?></p>
                 <section id="section_button">
                     <button id="account_button">Mon compte</button>
-                    <button id="deconnect_button">Déconnexion</button>
+                    <a href="index.php?action=logout" id="deconnect_button">Déconnexion</a>
                 </section>
         </section>
     </div>

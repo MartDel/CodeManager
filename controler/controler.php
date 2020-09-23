@@ -67,6 +67,17 @@ function showProjectCommits(){
 }
 
 /**
+ * Add a new task in database
+ * @param Object $data All of task data
+ */
+function addTask($data){
+    if(!isset($data['title']) || htmlspecialchars($data['title']) == '') throw new Exception("Veuillez remplir tous les champs.");
+    $task = new Task(htmlspecialchars($data['title']), $_SESSION['project_id'], false, null, $_SESSION['pseudo'], htmlspecialchars($data['description']));
+    $task->pushToDB();
+    header('Location: index.php');
+}
+
+/**
  * Logout the current user
  */
 function logout(){

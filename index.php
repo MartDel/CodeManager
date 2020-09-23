@@ -1,6 +1,6 @@
 <?php // Show errors
-ini_set('display_startup_errors',1);
-ini_set('display_errors',1);
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
 error_reporting(-1);
 ?>
 
@@ -23,6 +23,7 @@ try{
 			$action = htmlspecialchars($_GET["action"]);
 			if ($action == "logout") logout(); // Logout the current user
 			elseif ($action == "commits") showProjectCommits(); // GitHub page
+			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page

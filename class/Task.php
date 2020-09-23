@@ -25,6 +25,18 @@ class Task extends DatabaseManager
         $this->description = $description;
     }
 
+    public function pushToDB(){
+        $db = self::dbConnect();
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, author, create_date, is_done, project_id) VALUES(:name, :description, :author, NOW(), :is_done, :project_id)');
+        $add->execute([
+            'name' => $this->name,
+            'description' => $this->description ? $this->description : null,
+            'author' => $this->author,
+            'is_done' => $this->is_done ? 1 : 0,
+            'project_id' => $this->project_id
+        ]);
+    }
+
     /**
     * Get all tasks there are in the database for a specific project
     * @param int $project_id Project id
