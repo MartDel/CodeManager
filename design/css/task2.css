@@ -1707,20 +1707,22 @@ input.apple-switch:checked:after {
 @-webkit-keyframes ModalLeaving {
   0% {
     opacity: 1;
+    visibility: visible;
   }
   100% {
     opacity: 0;
-    display: none;
+    visibility: hidden;
   }
 }
 
 @keyframes ModalLeaving {
   0% {
     opacity: 1;
+    visibility: visible;
   }
   100% {
     opacity: 0;
-    display: none;
+    visibility: hidden;
   }
 }
 /*# sourceMappingURL=task2.css.map */

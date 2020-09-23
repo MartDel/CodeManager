@@ -184,20 +184,7 @@ help.show_btn.onclick = () => {
     show(help.modal);
 };
 
-/*
- * ACCOUNT MODAL
- */
-account.show_btn.onclick = () => {
-    show(account.back);
-    account.modal.style.animation = "1.5s linear 0s ModalComingBoth";
-};
-account.close.onclick = () => {
-    erase(account.back);
-};
-account.option.onclick = () => {
-    erase(account.back);
-    show(settings.modal);
-};
+
 
 /*
  * LEFT MENU
@@ -490,8 +477,13 @@ var contain = (array, value) => {
  */
 var show = (element) => {
     element.style.display = "block";
-    element.style.animation = "1s ease 0s ModalComing";
-    //account.modal.style.animation = "10s ease 5s ModalComing";
+    if (element.className == "account_background") {
+        element.style.animation = "1s ease 0s ModalComing";
+        var www = element.getElementsByTagName("DIV")[0];
+        www.style.animation = "1.5s linear 0s ModalComingBoth";
+    }
+    element.style.visbility = "visible";
+
 
 };
 
@@ -513,6 +505,26 @@ var outside = (element) => {
  * @param  {DOM element} element Element to erase
  */
 var erase = (element) => {
-    element.style.animation = "1s ease 0s ModalLeaving";
-    //element.style.display = "none";
+    if (element.className == "account_background") {
+        element.style.animation = "1s ease 0s ModalLeaving";
+        setTimeout(function(element) { element.style.display = "none"; }, 5000);
+    } else {
+        element.style.display = "none";
+    }
+
+};
+
+/*
+ * ACCOUNT MODAL
+ */
+account.show_btn.onclick = () => {
+    show(account.back);
+
+};
+account.close.onclick = () => {
+    erase(account.back);
+};
+account.option.onclick = () => {
+    erase(account.back);
+    show(settings.modal);
 };

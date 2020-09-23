@@ -1374,6 +1374,7 @@ input.apple-switch:checked:after {
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
     display: none;
+    z-index: 99999;
 }
 
 #account_white_bc {
@@ -1484,10 +1485,11 @@ input.apple-switch:checked:after {
 
 @keyframes ModalLeaving {
     0% {
-        opacity: 1
+        opacity: 1;
+        visibility: visible;
     }
     100% {
         opacity: 0;
-        display: none;
+        visibility: hidden;
     }
 }
