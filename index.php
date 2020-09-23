@@ -13,6 +13,7 @@ require("class/DatabaseManager.php");
 require("class/User.php");
 require("class/Task.php");
 require("class/Role.php");
+require('class/Project.php');
 $hostname = 'localhost/CodeManager';
 
 try{

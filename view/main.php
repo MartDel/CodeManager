@@ -26,7 +26,10 @@ ob_start();
         <img id="account_logo_img" src="public/img/switzerland.png" />
         <img id="gear_logo_img" src="public/img/gear.png" />
         <img id="switch_logo_img" src="public/img/file_swap.png" alt="">
-        <p id="project_actual">Projet en cours</p>
+        <p id="project_actual">
+            <?= $project->getName() ?>
+        </p>
+        <!-- <p id="project_actual">Projet en cours</p> -->
     </div>
 
     <!--MENU DE GAUCHE-->
@@ -79,7 +82,8 @@ ob_start();
             <section class="list_task">
                 <ul id="liste_taches" class="liste_taches">
 
-                    <?php
+                <?php
+                if($tasks){
                     $i = 0;
                     foreach ($tasks as $task) {
                         if (!$task->getIsDone()) {
@@ -102,7 +106,8 @@ ob_start();
                             $i++;
                         }
                     }
-                    ?>
+                }
+                ?>
 
                 </ul>
             </section>
@@ -111,7 +116,8 @@ ob_start();
 
 
     <!--MODAL CONTENT-->
-    <?php
+<?php
+if($tasks){
     $i = 0;
     foreach ($tasks as $task) {
     ?>
@@ -139,7 +145,8 @@ ob_start();
     <?php
         $i++;
     }
-    ?>
+}
+?>
 
     <!--ADD TASK MODAL-->
     <div id="add_task_modal_general">
@@ -265,22 +272,13 @@ ob_start();
                 </section>
 
                 <ul id="ul_swap">
-                    <li class="li_swap">Projet 1</li>
-                    <li class="li_swap">Projet 2</li>
-                    <li class="li_swap">Projet 3</li>
-                    <li class="li_swap">Projet 4</li>
-                    <li class="li_swap">Projet 5</li>
-                    <li class="li_swap">Projet 6</li>
-                    <li class="li_swap">Projet 7</li>
-                    <li class="li_swap">Projet 8</li>
-                    <li class="li_swap">Projet 1</li>
-                    <li class="li_swap">Projet 2</li>
-                    <li class="li_swap">Projet 3</li>
-                    <li class="li_swap">Projet 4</li>
-                    <li class="li_swap">Projet 5</li>
-                    <li class="li_swap">Projet 6</li>
-                    <li class="li_swap">Projet 7</li>
-                    <li class="li_swap">Projet 8</li>
+                    <?php foreach ($project_list as $p) { ?>
+                    <li class="li_swap" <?php if($p['description']) echo 'title="' . $p['description'] . '"'; ?>>
+                        <!-- <?= $p['name'] ?> -->
+                        <a href="index.php?project=<?= $p['id'] ?>"><?= $p['name'] ?></a>
+                    </li>
+                    <!-- ID = $p['id'] -->
+                    <?php } ?>
                 </ul>
                 <br><br>
                 <div id="div_form_new_project"></div>

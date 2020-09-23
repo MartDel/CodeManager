@@ -42,7 +42,12 @@ function checkCookie(){
  * Get tasks stats and show them
  * @param int $project_id Current project id
  */
-function showMainPage($project_id = 0){
+function showMainPage(){
+    $user_id = $_SESSION['user_id'];
+    $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
+    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = Project::getFirstProject($user_id)->getId();
+    $project = Project::getProjectById($project_id, $user_id);
+    $project_list = Project::getAllProjects($user_id);
     $tasks = Task::getAllTasks($project_id);
     require('view/main.php');
 }
@@ -75,7 +80,7 @@ function test(){
     // $url = 'https://www.ecosia.org';
     // $url = 'https://www.google.com';
     $url = 'https://github.com/MartDel/CodeManager';
-    
+
     // Get url infos
     $scheme = parse_url($url)['scheme'] . '://';
     $host = $scheme . parse_url($url)['host'];
