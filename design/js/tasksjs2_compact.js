@@ -102,37 +102,49 @@ var projectactual = document.getElementById("project_actual");
 /*
  * ONLOAD
  */
- window.onload = () => {
-     closeMenu(); // Close menu when JS is loaded
-     showTasks(!show_done_tasks)
-     showDoneTasks(show_done_tasks)
- };
+window.onload = () => {
+    closeMenu(); // Close menu when JS is loaded
+    showTasks(!show_done_tasks)
+    showDoneTasks(show_done_tasks)
+};
 
 /*
  * SHOW DONE TASKS
  */
 function showTasks(print) {
-    for(let i = 0; i < tasks.length; i++) {
-        if(print) show(tasks[i])
+    for (let i = 0; i < tasks.length; i++) {
+        if (print) show(tasks[i])
         else erase(tasks[i])
     }
 }
+
 function showDoneTasks(print) {
-    for(let i = 0; i < tasks_done.list.length; i++) {
-        if(print) show(tasks_done.list[i])
+    for (let i = 0; i < tasks_done.list.length; i++) {
+        if (print) show(tasks_done.list[i])
         else erase(tasks_done.list[i])
     }
 }
+var counter_done = 0;
 tasks_done.btn.onclick = () => {
     showTasks(show_done_tasks)
     showDoneTasks(!show_done_tasks)
     show_done_tasks = !show_done_tasks
+    if (counter_done == 0) {
+        tasks_done.btn.style.filter = "grayscale(0%)";
+        tasks_done.btn.style.animation = "0.5s Rotate"
+        counter_done = 1;
+    } else {
+        tasks_done.btn.style.filter = "grayscale(100%)";
+        tasks_done.btn.style.animation = "0.5s RotateInv"
+        counter_done = 0;
+    }
 }
+
 
 /*
  * MODAL TASK
  */
-function showModal(event){
+function showModal(event) {
     // Get task id
     var id = null;
     var path = event.path;
@@ -563,7 +575,6 @@ var erase_modal = (element) => {
  * @param  {DOM element} element Element to erase when clicked outside
  */
 
-<<<<<<< HEAD
 var erase = (element) => {
     element.style.display = "none";
     element.style.visbility = "hidden";
@@ -590,13 +601,3 @@ function whichAnimationEvent() {
 }
 
 var animationEvent = whichAnimationEvent();
-=======
-};
-account.close.onclick = () => {
-    erase(account.back);
-};
-account.option.onclick = () => {
-    erase(account.back);
-    show(settings.modal);
-};
->>>>>>> ef69385af612d4dabbb929f03e94be8249f74d0e

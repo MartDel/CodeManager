@@ -407,6 +407,11 @@ ul {
     margin-right: 21px;
     height: 20px;
     margin-top: 10px;
+    filter: grayscale(100%)
+}
+
+.tasks_done:hover {
+    cursor: pointer;
 }
 
 .ligne_et_taches {
@@ -1492,5 +1497,23 @@ input.apple-switch:checked:after {
     100% {
         opacity: 0;
         visibility: hidden;
+    }
+}
+
+@keyframes Rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes RotateInv {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
     }
 }
