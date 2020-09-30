@@ -132,29 +132,33 @@ tasks_done.btn.onclick = () => {
 /*
  * MODAL TASK
  */
+function showModal(event){
+    // Get task id
+    var id = null;
+    var path = event.path;
+    for (var i = 0; i < path.length; i++) {
+        var current_id = path[i].id;
+        if (current_id !== undefined) {
+            if (current_id.indexOf("task") !== -1) id = current_id;
+        }
+    }
+
+    // Get modal
+    var modal = document.getElementById(id + '_modal');
+
+    if (!contain(tasks_btn.check_js, event.target) &&
+        !contain(tasks_btn.tick, event.target) &&
+        !contain(tasks_btn.tick2, event.target)
+    ) {
+        // Everythings is ok, let's go show the popup
+        show(modal);
+    }
+}
 for (var i = 0; i < tasks.length; i++) {
-    tasks[i].onclick = (event) => {
-        // Get task id
-        var id = null;
-        var path = event.path;
-        for (var i = 0; i < path.length; i++) {
-            var current_id = path[i].id;
-            if (current_id !== undefined) {
-                if (current_id.indexOf("task") !== -1) id = current_id;
-            }
-        }
-
-        // Get modal
-        var modal = document.getElementById(id + "_modal");
-
-        if (!contain(tasks_btn.check_js, event.target) &&
-            !contain(tasks_btn.tick, event.target) &&
-            !contain(tasks_btn.tick2, event.target)
-        ) {
-            // Everythings is ok, let's go show the popup
-            show(modal);
-        }
-    };
+    tasks[i].onclick = (event) => showModal(event);
+}
+for (let i = 0; i < tasks_done.list.length; i++) {
+    tasks_done.list[i].onclick = (event) => showModal(event);
 }
 
 /*
