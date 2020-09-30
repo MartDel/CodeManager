@@ -45,7 +45,8 @@ function checkCookie(){
 function showMainPage(){
     $user_id = $_SESSION['user_id'];
     $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
-    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = Project::getFirstProject($user_id)->getId();
+    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = $_SESSION['project_id'];
+    $_SESSION['project_id'] = $project_id;
     $project = Project::getProjectById($project_id, $user_id);
     $project_list = Project::getAllProjects($user_id);
     $tasks = Task::getAllTasks($project_id);
