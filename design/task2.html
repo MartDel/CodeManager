@@ -28,6 +28,9 @@
 </head>
 
 <body id="body">
+    <script type="text/javascript">
+        let show_done_tasks = false
+    </script>
 
     <!--MENU DU HAUT-->
     <div id="menu_haut">
@@ -88,17 +91,17 @@
                 <span title="Tout sélectionner"><input name="sample" id="select_all" type="checkbox"></span>
                 <span title="Rafraîchir"><img id="refresh" src="img/refresh.png" alt=""
                         onclick="location.reload()"></span>
-                <span title="Tâches effectuées"><img class="tasks_done" src="img/task_done.png" alt=""></span>
+                <span title="Tâches effectuées"><img class="tasks_done" id="tasks_done" src="img/task_done.png" alt=""></span>
                 <span title="Supprimer"><img class="trash" src="img/trash.png" alt=""></span>
 
             </div>
 
 
 
-            <!--PARTI TACHES NON REALISEES-->
             <section class="list_task">
                 <ul id="liste_taches" class="liste_taches">
 
+                    <!--PARTI TACHES NON REALISEES-->
                     <button name="task" class="myBtn" id="task1">
                         <li>
                             <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
@@ -146,6 +149,37 @@
                                 puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
                                 etre
                                 forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
+
+                    <!-- PARTIE TACHES REALISEES -->
+                    <button name="done_task" class="myBtn" id="done_task1">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
+                                    src="img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img tick2"
+                                    src="img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                            <span class="titre_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                            <span class="desc_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                            <span class="date">11/08/2020</span>
+                        </li>
+                    </button>
+
+                    <button name="done_task" class="myBtn" id="done_task2">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
+                                    type="checkbox"></span>
+                            <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
+                                    src="img/tick.png" alt=""></span>
+                            <span class="span_input_img" title="Éditer"><img class="input_img tick2"
+                                    src="img/edit_task_bar.png" alt=""></span>
+                            <span class="utilisateur">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                            <span class="titre_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                            <span class="desc_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
                             <span class="date">11/08/2020</span>
                         </li>
                     </button>
@@ -205,6 +239,50 @@
                 <br><br>
                 <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
                     bug eheh) le 11/08/2020</i>
+            </section>
+        </div>
+    </div>
+    <div id="done_task1_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
+            <section class="header_popup">
+                <img id="logo_popup" src="img/essai_logo.png">
+                <p><strong>Tâche</strong></p>
+            </section>
+
+            <section class="titre_popup">
+
+                <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br><br>
+                <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. le 11/08/2020</i>
+            </section>
+        </div>
+    </div>
+    <div id="done_task2_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+
+            <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
+            <section class="header_popup">
+                <img id="logo_popup" src="img/essai_logo.png">
+                <p><strong>Tâche</strong></p>
+            </section>
+
+            <section class="titre_popup">
+
+                <strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br><br>
+                <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. le 11/08/2020</i>
             </section>
         </div>
     </div>

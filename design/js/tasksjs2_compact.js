@@ -5,6 +5,10 @@ var tasks_btn = {
     tick: document.getElementsByClassName("tick"),
     tick2: document.getElementsByClassName("tick2"),
 };
+const tasks_done = {
+    btn: document.getElementById('tasks_done'),
+    list: document.getElementsByName('done_task')
+}
 
 // 'Add task' elements
 var addtask = {
@@ -94,6 +98,36 @@ var projectactual = document.getElementById("project_actual");
 ======= MAIN CODE =======
 =========================
 */
+
+/*
+ * ONLOAD
+ */
+ window.onload = () => {
+     closeMenu(); // Close menu when JS is loaded
+     showTasks(!show_done_tasks)
+     showDoneTasks(show_done_tasks)
+ };
+
+/*
+ * SHOW DONE TASKS
+ */
+function showTasks(print) {
+    for(let i = 0; i < tasks.length; i++) {
+        if(print) show(tasks[i])
+        else erase(tasks[i])
+    }
+}
+function showDoneTasks(print) {
+    for(let i = 0; i < tasks_done.list.length; i++) {
+        if(print) show(tasks_done.list[i])
+        else erase(tasks_done.list[i])
+    }
+}
+tasks_done.btn.onclick = () => {
+    showTasks(show_done_tasks)
+    showDoneTasks(!show_done_tasks)
+    show_done_tasks = !show_done_tasks
+}
 
 /*
  * MODAL TASK
@@ -189,11 +223,6 @@ help.show_btn.onclick = () => {
 /*
  * LEFT MENU
  */
-// Close menu when JS is loaded
-window.onload = () => {
-    closeMenu();
-};
-
 burger.onclick = () => {
     if (open) {
         window.open = false;
@@ -419,7 +448,7 @@ function FindNext() {
     var found = false;
     if (window.find) {
         supported = true;
-        // if some content is selected, the start position of the search 
+        // if some content is selected, the start position of the search
         // will be the end position of the selection
         found = window.find(str);
     } else {
@@ -427,7 +456,7 @@ function FindNext() {
             var textRange = document.selection.createRange();
             if (textRange.findText) {
                 supported = true;
-                // if some content is selected, the start position of the search 
+                // if some content is selected, the start position of the search
                 // will be the position after the start position of the selection
                 if (textRange.text.length > 0) {
                     textRange.collapse(true);
