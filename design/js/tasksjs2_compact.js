@@ -5,6 +5,10 @@ var tasks_btn = {
     tick: document.getElementsByClassName("tick"),
     tick2: document.getElementsByClassName("tick2"),
 };
+const tasks_done = {
+    btn: document.getElementById('tasks_done'),
+    list: document.getElementsByName('done_task')
+}
 
 // 'Add task' elements
 var addtask = {
@@ -96,31 +100,65 @@ var projectactual = document.getElementById("project_actual");
 */
 
 /*
+ * ONLOAD
+ */
+ window.onload = () => {
+     closeMenu(); // Close menu when JS is loaded
+     showTasks(!show_done_tasks)
+     showDoneTasks(show_done_tasks)
+ };
+
+/*
+ * SHOW DONE TASKS
+ */
+function showTasks(print) {
+    for(let i = 0; i < tasks.length; i++) {
+        if(print) show(tasks[i])
+        else erase(tasks[i])
+    }
+}
+function showDoneTasks(print) {
+    for(let i = 0; i < tasks_done.list.length; i++) {
+        if(print) show(tasks_done.list[i])
+        else erase(tasks_done.list[i])
+    }
+}
+tasks_done.btn.onclick = () => {
+    showTasks(show_done_tasks)
+    showDoneTasks(!show_done_tasks)
+    show_done_tasks = !show_done_tasks
+}
+
+/*
  * MODAL TASK
  */
+function showModal(event){
+    // Get task id
+    var id = null;
+    var path = event.path;
+    for (var i = 0; i < path.length; i++) {
+        var current_id = path[i].id;
+        if (current_id !== undefined) {
+            if (current_id.indexOf("task") !== -1) id = current_id;
+        }
+    }
+
+    // Get modal
+    var modal = document.getElementById(id + '_modal');
+
+    if (!contain(tasks_btn.check_js, event.target) &&
+        !contain(tasks_btn.tick, event.target) &&
+        !contain(tasks_btn.tick2, event.target)
+    ) {
+        // Everythings is ok, let's go show the popup
+        show(modal);
+    }
+}
 for (var i = 0; i < tasks.length; i++) {
-    tasks[i].onclick = (event) => {
-        // Get task id
-        var id = null;
-        var path = event.path;
-        for (var i = 0; i < path.length; i++) {
-            var current_id = path[i].id;
-            if (current_id !== undefined) {
-                if (current_id.indexOf("task") !== -1) id = current_id;
-            }
-        }
-
-        // Get modal
-        var modal = document.getElementById(id + "_modal");
-
-        if (!contain(tasks_btn.check_js, event.target) &&
-            !contain(tasks_btn.tick, event.target) &&
-            !contain(tasks_btn.tick2, event.target)
-        ) {
-            // Everythings is ok, let's go show the popup
-            show(modal);
-        }
-    };
+    tasks[i].onclick = (event) => showModal(event);
+}
+for (let i = 0; i < tasks_done.list.length; i++) {
+    tasks_done.list[i].onclick = (event) => showModal(event);
 }
 
 /*
@@ -189,11 +227,6 @@ help.show_btn.onclick = () => {
 /*
  * LEFT MENU
  */
-// Close menu when JS is loaded
-window.onload = () => {
-    closeMenu();
-};
-
 burger.onclick = () => {
     if (open) {
         window.open = false;
@@ -435,7 +468,7 @@ function FindNext() {
     var found = false;
     if (window.find) {
         supported = true;
-        // if some content is selected, the start position of the search 
+        // if some content is selected, the start position of the search
         // will be the end position of the selection
         found = window.find(str);
     } else {
@@ -443,7 +476,7 @@ function FindNext() {
             var textRange = document.selection.createRange();
             if (textRange.findText) {
                 supported = true;
-                // if some content is selected, the start position of the search 
+                // if some content is selected, the start position of the search
                 // will be the position after the start position of the selection
                 if (textRange.text.length > 0) {
                     textRange.collapse(true);
@@ -530,6 +563,7 @@ var erase_modal = (element) => {
  * @param  {DOM element} element Element to erase when clicked outside
  */
 
+<<<<<<< HEAD
 var erase = (element) => {
     element.style.display = "none";
     element.style.visbility = "hidden";
@@ -556,3 +590,13 @@ function whichAnimationEvent() {
 }
 
 var animationEvent = whichAnimationEvent();
+=======
+};
+account.close.onclick = () => {
+    erase(account.back);
+};
+account.option.onclick = () => {
+    erase(account.back);
+    show(settings.modal);
+};
+>>>>>>> ef69385af612d4dabbb929f03e94be8249f74d0e
