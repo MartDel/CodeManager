@@ -1373,8 +1373,8 @@ input.apple-switch:checked:after {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    display: none;
     z-index: 99999;
+    display: none;
 }
 
 #account_white_bc {
@@ -1407,6 +1407,8 @@ input.apple-switch:checked:after {
     font-size: 1.25rem;
     color: #b41e10;
     font-weight: 500;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 .mail_user_title {
@@ -1485,7 +1487,6 @@ input.apple-switch:checked:after {
 
 @keyframes ModalLeaving {
     0% {
-        opacity: 1;
         visibility: visible;
     }
     100% {
