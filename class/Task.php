@@ -25,10 +25,6 @@ class Task extends DatabaseManager
         $this->description = $description;
     }
 
-    /**
-     * Get task id
-     * @return int Task id
-     */
     public function getId(){
         $db = self::dbConnect();
         $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author AND project_id=:project_id');
@@ -55,6 +51,16 @@ class Task extends DatabaseManager
             'is_done' => $this->is_done ? 1 : 0,
             'project_id' => $this->project_id
         ]);
+    }
+
+    public function setIsDone($is_done){
+        $db = self::dbConnect();
+        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
+        $set->execute([
+            'id' => $this->getId(),
+            'value' => $is_done ? 1 : 0
+        ]);
+        $set->closeCursor();
     }
 
     /**
@@ -96,7 +102,7 @@ class Task extends DatabaseManager
         return $this->project_id;
     }
     public function getIsDone(){
-        return $this->is_done;
+        return $this->is_done == 1 ? true : false;
     }
     public function getCreateDate(){
         return date("d/m/Y", strtotime($this->create_date));

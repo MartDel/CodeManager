@@ -24,6 +24,7 @@ try{
 			if ($action == "logout") logout(); // Logout the current user
 			elseif ($action == "commits") showProjectCommits(); // GitHub page
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
+			elseif ($action == "endtask") endTask($_GET); // End a task
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page
