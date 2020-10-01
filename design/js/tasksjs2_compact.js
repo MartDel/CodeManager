@@ -102,37 +102,49 @@ var projectactual = document.getElementById("project_actual");
 /*
  * ONLOAD
  */
- window.onload = () => {
-     closeMenu(); // Close menu when JS is loaded
-     showTasks(!show_done_tasks)
-     showDoneTasks(show_done_tasks)
- };
+window.onload = () => {
+    closeMenu(); // Close menu when JS is loaded
+    showTasks(!show_done_tasks)
+    showDoneTasks(show_done_tasks)
+};
 
 /*
  * SHOW DONE TASKS
  */
 function showTasks(print) {
-    for(let i = 0; i < tasks.length; i++) {
-        if(print) show(tasks[i])
+    for (let i = 0; i < tasks.length; i++) {
+        if (print) show(tasks[i])
         else erase(tasks[i])
     }
 }
+
 function showDoneTasks(print) {
-    for(let i = 0; i < tasks_done.list.length; i++) {
-        if(print) show(tasks_done.list[i])
+    for (let i = 0; i < tasks_done.list.length; i++) {
+        if (print) show(tasks_done.list[i])
         else erase(tasks_done.list[i])
     }
 }
+var counter_done = 0;
 tasks_done.btn.onclick = () => {
     showTasks(show_done_tasks)
     showDoneTasks(!show_done_tasks)
     show_done_tasks = !show_done_tasks
+    if (counter_done == 0) {
+        tasks_done.btn.style.filter = "grayscale(0%)";
+        tasks_done.btn.style.animation = "0.5s Rotate"
+        counter_done = 1;
+    } else {
+        tasks_done.btn.style.filter = "grayscale(100%)";
+        tasks_done.btn.style.animation = "0.5s RotateInv"
+        counter_done = 0;
+    }
 }
+
 
 /*
  * MODAL TASK
  */
-function showModal(event){
+function showModal(event) {
     // Get task id
     var id = null;
     var path = event.path;
@@ -165,26 +177,26 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 addtask.show_btn.onclick = () => {
-    show(addtask.modal);
+    show_modal(addtask.modal);
 };
 addtask.close_btn.onclick = () => {
-    erase(addtask.modal);
+    erase_modal(addtask.modal);
 };
 addtask.cancel_btn.onclick = (event) => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
-    erase(addtask.modal);
+    erase_modal(addtask.modal);
 };
 
 /*
  * SETTINGS MODAL
  */
 settings.show_btn.onclick = () => {
-    show(settings.modal);
+    show_modal(settings.modal);
 };
 settings.close_btn.onclick = () => {
     settings.bug_input.value = "";
-    erase(settings.modal);
+    erase_modal(settings.modal);
 };
 
 // Dark mode
@@ -414,7 +426,7 @@ var git_new_pro = document.getElementById("new_project_git");
 
 
 document.getElementById("close_swap").onclick = () => {
-    erase(modal_swap);
+    erase_modal(modal_swap);
     name_new_pro.value = "";
     desc_new_pro.value = "";
     git_new_pro.value = "";
@@ -422,12 +434,28 @@ document.getElementById("close_swap").onclick = () => {
 };
 
 modal_swap_icon.onclick = () => {
-    show(modal_swap)
+    show_modal(modal_swap)
 }
 
 projectactual.onclick = () => {
-    show(modal_swap);
+    show_modal(modal_swap);
 }
+
+
+/*
+ * ACCOUNT MODAL
+ */
+account.show_btn.onclick = () => {
+    show_modal(account.back);
+
+};
+account.close.onclick = () => {
+    erase_modal(account.back);
+};
+account.option.onclick = () => {
+    erase(account.back);
+    show(settings.modal);
+};
 
 //SEARCH BAR
 
@@ -503,61 +531,73 @@ var contain = (array, value) => {
     }
     return r;
 };
-
+var openmodal = 0;
 /**
  * Show a specific element
  * @param  {DOM element} element Element to show
  */
-var show = (element) => {
+var show_modal = (element) => {
     element.style.display = "block";
-    if (element.className == "account_background") {
-        element.style.animation = "1s ease 0s ModalComing";
-        var www = element.getElementsByTagName("DIV")[0];
-        www.style.animation = "1.5s linear 0s ModalComingBoth";
-    }
     element.style.visbility = "visible";
-
-
+    element.style.opacity = "1";
+    element.style.animation = "0.8s ease 0s ModalComing";
+    var www = element.getElementsByTagName("DIV")[0];
+    www.style.animation = "1.2s linear 0s ModalComingBoth";
+    openmodal = 1;
 };
 
 /**
  * Show a specific element
  * @param  {DOM element} element Element to erase when clicked outside
  */
-/*
-var outside = (element) => {
-    window.onclick = (event) => {
-        if (event.target !== element) {
-            erase(element);
-        }
-    }
-}*/
+
+var show = (element) => {
+    element.style.display = "block";
+    element.style.visbility = "visible";
+    element.style.opacity = "1";
+};
 
 /**
  * Don't show a specific element anymore
  * @param  {DOM element} element Element to erase
  */
+var erase_modal = (element) => {
+    element.style.animation = "0.8s ease 0s ModalLeaving";
+    $(this).one(animationEvent,
+        function() {
+            element.style.display = 'none';
+        });
+    openmodal = 0;
+};
+
+/**
+ * Show a specific element
+ * @param  {DOM element} element Element to erase when clicked outside
+ */
+
 var erase = (element) => {
-    if (element.className == "account_background") {
-        element.style.animation = "1s ease 0s ModalLeaving";
-        setTimeout(function(element) { element.style.display = "none"; }, 5000);
-    } else {
-        element.style.display = "none";
+    element.style.display = "none";
+    element.style.visbility = "hidden";
+    element.style.opacity = "0";
+}
+
+
+function whichAnimationEvent() {
+    var t,
+        el = document.createElement("fakeelement");
+
+    var animations = {
+        "animation": "animationend",
+        "OAnimation": "oAnimationEnd",
+        "MozAnimation": "animationend",
+        "WebkitAnimation": "webkitAnimationEnd"
     }
 
-};
+    for (t in animations) {
+        if (el.style[t] !== undefined) {
+            return animations[t];
+        }
+    }
+}
 
-/*
- * ACCOUNT MODAL
- */
-account.show_btn.onclick = () => {
-    show(account.back);
-
-};
-account.close.onclick = () => {
-    erase(account.back);
-};
-account.option.onclick = () => {
-    erase(account.back);
-    show(settings.modal);
-};
+var animationEvent = whichAnimationEvent();

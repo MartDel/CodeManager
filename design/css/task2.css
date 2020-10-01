@@ -445,6 +445,11 @@ ul {
   margin-right: 21px;
   height: 20px;
   margin-top: 10px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.tasks_done:hover {
   cursor: pointer;
 }
 
@@ -629,9 +634,6 @@ ul {
   width: auto;
   outline: none;
   /*border-right: red 5px solid;*/
-}
-.done_task span{
-    text-decoration: line-through;
 }
 
 .list_task {
@@ -1560,6 +1562,7 @@ input.apple-switch:checked:after {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99999;
   display: none;
 }
 
@@ -1595,6 +1598,8 @@ input.apple-switch:checked:after {
   font-size: 1.25rem;
   color: #b41e10;
   font-weight: 500;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 
 .mail_user_title {
@@ -1710,7 +1715,6 @@ input.apple-switch:checked:after {
 
 @-webkit-keyframes ModalLeaving {
   0% {
-    opacity: 1;
     visibility: visible;
   }
   100% {
@@ -1721,12 +1725,55 @@ input.apple-switch:checked:after {
 
 @keyframes ModalLeaving {
   0% {
-    opacity: 1;
     visibility: visible;
   }
   100% {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@-webkit-keyframes Rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes Rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes RotateInv {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes RotateInv {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
   }
 }
 /*# sourceMappingURL=task2.css.map */

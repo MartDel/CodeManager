@@ -35,14 +35,14 @@ a {
 }
 
 body {
-    background-image: url(img/codebcc2.jpg);
+    background-image: url(../img/codebcc2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
 }
 
 #bcc_icons {
-    background-image: url(img/office2.jpg);
+    background-image: url(../img/office2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
