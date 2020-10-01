@@ -96,6 +96,17 @@ var modaladd = document.getElementById("add_task_modal");
 */
 
 /*
+ * ONLOAD
+ */
+ window.onload = () => {
+     // Close menu when JS is loaded
+     closeMenu();
+     if(!getCookie('dark-mode')) setCookie('dark-mode', true)
+     console.log(document.cookie);
+     console.log(getCookie('dark-mode'));
+ };
+
+/*
  * MODAL TASK
  */
 for (var i = 0; i < tasks.length; i++) {
@@ -218,12 +229,6 @@ account.show_btn.onclick = () => {
 // et donc aussi pour gérer son état avec le localStorage
 // Je te laisse réfléchir pour cette partie !
 // (Bon en fait j'ai surtout la flemme de le faire)
-
-// Close menu when JS is loaded
-window.onload = () => {
-  closeMenu();
-};
-
 burger.onclick = () => {
   if (open) {
     window.open = false;
@@ -459,4 +464,35 @@ var erase = (element) => {
   element.style.display = "none";
 };
 
-// J'ai créé le système de CHECK-ALL dans le fichier 'demo.html' ;)
+/**
+ * Get a local cookie
+ * @param  {String} cname Cookie name
+ * @return {String} Cookie value
+ */
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+    }
+    return null;
+}
+
+/**
+ * Set a local cookie
+ * @param {String} cname Cookie name
+ * @param {String} cvalue Cookie value
+ */
+function setCookie(cname, cvalue) {
+  var d = new Date();
+  d.setTime(d.getTime() + (365*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}

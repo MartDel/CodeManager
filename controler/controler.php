@@ -83,8 +83,8 @@ function addTask($data){
  */
 function logout(){
     session_destroy();
-	setcookie('pseudo', '', time() + 365*24*3600, null, null, false, true);
-	setcookie('password', '', time() + 365*24*3600, null, null, false, true);
+	setcookie('pseudo', '', time() + 365*24*3600, '/', null, false, true);
+	setcookie('password', '', time() + 365*24*3600, '/', null, false, true);
     header('Location: index.php');
 }
 

@@ -60,7 +60,7 @@ ob_start();
             </ul>
         </div>
         <section id="copyright">
-            <p>Copyright ® 2020 CodeManager. All Rights Reserved</p>
+            <p>Copyright ® 2020 CodeManager. All Rights Reserved <?php var_dump($_COOKIE); ?></p>
         </section>
 
 

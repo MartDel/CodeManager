@@ -73,8 +73,8 @@ function connectUser($login, $auto){
 	$_SESSION['lastname'] = $user->getLastname();
 	$_SESSION['project_id'] = Project::getFirstProject($user_id)->getId();
 	if($auto){
-		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, null, null, false, true);
-		setcookie('password', User::getPassword($login), time() + 365*24*3600, null, null, false, true);
+		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
+		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);
 	}
 }
 
