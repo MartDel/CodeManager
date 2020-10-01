@@ -28,7 +28,7 @@ ob_start();
     <img id="account_logo_img" src="public/img/switzerland.png" />
     <img id="gear_logo_img" src="public/img/gear.png" />
     <img id="switch_logo_img" src="public/img/file_swap.png" alt="">
-    <button id="project_actual">Projet en cours</button>
+    <button id="project_actual"><?= $project->getName() ?></button>
 </div>
 
 <!--MENU DE GAUCHE-->
@@ -79,9 +79,9 @@ ob_start();
 
         <section class="list_task">
             <ul id="liste_taches" class="liste_taches">
-
+            <?php foreach ($tasks as $task) { ?>
                 <!--PARTI TACHES NON REALISEES-->
-                <button name="task" class="myBtn" id="task1">
+                <button name="task" class="myBtn" id="task<?= $task->getId() ?>">
                     <li>
                         <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
                                 type="checkbox"></span>
@@ -89,48 +89,13 @@ ob_start();
                                 src="public/img/tick.png" alt=""></span>
                         <span class="span_input_img" title="Éditer"><img class="input_img tick2"
                                 src="public/img/edit_task_bar.png" alt=""></span>
-                        <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                            sympa
-                            (c'est toujours un test de bug eheh)</span>
-                        <span class="titre_tache">Ceci est un titre bien trop long pour l'écrire sur toute la
-                            longueur
-                            dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                            c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                        <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                            savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                            autres
-                            puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                            etre
-                            forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                        <span class="date">11/08/2020</span>
+                        <span class="utilisateur"><?= $task->getAuthor() ?></span>
+                        <span class="titre_tache"><?= $task->getName() ?></span>
+                        <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                        <span class="date"><?= $task->getCreateDate() ?></span>
                     </li>
                 </button>
-
-                <button name="task" class="myBtn" id="task2">
-                    <li>
-                        <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
-                                type="checkbox"></span>
-                        <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
-                                src="public/img/tick.png" alt=""></span>
-                        <span class="span_input_img" title="Éditer"><img class="input_img tick2"
-                                src="public/img/edit_task_bar.png" alt=""></span>
-                        <span class="utilisateur">Martin est un gentil vacanciers un peu flemmard mais uand meme
-                            sympa
-                            (c'est toujours un test de bug eheh)</span>
-                        <span class="titre_tache">Coucou, ceci est un titre bien trop long pour l'écrire sur toute
-                            la
-                            longueur
-                            dans la liste et va surement etre coupé quand on cliqurea sur la tache en question mais
-                            c'est fait expres pour faire les tests de bug comme Martin me l'avait conséillé</span>
-                        <span class="desc_tache">Pour faire une bonne descrition il faut choisir les bons mots, et
-                            savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et
-                            autres
-                            puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans
-                            etre
-                            forcement trop long pour pas avoir la flemme de lire tout ce bazar.</span>
-                        <span class="date">11/08/2020</span>
-                    </li>
-                </button>
+            <?php } ?>
 
                 <!-- PARTIE TACHES REALISEES -->
                 <button name="done_task" class="myBtn done-task" id="done_task1">
@@ -148,20 +113,6 @@ ob_start();
                     </li>
                 </button>
 
-                <button name="done_task" class="myBtn done-task" id="done_task2">
-                    <li>
-                        <span class="span_input_img" title="Sélectionner"><input class="input_img check_js to_check"
-                                type="checkbox"></span>
-                        <span class="span_input_img" title="Marquer comme effectuée"><img class="input_img tick"
-                                src="public/img/tick.png" alt=""></span>
-                        <span class="span_input_img" title="Éditer"><img class="input_img tick2"
-                                src="public/img/edit_task_bar.png" alt=""></span>
-                        <span class="utilisateur">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                        <span class="titre_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                        <span class="desc_tache">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
-                        <span class="date">11/08/2020</span>
-                    </li>
-                </button>
             </ul>
         </section>
     </section>
@@ -170,7 +121,8 @@ ob_start();
 
 <!--MODAL CONTENT-->
 <!-- TACHES NON EFFECTUEES -->
-<div id="task1_modal" class="modal">
+<?php foreach ($tasks as $task) { ?>
+<div id="task<?= $task->getId() ?>_modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
 
@@ -181,47 +133,17 @@ ob_start();
         </section>
 
         <section class="titre_popup">
-
-            <strong>Ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
-                surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
-                tests de bug comme Martin me l'avait conséillé</strong>
+            <strong><?= $task->getName() ?></strong>
         </section>
         <div class="line_popup"></div>
         <section class="descriptif_popup">
-            Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans etre forcement
-            trop long pour pas avoir la flemme de lire tout ce bazar.
+            <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
             <br><br>
-            <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
-                bug eheh) le 11/08/2020</i>
+            <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
         </section>
     </div>
 </div>
-<div id="task2_modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <!--A MODIFIER EN FONCTION DE LA TÂCHE-->
-        <section class="header_popup">
-            <img id="logo_popup" src="public/img/essai_logo.png">
-            <p><strong>Tâche</strong></p>
-        </section>
-
-        <section class="titre_popup">
-
-            <strong>Coucou, ceci est un titre bien trop long pour l'écrire sur toute la longueur dans la liste et va
-                surement etre coupé quand on cliqurea sur la tache en question mais c'est fait expres pour faire les
-                tests de bug comme Martin me l'avait conséillé</strong>
-        </section>
-        <div class="line_popup"></div>
-        <section class="descriptif_popup">
-            Pour faire une bonne descrition il faut choisir les bons mots, et savoir etre precis dans ce qu'on dit pour que les autres developpeurs et designer et autres puissent savoir concretement de quoi on veut parler. il faut que ca soit detaillé sans etre forcement
-            trop long pour pas avoir la flemme de lire tout ce bazar.
-            <br><br>
-            <i>Par Martin est un gentil vacanciers un peu flemmard mais uand meme sympa (c'est toujours un test de
-                bug eheh) le 11/08/2020</i>
-        </section>
-    </div>
-</div>
+<?php } ?>
 
 <!-- TACHES EFFECTUEES -->
 <div id="done_task1_modal" class="modal">
