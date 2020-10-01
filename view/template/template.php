@@ -28,10 +28,10 @@
 	        })();
 	    </script>
 	    End of Tawk.to Script-->
-
 	</head>
-
-	<?= $content ?>
-
-	<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
+	<body>
+		<?= $content ?>
+		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+	</body>
 </html>
