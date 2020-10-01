@@ -635,6 +635,9 @@ ul {
   outline: none;
   /*border-right: red 5px solid;*/
 }
+.done-task span{
+    text-decoration: line-through;
+}
 
 .list_task {
   display: -webkit-box;
