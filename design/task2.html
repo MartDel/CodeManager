@@ -261,7 +261,8 @@
             </section>
             <div class="line_popup"></div>
             <section class="descriptif_popup">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 <br><br>
                 <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. le 11/08/2020</i>
             </section>
@@ -283,7 +284,8 @@
             </section>
             <div class="line_popup"></div>
             <section class="descriptif_popup">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 <br><br>
                 <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. le 11/08/2020</i>
             </section>
@@ -301,15 +303,15 @@
                 <span id="close_add" class="close_add">&times;</span>
             </section>
             <section id="section_ligne_bas">
-                <form>
+                <form method="POST" action="">
                     <h1>Titre de la tâche (80 caractères maximum)</h1>
-                    <textarea id="textarea_title" name="textarea_title" type="text" placeholder="Titre" maxlength="80"></textarea>
+                    <textarea id="textarea_title" name="task_create_title" type="text" placeholder="Titre" maxlength="80"></textarea>
                     <h1>Description de la tâche</h1>
-                    <textarea id="textarea_desc" name="textarea_desc" type="text" placeholder="Description"></textarea>
+                    <textarea id="textarea_desc" name="task_create_desc" type="text" placeholder="Description"></textarea>
                     <h2></h2>
                     <section id="button_line">
-                        <button name="cancel_button" id="addtask_cancel" type="button">Annuler</button>
-                        <button name="submit_button" type="submit">Valider</button>
+                        <button name="cancel_button_create_task" id="addtask_cancel" type="button">Annuler</button>
+                        <button name="submit_button_create_task" type="submit">Valider</button>
                     </section>
                 </form>
             </section>
@@ -334,10 +336,12 @@
                 <p>Night Shift : </p>
                 <input class="apple-switch" id="night_shift" type="checkbox">
             </div>
-            <div class="row_settings" id="col_settings">
-                <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
-                <textarea id="textarea_bug" placeholder="Message" name="" id=""></textarea>
-                <button type="submit" id="bug_submission">Envoyer</button>
+            <div class="row_settings_title" id="col_settings">
+                <form class="form_bug_report" method="POST" action="">
+                    <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
+                    <textarea id="textarea_bug" placeholder="Message" name="bug_report_textarea" id=""></textarea>
+                    <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
+                </form>
                 <br>
             </div>
         </div>
@@ -384,7 +388,7 @@
             <button class="button_my_account">Mon compte</button>
             <div class="flex_button_account">
                 <button id="button_option" class="button_option">Options</button>
-                <button class="button_deconnect">Déconnexion</button>
+                <button href="#" name="deconnexion_button" class="button_deconnect">Déconnexion</button>
             </div>
         </div>
     </div>
@@ -430,14 +434,15 @@
                 <br><br>
                 <div id="div_form_new_project"></div>
                 <br><br>
-                <h1>Nom du Projet (20 caractères max.)</h1>
-                <textarea name="" id="new_project_name" maxlength="20" placeholder="Nom du projet"></textarea>
-                <h1>Description du projet (optionnel)</h1>
-                <textarea name="" id="new_project_desc" placeholder="Description du projet"></textarea>
-                <h2>Lien GitHub (optionnel)</h2>
-                <textarea name="" id="new_project_git" placeholder="Lien GitHub"></textarea>
-                <button id="create_project">Créer un nouveau projet</button>
-
+                <form name="create_project_form" action="" method="POST">
+                    <h1>Nom du Projet (20 caractères max.)</h1>
+                    <textarea name="new_project_name" id="new_project_name" maxlength="20" placeholder="Nom du projet"></textarea>
+                    <h1>Description du projet (optionnel)</h1>
+                    <textarea name="new_project_desc" id="new_project_desc" placeholder="Description du projet"></textarea>
+                    <h2>Lien GitHub (optionnel)</h2>
+                    <textarea name="new_project_git" id="new_project_git" placeholder="Lien GitHub"></textarea>
+                    <button name="create_project_button" id="create_project">Créer un nouveau projet</button>
+                </form>
             </section>
         </div>
     </div>
