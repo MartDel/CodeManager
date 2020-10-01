@@ -25,6 +25,26 @@ class Task extends DatabaseManager
         $this->description = $description;
     }
 
+    /**
+     * Get task id
+     * @return int Task id
+     */
+    public function getId(){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author AND project_id=:project_id');
+        $query->execute([
+            'name' => $this->name,
+            'author' => $this->author,
+            'project_id' => $this->project_id
+        ]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return $data['id'];
+    }
+
+    /**
+     * Add task to the database
+     */
     public function pushToDB(){
         $db = self::dbConnect();
         $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, author, create_date, is_done, project_id) VALUES(:name, :description, :author, NOW(), :is_done, :project_id)');
@@ -51,6 +71,20 @@ class Task extends DatabaseManager
             $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author'], $task['description']);
         }
         return $tasks;
+    }
+
+    /**
+     * Get a specific a specific tasks by id
+     * @param int $id Task id
+     * @return Project The specific task
+     */
+    public static function getTaskById($id){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $query->execute([$id]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author'], $data['description']);
     }
 
     // GETTERS
