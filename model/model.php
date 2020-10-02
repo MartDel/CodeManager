@@ -17,7 +17,7 @@ function checkNewUserData($data){
 	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") throw new Exception("Veuillez remplir tous les champs.");
 	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) throw new Exception("Addresse mail non valide.");
 	if($password != $confirm) throw new Exception("Mot de passe non valide.");
-	if(User::accountExist($pseudo, $mail, $firstname, $lastname)) throw new Exception("Ce compte existe déjà.");
+	if((new User($pseudo, $mail, $firstname, $lastname))->accountExist()) throw new Exception("Ce compte existe déjà.");
 }
 
 /**

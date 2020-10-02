@@ -34,7 +34,7 @@ function checkCookie(){
         header("Location: index.php");
     } catch (Exception $e) {
         logout();
-        header("Location: index.php?action=home");
+        header("Location: index.php");
     }
 }
 
@@ -47,6 +47,7 @@ function showMainPage(){
     $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
     if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = $_SESSION['project_id'];
     $_SESSION['project_id'] = $project_id;
+    if(!$project_id) throw new Exception("Vous n'avez pas de projet... Il faut modifier la base de données manuellement!");
     $project = Project::getProjectById($project_id, $user_id);
     $project_list = Project::getAllProjects($user_id);
     $tasks = Task::getAllTasks($project_id);
@@ -87,6 +88,17 @@ function endTask($data){
     $id = htmlspecialchars($data['id']);
     $task = Task::getTaskById($id);
     $task->setIsDone(!$task->getIsDone());
+    header('Location: index.php');
+}
+
+/**
+ * Add a new project to the database
+ * @param Object $data All of project data
+ */
+function createProject($data){
+    if(!isset($data['name']) || htmlspecialchars($data['name']) == '') throw new Exception("Veuillez remplir tous les champs.");
+    $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), htmlspecialchars($data['remote']));
+    $project->pushToDB();
     header('Location: index.php');
 }
 

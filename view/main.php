@@ -317,13 +317,13 @@ ob_start();
             <br><br>
             <div id="div_form_new_project"></div>
             <br><br>
-            <form name="create_project_form" action="" method="POST">
+            <form name="create_project_form" action="index.php?action=createproject" method="POST">
                 <h1>Nom du Projet (20 caractères max.)</h1>
-                <textarea name="new_project_name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></textarea>
+                <textarea name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></textarea>
                 <h1>Description du projet (optionnel)</h1>
-                <textarea name="new_project_desc" id="new_project_desc" placeholder="Description du projet"></textarea>
+                <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
                 <h2>Lien GitHub (optionnel)</h2>
-                <textarea name="new_project_git" id="new_project_git" placeholder="Lien GitHub"></textarea>
+                <textarea name="remote" id="new_project_git" placeholder="Lien GitHub"></textarea>
                 <button name="create_project_button" id="create_project" type="submit">Créer un nouveau projet</button>
             </form>
         </section>
