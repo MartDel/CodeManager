@@ -297,7 +297,9 @@ ob_start();
             </section>
             <ul id="ul_swap">
             <?php foreach ($project_list as $current_project) { ?>
-                <li class="li_swap"><?= $current_project['name'] ?></li>
+                <li class="li_swap">
+                    <a href="index.php?project=<?= $current_project['id'] ?>"><?= $current_project['name'] ?></a>
+                </li>
             <?php } ?>
             </ul>
             <br><br>

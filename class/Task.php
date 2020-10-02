@@ -5,17 +5,17 @@
  */
 class Task extends DatabaseManager
 {
+    private $id;
     private $name;
     private $project_id;
     private $is_done;
     private $create_date;
     private $author;
-
     private $description;
 
     const TABLE_NAME = "tasks";
 
-    function __construct($name, $project_id, $is_done, $create_date, $author, $description = null)
+    function __construct($name, $project_id, $is_done, $create_date, $author, $description)
     {
         $this->name = $name;
         $this->project_id = $project_id;
@@ -23,9 +23,8 @@ class Task extends DatabaseManager
         $this->create_date = $create_date;
         $this->author = $author;
         $this->description = $description;
-    }
 
-    public function getId(){
+        // Get task id
         $db = self::dbConnect();
         $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author AND project_id=:project_id');
         $query->execute([
@@ -35,7 +34,7 @@ class Task extends DatabaseManager
         ]);
         $data = $query->fetch();
         $query->closeCursor();
-        return $data['id'];
+        $this->id = $data['id'];
     }
 
     /**
@@ -51,17 +50,10 @@ class Task extends DatabaseManager
             'is_done' => $this->is_done ? 1 : 0,
             'project_id' => $this->project_id
         ]);
+        $add->closeCursor();
     }
 
-    public function setIsDone($is_done){
-        $db = self::dbConnect();
-        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
-        $set->execute([
-            'id' => $this->getId(),
-            'value' => $is_done ? 1 : 0
-        ]);
-        $set->closeCursor();
-    }
+    // STATIC FUNCTIONS
 
     /**
     * Get all tasks there are in the database for a specific project
@@ -76,6 +68,7 @@ class Task extends DatabaseManager
         while($task = $query->fetch()){
             $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author'], $task['description']);
         }
+        $query->closeCursor();
         return $tasks;
     }
 
@@ -93,8 +86,23 @@ class Task extends DatabaseManager
         return new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author'], $data['description']);
     }
 
+    // SETTERS
+
+    public function setIsDone($is_done){
+        $db = self::dbConnect();
+        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
+        $set->execute([
+            'id' => $this->getId(),
+            'value' => $is_done ? 1 : 0
+        ]);
+        $set->closeCursor();
+    }
+
     // GETTERS
 
+    public function getId(){
+        return $this->id;
+    }
     public function getName(){
         return $this->name;
     }

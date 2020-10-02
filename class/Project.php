@@ -5,6 +5,7 @@
  */
 class Project extends DatabaseManager
 {
+    private $id;
     private $name;
     private $author_id;
     private $description;
@@ -17,13 +18,8 @@ class Project extends DatabaseManager
         $this->author_id = $author_id;
         $this->description = $description;
         $this->remote = $remote;
-    }
 
-    /**
-     * Get project id
-     * @return int Project id
-     */
-    public function getId(){
+        // Get project id
         $db = self::dbConnect();
         $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author_id');
         $query->execute([
@@ -32,26 +28,10 @@ class Project extends DatabaseManager
         ]);
         $data = $query->fetch();
         $query->closeCursor();
-        return $data['id'];
+        $this->id = $data['id'];
     }
 
-    /**
-     * Get a specific a user's specific project by name
-     * @param string $name Project name
-     * @param int $user_id User's id
-     * @return Project The specific project
-     */
-    public static function getProjectByName($name, $user_id){
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author_id');
-        $query->execute([
-            'name' => $name,
-            'author_id' => $user_id
-        ]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        return new Project($data['name'], $data['author'], $data['description'], $data['remote']);
-    }
+    // STATIC FUNCTIONS
 
     /**
      * Get a specific a user's specific project by id
@@ -127,6 +107,9 @@ class Project extends DatabaseManager
 
     // GETTERS
 
+    public function getId(){
+        return $this->id;
+    }
     public function getName(){
         return $this->name;
     }

@@ -5,11 +5,12 @@
  */
 class User extends DatabaseManager
 {
+    private $id;
     private $pseudo;
     private $mail;
     private $firstname;
     private $lastname;
-    private $role;
+    // private $role;
 
     const TABLE_NAME = "users";
 
@@ -19,13 +20,8 @@ class User extends DatabaseManager
         $this->mail = $mail;
         $this->firstname = $firstname;
         $this->lastname = $lastname;
-    }
 
-    /**
-     * Get user's id
-     * @return int User's id
-     */
-    public function getId(){
+        // Get user id
         $db = self::dbConnect();
         $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');
         $query->execute([
@@ -33,7 +29,8 @@ class User extends DatabaseManager
             'mail' => $this->mail
         ]);
         $data = $query->fetch();
-        return $data['id'];
+        $query->closeCursor();
+        $this->id = $data['id'];
     }
 
     /**
@@ -51,6 +48,7 @@ class User extends DatabaseManager
             'firstname' => $this->firstname,
             'lastname' => $this->lastname
         ]);
+        $add->closeCursor();
     }
 
     /**
@@ -71,6 +69,8 @@ class User extends DatabaseManager
         return isset($data['pseudo']) || isset($data['mail']) || isset($data['firstname']) || isset($data['lastname']);
     }
 
+    // STATIC FUNCTIONS
+
     /**
     * Get the user's password from his login
     * @param string $login User's username or email
@@ -81,6 +81,7 @@ class User extends DatabaseManager
         $pass_query = $db->prepare('SELECT password FROM ' . self::TABLE_NAME . ' WHERE pseudo=? OR mail=?');
         $pass_query->execute([$login, $login]);
         $data = $pass_query->fetch();
+        $pass_query->closeCursor();
         return isset($data['password']) ? $data['password'] : null;
     }
 
@@ -94,11 +95,15 @@ class User extends DatabaseManager
         $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE pseudo=? OR mail=?');
         $query->execute([$login, $login]);
         $data = $query->fetch();
+        $query->closeCursor();
         return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
     }
 
     // GETTERS
 
+    public function getId(){
+        return $this->id;
+    }
     public function getPseudo(){
         return $this->pseudo;
     }
@@ -111,7 +116,7 @@ class User extends DatabaseManager
     public function getLastname(){
         return $this->lastname;
     }
-    public function getRole(){
-        return $this->role;
-    }
+    // public function getRole(){
+    //     return $this->role;
+    // }
 }
