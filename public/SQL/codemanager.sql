@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : mer. 23 sep. 2020 à 16:46
+-- Généré le : ven. 02 oct. 2020 à 12:13
 -- Version du serveur :  8.0.21-0ubuntu0.20.04.4
 -- Version de PHP : 7.4.3
 
@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `codemanager`
@@ -34,7 +34,7 @@ CREATE TABLE `projects` (
   `author` int NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `remote` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `projects`
@@ -54,19 +54,20 @@ CREATE TABLE `tasks` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `author` varchar(255) NOT NULL,
+  `author_id` int NOT NULL,
   `create_date` datetime NOT NULL,
   `is_done` tinyint(1) NOT NULL DEFAULT '0',
   `project_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `tasks`
 --
 
-INSERT INTO `tasks` (`id`, `name`, `description`, `author`, `create_date`, `is_done`, `project_id`) VALUES
-(1, 'Wesh wesh la mifa', NULL, 'MartDel', '2020-09-11 17:52:12', 0, 1),
-(5, 'test tâche', 'fneizfnz', 'MartDel', '2020-09-23 16:33:03', 0, 1);
+INSERT INTO `tasks` (`id`, `name`, `description`, `author_id`, `create_date`, `is_done`, `project_id`) VALUES
+(7, 'salut', 'yo', 1, '2020-10-02 12:10:47', 0, 1),
+(8, 'feznig', 'foizefb', 1, '2020-10-02 12:10:59', 0, 1),
+(9, 'saluuuuut', NULL, 1, '2020-10-02 12:12:25', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,7 @@ CREATE TABLE `users` (
   `mail` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
@@ -126,7 +127,7 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT pour la table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `users`
