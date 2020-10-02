@@ -88,96 +88,104 @@ ob_start();
 
         <section class="list_task">
             <ul id="liste_taches" class="liste_taches">
-            <!--TACHES NON REALISEES-->
-            <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
-                <button name="task" class="myBtn" id="task<?= $task->getId() ?>">
-                    <li>
-                        <span class="span_input_img" title="Sélectionner">
-                            <input class="input_img check_js to_check" type="checkbox" />
-                        </span>
-                        <span class="span_input_img" title="Marquer comme effectuée">
-                            <img class="input_img tick" src="public/img/tick.png" alt="" />
-                        </span>
-                        <span class="span_input_img" title="Éditer">
-                            <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
-                        </span>
-                        <span class="utilisateur"><?= $task->getAuthor() ?></span>
-                        <span class="titre_tache"><?= $task->getName() ?></span>
-                        <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
-                        <span class="date"><?= $task->getCreateDate() ?></span>
-                    </li>
-                </button>
-            <?php }} ?>
+            <?php if (isset($tasks)) { ?>
+                <!--TACHES NON REALISEES-->
+                <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
+                    <button name="task" class="myBtn" id="task<?= $task->getId() ?>">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner">
+                                <input class="input_img check_js to_check" type="checkbox" />
+                            </span>
+                            <span class="span_input_img" title="Marquer comme effectuée">
+                                <img class="input_img tick" src="public/img/tick.png" alt="" />
+                            </span>
+                            <span class="span_input_img" title="Éditer">
+                                <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                            </span>
+                            <span class="utilisateur"><?= $task->getAuthor() ?></span>
+                            <span class="titre_tache"><?= $task->getName() ?></span>
+                            <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                            <span class="date"><?= $task->getCreateDate() ?></span>
+                        </li>
+                    </button>
+                <?php }} ?>
 
-            <!-- TACHES REALISEES -->
-            <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
-                <button name="done_task" class="myBtn done-task" id="done_task<?= $task->getId() ?>">
-                    <li>
-                        <span class="span_input_img" title="Sélectionner">
-                            <input class="input_img check_js to_check" type="checkbox" />
-                        </span>
-                        <span class="span_input_img" title="Marquer comme effectuée">
-                            <img class="input_img tick" src="public/img/tick.png" alt="" />
-                        </span>
-                        <span class="span_input_img" title="Éditer">
-                            <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
-                        </span>
-                        <span class="utilisateur"><?= $task->getAuthor() ?></span>
-                        <span class="titre_tache"><?= $task->getName() ?></span>
-                        <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
-                        <span class="date"><?= $task->getCreateDate() ?></span>
-                    </li>
-                </button>
-            <?php }} ?>
+                <!-- TACHES REALISEES -->
+                <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
+                    <button name="done_task" class="myBtn done-task" id="done_task<?= $task->getId() ?>">
+                        <li>
+                            <span class="span_input_img" title="Sélectionner">
+                                <input class="input_img check_js to_check" type="checkbox" />
+                            </span>
+                            <span class="span_input_img" title="Marquer comme effectuée">
+                                <img class="input_img tick" src="public/img/tick.png" alt="" />
+                            </span>
+                            <span class="span_input_img" title="Éditer">
+                                <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                            </span>
+                            <span class="utilisateur"><?= $task->getAuthor() ?></span>
+                            <span class="titre_tache"><?= $task->getName() ?></span>
+                            <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                            <span class="date"><?= $task->getCreateDate() ?></span>
+                        </li>
+                    </button>
+                <?php }} ?>
+            <?php } else { ?>
+                <p>
+                    <i>Pas de tâche pour le moment...</i>
+                </p>
+            <?php } ?>
             </ul>
         </section>
     </section>
 </section>
 
 <!--MODAL CONTENT-->
-<!-- TACHES NON EFFECTUEES -->
-<?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
-<div id="task<?= $task->getId() ?>_modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <section class="header_popup">
-            <img id="logo_popup" src="public/img/essai_logo.png" />
-            <p><strong>Tâche</strong></p>
-        </section>
-        <section class="titre_popup">
-            <strong><?= $task->getName() ?></strong>
-        </section>
-        <div class="line_popup"></div>
-        <section class="descriptif_popup">
-            <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
-            <br><br>
-            <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-        </section>
+<?php if (isset($tasks)) { ?>
+    <!-- TACHES NON EFFECTUEES -->
+    <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
+    <div id="task<?= $task->getId() ?>_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section class="header_popup">
+                <img id="logo_popup" src="public/img/essai_logo.png" />
+                <p><strong>Tâche</strong></p>
+            </section>
+            <section class="titre_popup">
+                <strong><?= $task->getName() ?></strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
+                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+            </section>
+        </div>
     </div>
-</div>
-<?php }} ?>
+    <?php }} ?>
 
-<!-- TACHES EFFECTUEES -->
-<?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
-<div id="done_task<?= $task->getId() ?>_modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <section class="header_popup">
-            <img id="logo_popup" src="public/img/essai_logo.png" />
-            <p><strong>Tâche</strong></p>
-        </section>
-        <section class="titre_popup">
-            <strong><?= $task->getName() ?></strong>
-        </section>
-        <div class="line_popup"></div>
-        <section class="descriptif_popup">
-            <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
-            <br><br>
-            <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-        </section>
+    <!-- TACHES EFFECTUEES -->
+    <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
+    <div id="done_task<?= $task->getId() ?>_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section class="header_popup">
+                <img id="logo_popup" src="public/img/essai_logo.png" />
+                <p><strong>Tâche</strong></p>
+            </section>
+            <section class="titre_popup">
+                <strong><?= $task->getName() ?></strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
+                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+            </section>
+        </div>
     </div>
-</div>
-<<?php }} ?>
+    <?php }} ?>
+<?php } ?>
 
 <!--ADD TASK MODAL-->
 <div id="add_task_modal_general">

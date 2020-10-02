@@ -73,7 +73,7 @@ function showProjectCommits(){
  */
 function addTask($data){
     if(!isset($data['title']) || htmlspecialchars($data['title']) == '') throw new Exception("Veuillez remplir tous les champs.");
-    $task = new Task(htmlspecialchars($data['title']), $_SESSION['project_id'], false, null, $_SESSION['pseudo'], htmlspecialchars($data['description']));
+    $task = new Task(htmlspecialchars($data['title']), $_SESSION['project_id'], false, null, $_SESSION['user_id'], htmlspecialchars($data['description']));
     $task->pushToDB();
     header('Location: index.php');
 }

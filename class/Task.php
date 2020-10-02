@@ -10,26 +10,26 @@ class Task extends DatabaseManager
     private $project_id;
     private $is_done;
     private $create_date;
-    private $author;
+    private $author_id;
     private $description;
 
     const TABLE_NAME = "tasks";
 
-    function __construct($name, $project_id, $is_done, $create_date, $author, $description)
+    function __construct($name, $project_id, $is_done, $create_date, $author_id, $description)
     {
         $this->name = $name;
         $this->project_id = $project_id;
         $this->is_done = $is_done;
         $this->create_date = $create_date;
-        $this->author = $author;
+        $this->author_id = $author_id;
         $this->description = $description;
 
         // Get task id
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author AND project_id=:project_id');
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author AND project_id=:project_id');
         $query->execute([
             'name' => $this->name,
-            'author' => $this->author,
+            'author' => $this->author_id,
             'project_id' => $this->project_id
         ]);
         $data = $query->fetch();
@@ -42,11 +42,11 @@ class Task extends DatabaseManager
      */
     public function pushToDB(){
         $db = self::dbConnect();
-        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, author, create_date, is_done, project_id) VALUES(:name, :description, :author, NOW(), :is_done, :project_id)');
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, author_id, create_date, is_done, project_id) VALUES(:name, :description, :author, NOW(), :is_done, :project_id)');
         $add->execute([
             'name' => $this->name,
             'description' => $this->description ? $this->description : null,
-            'author' => $this->author,
+            'author' => $this->author_id,
             'is_done' => $this->is_done ? 1 : 0,
             'project_id' => $this->project_id
         ]);
@@ -66,7 +66,7 @@ class Task extends DatabaseManager
         $query->execute([$project_id]);
         $tasks = null;
         while($task = $query->fetch()){
-            $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author'], $task['description']);
+            $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author_id'], $task['description']);
         }
         $query->closeCursor();
         return $tasks;
@@ -83,7 +83,7 @@ class Task extends DatabaseManager
         $query->execute([$id]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author'], $data['description']);
+        return new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description']);
     }
 
     // SETTERS
@@ -115,10 +115,18 @@ class Task extends DatabaseManager
     public function getCreateDate(){
         return date("d/m/Y", strtotime($this->create_date));
     }
-    public function getAuthor(){
-        return $this->author;
+    public function getAuthorId(){
+        return $this->author_id;
     }
     public function getDescription(){
         return $this->description;
+    }
+    public function getAuthor(){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT pseudo FROM ' . User::TABLE_NAME . ' WHERE id=?');
+        $query->execute([$this->author_id]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return $data['pseudo'];
     }
 }
