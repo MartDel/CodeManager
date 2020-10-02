@@ -97,7 +97,9 @@ ob_start();
                                 <input class="input_img check_js to_check" type="checkbox" />
                             </span>
                             <span class="span_input_img" title="Marquer comme effectuée">
-                                <img class="input_img tick" src="public/img/tick.png" alt="" />
+                                <a href="index.php?action=endtask&id=<?= $task->getId() ?>">
+                                    <img class="input_img tick" src="public/img/tick.png" alt="" />
+                                </a>
                             </span>
                             <span class="span_input_img" title="Éditer">
                                 <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
@@ -118,7 +120,9 @@ ob_start();
                                 <input class="input_img check_js to_check" type="checkbox" />
                             </span>
                             <span class="span_input_img" title="Marquer comme effectuée">
-                                <img class="input_img tick" src="public/img/tick.png" alt="" />
+                                <a href="index.php?action=endtask&id=<?= $task->getId() ?>">
+                                    <img class="input_img tick" src="public/img/tick.png" alt="" />
+                                </a>
                             </span>
                             <span class="span_input_img" title="Éditer">
                                 <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
