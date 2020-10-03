@@ -540,9 +540,10 @@ var show_modal = (element) => {
     element.style.display = "block";
     element.style.visbility = "visible";
     element.style.opacity = "1";
-    element.style.animation = "0.8s ease 0s ModalComing";
+    element.style.animation = "0.6s ease 0s ModalComing";
     var www = element.getElementsByTagName("DIV")[0];
-    www.style.animation = "1.2s linear 0s ModalComingBoth";
+    www.style.animation = "0.9s linear 0s ModalComingBoth";
+    //www.style.animation = "cubic-bezier(0.165, 0.840, 0.440, 1.000)";
     openmodal = 1;
 };
 
@@ -562,7 +563,7 @@ var show = (element) => {
  * @param  {DOM element} element Element to erase
  */
 var erase_modal = (element) => {
-    element.style.animation = "0.8s ease 0s ModalLeaving";
+    element.style.animation = "0.6s ease 0s ModalLeaving";
     $(this).one(animationEvent,
         function() {
             element.style.display = 'none';

@@ -918,6 +918,8 @@ ul {
   /*border: 2px solid black*/
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #add_task_modal_general {
@@ -926,6 +928,12 @@ ul {
   width: 100%;
   top: 0;
   position: absolute;
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#add_task_modal::-webkit-scrollbar {
   display: none;
 }
 
@@ -986,25 +994,28 @@ ul {
 #section_ligne_bas form {
   margin-left: 10%;
   width: 80%;
+  /*background-color: red;*/
 }
+
 
 #section_ligne_bas textarea {
   resize: none;
   font-family: "Product Sans Regular";
-  font-size: 0.9rem;
+  font-size: 14px;
   color: black;
-  width: 100%;
+  width: 95%;
   padding: 10PX;
   left: 0;
   border-radius: 10px;
 }
 
-#section_ligne_bas textarea[name="textarea_title"] {
-  height: 1.2rem;
+#section_ligne_bas textarea[name="title"] {
+  height: 17px;
+  overflow-y: hidden;
 }
 
-#section_ligne_bas textarea[name="textarea_desc"] {
-  height: 10rem;
+#section_ligne_bas textarea[name="description"] {
+  height: 150px;;
 }
 
 #section_ligne_bas button {
@@ -1036,9 +1047,9 @@ ul {
   right: 0;
   float: right;
   padding: 0;
-  bottom: 0;
-  position: absolute;
-  margin-right: 9%;
+  top: 0;
+  margin-top:20px;
+  margin-right: 2%;
   margin-bottom: 50px;
 }
 
@@ -1706,7 +1717,7 @@ input.apple-switch:checked:after {
   0% {
     opacity: 0;
   }
-  60% {
+  65% {
     opacity: 0;
   }
   100% {
@@ -1718,7 +1729,7 @@ input.apple-switch:checked:after {
   0% {
     opacity: 0;
   }
-  60% {
+  65% {
     opacity: 0;
   }
   100% {
