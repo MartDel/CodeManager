@@ -22,15 +22,20 @@ class User extends DatabaseManager
         $this->lastname = $lastname;
 
         // Get user id
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');
-        $query->execute([
-            'pseudo' => $this->pseudo,
-            'mail' => $this->mail
-        ]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        $this->id = $data['id'];
+        try {
+            $db = self::dbConnect();
+            $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');
+            $query->execute([
+                'pseudo' => $this->pseudo,
+                'mail' => $this->mail
+            ]);
+            $data = $query->fetch();
+            $query->closeCursor();
+            $this->id = $data['id'];
+        } catch (Exception $e) {
+            $this->id = null;
+        }
+
     }
 
     /**

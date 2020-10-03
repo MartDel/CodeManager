@@ -25,6 +25,7 @@ try{
 			elseif ($action == "commits") showProjectCommits(); // GitHub page
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
+			elseif ($action == 'createproject') createProject($_POST); // Add a new project
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page

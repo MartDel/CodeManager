@@ -21,7 +21,7 @@ class Project extends DatabaseManager
 
         // Get project id
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author=:author_id');
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author_id');
         $query->execute([
             'name' => $this->name,
             'author_id' => $this->author_id
@@ -29,6 +29,21 @@ class Project extends DatabaseManager
         $data = $query->fetch();
         $query->closeCursor();
         $this->id = $data['id'];
+    }
+
+    /**
+     * Add project to the database
+     */
+    public function pushToDB(){
+        $db = self::dbConnect();
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, author_id, description, remote) VALUES(:name, :author, :description, :remote)');
+        $add->execute([
+            'name' => $this->name,
+            'author' => $this->author_id,
+            'description' => $this->description ? $this->description : null,
+            'remote' => $this->remote ? $this->remote : null
+        ]);
+        $add->closeCursor();
     }
 
     // STATIC FUNCTIONS
@@ -41,14 +56,14 @@ class Project extends DatabaseManager
      */
     public static function getProjectById($id, $user_id){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=:id AND author=:author_id');
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=:id AND author_id=:author_id');
         $query->execute([
             'id' => $id,
             'author_id' => $user_id
         ]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new Project($data['name'], $data['author'], $data['description'], $data['remote']);
+        return new Project($data['name'], $data['author_id'], $data['description'], $data['remote']);
     }
 
     /**
@@ -59,11 +74,11 @@ class Project extends DatabaseManager
      */
     public static function getFirstProject($user_id){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE author=?');
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE author_id=?');
         $query->execute([$user_id]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new Project($data['name'], $data['author'], $data['description'], $data['remote']);
+        return new Project($data['name'], $data['author_id'], $data['description'], $data['remote']);
     }
 
     /**
@@ -74,7 +89,7 @@ class Project extends DatabaseManager
      */
     public static function projectExist($id, $user_id){
         $db = self::dbConnect();
-        $q = $db->prepare("SELECT id FROM " . self::TABLE_NAME . " WHERE id=:id AND author=:author");
+        $q = $db->prepare("SELECT id FROM " . self::TABLE_NAME . " WHERE id=:id AND author_id=:author");
         $q->execute([
             'id' => $id,
             'author' => $user_id
@@ -91,7 +106,7 @@ class Project extends DatabaseManager
      */
     public static function getAllProjects($user_id){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT id, name, description FROM ' . self::TABLE_NAME . ' WHERE author=?');
+        $query = $db->prepare('SELECT id, name, description FROM ' . self::TABLE_NAME . ' WHERE author_id=?');
         $query->execute([$user_id]);
         $r = null;
         while($data = $query->fetch()){

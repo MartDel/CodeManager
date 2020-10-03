@@ -9,7 +9,7 @@
 	    <link rel="shortcut icon" href="public/img/programmer2.png">
 	    <script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 	</head>
-
-	<?= $content ?>
-
+	<body>
+		<?= $content ?>
+	</body>
 </html>
