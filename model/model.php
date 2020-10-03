@@ -43,7 +43,7 @@ function addUser($data){
 function checkConnection($l, $p, $is_hashed) {
 	$login = htmlspecialchars($l);
 	$password = $p;
-	$user = new User($l, $l, '', '');
+	$user = new User($login, $login, '', '');
 	if(!$user->accountExist()) throw new Exception("Aucun compte n'existe avec ces identifiants.");
 
 	$correct_password = User::getPassword($login);

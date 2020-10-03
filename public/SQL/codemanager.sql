@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 02 oct. 2020 à 12:13
+-- Généré le : sam. 03 oct. 2020 à 18:51
 -- Version du serveur :  8.0.21-0ubuntu0.20.04.4
 -- Version de PHP : 7.4.3
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `projects` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `author` int NOT NULL,
+  `author_id` int NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `remote` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,7 +40,7 @@ CREATE TABLE `projects` (
 -- Déchargement des données de la table `projects`
 --
 
-INSERT INTO `projects` (`id`, `name`, `author`, `description`, `remote`) VALUES
+INSERT INTO `projects` (`id`, `name`, `author_id`, `description`, `remote`) VALUES
 (1, 'TestProject', 1, 'Ceci est une description du projet TestProject', 'https://www.github.com/MartDel/TestProject'),
 (2, 'Test2Project', 1, NULL, NULL);
 
