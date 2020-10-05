@@ -282,10 +282,10 @@ ob_start();
         <span id="close_account_modal" class="close_account_modal">&times;</span>
         <p class="name_user_title"><?= $_SESSION['pseudo'] ?></p>
         <p class="mail_user_title"><?= $_SESSION['mail'] ?></p>
-        <button class="button_my_account">Mon compte</button>
+        <a class="button_my_account">Mon compte</a>
         <div class="flex_button_account">
-            <button id="button_option" class="button_option">Options</button>
-            <button href="index.php?action=logout" name="deconnexion_button" class="button_deconnect">Déconnexion</button>
+            <a id="button_option" class="button_option">Options</a>
+            <a href="index.php?action=logout" name="deconnexion_button" class="button_deconnect">Déconnexion</a>
         </div>
     </div>
 </div>

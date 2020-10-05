@@ -1645,11 +1645,13 @@ input.apple-switch:checked:after {
           box-shadow: #979797 0px 0px 5px;
   font-family: "Product Sans Regular";
   font-size: 0.9rem;
-  height: 50px;
+  padding-top:15px;
+  padding-bottom:15px;
   width: 150px;
   margin-left: calc(50% - 75px);
   margin-top: 20px;
   text-align: center;
+  display:block;
 }
 
 .button_my_account:hover,
