@@ -103,9 +103,21 @@ var projectactual = document.getElementById("project_actual");
  * ONLOAD
  */
 window.onload = () => {
-    closeMenu(); // Close menu when JS is loaded
+    // Close menu when JS is loaded
+    closeMenu()
+
+    // Hide or show done tasks
     showTasks(!show_done_tasks)
     showDoneTasks(show_done_tasks)
+
+    // Turn ON/OFF dark mode
+    if (getCookie('dark-mode') === 'on') {
+        turnOnDarkMode()
+        settings.dark_mode_btn.checked = true
+    } else {
+        turnOffDarkMode()
+        settings.dark_mode_btn.checked = false
+    }
 };
 
 /*
@@ -202,15 +214,24 @@ settings.close_btn.onclick = () => {
 // Dark mode
 
 settings.dark_mode_btn.onchange = () => {
-    if (settings.dark_mode_btn.checked == true) {
-        body.style.filter = "invert(100%) hue-rotate(200deg)";
-        account_logo.style.filter = "invert(100%) hue-rotate(-200deg)";
-        settings.night_shift_btn.checked = false;
-    } else {
-        body.style.filter = "invert(0%) hue-rotate(0deg)";
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
-    }
+    if (settings.dark_mode_btn.checked) turnOnDarkMode()
+    else turnOffDarkMode()
 };
+function turnOnDarkMode() {
+    body.style.filter = "invert(100%) hue-rotate(200deg)";
+    account_logo.style.filter = "invert(100%) hue-rotate(-200deg)";
+    settings.night_shift_btn.checked = false;
+
+    // Set dark-mode cookie
+    setCookie('dark-mode', 'on')
+}
+function turnOffDarkMode() {
+    body.style.filter = "invert(0%) hue-rotate(0deg)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+
+    // Set dark-mode cookie
+    setCookie('dark-mode', 'off')
+}
 
 // Night shift
 settings.night_shift_btn.onchange = () => {
@@ -602,3 +623,40 @@ function whichAnimationEvent() {
 }
 
 var animationEvent = whichAnimationEvent();
+
+/*
+ * COOKIES FUNCTIONS
+ */
+
+/**
+ * Get a specific cookie by its name
+ * @param  {String} cname The cookie name
+ * @return {String} The cookies value
+ */
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+/**
+ * Add / set a cookie
+ * @param {String} cname The cookie name
+ * @param {String} cvalue The cookie value
+ */
+function setCookie(cname, cvalue) {
+    var d = new Date();
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
