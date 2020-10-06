@@ -118,6 +118,15 @@ window.onload = () => {
         turnOffDarkMode()
         settings.dark_mode_btn.checked = false
     }
+
+    // Turn ON/OFF night shift
+    if (getCookie('night-shift') === 'on') {
+        turnOnNightShift()
+        settings.night_shift_btn.checked = true
+    } else {
+        turnOffNightShift()
+        settings.night_shift_btn.checked = false
+    }
 };
 
 /*
@@ -235,15 +244,24 @@ function turnOffDarkMode() {
 
 // Night shift
 settings.night_shift_btn.onchange = () => {
-    if (settings.night_shift_btn.checked == true) {
-        body.style.filter = "sepia(70%)";
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
-        settings.dark_mode_btn.checked = false;
-    } else {
-        body.style.filter = "sepia(0%)";
-        account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
-    }
+    if (settings.night_shift_btn.checked) turnOnNightShift()
+    else turnOffNightShift()
 };
+function turnOnNightShift() {
+    body.style.filter = "sepia(70%)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    settings.dark_mode_btn.checked = false;
+
+    // Set dark-mode cookie
+    setCookie('night-shift', 'on')
+}
+function turnOffNightShift(){
+    body.style.filter = "sepia(0%)";
+    account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+
+    // Set dark-mode cookie
+    setCookie('night-shift', 'off')
+}
 
 /*
  * HELP MODAL
