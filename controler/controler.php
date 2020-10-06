@@ -87,8 +87,9 @@ function endTask($data){
     if(!isset($data['id'])) header('Location: index.php');
     $id = htmlspecialchars($data['id']);
     $task = Task::getTaskById($id);
+    $done_task = $task->getIsDone();
     $task->setIsDone(!$task->getIsDone());
-    $params = $task->getIsDone() ? '?endTask' : '';
+    $params = $done_task ? '?endTask' : '';
     header('Location: index.php' . $params);
 }
 
