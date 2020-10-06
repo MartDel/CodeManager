@@ -9,6 +9,7 @@ const tasks_done = {
     btn: document.getElementById('tasks_done'),
     list: document.getElementsByName('done_task')
 }
+let show_done_tasks = false
 
 // 'Add task' elements
 var addtask = {
@@ -107,6 +108,9 @@ window.onload = () => {
     closeMenu()
 
     // Hide or show done tasks
+    const search = window.location.search
+    const params = new URLSearchParams(search)
+    show_done_tasks = params.has('endTask')
     showTasks(!show_done_tasks)
     showDoneTasks(show_done_tasks)
 

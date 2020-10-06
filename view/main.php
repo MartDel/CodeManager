@@ -7,10 +7,6 @@ ob_start();
 
 ?>
 
-<script type="text/javascript">
-    let show_done_tasks = false
-</script>
-
 <!--MENU DU HAUT-->
 <div id="menu_haut">
     <!--<img id="burger" src="public/img/burgermenugauche.png">-->

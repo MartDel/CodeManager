@@ -96,6 +96,7 @@ class Task extends DatabaseManager
             'value' => $is_done ? 1 : 0
         ]);
         $set->closeCursor();
+        $this->is_done = $is_done;
     }
 
     // GETTERS

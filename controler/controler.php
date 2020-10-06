@@ -88,7 +88,8 @@ function endTask($data){
     $id = htmlspecialchars($data['id']);
     $task = Task::getTaskById($id);
     $task->setIsDone(!$task->getIsDone());
-    header('Location: index.php');
+    $params = $task->getIsDone() ? '?endTask' : '';
+    header('Location: index.php' . $params);
 }
 
 /**
