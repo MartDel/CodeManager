@@ -391,28 +391,41 @@ window.addEventListener("click", (event) => {
  * Selectall task
  */
 select_all.select_all.onclick = () => {
-    for (var i = 0; i < select_all.checkbox.length; i++) {
+    for (let i = 0; i < select_all.checkbox.length; i++) {
         select_all.checkbox[i].checked = select_all.select_all.checked;
     }
     if (select_all.select_all.checked) {
         select_all.trash.style.display = "inline-block";
     } else {
-        erase(select_all.trash);
+        select_all.trash.style.display = "none";
     }
 };
-for (var i = 0; i < select_all.checkbox.length; i++) {
+for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = (event) => {
-        var c_checkbox = event.target;
+        let c_checkbox = event.target;
         // console.log(c_checkbox);
         if (c_checkbox.checked) {
             // Show trash or do nothing
             select_all.trash.style.display = "inline-block";
+
+            let all_selected = true
+            for (var i = 0; i < select_all.checkbox.length; i++) {
+                if (!select_all.checkbox[i].checked) all_selected = false;
+            }
+            if (all_selected) select_all.select_all.checked = true;
         } else {
-            hide = true;
+            let all_selected = true
+            for (var i = 0; i < select_all.checkbox.length; i++) {
+                if (!select_all.checkbox[i].checked) all_selected = false;
+            }
+            if (all_selected) select_all.select_all.checked = true;
+            else select_all.select_all.checked = false;
+
+            let hide = true;
             for (var i = 0; i < select_all.checkbox.length; i++) {
                 if (select_all.checkbox[i].checked) hide = false;
             }
-            if (hide) erase(select_all.trash);
+            if (hide) select_all.trash.style.display = "none";
         }
     };
 }
