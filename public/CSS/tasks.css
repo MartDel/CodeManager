@@ -1532,7 +1532,8 @@ input.apple-switch:checked:after {
 }
 
 #new_project_name,
-#new_project_git {
+#new_project_git_name,
+#new_project_git_repo {
   resize: none;
   width: 80%;
   margin-left: 10%;
@@ -1547,6 +1548,7 @@ input.apple-switch:checked:after {
 
 #new_project_name:focus,
 #new_project_git:focus,
+#new_project_git_repo:focus,
 #new_project_desc:focus {
   background-color: #ffffff;
   border: #ffffff 1px solid;

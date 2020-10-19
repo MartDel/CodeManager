@@ -37,7 +37,7 @@ ob_start();
             <p id="new_task_text">Nouvelle tâche</p>
         </div>
         <ul>
-            <a href="./task2.html">
+            <a href="./view/main.php">
                 <li class="selectedmenu">
                     <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
                     <p id="text_menu_left_1">Tâches</p>
@@ -318,8 +318,11 @@ ob_start();
                 <textarea name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></textarea>
                 <h1>Description du projet (optionnel)</h1>
                 <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
-                <h2>Lien GitHub (optionnel)</h2>
-                <textarea name="remote" id="new_project_git" placeholder="Lien GitHub"></textarea>
+                <h2>GitHub (optionnel)</h2>
+                <div class="flex_git_links">
+                  <textarea name="remote" id="new_project_git_name" placeholder="Pseudo GitHub"></textarea>
+                  <textarea name="remote2" id="new_project_git_repo" placeholder="Nom du projet GitHub"></textarea>
+                </div>
                 <button name="create_project_button" id="create_project" type="submit">Créer un nouveau projet</button>
             </form>
         </section>
