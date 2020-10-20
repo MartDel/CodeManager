@@ -5,6 +5,9 @@ $cssfile = "signin";
 ob_start();
 
 ?>
+<a href="index.php">
+  <img class="back_to_main" src="public/img/left-arrowback.png" alt="">
+</a>
 <div class="title_form_container">
   <h1 class="form_title">Connexion</h1>
 </div>
@@ -24,6 +27,8 @@ ob_start();
     <br>
     <input class="button_submit_signin" type="submit" value="Se connecter" />
   </form>
+  <br><br>
+  <p>Vous n'avez pas encore de compte ? Inscrivez-vous <a class="here" href="index.php?action=signup">ici</a></p>
 </div>
 
 

@@ -184,6 +184,7 @@ body {
     margin-left: 10%;
     width: 10vw;
     margin-top: 1vh;
+    color:black;
 }
 
 #se_connecter:hover {
@@ -200,15 +201,17 @@ body {
     position: absolute;
     font-size: 16px;
     text-align: center;
-    margin-left: 60%;
+    margin-left: 61%;
     width: 10vw;
     margin-top: 1vh;
+    color:black;
 }
 
 #enregistrer:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.04);
-    border: rgb(91, 92, 96) 2px solid;
+    background-color: white;;
+    border: white 2px solid;
+    text-decoration: underline;
 }
 
 #enregistrer {
@@ -226,6 +229,7 @@ body {
     width: 3vw;
     margin-top: 1vh;
     height: 70%;
+    color:black;
 }
 
 #ou:hover {
@@ -339,7 +343,7 @@ body {
     font-size: 2.2vh;
 }
 
-#espace_div_bcc div {
+.content_div_espace {
     width: 50%;
     padding-left: 10vw;
     padding-top: 5vh;
@@ -354,7 +358,7 @@ body {
     filter: invert(5%)
 }
 
-#button_espace {
+.button_espace_container {
     width: 33vw;
     background-color: rgb(91, 92, 96);
     color: white;
@@ -363,6 +367,10 @@ body {
     font-size: 2vh;
     border: rgb(91, 92, 96) 3px solid;
     outline: none;
+    padding:0;
+    text-align: center;
+    color: white;
+    text-decoration: none;
 }
 
 #button_espace:hover {

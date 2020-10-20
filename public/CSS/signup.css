@@ -113,6 +113,17 @@ a {
 MAIN
 
  */
+
+.back_to_main{
+ filter:invert(100%);
+ position:absolute;
+ top:0;
+ left:0;
+ width:30px;
+ height:auto;
+ margin-top: 30px;
+ margin-left:20px;
+}
 .title_form_container{
   position:absolute;
   color:white;
@@ -184,5 +195,15 @@ MAIN
 .button_submit_signup:hover{
   background-color: lightgray;
   cursor:pointer;
-
+}
+p{
+  font-family: "Product Sans Medium Regular";
+  color:black;
+  font-size: 11px;
+  text-align: center;
+}
+p a{
+  text-decoration: none;
+  color:black;
+  text-decoration: underline;
 }

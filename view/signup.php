@@ -5,6 +5,9 @@ $cssfile = "signup";
 ob_start();
 
 ?>
+<a href="index.php">
+  <img class="back_to_main" src="public/img/left-arrowback.png" alt="">
+</a>
 <div class="title_form_container">
   <h1 class="form_title">Inscription</h1>
 </div>
@@ -27,6 +30,8 @@ ob_start();
       <br><br><br>
       <input class="button_submit_signup" type="submit" value="S'inscrire" />
   </form>
+  <br><br>
+  <p>Vous avez déjà un compte ? Connectez-vous <a class="here" href="index.php?action=signin">ici</a></p>
 </div>
 <?php
 
