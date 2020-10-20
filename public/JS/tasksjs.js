@@ -156,11 +156,11 @@ tasks_done.btn.onclick = () => {
     show_done_tasks = !show_done_tasks
     if (counter_done == 0) {
         tasks_done.btn.style.filter = "grayscale(0%)";
-        tasks_done.btn.style.animation = "0.5s Rotate"
+        tasks_done.btn.style.animation = "0.5s Rotate";
         counter_done = 1;
     } else {
         tasks_done.btn.style.filter = "grayscale(100%)";
-        tasks_done.btn.style.animation = "0.5s RotateInv"
+        tasks_done.btn.style.animation = "0.5s RotateInv";
         counter_done = 0;
     }
 }

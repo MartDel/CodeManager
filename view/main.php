@@ -18,7 +18,7 @@ ob_start();
             </label>
         </div>
     </div>
-    <a id="logo_a" href="./index.html">
+    <a id="logo_a" href="index.php">
         <img id="logo" src="public/img/essai_logo.png" />
     </a>
     <input type="search" autocomplete="off" id="findField" placeholder="Rechercher dans les tâches" />
