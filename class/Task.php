@@ -25,16 +25,21 @@ class Task extends DatabaseManager
         $this->description = $description;
 
         // Get task id
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author AND project_id=:project_id');
-        $query->execute([
-            'name' => $this->name,
-            'author' => $this->author_id,
-            'project_id' => $this->project_id
-        ]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        $this->id = $data['id'];
+        try {
+            $db = self::dbConnect();
+            $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author AND project_id=:project_id');
+            $query->execute([
+                'name' => $this->name,
+                'author' => $this->author_id,
+                'project_id' => $this->project_id
+            ]);
+            $data = $query->fetch();
+            $query->closeCursor();
+            $this->id = isset($data['id']) ? $data['id'] : null;
+        } catch (Exception $e) {
+            $this->id = null;
+        }
+
     }
 
     /**

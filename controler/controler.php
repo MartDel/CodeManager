@@ -99,9 +99,17 @@ function endTask($data){
  */
 function createProject($data){
     if(!isset($data['name']) || htmlspecialchars($data['name']) == '') throw new Exception("Veuillez remplir tous les champs.");
-    $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), htmlspecialchars($data['remote']));
+
+    // Create remote link with remote informations
+    $remote = null;
+    if(isset($data['github_pseudo']) && htmlspecialchars($data['github_pseudo']) != ''
+    && isset($data['remote']) && htmlspecialchars($data['remote']) != '') {
+        $remote = 'https://github.com/' . htmlspecialchars($data['github_pseudo']) . '/' . htmlspecialchars($data['remote']);
+    }
+
+    $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), $remote);
     $project->pushToDB();
-    header('Location: index.php');
+    header('Location: index.php?project=' . $project->getDatabaseId());
 }
 
 /**

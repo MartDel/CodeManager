@@ -20,15 +20,20 @@ class Project extends DatabaseManager
         $this->remote = $remote;
 
         // Get project id
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author_id');
-        $query->execute([
-            'name' => $this->name,
-            'author_id' => $this->author_id
-        ]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        $this->id = $data['id'];
+        try {
+            $db = self::dbConnect();
+            $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author_id');
+            $query->execute([
+                'name' => $this->name,
+                'author_id' => $this->author_id
+            ]);
+            $data = $query->fetch();
+            $query->closeCursor();
+            $this->id = isset($data['id']) ? $data['id'] : null;
+        } catch (Exception $e) {
+            $this->id = null;
+        }
+
     }
 
     /**
@@ -121,6 +126,18 @@ class Project extends DatabaseManager
     }
 
     // GETTERS
+
+    public function getDatabaseId(){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author_id');
+        $query->execute([
+            'name' => $this->name,
+            'author_id' => $this->author_id
+        ]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return isset($data['id']) ? $data['id'] : null;
+    }
 
     public function getId(){
         return $this->id;
