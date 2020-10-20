@@ -122,15 +122,15 @@ MAIN
   font-family: "Product Sans Medium Regular";
   margin-top:15vh;
   font-size: 2vh;
-  
 }
 .form_container{
   background-color: white;
   position:fixed;
   margin-top:25vh;
-  margin-left:37.5vw;
-  min-width:25vw;
-  min-height:50vh;
+  margin-left:35vw;
+  width:calc(30vw - 20px);
+  min-height:calc(50vh - 20px);
+  padding:10px;
 }
 .input_text{
   width:calc(80% - 24px);
@@ -142,14 +142,33 @@ MAIN
   outline:none;
   border:2px solid white;
   border-bottom:2px black solid;
-  margin-top:40px;
+  margin-top:10px;
+}
+.input_text_name{
+  width:calc(35% - 24px);
+  margin-left:10%;
+  padding:10px;
+  background-color: #FFFFFF;
+  font-family: "Product Sans Medium Regular";
+  border-radius: 0px;
+  outline:none;
+  border:2px solid white;
+  border-bottom:2px black solid;
+  margin-top:10px;
+}
+.name_container_flex{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  left:0;
+  background-color: none;
 }
 .label_container{
   margin-top:50px;
   width:calc(80% - 24px);
   margin-left:10%;
 }
-.button_submit_signin{
+.button_submit_signup{
   background-color: white;
   color:black;
   outline:none;
@@ -162,7 +181,7 @@ MAIN
   width:calc(50%);
   margin-left: 25%;
 }
-.button_submit_signin:hover{
+.button_submit_signup:hover{
   background-color: lightgray;
   cursor:pointer;
 
