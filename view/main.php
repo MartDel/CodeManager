@@ -75,7 +75,7 @@ ob_start();
                 <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
-                <img class="tasks_done" id="tasks_done" src="public/img/task_done.png" alt="" />
+                <img class="tasks_done" id="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
                 <img class="trash" src="public/img/trash.png" alt="" />

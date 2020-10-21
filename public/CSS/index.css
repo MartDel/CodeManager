@@ -108,6 +108,24 @@ body {
     /*background-color: #fff;*/
     height: 80%;
 }
+.img_scroll_down_container{
+  position:absolute;
+  background-color: none;;
+  width:100vw;
+  left:0;
+  z-index: 1000;
+  padding:0;
+  bottom:0;
+  margin-bottom:50px;
+  animation: scrollDown infinite 1.5s;
+}
+.img_scroll_down{
+  filter: invert(100%);
+  width:40px;
+  margin-left:0;
+  top:0;
+  margin-left:50%;
+}
 
 #top_div_title img {
     height: 80%;
@@ -418,4 +436,18 @@ body {
     to {
         opacity: 1;
     }
+}
+@keyframes scrollDown{
+  0% {
+    opacity:0;
+    margin-bottom:70px;
+  }
+  50% {
+    opacity:1;
+    margin-bottom:50px;
+  }
+  100% {
+    opacity:0;
+    margin-bottom:30px;
+  }
 }

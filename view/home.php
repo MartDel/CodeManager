@@ -5,7 +5,6 @@ $cssfile = "index";
 ob_start();
 
 ?>
-
 <div id="top_div_title">
     <a href="index.html"><img src="public/img/essai_logo.png" alt=""></a>
     <div id="button_div">
@@ -39,6 +38,10 @@ ob_start();
     <div id="disponible_div">
         <p id="disponible">Désormais disponible sur tous les navigateurs, <br>et à utiliser sans modération pour tous vos projets</p>
     </div>
+
+</div>
+<div class="img_scroll_down_container">
+  <img class="img_scroll_down" src="public/img/scrolldown.png" alt="">
 </div>
 <!--<video id="videointro" src="../public/../public/img/Codes.mp4" loop autoplay></video>-->
 <div id="div_img_accueil">
