@@ -7,7 +7,7 @@ body {
   color: black;
 }
 
-.liste_taches::-webkit-scrollbar {
+.list_task::-webkit-scrollbar {
   display: none;
 }
 
@@ -124,6 +124,7 @@ a {
       -ms-flex-direction: row;
           flex-direction: row;
   height: 45px;
+
 }
 
 #menu_haut #burger {
@@ -390,7 +391,7 @@ ul {
 
 #copyright {
   font-family: 'Roboto', sans-serif;
-  font-size: 10px;
+  font-size: 0px;
   color: rgba(0, 0, 0, 0.342);
   position: absolute;
   bottom: 0;
@@ -481,8 +482,8 @@ ul {
   padding: 0px 0px 0px 0px;
   margin-top: 0px;
   /*position: absolute;*/
-  top: 103px;
-  bottom: -15px;
+
+  bottom: 0;
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-margin-after: 0;
@@ -498,6 +499,7 @@ ul {
           flex-direction: column;
   left: 0;
   right: 0;
+
 }
 
 /*#test_ul {
@@ -647,6 +649,10 @@ ul {
       -ms-flex-direction: column;
           flex-direction: column;
   width: auto;
+  height:calc(100vh - 103px);
+  overflow-y: scroll;
+  background-color: white;
+
 }
 
 .modal-content {
@@ -930,7 +936,6 @@ ul {
   position: absolute;
   display: none;
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 #add_task_modal::-webkit-scrollbar {
