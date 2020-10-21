@@ -32,9 +32,12 @@ ob_start();
     <a href="index.php?action=signup" id="inscription_div">
         INSCRIVEZ-VOUS GRATUITEMENT
     </a>
-    <a href="#infos_generales_site">
-        <p id="savoir_plus">EN SAVOIR PLUS ></p>
-    </a>
+    <div class="savoir_plus_link">
+      <a href="#infos_generales_site">
+          <p id="savoir_plus">EN SAVOIR PLUS ></p>
+      </a>
+    </div>
+
     <div id="disponible_div">
         <p id="disponible">Désormais disponible sur tous les navigateurs, <br>et à utiliser sans modération pour tous vos projets</p>
     </div>
