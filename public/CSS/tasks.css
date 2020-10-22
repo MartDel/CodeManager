@@ -133,7 +133,7 @@ a {
 
 /*MENU HAUT*/
 #menu_haut {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: white;
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding: 8px;
   padding-left: 50px;
@@ -144,7 +144,9 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  position: relative;
   height: 45px;
+  z-index: 9999;
 
 }
 
@@ -273,12 +275,13 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /*MENU DE GAUCHE*/
 #menu_gauche {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 1);
   width: 260px;
   margin-top: -0px;
   position: relative;
   -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
+  z-index: 9999;
 }
 
 .new_task {
@@ -332,6 +335,7 @@ input[type="search"]::-webkit-search-results-decoration {
 ul {
   list-style: none;
   font-family: 'Roboto', sans-serif;
+  z-index: 9999;
 }
 
 #menu_gauche ul li img {
@@ -410,6 +414,7 @@ ul {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+
 }
 
 .ligne_haut_tache {
@@ -423,7 +428,10 @@ ul {
   width: auto;
   -webkit-transition: width 3s ease;
   transition: width 3s ease;
+  z-index: 999;
+  box-shadow: 0px 0px 4px 1px gray;
 }
+
 
 .ligne_haut_tache #refresh {
   height: 15px;
@@ -467,7 +475,7 @@ ul {
 
 .tasks_done {
   float: right;
-  margin-right: 21px;
+  margin-right: 18px;
   height: 20px;
   margin-top: 10px;
   -webkit-filter: grayscale(100%);
