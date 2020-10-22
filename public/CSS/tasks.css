@@ -1358,6 +1358,7 @@ input.apple-switch:checked:after {
 }
 .link_swap_project_div{
   padding:5px 0 5px 0;
+  color: black;
 }
 #project_modal_container {
   position: absolute;
@@ -1588,7 +1589,7 @@ input.apple-switch:checked:after {
 }
 
 #new_project_name:focus,
-#new_project_git:focus,
+#new_project_git_name:focus,
 #new_project_git_repo:focus,
 #new_project_desc:focus {
   background-color: #ffffff;

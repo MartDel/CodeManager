@@ -34,26 +34,36 @@ ob_start();
     <div id="menu_gauche">
 
         <ul>
-            <a href="./view/main.php">
+            <a href="index.php">
                 <li class="selectedmenu">
+                  <span title="Tâches">
                     <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
+                  </span>
                     <p id="text_menu_left_1">Tâches</p>
                 </li>
             </a>
             <li class="notselectedmenu">
-                <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
+                <span title="Objectifs">
+                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
+                </span>
                 <p id="text_menu_left_2">Objectifs</p>
             </li>
             <li class="notselectedmenu">
+              <span title="Team">
                 <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
+              </span>
                 <p id="text_menu_left_3">Team</p>
             </li>
             <li class="notselectedmenu">
+              <span title="Discussion">
                 <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
+              </span>
                 <p id="text_menu_left_4">Discussion</p>
             </li>
             <li class="notselectedmenu">
+              <span title="GitHub">
                 <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
+              </span>
                 <p id="text_menu_left_5">GitHub</p>
             </li>
         </ul>
@@ -305,20 +315,24 @@ ob_start();
             </section>
             <ul id="ul_swap">
             <?php foreach ($project_list as $current_project) { ?>
-                <li class="li_swap">
-                  <div class="link_swap_project_div">
-                    <a href="index.php?project=<?= $current_project['id'] ?>"><?= $current_project['name'] ?></a>
-                    
-                  </div>
-                </li>
+                <a href="index.php?project=<?= $current_project['id'] ?>">
+                  <li class="li_swap">
+                    <div class="link_swap_project_div">
+                      <?= $current_project['name'] ?>
+                    </div>
+                  </li>
+                </a>
+
             <?php } ?>
             </ul>
             <br><br>
             <div id="div_form_new_project"></div>
             <div class="info_current_project">
+              <br>
               <h1>Nom du Projet : <?= $project->getName() ?></h1>
               <br>
-              <h1>Description du Projet : <?= $project->getName() ?></h1>
+              <h1>Description du Projet : <?= $project->getDescription() ?></h1>
+              <br>
             </div>
             <div id="div_form_new_project"></div>
             <br><br>
