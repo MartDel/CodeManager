@@ -5,9 +5,8 @@ $cssfile = "index";
 ob_start();
 
 ?>
-
 <div id="top_div_title">
-    <a href="index.html"><img src="public/img/essai_logo.png" alt=""></a>
+    <a href="index.php"><img src="public/img/essai_logo.png" alt=""></a>
     <div id="button_div">
         <a href="index.php?action=signup" id="enregistrer">
             <div>
@@ -33,12 +32,19 @@ ob_start();
     <a href="index.php?action=signup" id="inscription_div">
         INSCRIVEZ-VOUS GRATUITEMENT
     </a>
-    <a href="#infos_generales_site">
-        <p id="savoir_plus">EN SAVOIR PLUS ></p>
-    </a>
+    <div class="savoir_plus_link">
+      <a href="#infos_generales_site">
+          <p id="savoir_plus">EN SAVOIR PLUS ></p>
+      </a>
+    </div>
+
     <div id="disponible_div">
         <p id="disponible">Désormais disponible sur tous les navigateurs, <br>et à utiliser sans modération pour tous vos projets</p>
     </div>
+
+</div>
+<div class="img_scroll_down_container">
+  <img class="img_scroll_down" src="public/img/scrolldown.png" alt="">
 </div>
 <!--<video id="videointro" src="../public/../public/img/Codes.mp4" loop autoplay></video>-->
 <div id="div_img_accueil">

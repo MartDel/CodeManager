@@ -41,6 +41,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
 }
 
 #bcc_icons {
@@ -70,13 +71,14 @@ body {
 }
 
 #top_div_title {
-    height: 10%;
+    height: auto;
     position: fixed;
     z-index: 200;
     background-color: rgb(255, 255, 255);
     width: 100%;
     color: rgb(91, 92, 96);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-bottom: 1vh;
 }
 
 #top_div_title_p {
@@ -100,17 +102,37 @@ body {
     z-index: 2;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     position: absolute;
-    width: 60%;
+    width: 100%;
     text-align: left;
     font-size: 35px;
     margin-left: 5%;
     margin-top: 15vh;
     /*background-color: #fff;*/
     height: 80%;
+    word-wrap: break-word;
+    word-break: normal;
+}
+.img_scroll_down_container{
+  position:absolute;
+  background-color: none;;
+  width:100vw;
+  left:0;
+  z-index: 1000;
+  padding:0;
+  bottom:0;
+  margin-bottom:20px;
+  animation: scrollDown infinite 1.5s;
+}
+.img_scroll_down{
+  filter: invert(100%);
+  width:40px;
+  margin-left:0;
+  top:0;
+  margin-left:50%;
 }
 
 #top_div_title img {
-    height: 80%;
+    height: 5vw;
     filter: contrast(100%);
     float: left;
     margin-left: 1%;
@@ -128,13 +150,14 @@ body {
     border: 2px rgb(255, 255, 255) solid;
     color: white;
     border-radius: 5px;
-    width: 50%;
+    width: 40%;
     font-size: 2.5vh;
     padding: 15px;
     outline: none;
     text-align: center;
     margin-top: 3vh;
     transition: all 0.2;
+    word-wrap: break-word;
 }
 
 #inscription_div:hover {
@@ -148,8 +171,13 @@ body {
 
 #savoir_plus {
     font-size: 1.5vh;
-    margin-top: 14vh;
     color: white;
+    top:0;
+
+}
+.savoir_plus_link{
+  width: auto;
+  width:50vw;
 }
 
 
@@ -164,10 +192,8 @@ body {
 #button_div {
     background-color: rgba(255, 0, 0, 0);
     right: 0;
-    position: absolute;
-    width: 30%;
+    width: auto;
     height: 100%;
-    align-items: center;
 }
 
 #button_div button {
@@ -179,10 +205,11 @@ body {
 #se_connecter {
     border: rgb(91, 92, 96) 2px solid;
     position: absolute;
-    font-size: 16px;
+    font-size: 1.3vw;
     text-align: center;
-    margin-left: 10%;
-    width: 10vw;
+    right:0;
+    margin-right:15vw;
+    padding: 0px 10px 0px 10px;
     margin-top: 1vh;
     color:black;
 }
@@ -197,12 +224,12 @@ body {
 }
 
 #enregistrer {
-    border: rgb(255, 255, 255) 2px solid;
+    border: transparent 2px solid;
     position: absolute;
-    font-size: 16px;
+    font-size: 1.3vw;
     text-align: center;
-    margin-left: 61%;
-    width: 10vw;
+    right:0;
+    padding: 0px 10px 0px 10px;
     margin-top: 1vh;
     color:black;
 }
@@ -210,37 +237,29 @@ body {
 #enregistrer:hover {
     cursor: pointer;
     background-color: white;;
-    border: white 2px solid;
+    border: transparent 2px solid;
     text-decoration: underline;
 }
 
-#enregistrer {
-    padding: 0;
-    padding-top: 0vh;
-    text-align: center;
-}
 
 #ou {
-    border: rgb(255, 255, 255) 2px solid;
+    border: transparent 2px solid;
     position: absolute;
-    font-size: 16px;
+    font-size: 1.3vw;
     text-align: center;
-    margin-left: calc(50% - 2px);
-    width: 3vw;
+    right:0;
+    margin-right:10vw;
+    padding: 0px 10px 0px 10px;
     margin-top: 1vh;
-    height: 70%;
+    height: auto;
     color:black;
+    margin-bottom: 0;
 }
 
 #ou:hover {
     cursor: default;
 }
 
-#ou p {
-    padding: 0;
-    padding-top: 0vh;
-    text-align: center;
-}
 
 #disponible {
     font-style: italic;
@@ -418,4 +437,18 @@ body {
     to {
         opacity: 1;
     }
+}
+@keyframes scrollDown{
+  0% {
+    opacity:0;
+    margin-bottom:10px;
+  }
+  50% {
+    opacity:1;
+    margin-bottom:0px;
+  }
+  100% {
+    opacity:0;
+    margin-bottom:-10px;
+  }
 }

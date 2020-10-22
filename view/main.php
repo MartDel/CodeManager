@@ -1,69 +1,9 @@
 <?php
-
-$title = "Tâches | ProjectName";
+$title = "Tâches | NameProject";
 $cssfile = "tasks";
 $jsfile = "tasksjs";
 ob_start();
-
 ?>
-
-<!--MENU DU HAUT-->
-<div id="menu_haut">
-    <!--<img id="burger" src="public/img/burgermenugauche.png">-->
-    <div id="webapp_cover">
-        <div id="menu_button">
-            <input type="checkbox" id="menu_checkbox">
-            <label for="menu_checkbox" id="menu_label">
-                <div id="menu_text_bar"></div>
-            </label>
-        </div>
-    </div>
-    <a id="logo_a" href="index.php">
-        <img id="logo" src="public/img/essai_logo.png" />
-    </a>
-    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher dans les tâches" />
-    <img id="help_logo_img" src="public/img/question.png" alt="" />
-    <img id="account_logo_img" src="public/img/switzerland.png" />
-    <img id="gear_logo_img" src="public/img/gear.png" />
-    <img id="switch_logo_img" src="public/img/file_swap.png" alt="" />
-    <button id="project_actual"><?= $project->getName() ?></button>
-</div>
-
-<!--MENU DE GAUCHE-->
-<section class="section_en_dessous_menu">
-    <div id="menu_gauche">
-        <div id="new_task_div" class="new_task">
-            <img id="new_task_img" src="public/img/plusadd.png" alt="">
-            <p id="new_task_text">Nouvelle tâche</p>
-        </div>
-        <ul>
-            <a href="./view/main.php">
-                <li class="selectedmenu">
-                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
-                    <p id="text_menu_left_1">Tâches</p>
-                </li>
-            </a>
-            <li class="notselectedmenu">
-                <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
-                <p id="text_menu_left_2">Objectifs</p>
-            </li>
-            <li class="notselectedmenu">
-                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
-                <p id="text_menu_left_3">Team</p>
-            </li>
-            <li class="notselectedmenu">
-                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
-                <p id="text_menu_left_4">Discussion</p>
-            </li>
-            <li class="notselectedmenu">
-                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
-                <p id="text_menu_left_5">GitHub</p>
-            </li>
-        </ul>
-    </div>
-    <section id="copyright">
-        <p>Copyright ® 2020 CodeManager. All Rights Reserved</p>
-    </section>
 
     <!--LIGNE SELECTION TACHES-->
     <section class="ligne_et_taches">
@@ -71,11 +11,14 @@ ob_start();
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all" type="checkbox" />
             </span>
+            <span title="Nouvelle tâche">
+                <img id="new_task_img" src="public/img/plus.png" alt="">
+            </span>
             <span title="Rafraîchir">
                 <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
-                <img class="tasks_done" id="tasks_done" src="public/img/task_done.png" alt="" />
+                <img class="tasks_done" id="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
                 <img class="trash" src="public/img/trash.png" alt="" />
@@ -299,18 +242,31 @@ ob_start();
             <section id="flex_arrow">
                 <p id="change_title">Changer de projet :</p>
                 <section>
-                    <div id="projet_princ">Changer de projet</div>
+                    <div id="projet_princ"><?= $project->getName() ?></div>
                     <p id="arrow">&#x25BC;</p>
                 </section>
             </section>
             <ul id="ul_swap">
             <?php foreach ($project_list as $current_project) { ?>
-                <li class="li_swap">
-                    <a href="index.php?project=<?= $current_project['id'] ?>"><?= $current_project['name'] ?></a>
-                </li>
+                <a href="index.php?project=<?= $current_project['id'] ?>">
+                  <li class="li_swap">
+                    <div class="link_swap_project_div">
+                      <?= $current_project['name'] ?>
+                    </div>
+                  </li>
+                </a>
+
             <?php } ?>
             </ul>
             <br><br>
+            <div id="div_form_new_project"></div>
+            <div class="info_current_project">
+              <br>
+              <h1>Nom du Projet : <?= $project->getName() ?></h1>
+              <br>
+              <h1>Description du Projet : <?= $project->getDescription() ?></h1>
+              <br>
+            </div>
             <div id="div_form_new_project"></div>
             <br><br>
             <form name="create_project_form" action="index.php?action=createproject" method="POST">
@@ -330,6 +286,5 @@ ob_start();
 </div>
 
 <?php
-
 $content = ob_get_clean();
 require('template/template.php');

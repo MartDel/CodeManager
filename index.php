@@ -26,6 +26,8 @@ try{
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
 			elseif ($action == 'createproject') createProject($_POST); // Add a new project
+			// Team page
+			elseif ($action == 'team') showTeamPage();
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page
