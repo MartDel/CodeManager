@@ -54,6 +54,10 @@ function showMainPage(){
     require('view/main.php');
 }
 
+function showTeamPage(){
+    require('view/team.php');
+}
+
 /**
  * Get all of project commits and show them
  */

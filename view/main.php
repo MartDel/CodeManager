@@ -1,10 +1,8 @@
-
 <?php
 $title = "Tâches | NameProject";
 $cssfile = "tasks";
 $jsfile = "tasksjs";
 ob_start();
-
 ?>
 
     <!--LIGNE SELECTION TACHES-->
