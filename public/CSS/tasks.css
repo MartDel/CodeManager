@@ -969,6 +969,7 @@ ul {
   position: absolute;
   display: none;
   -ms-overflow-style: none;
+  z-index: 10000
 }
 
 #add_task_modal::-webkit-scrollbar {
@@ -1117,6 +1118,8 @@ ul {
   background-color: rgba(0, 0, 0, 0.3);
   height: 100%;
   width: 100%;
+  z-index: 10000
+
 }
 
 #settings_modal {
@@ -1304,6 +1307,7 @@ input.apple-switch:checked:after {
   color: #b41e10;
   /*border: 1px solid #b41e10;*/
   display: none;
+  z-index: 10000;
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
 }
@@ -1376,6 +1380,8 @@ input.apple-switch:checked:after {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
+  z-index: 10000;
+
 }
 
 #project_modal {
@@ -1640,6 +1646,8 @@ input.apple-switch:checked:after {
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 99999;
   display: none;
+  z-index: 10000;
+  
 }
 
 #account_white_bc {

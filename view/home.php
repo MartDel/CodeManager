@@ -6,7 +6,7 @@ ob_start();
 
 ?>
 <div id="top_div_title">
-    <a href="index.html"><img src="public/img/essai_logo.png" alt=""></a>
+    <a href="index.php"><img src="public/img/essai_logo.png" alt=""></a>
     <div id="button_div">
         <a href="index.php?action=signup" id="enregistrer">
             <div>

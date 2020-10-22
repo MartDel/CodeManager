@@ -1,6 +1,6 @@
-<?php
 
-$title = "Tâches | ProjectName";
+<?php
+$title = "Tâches | NameProject";
 $cssfile = "tasks";
 $jsfile = "tasksjs";
 ob_start();
@@ -353,6 +353,5 @@ ob_start();
 </div>
 
 <?php
-
 $content = ob_get_clean();
 require('template/template.php');
