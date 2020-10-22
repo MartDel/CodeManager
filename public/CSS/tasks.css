@@ -620,7 +620,7 @@ ul {
 }
 
 /*MODAL*/
-.modal {
+/*.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -633,7 +633,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: all 1s;
   transition: all 1s;
-}
+}*/
 
 /* Modal Content/Box */
 .modal-content {
@@ -946,7 +946,7 @@ ul {
 }
 
 /*ADD TASK MODAL*/
-#add_task_modal {
+/*#add_task_modal {
   background-color: #fffefe;
   display: block;
   position: absolute;
@@ -954,7 +954,7 @@ ul {
   height: 65%;
   top: 17%;
   left: 10%;
-  /*border: 2px solid black*/
+ // border: 2px solid black
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;
@@ -974,7 +974,7 @@ ul {
 
 #add_task_modal::-webkit-scrollbar {
   display: none;
-}
+}*/
 
 #section_ligne_haut {
   display: -webkit-box;
@@ -1647,7 +1647,7 @@ input.apple-switch:checked:after {
   z-index: 99999;
   display: none;
   z-index: 10000;
-  
+
 }
 
 #account_white_bc {

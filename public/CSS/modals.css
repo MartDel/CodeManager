@@ -9,6 +9,7 @@
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.8);
 	animation: fadeIn .3s both;
+	z-index: 1000;
 }
 
 .modal .modal-wrapper {

@@ -15,7 +15,7 @@ let show_done_tasks = false
 
 // 'Add task' elements
 var addtask = {
-    modal: document.getElementById("add_task_modal_general"),
+    modal: document.getElementById("add_task_modal"),
     show_btn: document.getElementById("new_task_img"),
     close_btn: document.getElementById("close_add"),
     cancel_btn: document.getElementById("addtask_cancel"),

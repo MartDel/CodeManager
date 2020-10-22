@@ -87,7 +87,7 @@ ob_start();
 <?php if (isset($tasks)) { ?>
     <!-- TACHES NON EFFECTUEES -->
     <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
-    <div id="task<?= $task->getId() ?>_modal" class="modal">
+    <div id="task<?= $task->getId() ?>_modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close">&times;</span>
             <section class="header_popup">
@@ -109,7 +109,7 @@ ob_start();
 
     <!-- TACHES EFFECTUEES -->
     <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
-    <div id="done_task<?= $task->getId() ?>_modal" class="modal">
+    <div id="done_task<?= $task->getId() ?>_modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close">&times;</span>
             <section class="header_popup">
