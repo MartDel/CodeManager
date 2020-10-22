@@ -32,10 +32,7 @@ ob_start();
 <!--MENU DE GAUCHE-->
 <section class="section_en_dessous_menu">
     <div id="menu_gauche">
-        <div id="new_task_div" class="new_task">
-            <img id="new_task_img" src="public/img/plusadd.png" alt="">
-            <p id="new_task_text">Nouvelle tâche</p>
-        </div>
+
         <ul>
             <a href="./view/main.php">
                 <li class="selectedmenu">
@@ -70,6 +67,9 @@ ob_start();
         <div id="ligne_haut_tache_id" class="ligne_haut_tache">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all" type="checkbox" />
+            </span>
+            <span title="Nouvelle tâche">
+                <img id="new_task_img" src="public/img/plus.png" alt="">
             </span>
             <span title="Rafraîchir">
                 <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />

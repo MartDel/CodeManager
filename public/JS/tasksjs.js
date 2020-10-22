@@ -14,7 +14,7 @@ let show_done_tasks = false
 // 'Add task' elements
 var addtask = {
     modal: document.getElementById("add_task_modal_general"),
-    show_btn: document.getElementById("new_task_div"),
+    show_btn: document.getElementById("new_task_img"),
     close_btn: document.getElementById("close_add"),
     cancel_btn: document.getElementById("addtask_cancel"),
     title_input: document.getElementById("textarea_title"),
@@ -56,7 +56,7 @@ var menu = {
         document.getElementById("text_menu_left_3"),
         document.getElementById("text_menu_left_4"),
         document.getElementById("text_menu_left_5"),
-        document.getElementById("new_task_text"),
+
     ],
     img: document.getElementsByClassName("img_menu_gauche_js"), // Array
     selected: document.getElementsByClassName("selectedmenu")[0],
@@ -64,7 +64,7 @@ var menu = {
     selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
     selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
     add_task_logo: document.getElementById("new_task_img"),
-    add_task_div: document.getElementById("new_task_div"),
+    //add_task_div: document.getElementById("new_task_div"),
 };
 
 // Selectall
@@ -299,11 +299,11 @@ var closeMenu = () => {
         erase(menu.text[i]);
     }
 
-    menu.add_task_div.style.paddingBottom = "7px";
-    menu.add_task_div.style.marginLeft = "23px";
-    menu.add_task_div.style.width = "50px";
+    //menu.add_task_div.style.paddingBottom = "7px";
+    //menu.add_task_div.style.marginLeft = "23px";
+    //menu.add_task_div.style.width = "50px";
 
-    menu.add_task_logo.style.marginLeft = "8px";
+    //menu.add_task_logo.style.marginLeft = "8px";
 
     for (var i = 0; i < menu.img.length; i++) {
         menu.img[i].style.marginLeft = "-23px";
@@ -327,7 +327,7 @@ var openMenu = () => {
         for (var i = 0; i < menu.text.length; i++) {
             show(menu.text[i]);
         }
-        menu.add_task_div.style.paddingBottom = "2px";
+        //menu.add_task_div.style.paddingBottom = "2px";
     }, 300);
 
     setTimeout(() => {
@@ -336,10 +336,10 @@ var openMenu = () => {
         }
     }, 310);
 
-    menu.add_task_div.style.marginLeft = "23px";
-    menu.add_task_div.style.width = "210px";
+    //menu.add_task_div.style.marginLeft = "23px";
+    //menu.add_task_div.style.width = "210px";
 
-    menu.add_task_logo.style.marginLeft = "8px";
+    //menu.add_task_logo.style.marginLeft = "8px";
 
     for (var i = 0; i < menu.img.length; i++) {
         menu.img[i].style.marginLeft = "0px";
