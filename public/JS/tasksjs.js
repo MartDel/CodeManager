@@ -1,3 +1,5 @@
+window.cmodal = null
+
 // Tasks elements
 var tasks = document.getElementsByName("task");
 var tasks_btn = {
@@ -204,15 +206,11 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 addtask.show_btn.onclick = () => {
-    show_modal(addtask.modal);
-};
-addtask.close_btn.onclick = () => {
-    erase_modal(addtask.modal);
+    showTemplateModal(addtask.modal);
 };
 addtask.cancel_btn.onclick = (event) => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
-    erase_modal(addtask.modal);
 };
 
 /*
@@ -609,7 +607,6 @@ var show_modal = (element) => {
  * Show a specific element
  * @param  {DOM element} element Element to erase when clicked outside
  */
-
 var show = (element) => {
     element.style.display = "block";
     element.style.visbility = "visible";

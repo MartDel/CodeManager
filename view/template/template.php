@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	    <link rel="stylesheet" href="public/CSS/<?= $cssfile ?>.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/modals.css" />
 
 		<!-- CSS for JS transitions -->
 	    <link rel="stylesheet" href="public/CSS/transitions.css" />
@@ -96,6 +97,7 @@
 		    </section>
 
 		<?= $content ?>
+		<script type="text/javascript" src="public/JS/modal.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 	</body>
