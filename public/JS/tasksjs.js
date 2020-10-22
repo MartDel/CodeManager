@@ -107,6 +107,8 @@ window.onload = () => {
     // Close menu when JS is loaded
     closeMenu()
 
+    //set selected menu
+    //document.getElementById("menu1").className = "selectedmenu";
     // Hide or show done tasks
     const search = window.location.search
     const params = new URLSearchParams(search)
