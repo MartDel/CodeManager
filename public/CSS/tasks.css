@@ -11,6 +11,27 @@ body {
   display: none;
 }
 
+:-webkit-scrollbar-track
+{
+
+	background-color: #b2bec3;
+}
+
+::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: rgb(141, 141, 141);
+  border: 3px solid white;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: rgb(141, 141, 141);
+	border-radius: 10px;
+}
+
+
+
 html {
   /*overflow-x: hidden;*/
 }
@@ -1327,6 +1348,17 @@ input.apple-switch:checked:after {
 }
 
 /*MODAL SWAP PROJECT*/
+
+.li_swap a{
+  text-decoration: none;
+  color:black;
+}
+.link_swap_project_div:hover{
+  background-color: #f1f3f4;
+}
+.link_swap_project_div{
+  padding:5px 0 5px 0;
+}
 #project_modal_container {
   position: absolute;
   top: 0;

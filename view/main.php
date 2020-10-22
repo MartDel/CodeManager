@@ -299,18 +299,27 @@ ob_start();
             <section id="flex_arrow">
                 <p id="change_title">Changer de projet :</p>
                 <section>
-                    <div id="projet_princ">Changer de projet</div>
+                    <div id="projet_princ"><?= $project->getName() ?></div>
                     <p id="arrow">&#x25BC;</p>
                 </section>
             </section>
             <ul id="ul_swap">
             <?php foreach ($project_list as $current_project) { ?>
                 <li class="li_swap">
+                  <div class="link_swap_project_div">
                     <a href="index.php?project=<?= $current_project['id'] ?>"><?= $current_project['name'] ?></a>
+                    
+                  </div>
                 </li>
             <?php } ?>
             </ul>
             <br><br>
+            <div id="div_form_new_project"></div>
+            <div class="info_current_project">
+              <h1>Nom du Projet : <?= $project->getName() ?></h1>
+              <br>
+              <h1>Description du Projet : <?= $project->getName() ?></h1>
+            </div>
             <div id="div_form_new_project"></div>
             <br><br>
             <form name="create_project_form" action="index.php?action=createproject" method="POST">
