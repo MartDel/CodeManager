@@ -97,8 +97,13 @@
 		    </section>
 
 		<?= $content ?>
+
+		<!-- Implementations -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+		<!-- JS code -->
 		<script type="text/javascript" src="public/JS/modal.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
-		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 	</body>
 </html>

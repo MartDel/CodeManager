@@ -1,5 +1,3 @@
-window.cmodal = null
-
 // Tasks elements
 var tasks = document.getElementsByName("task");
 var tasks_btn = {
@@ -15,16 +13,18 @@ let show_done_tasks = false
 
 // 'Add task' elements
 var addtask = {
+    id: 'add_task',
     modal: document.getElementById("add_task_modal"),
     show_btn: document.getElementById("new_task_img"),
     close_btn: document.getElementById("close_add"),
     cancel_btn: document.getElementById("addtask_cancel"),
-    title_input: document.getElementById("textarea_title"),
+    title_input: document.querySelector(".textarea_title"),
     desc_input: document.getElementById("textarea_desc"),
 };
 
 // Settings elements
 var settings = {
+    id: 'settings',
     modal: document.getElementById("bcc_settings"),
     show_btn: document.getElementById("gear_logo_img"),
     close_btn: document.getElementById("close_settings"),
@@ -41,6 +41,7 @@ var help = {
 
 // Account elements
 var account = {
+    id: 'account',
     modal: document.getElementById("account_white_bc"),
     show_btn: document.getElementById("account_logo_img"),
     close: document.getElementById("close_account_modal"),
@@ -77,6 +78,9 @@ var select_all = {
 };
 
 //SWAP PROJECT MODAL
+const project = {
+    id: 'project'
+}
 var swap = {
     master: document.getElementById("projet_princ"),
     list: document.getElementById("ul_swap"),
@@ -135,6 +139,9 @@ window.onload = () => {
         turnOffNightShift()
         settings.night_shift_btn.checked = false
     }
+
+    // Print modal div
+    document.querySelector('#modals').style.display = 'block'
 };
 
 /*
@@ -185,17 +192,16 @@ function showModal(event) {
     }
 
     // Get modal
-    var modal = document.getElementById(id + '_modal');
+    // var modal = document.getElementById(id + '_modal');
 
     if (!contain(tasks_btn.check_js, event.target) &&
         !contain(tasks_btn.tick, event.target) &&
         !contain(tasks_btn.tick2, event.target)
     ) {
-        // Everythings is ok, let's go show the popup
-        show(modal);
+        modals.show(id + '_modal');
     }
 }
-for (var i = 0; i < tasks.length; i++) {
+for (let i = 0; i < tasks.length; i++) {
     tasks[i].onclick = (event) => showModal(event);
 }
 for (let i = 0; i < tasks_done.list.length; i++) {
@@ -206,9 +212,9 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 addtask.show_btn.onclick = () => {
-    showTemplateModal(addtask.modal);
+    modals.show(addtask.id)
 };
-addtask.cancel_btn.onclick = (event) => {
+addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
 };
@@ -217,11 +223,10 @@ addtask.cancel_btn.onclick = (event) => {
  * SETTINGS MODAL
  */
 settings.show_btn.onclick = () => {
-    show_modal(settings.modal);
+    modals.show(settings.id)
 };
 settings.close_btn.onclick = () => {
     settings.bug_input.value = "";
-    erase_modal(settings.modal);
 };
 
 // Dark mode
@@ -375,15 +380,14 @@ window.addEventListener("click", (event) => {
         // Close help modal
         help.show_btn.classList.remove("help_logo_onclick");
         help.show_btn.style.filter = "invert(25%)";
-
         erase(help.modal);
-    } else if (
-        account.back.style.display === "block" &&
-        !contain(event.path, account.back) &&
-        event.target !== account.show_btn
-    ) {
-        // Close account modal
-        erase(account.back);
+    // } else if (
+    //     account.back.style.display === "block" &&
+    //     !contain(event.path, account.back) &&
+    //     event.target !== account.show_btn
+    // ) {
+    //     // Close account modal
+    //     erase(account.back);
     }
 });
 
@@ -489,28 +493,17 @@ document.getElementById("close_swap").onclick = () => {
 
 };
 
-modal_swap_icon.onclick = () => {
-    show_modal(modal_swap)
-}
-
-projectactual.onclick = () => {
-    show_modal(modal_swap);
-}
-
+modal_swap_icon.onclick = () => modals.show(project.id)
+projectactual.onclick = () => modals.show(project.id)
 
 /*
  * ACCOUNT MODAL
  */
 account.show_btn.onclick = () => {
-    show_modal(account.back);
-
-};
-account.close.onclick = () => {
-    erase_modal(account.back);
+    modals.show(account.id)
 };
 account.option.onclick = () => {
-    erase(account.back);
-    show(settings.modal);
+    setTimeout(() => modals.show(settings.id), 500)
 };
 
 //SEARCH BAR

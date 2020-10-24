@@ -7,19 +7,19 @@ function showTemplateModal(id){
     modal.setAttribute('aria-modal', 'true')
     window.cmodal = modal
     window.cmodal.addEventListener('click', closeTemplateModal)
-    window.cmodal.querySelector('.close-modal').addEventListener('click', closeTemplateModal)
-    window.cmodal.querySelector('.modal-wrapper').addEventListener('click', (e) => { e.stopPropagation() })
+    forEach(window.cmodal.getElementsByClassName('close-modal'), item => item.addEventListener('click', closeTemplateModal))
+    window.cmodal.querySelector('.modal-wrapper').addEventListener('click', stopPropagation)
 }
 
 function closeTemplateModal(e){
     const cmodal = window.cmodal
     if(!cmodal) return
-    e.preventDefault()
+    if(e) e.preventDefault()
     cmodal.setAttribute('aria-hidden', 'true')
     cmodal.removeAttribute('aria-modal')
     cmodal.removeEventListener('click', closeTemplateModal)
-    cmodal.querySelector('.modal-wrapper').removeEventListener('click', (e) => { e.stopPropagation() })
-    cmodal.querySelector('.close-modal').removeEventListener('click', (e) => { e.stopPropagation() })
+    cmodal.querySelector('.modal-wrapper').removeEventListener('click', stopPropagation)
+    forEach(cmodal.getElementsByClassName('close-modal'), item => item.removeEventListener('click', stopPropagation))
     cmodal.addEventListener('animationend', hideTemplateModal)
 }
 
@@ -28,6 +28,14 @@ function hideTemplateModal(){
     cmodal.style.display = 'none'
     cmodal.removeEventListener('animationend', hideTemplateModal)
     window.cmodal = null
+}
+
+function stopPropagation(e){ e.stopPropagation() }
+
+function forEach(array, func){
+    for (let i = 0; i < array.length; i++) {
+        func(array[i])
+    }
 }
 
 window.addEventListener('keydown', (e) => {
@@ -47,6 +55,7 @@ const modals = new Vue({
         }
     },
     methods: {
-        show(id){ showTemplateModal(id) }
+        show(id){ console.log(id);showTemplateModal(id) },
+        closeCurrent(){ closeTemplateModal(null) }
     }
 })
