@@ -618,7 +618,7 @@ ul {
 }
 
 /*MODAL*/
-.modal {
+/*.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -631,7 +631,7 @@ ul {
   background-color: rgba(0, 0, 0, 0.3);
   -webkit-transition: all 1s;
   transition: all 1s;
-}
+}*/
 
 /* Modal Content/Box */
 .modal-content {
@@ -952,7 +952,7 @@ ul {
   height: 65%;
   top: 17%;
   left: 10%;
-  /*border: 2px solid black*/
+ // border: 2px solid black
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;

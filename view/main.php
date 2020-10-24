@@ -83,101 +83,6 @@ ob_start();
     </section>
 </section>
 
-<!--MODAL CONTENT-->
-<?php if (isset($tasks)) { ?>
-    <!-- TACHES NON EFFECTUEES -->
-    <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
-    <div id="task<?= $task->getId() ?>_modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <section class="header_popup">
-                <img id="logo_popup" src="public/img/essai_logo.png" />
-                <p><strong>Tâche</strong></p>
-            </section>
-            <section class="titre_popup">
-                <strong><?= $task->getName() ?></strong>
-            </section>
-            <div class="line_popup"></div>
-            <section class="descriptif_popup">
-                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
-                <br><br>
-                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-            </section>
-        </div>
-    </div>
-    <?php }} ?>
-
-    <!-- TACHES EFFECTUEES -->
-    <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
-    <div id="done_task<?= $task->getId() ?>_modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <section class="header_popup">
-                <img id="logo_popup" src="public/img/essai_logo.png" />
-                <p><strong>Tâche</strong></p>
-            </section>
-            <section class="titre_popup">
-                <strong><?= $task->getName() ?></strong>
-            </section>
-            <div class="line_popup"></div>
-            <section class="descriptif_popup">
-                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
-                <br><br>
-                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-            </section>
-        </div>
-    </div>
-    <?php }} ?>
-<?php } ?>
-
-<!--ADD TASK MODAL-->
-<div id="add_task_modal_general">
-    <div id="add_task_modal">
-        <section id="section_ligne_haut">
-            <img id="logo_add_task" src="public/img/essai_logo.png" alt="" />
-            <p><strong>Ajouter une tâche</strong></p>
-            <span id="close_add" class="close_add">&times;</span>
-        </section>
-        <section id="section_ligne_bas">
-            <form method="POST" action="index.php?action=addtask">
-                <h1>Titre de la tâche (80 caractères maximum)</h1>
-                <textarea class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></textarea>
-                <h1>Description de la tâche</h1>
-                <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
-                <h2></h2>
-                <section id="button_line">
-                    <button name="cancel_button_create_task" id="addtask_cancel" type="button">Annuler</button>
-                    <button name="submit_button_create_task" type="submit">Valider</button>
-                </section>
-            </form>
-        </section>
-    </div>
-</div>
-
-<!--SETTINGS MODAL-->
-<div id="bcc_settings">
-    <div id="settings_modal">
-        <div id="settings_title">Réglages</div>
-        <span id="close_settings" class="close_settings">&times;</span>
-        <div class="row_settings">
-            <p>Mode Sombre : </p>
-            <input class="apple-switch" id="dark_mode" type="checkbox">
-        </div>
-        <div class="row_settings">
-            <p>Night Shift : </p>
-            <input class="apple-switch" id="night_shift" type="checkbox">
-        </div>
-        <div class="row_settings_title" id="col_settings">
-            <form class="form_bug_report" method="POST" action="">
-                <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
-                <textarea id="textarea_bug" placeholder="Message" name="bug_report_textarea" id=""></textarea>
-                <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
-            </form>
-            <br>
-        </div>
-    </div>
-</div>
-
 <!--HELP MODAL-->
 <div id="help_modal">
     <span class="span_help">
@@ -214,24 +119,110 @@ ob_start();
     </span>
 </div>
 
-<!--ACCOUNT MODAL-->
-<div id="account_background" class="account_background modal_to_animate">
-    <div class="whitecolor" id="account_white_bc">
+<!-- All of modals -->
+<div id="modals" style="display:none;">
+    <!--MODAL CONTENT-->
+    <?php if (isset($tasks)) { ?>
+        <!-- TASKS NOT FINISHED -->
+        <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
+        <modal id="task<?= $task->getId() ?>_modal">
+            <span class="close">&times;</span>
+            <section class="header_popup">
+                <img id="logo_popup" src="public/img/essai_logo.png" />
+                <p><strong>Tâche</strong></p>
+            </section>
+            <section class="titre_popup">
+                <strong><?= $task->getName() ?></strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
+                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+            </section>
+        </modal>
+        <?php }} ?>
+
+        <!-- TASKS DONE -->
+        <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
+        <modal id="done_task<?= $task->getId() ?>_modal">
+            <span class="close">&times;</span>
+            <section class="header_popup">
+                <img id="logo_popup" src="public/img/essai_logo.png" />
+                <p><strong>Tâche</strong></p>
+            </section>
+            <section class="titre_popup">
+                <strong><?= $task->getName() ?></strong>
+            </section>
+            <div class="line_popup"></div>
+            <section class="descriptif_popup">
+                <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
+                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+            </section>
+        </modal>
+        <?php }} ?>
+    <?php } ?>
+
+    <!--ADD TASK MODAL-->
+    <modal id="add_task">
+        <section id="section_ligne_haut">
+            <img id="logo_add_task" src="public/img/essai_logo.png" alt="" />
+            <p><strong>Ajouter une tâche</strong></p>
+            <span id="close_add" class="close_add close-modal">&times;</span>
+        </section>
+        <section id="section_ligne_bas">
+            <form method="POST" action="index.php?action=addtask">
+                <h1>Titre de la tâche (80 caractères maximum)</h1>
+                <textarea class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></textarea>
+                <h1>Description de la tâche</h1>
+                <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
+                <h2></h2>
+                <section id="button_line">
+                    <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal" type="button">Annuler</button>
+                    <button name="submit_button_create_task" type="submit">Valider</button>
+                </section>
+            </form>
+        </section>
+    </modal>
+
+    <!--SETTINGS MODAL-->
+    <modal id="settings">
+        <div id="settings_title">Réglages</div>
+        <span id="close_settings" class="close-modal close_settings">&times;</span>
+        <div class="row_settings">
+            <p>Mode Sombre : </p>
+            <input class="apple-switch" id="dark_mode" type="checkbox">
+        </div>
+        <div class="row_settings">
+            <p>Night Shift : </p>
+            <input class="apple-switch" id="night_shift" type="checkbox">
+        </div>
+        <div class="row_settings_title" id="col_settings">
+            <form class="form_bug_report" method="POST" action="">
+                <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
+                <textarea id="textarea_bug" placeholder="Message" name="bug_report_textarea" id=""></textarea>
+                <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
+            </form>
+            <br>
+        </div>
+    </modal>
+
+    <!--ACCOUNT MODAL-->
+    <modal id="account">
         <div id="bc_img_logo_account"></div>
-        <span id="close_account_modal" class="close_account_modal">&times;</span>
+        <span id="close_account_modal" class="close-modal close_account_modal">&times;</span>
         <p class="name_user_title"><?= $_SESSION['pseudo'] ?></p>
         <p class="mail_user_title"><?= $_SESSION['mail'] ?></p>
         <a class="button_my_account">Mon compte</a>
         <div class="flex_button_account">
-            <a id="button_option" class="button_option">Options</a>
+            <a id="button_option" class="close-modal button_option">Options</a>
             <a href="index.php?action=logout" name="deconnexion_button" class="button_deconnect">Déconnexion</a>
         </div>
-    </div>
-</div>
+    </modal>
 
-<!--SWAP PROJECT MODAL-->
-<div id="project_modal_container">
-    <div id="project_modal">
+    <!--SWAP PROJECT MODAL-->
+    <modal id="project">
         <section id="header_project_modal">
             <img src="public/img/essai_logo.png" alt="" />
             <p>Changer de projet</p>
@@ -255,7 +246,6 @@ ob_start();
                     </div>
                   </li>
                 </a>
-
             <?php } ?>
             </ul>
             <br><br>
@@ -282,8 +272,36 @@ ob_start();
                 <button name="create_project_button" id="create_project" type="submit">Créer un nouveau projet</button>
             </form>
         </section>
-    </div>
+    </modal>
 </div>
+
+<!--ADD TASK MODAL-->
+<!-- <div id="add_task_modal_general">
+    <div id="add_task_modal">
+
+    </div>
+</div> -->
+
+<!--SETTINGS MODAL-->
+<!-- <div id="bcc_settings">
+    <div id="settings_modal">
+
+    </div>
+</div> -->
+
+<!--ACCOUNT MODAL-->
+<!-- <div id="account_background" class="account_background modal_to_animate">
+    <div class="whitecolor" id="account_white_bc">
+
+    </div>
+</div> -->
+
+<!--SWAP PROJECT MODAL-->
+<!-- <div id="project_modal_container">
+    <div id="project_modal">
+
+    </div>
+</div> -->
 
 <?php
 $content = ob_get_clean();
