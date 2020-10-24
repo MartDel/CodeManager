@@ -55,7 +55,7 @@ const modals = new Vue({
         }
     },
     methods: {
-        show(id){ console.log(id);showTemplateModal(id) },
+        show(id){ showTemplateModal(id) },
         closeCurrent(){ closeTemplateModal(null) }
     }
 })
