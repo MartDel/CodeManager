@@ -9,20 +9,19 @@
         <button type="button" onclick="test()">Tester modal</button>
         <button type="button" onclick="test2()">Tester modal 2</button>
 
-        <aside class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display: none;" id="test">
-            <div class="modal-wrapper">
-                <h1>test</h1>
-                <button type="button" class="close-modal">close</button>
-            </div>
-        </aside>
-        <aside class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display: none;" id="test2">
-            <div class="modal-wrapper">
-                <h1>test2</h1>
-                <button type="button" class="close-modal">close</button>
-            </div>
-        </aside>
+        <div id="modals" style="display:none;">
+            <modal id="test1">
+                <h1 style="text-align:center;">test</h1>
+                <button class="close-modal">close</button>
+            </modal>
+            <modal id="test2">
+                <h1 style="text-align:center;">test2</h1>
+                <button class="close-modal">close</button>
+            </modal>
+        </div>
 
-        <script type="text/javascript" src="public/JS/Modal.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script type="text/javascript" src="public/JS/modal.js"></script>
         <script type="text/javascript" src="public/JS/app.js"></script>
     </body>
 </html>

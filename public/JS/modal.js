@@ -1,5 +1,7 @@
-function showTemplateModal(el){
-    const modal = document.getElementById(el.id)
+let cmodal = null
+
+function showTemplateModal(id){
+    const modal = document.getElementById(id)
     modal.style.display = null
     modal.removeAttribute('aria-hidden')
     modal.setAttribute('aria-modal', 'true')
@@ -30,4 +32,21 @@ function hideTemplateModal(){
 
 window.addEventListener('keydown', (e) => {
     if(e.key === "Escape" || e.key === "Esc") closeTemplateModal(e)
+})
+
+const modals = new Vue({
+    el: '#modals',
+    components: {
+        modal: {
+            template: `
+            <aside class="modal" aria-hidden="true" role="dialog" aria-modal="false" style="display: none;">
+                <div class="modal-wrapper">
+                    <slot></slot>
+                </div>
+            </aside>`
+        }
+    },
+    methods: {
+        show(id){ showTemplateModal(id) }
+    }
 })
