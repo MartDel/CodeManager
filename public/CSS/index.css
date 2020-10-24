@@ -73,7 +73,7 @@ body {
 #top_div_title {
     height: auto;
     position: fixed;
-    z-index: 200;
+    z-index: 0;
     background-color: rgb(255, 255, 255);
     width: 100%;
     color: rgb(91, 92, 96);

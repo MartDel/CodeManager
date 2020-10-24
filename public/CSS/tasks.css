@@ -146,7 +146,6 @@ a {
           flex-direction: row;
   position: relative;
   height: 45px;
-  z-index: 9999;
 
 }
 
@@ -281,7 +280,6 @@ input[type="search"]::-webkit-search-results-decoration {
   position: relative;
   -webkit-transition: width 0.3s ease;
   transition: width 0.3s ease;
-  z-index: 9999;
 }
 
 .new_task {
@@ -1647,7 +1645,7 @@ input.apple-switch:checked:after {
   z-index: 99999;
   display: none;
   z-index: 10000;
-  
+
 }
 
 #account_white_bc {

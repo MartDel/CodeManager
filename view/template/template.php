@@ -49,7 +49,7 @@
 		    <img id="account_logo_img" src="public/img/switzerland.png" />
 		    <img id="gear_logo_img" src="public/img/gear.png" />
 		    <img id="switch_logo_img" src="public/img/file_swap.png" alt="" />
-		    <button id="project_actual"><?= $project->getName() ?></button>
+		    <button id="project_actual"><?= /*$project->getName()*/ "TestTeam"?></button>
 		</div>
 
 		<!--MENU DE GAUCHE-->
@@ -71,12 +71,14 @@
 		                </span>
 		                <p id="text_menu_left_2">Objectifs</p>
 		            </li>
-		            <li class="notselectedmenu">
-		              <span title="Team">
-		                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
-		              </span>
-		                <p id="text_menu_left_3">Team</p>
-		            </li>
+								<a href="index.php?action=team">
+									<li class="notselectedmenu">
+			              <span title="Team">
+			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
+			              </span>
+			                <p id="text_menu_left_3">Team</p>
+			            </li>
+								</a>
 		            <li class="notselectedmenu">
 		              <span title="Discussion">
 		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />

@@ -1,7 +1,7 @@
 <?php
 $title = "Equipe | NameProject";
-$cssfile = "tasks"; // CSS file name
-$jsfile = "tasksjs"; // JS file name
+$cssfile = "team"; // CSS file name
+$jsfile = "teamjs"; // JS file name
 ob_start();
 ?>
 
