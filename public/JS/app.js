@@ -1,9 +1,15 @@
-function test(){
+window.onload = () => {
+    document.querySelector('#modals').style.display = 'block'
+}
+
+function testModal(){
     modals.show('test1')
 }
 
-function test2(){ modals.show('test2') }
+function error(){
+    showMessage('error', 'test', 'yoooo', () => alert('yo'))
+}
 
-window.onload = () => {
-    document.querySelector('#modals').style.display = 'block'
+function info(){
+    showMessage('info', 'test', 'yoooo', () => alert('yo'))
 }

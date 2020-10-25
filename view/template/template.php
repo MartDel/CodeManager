@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	    <link rel="stylesheet" href="public/CSS/<?= $cssfile ?>.css" />
-		<link rel="stylesheet" type="text/css" href="public/CSS/modals.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
 
 		<!-- CSS for JS transitions -->
 	    <link rel="stylesheet" href="public/CSS/transitions.css" />
