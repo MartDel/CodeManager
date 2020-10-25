@@ -10,9 +10,7 @@
     opacity: 0;
 }
 
-.message h1{
-    margin: 5px;
-}
+.message h1{ margin: 5px; }
 
 .message p{
     margin: 0;
@@ -22,14 +20,9 @@
     text-align: justify;
 }
 
-.message p::-webkit-scrollbar {
-    display: none;
-}
+.message p::-webkit-scrollbar{ display: none; }
 
-.message p {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+.message p{ -ms-overflow-style: none; scrollbar-width: none; }
 
 .message .interact{
     display: none;
@@ -48,49 +41,38 @@
 }
 
 .message button{
-    display: block;
+    display: flex;
     height: 43px;
     width: 25%;
     border-radius: 5px;
-    padding: 20px;
-    padding-top: 10px;
+    padding: 0;
     background-color: transparent;
-    font-size: 17px;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
+	align-items: center;
+	justify-content: space-around;
 }
 
-.show-error{
-    background-color: #EF4F2D;
+.message #action ion-icon{ display: inline; font-size: 22px; }
+
+.show-error, .show-info{
     transform: translateY(105px);
     opacity: 1;
     transition: opacity 1s, transform .35s;
 }
 
-.show-error button{
-    border: 3px solid #EF4F2D;
-    color: #EF4F2D;
-}
+.show-error{ background-color: #EF4F2D; }
 
-.show-error button:hover{
-    background-color: rgba(239, 79, 45, .1);
-}
+.show-error button{ border: 3px solid #EF4F2D; color: #EF4F2D; }
 
-.show-info{
-    background-color: #13CE00;
-    transform: translateY(105px);
-    opacity: 1;
-    transition: opacity 1s, transform .35s;
-}
+.show-error button:hover{ background-color: rgba(239, 79, 45, .1); }
 
-.show-info button{
-    border: 3px solid #13CE00;
-    color: #13CE00;
-}
+.show-info{ background-color: #13CE00; }
 
-.show-info button:hover{
-    background-color: rgba(19, 206, 0, .1);
-}
+.show-info button{ border: 3px solid #13CE00; color: #13CE00; }
+
+.show-info button:hover{ background-color: rgba(19, 206, 0, .1); }
 
 .hide{
     transform: translateY(0px);
@@ -98,6 +80,26 @@
     transition: opacity 1s, transform .35s;
 }
 
+@media screen and (max-width: 1280px){
+    .message{ left: 20%; width: 60%; }
+}
+
+@media screen and (max-width: 600px){
+    .message{ left: 5%; width: 85%; }
+}
+
+@media screen and (max-width: 430px){
+    .message{
+        left: 0;
+        width: auto;
+        right: 0;
+        border-radius: 0;
+        padding: 10px;
+    }
+    .message h1{ font-size: 1.2em; }
+    .message p{ font-size: .8em; }
+    .show-error{ transform: translateY(100px); }
+}
 
 @font-face {
   font-family: 'Product Sans Regular';

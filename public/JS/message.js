@@ -13,7 +13,7 @@ function showMessage(type, title, content, dynamic){
     // Dynamic button
     if(dynamic){
         const btn = mess.querySelector('#action')
-        btn.style.display = 'block'
+        btn.style.display = 'flex'
         btn.onclick = () => {
             closeMessage()
             dynamic()
