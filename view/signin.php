@@ -5,6 +5,7 @@ $cssfile = "signin";
 ob_start();
 
 ?>
+
 <a href="index.php">
   <img class="back_to_main" src="public/img/left-arrowback.png" alt="">
 </a>
@@ -31,6 +32,7 @@ ob_start();
   <p>Vous n'avez pas encore de compte ? Inscrivez-vous <a class="here" href="index.php?action=signup">ici</a></p>
 </div>
 
+<?php require('template/message.php'); ?>
 
 <?php
 

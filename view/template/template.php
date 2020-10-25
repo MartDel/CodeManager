@@ -4,31 +4,20 @@
 	    <title><?= $title ?></title>
 		<meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	    <link rel="stylesheet" href="public/CSS/<?= $cssfile ?>.css" />
-		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
 
-		<!-- CSS for JS transitions -->
-	    <link rel="stylesheet" href="public/CSS/transitions.css" />
+		<!-- CSS -->
+	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
+	    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
 
 	    <link rel="icon" type="image/png" href="" />
 	    <link rel="shortcut icon" href="public/img/programmer2.png">
 	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-	    <!--Start of Tawk.to Script
-	    <script type="text/javascript">
-	        var Tawk_API = Tawk_API || {},
-	            Tawk_LoadStart = new Date();
-	        (function () {
-	            var s1 = document.createElement("script"),
-	                s0 = document.getElementsByTagName("script")[0];
-	            s1.async = true;
-	            s1.src = 'https://embed.tawk.to/5f3cf6161e7ade5df442289f/1egl19u2n';
-	            s1.charset = 'UTF-8';
-	            s1.setAttribute('crossorigin', '*');
-	            s0.parentNode.insertBefore(s1, s0);
-	        })();
-	    </script>
-	    End of Tawk.to Script-->
+        <!-- Ionicons -->
+        <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
 	</head>
 	<body>
 		<!--MENU DU HAUT-->
@@ -99,13 +88,14 @@
 		    </section>
 
 		<?= $content ?>
-
+		
 		<!-- Implementations -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 		<!-- JS code -->
-		<script type="text/javascript" src="public/JS/modal.js"></script>
+		<script type="text/javascript" src="public/JS/template/message.js"></script>
+		<script type="text/javascript" src="public/JS/template/modal.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 	</body>
 </html>

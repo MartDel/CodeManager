@@ -16,7 +16,7 @@ function showMessage(type, title, content, dynamic){
         btn.style.display = 'flex'
         btn.onclick = () => {
             closeMessage()
-            dynamic()
+            setTimeout(dynamic, 1000)
         }
     }
 
@@ -33,4 +33,5 @@ function closeMessage(){
         cmessage.classList.remove('hide')
     }, 1000)
     window.cmessage = null
+    window.ctype = null
 }
