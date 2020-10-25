@@ -13,7 +13,7 @@
 }
 
 .modal .modal-wrapper {
-	width: 500px;
+	width: 100%;
 	max-height: calc(80vh);
 	padding: 20px;
 	background-color: #fff;

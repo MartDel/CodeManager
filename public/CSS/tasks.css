@@ -530,6 +530,7 @@ ul {
           flex-direction: column;
   left: 0;
   right: 0;
+  z-index: 2;
 
 }
 
@@ -944,35 +945,20 @@ ul {
 }
 
 /*ADD TASK MODAL*/
-#add_task_modal {
+#add_task {
   background-color: #fffefe;
-  display: block;
   position: absolute;
   width: 80%;
   height: 65%;
   top: 17%;
   left: 10%;
- // border: 2px solid black
+  border: 2px solid black
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
-#add_task_modal_general {
-  background-color: rgba(0, 0, 0, 0.3);
-  height: 100%;
-  width: 100%;
-  top: 0;
-  position: absolute;
-  display: none;
-  -ms-overflow-style: none;
-  z-index: 10000
-}
-
-#add_task_modal::-webkit-scrollbar {
-  display: none;
-}
 
 #section_ligne_haut {
   display: -webkit-box;
@@ -985,7 +971,8 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 20px 0 0 30px;
+  margin-top: 50px;
+
 }
 
 #section_ligne_haut img {
@@ -995,7 +982,6 @@ ul {
 #section_ligne_haut p {
   position: absolute;
   width: 100%;
-  margin-top: 0px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;
   text-transform: uppercase;
@@ -1031,6 +1017,7 @@ ul {
 #section_ligne_bas form {
   margin-left: 10%;
   width: 80%;
+  height:auto;
   /*background-color: red;*/
 }
 
@@ -1732,6 +1719,14 @@ input.apple-switch:checked:after {
   color: #b41e10;
   cursor: pointer;
 }
+
+
+/*MODAL VUE.JS*/
+
+modal{
+  z-index: 9999;
+}
+
 
 @-webkit-keyframes ModalComing {
   0% {
