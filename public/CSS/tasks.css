@@ -946,8 +946,6 @@ ul {
 
 /*ADD TASK MODAL*/
 #add_task {
-  background-color: #fffefe;
-  position: absolute;
   width: 80%;
   height: 65%;
   top: 17%;
@@ -957,6 +955,7 @@ ul {
           box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;
   overflow-x: hidden;
+  z-index: 9999
 }
 
 
