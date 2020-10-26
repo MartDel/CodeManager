@@ -46,34 +46,34 @@
 
 		        <ul>
 		            <a href="index.php">
-		                <li id="menu1" class="selectedmenu">
+		                <li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
 		                  </span>
 		                    <p id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
-		            <li id="menu2" class="notselectedmenu">
+		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
 		                </span>
 		                <p id="text_menu_left_2">Objectifs</p>
 		            </li>
-								<a href="index.php?action=team">
-									<li id="menu3" class="notselectedmenu">
+					<a href="index.php?action=team">
+						<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
 			              </span>
 			                <p id="text_menu_left_3">Team</p>
 			            </li>
-								</a>
-		            <li class="notselectedmenu">
+					</a>
+		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="Discussion">
 		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
 		              </span>
 		                <p id="text_menu_left_4">Discussion</p>
 		            </li>
-		            <li class="notselectedmenu">
+		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="GitHub">
 		                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
 		              </span>
@@ -94,7 +94,7 @@
 		<!-- JS code -->
 		<script type="text/javascript" src="public/JS/template/message.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
-		<script type="text/javascript" src="public/JS/template/menu.js"></script>
+		<script type="text/javascript" src="public/JS/template/menu_nav.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 	</body>
 </html>
