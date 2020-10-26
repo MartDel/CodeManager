@@ -45,7 +45,7 @@
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
             <section>
-                <div id="projet_princ"><?= /*$project->getName()*/ "TestTeam"?></div>
+                <div id="projet_princ"><?= $project->getName() ?></div>
                 <p id="arrow">&#x25BC;</p>
             </section>
         </section>
@@ -64,9 +64,9 @@
         <div id="div_form_new_project"></div>
         <div class="info_current_project">
           <br>
-          <h1>Nom du Projet : <?= /*$project->getName()*/ "testtesttest" ?></h1>
+          <h1>Nom du Projet : <?= $project->getName() ?></h1>
           <br>
-          <h1>Description du Projet : <?= /*$project->getDescription()*/ "this is a descrition" ?></h1>
+          <h1>Description du Projet : <?= $project->getDescription() ?></h1>
           <br>
         </div>
         <div id="div_form_new_project"></div>

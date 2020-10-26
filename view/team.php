@@ -389,6 +389,7 @@ ob_start();
     </div>
   </section>
 </section>
+
 <div id="modals" style="display:none;">
     <?php require('template/modals.php'); ?>
 </div>

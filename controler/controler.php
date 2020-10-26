@@ -43,18 +43,19 @@ function checkCookie(){
  * @param int $project_id Current project id
  */
 function showMainPage(){
-    $user_id = $_SESSION['user_id'];
-    $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
-    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = $_SESSION['project_id'];
-    $_SESSION['project_id'] = $project_id;
-    if(!$project_id) throw new Exception("Vous n'avez pas de projet... Il faut modifier la base de données manuellement!");
-    $project = Project::getProjectById($project_id, $user_id);
-    $project_list = Project::getAllProjects($user_id);
-    $tasks = Task::getAllTasks($project_id);
+    // Get projects infos
+    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+
+    $tasks = Task::getAllTasks($_SESSION['project_id']);
     require('view/main.php');
 }
 
 function showTeamPage(){
+    // Get projects infos
+    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+
     require('view/team.php');
 }
 

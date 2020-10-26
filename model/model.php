@@ -71,7 +71,10 @@ function connectUser($login, $auto){
 	$_SESSION['mail'] = $user->getMail();
 	$_SESSION['firstname'] = $user->getFirstname();
 	$_SESSION['lastname'] = $user->getLastname();
-	$_SESSION['project_id'] = Project::getFirstProject($user_id)->getId();
+    $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
+    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = Project::getFirstProject($user_id)->getId();
+    $_SESSION['project_id'] = $project_id;
+    if(!$project_id) throw new Exception("Vous n'avez pas de projet... Il faut modifier la base de données manuellement!");
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);
