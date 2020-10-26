@@ -86,6 +86,41 @@ var projectactual = document.getElementById("project_actual");
 */
 
 
+window.onload = () => {
+  closeMenu()
+    
+    //set selected menu
+    //document.getElementById("menu1").className = "selectedmenu";
+    // Hide or show done tasks
+    const search = window.location.search
+    const params = new URLSearchParams(search)
+    show_done_tasks = params.has('endTask')
+    showTasks(!show_done_tasks)
+    showDoneTasks(show_done_tasks)
+
+    // Turn ON/OFF dark mode
+    if (getCookie('dark-mode') === 'on') {
+        turnOnDarkMode()
+        settings.dark_mode_btn.checked = true
+    } else {
+        turnOffDarkMode()
+        settings.dark_mode_btn.checked = false
+    }
+
+    // Turn ON/OFF night shift
+    if (getCookie('night-shift') === 'on') {
+        turnOnNightShift()
+        settings.night_shift_btn.checked = true
+    } else {
+        turnOffNightShift()
+        settings.night_shift_btn.checked = false
+    }
+
+    // Print modal div
+    document.querySelector('#modals').style.display = 'block'
+};
+
+
 /*
  * SHOW DONE TASKS
  */
