@@ -53,14 +53,14 @@
 		                    <p id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
-		            <li class="notselectedmenu">
+		            <li id="menu2" class="notselectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
 		                </span>
 		                <p id="text_menu_left_2">Objectifs</p>
 		            </li>
 								<a href="index.php?action=team">
-									<li class="notselectedmenu">
+									<li id="menu3" class="notselectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
 			              </span>

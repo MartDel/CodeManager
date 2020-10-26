@@ -87,8 +87,8 @@ var projectactual = document.getElementById("project_actual");
 
 
 window.onload = () => {
-  closeMenu()
-    
+    closeMenu()
+
     //set selected menu
     //document.getElementById("menu1").className = "selectedmenu";
     // Hide or show done tasks

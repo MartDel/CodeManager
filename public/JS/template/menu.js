@@ -33,12 +33,7 @@ var burger = document.getElementById("menu_checkbox");
 /*
  * ONLOAD
  */
-window.onload = () => {
-    // Close menu when JS is loaded
-    closeMenu()
 
-
-};
 
 // Dark mode
 
