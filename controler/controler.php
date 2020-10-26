@@ -17,7 +17,7 @@ function checkSignUp($post){
  */
 function checkSignIn($post){
     if(!isset($post['login']) || !isset($post['password'])) {
-        throw new Exception("Veuillez remplir tous les champs");
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
     }
     checkConnection($post['login'], $post['password'], false);
     connectUser(htmlspecialchars($post['login']), $post['auto']);
@@ -78,7 +78,9 @@ function showProjectCommits(){
  * @param Object $data All of task data
  */
 function addTask($data){
-    if(!isset($data['title']) || htmlspecialchars($data['title']) == '') throw new Exception("Veuillez remplir tous les champs.");
+    if(!isset($data['title']) || htmlspecialchars($data['title']) == '') {
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusTitleAddTask');
+    }
     $task = new Task(htmlspecialchars($data['title']), $_SESSION['project_id'], false, null, $_SESSION['user_id'], htmlspecialchars($data['description']));
     $task->pushToDB();
     header('Location: index.php');
@@ -103,7 +105,9 @@ function endTask($data){
  * @param Object $data All of project data
  */
 function createProject($data){
-    if(!isset($data['name']) || htmlspecialchars($data['name']) == '') throw new Exception("Veuillez remplir tous les champs.");
+    if(!isset($data['name']) || htmlspecialchars($data['name']) == '') {
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusNameCreateProject');
+    }
 
     // Create remote link with remote informations
     $remote = null;

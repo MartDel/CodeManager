@@ -2,6 +2,7 @@
 
 $title = "Inscription";
 $cssfile = "signup";
+$_SESSION['last_page'] = 'signup';
 ob_start();
 
 ?>
@@ -33,6 +34,15 @@ ob_start();
   <br><br>
   <p>Vous avez déjà un compte ? Connectez-vous <a class="here" href="index.php?action=signin">ici</a></p>
 </div>
+
+<?php require('template/message.php'); ?>
+
+<script type="text/javascript">
+    window.onload = () => {
+        checkMessage()
+    }
+</script>
+
 <?php
 
 $content = ob_get_clean();

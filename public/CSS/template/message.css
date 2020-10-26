@@ -18,6 +18,7 @@
     max-height: 60px;
     overflow-y: scroll;
     text-align: justify;
+    color: #fff;
 }
 
 .message p::-webkit-scrollbar{ display: none; }
@@ -32,6 +33,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
 }
 
 .message:hover .interact{
@@ -62,9 +64,9 @@
     transition: opacity 1s, transform .35s;
 }
 
-.show-error{ background-color: #EF4F2D; }
+.show-error{ background-color: #b41e10; }
 
-.show-error button{ border: 3px solid #EF4F2D; color: #EF4F2D; }
+.show-error button{ border: 3px solid #b41e10; color: #b41e10; }
 
 .show-error button:hover{ background-color: rgba(239, 79, 45, .1); }
 
@@ -98,6 +100,7 @@
     }
     .message h1{ font-size: 1.2em; }
     .message p{ font-size: .8em; }
+    .message .interact{ border-radius: 0; }
     .show-error{ transform: translateY(100px); }
 }
 

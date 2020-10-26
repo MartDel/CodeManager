@@ -8,6 +8,7 @@ error_reporting(-1);
 session_start();
 require("controler/controler.php");
 require('class/Passwords.php');
+require('class/CustomException.php');
 require("class/simple_html_dom.php");
 require("class/DatabaseManager.php");
 require("class/User.php");
@@ -15,6 +16,7 @@ require("class/Task.php");
 require("class/Role.php");
 require('class/Project.php');
 $hostname = 'localhost/CodeManager';
+$_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] : '';
 
 try{
 	date_default_timezone_set('UTC');
@@ -26,6 +28,8 @@ try{
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
 			elseif ($action == 'createproject') createProject($_POST); // Add a new project
+			// Tasks page
+			elseif ($action == 'tasks') showMainPage();
 			// Team page
 			elseif ($action == 'team') showTeamPage();
 			else header('Location: index.php');
@@ -40,6 +44,7 @@ try{
 			elseif ($action == "checkSignUp") checkSignUp($_POST); // Check SignUp
 			elseif ($action == "signin") require('view/signin.php'); // SignIn page
 			elseif ($action == "checkSignIn") checkSignIn($_POST); // Check SignIn
+			elseif ($action == "home") require('view/home.php'); // Home page
 			else header('Location: index.php');
 		} else {
 			if (isset($_COOKIE['pseudo']) && isset($_COOKIE['password'])) {
@@ -47,6 +52,8 @@ try{
 			} else require('view/home.php'); // Home page
 		}
 	}
+} catch(CustomException $e){
+	header('Location: ' . $e->getRedirection() . '&error=' . $e->getUrlEncoded());
 } catch(Exception $e){
 	echo 'Erreur : ' . $e->getMessage();
 }

@@ -3,6 +3,7 @@ $title = "Tâches | NameProject";
 $page = 'tasks';
 $cssfile = "tasks";
 $jsfile = "tasksjs";
+$_SESSION['last_page'] = 'tasks';
 ob_start();
 ?>
 
@@ -140,7 +141,7 @@ ob_start();
             <form method="POST" action="index.php?action=addtask">
                 <h1>Titre de la tâche (80 caractères maximum)</h1>
                 <textarea class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></textarea>
-                <h1>Description de la tâche</h1>
+                <h1>Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
                 <section id="button_line">

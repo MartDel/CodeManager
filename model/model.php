@@ -6,7 +6,7 @@
  */
 function checkNewUserData($data){
 	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
-		throw new Exception("Veuillez remplir tous les champs");
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
 	}
 	$pseudo = htmlspecialchars($data['pseudo']);
 	$mail = htmlspecialchars($data['mail']);
@@ -14,10 +14,18 @@ function checkNewUserData($data){
 	$lastname = htmlspecialchars($data['lastname']);
 	$password = $data['password'];
 	$confirm = $data['confirm'];
-	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") throw new Exception("Veuillez remplir tous les champs.");
-	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) throw new Exception("Addresse mail non valide.");
-	if($password != $confirm) throw new Exception("Mot de passe non valide.");
-	if((new User($pseudo, $mail, $firstname, $lastname))->accountExist()) throw new Exception("Ce compte existe déjà.");
+	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") {
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+	}
+	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+		throw new CustomException('Addresse mail non valide', "L'addresse e-mail n'est pas valide.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmail');
+	}
+	if($password != $confirm) {
+		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
+	}
+	if((new User($pseudo, $mail, $firstname, $lastname))->accountExist()) {
+		throw new CustomException('Compte déjà existant', "Un compte déja existant a été trouvé avec ces identifiants.", 'index.php?action=' . $_SESSION['last_page']);
+	}
 }
 
 /**
@@ -44,16 +52,24 @@ function checkConnection($l, $p, $is_hashed) {
 	$login = htmlspecialchars($l);
 	$password = $p;
 	$user = new User($login, $login, '', '');
-	if(!$user->accountExist()) throw new Exception("Aucun compte n'existe avec ces identifiants.");
+	if(!$user->accountExist()){
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+	}
 
 	$correct_password = User::getPassword($login);
-	if($correct_password == null) throw new Exception("Un problème est survenu.");
+	if($correct_password == null) {
+		throw new CustomException('Erreur!', "Une erreur s'est produite.", 'index.php?action=' . $_SESSION['last_page']);
+	}
 
-	if($is_hashed){
-		if($password != $correct_password) throw new Exception("Le mot de passe n'est pas correct.");
+	if($is_hashed && $password != $correct_password){
+		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
 	} else {
-		if($login == "" || $password == "") throw new Exception("Veuillez remplir tous les champs.");
-		if(!password_verify($password, $correct_password)) throw new Exception("Le mot de passe n'est pas correct.");
+		if($login == "" || $password == "") {
+			throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+		}
+		if(!password_verify($password, $correct_password)) {
+			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
+		}
 	}
 }
 
@@ -74,7 +90,9 @@ function connectUser($login, $auto){
     $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
     if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])) $project_id = Project::getFirstProject($user_id)->getId();
     $_SESSION['project_id'] = $project_id;
-    if(!$project_id) throw new Exception("Vous n'avez pas de projet... Il faut modifier la base de données manuellement!");
+    if(!$project_id) {
+		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . $_SESSION['last_page'], 'openPhpMyAdmin');
+	}
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);

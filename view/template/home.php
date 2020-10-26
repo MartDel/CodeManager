@@ -6,9 +6,9 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 		<!-- CSS -->
-	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
 
 	    <link rel="icon" type="image/png" href="" />
 	    <link rel="shortcut icon" href="public/img/programmer2.png">
@@ -26,6 +26,7 @@
 
 		<!-- JS code -->
 		<script type="text/javascript" src="public/JS/template/message.js"></script>
+		<script type="text/javascript" src="public/JS/template/manage_messages.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
 		<?php if(isset($jsfile)){ ?>
 			<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>

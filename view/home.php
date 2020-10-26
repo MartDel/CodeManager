@@ -2,6 +2,7 @@
 
 $title = "Page d'accueil";
 $cssfile = "index";
+$_SESSION['last_page'] = 'home';
 ob_start();
 
 ?>
@@ -110,6 +111,14 @@ ob_start();
         <img src="public/img/spring-swing-rocket.png">
     </div>
 </div>
+
+<?php require('template/message.php'); ?>
+
+<script type="text/javascript">
+    window.onload = () => {
+        checkMessage()
+    }
+</script>
 
 <?php
 

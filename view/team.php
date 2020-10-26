@@ -3,6 +3,7 @@ $title = "Equipe | NameProject";
 $page = 'team';
 $cssfile = "team"; // CSS file name
 $jsfile = "teamjs"; // JS file name
+$_SESSION['last_page'] = 'team';
 ob_start();
 ?>
 

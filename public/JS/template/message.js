@@ -3,7 +3,6 @@ let ctype = null
 
 function showMessage(type, title, content, dynamic){
     ctype = type === 'info' ? type : 'error'
-    console.log(ctype);
     const mess = document.getElementById('message')
     mess.classList.add('show-' + ctype)
     mess.querySelector('#title').innerHTML = title

@@ -38,8 +38,9 @@ const select_all = {
 */
 
 window.onload = () => {
-    // Menu/nav onload function
+    // Menu/nav onload function and check if there is a message to print
     wOnload()
+    checkMessage()
 
     // Hide or show done tasks
     const search = window.location.search
