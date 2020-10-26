@@ -1,5 +1,6 @@
 <?php
 $title = "Tâches | NameProject";
+$page = 'tasks';
 $cssfile = "tasks";
 $jsfile = "tasksjs";
 ob_start();

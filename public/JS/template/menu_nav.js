@@ -13,10 +13,7 @@ var menu = {
     img: document.getElementsByClassName("img_menu_gauche_js"), // Array
     selected: document.getElementsByClassName("selectedmenu")[0],
     not_selected: document.getElementsByClassName("notselectedmenu"), // Array
-    //selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
-    //selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
     add_task_logo: document.getElementById("new_task_img")
-    //add_task_div: document.getElementById("new_task_div"),
 };
 var settings = {
     id: 'settings',
@@ -30,17 +27,6 @@ var settings = {
 var burger = document.getElementById("menu_checkbox");
 var body = document.getElementsByTagName("body")[0];
 var account_logo = document.getElementById("account_logo_img");
-
-
-/*
- * ONLOAD
- */
-// window.onload = () => {
-//     // Close menu when JS is loaded
-//     closeMenu()
-//
-//
-// };
 
 // Dark mode
 
@@ -106,17 +92,9 @@ var closeMenu = () => {
         erase(menu.text[i]);
     }
 
-    //menu.add_task_div.style.paddingBottom = "7px";
-    //menu.add_task_div.style.marginLeft = "23px";
-    //menu.add_task_div.style.width = "50px";
-
-    //menu.add_task_logo.style.marginLeft = "8px";
-
     for (var i = 0; i < menu.img.length; i++) {
         menu.img[i].style.marginLeft = "-23px";
     }
-    //menu.selected_ligne.style.marginLeft = "100px";
-    //menu.selected_ligne.style.width = "calc(100% - 100px)";
 
     menu.main_div.style.width = "100px";
 
@@ -133,7 +111,6 @@ var openMenu = () => {
         for (var i = 0; i < menu.text.length; i++) {
             show(menu.text[i]);
         }
-        //menu.add_task_div.style.paddingBottom = "2px";
     }, 300);
 
     setTimeout(() => {
@@ -142,17 +119,9 @@ var openMenu = () => {
         }
     }, 310);
 
-    //menu.add_task_div.style.marginLeft = "23px";
-    //menu.add_task_div.style.width = "210px";
-
-    //menu.add_task_logo.style.marginLeft = "8px";
-
     for (var i = 0; i < menu.img.length; i++) {
         menu.img[i].style.marginLeft = "0px";
     }
-
-    //menu.selected_ligne.style.marginLeft = "260px";
-    //menu.selected_ligne.style.width = "calc(100% - 260px)";
 
     menu.main_div.style.width = "260px";
 
@@ -161,8 +130,6 @@ var openMenu = () => {
     for (var i = 0; i < menu.not_selected.length; i++) {
         menu.not_selected[i].style.paddingRight = "90px";
     }
-
-    //menu.selected_ligne_header.style.width = "auto";
 };
 
 /*

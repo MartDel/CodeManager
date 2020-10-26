@@ -7,15 +7,9 @@ var settings = {
     night_shift_btn: document.getElementById("night_shift"),
     bug_input: document.getElementById("textarea_bug"),
 };
-var menu_left_selected = document.getElementById("menu3");
-var menu_left_not_selected = document.getElementById("menu1");
 
 window.onload = () => {
     closeMenu()
-    menu_left_selected.classList.add("selectedmenu");
-    menu_left_selected.classList.remove("notselectedmenu");
-    menu_left_not_selected.classList.remove("selectedmenu");
-    menu_left_not_selected.classList.add("notselectedmenu");
 
     // Turn ON/OFF dark mode
     if (getCookie('dark-mode') === 'on') {

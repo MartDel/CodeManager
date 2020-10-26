@@ -1,5 +1,6 @@
 <?php
 $title = "Equipe | NameProject";
+$page = 'team';
 $cssfile = "team"; // CSS file name
 $jsfile = "teamjs"; // JS file name
 ob_start();
