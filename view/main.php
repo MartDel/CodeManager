@@ -82,6 +82,7 @@ ob_start();
             </ul>
         </section>
     </section>
+  </section>
 
 <!-- All of modals -->
 <div id="modals" style="display:none;">

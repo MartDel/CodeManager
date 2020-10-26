@@ -1,0 +1,133 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.section_en_dessous_menu {
+  display: flex;
+  flex-direction: row;
+}
+
+.add_remove_user_bar {
+  background-color: white;
+  border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+  height: 45px;
+  width: 100%;
+}
+
+.add_remove_user_bar img {
+  height: 15px;
+  margin-top: calc(22px - 7px);
+  margin-left: 15px;
+}
+
+.add_remove_user_bar img:hover {
+  cursor: pointer;
+  animation: rotateAddTask 0.5s;
+}
+
+.main-table-user {
+  padding: 10px;
+  background-color: white;
+  height: calc(100vh - 128px);
+  overflow-y: scroll;
+}
+
+table {
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+tr {
+  height: 200px;
+  background-color: white;
+}
+
+td {
+  width: calc(100% / 6);
+  padding-top: 10px;
+  border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+  transition: all 0.3s;
+}
+
+td:hover {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.img_user_profile {
+  width: 40%;
+  margin-left: 30%;
+}
+
+.img_user_profile img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+td h1 {
+  color: #b41e10;
+  font-family: "Product Sans Regular";
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+td p {
+  font-family: "Product Sans Regular";
+  font-size: 10px;
+  color: gray;
+}
+
+td:hover .delete_user_div {
+  opacity: 1;
+  transform: scaleY(1);
+  visibility: visible;
+  transition: all 0.3s;
+}
+
+.delete_user_div {
+  width: calc(100% - 0px);
+  height: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  opacity: 0;
+  transform: scaleY(0);
+  transition: all 0.3s;
+  visibility: hidden;
+  display: block;
+  margin-top: -50px;
+  ;
+}
+
+.delete_user_div:hover {
+  background-color: lightgray;
+}
+
+.delete_user_div img {
+  height: 50%
+}
+
+.delete_user_div h2 {
+  font-family: "Product Sans Light Regular";
+  font-size: 10px;
+  color: black;
+  margin-top: 5px;
+}
+
+@keyframes rotateAddTask {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
