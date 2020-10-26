@@ -125,7 +125,7 @@ ob_start();
     <?php if (isset($tasks)) { ?>
         <!-- TASKS NOT FINISHED -->
         <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
-        <modal id="task<?= $task->getId() ?>_modal" class="modal_task_popup">
+        <modal id="task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
                 <img id="logo_popup" src="public/img/essai_logo.png" />
@@ -145,7 +145,7 @@ ob_start();
 
         <!-- TASKS DONE -->
         <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
-        <modal id="done_task<?= $task->getId() ?>_modal">
+        <modal id="done_task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
                 <img id="logo_popup" src="public/img/essai_logo.png" />

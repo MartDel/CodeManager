@@ -10,6 +10,7 @@
 	    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/menuandtop.css" />
 
 	    <link rel="icon" type="image/png" href="" />
 	    <link rel="shortcut icon" href="public/img/programmer2.png">
@@ -88,7 +89,7 @@
 		    </section>
 
 		<?= $content ?>
-		
+
 		<!-- Implementations -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
@@ -96,6 +97,7 @@
 		<!-- JS code -->
 		<script type="text/javascript" src="public/JS/template/message.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
+		<script type="text/javascript" src="public/JS/template/menu.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 	</body>
 </html>

@@ -318,6 +318,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .notselectedmenu {
   -webkit-transition: padding 0.3s ease;
   transition: padding 0.3s ease;
+  color: black;
+  
 }
 
 #text_menu_left_1,
@@ -328,6 +330,7 @@ input[type="search"]::-webkit-search-results-decoration {
   opacity: 1;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
+
 }
 
 ul {
@@ -427,7 +430,7 @@ ul {
   -webkit-transition: width 3s ease;
   transition: width 3s ease;
   z-index: 999;
-  box-shadow: 0px 0px 4px 1px gray;
+  /*box-shadow: 0px 0px 4px 1px gray;*/
 }
 
 
@@ -622,12 +625,12 @@ ul {
 
 
 /* Modal Content/Box */
-.modal_task_popup .modal-wrapper{
-  background-color: #fefefe;
+aside[name~=popup_modal_task] .modal-wrapper{
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  background-color: white
 }
 
 /* The Close Button */
@@ -1606,25 +1609,11 @@ input.apple-switch:checked:after {
 }
 
 /*ACCOUNT MODAL*/
-#account_background {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 99999;
-  display: none;
-  z-index: 10000;
-
-}
-
-#account_white_bc {
-  height: 50%;
+#account .modal-wrapper{
+  height: 60%;
   width: 30%;
   background-color: #fff;
-  position: absolute;
-  top: 25%;
+  top: 20%;
   left: 35%;
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
           box-shadow: #4b4b4b 0px 0px 15px;
@@ -1636,17 +1625,18 @@ input.apple-switch:checked:after {
   height: 125px;
   width: 125px;
   position: absolute;
-  margin-left: calc(50% - 63px);
-  margin-top: -63px;
+  margin-left: calc(50% - 80px);
+  margin-top: 0px;
   border-radius: 50%;
   -webkit-box-shadow: #474747 0px 0px 20px;
           box-shadow: #474747 0px 0px 20px;
+  z-index: 9999;
 }
 
 .name_user_title {
   text-align: center;
   z-index: 999;
-  margin-top: 90px;
+  margin-top: 150px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;
   color: #b41e10;
@@ -1705,11 +1695,7 @@ input.apple-switch:checked:after {
 }
 
 
-/*MODAL VUE.JS*/
 
-modal{
-  z-index: 9999;
-}
 
 
 @-webkit-keyframes ModalComing {
