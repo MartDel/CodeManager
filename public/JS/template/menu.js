@@ -28,17 +28,19 @@ var settings = {
     bug_input: document.getElementById("textarea_bug")
 };
 var burger = document.getElementById("menu_checkbox");
+var body = document.getElementsByTagName("body")[0];
+var account_logo = document.getElementById("account_logo_img");
 
 
 /*
  * ONLOAD
  */
-window.onload = () => {
-    // Close menu when JS is loaded
-    closeMenu()
-
-
-};
+// window.onload = () => {
+//     // Close menu when JS is loaded
+//     closeMenu()
+//
+//
+// };
 
 // Dark mode
 

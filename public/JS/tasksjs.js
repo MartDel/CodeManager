@@ -72,8 +72,6 @@ var modal_swap_modal = document.getElementById("project_modal");
 var modal_swap_icon = document.getElementById("switch_logo_img");
 
 var close_btn = document.getElementsByClassName("close");
-var body = document.getElementsByTagName("body")[0];
-var account_logo = document.getElementById("account_logo_img");
 
 var modaladd = document.getElementById("add_task_modal");
 
@@ -87,8 +85,8 @@ var projectactual = document.getElementById("project_actual");
 
 
 window.onload = () => {
-  closeMenu()
-    
+    closeMenu()
+
     //set selected menu
     //document.getElementById("menu1").className = "selectedmenu";
     // Hide or show done tasks

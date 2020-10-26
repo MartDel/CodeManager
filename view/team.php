@@ -6,7 +6,7 @@ ob_start();
 ?>
 
 <!-- HTML content -->
-<div id="modals">
+<div id="modals" style="display:none;">
     <?php require('template/modals.php'); ?>
 </div>
 
