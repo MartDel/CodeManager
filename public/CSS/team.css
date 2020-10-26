@@ -30,7 +30,8 @@
 .main-table-user {
   padding: 10px;
   background-color: white;
-  height: calc(100vh - 127px)
+  height: calc(100vh - 128px);
+  overflow-y: scroll;
 }
 
 table {
