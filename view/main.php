@@ -81,7 +81,7 @@ ob_start();
             </ul>
         </section>
     </section>
-</section>
+
 
 <!--HELP MODAL-->
 <div id="help_modal">

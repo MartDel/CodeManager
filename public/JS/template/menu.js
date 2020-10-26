@@ -13,9 +13,9 @@ var menu = {
     img: document.getElementsByClassName("img_menu_gauche_js"), // Array
     selected: document.getElementsByClassName("selectedmenu")[0],
     not_selected: document.getElementsByClassName("notselectedmenu"), // Array
-    selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
-    selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
-    add_task_logo: document.getElementById("new_task_img"),
+    //selected_ligne: document.getElementsByClassName("ligne_et_taches")[0],
+    //selected_ligne_header: document.getElementById("ligne_haut_tache_id"),
+    add_task_logo: document.getElementById("new_task_img")
     //add_task_div: document.getElementById("new_task_div"),
 };
 var settings = {
@@ -25,7 +25,7 @@ var settings = {
     close_btn: document.getElementById("close_settings"),
     dark_mode_btn: document.getElementById("dark_mode"),
     night_shift_btn: document.getElementById("night_shift"),
-    bug_input: document.getElementById("textarea_bug"),
+    bug_input: document.getElementById("textarea_bug")
 };
 var burger = document.getElementById("menu_checkbox");
 
@@ -37,35 +37,7 @@ window.onload = () => {
     // Close menu when JS is loaded
     closeMenu()
 
-    //set selected menu
-    //document.getElementById("menu1").className = "selectedmenu";
-    // Hide or show done tasks
-    const search = window.location.search
-    const params = new URLSearchParams(search)
-    show_done_tasks = params.has('endTask')
-    showTasks(!show_done_tasks)
-    showDoneTasks(show_done_tasks)
 
-    // Turn ON/OFF dark mode
-    if (getCookie('dark-mode') === 'on') {
-        turnOnDarkMode()
-        settings.dark_mode_btn.checked = true
-    } else {
-        turnOffDarkMode()
-        settings.dark_mode_btn.checked = false
-    }
-
-    // Turn ON/OFF night shift
-    if (getCookie('night-shift') === 'on') {
-        turnOnNightShift()
-        settings.night_shift_btn.checked = true
-    } else {
-        turnOffNightShift()
-        settings.night_shift_btn.checked = false
-    }
-
-    // Print modal div
-    document.querySelector('#modals').style.display = 'block'
 };
 
 // Dark mode
@@ -141,9 +113,8 @@ var closeMenu = () => {
     for (var i = 0; i < menu.img.length; i++) {
         menu.img[i].style.marginLeft = "-23px";
     }
-
-    menu.selected_ligne.style.marginLeft = "100px";
-    menu.selected_ligne.style.width = "calc(100% - 100px)";
+    //menu.selected_ligne.style.marginLeft = "100px";
+    //menu.selected_ligne.style.width = "calc(100% - 100px)";
 
     menu.main_div.style.width = "100px";
 
@@ -178,8 +149,8 @@ var openMenu = () => {
         menu.img[i].style.marginLeft = "0px";
     }
 
-    menu.selected_ligne.style.marginLeft = "260px";
-    menu.selected_ligne.style.width = "calc(100% - 260px)";
+    //menu.selected_ligne.style.marginLeft = "260px";
+    //menu.selected_ligne.style.width = "calc(100% - 260px)";
 
     menu.main_div.style.width = "260px";
 
@@ -189,7 +160,7 @@ var openMenu = () => {
         menu.not_selected[i].style.paddingRight = "90px";
     }
 
-    menu.selected_ligne_header.style.width = "auto";
+    //menu.selected_ligne_header.style.width = "auto";
 };
 
 /*
