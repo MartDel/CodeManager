@@ -6,7 +6,9 @@ ob_start();
 ?>
 
 <!-- HTML content -->
-<?php require('template/modals.php'); ?>
+<div id="modals">
+    <?php require('template/modals.php'); ?>
+</div>
 
 <?php
 $content = ob_get_clean();
