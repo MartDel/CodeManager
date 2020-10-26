@@ -38,7 +38,7 @@
     <section id="header_project_modal">
         <img src="public/img/essai_logo.png" alt="" />
         <p>Changer de projet</p>
-        <span id="close_swap" class="close_swap">&times;</span>
+        <span id="close_swap" class="close_swap close-modal">&times;</span>
     </section>
     <br><br><br><br>
     <section id="body_project_modal">
@@ -85,3 +85,39 @@
         </form>
     </section>
 </modal>
+
+<!--HELP MODAL-->
+<div id="help_modal">
+    <span class="span_help">
+        <img src="public/img/plusadd.png" alt="" />
+        <p> Ajouter une tâche</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/checkbox.png" alt="" />
+        <p> Sélectionner / Tout sélectionner</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/refresh.png" alt="" />
+        <p> Rafraîchir</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/tick.png" alt="" />
+        <p>Marquer comme effectuée</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/task_done.png" alt="" />
+        <p>Voir les tâches effectuées</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/edit_task_bar.png" alt="" />
+        <p> Éditer la tâche</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/trash.png" alt="" />
+        <p> Supprimer la/les tâche(s)</p>
+    </span>
+    <span class="span_help">
+        <img src="public/img/gear.png" alt="" />
+        <p> Réglages</p>
+    </span>
+</div>
