@@ -1,3 +1,13 @@
+.section_en_dessous_menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
 .main-content {
   display: flex;
   flex-direction: column;
