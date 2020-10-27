@@ -1145,7 +1145,7 @@ input.apple-switch:checked:after {
 }
 
 #bc_img_logo_account {
-  background-image: url(../img/switzerland.png);
+  background-image: url(../../img/switzerland.png);
   background-size: cover;
   height: 125px;
   width: 125px;
