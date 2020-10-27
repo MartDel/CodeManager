@@ -57,6 +57,15 @@ class User extends DatabaseManager
     }
 
     /**
+     * Delete an user from the database
+     */
+    public function delete(){
+        $db = self::dbConnect();
+        $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $del->execute([$this->id]);
+    }
+
+    /**
     * Check if an account already exists
     * @return boolean If account already exists : true
     */

@@ -73,7 +73,7 @@
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
-        <a href="#">Supprimer mon compte</a>
+        <a href="index.php?action=deleteAccount">Supprimer mon compte</a>
         <a href="#">Besoin d'aide ?</a>
       </div>
     </div>
@@ -113,7 +113,7 @@
           <br>
           <h1>Nom du Projet : <?= $project->getName() ?></h1>
           <br>
-          <h1>Description du Projet : <?= $project->getDescription() ?></h1>
+          <h1>Description du Projet : <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
         </div>
         <div id="div_form_new_project"></div>

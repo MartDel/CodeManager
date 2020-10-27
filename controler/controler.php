@@ -25,6 +25,15 @@ function checkSignIn($post){
 }
 
 /**
+ * Delete the connected user
+ */
+function deleteAccount(){
+    $user = new User($_SESSION['pseudo'], $_SESSION['mail'], $_SESSION['firstname'], $_SESSION['lastname']);
+    $user->delete();
+    logout();
+}
+
+/**
  * Check if user's cookies are correct
  */
 function checkCookie(){
@@ -48,8 +57,8 @@ function showMainPage(){
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     $tasks = Task::getAllTasks($_SESSION['project_id']);
-    $nb_tasks = countNotDoneTasks($tasks);
-    $nb_done_tasks = countDoneTasks($tasks);
+    $nb_tasks = isset($tasks) ? countNotDoneTasks($tasks) : 0;
+    $nb_done_tasks = isset($tasks) ? countDoneTasks($tasks) : 0;
     require('view/main.php');
 }
 

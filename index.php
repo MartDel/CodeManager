@@ -23,15 +23,19 @@ try{
 	if(isset($_SESSION['pseudo'])){ // Connected
 		if(isset($_GET['action'])){
 			$action = htmlspecialchars($_GET["action"]);
-			if ($action == "logout") logout(); // Logout the current user
-			elseif ($action == "commits") showProjectCommits(); // GitHub page
+			// Tasks page
+			if ($action == 'tasks') showMainPage();
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
-			elseif ($action == 'createproject') createProject($_POST); // Add a new project
-			// Tasks page
-			elseif ($action == 'tasks') showMainPage();
 			// Team page
 			elseif ($action == 'team') showTeamPage();
+			// GitHub page
+			elseif ($action == "commits") showProjectCommits();
+			// Projects
+			elseif ($action == 'createproject') createProject($_POST); // Add a new project
+			// Account
+			elseif($action == 'deleteAccount') deleteAccount();
+			elseif ($action == "logout") logout(); // Logout the current user
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page

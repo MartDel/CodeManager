@@ -30,7 +30,7 @@ function closeMessage(){
     setTimeout(() => {
         cmessage.classList.remove('show-' + ctype)
         cmessage.classList.remove('hide')
-    }, 1000)
+    }, 500)
     window.cmessage = null
     window.ctype = null
 }
