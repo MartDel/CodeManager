@@ -26,11 +26,58 @@
     <span id="close_account_modal" class="close-modal close_account_modal">&times;</span>
     <p class="name_user_title"><?= $_SESSION['pseudo'] ?></p>
     <p class="mail_user_title"><?= $_SESSION['mail'] ?></p>
-    <a class="button_my_account">Mon compte</a>
+    <a id="button_my_account" class="button_my_account close-modal">Mon compte</a>
     <div class="flex_button_account">
         <a id="button_option" class="close-modal button_option">Options</a>
         <a href="index.php?action=logout" name="deconnexion_button" class="button_deconnect">Déconnexion</a>
     </div>
+</modal>
+
+<!--MY ACCOUNT MODAL-->
+<modal id="my_informations">
+    <h1>Mes Informations</h1>
+    <div class="account_change_column">
+      <a href="#">
+        <div class="img_account_change">
+          <img id="img_account_changeimg" src="public/img/switzerland.png" alt="">
+            <form id="form_add_img" class="form_add_img" action="#" method="post" enctype="multipart/form-data" onmouseover="hover_change()" onmouseleave="leave_change()">
+              <input class="input_img" size="0" id="input_img" type="file">
+            </form>
+            <h3 id="img_text">Changer</h3>
+          </div>
+      </a>
+      <br><br>
+      <form class="" action="#" method="post">
+        <div class="account_change_row">
+          <p>Pseudo :</p>
+          <textarea id="textarea_pseudo" tabindex="1" name="pseudo_change" disabled=true ><?= $_SESSION['pseudo'] ?></textarea>
+          <img id="modify_textarea_pseudo" class="modify_textarea" src="public/img/pencil.png" alt="">
+          <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
+        </div>
+
+        <div class="account_change_row">
+          <p>Mon adresse Mail : </p>
+          <textarea name="mail_change" disabled=true id="textarea_mail" ><?= $_SESSION['mail'] ?></textarea>
+          <img id="modify_textarea_mail" class="modify_textarea" src="public/img/pencil.png" alt="">
+          <img id="validate_textarea_mail" class="validate_textarea" src="public/img/done.png" alt="">
+        </div>
+
+        <div class="account_change_row">
+          <p>Mon mot de passe : </p>
+          <textarea name="pass_change" disabled="true" id="textarea_pass" >Mot De passe en points</textarea>
+          <img id="modify_textarea_pass" class="modify_textarea" src="public/img/pencil.png" alt="">
+          <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
+        </div>
+        <br><br>
+        <button type="button" class="close-modal" id="cancel_submit_changes" name="button">Annuler</button>
+      </form>
+      <br><br><br>
+      <div class="account_change_row buttons_delete_support">
+        <a href="#">Supprimer mon compte</a>
+        <a href="#">Besoin d'aide ?</a>
+      </div>
+    </div>
+
 </modal>
 
 <!--SWAP PROJECT MODAL-->

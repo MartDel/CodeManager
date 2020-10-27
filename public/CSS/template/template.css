@@ -1218,3 +1218,215 @@ input.apple-switch:checked:after {
   color: #b41e10;
   cursor: pointer;
 }
+
+/*MODAL MY INFOS*/
+#my_informations .modal-wrapper {
+  width: 40%;
+  height: 80%;
+}
+
+#my_informations h1 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#my_informations img {
+  height: 70px;
+  border-radius: 50%;
+  margin-left: calc(50% - 35px);
+  position: relative;
+  z-index: -1
+}
+
+#my_informations img:hover {
+  cursor: pointer;
+}
+
+#my_informations .input_img {
+  background-color: green;
+  width: 70px;
+  height: 70px;
+  outline: none;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+#my_informations .input_img:hover {
+  cursor: pointer;
+}
+
+input[type="file"] {
+  position: absolute;
+  font-size: 0px;
+  color: #b8b8b8;
+  width: 100%;
+}
+
+input[type="file"]:hover {
+  cursor: pointer;
+}
+
+.form_add_img {
+  margin-top: -75px;
+  width: 70px;
+  opacity: 0;
+}
+
+.form_add_img:hover {
+  cursor: pointer;
+}
+
+.img_account_change:hover {
+  cursor: pointer;
+}
+
+.img_account_change {
+  height: 70px;
+  width: 70px;
+  margin-left: calc(50% - 35px);
+  border-radius: 50%;
+}
+
+#my_informations h3 {
+  margin-top: 27px;
+  font-family: "Product Sans Regular";
+  font-size: 12px;
+  color: white;
+  margin-left: 12px;
+  opacity: 0;
+}
+
+#my_informations h3:hover {
+  cursor: pointer;
+}
+
+#my_informations .account_change_column {
+  display: flex;
+  flex-direction: column;
+}
+
+#my_informations .account_change_row {
+  display: flex;
+  flex-direction: row;
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+  color: black;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 30px;
+}
+
+#my_informations textarea {
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+  color: black;
+  padding: 15px;
+  resize: none;
+  right: 0;
+  width: 50%;
+  text-align: left;
+  background-color: white;
+  outline: none;
+  border: none;
+  height: 18px;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+#my_informations textarea:focus {
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  transition: all 0.5s;
+}
+
+#my_informations p {
+  width: auto;
+  padding-right: 10px;
+}
+
+#my_informations .modify_textarea {
+  margin-right: 50px;
+  width: auto;
+  height: 18px;
+  margin-left: 0;
+  position: absolute;
+  right: 0;
+  margin-top: 15px;
+  border-radius: 0;
+  z-index: 1;
+}
+
+#my_informations .validate_textarea {
+  margin-right: 50px;
+  width: auto;
+  height: 18px;
+  margin-left: 0;
+  position: absolute;
+  right: 0;
+  margin-top: 15px;
+  border-radius: 0;
+  z-index: 0;
+}
+
+#my_informations #validate_textarea_pseudo {
+  margin-right: 50px;
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s;
+}
+
+#my_informations #validate_textarea_mail {
+  margin-right: 50px;
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s;
+}
+
+#my_informations #validate_textarea_pass {
+  margin-right: 50px;
+  opacity: 0;
+  z-index: 0;
+  transition: all 0.3s;
+}
+
+#my_informations .modify_textarea:hover {
+  cursor: pointer;
+}
+
+#my_informations .validate_textarea:hover {
+  cursor: pointer;
+}
+
+#cancel_submit_changes {
+  display: block;
+  background-color: white;
+  border: #b41e10 2px solid;
+  border-radius: 3px;
+  padding: 10px;
+  align-items: center;
+  margin-right: 30px;
+  float: right;
+}
+
+#cancel_submit_changes:hover {
+  cursor: pointer;
+}
+
+.buttons_delete_support {
+  background-color: white;
+  text-align: center;
+}
+
+.buttons_delete_support a {
+  border: white solid 2px;
+  width: 50%;
+  text-align: center;
+  font-size: 12px;
+  color: gray;
+  font-family: "Product Sans Light Regular";
+}
