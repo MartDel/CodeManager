@@ -103,6 +103,36 @@ function connectUser($login, $auto){
 	}
 }
 
+// Tasks page
+
+/**
+ * Count how many tasks are not finished
+ * @param Array $tasks All of database tasks for the current project
+ * @return int The count of not done tasks
+ */
+function countNotDoneTasks($tasks){
+	$counter = 0;
+	foreach ($tasks as $task) {
+		if (!$task->getIsDone()) $counter++;
+	}
+	return $counter;
+}
+
+/**
+ * Count how many tasks are finished
+ * @param Array $tasks All of database tasks for the current project
+ * @return int The count of done tasks
+ */
+function countDoneTasks($tasks){
+	$counter = 0;
+	foreach ($tasks as $task) {
+		if ($task->getIsDone()) $counter++;
+	}
+	return $counter;
+}
+
+// GitHub page
+
 /**
  * Get all of project commits
  * @param String $github_user Current project owner (GitHub username)

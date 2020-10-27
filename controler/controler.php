@@ -48,6 +48,8 @@ function showMainPage(){
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     $tasks = Task::getAllTasks($_SESSION['project_id']);
+    $nb_tasks = countNotDoneTasks($tasks);
+    $nb_done_tasks = countDoneTasks($tasks);
     require('view/main.php');
 }
 

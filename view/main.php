@@ -29,9 +29,12 @@ ob_start();
 
         <section class="list_task">
             <ul id="liste_taches" class="liste_taches">
-            <?php if (isset($tasks)) { ?>
+            <?php if (isset($tasks)): ?>
                 <!--TACHES NON REALISEES-->
-                <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
+                <?php if ($nb_tasks == 0): ?>
+                    <p name="task">Toutes les tâches sont terminées !</p>
+                <?php endif; ?>
+                <?php foreach ($tasks as $task) { if (!$task->getIsDone()): ?>
                     <button name="task" class="myBtn" id="task<?= $task->getId() ?>">
                         <li>
                             <span class="span_input_img" title="Sélectionner">
@@ -51,10 +54,13 @@ ob_start();
                             <span class="date"><?= $task->getCreateDate() ?></span>
                         </li>
                     </button>
-                <?php }} ?>
+                <?php endif; } ?>
 
-                <!-- TACHES REALISEES -->
-                <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
+                <!-- TASKS DONE -->
+                <?php if ($nb_done_tasks == 0): ?>
+                    <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                <?php endif; ?>
+                <?php foreach ($tasks as $task) { if ($task->getIsDone()): ?>
                     <button name="done_task" class="myBtn done-task" id="done_task<?= $task->getId() ?>">
                         <li>
                             <span class="span_input_img" title="Sélectionner">
@@ -74,12 +80,10 @@ ob_start();
                             <span class="date"><?= $task->getCreateDate() ?></span>
                         </li>
                     </button>
-                <?php }} ?>
-            <?php } else { ?>
-                <p>
-                    <i>Pas de tâche pour le moment...</i>
-                </p>
-            <?php } ?>
+                <?php endif; } ?>
+            <?php else: ?>
+                <p>Pas de tâche pour le moment...</p>
+            <?php endif; ?>
             </ul>
         </section>
     </section>
@@ -88,9 +92,9 @@ ob_start();
 <!-- All of modals -->
 <div id="modals" style="display:none;">
     <!--MODAL CONTENT-->
-    <?php if (isset($tasks)) { ?>
+    <?php if (isset($tasks)): ?>
         <!-- TASKS NOT FINISHED -->
-        <?php foreach ($tasks as $task) { if (!$task->getIsDone()) { ?>
+        <?php foreach ($tasks as $task){ if (!$task->getIsDone()): ?>
         <modal id="task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
@@ -107,10 +111,10 @@ ob_start();
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
         </modal>
-        <?php }} ?>
+        <?php endif; } ?>
 
         <!-- TASKS DONE -->
-        <?php foreach ($tasks as $task) { if ($task->getIsDone()) { ?>
+        <?php foreach ($tasks as $task) { if ($task->getIsDone()): ?>
         <modal id="done_task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
@@ -127,8 +131,8 @@ ob_start();
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
         </modal>
-        <?php }} ?>
-    <?php } ?>
+        <?php endif; } ?>
+    <?php endif; ?>
 
     <!--ADD TASK MODAL-->
     <modal id="add_task">

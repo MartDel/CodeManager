@@ -1,7 +1,7 @@
 let cmessage = null
 let ctype = null
 
-function showMessage(type, title, content, dynamic){
+function showMessage(type, title, content, dynamic = null){
     ctype = type === 'info' ? type : 'error'
     const mess = document.getElementById('message')
     mess.classList.add('show-' + ctype)
