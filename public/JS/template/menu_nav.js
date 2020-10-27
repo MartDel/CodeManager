@@ -44,8 +44,43 @@ let account = {
     show_btn: document.getElementById("account_logo_img"),
     close: document.getElementById("close_account_modal"),
     option: document.getElementById("button_option"),
-    back: document.getElementById("account_background")
+    back: document.getElementById("account_background"),
+    redirectinfos: document.getElementById("button_my_account"),
+
 };
+let accountinfos = {
+  id: "my_informations",
+
+}
+let textarea = {
+  pseudo:document.getElementById("textarea_pseudo"),
+  pseudo_validate:document.getElementById("validate_textarea_pseudo"),
+  mail:document.getElementById("textarea_mail"),
+  mail_validate:document.getElementById("validate_textarea_mail"),
+  pass:document.getElementById("textarea_pass"),
+  pass_validate:document.getElementById("validate_textarea_pass"),
+
+}
+let change = {
+  pseudo:document.getElementById("modify_textarea_pseudo"),
+  mail:document.getElementById("modify_textarea_mail"),
+  pass:document.getElementById("modify_textarea_pass"),
+  button : document.getElementById("cancel_submit_changes"),
+  img:document.getElementById("img_account_changeimg"),
+  imgtext:document.getElementById("img_text"),
+  form : document.getElementById("form_add_img"),
+}
+
+hover_change = () => {
+  change.img.style.filter = "brightness(40%)";
+  change.imgtext.style.opacity = "1";
+}
+leave_change = () => {
+  change.img.style.filter = "brightness(100%)";
+  change.imgtext.style.opacity = "0";
+}
+
+
 
 // Project elements
 const project = {
@@ -250,6 +285,86 @@ account.show_btn.onclick = () => {
 account.option.onclick = () => {
     setTimeout(() => modals.show(settings.id), 500)
 };
+account.redirectinfos.onclick = () => {
+    setTimeout(() => modals.show(accountinfos.id), 500)
+};
+
+
+//CHANGE INFORMATIONS Account
+
+change.pseudo.onclick = () => {
+  textarea.pseudo.disabled=false;
+  textarea.pseudo_validate.style.marginRight = "100px";
+  textarea.pseudo_validate.style.opacity = "1";
+  textarea.pseudo.focus();
+  textarea.mail_validate.click();
+  textarea.pass_validate.click();
+
+}
+textarea.pseudo_validate.onclick = () => {
+  var newplaceholder_pseudo = textarea.pseudo.innerHTML;
+  if (newplaceholder_pseudo != textarea.pseudo.innerHTML) {
+    textarea.pseudo.innerHTML ="";
+    textarea.pseudo.innerHTML = newplaceholder_pseudo;
+    change.button.innerHTML = "Effectuer les changements";
+  }
+  textarea.pseudo_validate.style.marginRight = "50px";
+  textarea.pseudo_validate.style.opacity = "0";
+  textarea.pseudo.disabled=true;
+}
+
+change.mail.onclick = () => {
+  textarea.mail.disabled=false;
+  textarea.mail_validate.style.marginRight = "100px";
+  textarea.mail_validate.style.opacity = "1";
+  textarea.mail.focus();
+  textarea.pseudo_validate.click();
+  textarea.pass_validate.click();
+}
+
+textarea.mail_validate.onclick = () => {
+  var newplaceholder_mail = textarea.mail.innerHTML;
+  if (newplaceholder_mail != "") {
+    textarea.mail.innerHTML ="";
+    textarea.mail.innerHTML = newplaceholder_mail;
+    change.button.innerHTML = "Effectuer les changements";
+    change.button.type = "submit"
+  }
+  textarea.mail_validate.style.marginRight = "50px";
+  textarea.mail_validate.style.opacity = "0";
+  textarea.mail.disabled=true;
+}
+
+change.pass.onclick = () => {
+  textarea.pass.disabled=false;
+  textarea.pass_validate.style.marginRight = "100px";
+  textarea.pass_validate.style.opacity = "1";
+  textarea.pass.focus();
+  textarea.mail_validate.click();
+  textarea.pseudo_validate.click();
+}
+
+textarea.pass_validate.onclick = () => {
+  var newplaceholder_pass = textarea.pass.innerHTML;
+  if (newplaceholder_pass != "") {
+    textarea.pass.innerHTML ="";
+    change.button.innerHTML = "Effectuer les changements";
+    change.button.type = "submit";
+    textarea.pass.innerHTML = newplaceholder_pass;
+  }
+  textarea.pass_validate.style.marginRight = "50px";
+  textarea.pass_validate.style.opacity = "0";
+  textarea.pass.disabled=true;
+}
+
+change.button.onclick = () => {
+  textarea.mail_validate.click();
+  textarea.pseudo_validate.click();
+  textarea.pass_validate.click();
+  setTimeout(() => change.button.innerHTML = "Annuler", 500)
+  setTimeout(() => change.button.type = "button", 500)
+
+}
 
 /*
  * SEARCH BAR
