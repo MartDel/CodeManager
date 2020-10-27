@@ -22,8 +22,6 @@ class User extends DatabaseManager
         $this->lastname = $lastname;
 
         // Get user id
-        var_dump($pseudo);
-        var_dump($mail);
         try {
             $db = self::dbConnect();
             $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');

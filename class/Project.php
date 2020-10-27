@@ -83,7 +83,7 @@ class Project extends DatabaseManager
         $query->execute([$user_id]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new Project($data['name'], $data['author_id'], $data['description'], $data['remote']);
+        return isset($data['id']) ? new Project($data['name'], $data['author_id'], $data['description'], $data['remote']) : null;
     }
 
     /**
