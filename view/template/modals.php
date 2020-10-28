@@ -46,6 +46,7 @@
             <h3 id="img_text">Changer</h3>
           </div>
       </a>
+      <span id="close_settings" class="close-modal close_settings">&times;</span>
       <br><br>
       <form class="" action="#" method="post">
         <div class="account_change_row">
@@ -73,11 +74,25 @@
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
-        <a href="index.php?action=deleteAccount">Supprimer mon compte</a>
+        <a href="#" id="confirm_open" class="close-modal">Supprimer mon compte</a>
         <a href="#">Besoin d'aide ?</a>
       </div>
     </div>
+</modal>
 
+<!--CONFIRMATION SUPPRESSION COMPTE-->
+
+<modal id="delete">
+  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <h1>CONFIRMATION de suppression de compte</h1>
+  <h2>Êtes vous sûr(e) de vouloir supprimer votre compte ?</h2>
+  <br><br>
+  <div class="flex_confirm">
+    <a href="#" class="close-modal no_delete">Non je veux garder mon compte</a>
+    <br><br>
+    <a class="yes_delete" href="index.php?action=deleteAccount">Oui je veux supprimer mon compte</a>
+
+  </div>
 </modal>
 
 <!--SWAP PROJECT MODAL-->

@@ -287,8 +287,8 @@ input[type="search"]::-webkit-search-results-decoration {
   flex-direction: row;
   -webkit-box-shadow: 0.5px 0.5px 3px #555;
   box-shadow: 0.5px 0.5px 3px #555;
-  -webkit-transition: width 0.3s ease, margin 0.3s ease-in-out;
-  transition: width 0.3s ease, margin 0.3s ease-in-out;
+  -webkit-transition: width 0.2s ease, margin 0.2s ease-in-out;
+  transition: width 0.2s ease, margin 0.2s ease-in-out;
   cursor: pointer;
 }
 
@@ -299,8 +299,8 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .selectedmenu,
 .notselectedmenu {
-  -webkit-transition: padding 0.3s ease;
-  transition: padding 0.3s ease;
+  -webkit-transition: padding 0.2s ease;
+  transition: padding 0.2s ease;
   color: black;
 }
 
@@ -1253,6 +1253,7 @@ input.apple-switch:checked:after {
   outline: none;
   border-radius: 50%;
   z-index: 999;
+  padding: 0;
 }
 
 #my_informations .input_img:hover {
@@ -1274,6 +1275,7 @@ input[type="file"]:hover {
   margin-top: -75px;
   width: 70px;
   opacity: 0;
+  padding: 0;
 }
 
 .form_add_img:hover {
@@ -1322,11 +1324,9 @@ input[type="file"]:hover {
 
 #my_informations input {
   font-family: "Product Sans Regular";
-  font-size: 15px;
+  font-size: 0px;
   color: black;
-  padding: 15px;
   resize: none;
-  right: 0;
   width: 50%;
   text-align: left;
   background-color: white;
@@ -1430,4 +1430,52 @@ input[type="file"]:hover {
   font-size: 12px;
   color: gray;
   font-family: "Product Sans Light Regular";
+}
+
+/*MODAL CONFIRM*/
+#delete .modal-wrapper {
+  width: 40%;
+  height: 25%;
+}
+
+#delete h1 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+#delete h2 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: black;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+.flex_confirm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+}
+
+.yes_delete {
+  color: #b41e10;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.no_delete {
+  color: black;
+  text-decoration: none;
+}
+
+.yes_delete:hover, .no_delete:hover {
+  text-decoration: underline;
 }

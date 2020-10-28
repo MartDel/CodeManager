@@ -46,7 +46,8 @@ let account = {
     option: document.getElementById("button_option"),
     back: document.getElementById("account_background"),
     redirectinfos: document.getElementById("button_my_account"),
-
+    open_confirm:document.getElementById("confirm_open"),
+    delete:"delete",
 };
 let accountinfos = {
   id: "my_informations",
@@ -364,6 +365,12 @@ change.button.onclick = () => {
   setTimeout(() => change.button.innerHTML = "Annuler", 500)
   setTimeout(() => change.button.type = "button", 500)
 
+}
+
+//DELETE Account
+
+account.open_confirm.onclick = () =>{
+  setTimeout(() => modals.show(account.delete), 500)
 }
 
 /*
