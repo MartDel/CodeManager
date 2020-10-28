@@ -310,8 +310,8 @@ input[type="search"]::-webkit-search-results-decoration {
 #text_menu_left_4,
 #text_menu_left_5 {
   opacity: 1;
-  -webkit-transition: opacity 0.2s ease;
-  transition: opacity 0.2s ease;
+  -webkit-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
 }
 
 ul {
@@ -1320,7 +1320,7 @@ input[type="file"]:hover {
   padding-top: 30px;
 }
 
-#my_informations textarea {
+#my_informations input {
   font-family: "Product Sans Regular";
   font-size: 15px;
   color: black;
@@ -1332,12 +1332,13 @@ input[type="file"]:hover {
   background-color: white;
   outline: none;
   border: none;
+  background-color: white;
   height: 18px;
   border-radius: 10px;
   transition: all 0.5s;
 }
 
-#my_informations textarea:focus {
+#my_informations input:focus {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
