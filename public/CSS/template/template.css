@@ -1329,7 +1329,7 @@ input[type="file"]:hover {
   padding-top: 30px;
 }
 
-#my_informations input {
+#my_informations .input_fields {
   font-family: "Product Sans Regular";
   font-size: 0px;
   color: black;
@@ -1339,13 +1339,13 @@ input[type="file"]:hover {
   background-color: white;
   outline: none;
   border: none;
-  background-color: white;
   height: 18px;
   border-radius: 10px;
   transition: all 0.5s;
+  padding: 15px;
 }
 
-#my_informations input:focus {
+#my_informations .input_fields:focus {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);

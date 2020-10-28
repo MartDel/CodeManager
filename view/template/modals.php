@@ -51,21 +51,21 @@
       <form class="" action="#" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
-          <input id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
+          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
           <img id="modify_textarea_pseudo" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon adresse Mail : </p>
-          <input name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
+          <input class="input_fields" name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
           <img id="modify_textarea_mail" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_mail" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon mot de passe : </p>
-          <input name="pass" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
+          <input class="input_fields" name="pass" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
           <img id="modify_textarea_pass" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
