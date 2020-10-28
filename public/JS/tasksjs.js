@@ -49,6 +49,13 @@ window.onload = () => {
     tasks_done.show = params.has('endTask')
     showTasks(!tasks_done.show)
     showDoneTasks(tasks_done.show)
+    if (tasks_done.show) {
+        tasks_done.btn.style.filter = "grayscale(0%)";
+        tasks_done.btn.style.animation = "0.5s Rotate";
+    } else {
+        tasks_done.btn.style.filter = "grayscale(100%)";
+        tasks_done.btn.style.animation = "0.5s RotateInv";
+    }
     tasks.container.style.opacity = 1
 };
 
@@ -60,7 +67,6 @@ function showTasks(print) {
         if (print) show(tasks.list[i])
         else hide(tasks.list[i])
     }
-
 }
 
 function showDoneTasks(print) {
@@ -69,20 +75,18 @@ function showDoneTasks(print) {
         else hide(tasks_done.list[i])
     }
 }
-var counter_done = 0;
 tasks_done.btn.onclick = () => {
+    setURLParams(tasks_done.show ? '' : 'endTask')
     showTasks(tasks_done.show)
     showDoneTasks(!tasks_done.show)
-    tasks_done.show = !tasks_done.show
-    if (counter_done == 0) {
+    if (!tasks_done.show) {
         tasks_done.btn.style.filter = "grayscale(0%)";
         tasks_done.btn.style.animation = "0.5s Rotate";
-        counter_done = 1;
     } else {
         tasks_done.btn.style.filter = "grayscale(100%)";
         tasks_done.btn.style.animation = "0.5s RotateInv";
-        counter_done = 0;
     }
+    tasks_done.show = !tasks_done.show
 }
 
 
@@ -91,10 +95,10 @@ tasks_done.btn.onclick = () => {
  */
 function showModal(event) {
     // Get task id
-    var id = null;
-    var path = event.path;
-    for (var i = 0; i < path.length; i++) {
-        var current_id = path[i].id;
+    let id = null;
+    const path = event.path;
+    for (let i = 0; i < path.length; i++) {
+        const current_id = path[i].id;
         if (current_id !== undefined) {
             if (current_id.indexOf("task") !== -1) id = current_id;
         }
@@ -166,4 +170,19 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
             if (hide) select_all.trash.style.display = "none";
         }
     };
+}
+
+function setURLParams(params){
+    // Get file name
+    let file_name = null
+    const path = window.location.pathname.split('/')
+    path.forEach((item, i) => {
+        if(i === path.length-1) file_name = item
+    })
+
+    const obj = {
+        title: document.title,
+        url: file_name + '?' + params
+    }
+    history.pushState(obj, obj.title, obj.url)
 }

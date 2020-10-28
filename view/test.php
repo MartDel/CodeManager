@@ -15,8 +15,16 @@
         <button type="button" onclick="error()">Message d'erreur</button>
         <button type="button" onclick="info()">Message d'info</button>
 
+        <br><br>
+
         <input type="text" name="test" value="test" />
         <input type="text" name="test" value="test" disabled />
+
+        <br><br>
+
+        <input type="button" value="Page1" onclick="ChangeUrl('Page1', 'Page1.htm');" />
+        <input type="button" value="Page2" onclick="ChangeUrl('Page2', 'Page2.htm');" />
+        <input type="button" value="Page3" onclick="ChangeUrl('Page3', 'Page3.htm');" />
 
         <div id="modals" style="display:none;">
             <modal id="test1">
@@ -35,6 +43,18 @@
                 </button>
             </div>
         </aside>
+
+
+        <script type="text/javascript">
+        function ChangeUrl(title, url) {
+            if (typeof(history.pushState) != "undefined") {
+                var obj = { Title: title, Url: url };
+                history.pushState(obj, obj.Title, obj.Url);
+            } else {
+                alert("Browser does not support HTML5.");
+            }
+        }
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script type="text/javascript" src="public/JS/template/modal.js"></script>
