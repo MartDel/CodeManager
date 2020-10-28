@@ -15,6 +15,9 @@
         <button type="button" onclick="error()">Message d'erreur</button>
         <button type="button" onclick="info()">Message d'info</button>
 
+        <input type="text" name="test" value="test" />
+        <input type="text" name="test" value="test" disabled />
+
         <div id="modals" style="display:none;">
             <modal id="test1">
                 <h1 style="text-align:center;">test</h1>

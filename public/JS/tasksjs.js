@@ -5,7 +5,8 @@ const tasks = {
         check_js: document.getElementsByClassName("check_js"),
         tick: document.getElementsByClassName("tick"),
         tick2: document.getElementsByClassName("tick2")
-    }
+    },
+    container: document.getElementById('liste_taches')
 }
 let tasks_done = {
     show: false,
@@ -41,13 +42,14 @@ window.onload = () => {
     // Menu/nav onload function and check if there is a message to print
     wOnload()
     checkMessage()
-    
+
     // Hide or show done tasks
     const search = window.location.search
     const params = new URLSearchParams(search)
     tasks_done.show = params.has('endTask')
     showTasks(!tasks_done.show)
     showDoneTasks(tasks_done.show)
+    tasks.container.style.opacity = 1
 };
 
 /*
@@ -58,6 +60,7 @@ function showTasks(print) {
         if (print) show(tasks.list[i])
         else hide(tasks.list[i])
     }
+
 }
 
 function showDoneTasks(print) {

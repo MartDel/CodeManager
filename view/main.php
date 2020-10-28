@@ -28,7 +28,7 @@ ob_start();
         </div>
 
         <section class="list_task">
-            <ul id="liste_taches" class="liste_taches">
+            <ul id="liste_taches" class="liste_taches" style="opacity:0;">
             <?php if (isset($tasks)): ?>
                 <!--TACHES NON REALISEES-->
                 <?php if ($nb_tasks == 0): ?>

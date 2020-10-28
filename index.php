@@ -44,7 +44,7 @@ try{
 		if(isset($_GET['action'])){
 			$action = htmlspecialchars($_GET["action"]);
 			if ($action == "signup") require('view/signup.php'); // SignUp page
-			elseif ($action == 'test') /* test();  require('view/test.php'); */ throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . $_SESSION['last_page'], 'openPhpMyAdmin');
+			elseif ($action == 'test') /* test(); */ require('view/test.php');
 			elseif ($action == "checkSignUp") checkSignUp($_POST); // Check SignUp
 			elseif ($action == "signin") require('view/signin.php'); // SignIn page
 			elseif ($action == "checkSignIn") checkSignIn($_POST); // Check SignIn
