@@ -46,7 +46,8 @@ let account = {
     option: document.getElementById("button_option"),
     back: document.getElementById("account_background"),
     redirectinfos: document.getElementById("button_my_account"),
-
+    open_confirm:document.getElementById("confirm_open"),
+    delete:"delete",
 };
 let accountinfos = {
   id: "my_informations",
@@ -213,7 +214,7 @@ menu.burger.onclick = () => {
 function closeMenu(){
     for (let i = 0; i < menu.text.length; i++) {
         menu.text[i].style.opacity = "0";
-        hide(menu.text[i]);
+        //hide(menu.text[i]);
     }
     for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "-23px";
     for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "0px";
@@ -221,17 +222,37 @@ function closeMenu(){
     menu.selected.style.paddingRight = "0px";
 }
 function openMenu(){
-    setTimeout(() => {
-        for (let i = 0; i < menu.text.length; i++) show(menu.text[i]);
-    }, 300);
+    //setTimeout(() => {
+        //for (let i = 0; i < menu.text.length; i++) show(menu.text[i]);
+    //}, 0);
     setTimeout(() => {
         for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
-    }, 310);
+    }, 200);
 
     for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
     menu.main_div.style.width = "260px";
     menu.selected.style.paddingRight = "90px";
     for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
+}
+//for (let i = 0; i < menu.img.length; i++){
+  //menu.img[i].onclick=()=>{
+
+  //}
+//}
+
+redirect_index = () =>{
+  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
+  openMenu();
+  setTimeout(() => {
+      window.location.href = 'index.php'
+  }, 300);
+}
+redirect_team = () =>{
+  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
+  openMenu();
+  setTimeout(() => {
+      window.location.href = 'index.php?action=team'
+  }, 300);
 }
 
 /*
@@ -302,10 +323,10 @@ change.pseudo.onclick = () => {
 
 }
 textarea.pseudo_validate.onclick = () => {
-  var newplaceholder_pseudo = textarea.pseudo.innerHTML;
-  if (newplaceholder_pseudo != textarea.pseudo.innerHTML) {
-    textarea.pseudo.innerHTML ="";
-    textarea.pseudo.innerHTML = newplaceholder_pseudo;
+  var newplaceholder_pseudo = textarea.pseudo.value;
+  if (newplaceholder_pseudo != textarea.pseudo.value) {
+    textarea.pseudo.value ="";
+    textarea.pseudo.value = newplaceholder_pseudo;
     change.button.innerHTML = "Effectuer les changements";
   }
   textarea.pseudo_validate.style.marginRight = "50px";
@@ -323,10 +344,10 @@ change.mail.onclick = () => {
 }
 
 textarea.mail_validate.onclick = () => {
-  var newplaceholder_mail = textarea.mail.innerHTML;
+  var newplaceholder_mail = textarea.mail.value;
   if (newplaceholder_mail != "") {
-    textarea.mail.innerHTML ="";
-    textarea.mail.innerHTML = newplaceholder_mail;
+    textarea.mail.value ="";
+    textarea.mail.value = newplaceholder_mail;
     change.button.innerHTML = "Effectuer les changements";
     change.button.type = "submit"
   }
@@ -345,12 +366,12 @@ change.pass.onclick = () => {
 }
 
 textarea.pass_validate.onclick = () => {
-  var newplaceholder_pass = textarea.pass.innerHTML;
+  var newplaceholder_pass = textarea.pass.value;
   if (newplaceholder_pass != "") {
-    textarea.pass.innerHTML ="";
+    textarea.pass.value ="";
     change.button.innerHTML = "Effectuer les changements";
     change.button.type = "submit";
-    textarea.pass.innerHTML = newplaceholder_pass;
+    textarea.pass.value = newplaceholder_pass;
   }
   textarea.pass_validate.style.marginRight = "50px";
   textarea.pass_validate.style.opacity = "0";
@@ -364,6 +385,12 @@ change.button.onclick = () => {
   setTimeout(() => change.button.innerHTML = "Annuler", 500)
   setTimeout(() => change.button.type = "button", 500)
 
+}
+
+//DELETE Account
+
+account.open_confirm.onclick = () =>{
+  setTimeout(() => modals.show(account.delete), 500)
 }
 
 /*
@@ -408,8 +435,8 @@ function FindNext() {
         }
     }
 
-    if (supported && !found) alert("The following text was not found:\n" + str);
-    else alert("Your browser does not support this example!");
+    if (supported && !found) alert("Le texte suivant n'a pas été trouvé:\n" + str);
+    //else alert("Your browser does not support this example!");
 }
 
 /*

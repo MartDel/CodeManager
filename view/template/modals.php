@@ -46,25 +46,26 @@
             <h3 id="img_text">Changer</h3>
           </div>
       </a>
+      <span id="close_settings" class="close-modal close_settings">&times;</span>
       <br><br>
       <form class="" action="#" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
-          <textarea id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true ><?= $_SESSION['pseudo'] ?></textarea>
+          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
           <img id="modify_textarea_pseudo" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon adresse Mail : </p>
-          <textarea name="mail" disabled=true id="textarea_mail" ><?= $_SESSION['mail'] ?></textarea>
+          <input class="input_fields" name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
           <img id="modify_textarea_mail" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_mail" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon mot de passe : </p>
-          <textarea name="pass" disabled="true" id="textarea_pass" >Mot De passe en points</textarea>
+          <input class="input_fields" name="pass" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
           <img id="modify_textarea_pass" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
@@ -73,11 +74,25 @@
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
-        <a href="index.php?action=deleteAccount">Supprimer mon compte</a>
+        <a href="#" id="confirm_open" class="close-modal">Supprimer mon compte</a>
         <a href="#">Besoin d'aide ?</a>
       </div>
     </div>
+</modal>
 
+<!--CONFIRMATION SUPPRESSION COMPTE-->
+
+<modal id="delete">
+  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <h1>CONFIRMATION de suppression de compte</h1>
+  <h2>Êtes vous sûr(e) de vouloir supprimer votre compte ?</h2>
+  <br><br>
+  <div class="flex_confirm">
+    <a href="#" class="close-modal no_delete">Non je veux garder mon compte</a>
+    <br><br>
+    <a class="yes_delete" href="index.php?action=deleteAccount">Oui je veux supprimer mon compte</a>
+
+  </div>
 </modal>
 
 <!--SWAP PROJECT MODAL-->
