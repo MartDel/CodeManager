@@ -234,6 +234,26 @@ function openMenu(){
     menu.selected.style.paddingRight = "90px";
     for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
 }
+//for (let i = 0; i < menu.img.length; i++){
+  //menu.img[i].onclick=()=>{
+
+  //}
+//}
+
+redirect_index = () =>{
+  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
+  openMenu();
+  setTimeout(() => {
+      window.location.href = 'index.php'
+  }, 300);
+}
+redirect_team = () =>{
+  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
+  openMenu();
+  setTimeout(() => {
+      window.location.href = 'index.php?action=team'
+  }, 300);
+}
 
 /*
  * SWAP PROJECT MODAL
@@ -415,8 +435,8 @@ function FindNext() {
         }
     }
 
-    if (supported && !found) alert("The following text was not found:\n" + str);
-    else alert("Your browser does not support this example!");
+    if (supported && !found) alert("Le texte suivant n'a pas été trouvé:\n" + str);
+    //else alert("Your browser does not support this example!");
 }
 
 /*

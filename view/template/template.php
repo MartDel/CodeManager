@@ -45,8 +45,8 @@
 		    <div id="menu_gauche">
 
 		        <ul>
-		            <a href="index.php">
-		                <li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
+		            <a>
+		                <li onclick="redirect_index()" class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
 		                  </span>
@@ -59,7 +59,7 @@
 		                </span>
 		                <p id="text_menu_left_2">Objectifs</p>
 		            </li>
-					<a href="index.php?action=team">
+					<a onclick="redirect_team()">
 						<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />

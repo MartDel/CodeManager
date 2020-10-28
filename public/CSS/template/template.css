@@ -26,6 +26,13 @@ a {
   text-decoration: none;
 }
 
+.liste_taches li span::selection {
+  color: #b41e10;
+  background-color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @font-face {
   font-family: 'happy_monkeyregular';
   src: url("../fonts/happymonkey-regular-webfont.woff2") format("woff2"), url("../fonts/happymonkey-regular-webfont.woff") format("woff");
