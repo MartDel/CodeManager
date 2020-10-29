@@ -151,8 +151,8 @@
 <!--HELP MODAL-->
 <div id="help_modal">
     <span class="span_help">
-        <img src="public/img/plusadd.png" alt="" />
-        <p> Ajouter une tâche</p>
+        <img src="public/img/plus.png" alt="" />
+        <p> Ajouter</p>
     </span>
     <span class="span_help">
         <img src="public/img/checkbox.png" alt="" />
@@ -167,7 +167,7 @@
         <p>Marquer comme effectuée</p>
     </span>
     <span class="span_help">
-        <img src="public/img/task_done.png" alt="" />
+        <img src="public/img/task_done0.png" alt="" />
         <p>Voir les tâches effectuées</p>
     </span>
     <span class="span_help">
