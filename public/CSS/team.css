@@ -141,3 +141,77 @@ td:hover .delete_user_div {
     transform: rotate(180deg);
   }
 }
+
+#add .modal-wrapper {
+  width: 40%;
+  height: 40%;
+}
+
+#add h1 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+#add h2 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: black;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+#add input {
+  width: 80%;
+  padding: 10px;
+  font-family: "Product Sans Regular";
+  border-radius: 5px;
+  margin-left: calc(10% - 10px);
+  outline: none;
+  border: gray 2px solid;
+}
+
+#add input:focus {
+  background-color: #ffffff;
+  border: #ffffff 2px solid;
+  border-radius: 10px;
+  outline: none;
+  -webkit-box-shadow: 0.5px 0.5px 5px #555;
+  box-shadow: 0.5px 0.5px 5px #555;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.flex_add_user {
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+  width: 100%;
+  text-align: center
+}
+
+.flex_add_user .no_add_user {
+  border: white 2px solid;
+  color: black;
+  display: block;
+  height: auto;
+  text-align: center;
+  font-size: 13px;
+}
+
+.flex_add_user .yes_add_user {
+  border: white 2px solid;
+  color: #b41e10;
+  display: block;
+  height: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 17px
+}
+
+.flex_add_user a:hover {
+  text-decoration: underline;
+}

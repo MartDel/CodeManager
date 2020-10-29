@@ -32,7 +32,7 @@
 		    <a id="logo_a" href="index.php">
 		        <img id="logo" src="public/img/essai_logo.png" />
 		    </a>
-		    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher dans les tâches" />
+		    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher" />
 		    <img id="help_logo_img" src="public/img/question.png" alt="" />
 		    <img id="account_logo_img" src="public/img/switzerland.png" />
 		    <img id="gear_logo_img" src="public/img/gear.png" />
