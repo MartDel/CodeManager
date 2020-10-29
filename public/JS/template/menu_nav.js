@@ -128,7 +128,7 @@ function wOnload(){
             menu.main_div.style.transition = "all 0.2s";
             menu.selected.style.transition = "all 0.2s";
             closeMenu()
-        },1000)
+        },500)
     }
 
     // Turn ON/OFF dark mode
