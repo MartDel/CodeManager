@@ -1,8 +1,9 @@
 <?php
 
 $title = "Connexion";
-$cssfile = "signin";
 $_SESSION['last_page'] = 'signin';
+$cssfile = "signin";
+$jsfile = "template/manage_forms";
 ob_start();
 
 ?>

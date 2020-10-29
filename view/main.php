@@ -34,7 +34,7 @@ ob_start();
                 <?php if ($nb_tasks == 0): ?>
                     <p name="task">Toutes les tâches sont terminées !</p>
                 <?php endif; ?>
-                <?php foreach ($tasks as $task) { if (!$task->getIsDone()): ?>
+                <?php foreach ($tasks as $task) { if (!$task->getIsDone() && $task->getAuthor()): ?>
                     <button name="task" class="myBtn" id="task<?= $task->getId() ?>">
                         <li>
                             <span class="span_input_img" title="Sélectionner">
@@ -60,7 +60,7 @@ ob_start();
                 <?php if ($nb_done_tasks == 0): ?>
                     <p name="done_task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
-                <?php foreach ($tasks as $task) { if ($task->getIsDone()): ?>
+                <?php foreach ($tasks as $task) { if ($task->getIsDone() && $task->getAuthor()): ?>
                     <button name="done_task" class="myBtn done-task" id="done_task<?= $task->getId() ?>">
                         <li>
                             <span class="span_input_img" title="Sélectionner">
@@ -94,7 +94,7 @@ ob_start();
     <!--MODAL CONTENT-->
     <?php if (isset($tasks)): ?>
         <!-- TASKS NOT FINISHED -->
-        <?php foreach ($tasks as $task){ if (!$task->getIsDone()): ?>
+        <?php foreach ($tasks as $task){ if (!$task->getIsDone() && $task->getAuthor()): ?>
         <modal id="task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
@@ -114,7 +114,7 @@ ob_start();
         <?php endif; } ?>
 
         <!-- TASKS DONE -->
-        <?php foreach ($tasks as $task) { if ($task->getIsDone()): ?>
+        <?php foreach ($tasks as $task) { if ($task->getIsDone() && $task->getAuthor()): ?>
         <modal id="done_task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">

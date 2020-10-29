@@ -87,16 +87,14 @@ function connectUser($login, $auto){
 	$_SESSION['mail'] = $user->getMail();
 	$_SESSION['firstname'] = $user->getFirstname();
 	$_SESSION['lastname'] = $user->getLastname();
-    $project_id = isset($_GET['project']) ? htmlspecialchars($_GET['project']) : false;
-    if(!Project::projectExist($project_id, $user_id) || !isset($_GET['project'])){
-		$project = Project::getFirstProject($user_id);
-		if($project) $project_id = $project->getId();
-	}
-    $_SESSION['project_id'] = $project_id;
-    if(!$project_id) {
+
+	$project = Project::getFirstProject($user_id);
+	if($project) $_SESSION['project_id'] = $project->getId();
+    else {
 		session_destroy();
 		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . $_SESSION['last_page'], 'openPhpMyAdmin');
 	}
+	
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);

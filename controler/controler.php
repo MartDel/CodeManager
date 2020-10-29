@@ -52,7 +52,8 @@ function checkCookie(){
  * @param int $project_id Current project id
  */
 function showMainPage(){
-    // Get projects infos
+    // Get project and projects list
+    setCurrentProject();
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
@@ -64,6 +65,7 @@ function showMainPage(){
 
 function showTeamPage(){
     // Get projects infos
+    setCurrentProject();
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
@@ -140,6 +142,16 @@ function logout(){
 	setcookie('pseudo', '', time() + 365*24*3600, '/', null, false, true);
 	setcookie('password', '', time() + 365*24*3600, '/', null, false, true);
     header('Location: index.php');
+}
+
+/**
+ * Set $_SESSION['project_id'] with data in $_GET
+ */
+function setCurrentProject(){
+    if(isset($_GET['project'])){
+        $project_id = htmlspecialchars($_GET['project']);
+        if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
+    }
 }
 
 function test(){

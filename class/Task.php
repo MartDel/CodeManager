@@ -133,6 +133,6 @@ class Task extends DatabaseManager
         $query->execute([$this->author_id]);
         $data = $query->fetch();
         $query->closeCursor();
-        return $data['pseudo'];
+        return isset($data['pseudo']) ? $data['pseudo'] : null;
     }
 }

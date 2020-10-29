@@ -72,17 +72,6 @@ let change = {
   form : document.getElementById("form_add_img"),
 }
 
-hover_change = () => {
-  change.img.style.filter = "brightness(40%)";
-  change.imgtext.style.opacity = "1";
-}
-leave_change = () => {
-  change.img.style.filter = "brightness(100%)";
-  change.imgtext.style.opacity = "0";
-}
-
-
-
 // Project elements
 const project = {
     id: 'project',
@@ -346,6 +335,14 @@ account.redirectinfos.onclick = () => {
 
 
 //CHANGE INFORMATIONS Account
+function hover_change(){
+  change.img.style.filter = "brightness(40%)";
+  change.imgtext.style.opacity = "1";
+}
+function leave_change(){
+  change.img.style.filter = "brightness(100%)";
+  change.imgtext.style.opacity = "0";
+}
 
 change.pseudo.onclick = () => {
   textarea.pseudo.disabled=false;
