@@ -1,8 +1,9 @@
 <?php
 
 $title = "Inscription";
-$cssfile = "signup";
 $_SESSION['last_page'] = 'signup';
+$cssfile = "signup";
+$jsfile = 'template/manage_forms';
 ob_start();
 
 ?>
@@ -23,7 +24,7 @@ ob_start();
 
       <input class="input_text" type="text" name="pseudo" placeholder="Pseudo" required />
       <br>
-      <input class="input_text" type="mail" name="mail" placeholder="Addresse mail" required />
+      <input class="input_text" type="email" name="mail" placeholder="Addresse mail" required />
       <br>
       <input class="input_text" type="password" name="password" placeholder="Mot de passe" required />
       <br>

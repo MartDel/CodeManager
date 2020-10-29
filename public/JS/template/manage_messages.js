@@ -50,7 +50,7 @@ function focusPassword(){
 }
 
 function focusEmail(){
-    focusInput('type', 'mail')
+    focusInput('type', 'email')
 }
 
 function focusTitleAddTask() {
