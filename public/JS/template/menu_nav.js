@@ -114,6 +114,33 @@ const body = document.getElementsByTagName("body")[0];
  * Executed when the JS is loaded
  */
 function wOnload(){
+    // Manage Menu
+    setTimeout(() => {
+        document.getElementsByTagName("BODY")[0].style.opacity="1";
+    },50)
+    if (getCookie('menu') === 'open') {
+        for (let i = 0; i < menu.text.length; i++) {
+                menu.text[i].style.transition = "all 0s";
+                //hide(menu.text[i]);
+        }
+        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0s";
+        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0s";
+        menu.main_div.style.transition = "all 0s";
+        menu.selected.style.transition = "all 0s";
+        openMenu();
+
+        setTimeout(() => {
+            for (let i = 0; i < menu.text.length; i++) {
+                menu.text[i].style.transition = "all 0.2s";
+                //hide(menu.text[i]);
+            }
+            for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0.2s";
+            for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0.2s";
+            menu.main_div.style.transition = "all 0.2s";
+            menu.selected.style.transition = "all 0.2s";
+            closeMenu()
+        },1000)
+    }
 
     // Turn ON/OFF dark mode
     if (getCookie('dark-mode') === 'on') {
@@ -330,7 +357,7 @@ change.pseudo.onclick = () => {
 
 }
 textarea.pseudo_validate.onclick = () => {
-  var newplaceholder_pseudo = textarea.pseudo.value;
+  const newplaceholder_pseudo = textarea.pseudo.value;
   if (newplaceholder_pseudo != textarea.pseudo.value) {
     textarea.pseudo.value ="";
     textarea.pseudo.value = newplaceholder_pseudo;
@@ -351,7 +378,7 @@ change.mail.onclick = () => {
 }
 
 textarea.mail_validate.onclick = () => {
-  var newplaceholder_mail = textarea.mail.value;
+  const newplaceholder_mail = textarea.mail.value;
   if (newplaceholder_mail != "") {
     textarea.mail.value ="";
     textarea.mail.value = newplaceholder_mail;
@@ -373,7 +400,7 @@ change.pass.onclick = () => {
 }
 
 textarea.pass_validate.onclick = () => {
-  var newplaceholder_pass = textarea.pass.value;
+  const newplaceholder_pass = textarea.pass.value;
   if (newplaceholder_pass != "") {
     textarea.pass.value ="";
     change.button.innerHTML = "Effectuer les changements";

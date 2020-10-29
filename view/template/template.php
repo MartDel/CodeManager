@@ -16,56 +16,6 @@
 	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
       <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
-			<script type="module">
-				window.onload = () => {
-						// Menu/nav onload function and check if there is a message to print
-						setTimeout(() => {
-							document.getElementsByTagName("BODY")[0].style.opacity="1";
-						},50)
-						if (getCookie('menu') === 'open') {
-							for (let i = 0; i < menu.text.length; i++) {
-									menu.text[i].style.transition = "all 0s";
-									//hide(menu.text[i]);
-							}
-							for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0s";
-							for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0s";
-							menu.main_div.style.transition = "all 0s";
-							menu.selected.style.transition = "all 0s";
-							openMenu();
-
-							setTimeout(() => {
-								for (let i = 0; i < menu.text.length; i++) {
-									menu.text[i].style.transition = "all 0.2s";
-									//hide(menu.text[i]);
-								}
-								for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0.2s";
-								for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0.2s";
-								menu.main_div.style.transition = "all 0.2s";
-								menu.selected.style.transition = "all 0.2s";
-							},1000)
-							setTimeout(() => {
-								closeMenu()
-							},1000)
-						}
-						wOnload()
-						checkMessage()
-
-						// Hide or show done tasks
-						const search = window.location.search
-						const params = new URLSearchParams(search)
-						tasks_done.show = params.has('endTask')
-						showTasks(!tasks_done.show)
-						showDoneTasks(tasks_done.show)
-						if (tasks_done.show) {
-								tasks_done.btn.style.filter = "grayscale(0%)";
-								tasks_done.btn.style.animation = "0.5s Rotate";
-						} else {
-								tasks_done.btn.style.filter = "grayscale(100%)";
-								tasks_done.btn.style.animation = "0.5s RotateInv";
-						}
-						tasks.container.style.opacity = 1
-				};
-			</script>
 	</head>
 	<body>
 		<!--MENU DU HAUT-->

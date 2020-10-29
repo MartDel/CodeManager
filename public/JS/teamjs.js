@@ -1,4 +1,4 @@
-let add ={
+const add ={
   id:"add",
   button:document.getElementById("new_user_img"),
 }
