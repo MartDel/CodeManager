@@ -114,7 +114,6 @@ const body = document.getElementsByTagName("body")[0];
  * Executed when the JS is loaded
  */
 function wOnload(){
-    closeMenu()
 
     // Turn ON/OFF dark mode
     if (getCookie('dark-mode') === 'on') {
@@ -207,8 +206,13 @@ function turnOffNightShift(){
  * LEFT MENU
  */
 menu.burger.onclick = () => {
-    if (menu.open) closeMenu()
-    else openMenu()
+    if (menu.open) {
+      closeMenu()
+
+    }
+    else {
+      openMenu()
+    }
     menu.open = !menu.open
 };
 function closeMenu(){
@@ -220,6 +224,7 @@ function closeMenu(){
     for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "0px";
     menu.main_div.style.width = "100px";
     menu.selected.style.paddingRight = "0px";
+    setCookie('menu', 'closed')
 }
 function openMenu(){
     //setTimeout(() => {
@@ -228,28 +233,30 @@ function openMenu(){
     setTimeout(() => {
         for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
     }, 200);
-
-    for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
     menu.main_div.style.width = "260px";
     menu.selected.style.paddingRight = "90px";
+    for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
+
     for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
+    setCookie('menu', 'open')
+
 }
 //for (let i = 0; i < menu.img.length; i++){
   //menu.img[i].onclick=()=>{
 
   //}
 //}
-
 redirect_index = () =>{
   //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
-  openMenu();
+  //openMenu();
   setTimeout(() => {
       window.location.href = 'index.php'
   }, 300);
+
 }
 redirect_team = () =>{
   //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
-  openMenu();
+  //openMenu();
   setTimeout(() => {
       window.location.href = 'index.php?action=team'
   }, 300);

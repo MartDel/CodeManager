@@ -38,26 +38,7 @@ const select_all = {
 =========================
 */
 
-window.onload = () => {
-    // Menu/nav onload function and check if there is a message to print
-    wOnload()
-    checkMessage()
 
-    // Hide or show done tasks
-    const search = window.location.search
-    const params = new URLSearchParams(search)
-    tasks_done.show = params.has('endTask')
-    showTasks(!tasks_done.show)
-    showDoneTasks(tasks_done.show)
-    if (tasks_done.show) {
-        tasks_done.btn.style.filter = "grayscale(0%)";
-        tasks_done.btn.style.animation = "0.5s Rotate";
-    } else {
-        tasks_done.btn.style.filter = "grayscale(100%)";
-        tasks_done.btn.style.animation = "0.5s RotateInv";
-    }
-    tasks.container.style.opacity = 1
-};
 
 /*
  * SHOW DONE TASKS
