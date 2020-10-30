@@ -7,15 +7,9 @@ let fields = {
 const inputs = document.getElementsByTagName('input')
 for (let i = 0; i < inputs.length; i++) {
     switch (inputs[i].type) {
-        case 'password':
-            fields.password.push(inputs[i])
-            break;
-        case 'email':
-            if(!inputs[i].placeholder.toLowerCase().includes('pseudo')) fields.mail.push(inputs[i])
-            break;
-        case 'submit':
-            fields.submit = inputs[i]
-            break;
+        case 'password': fields.password.push(inputs[i]); break;
+        case 'email': fields.mail.push(inputs[i]); break;
+        case 'submit': fields.submit = inputs[i]; break;
     }
 }
 
