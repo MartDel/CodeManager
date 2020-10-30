@@ -136,9 +136,9 @@ addtask.cancel_btn.onclick = () => {
  * EDIT TASK
  */
 
-// tasks.edit.onclick =()=>{
-//   modals.show(tasks.editid)
-// }
+tasks.edit.onclick =()=>{
+  modals.show(tasks.editid)
+}
 
 /*
  * SELECT ALL TASKS

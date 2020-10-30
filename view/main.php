@@ -158,6 +158,30 @@ ob_start();
         </section>
     </modal>
 
+<!--MODAL EDIT TASK-->
+
+
+    <modal id="edit">
+      <section id="section_ligne_haut_edit">
+        <br><br><br>
+          <p><strong>Modifier la tâche</strong></p>
+          <span id="close_edit" class="close_add close-modal">&times;</span>
+      </section>
+      <section id="section_ligne_bas_edit">
+          <form method="POST" action="index.php?action=addtask">
+              <h1>Titre de la tâche (80 caractères maximum)</h1>
+              <input class="textarea_title" name="title" type="text" placeholder="<?= $task->getName()?>" maxlength="80" required></input>
+              <h1>Description de la tâche (Optionnel)</h1>
+              <input id="textarea_desc_edit" name="description" type="text" placeholder="<?= $task->getDescription()?>"></input>
+              <h2></h2>
+              <section id="button_line_edit">
+                  <button name="cancel_button_edit_task" id="edittask_cancel" class="close-modal" type="button">Annuler</button>
+                  <button name="submit_button_edit_task" type="submit">Valider</button>
+              </section>
+          </form>
+      </section>
+    </modal>
+
 
     <!--MODAL MODIFY TASK-->
 
