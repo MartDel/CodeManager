@@ -7,6 +7,16 @@ body {
   color: black;
 }
 
+/* Media Queries: Tablet Landscape */
+@media screen and (max-width: 1060px) {}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+  .modal-wrapper {
+    width: 100%;
+  }
+}
+
 body {
   opacity: 0;
 }
