@@ -46,7 +46,7 @@ ob_start();
                                 </a>
                             </span>
                             <span class="span_input_img" title="Éditer">
-                                <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                                <img class="input_img tick2" id="edit-task-button" src="public/img/edit_task_bar.png" alt="" />
                             </span>
                             <span class="utilisateur"><?= $task->getAuthor() ?></span>
                             <span class="titre_tache"><?= $task->getName() ?></span>
@@ -71,8 +71,8 @@ ob_start();
                                     <img class="input_img tick" src="public/img/tick.png" alt="" />
                                 </a>
                             </span>
-                            <span class="span_input_img" title="Éditer">
-                                <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                            <span class="span_input_img">
+                                <img class="input_img tick2" src="public/img/edit_task_bar.png" style="visibility:hidden" alt="" />
                             </span>
                             <span class="utilisateur"><?= $task->getAuthor() ?></span>
                             <span class="titre_tache"><?= $task->getName() ?></span>
@@ -98,8 +98,8 @@ ob_start();
         <modal id="task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
-                <img id="logo_popup" src="public/img/essai_logo.png" />
                 <p><strong>Tâche</strong></p>
+                <br><br>
             </section>
             <section class="titre_popup">
                 <strong><?= $task->getName() ?></strong>
@@ -107,6 +107,7 @@ ob_start();
             <div class="line_popup"></div>
             <section class="descriptif_popup">
                 <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
                 <br><br>
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
@@ -118,8 +119,8 @@ ob_start();
         <modal id="done_task<?= $task->getId() ?>_modal" name="popup_modal_task">
             <span class="close">&times;</span>
             <section class="header_popup">
-                <img id="logo_popup" src="public/img/essai_logo.png" />
-                <p><strong>Tâche</strong></p>
+                <p><strong>Tâche Effectuée</strong></p>
+                <br><br>
             </section>
             <section class="titre_popup">
                 <strong><?= $task->getName() ?></strong>
@@ -127,6 +128,7 @@ ob_start();
             <div class="line_popup"></div>
             <section class="descriptif_popup">
                 <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+                <br><br>
                 <br><br>
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
@@ -137,16 +139,16 @@ ob_start();
     <!--ADD TASK MODAL-->
     <modal id="add_task">
         <section id="section_ligne_haut">
-            <img id="logo_add_task" src="public/img/essai_logo.png" alt="" />
+          <br><br><br>
             <p><strong>Ajouter une tâche</strong></p>
             <span id="close_add" class="close_add close-modal">&times;</span>
         </section>
         <section id="section_ligne_bas">
             <form method="POST" action="index.php?action=addtask">
                 <h1>Titre de la tâche (80 caractères maximum)</h1>
-                <textarea class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></textarea>
+                <input class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
                 <h1>Description de la tâche (Optionnel)</h1>
-                <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
+                <input id="textarea_desc" name="description" type="text" placeholder="Description"></input>
                 <h2></h2>
                 <section id="button_line">
                     <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal" type="button">Annuler</button>
@@ -154,6 +156,30 @@ ob_start();
                 </section>
             </form>
         </section>
+    </modal>
+
+
+    <!--MODAL MODIFY TASK-->
+
+    <modal id="edit">
+      <section id="section_ligne_haut">
+          <img id="logo_add_task" src="public/img/essai_logo.png" alt="" />
+          <p><strong>Modifier la tâche</strong></p>
+          <span id="close_add" class="close_add close-modal">&times;</span>
+      </section>
+      <section id="section_ligne_bas">
+          <form method="POST" action="index.php?action=addtask">
+              <h1>Titre de la tâche (80 caractères maximum)</h1>
+              <input class="textarea_title" name="title" type="text" placeholder="<?= $task->getName()?>" maxlength="80" required></input>
+              <h1>Description de la tâche (Optionnel)</h1>
+              <input id="textarea_desc" name="description" type="text" placeholder="<?= $task->getDescription()?>"></input>
+              <h2></h2>
+              <section id="button_line">
+                  <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal" type="button">Annuler</button>
+                  <button name="submit_button_create_task" type="submit">Valider</button>
+              </section>
+          </form>
+      </section>
     </modal>
 
     <?php require('template/modals.php'); ?>

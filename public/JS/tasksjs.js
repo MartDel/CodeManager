@@ -4,9 +4,12 @@ const tasks = {
     btn: {
         check_js: document.getElementsByClassName("check_js"),
         tick: document.getElementsByClassName("tick"),
-        tick2: document.getElementsByClassName("tick2")
+        tick2: document.getElementsByClassName("tick2"),
     },
-    container: document.getElementById('liste_taches')
+    container: document.getElementById('liste_taches'),
+    editid:"edit",
+    edit:document.getElementById("edit-task-button"),
+
 }
 let tasks_done = {
     show: false,
@@ -128,6 +131,14 @@ addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
 };
+
+/*
+ * EDIT TASK
+ */
+
+tasks.edit.onclick =()=>{
+  modals.show(tasks.editid)
+}
 
 /*
  * SELECT ALL TASKS

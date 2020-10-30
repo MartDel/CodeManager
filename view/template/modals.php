@@ -98,9 +98,9 @@
 <!--SWAP PROJECT MODAL-->
 <modal id="project">
     <section id="header_project_modal">
-        <img src="public/img/essai_logo.png" alt="" />
         <p>Changer de projet</p>
         <span id="close_swap" class="close_swap close-modal">&times;</span>
+        <br><br>
     </section>
     <br><br><br><br>
     <section id="body_project_modal">
@@ -135,13 +135,13 @@
         <br><br>
         <form name="create_project_form" action="index.php?action=createproject" method="POST">
             <h1>Nom du Projet (20 caractères max.)</h1>
-            <textarea name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></textarea>
+            <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input>
             <h1>Description du projet (optionnel)</h1>
-            <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
+            <input name="description" id="new_project_desc" placeholder="Description du projet"></input>
             <h2>GitHub (optionnel)</h2>
             <div class="flex_git_links">
-              <textarea name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></textarea>
-              <textarea name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></textarea>
+              <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input>
+              <input name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
             </div>
             <button name="create_project_button" id="create_project" type="submit">Créer un nouveau projet</button>
         </form>

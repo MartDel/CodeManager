@@ -33,10 +33,10 @@
 		        <img id="logo" src="public/img/essai_logo.png" />
 		    </a>
 		    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher" />
-		    <img id="help_logo_img" src="public/img/question.png" alt="" />
+		    <img class="onhover_top_animation" id="help_logo_img" src="public/img/question.png" alt="" />
 		    <img id="account_logo_img" src="public/img/switzerland.png" />
-		    <img id="gear_logo_img" src="public/img/gear.png" />
-		    <img id="switch_logo_img" src="public/img/file_swap.png" alt="" />
+		    <img class="onhover_top_animation" id="gear_logo_img" src="public/img/gear.png" />
+		    <img class="onhover_top_animation" id="switch_logo_img" src="public/img/file_swap.png" alt="" />
 		    <button id="project_actual"><?= /*$project->getName()*/ "TestTeam"?></button>
 		</div>
 
