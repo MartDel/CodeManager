@@ -2,21 +2,27 @@
 <html>
 	<head>
 	    <title><?= $title ?></title>
-			<meta charset="utf-8" />
+		<meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
-			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-			<meta name="HandheldFriendly" content="true">
-			<!-- CSS -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="HandheldFriendly" content="true" />
+
+		<!-- CSS -->
 	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
 	    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
-			<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
-			<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
-			<link rel="stylesheet" type="text/css" href="public/CSS/template/template.css" />
+
+		<!-- Template CSS -->
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
+		<link rel="stylesheet" type="text/css" href="public/CSS/template/template.css" />
+
 	    <link rel="icon" type="image/png" href="" />
-	    <link rel="shortcut icon" href="public/img/programmer2.png">
-	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-      <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-      <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+	    <link rel="shortcut icon" href="public/img/programmer2.png" />
+	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+		<!-- Ionicons -->
+		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
 	</head>
 	<body>
 		<!--MENU DU HAUT-->
@@ -100,6 +106,5 @@
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
 		<script type="text/javascript" src="public/JS/template/menu_nav.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
-
 	</body>
 </html>
