@@ -86,7 +86,13 @@ const project = {
     name_input: document.getElementById('new_project_name'),
     desc_input: document.getElementById('new_project_desc'),
     git_username_input: document.getElementById('new_project_git_name'),
-    git_project_input: document.getElementById('new_project_git_repo')
+    git_project_input: document.getElementById('new_project_git_repo'),
+    idcreate:"create",
+    create_button:document.getElementById("create_project_opener"),
+}
+
+project.create_button.onclick=()=>{
+  setTimeout(() => modals.show(project.idcreate), 500)
 }
 
 // Search input

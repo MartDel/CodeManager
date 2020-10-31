@@ -131,22 +131,41 @@
           <h1>Description du Projet : <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
         </div>
-        <div id="div_form_new_project"></div>
         <br><br>
-        <form name="create_project_form" action="index.php?action=createproject" method="POST">
-            <h1>Nom du Projet (20 caractères max.)</h1>
-            <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input>
-            <h1>Description du projet (optionnel)</h1>
-            <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
-            <h2>GitHub (optionnel)</h2>
-            <div class="flex_git_links">
-              <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input>
-              <input name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
-            </div>
-            <button name="create_project_button" id="create_project" type="submit">Créer un nouveau projet</button>
-        </form>
+        <div class="flex_project_modification">
+          <a class="close-modal edit_project_button" href="#">Éditer le projet en cours</a>
+          <br>
+          <a id="create_project_opener" class="close-modal create_project_button" href="#">Créer un nouveau projet</a>
+        </div>
     </section>
 </modal>
+
+<!--MODAL CREATE PROJECT-->
+
+<modal id="create">
+  <section id="header_create_project">
+      <p>Créer un projet</p>
+      <span id="close_swap" class="close_swap close-modal">&times;</span>
+      <br><br><br><br>
+  </section>
+  <form name="create_project_form" action="index.php?action=createproject" method="POST">
+      <h1>Nom du Projet (20 caractères max.)</h1>
+      <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input>
+      <h1>Description du projet (optionnel)</h1>
+      <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
+      <h2>GitHub (optionnel)</h2>
+      <div class="flex_git_links">
+        <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input>
+        <input name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
+      </div>
+      <div class="flex_button_create">
+        <br><br>
+        <button name="create_project_button" class="button_create_project" type="submit">Créer un nouveau projet</button>
+        <button class="close-modal button_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
+      </div>
+  </form>
+</modal>
+
 
 <!--HELP MODAL-->
 <div id="help_modal">
