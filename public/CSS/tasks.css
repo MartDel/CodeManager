@@ -29,8 +29,8 @@
   flex-direction: row;
   top: 0;
   margin-top: -35px;
-  margin-left: 90px;
-  width: calc(99% - 90px; );
+  margin-left: 112px;
+  width: calc(99% - 0px; );
   font-family: "Product Sans Regular";
   background-color: none;
 }
@@ -39,6 +39,7 @@
   color: #b41e10;
   width: 100%;
   font-weight: bolder;
+  background-color: none;
   letter-spacing: 0.5px;
 }
 
@@ -48,22 +49,26 @@
 }
 
 .user-table-cell {
-  width: 14.5%;
+  width: 11.5%;
   text-align: center;
   background-color: none;
+  padding-left: 0px;
+  ;
 }
 
 .title-table-cell {
-  width: 30.5%;
+  width: 32.2%;
   text-align: center;
+  padding-left: 25px;
   background-color: none;
 }
 
 .desc-table-cell {
-  width: 39.5%;
+  width: 39.8%;
   text-align: center;
   background-color: none;
-  padding-left: 1.2%;
+  padding-left: 25px;
+  ;
 }
 
 .date-table-cell {
@@ -233,10 +238,12 @@
   width: 200%;
   margin-left: 20px;
   font-weight: bold;
+  text-align: left;
 }
 
 .desc_tache {
   margin-left: 20px;
+  text-align: left;
   width: 250%;
 }
 
