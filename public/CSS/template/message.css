@@ -1,13 +1,14 @@
 .message{
     position: fixed;
     padding: 15px;
-    top: -100px;
+    top: -150px;
     left: 35%;
     width: 30%;
     border-radius: 5px;
     color: #fff;
     font-family: 'Product Sans Regular';
     opacity: 0;
+    z-index: 20000;
 }
 
 .message h1{ margin: 5px; }
@@ -59,7 +60,7 @@
 .message #action ion-icon{ display: inline; font-size: 22px; }
 
 .show-error, .show-info{
-    transform: translateY(105px);
+    transform: translateY(155px);
     opacity: 1;
     transition: opacity 1s, transform .35s;
 }
@@ -101,7 +102,7 @@
     .message h1{ font-size: 1.2em; }
     .message p{ font-size: .8em; }
     .message .interact{ border-radius: 0; }
-    .show-error{ transform: translateY(100px); }
+    .show-error{ transform: translateY(150px); }
 }
 
 @font-face {
