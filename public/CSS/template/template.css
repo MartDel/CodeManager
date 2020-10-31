@@ -1375,7 +1375,7 @@ input[type="file"]:hover {
 
 #my_informations .input_fields {
   font-family: "Product Sans Regular";
-  font-size: 0px;
+  font-size: 15px;
   color: black;
   resize: none;
   width: 50%;

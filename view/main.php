@@ -148,7 +148,7 @@ ob_start();
                 <h1>Titre de la tâche (80 caractères maximum)</h1>
                 <input class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
                 <h1>Description de la tâche (Optionnel)</h1>
-                <input id="textarea_desc" name="description" type="text" placeholder="Description"></input>
+                <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
                 <section id="button_line">
                     <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal" type="button">Annuler</button>

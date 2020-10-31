@@ -622,12 +622,25 @@ aside[name~=popup_modal_task] .modal-wrapper {
   border: gray 1px solid;
 }
 
+#section_ligne_bas textarea {
+  resize: none;
+  font-family: "Product Sans Regular";
+  font-size: 14px;
+  color: black;
+  width: 95%;
+  padding: 10PX;
+  left: 0;
+  border-radius: 10px;
+  outline: none;
+  border: gray 1px solid;
+}
+
 #section_ligne_bas input[name="title"] {
   height: 17px;
   overflow-y: hidden;
 }
 
-#section_ligne_bas input[name="description"] {
+#section_ligne_bas textarea[name="description"] {
   height: 150px;
   ;
 }

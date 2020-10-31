@@ -137,7 +137,7 @@
             <h1>Nom du Projet (20 caractères max.)</h1>
             <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input>
             <h1>Description du projet (optionnel)</h1>
-            <input name="description" id="new_project_desc" placeholder="Description du projet"></input>
+            <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
             <h2>GitHub (optionnel)</h2>
             <div class="flex_git_links">
               <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input>

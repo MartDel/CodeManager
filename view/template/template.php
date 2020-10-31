@@ -17,7 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/template.css" />
 
 	    <link rel="icon" type="image/png" href="" />
-	    <link rel="shortcut icon" href="public/img/programmer2.png" />
+	    <link rel="shortcut icon" href="public/img/shortcuticon.png" />
 	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
 		<!-- Ionicons -->
