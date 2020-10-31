@@ -25,6 +25,25 @@ ob_start();
             <span title="Supprimer">
                 <img class="trash" src="public/img/trash.png" alt="" />
             </span>
+            <div class="flex_title_task">
+              <table>
+                <tr>
+                  <td class="user-table-cell">
+                    <p>Utilisateur</p>
+                  </td>
+                  <td class="title-table-cell">
+                    <p>Titre</p>
+                  </td>
+                  <td class="desc-table-cell">
+                    <p>Description</p>
+                  </td>
+                  <td class="date-table-cell">
+                    <p>Date de création</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
         </div>
 
         <section class="list_task">
