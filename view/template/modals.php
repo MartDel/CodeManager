@@ -150,18 +150,18 @@
   </section>
   <form name="create_project_form" action="index.php?action=createproject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
-      <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input>
+      <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
-      <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea>
+      <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input>
+        <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
         <input name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
       </div>
       <div class="flex_button_create">
         <br><br>
         <button name="create_project_button" class="button_create_project" type="submit">Créer un nouveau projet</button>
-        <button class="close-modal button_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
+        <button class="close-modal button_cancel_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>
 </modal>

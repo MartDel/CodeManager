@@ -1619,8 +1619,8 @@ input[type="file"]:hover {
 .flex_button_create {
   display: flex;
   flex-direction: column;
-  padding-left: 40%;
-  padding-right: 40%;
+  padding-left: 35%;
+  padding-right: 35%;
   padding-bottom: 20px;
 }
 
@@ -1634,10 +1634,29 @@ input[type="file"]:hover {
   padding: 20px;
   bottom: 0;
   right: 0;
+  text-transform: uppercase;
 }
 
 .button_create_project:hover {
   background-color: #b41e10;
   color: white;
+  cursor: pointer;
+}
+
+.button_cancel_create_project {
+  font-family: "Product Sans Regular";
+  font-size: 0.7rem;
+  color: gray;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  padding: 20px;
+  bottom: 0;
+  right: 0;
+}
+
+.button_cancel_create_project:hover {
+  text-decoration: underline;
   cursor: pointer;
 }
