@@ -289,6 +289,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  font-family: "Product Sans Regular";
   background-color: white
 }
 
@@ -357,6 +358,11 @@ aside[name~=popup_modal_task] .modal-wrapper {
   width: 97%;
   white-space: initial;
   overflow: hidden;
+}
+
+.descriptif_popup p {
+  font-family: "Product Sans Regular";
+  font-size: 1rem;
 }
 
 .line_popup {

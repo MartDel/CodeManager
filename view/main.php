@@ -131,8 +131,10 @@ ob_start();
             <section class="descriptif_popup">
                 <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
                 <br><br>
+                <p><strong>Catégorie :</strong> Front etc...</p>
                 <br><br>
-                <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+                <br><br>
+                <i>Par <?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
         </modal>
         <?php endif; } ?>
@@ -152,6 +154,8 @@ ob_start();
             <section class="descriptif_popup">
                 <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
                 <br><br>
+                <p><strong>Catégorie :</strong> Front etc...</p>
+                <br><br>
                 <br><br>
                 <i><?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
             </section>
@@ -170,6 +174,8 @@ ob_start();
             <form method="POST" action="index.php?action=addtask">
                 <h1>Titre de la tâche (80 caractères maximum)</h1>
                 <input class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
+                <h1>Catégorie de la tâche (20 caractères maximum)</h1>
+                <input class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
                 <h1>Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
@@ -194,6 +200,8 @@ ob_start();
           <form method="POST" action="index.php?action=addtask">
               <h1>Titre de la tâche (80 caractères maximum)</h1>
               <input class="textarea_title" name="title" type="text" placeholder="<?= $task->getName()?>" maxlength="80" required></input>
+              <h1>Catégorie de la tâche (20 caractères maximum)</h1>
+              <input class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
               <h1>Description de la tâche (Optionnel)</h1>
               <input id="textarea_desc_edit" name="description" type="text" placeholder="<?= $task->getDescription()?>"></input>
               <h2></h2>
@@ -205,10 +213,6 @@ ob_start();
       </section>
     </modal>
 
-
-    <!--MODAL MODIFY TASK-->
-
-    <!-- Voir dans le fichier public/archive/html.php -->
 
     <?php require('template/modals.php'); ?>
 
