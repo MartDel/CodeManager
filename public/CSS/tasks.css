@@ -608,6 +608,52 @@ aside[name~=popup_modal_task] .modal-wrapper {
   }
 }
 
+/*2nd WAY OF DISPLAY TASK*/
+.wrapper-table-task {
+  background-color: none;
+}
+
+.wrapper-table-task .table_contain {
+  background-color: none;
+  width: 500px;
+  padding-left: 50px;
+}
+
+.wrapper-table-task h1 {
+  font-family: "Product Sans Regular";
+  color: #b41e10;
+  font-size: 18px;
+  text-align: center
+}
+
+.table_col_main {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  border: 1px solid #b41e10;
+  height: auto;
+  width: 200px;
+}
+
+.table_col_main p {
+  margin-left: 20px;
+  margin-top: 0;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+}
+
+.table_col_main input {
+  height: 15px;
+  width: 15px;
+}
+
+.task_wrap {
+  width: 100%;
+}
+
 /*ADD TASK MODAL*/
 #add_task {
   border: 2px solid black -webkit-box-shadow: #4b4b4b 0px 0px 15px;
