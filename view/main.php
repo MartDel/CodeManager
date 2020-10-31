@@ -8,7 +8,7 @@ ob_start();
 ?>
 
     <!--LIGNE SELECTION TACHES-->
-    <section class="ligne_et_taches">
+    <section class="ligne_et_taches" style="display:none">
         <div id="ligne_haut_tache_id" class="ligne_haut_tache">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all" type="checkbox" />
@@ -110,7 +110,56 @@ ob_start();
             </ul>
         </section>
     </section>
+    <section class="ligne_et_taches">
+      <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+          <span title="Tout sélectionner">
+              <input name="sample" id="select_all" type="checkbox" />
+          </span>
+          <span title="Nouvelle tâche">
+              <img id="new_task_img" src="public/img/plus.png" alt="">
+          </span>
+          <span title="Rafraîchir">
+              <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+          </span>
+          <span title="Tâches effectuées">
+              <img class="tasks_done" id="tasks_done" src="public/img/task_done0.png" alt="" />
+          </span>
+          <span title="Supprimer">
+              <img class="trash" src="public/img/trash.png" alt="" />
+          </span>
+      </div>
+      <div class="wrapper-table-task">
+        <div class="table-wrapper">
+          <table class="table_contain">
+            <h1>Catégorie 1</h1>
+            <tr class="table_row_main">
+              <td class="table_col_main">
+                <div class="">
+                  <input type="checkbox" name="" value="">
+                </div>
+                <div class="">
+                  <p>Tache n°1scsdcsdc sdcsdcsd csdcsdcsdcsdcsdc sdcsdddddddd ddddddddd dddddddd</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="table_row_main">
+              <td class="table_col_main">
+                <div class="">
+                  <input type="checkbox" name="" value="">
+                </div>
+                <div class="">
+                  <p>Tache n°1scsdcsdc sdcsdcsd csdcsdcsdcsdcsdc sdcsdddddddd ddddddddd dddddddd</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
   </section>
+
 
 <!-- All of modals -->
 <div id="modals" style="display:none;">
@@ -186,6 +235,7 @@ ob_start();
             </form>
         </section>
     </modal>
+
 
 <!--MODAL EDIT TASK-->
 
