@@ -22,8 +22,9 @@ fields.submit.onclick = (event) => {
         let wrong_mail = false
         const regex = /\S+@\S+\.\S+/
         for (let i = 0; i < fields.mail.length; i++) {
-            if(!regex.test(fields.mail[i])) wrong_mail = true
+            if(!regex.test(fields.mail[i].value)) wrong_mail = true
         }
+        console.log(regex.test(fields.mail[0].value));
         if(wrong_mail){
             event.preventDefault()
             showMessage('error', 'E-mail incorrect', "Le format de l'addrese e-mail n'est pas correct. Veuillez la resaisir.", focusEmail)
