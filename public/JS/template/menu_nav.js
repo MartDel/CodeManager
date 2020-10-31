@@ -89,10 +89,15 @@ const project = {
     git_project_input: document.getElementById('new_project_git_repo'),
     idcreate:"create",
     create_button:document.getElementById("create_project_opener"),
+    idedit:"edit_project",
+    edit_button:document.getElementById("edit_project_opener"),
 }
 
 project.create_button.onclick=()=>{
   setTimeout(() => modals.show(project.idcreate), 500)
+}
+project.edit_button.onclick=()=>{
+  setTimeout(() => modals.show(project.idedit), 500)
 }
 
 // Search input

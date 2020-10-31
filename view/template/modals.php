@@ -133,7 +133,7 @@
         </div>
         <br><br>
         <div class="flex_project_modification">
-          <a class="close-modal edit_project_button" href="#">Éditer le projet en cours</a>
+          <a id="edit_project_opener" class="close-modal edit_project_button" href="#">Éditer le projet en cours</a>
           <br>
           <a id="create_project_opener" class="close-modal create_project_button" href="#">Créer un nouveau projet</a>
         </div>
@@ -162,6 +162,32 @@
         <br><br>
         <button name="create_project_button" class="button_create_project" type="submit">Créer un nouveau projet</button>
         <button class="close-modal button_cancel_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
+      </div>
+  </form>
+</modal>
+
+<!--MODAL CREATE PROJECT-->
+
+<modal id="edit_project">
+  <section id="header_edit_project">
+      <p>Créer un projet</p>
+      <span id="close_swap" class="close_swap close-modal">&times;</span>
+      <br><br><br><br>
+  </section>
+  <form name="edit_project_form" action="index.php?action=createproject" method="POST">
+      <h1>Nom du Projet (20 caractères max.)</h1>
+      <input name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
+      <h1>Description du projet (optionnel)</h1>
+      <textarea name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></textarea><br><br>
+      <h2>GitHub (optionnel)</h2>
+      <div class="flex_git_links">
+        <input name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
+        <input name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"></input>
+      </div>
+      <div class="flex_button_edit">
+        <br><br>
+        <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
+        <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>
 </modal>

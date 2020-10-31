@@ -1660,3 +1660,187 @@ input[type="file"]:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/*EDIT PROJECT MODAL*/
+#edit_project .modal-wrapper {
+  width: 60%;
+}
+
+#header_edit_project {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+#header_edit_project img {
+  height: 50px;
+  padding: 20px;
+}
+
+#header_edit_project p {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: center;
+  top: 0;
+  margin-top: 36px;
+  font-family: "Product Sans Regular";
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+}
+
+#header_edit_project span {
+  position: absolute;
+  width: 2%;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 20px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #7c7c7c;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#header_edit_project span:hover {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 20px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#edit_project h1 {
+  font-family: "Product Sans Regular";
+  font-size: 1rem;
+  font-weight: lighter;
+  color: black;
+  margin-left: 10%;
+}
+
+#edit_project h2 {
+  font-family: "Product Sans Regular";
+  font-size: 0.8rem;
+  font-weight: lighter;
+  color: black;
+  margin-left: 10%;
+}
+
+#edit_project_name,
+#edit_project_git_name,
+#edit_project_git_repo {
+  resize: none;
+  width: 80%;
+  margin-left: 10%;
+  font-family: "Product Sans Regular";
+  font-size: 0.8rem;
+  height: 1rem;
+  font-weight: lighter;
+  color: black;
+  padding: 10px;
+  border: gray 1px solid;
+  outline: none;
+  border-radius: 10px;
+}
+
+#edit_project_name:focus,
+#edit_project_git_name:focus,
+#edit_project_git_repo:focus,
+#edit_project_desc:focus {
+  background-color: #ffffff;
+  border: #ffffff 1px solid;
+  border-radius: 10px;
+  outline: none;
+  -webkit-box-shadow: 0.5px 0.5px 5px #555;
+  box-shadow: 0.5px 0.5px 5px #555;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+#div_form_new_project {
+  background-color: #b41e10;
+  height: 2px;
+  width: 60%;
+  margin-left: 20%;
+}
+
+#edit_project_desc {
+  resize: none;
+  width: 80%;
+  margin-left: 10%;
+  font-family: "Product Sans Regular";
+  font-size: 0.8rem;
+  height: 6rem;
+  font-weight: lighter;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  border: gray 1px solid;
+  outline: none;
+}
+
+.flex_button_edit {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40%;
+  padding-right: 40%;
+  padding-bottom: 20px;
+}
+
+.button_edit_project {
+  font-family: "Product Sans Regular";
+  font-size: 1rem;
+  color: black;
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  padding: 20px;
+  bottom: 0;
+  right: 0;
+  text-transform: uppercase;
+}
+
+.button_edit_project:hover {
+  background-color: #b41e10;
+  color: white;
+  cursor: pointer;
+}
+
+.button_cancel_edit_project {
+  font-family: "Product Sans Regular";
+  font-size: 0.7rem;
+  color: gray;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  padding: 20px;
+  bottom: 0;
+  right: 0;
+}
+
+.button_cancel_edit_project:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
