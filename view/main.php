@@ -37,6 +37,9 @@ ob_start();
                   <td class="desc-table-cell">
                     <p>Description</p>
                   </td>
+                  <td class="category-table-cell">
+                    <p>Catégorie</p>
+                  </td>
                   <td class="date-table-cell">
                     <p>Date de création</p>
                   </td>
@@ -70,6 +73,7 @@ ob_start();
                             <span class="utilisateur"><?= $task->getAuthor() ?></span>
                             <span class="titre_tache"><?= $task->getName() ?></span>
                             <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                            <span class="category_tache"><?= "Catégorie de la tâche (Front, back etc...)" ?></span>
                             <span class="date"><?= $task->getCreateDate() ?></span>
                         </li>
                     </button>

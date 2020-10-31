@@ -57,18 +57,24 @@
 }
 
 .title-table-cell {
-  width: 32.2%;
+  width: 27.2%;
   text-align: center;
   padding-left: 25px;
   background-color: none;
 }
 
 .desc-table-cell {
-  width: 39.8%;
+  width: 35.8%;
   text-align: center;
   background-color: none;
-  padding-left: 25px;
-  ;
+  padding-left: 30px;
+}
+
+.category-table-cell {
+  text-align: center;
+  padding-left: 30px;
+  width: 11%;
+  background-color: none;
 }
 
 .date-table-cell {
@@ -217,7 +223,8 @@
 .titre_tache,
 .utilisateur,
 .desc_tache,
-.date {
+.date,
+.category_tache {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -248,10 +255,16 @@
 }
 
 .date {
-  margin-right: 54px;
+  margin-right: 62px;
   text-align: right;
   width: 100%;
   /*background-color: rgb(255, 0, 0);*/
+}
+
+.category_tache {
+  text-align: left;
+  width: 70%;
+  margin-left: 20px
 }
 
 .input_img {
