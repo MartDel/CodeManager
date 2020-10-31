@@ -7,9 +7,6 @@ const tasks = {
         tick2: document.getElementsByClassName("tick2"),
     },
     container: document.getElementById('liste_taches'),
-    editid:"edit",
-    edit:document.getElementById("edit-task-button"),
-
 }
 let tasks_done = {
     show: false,
@@ -18,11 +15,10 @@ let tasks_done = {
 }
 
 // 'Add task' elements
-let addtask = {
+const addtask = {
     id: 'add_task',
     modal: document.getElementById("add_task_modal"),
     show_btn: document.getElementById("new_task_img"),
-    close_btn: document.getElementById("close_add"),
     cancel_btn: document.getElementById("addtask_cancel"),
     title_input: document.querySelector(".textarea_title"),
     desc_input: document.getElementById("textarea_desc"),
@@ -96,7 +92,7 @@ tasks_done.btn.onclick = () => {
 /*
  * MODAL TASK
  */
-function showModal(event) {
+function showModal(event, suffix) {
     // Get task id
     let id = null;
     const path = event.path;
@@ -107,18 +103,16 @@ function showModal(event) {
         }
     }
 
-    if (!contain(tasks.btn.check_js, event.target) &&
-        !contain(tasks.btn.tick, event.target) &&
-        !contain(tasks.btn.tick2, event.target)
-    ) {
-        modals.show(id + '_modal');
-    }
+    if (contain(tasks.btn.tick2, event.target)) modals.show(id + '_edit')
+    else if (!contain(tasks.btn.check_js, event.target) && !contain(tasks.btn.tick, event.target)) modals.show(id + '_modal');
 }
 for (let i = 0; i < tasks.list.length; i++) {
-    tasks.list[i].onclick = (event) => showModal(event);
+    tasks.list[i].onclick = (event) => showModal(event, '_modal');
 }
 for (let i = 0; i < tasks_done.list.length; i++) {
-    tasks_done.list[i].onclick = (event) => showModal(event);
+    tasks_done.list[i].onclick = (event) => showModal(event, '_modal');
+    if(tasks_done.list[i].querySelector('.edittask-btn')) {
+    }
 }
 
 /*
@@ -131,14 +125,6 @@ addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
 };
-
-/*
- * EDIT TASK
- */
-
-tasks.edit.onclick =()=>{
-  modals.show(tasks.editid)
-}
 
 /*
  * SELECT ALL TASKS
