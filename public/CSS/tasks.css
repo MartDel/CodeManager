@@ -613,10 +613,16 @@ aside[name~=popup_modal_task] .modal-wrapper {
   background-color: none;
 }
 
+.table-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .wrapper-table-task .table_contain {
   background-color: none;
-  width: 500px;
+  width: 200px;
   padding-left: 50px;
+  border-spacing: 0;
 }
 
 .wrapper-table-task h1 {
@@ -627,11 +633,17 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 .table_col_main {
+  border-right: 2px solid lightgray;
+  padding-right: 50px;
+  padding-top: 5px;
+}
+
+.border_all {
+  border: 1px solid #b41e10;
+  border-radius: 10px;
   padding: 20px;
   display: flex;
   flex-direction: row;
-  border-radius: 10px;
-  border: 1px solid #b41e10;
   height: auto;
   width: 200px;
 }
@@ -652,6 +664,25 @@ aside[name~=popup_modal_task] .modal-wrapper {
 
 .task_wrap {
   width: 100%;
+}
+
+#category_name {
+  text-align: center;
+  text-transform: uppercase;
+  color: #b41e10;
+  font-size: 14px;
+  font-family: "Product Sans Regular";
+  width: 240px;
+  border: none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: block;
+}
+
+#category_name p {
+  text-align: center;
+  margin: 0;
+  padding: 0
 }
 
 /*ADD TASK MODAL*/

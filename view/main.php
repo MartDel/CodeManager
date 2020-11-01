@@ -8,7 +8,7 @@ ob_start();
 ?>
 
     <!--LIGNE SELECTION TACHES-->
-    <section class="ligne_et_taches" style="display:none">
+    <section class="ligne_et_taches" style="display:block">
         <div id="ligne_haut_tache_id" class="ligne_haut_tache">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all" type="checkbox" />
@@ -110,7 +110,7 @@ ob_start();
             </ul>
         </section>
     </section>
-    <section class="ligne_et_taches">
+    <section class="ligne_et_taches" style="display:none">
       <div id="ligne_haut_tache_id" class="ligne_haut_tache">
           <span title="Tout sélectionner">
               <input name="sample" id="select_all" type="checkbox" />
@@ -131,27 +131,96 @@ ob_start();
       <div class="wrapper-table-task">
         <div class="table-wrapper">
           <table class="table_contain">
-            <h1>Catégorie 1</h1>
-            <tr class="table_row_main">
-              <td class="table_col_main">
-                <div class="">
-                  <input type="checkbox" name="" value="">
-                </div>
-                <div class="">
-                  <p>Tache n°1scsdcsdc sdcsdcsd csdcsdcsdcsdcsdc sdcsdddddddd ddddddddd dddddddd</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="table_row_main">
-              <td class="table_col_main">
-                <div class="">
-                  <input type="checkbox" name="" value="">
-                </div>
-                <div class="">
-                  <p>Tache n°1scsdcsdc sdcsdcsd csdcsdcsdcsdcsdc sdcsdddddddd ddddddddd dddddddd</p>
-                </div>
-              </td>
-            </tr>
+            <tbody>
+              <tr class="table_row_main">
+                <td class="table_col_main" id="category_name">
+                  <p>Catégorie n°1</p>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc sdcsdcsd  sdcsdddddddd ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc sdcsdcsd  ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc sdcsdcsd sdcsdddddddd ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <table class="table_contain">
+            <tbody>
+              <tr class="table_row_main">
+                <td class="table_col_main" id="category_name">
+                  <p>Catégorie n°1</p>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc sdcsdcsd csdcsdcsdcsdcsdc sdcsdddddddd ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache  sdcsdcsd    ddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc    ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
           </table>
         </div>
 
