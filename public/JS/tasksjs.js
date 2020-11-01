@@ -41,43 +41,6 @@ let display = {
   category_2:document.getElementById("category_2")
 }
 
-display.button.onclick =()=>{
-  if (display.open.style.display=="block") {
-    display.open.style.display="none";
-    display.open.style.opacity="0";
-    display.global.style.borderRadius="50%";
-    display.global.style.height="49px";
-
-  } else {
-    display.open.style.display="block";
-    setTimeout(()=>display.open.style.opacity="1",200);
-    display.global.style.borderRadius="500px";
-    display.global.style.height="108px";
-  }
-}
-change_display=()=>{
-  if (display.first.style.display=="block") {
-    display.first.style.display="none"
-    display.second.style.display="block"
-    display.open.style.display="none";
-    display.open.style.opacity="0"
-    display.global.style.borderRadius="50%";
-    display.category_2.src="public/img/category_1.png"
-    display.global.style.height="49px";
-    display.category_1.src="public/img/category_2.png"
-    setCookie("display", "2")
-  } else {
-    display.first.style.display="block"
-    display.second.style.display="none"
-    display.open.style.display="none";
-    display.open.style.opacity="0";
-    display.global.style.borderRadius="50%";
-    display.global.style.height="49px";
-    display.category_2.src="public/img/category_2.png"
-    display.category_1.src="public/img/category_1.png"
-    setCookie("display", "1")
-  }
-}
 
 /*
 =========================
@@ -136,6 +99,46 @@ tasks_done.btn.onclick = () => {
     tasks_done.show = !tasks_done.show
 }
 
+
+/*CHANGE DISPLAY*/
+
+display.button.onclick =()=>{
+  if (display.open.style.display=="block") {
+    display.open.style.display="none";
+    display.open.style.opacity="0";
+    display.global.style.borderRadius="50%";
+    display.global.style.height="49px";
+
+  } else {
+    display.open.style.display="block";
+    setTimeout(()=>display.open.style.opacity="1",200);
+    display.global.style.borderRadius="500px";
+    display.global.style.height="108px";
+  }
+}
+change_display=()=>{
+  if (display.first.style.display=="block") {
+    display.first.style.display="none"
+    display.second.style.display="block"
+    display.open.style.display="none";
+    display.open.style.opacity="0"
+    display.global.style.borderRadius="50%";
+    display.category_2.src="public/img/category_1.png"
+    display.global.style.height="49px";
+    display.category_1.src="public/img/category_2.png"
+    setCookie("display", "2")
+  } else {
+    display.first.style.display="block"
+    display.second.style.display="none"
+    display.open.style.display="none";
+    display.open.style.opacity="0";
+    display.global.style.borderRadius="50%";
+    display.global.style.height="49px";
+    display.category_2.src="public/img/category_2.png"
+    display.category_1.src="public/img/category_1.png"
+    setCookie("display", "1")
+  }
+}
 
 /*
  * MODAL TASK
