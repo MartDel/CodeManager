@@ -18,7 +18,7 @@ let tasks_done = {
 const addtask = {
     id: 'add_task',
     modal: document.getElementById("add_task_modal"),
-    show_btn: document.getElementById("new_task_img"),
+    show_btns: document.getElementsByClassName("new_task_img"),
     cancel_btn: document.getElementById("addtask_cancel"),
     title_input: document.querySelector(".textarea_title"),
     desc_input: document.getElementById("textarea_desc"),
@@ -32,13 +32,13 @@ const select_all = {
 };
 
 let display = {
-  button:document.getElementsByClassName("selected_display")[0],
-  global:document.getElementById("select_display_global"),
-  open:document.getElementsByClassName("notselected_display")[0],
-  first:document.getElementById("firstdisplay"),
-  second:document.getElementById("seconddisplay"),
-  category_1:document.getElementById("category_1"),
-  category_2:document.getElementById("category_2")
+    button:document.getElementsByClassName("selected_display")[0],
+    global:document.getElementById("select_display_global"),
+    open:document.getElementsByClassName("notselected_display")[0],
+    first:document.getElementById("firstdisplay"),
+    second:document.getElementById("seconddisplay"),
+    category_1:document.getElementById("category_1"),
+    category_2:document.getElementById("category_2")
 }
 
 
@@ -49,24 +49,24 @@ let display = {
 */
 
 window.onload = () => {
-        // Menu/nav onload function and check if there is a message to print
-        wOnload()
-        checkMessage()
+    // Menu/nav onload function and check if there is a message to print
+    wOnload()
+    checkMessage()
 
-        // Hide or show done tasks
-        const search = window.location.search
-        const params = new URLSearchParams(search)
-        tasks_done.show = params.has('endTask')
-        showTasks(!tasks_done.show)
-        showDoneTasks(tasks_done.show)
-        if (tasks_done.show) {
-                tasks_done.btn.style.filter = "grayscale(0%)";
-                tasks_done.btn.style.animation = "0.5s Rotate";
-        } else {
-                tasks_done.btn.style.filter = "grayscale(100%)";
-                tasks_done.btn.style.animation = "0.5s RotateInv";
-        }
-        tasks.container.style.opacity = 1
+    // Hide or show done tasks
+    const search = window.location.search
+    const params = new URLSearchParams(search)
+    tasks_done.show = params.has('endTask')
+    showTasks(!tasks_done.show)
+    showDoneTasks(tasks_done.show)
+    if (tasks_done.show) {
+            tasks_done.btn.style.filter = "grayscale(0%)";
+            tasks_done.btn.style.animation = "0.5s Rotate";
+    } else {
+            tasks_done.btn.style.filter = "grayscale(100%)";
+            tasks_done.btn.style.animation = "0.5s RotateInv";
+    }
+    tasks.container.style.opacity = 1
 };
 
 /*
@@ -100,44 +100,44 @@ tasks_done.btn.onclick = () => {
 }
 
 
-/*CHANGE DISPLAY*/
-
+/*
+ * CHANGE DISPLAY
+ */
 display.button.onclick =()=>{
-  if (display.open.style.display=="block") {
-    display.open.style.display="none";
-    display.open.style.opacity="0";
-    display.global.style.borderRadius="50%";
-    display.global.style.height="49px";
-
-  } else {
-    display.open.style.display="block";
-    setTimeout(()=>display.open.style.opacity="1",200);
-    display.global.style.borderRadius="500px";
-    display.global.style.height="108px";
-  }
+    if (display.open.style.display === "block") {
+        display.open.style.display="none";
+        display.open.style.opacity="0";
+        display.global.style.borderRadius="50%";
+        display.global.style.height="49px";
+    } else {
+        display.open.style.display="block";
+        setTimeout(()=>display.open.style.opacity="1",200);
+        display.global.style.borderRadius="500px";
+        display.global.style.height="108px";
+    }
 }
-change_display=()=>{
-  if (display.first.style.display=="block") {
-    display.first.style.display="none"
-    display.second.style.display="block"
-    display.open.style.display="none";
-    display.open.style.opacity="0"
-    display.global.style.borderRadius="50%";
-    display.category_2.src="public/img/category_1.png"
-    display.global.style.height="49px";
-    display.category_1.src="public/img/category_2.png"
-    setCookie("display", "2")
-  } else {
-    display.first.style.display="block"
-    display.second.style.display="none"
-    display.open.style.display="none";
-    display.open.style.opacity="0";
-    display.global.style.borderRadius="50%";
-    display.global.style.height="49px";
-    display.category_2.src="public/img/category_2.png"
-    display.category_1.src="public/img/category_1.png"
-    setCookie("display", "1")
-  }
+function change_display(){
+    if (display.first.style.display === "block") {
+        display.first.style.display="none"
+        display.second.style.display="block"
+        display.open.style.display="none";
+        display.open.style.opacity="0"
+        display.global.style.borderRadius="50%";
+        display.category_2.src="public/img/category_1.png"
+        display.global.style.height="49px";
+        display.category_1.src="public/img/category_2.png"
+        setCookie("display", "2")
+    } else {
+        display.first.style.display="block"
+        display.second.style.display="none"
+        display.open.style.display="none";
+        display.open.style.opacity="0";
+        display.global.style.borderRadius="50%";
+        display.global.style.height="49px";
+        display.category_2.src="public/img/category_2.png"
+        display.category_1.src="public/img/category_1.png"
+        setCookie("display", "1")
+    }
 }
 
 /*
@@ -169,9 +169,9 @@ for (let i = 0; i < tasks_done.list.length; i++) {
 /*
  * ADD TASK MODAL
  */
-addtask.show_btn.onclick = () => {
-    modals.show(addtask.id)
-};
+for (let i = 0; i < addtask.show_btns.length; i++) {
+    addtask.show_btns[i].onclick = () => modals.show(addtask.id)
+}
 addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";

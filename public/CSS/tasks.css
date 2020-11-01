@@ -93,13 +93,13 @@
   animation: rotateAddTask 0.5s;
 }
 
-#new_task_img {
+.new_task_img {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
 }
 
-#new_task_img:hover {
+.new_task_img:hover {
   cursor: pointer;
   animation: rotateAddTask 0.5s;
 }
