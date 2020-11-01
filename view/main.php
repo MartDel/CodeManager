@@ -7,8 +7,23 @@ $_SESSION['last_page'] = 'tasks';
 ob_start();
 ?>
 
+
+    <!--SELECT TYPE OF DISPLAY-->
+
+    <div id="select_display_global" class="select_display_global">
+      <div class="selected_display div_img_select">
+        <img id="category_1" src="public/img/category_1.png" alt="">
+      </div>
+      <a onclick="change_display()" href="#">
+        <div class="notselected_display div_img_select">
+          <img id="category_2" src="public/img/category_2.png" alt="">
+        </div>
+      </a>
+    </div>
+
+
     <!--LIGNE SELECTION TACHES-->
-    <section class="ligne_et_taches" style="display:block">
+    <section id="firstdisplay" class="ligne_et_taches" style="display:block">
         <div id="ligne_haut_tache_id" class="ligne_haut_tache">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all" type="checkbox" />
@@ -110,7 +125,7 @@ ob_start();
             </ul>
         </section>
     </section>
-    <section class="ligne_et_taches" style="display:none">
+    <section id="seconddisplay" class="ligne_et_taches" style="display:none">
       <div id="ligne_haut_tache_id" class="ligne_haut_tache">
           <span title="Tout sélectionner">
               <input name="sample" id="select_all" type="checkbox" />
