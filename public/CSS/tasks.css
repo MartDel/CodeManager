@@ -1029,11 +1029,49 @@ aside[name~=popup_modal_task] .modal-wrapper {
   filter: invert(100%);
 }
 
+.div_img_select:hover {
+  cursor: pointer;
+}
+
 .notselected_display {
   display: none;
   opacity: 0;
   transition: all 0.3s ease;
   margin-bottom: 10px;
+}
+
+.task_done_mosaic {
+  background-color: lightgray;
+  color: gray;
+  border: gray 1px solid;
+  display: flex;
+}
+
+.left-side-task-mosaic {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  background-color: none;
+  text-align: center;
+}
+
+.table_col_main:hover .left-side-task-mosaic img {
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.table_col_main:hover {
+  cursor: pointer;
+}
+
+.left-side-task-mosaic img {
+  display: flex;
+  flex-direction: column;
+  width: 15px;
+  margin-left: 4px;
+  margin-top: 10px;
+  transition: all 0.2s;
+  transform: scale(0);
 }
 
 @-webkit-keyframes ModalComing {

@@ -155,8 +155,10 @@ ob_start();
               <tr class="table_row_main">
                 <td class="table_col_main">
                   <div class="border_all">
-                    <div class="">
+                    <div class="left-side-task-mosaic">
                       <input type="checkbox" name="" value="">
+                      <img src="public/img/edit_task_bar.png" alt="">
+                      <img src="public/img/trash.png" alt="">
                     </div>
                     <div class="">
                       <p>Tache n°1scsdcsdc sdcsdcsd  sdcsdddddddd ddddddddd dddddddd</p>
@@ -179,6 +181,18 @@ ob_start();
               <tr class="table_row_main">
                 <td class="table_col_main">
                   <div class="border_all">
+                    <div class="">
+                      <input type="checkbox" name="" value="">
+                    </div>
+                    <div class="">
+                      <p>Tache n°1scsdcsdc sdcsdcsd sdcsdddddddd ddddddddd dddddddd</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="table_row_main">
+                <td class="table_col_main">
+                  <div class="border_all task_done_mosaic">
                     <div class="">
                       <input type="checkbox" name="" value="">
                     </div>
