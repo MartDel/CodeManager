@@ -170,7 +170,7 @@
 
 <modal id="edit_project">
   <section id="header_edit_project">
-      <p>Créer un projet</p>
+      <p>Modifier le projet</p>
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
@@ -187,6 +187,7 @@
       <div class="flex_button_edit">
         <br><br>
         <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
+        <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Supprimer le projet</button>
         <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>
