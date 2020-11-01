@@ -1001,29 +1001,29 @@ aside[name~=popup_modal_task] .modal-wrapper {
   right: 0;
   margin-right: 20px;
   margin-bottom: 20px;
-  width: 59px;
+  width: 49px;
   height: auto;
   z-index: 100;
   display: flex;
   flex-direction: column-reverse;
   border-radius: 50%;
   transition: all 0.3s ease;
-  height: 59px
+  height: 49px
 }
 
 .div_img_select {
   padding: 15px;
   border: 2px solid white;
   border-radius: 50%;
-  width: 25px;
+  width: 15px;
   margin: 0;
   transition: all 0.3s ease;
-  height: 25px;
+  height: 15px;
 }
 
 .div_img_select img {
-  width: 25px;
-  height: 25px;
+  width: 15px;
+  height: 15px;
   height: auto;
   transition: all 0.3s ease;
   filter: invert(100%);
