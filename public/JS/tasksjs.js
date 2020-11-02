@@ -108,12 +108,12 @@ display.button.onclick =()=>{
         display.open.style.display="none";
         display.open.style.opacity="0";
         display.global.style.borderRadius="50%";
-        display.global.style.height="49px";
+        display.global.style.height="39px";
     } else {
         display.open.style.display="block";
         setTimeout(()=>display.open.style.opacity="1",200);
         display.global.style.borderRadius="500px";
-        display.global.style.height="108px";
+        display.global.style.height="88px";
     }
 }
 function change_display(){
@@ -124,16 +124,16 @@ function change_display(){
         display.open.style.opacity="0"
         display.global.style.borderRadius="50%";
         display.category_2.src="public/img/category_1.png"
-        display.global.style.height="49px";
+        display.global.style.height="39px";
         display.category_1.src="public/img/category_2.png"
         setCookie("display", "2")
     } else {
+        display.global.style.height="39px";
         display.first.style.display="block"
         display.second.style.display="none"
         display.open.style.display="none";
         display.open.style.opacity="0";
         display.global.style.borderRadius="50%";
-        display.global.style.height="49px";
         display.category_2.src="public/img/category_2.png"
         display.category_1.src="public/img/category_1.png"
         setCookie("display", "1")
