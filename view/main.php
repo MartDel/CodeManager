@@ -149,6 +149,7 @@ ob_start();
             <tbody>
               <tr class="table_row_main">
                 <td class="table_col_main" id="category_name">
+                  <input type="checkbox" name="" value="">
                   <p>Catégorie n°1</p>
                 </td>
               </tr>
@@ -214,6 +215,7 @@ ob_start();
             <tbody>
               <tr class="table_row_main">
                 <td class="table_col_main" id="category_name">
+                  <input type="checkbox" name="" value="">
                   <p>Catégorie n°1</p>
                 </td>
               </tr>
