@@ -36,6 +36,12 @@ const help = {
     modal: document.getElementById("help_modal"),
     show_btn: document.getElementById("help_logo_img"),
 };
+//SEARCH
+
+let search = {
+  not_find:"not_find",
+  no_text:"no_text"
+}
 
 // Account elements
 let account = {
@@ -468,7 +474,7 @@ function FindNext() {
     //If void
     const str = document.getElementById("findField").value;
     if (str == "") {
-        alert("Veuillez entrer du texte");
+        modals.show(search.no_text);
         return;
     }
 
@@ -497,7 +503,7 @@ function FindNext() {
         }
     }
 
-    if (supported && !found) alert("Le texte suivant n'a pas été trouvé:\n" + str);
+    if (supported && !found) modals.show(search.not_find);
     //else alert("Your browser does not support this example!");
 }
 

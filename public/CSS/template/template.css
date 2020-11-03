@@ -41,6 +41,13 @@ a {
   text-decoration: underline;
 }
 
+.table_contain td p::selection {
+  color: #b41e10;
+  background-color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 @font-face {
   font-family: 'happy_monkeyregular';
   src: url("../fonts/happymonkey-regular-webfont.woff2") format("woff2"), url("../fonts/happymonkey-regular-webfont.woff") format("woff");
@@ -1837,4 +1844,123 @@ input[type="file"]:hover {
 .button_cancel_edit_project:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+/*SEARCH MODALS*/
+#not_find .modal-wrapper {
+  width: 20%;
+}
+
+#not_find h1 {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: center;
+  top: 0;
+  margin-top: 36px;
+  font-family: "Product Sans Regular";
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  left: 0;
+}
+
+#not_find span {
+  position: absolute;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 10px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #7c7c7c;
+  font-weight: bold;
+  font-size: 28px;
+  z-index: 25;
+}
+
+#not_find span:hover {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 10px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#not_find p {
+  font-family: "Product Sans Regular";
+  font-size: 0.8rem;
+  font-weight: lighter;
+  color: black;
+  text-align: center;
+}
+
+#no_text .modal-wrapper {
+  width: 20%;
+}
+
+#no_text h1 {
+  position: absolute;
+  width: 100%;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: center;
+  top: 0;
+  margin-top: 36px;
+  font-family: "Product Sans Regular";
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  left: 0;
+}
+
+#no_text span {
+  position: absolute;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 10px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #7c7c7c;
+  font-weight: bold;
+  font-size: 28px;
+  z-index: 25;
+}
+
+#no_text span:hover {
+  position: absolute;
+  cursor: pointer;
+  background-color: rgba(0, 255, 98, 0);
+  text-align: right;
+  padding-right: 10px;
+  right: 0;
+  top: 0;
+  margin-top: 29px;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+#no_text p {
+  font-family: "Product Sans Regular";
+  font-size: 0.8rem;
+  font-weight: lighter;
+  color: black;
+  text-align: center;
 }

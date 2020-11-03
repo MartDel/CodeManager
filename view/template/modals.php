@@ -1,3 +1,17 @@
+<!--SEARCH MODALS-->
+<modal id="not_find">
+  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <h1>Erreur de recherche</h1><br><br><br><br>
+  <p>L'élément n'a pas été trouvé</p>
+</modal>
+
+<modal id="no_text">
+  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <h1>Erreur de recherche</h1><br><br><br><br>
+  <p>Vous n'avez entré aucun texte</p>
+</modal>
+
+
 <!--SETTINGS MODAL-->
 <modal id="settings">
     <div id="settings_title">Réglages</div>
