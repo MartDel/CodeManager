@@ -279,7 +279,7 @@ ob_start();
         <!-- TASKS NOT FINISHED -->
         <?php foreach ($tasks as $task){ if (!$task->getIsDone() && $task->getAuthor()): ?>
         <modal id="task<?= $task->getId() ?>_modal" name="popup_modal_task">
-            <span class="close">&times;</span>
+            <span class="close close-modal">&times;</span>
             <section class="header_popup">
                 <p><strong>Tâche</strong></p>
                 <br><br>
@@ -325,7 +325,7 @@ ob_start();
         <!-- TASKS DONE -->
         <?php foreach ($tasks as $task) { if ($task->getIsDone() && $task->getAuthor()): ?>
         <modal id="done_task<?= $task->getId() ?>_modal" name="popup_modal_task">
-            <span class="close">&times;</span>
+            <span class="close close-modal">&times;</span>
             <section class="header_popup">
                 <p><strong>Tâche Effectuée</strong></p>
                 <br><br>
