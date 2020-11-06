@@ -484,7 +484,7 @@ function FindNext() {
         supported = true;
         // if some content is selected, the start position of the search
         // will be the end position of the selection
-        found = window.find(str);
+        //found = window.find(str);
     } else {
         if (document.selection && document.selection.createRange) {
             let textRange = document.selection.createRange();
