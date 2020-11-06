@@ -285,12 +285,10 @@
 /*MODAL*/
 /* Modal Content/Box */
 aside[name~=popup_modal_task] .modal-wrapper {
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
   width: 80%;
   font-family: "Product Sans Regular";
-  background-color: white
+  background-color: white;
+  height: auto
 }
 
 /* The Close Button */
@@ -337,14 +335,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   background-color: white;
 }
 
-.modal-content .modal-wrapper {
-  font-family: "Product Sans Regular";
-  font-size: .875rem;
-  letter-spacing: .5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+.modal-content .modal-wrapper {}
 
 .titre_popup {
   width: 97%;
