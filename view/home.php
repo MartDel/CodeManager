@@ -98,17 +98,23 @@ ob_start();
 
     <div id="espace_div_bcc">
         <div class="content_div_espace">
-            <h1><strong>Lancez-vous dès à présent ou <br>continuez un projet existant</strong></h1><br><br><br>
+            <h1><strong>Lancez-vous dès à présent ou <br>continuez un projet existant</strong></h1>
+            <div class="separator_height"></div>
             <p>Lancez vous dès à présent en vous incrivant, cela ne prend qu'une seule minute.</p>
             <p>Et c'est totalement <strong>GRATUIT</strong> !</p><br><br>
             <p id="p_different">Ou alors continuez un projet déjà existant en vous connectant ></p>
-            <a href="index.php?action=signin" id="button_espace">
-              <div class="button_espace_container">
-                    <p>ACCÉDER À MON ESPACE</p>
-              </div>
-            </a>
+            <div class="bottom_bottom">
+              <a href="index.php?action=signin" id="button_espace">
+                <div class="button_espace_container">
+                      <p>ACCÉDER À MON ESPACE</p>
+                </div>
+              </a>
+            </div>
+
         </div>
-        <img src="public/img/spring-swing-rocket.png">
+        <div class="div_img">
+          <img src="public/img/spring-swing-rocket.png">
+        </div>
     </div>
 </div>
 

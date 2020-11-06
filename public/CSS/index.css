@@ -75,6 +75,7 @@ body {
 #top_div_title {
   height: auto;
   position: fixed;
+  align-items: center;
   z-index: 9999;
   background-color: rgb(255, 255, 255);
   width: 100%;
@@ -104,9 +105,10 @@ body {
   z-index: 2;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: absolute;
-  width: 100%;
+  width: calc(100% - 20px);
   text-align: left;
-  font-size: 35px;
+  font-size: 4vh;
+  ;
   margin-left: 5%;
   margin-top: 15vh;
   /*background-color: #fff;*/
@@ -137,16 +139,16 @@ body {
 }
 
 #top_div_title img {
-  height: 4vw;
+  height: 7.5vh;
   filter: contrast(100%);
   float: left;
   margin-left: 1%;
-  margin-top: 0.5%;
+  margin-top: 1.5vh;
   padding-right: 0.7vw
 }
 
 #seconde_ligne {
-  font-size: 22px;
+  font-size: 2.5vh;
 }
 
 #inscription_div {
@@ -197,6 +199,8 @@ body {
   right: 0;
   width: auto;
   height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 #button_div button {
@@ -207,11 +211,9 @@ body {
 
 #se_connecter {
   border: rgb(91, 92, 96) 2px solid;
-  position: absolute;
-  font-size: 1.3vw;
+  font-size: 2.5vh;
   text-align: center;
   right: 0;
-  margin-right: 15vw;
   padding: 0px 10px 0px 10px;
   margin-top: 1vh;
   color: black;
@@ -228,8 +230,7 @@ body {
 
 #enregistrer {
   border: transparent 2px solid;
-  position: absolute;
-  font-size: 1.3vw;
+  font-size: 2.5vh;
   text-align: center;
   right: 0;
   padding: 0px 10px 0px 10px;
@@ -247,11 +248,9 @@ body {
 
 #ou {
   border: transparent 2px solid;
-  position: absolute;
-  font-size: 1.3vw;
+  font-size: 2.5vh;
   text-align: center;
   right: 0;
-  margin-right: 10vw;
   padding: 0px 10px 0px 10px;
   margin-top: 1vh;
   height: auto;
@@ -266,13 +265,14 @@ body {
 #disponible {
   font-style: italic;
   font-family: georgia, "times new roman", norasi, serif;
-  font-size: 17px;
+  font-size: 2vh;
+  ;
   /*margin-top: 25vh;*/
 }
 
 #disponible_div {
   position: absolute;
-  bottom: 0px;
+  bottom: 20px;
   /*background-color: rgb(255, 0, 0);*/
 }
 
@@ -286,7 +286,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 10vh;
-  width: 100%;
+  width: calc(100% - 0px);
   background-color: rgba(253, 0, 0, 0);
 }
 
@@ -310,7 +310,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-style: italic;
   width: 70vw;
-  font-size: 20px;
+  font-size: 2.3vh;
   color: rgb(46, 46, 46);
   margin-top: 15vh;
 }
@@ -318,14 +318,16 @@ body {
 .flex_horizon h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
+  font-size: 3.7vh;
 }
 
 #flex_p {
   display: flex;
   flex-direction: row;
-  width: 80vw;
-  margin-left: 10vw;
+  width: calc(100vw - 20px);
+  margin-left: 0vw;
   text-align: center;
+  padding: 10px;
 }
 
 .fonctionnalites {
@@ -342,13 +344,16 @@ body {
 .flexcol {
   display: flex;
   flex-direction: column;
-  width: 33%
+  width: 33%;
+  font-size: 1.5vh;
+  padding: 10px;
+  word-wrap: break-word;
 }
 
 .flexcol img {
-  width: 20%;
+  width: 10vh;
   margin: 0;
-  margin-left: calc(50% - 8%);
+  margin-left: calc(50% - 5vh);
 }
 
 #espace_div_bcc {
@@ -356,6 +361,7 @@ body {
   width: 100%;
   height: 90vh;
   display: flex;
+  align-items: center;
   flex-direction: row;
   color: rgb(0, 0, 0);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -365,20 +371,29 @@ body {
 .content_div_espace {
   width: 50%;
   padding-left: 10vw;
-  padding-top: 5vh;
-  margin-top: 10vh;
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: column;
 }
 
-#espace_div_bcc img {
-  width: 25%;
-  height: 50%;
-  margin-top: 23vh;
-  margin-left: 3vw;
-  filter: invert(5%)
+.separator_height {}
+
+#espace_div_bcc .div_img {
+  margin-left: 10vw;
+  /*padding-top: calc(49vh - 10vw)*/
+}
+
+#espace_div_bcc .div_img img {
+  height: 20vw;
+  filter: invert(5%);
+}
+
+.bottom_bottom {
+  flex-wrap: wrap
 }
 
 .button_espace_container {
-  width: 33vw;
+  width: auto;
   background-color: rgb(91, 92, 96);
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -405,6 +420,14 @@ body {
 #p_different {
   font-size: 1.5vh;
   text-transform: uppercase;
+}
+
+.content_div_espace h1 {
+  font-size: 5vh;
+}
+
+.content_div_espace p {
+  font-size: 2.3vh;
 }
 
 .séparation {

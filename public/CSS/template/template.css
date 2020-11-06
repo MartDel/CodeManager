@@ -1133,11 +1133,13 @@ input.apple-switch:checked:after {
 
 /*ACCOUNT MODAL*/
 #account .modal-wrapper {
-  height: 60%;
   width: 30%;
+  height: auto;
   background-color: #fff;
   top: 20%;
   left: 35%;
+  padding-top: 20px;
+  padding-bottom: 70px;
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
 }
