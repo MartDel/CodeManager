@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html unselectable="on" onselectstart="return false;">
 	<head>
 	    <title><?= $title ?></title>
 		<meta charset="utf-8" />

@@ -64,7 +64,7 @@ ob_start();
 
         </div>
 
-        <section class="list_task">
+        <section class="list_task" unselectable="off" onselectstart="return true;">
             <ul id="liste_taches" class="liste_taches" style="opacity:0;">
             <?php if (isset($tasks)): ?>
                 <!--TACHES NON REALISEES-->
