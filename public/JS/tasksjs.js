@@ -5,12 +5,13 @@ const tasks = {
         check_js: document.getElementsByClassName("check_js"),
         tick: document.getElementsByClassName("tick"),
         tick2: document.getElementsByClassName("tick2"),
+        trash: document.getElementsByClassName("trash-btn")
     },
     container: document.getElementById('liste_taches'),
 }
 let tasks_done = {
     show: false,
-    btn: document.getElementById('tasks_done'),
+    btn: document.getElementsByClassName('tasks_done'),
     list: document.getElementsByName('done_task')
 }
 
@@ -30,6 +31,13 @@ const select_all = {
     checkbox: document.getElementsByClassName("to_check"),
     trash: document.getElementsByClassName("trash")[0],
 };
+const select_all2 = {
+    select_all: document.getElementById("select_all2"),
+    category_names: document.getElementsByClassName('categories'),
+    categories: document.getElementsByClassName('category-check'),
+    checkbox: document.getElementsByClassName("to-check2"),
+    trash: document.getElementsByClassName("trash")[1],
+};
 
 let display = {
     button:document.getElementsByClassName("selected_display")[0],
@@ -40,7 +48,6 @@ let display = {
     category_1:document.getElementById("category_1"),
     category_2:document.getElementById("category_2")
 }
-
 
 /*
 =========================
@@ -59,12 +66,14 @@ window.onload = () => {
     tasks_done.show = params.has('endTask')
     showTasks(!tasks_done.show)
     showDoneTasks(tasks_done.show)
-    if (tasks_done.show) {
-            tasks_done.btn.style.filter = "grayscale(0%)";
-            tasks_done.btn.style.animation = "0.5s Rotate";
-    } else {
-            tasks_done.btn.style.filter = "grayscale(100%)";
-            tasks_done.btn.style.animation = "0.5s RotateInv";
+    for (let i = 0; i < tasks_done.btn.length; i++) {
+        if (tasks_done.show) {
+                tasks_done.btn[i].style.filter = "grayscale(0%)";
+                tasks_done.btn[i].style.animation = "0.5s Rotate";
+        } else {
+                tasks_done.btn[i].style.filter = "grayscale(100%)";
+                tasks_done.btn[i].style.animation = "0.5s RotateInv";
+        }
     }
     tasks.container.style.opacity = 1
 };
@@ -76,27 +85,63 @@ function showTasks(print) {
     for (let i = 0; i < tasks.list.length; i++) {
         if (print) show(tasks.list[i])
         else hide(tasks.list[i])
-    }
-}
 
+        const inputs = tasks.list[i].getElementsByTagName('input')
+        manageActivesInputs(inputs, print)
+    }
+
+    manageCategoryNames()
+}
 function showDoneTasks(print) {
     for (let i = 0; i < tasks_done.list.length; i++) {
         if (print) show(tasks_done.list[i])
         else hide(tasks_done.list[i])
+
+        const inputs = tasks_done.list[i].getElementsByTagName('input')
+        manageActivesInputs(inputs, print)
+    }
+
+    manageCategoryNames()
+}
+function manageActivesInputs(inputs, active){
+    for (let i = 0; i < inputs.length; i++) {
+        if(inputs[i].type === 'checkbox'){
+            if(active) inputs[i].classList.add('active')
+            else inputs[i].classList.remove('active')
+        }
     }
 }
-tasks_done.btn.onclick = () => {
-    setURLParams(tasks_done.show ? '' : 'endTask')
-    showTasks(tasks_done.show)
-    showDoneTasks(!tasks_done.show)
-    if (!tasks_done.show) {
-        tasks_done.btn.style.filter = "grayscale(0%)";
-        tasks_done.btn.style.animation = "0.5s Rotate";
-    } else {
-        tasks_done.btn.style.filter = "grayscale(100%)";
-        tasks_done.btn.style.animation = "0.5s RotateInv";
+function manageCategoryNames() {
+    const show_category_names = document.getElementsByClassName('active').length !== 0
+    for (let i = 0; i < select_all2.category_names.length; i++) {
+        select_all2.category_names[i]
+        if(show_category_names) show(select_all2.category_names[i])
+        else hide(select_all2.category_names[i])
     }
-    tasks_done.show = !tasks_done.show
+}
+for (let i = 0; i < tasks_done.btn.length; i++) {
+    tasks_done.btn[i].onclick = (event) => {
+        setURLParams(tasks_done.show ? '' : 'endTask')
+
+        const display = getCookie('display') === '1' ? select_all : select_all2
+        display.select_all.checked = false
+        for (let i = 0; i < display.checkbox.length; i++) {
+            display.checkbox[i].checked = false
+        }
+
+        showTasks(tasks_done.show)
+        showDoneTasks(!tasks_done.show)
+
+        if (!tasks_done.show) {
+            event.target.style.filter = "grayscale(0%)";
+            event.target.style.animation = "0.5s Rotate";
+        } else {
+            event.target.style.filter = "grayscale(100%)";
+            event.target.style.animation = "0.5s RotateInv";
+        }
+
+        tasks_done.show = !tasks_done.show
+    }
 }
 
 
@@ -143,7 +188,7 @@ function change_display(){
 /*
  * MODAL TASK
  */
-function showModal(event, suffix) {
+function showModal(event) {
     // Get task id
     let id = null;
     const path = event.path;
@@ -153,17 +198,18 @@ function showModal(event, suffix) {
             if (current_id.indexOf("task") !== -1) id = current_id;
         }
     }
+    if(!id) return;
 
     if (contain(tasks.btn.tick2, event.target)) modals.show(id + '_edit')
-    else if (!contain(tasks.btn.check_js, event.target) && !contain(tasks.btn.tick, event.target)) modals.show(id + '_modal');
+    else if(!contain(tasks.btn.check_js, event.target)
+    && !contain(tasks.btn.tick, event.target)
+    && !contain(tasks.btn.trash, event.target)) modals.show(id + '_modal');
 }
 for (let i = 0; i < tasks.list.length; i++) {
-    tasks.list[i].onclick = (event) => showModal(event, '_modal');
+    tasks.list[i].onclick = (event) => showModal(event);
 }
 for (let i = 0; i < tasks_done.list.length; i++) {
-    tasks_done.list[i].onclick = (event) => showModal(event, '_modal');
-    if(tasks_done.list[i].querySelector('.edittask-btn')) {
-    }
+    tasks_done.list[i].onclick = (event) => showModal(event);
 }
 
 /*
@@ -180,45 +226,91 @@ addtask.cancel_btn.onclick = () => {
 /*
  * SELECT ALL TASKS
  */
-select_all.select_all.onclick = () => {
-    for (let i = 0; i < select_all.checkbox.length; i++) {
-        select_all.checkbox[i].checked = select_all.select_all.checked;
-    }
-    if (select_all.select_all.checked) {
-        select_all.trash.style.display = "inline-block";
-    } else {
-        select_all.trash.style.display = "none";
-    }
-};
-for (let i = 0; i < select_all.checkbox.length; i++) {
-    select_all.checkbox[i].onclick = (event) => {
-        let c_checkbox = event.target;
-        // console.log(c_checkbox);
-        if (c_checkbox.checked) {
-            // Show trash or do nothing
-            select_all.trash.style.display = "inline-block";
-
-            let all_selected = true
-            for (let i = 0; i < select_all.checkbox.length; i++) {
-                if (!select_all.checkbox[i].checked) all_selected = false;
-            }
-            if (all_selected) select_all.select_all.checked = true;
-        } else {
-            let all_selected = true
-            for (let i = 0; i < select_all.checkbox.length; i++) {
-                if (!select_all.checkbox[i].checked) all_selected = false;
-            }
-            if (all_selected) select_all.select_all.checked = true;
-            else select_all.select_all.checked = false;
-
-            let hide = true;
-            for (let i = 0; i < select_all.checkbox.length; i++) {
-                if (select_all.checkbox[i].checked) hide = false;
-            }
-            if (hide) select_all.trash.style.display = "none";
+function selectAll(display){
+    for (let i = 0; i < display.checkbox.length; i++) {
+        if (display.checkbox[i].classList.contains('active')
+        && !display.checkbox[i].classList.contains('category-check')){
+            display.checkbox[i].checked = display.select_all.checked;
         }
-    };
+    }
+    display.trash.style.display = display.select_all.checked ? "inline-block" : "none";
 }
+function manageCheckbox(event) {
+    const c_checkbox = event.target;
+    const display = c_checkbox.classList.contains('to-check2') ? select_all2 : select_all
+    // console.log(display);
+
+    if (c_checkbox.checked) display.trash.style.display = "inline-block";
+    else {
+        let all_selected = true
+        for (let i = 0; i < display.checkbox.length; i++) {
+            if (!display.checkbox[i].checked) all_selected = false;
+        }
+        display.select_all.checked = all_selected;
+
+        let hide = true;
+        for (let i = 0; i < display.checkbox.length; i++) {
+            if (display.checkbox[i].checked) hide = false;
+        }
+        if (hide) display.trash.style.display = "none";
+    }
+
+    // To check or not to check selectAll checkbox
+    let all_selected = true
+    for (let i = 0; i < display.checkbox.length; i++) {
+        if (display.checkbox[i].classList.contains('active')
+        && !display.checkbox[i].checked
+        && !display.checkbox[i].classList.contains('category-check')) all_selected = false;
+    }
+    display.select_all.checked = all_selected;
+
+    // Get current category
+    const category = getTaskCategory(c_checkbox)
+    if (!category) return;
+    // To check or not to check category checkbox
+    let category_selected = true
+    for (let i = 0; i < display.checkbox.length; i++) {
+        if (display.checkbox[i].classList.contains('active')
+        && !display.checkbox[i].checked
+        && !display.checkbox[i].classList.contains('category-check')
+        && getTaskCategory(display.checkbox[i]) === category) category_selected = false;
+    }
+    document.getElementById(category).checked = category_selected
+}
+function getTaskCategory(input){
+    const classes = input.classList
+    for (let i = 0; i < classes.length; i++) {
+        if(classes[i].indexOf('in-category') !== -1) return classes[i].substring(3)
+    }
+    return null
+}
+
+// First display
+select_all.select_all.onclick = () => selectAll(select_all)
+for (let i = 0; i < select_all.checkbox.length; i++) {
+    select_all.checkbox[i].onclick = manageCheckbox
+}
+
+// Second display
+select_all2.select_all.onclick = () => selectAll(select_all2)
+for (let i = 0; i < select_all2.checkbox.length; i++) {
+    select_all2.checkbox[i].onclick = manageCheckbox
+}
+for (let i = 0; i < select_all2.categories.length; i++) {
+    select_all2.categories[i].onclick = (event) => {
+        const c_checkbox = event.target
+        const category = c_checkbox.id
+        console.log(category);
+        for (let i = 0; i < select_all2.checkbox.length; i++) {
+            if (select_all2.checkbox[i].classList.contains('active')
+            && !select_all2.checkbox[i].classList.contains('category-check')
+            && getTaskCategory(select_all2.checkbox[i]) === category){
+                select_all2.checkbox[i].checked = c_checkbox.checked
+            }
+        }
+    }
+}
+
 
 function setURLParams(params){
     // Get file name

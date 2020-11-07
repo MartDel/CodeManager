@@ -317,8 +317,11 @@ aside[name~=popup_modal_task] .modal-wrapper {
   /*border-right: red 5px solid;*/
 }
 
-.done-task span {
+.done-task {
   text-decoration: line-through;
+}
+.done-task .no-decorations{
+    text-decoration: none;
 }
 
 .list_task {
@@ -1047,7 +1050,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   width: 100%;
 }
 
-#category_name {
+.category-name {
   text-align: center;
   text-transform: uppercase;
   color: #b41e10;
@@ -1062,13 +1065,17 @@ aside[name~=popup_modal_task] .modal-wrapper {
   flex-direction: row;
 }
 
-#category_name p {
+.category-name p {
   text-align: center;
   margin: 0;
   padding: 0
 }
 
-#category_name input {
+.category-name label{
+    cursor: pointer;
+}
+
+.category-name input {
   text-align: center;
   margin: 2px 10px 0px 0px;
   padding: 0;
@@ -1077,7 +1084,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: all 0.2s;
 }
 
-#category_name:hover input {
+.category-name:hover input {
   transition: all 0.2s;
   visibility: visible;
   transform: scale(1);
