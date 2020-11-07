@@ -120,7 +120,7 @@ ob_start();
             </span>
         </div>
         <div class="wrapper-table-task">
-            <div class="table-wrapper">
+            <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasks)): ?>
                 <table class="table_contain">
                     <tbody>
@@ -152,7 +152,7 @@ ob_start();
                                             <img src="public/img/edit_task_bar.png" class="tick2" alt="" />
                                             <img src="public/img/trash.png" class="trash-btn" alt="" />
                                         </div>
-                                        <div>
+                                        <div class="task_name_mozaic">
                                             <p><?= $task->getName() ?></p>
                                         </div>
                                     </div>

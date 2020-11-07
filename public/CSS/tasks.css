@@ -320,8 +320,9 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .done-task {
   text-decoration: line-through;
 }
-.done-task .no-decorations{
-    text-decoration: none;
+
+.done-task .no-decorations {
+  text-decoration: none;
 }
 
 .list_task {
@@ -1030,6 +1031,22 @@ aside[name~=popup_modal_task] .modal-wrapper {
   flex-direction: row;
   height: auto;
   width: 200px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
+.task_name_mozaic {
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  width: calc(100% - 20px);
+  background-color: none;
+  padding-right: 10px;
+}
+
+.mozaic_all_table {
+  background-color: none;
+  overflow-y: scroll;
+  height: calc(100vh - 103px)
 }
 
 .table_col_main p {
@@ -1071,8 +1088,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
   padding: 0
 }
 
-.category-name label{
-    cursor: pointer;
+.category-name label {
+  cursor: pointer;
 }
 
 .category-name input {
