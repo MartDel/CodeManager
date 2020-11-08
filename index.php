@@ -34,7 +34,8 @@ try{
 			// Projects
 			elseif ($action == 'createproject') createProject($_POST); // Add a new project
 			// Account
-			elseif($action == 'deleteAccount') deleteAccount();
+			elseif ($action == 'editPP') editPP(); // Change profile picture
+			elseif ($action == 'deleteAccount') deleteAccount();
 			elseif ($action == "logout") logout(); // Logout the current user
 			else header('Location: index.php');
 		} else {

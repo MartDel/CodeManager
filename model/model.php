@@ -89,6 +89,7 @@ function connectUser($login, $auto){
 	$_SESSION['mail'] = $user->getMail();
 	$_SESSION['firstname'] = $user->getFirstname();
 	$_SESSION['lastname'] = $user->getLastname();
+	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	$project = Project::getFirstProject($user_id);
 	if($project) $_SESSION['project_id'] = $project->getId();
@@ -153,6 +154,28 @@ function getCommits($github_user, $project_name){
 	return $json;
 }
 
+// Account
+
+function checkFileInfo(){
+	// Check if there is no error
+    if (!isset($_FILES['pp']) || $_FILES['pp']['error'] != 0){
+        throw new CustomException('Erreur', 'Un problème est survenu.', 'index.php?action=' . getLastPage());
+    }
+
+	// Check the file size
+	if ($_FILES['pp']['size'] > 1000000){
+		throw new CustomException('Fichier trop volumineux', 'Le fichier que vous avez fourni est trop volumineux. Veuillez recommencer avec un fichier moins lourd.', 'index.php?action=' . getLastPage());
+	}
+
+	// Check file extension
+	$infosfichier = pathinfo($_FILES['pp']['name']);
+	$extension_upload = $infosfichier['extension'];
+	$extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+	if (!in_array($extension_upload, $extensions_autorisees)) {
+		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .gif, .png", 'index.php?action=' . getLastPage());
+	}
+}
+
 // Functions
 
 /**
@@ -162,4 +185,12 @@ function getCommits($github_user, $project_name){
  */
 function getLastPage($error_redirect = 'home'){
 	return isset($_SESSION['last_page']) ? $_SESSION['last_page'] : $error_redirect;
+}
+
+/**
+ * Get the connected user as an User object
+ * @return User The connected user
+ */
+function getCurrentUser(){
+	return new User($_SESSION['pseudo'], $_SESSION['mail'], $_SESSION['firstname'], $_SESSION['lastname']);
 }

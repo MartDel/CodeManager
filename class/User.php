@@ -10,6 +10,7 @@ class User extends DatabaseManager
     private $mail;
     private $firstname;
     private $lastname;
+    private $picture;
     // private $role;
 
     const TABLE_NAME = "users";
@@ -21,10 +22,11 @@ class User extends DatabaseManager
         $this->firstname = $firstname;
         $this->lastname = $lastname;
 
-        // Get user id
         try {
             $db = self::dbConnect();
-            $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');
+
+            // Get user's id and picture name
+            $query = $db->prepare('SELECT id, picture FROM ' . self::TABLE_NAME . ' WHERE pseudo=:pseudo AND mail=:mail');
             $query->execute([
                 'pseudo' => $this->pseudo,
                 'mail' => $this->mail
@@ -32,8 +34,10 @@ class User extends DatabaseManager
             $data = $query->fetch();
             $query->closeCursor();
             $this->id = isset($data['id']) ? $data['id'] : null;
+            $this->picture = isset($data['picture']) ? $data['picture'] : null;
         } catch (Exception $e) {
             $this->id = null;
+            $this->picture = null;
         }
 
     }
@@ -54,6 +58,21 @@ class User extends DatabaseManager
             'lastname' => $this->lastname
         ]);
         $add->closeCursor();
+    }
+
+    /**
+     * Set the user's picture in the database
+     * @param String $name Picture name
+     */
+    public function setPictureName($name){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture = :pname WHERE id=:id");
+        $set->execute([
+            'pname' => $name,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->picture = $name;
     }
 
     /**
@@ -129,6 +148,9 @@ class User extends DatabaseManager
     }
     public function getLastname(){
         return $this->lastname;
+    }
+    public function getPictureName(){
+        return $this->picture;
     }
     // public function getRole(){
     //     return $this->role;

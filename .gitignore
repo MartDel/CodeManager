@@ -1,3 +1,9 @@
+# Passwords and tokens
 Passwords.php
-
 CodeManagerMobile/app/src/main/java/fr/martdel/codemanagermobile/models/Passwords.java
+
+# Profiles pictures
+public/img/users/*.jpg
+public/img/users/*.jpeg
+public/img/users/*.gif
+public/img/users/*.png

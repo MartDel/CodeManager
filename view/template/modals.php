@@ -54,8 +54,9 @@
       <a href="#">
         <div class="img_account_change">
           <img id="img_account_changeimg" src="public/img/switzerland.png" alt="">
-            <form id="form_add_img" class="form_add_img" action="#" method="post" enctype="multipart/form-data" onmouseover="hover_change()" onmouseleave="leave_change()">
-              <input class="input_img" size="0" id="input_img" type="file">
+            <form id="form_add_img" class="form_add_img" action="index.php?action=editPP" method="post" enctype="multipart/form-data" onmouseover="hover_change()" onmouseleave="leave_change()">
+              <input class="input_img" size="0" id="input_img" type="file" name="pp" />
+              <input type="submit" value="Envoyer" />
             </form>
             <h3 id="img_text">Changer</h3>
           </div>
