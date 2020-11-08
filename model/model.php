@@ -6,7 +6,7 @@
  */
 function checkNewUserData($data){
 	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
-		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 	}
 	$pseudo = htmlspecialchars($data['pseudo']);
 	$mail = htmlspecialchars($data['mail']);
@@ -15,16 +15,16 @@ function checkNewUserData($data){
 	$password = $data['password'];
 	$confirm = $data['confirm'];
 	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") {
-		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 	}
 	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-		throw new CustomException('Addresse mail non valide', "L'addresse e-mail n'est pas valide.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmail');
+		throw new CustomException('Addresse mail non valide', "L'addresse e-mail n'est pas valide.", 'index.php?action=' . getLastPage(), 'focusEmail');
 	}
 	if($password != $confirm) {
-		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
+		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
 	}
 	if((new User($pseudo, $mail, $firstname, $lastname))->accountExist()) {
-		throw new CustomException('Compte déjà existant', "Un compte déja existant a été trouvé avec ces identifiants.", 'index.php?action=' . $_SESSION['last_page']);
+		throw new CustomException('Compte déjà existant', "Un compte déja existant a été trouvé avec ces identifiants.", 'index.php?action=' . getLastPage());
 	}
 }
 
@@ -53,22 +53,24 @@ function checkConnection($l, $p, $is_hashed) {
 	$password = $p;
 	$user = new User($login, $login, '', '');
 	if(!$user->accountExist()){
-		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 	}
 
 	$correct_password = User::getPassword($login);
 	if($correct_password == null) {
-		throw new CustomException('Erreur!', "Une erreur s'est produite.", 'index.php?action=' . $_SESSION['last_page']);
+		throw new CustomException('Erreur!', "Une erreur s'est produite.", 'index.php?action=' . getLastPage());
 	}
 
-	if($is_hashed && $password != $correct_password){
-		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
+	if($is_hashed){
+		if($password != $correct_password){
+			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
+		}
 	} else {
 		if($login == "" || $password == "") {
-			throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+			throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 		}
 		if(!password_verify($password, $correct_password)) {
-			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . $_SESSION['last_page'], 'focusPassword');
+			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
 		}
 	}
 }
@@ -92,9 +94,9 @@ function connectUser($login, $auto){
 	if($project) $_SESSION['project_id'] = $project->getId();
     else {
 		session_destroy();
-		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . $_SESSION['last_page'], 'openPhpMyAdmin');
+		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . getLastPage(), 'openPhpMyAdmin');
 	}
-	
+
 	if($auto){
 		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
 		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);
@@ -149,4 +151,15 @@ function getCommits($github_user, $project_name){
   	$raw = file_get_contents($url, false, $context);
   	$json = json_decode($raw);
 	return $json;
+}
+
+// Functions
+
+/**
+ * Get the last page name with $_SESSION
+ * @param String $error_redirect What returned if $_SESSION['last_page'] doesn't exist
+ * @return String The last page name
+ */
+function getLastPage($error_redirect = 'home'){
+	return isset($_SESSION['last_page']) ? $_SESSION['last_page'] : $error_redirect;
 }

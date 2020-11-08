@@ -17,7 +17,7 @@ function checkSignUp($post){
  */
 function checkSignIn($post){
     if(!isset($post['login']) || !isset($post['password'])) {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusEmptyInput');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
     }
     checkConnection($post['login'], $post['password'], false);
     connectUser(htmlspecialchars($post['login']), $post['auto']);
@@ -37,14 +37,9 @@ function deleteAccount(){
  * Check if user's cookies are correct
  */
 function checkCookie(){
-    try {
-        checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
-        connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
-        header("Location: index.php");
-    } catch (Exception $e) {
-        logout();
-        header("Location: index.php");
-    }
+    checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
+    connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
+    header("Location: index.php");
 }
 
 /**
@@ -92,7 +87,7 @@ function showProjectCommits(){
  */
 function addTask($data){
     if(!isset($data['title']) || htmlspecialchars($data['title']) == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusTitleAddTask');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusTitleAddTask');
     }
     $task = new Task(htmlspecialchars($data['title']), $_SESSION['project_id'], false, null, $_SESSION['user_id'], htmlspecialchars($data['description']));
     $task->pushToDB();
@@ -119,7 +114,7 @@ function endTask($data){
  */
 function createProject($data){
     if(!isset($data['name']) || htmlspecialchars($data['name']) == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . $_SESSION['last_page'], 'focusNameCreateProject');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameCreateProject');
     }
 
     // Create remote link with remote informations
