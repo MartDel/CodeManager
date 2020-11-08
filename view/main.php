@@ -116,7 +116,7 @@ ob_start();
                 <img class="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
-                <img class="trash" src="public/img/trash.png" alt="" />
+                <img class="trash" src="public/img/trash.png" alt="" style="display:none;" />
             </span>
         </div>
         <div class="wrapper-table-task">

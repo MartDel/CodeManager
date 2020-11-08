@@ -300,7 +300,7 @@ for (let i = 0; i < select_all2.categories.length; i++) {
     select_all2.categories[i].onclick = (event) => {
         const c_checkbox = event.target
         const category = c_checkbox.id
-        console.log(category);
+
         for (let i = 0; i < select_all2.checkbox.length; i++) {
             if (select_all2.checkbox[i].classList.contains('active')
             && !select_all2.checkbox[i].classList.contains('category-check')
@@ -308,6 +308,8 @@ for (let i = 0; i < select_all2.categories.length; i++) {
                 select_all2.checkbox[i].checked = c_checkbox.checked
             }
         }
+
+        select_all2.trash.style.display = c_checkbox.checked ? "inline-block" : "none";
     }
 }
 
