@@ -136,17 +136,33 @@ function createProject($data){
     }
 
     // Create remote link with remote informations
-    $remote = null;
-    if(isset($data['github_pseudo']) && htmlspecialchars($data['github_pseudo']) != ''
-    && isset($data['remote']) && htmlspecialchars($data['remote']) != '') {
-        $remote = 'https://github.com/' . htmlspecialchars($data['github_pseudo']) . '/' . htmlspecialchars($data['remote']);
-    }
+    $remote = createRemote($data);
 
     $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), $remote);
     $project->pushToDB();
     header('Location: index.php?project=' . $project->getDatabaseId());
 }
 
+/**
+ * Edit the current project
+ * @param Object $data All of project data
+ */
+function editProject($data){
+    if(!isset($data['name']) || htmlspecialchars($data['name']) == '') {
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameEditProject');
+    }
+
+    // Create remote link with remote informations
+    $remote = createRemote($data);
+
+    $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), $remote);
+    $project->update($_SESSION['project_id']);
+    header('Location: index.php');
+}
+
+/**
+ * Delete the current project from the database
+ */
 function deleteProject(){
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project->delete();
@@ -178,6 +194,19 @@ function setCurrentProject(){
         $project_id = htmlspecialchars($_GET['project']);
         if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
     }
+}
+
+/**
+ * Create remote link with POST data
+ * @param Object $data POST data
+ * @return String The remote link, null if there isn't enough information
+ */
+function createRemote($data){
+    if(isset($data['github_pseudo']) && htmlspecialchars($data['github_pseudo']) != ''
+    && isset($data['remote']) && htmlspecialchars($data['remote']) != '') {
+        return 'https://github.com/' . htmlspecialchars($data['github_pseudo']) . '/' . htmlspecialchars($data['remote']);
+    }
+    return null;
 }
 
 function test(){

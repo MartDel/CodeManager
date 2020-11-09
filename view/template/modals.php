@@ -181,23 +181,22 @@
   </form>
 </modal>
 
-<!--MODAL CREATE PROJECT-->
-
+<!--Edit project modal-->
 <modal id="edit_project">
   <section id="header_edit_project">
       <p>Modifier le projet</p>
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
-  <form name="edit_project_form" action="index.php?action=createproject" method="POST">
+  <form name="edit_project_form" action="index.php?action=editproject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
       <input name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
-      <textarea name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></textarea><br><br>
+      <textarea name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
-        <input name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"></input>
+        <input name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub" value="<?= $project->getRemotePseudo() ?>" /><br><br>
+        <input name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"  value="<?= $project->getRemoteName() ?>" />
       </div>
       <div class="flex_button_edit">
         <br><br>

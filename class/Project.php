@@ -52,6 +52,21 @@ class Project extends DatabaseManager
     }
 
     /**
+     * Update project from the database
+     */
+    public function update($project_id){
+        $db = self::dbConnect();
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name, description=:description, remote=:remote WHERE id=:id');
+        $update->execute([
+            'name' => $this->name,
+            'description' => $this->description ? $this->description : null,
+            'remote' => $this->remote ? $this->remote : null,
+            'id' => $project_id
+        ]);
+        $update->closeCursor();
+    }
+
+    /**
      * Delete a project from the database
      */
     public function delete(){
@@ -166,7 +181,17 @@ class Project extends DatabaseManager
     public function getDescription(){
         return $this->description;
     }
-    public function getRemote(){
+    public function getFullRemote(){
         return $this->remote;
+    }
+    public function getRemotePseudo(){
+        $infos = explode('/', substr($this->remote, 19));
+        if(count($infos) == 2) return $infos[0];
+        return null;
+    }
+    public function getRemoteName(){
+        $infos = explode('/', substr($this->remote, 19));
+        if(count($infos) == 2) return $infos[1];
+        else return null;
     }
 }

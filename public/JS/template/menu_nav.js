@@ -402,49 +402,49 @@ textarea.pseudo_validate.onclick = () => {
   textarea.pseudo.disabled=true;
 }
 
-change.mail.onclick = () => {
-  textarea.mail.disabled=false;
-  textarea.mail_validate.style.marginRight = "100px";
-  textarea.mail_validate.style.opacity = "1";
-  textarea.mail.focus();
-  textarea.pseudo_validate.click();
-  textarea.pass_validate.click();
-}
-
-textarea.mail_validate.onclick = () => {
-  const newplaceholder_mail = textarea.mail.value;
-  if (newplaceholder_mail != "") {
-    textarea.mail.value ="";
-    textarea.mail.value = newplaceholder_mail;
-    change.button.innerHTML = "Effectuer les changements";
-    change.button.type = "submit"
-  }
-  textarea.mail_validate.style.marginRight = "50px";
-  textarea.mail_validate.style.opacity = "0";
-  textarea.mail.disabled=true;
-}
-
-change.pass.onclick = () => {
-  textarea.pass.disabled=false;
-  textarea.pass_validate.style.marginRight = "100px";
-  textarea.pass_validate.style.opacity = "1";
-  textarea.pass.focus();
-  textarea.mail_validate.click();
-  textarea.pseudo_validate.click();
-}
-
-textarea.pass_validate.onclick = () => {
-  const newplaceholder_pass = textarea.pass.value;
-  if (newplaceholder_pass != "") {
-    textarea.pass.value ="";
-    change.button.innerHTML = "Effectuer les changements";
-    change.button.type = "submit";
-    textarea.pass.value = newplaceholder_pass;
-  }
-  textarea.pass_validate.style.marginRight = "50px";
-  textarea.pass_validate.style.opacity = "0";
-  textarea.pass.disabled=true;
-}
+// change.mail.onclick = () => {
+//   textarea.mail.disabled=false;
+//   textarea.mail_validate.style.marginRight = "100px";
+//   textarea.mail_validate.style.opacity = "1";
+//   textarea.mail.focus();
+//   textarea.pseudo_validate.click();
+//   textarea.pass_validate.click();
+// }
+//
+// textarea.mail_validate.onclick = () => {
+//   const newplaceholder_mail = textarea.mail.value;
+//   if (newplaceholder_mail != "") {
+//     textarea.mail.value ="";
+//     textarea.mail.value = newplaceholder_mail;
+//     change.button.innerHTML = "Effectuer les changements";
+//     change.button.type = "submit"
+//   }
+//   textarea.mail_validate.style.marginRight = "50px";
+//   textarea.mail_validate.style.opacity = "0";
+//   textarea.mail.disabled=true;
+// }
+//
+// change.pass.onclick = () => {
+//   textarea.pass.disabled=false;
+//   textarea.pass_validate.style.marginRight = "100px";
+//   textarea.pass_validate.style.opacity = "1";
+//   textarea.pass.focus();
+//   textarea.mail_validate.click();
+//   textarea.pseudo_validate.click();
+// }
+//
+// textarea.pass_validate.onclick = () => {
+//   const newplaceholder_pass = textarea.pass.value;
+//   if (newplaceholder_pass != "") {
+//     textarea.pass.value ="";
+//     change.button.innerHTML = "Effectuer les changements";
+//     change.button.type = "submit";
+//     textarea.pass.value = newplaceholder_pass;
+//   }
+//   textarea.pass_validate.style.marginRight = "50px";
+//   textarea.pass_validate.style.opacity = "0";
+//   textarea.pass.disabled=true;
+// }
 
 change.button.onclick = () => {
   textarea.mail_validate.click();

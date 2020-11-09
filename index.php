@@ -33,6 +33,7 @@ try{
 			elseif ($action == "commits") showProjectCommits();
 			// Projects
 			elseif ($action == 'createproject') createProject($_POST); // Add a new project
+			elseif ($action == 'editproject') editProject($_POST); // Add a new project
 			elseif ($action == 'deleteproject') deleteProject(); // Delete the project
 			// Account
 			elseif ($action == 'editPP') editPP(); // Change profile picture
