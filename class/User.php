@@ -46,16 +46,17 @@ class User extends DatabaseManager
     * Upload the new user to the database
     * @param  string $password The user's password
     */
-    public function pushToDB($password){
+    public function pushToDB($password, $login_id){
         $db = self::dbConnect();
         $final_password = password_hash($password, PASSWORD_DEFAULT);
-        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(pseudo, password, mail, firstname, lastname) VALUES(:pseudo, :password, :mail, :firstname, :lastname)');
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(pseudo, password, mail, firstname, lastname, login_id) VALUES(:pseudo, :password, :mail, :firstname, :lastname, :login_id)');
         $add->execute([
             'pseudo' => $this->pseudo,
             'password' => $final_password,
             'mail' => $this->mail,
             'firstname' => $this->firstname,
-            'lastname' => $this->lastname
+            'lastname' => $this->lastname,
+            'login_id' => $login_id
         ]);
         $add->closeCursor();
     }
@@ -120,6 +121,20 @@ class User extends DatabaseManager
     }
 
     /**
+    * Get the user's login_id from his login
+    * @param string $login User's username or email
+    * @return string User's login_id (or null if it doesn't exist)
+    */
+    public static function getUniqueId($login){
+        $db = self::dbConnect();
+        $login_query = $db->prepare('SELECT login_id FROM ' . self::TABLE_NAME . ' WHERE pseudo=? OR mail=?');
+        $login_query->execute([$login, $login]);
+        $data = $login_query->fetch();
+        $login_query->closeCursor();
+        return isset($data['login_id']) ? $data['login_id'] : null;
+    }
+
+    /**
     * Get an user by his login
     * @param string $login User's pseudo or email
     * @return User User object reprenting the current user
@@ -131,6 +146,25 @@ class User extends DatabaseManager
         $data = $query->fetch();
         $query->closeCursor();
         return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+    }
+
+    /**
+    * Get an user by his login_id
+    * @param string $login_id User's login_id
+    * @return User User object reprenting the current user
+    */
+    public static function getUserByLoginId($hashed_login){
+        $db = self::dbConnect();
+        $user = null;
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME);
+        $query->execute();
+        while($data = $query->fetch()){
+            if(password_verify($data['login_id'], $hashed_login)){
+                $user = new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+            }
+        }
+        $query->closeCursor();
+        return $user;
     }
 
     // GETTERS

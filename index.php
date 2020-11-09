@@ -54,7 +54,7 @@ try{
 			elseif ($action == "home") require('view/home.php'); // Home page
 			else header('Location: index.php');
 		} else {
-			if (isset($_COOKIE['pseudo']) && isset($_COOKIE['password'])) {
+			if (isset($_COOKIE['auth'])) {
 				checkCookie(); // Check if user's cookies are correct
 			} else require('view/home.php'); // Home page
 		}

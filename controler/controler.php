@@ -55,9 +55,13 @@ function deleteAccount(){
  * Check if user's cookies are correct
  */
 function checkCookie(){
-    checkConnection($_COOKIE['pseudo'], $_COOKIE['password'], true);
-    connectUser(htmlspecialchars($_COOKIE['pseudo']), true);
-    header("Location: index.php");
+    $user = User::getUserByLoginId(htmlspecialchars($_COOKIE['auth']));
+    if($user){
+        connectUser($user->getPseudo(), false);
+        header("Location: index.php");
+    } else {
+        logout();
+    }
 }
 
 /**
@@ -181,8 +185,7 @@ function deleteProject(){
  */
 function logout(){
     session_destroy();
-	setcookie('pseudo', '', time() + 365*24*3600, '/', null, false, true);
-	setcookie('password', '', time() + 365*24*3600, '/', null, false, true);
+	setcookie('auth', '', time() + 365*24*3600, '/', null, false, true);
     header('Location: index.php');
 }
 

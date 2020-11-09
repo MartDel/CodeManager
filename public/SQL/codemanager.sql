@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 06 nov. 2020 à 19:44
+-- Généré le : lun. 09 nov. 2020 à 22:06
 -- Version du serveur :  8.0.22-0ubuntu0.20.10.2
 -- Version de PHP : 7.4.9
 
@@ -36,17 +36,6 @@ CREATE TABLE `projects` (
   `remote` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `projects`
---
-
-INSERT INTO `projects` (`id`, `name`, `author_id`, `description`, `remote`) VALUES
-(1, 'TestProject', 1, 'Ceci est une description du projet TestProject', 'https://www.github.com/MartDel/TestProject'),
-(2, 'Test2Project', 1, NULL, NULL),
-(11, 'MyProject', 2, NULL, NULL),
-(12, 'fnnflk', 1, 'fnelzk', 'https://github.com/nfkezl/nflkeznl'),
-(13, 'fizu', 1, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -57,22 +46,12 @@ CREATE TABLE `tasks` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `categorie_id` int DEFAULT NULL,
   `author_id` int NOT NULL,
   `create_date` datetime NOT NULL,
   `is_done` tinyint(1) NOT NULL DEFAULT '0',
   `project_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `tasks`
---
-
-INSERT INTO `tasks` (`id`, `name`, `description`, `author_id`, `create_date`, `is_done`, `project_id`) VALUES
-(7, 'salut', 'yo', 1, '2020-10-02 12:10:47', 0, 1),
-(8, 'feznig', 'foizefb', 1, '2020-10-02 12:10:59', 0, 1),
-(9, 'saluuuuut', NULL, 1, '2020-10-02 12:12:25', 0, 2),
-(10, 'fnezlk', 'kgnzlkgnrkelnlk', 1, '2020-11-06 19:39:49', 0, 1),
-(11, 'gzenkl', 'gnrkellllkgrnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn', 1, '2020-11-06 19:40:16', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -86,16 +65,10 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL
+  `lastname` varchar(255) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `login_id` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `pseudo`, `password`, `mail`, `firstname`, `lastname`) VALUES
-(1, 'MartDel', '$2y$10$9kd5yLY0HUBK7tgZxHUQXeWLru403B077vwRli1cG2E18t3bQw7S6', 'martin-delebecque@outlook.fr', 'Martin', 'Delebecque'),
-(19, 'kfnzkl', '$2y$10$nOquMa5q2RCFxZZCRRU9Bu96nBdyMXyixL0i3OUPUFQ4Y1Jn2fJbu', 'nkflzn@fiozk.ffl', 'fnzlkg', 'nkfzln');
 
 --
 -- Index pour les tables déchargées
@@ -127,19 +100,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

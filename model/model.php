@@ -38,7 +38,7 @@ function addUser($data){
 	$firstname = htmlspecialchars($data['firstname']);
 	$lastname = htmlspecialchars($data['lastname']);
 	$user = new User($pseudo, $mail, $firstname, $lastname);
-	$user->pushToDB($data['password']);
+	$user->pushToDB($data['password'], genUniqueId());
 	connectUser($data['pseudo'], true);
 }
 
@@ -99,8 +99,8 @@ function connectUser($login, $auto){
 	}
 
 	if($auto){
-		setcookie('pseudo', $user->getPseudo(), time() + 365*24*3600, '/', null, false, true);
-		setcookie('password', User::getPassword($login), time() + 365*24*3600, '/', null, false, true);
+		$auth = password_hash(User::getUniqueId($user->getPseudo()), PASSWORD_DEFAULT);
+		setcookie('auth', $auth, time() + 365*24*3600, '/', null, false, true);
 	}
 }
 
@@ -193,4 +193,16 @@ function getLastPage($error_redirect = 'home'){
  */
 function getCurrentUser(){
 	return new User($_SESSION['pseudo'], $_SESSION['mail'], $_SESSION['firstname'], $_SESSION['lastname']);
+}
+
+/**
+ * Generate an unique id
+ * @param integer $length Id length (default = 13)
+ * @return String The unique id
+ */
+function genUniqueId($length = 13){
+	$bytes = random_bytes(ceil($length / 2));
+	// If 'random_bytes' doesn't exists
+	// $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
+    return substr(bin2hex($bytes), 0, $length);
 }
