@@ -89,7 +89,7 @@
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
-        <a href="index.php?action=deleteproject" id="confirm_open">Supprimer mon compte</a>
+        <a href="#" id="confirm_open" class="close-modal">Supprimer mon compte</a>
         <a href="#">Besoin d'aide ?</a>
       </div>
     </div>
