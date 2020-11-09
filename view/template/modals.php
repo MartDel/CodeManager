@@ -71,25 +71,25 @@
           <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
-        <div class="account_change_row">
+        <!-- <div class="account_change_row">
           <p>Mon adresse Mail : </p>
           <input class="input_fields" name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
           <img id="modify_textarea_mail" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_mail" class="validate_textarea" src="public/img/done.png" alt="">
-        </div>
+        </div> -->
 
-        <div class="account_change_row">
+        <!-- <div class="account_change_row">
           <p>Mon mot de passe : </p>
-          <input class="input_fields" name="pass" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
+          <input class="input_fields" name="password" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
           <img id="modify_textarea_pass" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
-        </div>
+        </div> -->
         <br><br>
         <button type="button" class="close-modal" id="cancel_submit_changes" name="button">Annuler</button>
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
-        <a href="#" id="confirm_open" class="close-modal">Supprimer mon compte</a>
+        <a href="index.php?action=deleteproject" id="confirm_open">Supprimer mon compte</a>
         <a href="#">Besoin d'aide ?</a>
       </div>
     </div>

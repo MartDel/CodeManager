@@ -82,6 +82,7 @@ class User extends DatabaseManager
         $db = self::dbConnect();
         $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
         $del->execute([$this->id]);
+        $del->closeCursor();
     }
 
     /**

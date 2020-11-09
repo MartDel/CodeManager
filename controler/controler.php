@@ -24,6 +24,9 @@ function checkSignIn($post){
     header("Location: index.php");
 }
 
+/**
+ * Change the user's profil picture
+ */
 function editPP(){
     checkFileInfo();
 
@@ -142,6 +145,19 @@ function createProject($data){
     $project = new Project(htmlspecialchars($data['name']), $_SESSION['user_id'], htmlspecialchars($data['description']), $remote);
     $project->pushToDB();
     header('Location: index.php?project=' . $project->getDatabaseId());
+}
+
+function deleteProject(){
+    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project->delete();
+
+    if(count(Project::getAllProjects($_SESSION['user_id'])) == 0){
+        logout();
+        throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=home', 'openPhpMyAdmin');
+    }
+    $_SESSION['project_id'] = Project::getFirstProject($_SESSION['user_id'])->getId();
+
+    header('Location: index.php');
 }
 
 /**

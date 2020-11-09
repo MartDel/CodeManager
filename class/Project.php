@@ -51,6 +51,21 @@ class Project extends DatabaseManager
         $add->closeCursor();
     }
 
+    /**
+     * Delete a project from the database
+     */
+    public function delete(){
+        $db = self::dbConnect();
+
+        $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $del->execute([$this->id]);
+
+        $del = $db->prepare('DELETE FROM ' . Task::TABLE_NAME . ' WHERE project_id=?');
+        $del->execute([$this->id]);
+
+        $del->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**
