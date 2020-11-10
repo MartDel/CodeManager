@@ -58,6 +58,16 @@ class Task extends DatabaseManager
         $add->closeCursor();
     }
 
+    /**
+     * Delete a task from the database
+     */
+    public function delete(){
+        $db = self::dbConnect();
+        $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $del->execute([$this->id]);
+        $del->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**
@@ -82,13 +92,13 @@ class Task extends DatabaseManager
      * @param int $id Task id
      * @return Project The specific task
      */
-    public static function getTaskById($id){
+    public static function getTaskById($id, $project){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=?');
-        $query->execute([$id]);
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=? AND project_id=?');
+        $query->execute([$id, $project]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description']);
+        return isset($data['id']) ? new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description']) : null;
     }
 
     // SETTERS

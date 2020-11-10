@@ -27,6 +27,7 @@ try{
 			if ($action == 'tasks') showMainPage();
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
+			elseif ($action == 'deletetasks') deleteTasks($_GET); // Delete selected tasks
 			// Team page
 			elseif ($action == 'team') showTeamPage();
 			// GitHub page

@@ -81,8 +81,16 @@ class User extends DatabaseManager
      */
     public function delete(){
         $db = self::dbConnect();
+
         $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
         $del->execute([$this->id]);
+
+        $del = $db->prepare('DELETE FROM ' . Project::TABLE_NAME . ' WHERE author_id=?');
+        $del->execute([$this->id]);
+
+        $del = $db->prepare('DELETE FROM ' . Task::TABLE_NAME . ' WHERE author_id=?');
+        $del->execute([$this->id]);
+
         $del->closeCursor();
     }
 
