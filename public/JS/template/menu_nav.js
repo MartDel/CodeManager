@@ -106,6 +106,10 @@ project.edit_button.onclick=()=>{
   setTimeout(() => modals.show(project.idedit), 500)
 }
 
+document.getElementById("input_img").onchange = function() {
+    document.getElementById("form_add_img").submit();
+};
+
 // Search input
 const input_search = document.getElementById("findField")
 const body = document.getElementsByTagName("body")[0];

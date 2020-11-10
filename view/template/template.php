@@ -41,7 +41,7 @@
 		    </a>
 		    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher" />
 		    <img class="onhover_top_animation" id="help_logo_img" src="public/img/question.png" alt="" />
-		    <img id="account_logo_img" src="public/img/switzerland.png" />
+				<img id="account_logo_img" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
 		    <img class="onhover_top_animation" id="gear_logo_img" src="public/img/gear.png" />
 		    <img class="onhover_top_animation" id="switch_logo_img" src="public/img/file_swap.png" alt="" />
 		    <button id="project_actual"><?= $project->getName() ?></button>

@@ -149,8 +149,8 @@ ob_start();
                                     <div class="border_all">
                                         <div class="left-side-task-mosaic">
                                             <input type="checkbox" class="check_js to-check2 in-category1" />
-                                            <img src="public/img/edit_task_bar.png" class="tick2" alt="" />
-                                            <img src="public/img/trash.png" class="trash-btn" alt="" />
+                                            <a href=""><img src="public/img/edit_task_bar.png" class="tick2" alt="" /></a>
+                                            <a href=""><img src="public/img/trash.png" class="trash-btn" alt="" /></a>
                                         </div>
                                         <div class="task_name_mozaic">
                                             <p><?= $task->getName() ?></p>
