@@ -123,11 +123,31 @@ function addTask($data){
 function endTask($data){
     if(!isset($data['id'])) header('Location: index.php');
     $id = htmlspecialchars($data['id']);
-    $task = Task::getTaskById($id);
-    $done_task = $task->getIsDone();
-    $task->setIsDone(!$task->getIsDone());
-    $params = $done_task ? '?endTask' : '';
-    header('Location: index.php' . $params);
+    $task = Task::getTaskById($id, $_SESSION['project_id']);
+    if($task){
+        $done_task = $task->getIsDone();
+        $task->setIsDone(!$done_task);
+        $params = $done_task ? '?endTask' : '';
+        header('Location: index.php' . $params);
+    } else {
+        header('Location: index.php');
+    }
+}
+
+/**
+ * Delete selected tasks
+ * @param Object $data $_GET object
+ */
+function deleteTasks($data){
+    if(!isset($data['tasks'])) header('Location: index.php');
+    $tasks = htmlspecialchars($data['tasks']);
+    $tasks_array = explode(' ', $tasks);
+    if(count($tasks_array) == 0) header('Location: index.php');
+    foreach ($tasks_array as $task_id) {
+        $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
+        if($current_task) $current_task->delete();
+    }
+    header('Location: index.php');
 }
 
 /**
