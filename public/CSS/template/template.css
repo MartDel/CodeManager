@@ -1845,6 +1845,7 @@ input[type="file"]:hover {
   padding: 10px;
   bottom: 0;
   right: 0;
+  text-align: center;
 }
 
 .button_cancel_edit_project:hover {
