@@ -71,12 +71,10 @@
           <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
         </div>
 
-        <!-- <div class="account_change_row">
+        <div class="account_change_row">
           <p>Mon adresse Mail : </p>
           <input class="input_fields" name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
-          <img id="modify_textarea_mail" class="modify_textarea" src="public/img/pencil.png" alt="">
-          <img id="validate_textarea_mail" class="validate_textarea" src="public/img/done.png" alt="">
-        </div> -->
+        </div>
 
         <!-- <div class="account_change_row">
           <p>Mon mot de passe : </p>

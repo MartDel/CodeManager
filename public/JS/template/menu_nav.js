@@ -390,15 +390,15 @@ change.pseudo.onclick = () => {
   textarea.pseudo_validate.style.marginRight = "100px";
   textarea.pseudo_validate.style.opacity = "1";
   textarea.pseudo.focus();
-  textarea.mail_validate.click();
-  textarea.pass_validate.click();
+
+  //textarea.mail_validate.click();
+  //textarea.pass_validate.click();
 
 }
+var newplaceholder_pseudo = textarea.pseudo.value;
 textarea.pseudo_validate.onclick = () => {
-  const newplaceholder_pseudo = textarea.pseudo.value;
   if (newplaceholder_pseudo != textarea.pseudo.value) {
-    textarea.pseudo.value ="";
-    textarea.pseudo.value = newplaceholder_pseudo;
+    //textarea.pseudo.value = newplaceholder_pseudo;
     change.button.innerHTML = "Effectuer les changements";
   }
   textarea.pseudo_validate.style.marginRight = "50px";
@@ -451,9 +451,7 @@ textarea.pseudo_validate.onclick = () => {
 // }
 
 change.button.onclick = () => {
-  textarea.mail_validate.click();
   textarea.pseudo_validate.click();
-  textarea.pass_validate.click();
   setTimeout(() => change.button.innerHTML = "Annuler", 500)
   setTimeout(() => change.button.type = "button", 500)
 

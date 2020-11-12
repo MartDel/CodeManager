@@ -1222,7 +1222,7 @@ input.apple-switch:checked:after {
 /*MODAL MY INFOS*/
 #my_informations .modal-wrapper {
   width: 40%;
-  height: 80%;
+  height: 60%;
 }
 
 #my_informations h1 {
@@ -1236,6 +1236,7 @@ input.apple-switch:checked:after {
 
 #my_informations img {
   height: 70px;
+  width: 70px;
   border-radius: 50%;
   margin-left: calc(50% - 35px);
   position: relative;
