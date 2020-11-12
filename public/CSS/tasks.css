@@ -119,6 +119,11 @@
   margin-top: 12.5px;
   margin-left: 15px;
   display: none;
+  z-index: 999;
+}
+
+span[title="Spprimer"] {
+  z-index: 999;
 }
 
 .ligne_haut_tache input {

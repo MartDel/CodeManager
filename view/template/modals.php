@@ -36,7 +36,7 @@
 
 <!--ACCOUNT MODAL-->
 <modal id="account">
-    <div id="bc_img_logo_account"></div>
+    <img id="bc_img_logo_account" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
     <span id="close_account_modal" class="close-modal close_account_modal">&times;</span>
     <p class="name_user_title"><?= $_SESSION['pseudo'] ?></p>
     <p class="mail_user_title"><?= $_SESSION['mail'] ?></p>
@@ -53,7 +53,7 @@
     <div class="account_change_column">
       <a href="#">
         <div class="img_account_change">
-          <img id="img_account_changeimg" src="public/img/switzerland.png" alt="">
+          <img id="img_account_changeimg" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
             <form id="form_add_img" class="form_add_img" action="index.php?action=editPP" method="post" enctype="multipart/form-data" onmouseover="hover_change()" onmouseleave="leave_change()">
               <input class="input_img" size="0" id="input_img" type="file" name="pp" />
               <input type="submit" value="Envoyer" />

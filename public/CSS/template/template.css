@@ -210,6 +210,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 #menu_haut #account_logo_img {
   height: 30px;
+  width: 30px;
   margin-top: 10px;
   position: absolute;
   right: 0;
@@ -1145,7 +1146,6 @@ input.apple-switch:checked:after {
 }
 
 #bc_img_logo_account {
-  background-image: url(../../img/switzerland.png);
   background-size: cover;
   height: 125px;
   width: 125px;
@@ -1239,7 +1239,7 @@ input.apple-switch:checked:after {
   border-radius: 50%;
   margin-left: calc(50% - 35px);
   position: relative;
-  z-index: -1
+  z-index: -1;
 }
 
 #my_informations img:hover {
@@ -1254,6 +1254,7 @@ input.apple-switch:checked:after {
   border-radius: 50%;
   z-index: 999;
   padding: 0;
+  box-shadow: 0;
 }
 
 #my_informations .input_img:hover {
@@ -1291,6 +1292,8 @@ input[type="file"]:hover {
   width: 70px;
   margin-left: calc(50% - 35px);
   border-radius: 50%;
+  -webkit-box-shadow: #474747 0px 0px 10px;
+  box-shadow: #474747 0px 0px 10px;
 }
 
 #my_informations h3 {
