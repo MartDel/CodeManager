@@ -7,9 +7,9 @@ $_SESSION['last_page'] = 'tasks';
 ob_start();
 ?>
     <!--Select type of display -->
-    <div id="select_display_global" class="select_display_global">
-        <div class="selected_display div_img_select">
-            <img id="category_1" src="public/img/category_1.png" alt="">
+    <div id="select_display_global" onclick="open_change_menu()" class="select_display_global">
+        <div class="selected_display div_img_select" >
+            <img id="category_1" src="public/img/category_1.png" onmouseover="open_change_menu()" onmouseleave="open_change_menu()" alt="">
         </div>
         <a onclick="change_display()" href="#">
             <div class="notselected_display div_img_select">

@@ -148,7 +148,7 @@ for (let i = 0; i < tasks_done.btn.length; i++) {
 /*
  * CHANGE DISPLAY
  */
-display.button.onclick =()=>{
+open_change_menu =()=>{
     if (display.open.style.display === "block") {
         display.open.style.display="none";
         display.open.style.opacity="0";
