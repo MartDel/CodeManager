@@ -15,7 +15,7 @@
 <!--SETTINGS MODAL-->
 <modal id="settings">
     <div id="settings_title">Réglages</div>
-    <span id="close_settings" class="close-modal close_settings">&times;</span>
+    <span id="close_settings" class="close-modal cross_settlings close_settings">&times;</span>
     <div class="row_settings">
         <p>Mode Sombre : </p>
         <input class="apple-switch" id="dark_mode" type="checkbox">

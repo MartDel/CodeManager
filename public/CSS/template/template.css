@@ -215,11 +215,14 @@ input[type="search"]::-webkit-search-results-decoration {
   position: absolute;
   right: 0;
   margin-right: 13px;
+  transition: all 0.2s;
   border-radius: 50%;
 }
 
 #menu_haut #account_logo_img:hover {
   cursor: pointer;
+  border-radius: 25%;
+  transition: all 0.2s;
 }
 
 #menu_haut #help_logo_img {
@@ -286,8 +289,8 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 .onhover_top_animation:hover {
-  transform: scale(1.2);
-  animation: rotateLogoImg 0.5s;
+  transform: scale(1.1);
+  animation: rotateLogoImg 0.3s;
 }
 
 @keyframes rotateLogoImg {
@@ -296,11 +299,11 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 
   50% {
-    transform: rotate(30deg);
+    transform: rotate(20deg);
   }
 
   100% {
-    transform: rotate(0deg) scale(1.2);
+    transform: rotate(0deg) scale(1.1);
   }
 }
 

@@ -99,6 +99,7 @@ const project = {
     edit_button:document.getElementById("edit_project_opener"),
 }
 
+
 project.create_button.onclick=()=>{
   setTimeout(() => modals.show(project.idcreate), 500)
 }
@@ -218,6 +219,11 @@ window.onclick = (event) => {
  * SETTINGS
  */
 // Dark mode
+/*
+document.getElementById("close_settings").onclick =()=>{
+  document.getElementById("textarea_bug").innerHTML = "";
+}*/
+
 settings.dark_mode_btn.onchange = () => {
     if (settings.dark_mode_btn.checked) turnOnDarkMode()
     else turnOffDarkMode()
