@@ -341,6 +341,20 @@ project.swap.master.onclick = () => {
         project.swap.arrow.innerHTML = "&#9650;";
     }
 };
+
+project.swap.arrow.onclick = () => {
+    if (project.swap.list.style.display == "block") {
+        project.swap.list.style.display = "none";
+        //swap.master.style.border = "white 2px solid";
+        project.swap.arrow.innerHTML = "&#x25BC;";
+    } else {
+        project.swap.list.style.display = "block";
+        project.swap.master.style.borderLeft = "rgb(190, 190, 190) 2px solid";
+        project.swap.master.style.borderRight = "rgb(190, 190, 190) 2px solid";
+        project.swap.master.style.borderTop = "rgb(190, 190, 190) 2px solid";
+        project.swap.arrow.innerHTML = "&#9650;";
+    }
+};
 for (let i = 0; i < project.swap.li.length; i++) {
     project.swap.li[i].onclick = (event) => {
         const swap_l_li = event.target;

@@ -1055,7 +1055,7 @@ input.apple-switch:checked:after {
   font-size: 1.1rem;
   width: 300px;
   text-align: center;
-  padding: 10px;
+  padding: 10px 14px 10px 6px;
   border: #bebebe 2px solid;
   position: absolute;
   right: 0;
@@ -1111,6 +1111,18 @@ input.apple-switch:checked:after {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+#flex_arrow:hover {
+  cursor: pointer;
+}
+
+#arrow {
+  color: black;
+}
+
+#arrow:hover {
+  cursor: pointer;
 }
 
 #change_title {
