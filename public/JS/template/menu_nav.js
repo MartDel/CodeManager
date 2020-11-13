@@ -57,6 +57,7 @@ let account = {
 };
 let accountinfos = {
   id: "my_informations",
+  no_delete:document.getElementById("no_delete"),
 
 }
 let textarea = {
@@ -249,10 +250,21 @@ settings.night_shift_btn.onchange = () => {
     if (settings.night_shift_btn.checked) turnOnNightShift()
     else turnOffNightShift()
 };
+var divelem=document.getElementsByTagName("DIV");
+
 function turnOnNightShift() {
-    body.style.filter = "sepia(70%)";
-    nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    /*for (var i = 0; i < divelem.length; i++) {
+
+      if (divelem[i].style.backgroundColor == "white") {
+        divelem[i].style.filter = "sepia(70%)";
+      } else {
+        divelem[i].style.filter = "sepia(0%)";
+      }
+    }*/
     settings.dark_mode_btn.checked = false;
+    body.style.filter = "sepia(15%)";
+    nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    //settings.dark_mode_btn.checked = false;
 
     // Set dark-mode cookie
     setCookie('night-shift', 'on')
@@ -481,6 +493,9 @@ change.button.onclick = () => {
 
 account.open_confirm.onclick = () =>{
   setTimeout(() => modals.show(account.delete), 500)
+}
+accountinfos.no_delete.onclick = () =>{
+  setTimeout(() => modals.show(accountinfos.id), 500)
 }
 
 /*

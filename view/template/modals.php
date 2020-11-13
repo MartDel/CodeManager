@@ -101,7 +101,7 @@
   <h2>Êtes vous sûr(e) de vouloir supprimer votre compte ?</h2>
   <br><br>
   <div class="flex_confirm">
-    <a href="#" class="close-modal no_delete">Non je veux garder mon compte</a>
+    <a href="#" id="no_delete" class="close-modal no_delete">Non je veux garder mon compte</a>
     <br><br>
     <a class="yes_delete" href="index.php?action=deleteAccount">Oui je veux supprimer mon compte</a>
 
