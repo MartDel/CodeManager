@@ -9,3 +9,13 @@
 * [ ] **Gestion de l'équipe :** Avoir *une bonne équipe de développement* est primordiale pour avancer le plus vite possible. Ajoutez des *membres*, gérez leurs *privilèges* et leur *rôle* dans votre projet afin que chacun puisse avoir une idée claire de sa mission. *(En développement)*
 * [ ] **Discussion :** Sans une bonne *communication*, rien n'est possible! *Échangez* avec vos collaborateurs sur l'avancé du projet et les initiatives que vous souhaitez prendre. *(En développement)*
 * [ ] **Liaison avec GitHub :** Liez votre projet avec *votre dépôt GitHub* pour synchronisez vos avancés et avoir *une vision globale* de votre projet. *(En développement)*
+
+## Télécharger et installer *Imagick* pour PHP >= 7.0 sur Ubuntu
+
+Pour la gestion des photos de profil, CodeManager a besoin de la librairie *Imagick* pour rogner les photos.
+L'installation se passe en 2 étapes :
+
+* Installer *Imagick* pour PHP >= 7.0 sur son ordinateur : `sudo apt-get install php-imagick`
+* Redémarrer Apache (ici il s'agit d'*apache2*) : `sudo service apache2 reload`
+
+Et voilà, l'installation est terminée !
