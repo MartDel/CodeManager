@@ -234,6 +234,13 @@ function selectAll(display){
         }
     }
     display.trash.style.display = display.select_all.checked ? "inline-block" : "none";
+
+    // Check categories
+    if(display === select_all2){
+        for (let i = 0; i < select_all2.categories.length; i++) {
+            select_all2.categories[i].checked = display.select_all.checked
+        }
+    }
 }
 function manageCheckbox(event) {
     const c_checkbox = event.target;
@@ -290,6 +297,24 @@ select_all.select_all.onclick = () => selectAll(select_all)
 for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
+select_all.trash.onclick = () => {
+    // Delete tasks
+    let id_list = []
+    for (let i = 0; i < select_all.checkbox.length; i++) {
+        const checkbox = select_all.checkbox[i]
+        if(checkbox.checked){
+            const task = checkbox.parentElement.parentElement.parentElement
+            const task_id = task.id.replace('task', '')
+            id_list.push(task_id)
+        }
+    }
+
+    let id_list_str = ''
+    id_list.forEach((id, i) => {
+        id_list_str += id + (i === id_list.length-1 ? '' : '+')
+    })
+    window.location.search = '?action=deletetasks&tasks=' + id_list_str
+}
 
 // Second display
 select_all2.select_all.onclick = () => selectAll(select_all2)
@@ -311,6 +336,27 @@ for (let i = 0; i < select_all2.categories.length; i++) {
 
         select_all2.trash.style.display = c_checkbox.checked ? "inline-block" : "none";
     }
+}
+select_all2.trash.onclick = () => {
+    // Delete tasks
+
+    console.log(select_all2.checkbox);
+
+    // let id_list = []
+    // for (let i = 0; i < select_all.checkbox.length; i++) {
+    //     const checkbox = select_all.checkbox[i]
+    //     if(checkbox.checked){
+    //         const task = checkbox.parentElement.parentElement.parentElement
+    //         const task_id = task.id.replace('task', '')
+    //         id_list.push(task_id)
+    //     }
+    // }
+    //
+    // let id_list_str = ''
+    // id_list.forEach((id, i) => {
+    //     id_list_str += id + (i === id_list.length-1 ? '' : '+')
+    // })
+    // window.location.search = '?action=deletetasks&tasks=' + id_list_str
 }
 
 
