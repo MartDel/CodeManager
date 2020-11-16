@@ -232,9 +232,9 @@ ob_start();
         <section id="section_ligne_bas">
             <form method="POST" action="index.php?action=addtask">
                 <h1>Titre de la tâche (80 caractères maximum)</h1>
-                <input class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
+                <input id="addtask_title" class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
                 <h1>Catégorie de la tâche (20 caractères maximum)</h1>
-                <input class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
+                <input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
                 <h1>Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
