@@ -1,4 +1,5 @@
 let cmodal = null
+let callback = null
 
 function showTemplateModal(id){
     const modal = document.getElementById(id)
@@ -27,6 +28,7 @@ function hideTemplateModal(){
     const cmodal = window.cmodal
     cmodal.style.display = 'none'
     cmodal.removeEventListener('animationend', hideTemplateModal)
+    if(window.callback) window.callback()
     window.cmodal = null
 }
 
@@ -55,7 +57,10 @@ const modals = new Vue({
         }
     },
     methods: {
-        show(id){ showTemplateModal(id) },
+        show(id, closing = null){
+            showTemplateModal(id)
+            window.callback = closing
+        },
         closeCurrent(){ closeTemplateModal(null) }
     }
 })
