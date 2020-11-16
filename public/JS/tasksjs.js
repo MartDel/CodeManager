@@ -291,6 +291,13 @@ function getTaskCategory(input){
     }
     return null
 }
+function deleteTasks(id_list){
+    let str = ''
+    id_list.forEach((id, i) => {
+        str += id + (i === id_list.length-1 ? '' : '+')
+    })
+    window.location.search = '?action=deletetasks&tasks=' + str
+}
 
 // First display
 select_all.select_all.onclick = () => selectAll(select_all)
@@ -308,12 +315,7 @@ select_all.trash.onclick = () => {
             id_list.push(task_id)
         }
     }
-
-    let id_list_str = ''
-    id_list.forEach((id, i) => {
-        id_list_str += id + (i === id_list.length-1 ? '' : '+')
-    })
-    window.location.search = '?action=deletetasks&tasks=' + id_list_str
+    deleteTasks(id_list)
 }
 
 // Second display
@@ -334,29 +336,28 @@ for (let i = 0; i < select_all2.categories.length; i++) {
             }
         }
 
+        let all_categories_checked = true
+        for (let i = 0; i < select_all2.categories.length; i++) {
+            if(!select_all2.categories[i].checked) all_categories_checked = false
+        }
+        select_all2.select_all.checked = all_categories_checked
+
         select_all2.trash.style.display = c_checkbox.checked ? "inline-block" : "none";
     }
 }
 select_all2.trash.onclick = () => {
     // Delete tasks
-
-    console.log(select_all2.checkbox);
-
-    // let id_list = []
-    // for (let i = 0; i < select_all.checkbox.length; i++) {
-    //     const checkbox = select_all.checkbox[i]
-    //     if(checkbox.checked){
-    //         const task = checkbox.parentElement.parentElement.parentElement
-    //         const task_id = task.id.replace('task', '')
-    //         id_list.push(task_id)
-    //     }
-    // }
-    //
-    // let id_list_str = ''
-    // id_list.forEach((id, i) => {
-    //     id_list_str += id + (i === id_list.length-1 ? '' : '+')
-    // })
-    // window.location.search = '?action=deletetasks&tasks=' + id_list_str
+    let id_list = []
+    for (let i = 0; i < select_all2.checkbox.length; i++) {
+        const checkbox = select_all2.checkbox[i]
+        if(checkbox.checked && !checkbox.classList.contains('category-check')){
+            const task = checkbox.parentElement.parentElement.parentElement.parentElement
+            console.log(task.id);
+            const task_id = task.id.replace('task', '')
+            id_list.push(task_id)
+        }
+    }
+    deleteTasks(id_list)
 }
 
 
