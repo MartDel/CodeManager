@@ -186,11 +186,11 @@ function checkFileInfo(){
  * @param String $fileName Uploaded file name
  */
 function cropImage($tmpName, $fileName){
-	list($w, $h) = getimagesize($tmpFile);
+	list($w, $h) = getimagesize($tmpName);
 	if($w == $h){ // Square image
-	    move_uploaded_file($tmpFile, $fileName);
+	    move_uploaded_file($tmpName, $fileName);
 	} else{
-	    $image = new Imagick($tmpFile);
+	    $image = new Imagick($tmpName);
 	    if($w < $h) { // Portrait
 	        $image->cropImage($w, $w, 0, ($h - $w) / 2);
 	    } else { // Landscape
