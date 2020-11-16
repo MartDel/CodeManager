@@ -156,6 +156,9 @@ function getCommits($github_user, $project_name){
 
 // Account
 
+/**
+ * Check if the sended file is ok
+ */
 function checkFileInfo(){
 	// Check if there is no error
     if (!isset($_FILES['pp']) || $_FILES['pp']['error'] != 0){
@@ -171,8 +174,29 @@ function checkFileInfo(){
 	$infosfichier = pathinfo($_FILES['pp']['name']);
 	$extension_upload = $infosfichier['extension'];
 	$extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-	if (!in_array($extension_upload, $extensions_autorisees)) {
+	list($w, $h) = getimagesize($_FILES['pp']['tmp_name']);
+	if (!in_array($extension_upload, $extensions_autorisees) || $w == null || $h == null) {
 		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .gif, .png", 'index.php?action=' . getLastPage());
+	}
+}
+
+/**
+ * Crop the image if it's necessary and upload it
+ * @param String $tmpName Uploaded file temporary name
+ * @param String $fileName Uploaded file name
+ */
+function cropImage($tmpName, $fileName){
+	list($w, $h) = getimagesize($tmpFile);
+	if($w == $h){ // Square image
+	    move_uploaded_file($tmpFile, $fileName);
+	} else{
+	    $image = new Imagick($tmpFile);
+	    if($w < $h) { // Portrait
+	        $image->cropImage($w, $w, 0, ($h - $w) / 2);
+	    } else { // Landscape
+	        $image->cropImage($h, $h, ($w - $h) / 2, 0);
+	    }
+	    $image->writeImage($fileName);
 	}
 }
 

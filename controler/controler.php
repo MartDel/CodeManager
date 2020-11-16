@@ -25,7 +25,7 @@ function checkSignIn($post){
 }
 
 /**
- * Change the user's profil picture
+ * Change the user's profile picture
  */
 function editPP(){
     checkFileInfo();
@@ -34,9 +34,8 @@ function editPP(){
 	$extension = pathinfo($_FILES['pp']['name'])['extension'];
     $user->setPictureName($_SESSION['user_id'] . '.' . $extension);
     $_SESSION['pp'] = $user->getPictureName();
-    // Upload file in ~/public/img/users
-    // (the folder ~/public/img/users must have the chmod 733 : type the command 'sudo chmod -R users 777' in the folder ~/public/img)
-    move_uploaded_file($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
+
+    cropImage($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
 
     header('Location: index.php?action=' . getLastPage('tasks'));
 }
@@ -47,6 +46,7 @@ function editPP(){
 function deleteAccount(){
     $user = getCurrentUser();
     $user->delete();
+    // Delete profile picture
     unlink('public/img/users/' . $user->getPictureName());
     logout();
 }
