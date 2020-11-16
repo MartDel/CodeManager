@@ -22,7 +22,10 @@ const addtask = {
     show_btns: document.getElementsByClassName("new_task_img"),
     cancel_btn: document.getElementById("addtask_cancel"),
     title_input: document.querySelector(".textarea_title"),
+    title:document.getElementById("addtask_title"),
+    cate:document.getElementById("addtask_cate"),
     desc_input: document.getElementById("textarea_desc"),
+
 };
 
 // Selectall
@@ -216,12 +219,16 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 for (let i = 0; i < addtask.show_btns.length; i++) {
-    addtask.show_btns[i].onclick = () => modals.show(addtask.id)
+    addtask.show_btns[i].onclick = () => modals.show(addtask.id,()=>{
+      addtask.title.value="";
+      addtask.cate.value="";
+      addtask.desc_input.value="";
+    })
 }
-addtask.cancel_btn.onclick = () => {
+/*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";
-};
+};*/
 
 /*
  * SELECT ALL TASKS

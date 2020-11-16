@@ -94,18 +94,40 @@ const project = {
     desc_input: document.getElementById('new_project_desc'),
     git_username_input: document.getElementById('new_project_git_name'),
     git_project_input: document.getElementById('new_project_git_repo'),
+    name_edit: document.getElementById('edit_project_name'),
+    desc_edit: document.getElementById('edit_project_desc'),
+    git_username_edit: document.getElementById('edit_project_git_name'),
+    git_project_edit: document.getElementById('edit_project_git_repo'),
     idcreate:"create",
     create_button:document.getElementById("create_project_opener"),
     idedit:"edit_project",
     edit_button:document.getElementById("edit_project_opener"),
+
+
 }
 
 
 project.create_button.onclick=()=>{
-  setTimeout(() => modals.show(project.idcreate), 500)
+  setTimeout(() => modals.show(project.idcreate, ()=>{
+    project.name_input.value = '';
+    project.desc_input.value = '';
+    project.git_username_input.value = '';
+    project.git_project_input.value = '';
+
+  }), 500)
 }
 project.edit_button.onclick=()=>{
-  setTimeout(() => modals.show(project.idedit), 500)
+  var tempname = document.getElementById('edit_project_name').value
+  var tempdesc= document.getElementById('edit_project_desc').value
+  var tempgit_username= document.getElementById('edit_project_git_name').value
+  var tempgit_project= document.getElementById('edit_project_git_repo').value
+  setTimeout(() => modals.show(project.idedit,()=>{
+    project.name_edit.value=tempname
+    project.desc_edit.value=tempdesc
+    project.git_username_edit.value=tempgit_username
+    project.git_project_edit.value=tempgit_project
+
+  }), 500)
 }
 
 document.getElementById("input_img").onchange = function() {
@@ -403,7 +425,13 @@ account.option.onclick = () => {
     setTimeout(() => modals.show(settings.id), 500)
 };
 account.redirectinfos.onclick = () => {
-    setTimeout(() => modals.show(accountinfos.id), 500)
+    setTimeout(() => modals.show(accountinfos.id, ()=>{
+      textarea.pseudo_validate.style.marginRight = "50px";
+      textarea.pseudo_validate.style.opacity = "0";
+      change.button.innerHTML = "Annuler";
+      textarea.pseudo.disabled=true;
+
+    }), 500)
 };
 
 
@@ -548,11 +576,11 @@ function FindNext() {
  * SETTINGS MODAL
  */
 settings.show_btn.onclick = () => {
-    modals.show(settings.id)
+    modals.show(settings.id, ()=>{
+      settings.bug_input.value = "";
+    })
 };
-settings.close_btn.onclick = () => {
-    settings.bug_input.value = "";
-};
+
 
 /*
  * HELP MODAL
