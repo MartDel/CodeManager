@@ -246,6 +246,21 @@ ob_start();
         </section>
     </modal>
 
+    <!--MODAL CONFIRM DELETE TASK-->
+
+    <modal id="delete_task">
+      <span id="close_settings" class="close-modal close_add">&times;</span>
+      <h1>CONFIRMATION de suppression de tâche(s)</h1>
+      <br>
+      <h2>Êtes vous sûr(e) de vouloir supprimer *getnumber* tâches ?</h2>
+      <br>
+      <div id="flex_confirm" class="flex_confirm">
+        <p id="no_delete_task" class="close-modal no_delete_task">Non je veux la/les conserver</p>
+
+        <p id="yes_delete_task" class="yes_delete_task">Oui je veux la/les supprimer définitivement</p>
+      </div>
+    </modal>
+
     <?php require('template/modals.php'); ?>
 
 </div>

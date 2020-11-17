@@ -33,6 +33,8 @@ const select_all = {
     select_all: document.getElementById("select_all"),
     checkbox: document.getElementsByClassName("to_check"),
     trash: document.getElementsByClassName("trash")[0],
+    delete_task:"delete_task",
+    yes_task:document.getElementById("yes_delete_task"),
 };
 const select_all2 = {
     select_all: document.getElementById("select_all2"),
@@ -312,18 +314,23 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
 select_all.trash.onclick = () => {
-    // Delete tasks
-    let id_list = []
-    for (let i = 0; i < select_all.checkbox.length; i++) {
-        const checkbox = select_all.checkbox[i]
-        if(checkbox.checked){
-            const task = checkbox.parentElement.parentElement.parentElement
-            const task_id = task.id.replace('task', '')
-            id_list.push(task_id)
-        }
-    }
-    deleteTasks(id_list)
+    modals.show(select_all.delete_task)
 }
+select_all.yes_task.onclick = () => {
+  // Delete tasks
+  let id_list = []
+  for (let i = 0; i < select_all.checkbox.length; i++) {
+      const checkbox = select_all.checkbox[i]
+      if(checkbox.checked){
+          const task = checkbox.parentElement.parentElement.parentElement
+          const task_id = task.id.replace('task', '')
+          id_list.push(task_id)
+      }
+  }
+  deleteTasks(id_list)
+}
+
+
 
 // Second display
 select_all2.select_all.onclick = () => selectAll(select_all2)

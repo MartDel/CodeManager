@@ -1127,6 +1127,56 @@ p[name=task] {
   padding: 10px;
 }
 
+/*DELETE TASK*/
+/*MODAL CONFIRM*/
+#delete_task .modal-wrapper {
+  width: 40%;
+  height: 25%;
+}
+
+#delete_task h1 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: #b41e10;
+  font-weight: bold;
+  font-size: 19px;
+}
+
+#delete_task h2 {
+  text-align: center;
+  font-family: "Product Sans Regular";
+  text-transform: uppercase;
+  color: black;
+  font-weight: normal;
+  font-size: 15px;
+}
+
+#flex_confirm {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  text-align: center;
+  font-family: "Product Sans Regular";
+  font-size: 15px;
+}
+
+.yes_delete_task {
+  color: #b41e10;
+  text-decoration: none;
+}
+
+.no_delete_task {
+  color: black;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.yes_delete_task:hover, .no_delete_task:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @-webkit-keyframes ModalComing {
   0% {
     display: block;
