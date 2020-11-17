@@ -4,7 +4,7 @@ body {
   margin: 0;
   background-color: #ffffff;
   height: 100%;
-  color: black;
+  color: white;
 }
 
 .list_task::-webkit-scrollbar {
@@ -36,14 +36,14 @@ a {
 
 .liste_taches li span::selection {
   color: #b41e10;
-  background-color: white;
+  background-color: none;
   font-weight: bold;
   text-decoration: underline;
 }
 
 .table_contain td p::selection {
   color: #b41e10;
-  background-color: white;
+  background-color: none;
   font-weight: bold;
   text-decoration: underline;
 }
@@ -141,7 +141,7 @@ a {
 
 /*MENU HAUT*/
 #menu_haut {
-  background-color: white;
+  background-color: none;
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding: 8px;
   padding-left: 50px;
@@ -271,7 +271,6 @@ input[type="search"]::-webkit-search-results-decoration {
 #project_actual {
   font-family: "Product Sans Regular";
   font-size: 15px;
-  color: black;
   right: 0;
   position: absolute;
   margin-right: 180px;
@@ -309,7 +308,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 /*MENU DE GAUCHE*/
 #menu_gauche {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0);
   width: 100px;
   margin-top: -0px;
   position: relative;
@@ -319,7 +318,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .new_task {
   margin-top: 25px;
-  background-color: white;
+  background-color: none;
   width: 210px;
   margin-left: 23px;
   padding: 2px 2px 2px 0px;
@@ -352,7 +351,6 @@ input[type="search"]::-webkit-search-results-decoration {
 .notselectedmenu {
   -webkit-transition: padding 0.2s ease;
   transition: padding 0.2s ease;
-  color: black;
   padding-right: 0px;
 }
 
@@ -462,7 +460,7 @@ ul {
   margin-left: -18px;
   -webkit-transform: translateY(-50%) scale(0.7);
   transform: translateY(-50%) scale(0.7);
-  background-color: white;
+  background-color: none;
 }
 
 #menu_button {
@@ -479,6 +477,7 @@ ul {
   position: relative;
   display: block;
   height: 29px;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -815,7 +814,7 @@ input.apple-switch:checked:after {
 #bug_submission {
   height: 40px;
   width: 100px;
-  background-color: white;
+  background-color: transparent;
   color: #b41e10;
   outline: none;
   border: white 2px solid;
@@ -910,7 +909,6 @@ input.apple-switch:checked:after {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   font-weight: lighter;
-  color: black;
   margin-left: 10%;
 }
 
@@ -918,7 +916,7 @@ input.apple-switch:checked:after {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  color: black;
+  ;
   margin-left: 10%;
 }
 
@@ -953,7 +951,7 @@ input.apple-switch:checked:after {
 
 .li_swap a {
   text-decoration: none;
-  color: black;
+  ;
 }
 
 .link_swap_project_div:hover {
@@ -962,7 +960,7 @@ input.apple-switch:checked:after {
 
 .link_swap_project_div {
   padding: 5px 0 5px 0;
-  color: black;
+  ;
 }
 
 #project_modal_container {
@@ -1126,7 +1124,7 @@ input.apple-switch:checked:after {
 }
 
 #arrow {
-  color: black;
+  ;
 }
 
 #arrow:hover {
@@ -1136,7 +1134,7 @@ input.apple-switch:checked:after {
 #change_title {
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
-  color: black;
+  ;
   margin-left: 20px;
 }
 
@@ -1206,7 +1204,7 @@ input.apple-switch:checked:after {
 .button_option,
 .button_deconnect {
   color: #b41e10;
-  background-color: #fff;
+  background-color: transparent;
   border: #b41e10 2px solid;
   -webkit-box-shadow: #979797 0px 0px 5px;
   box-shadow: #979797 0px 0px 5px;
@@ -1344,7 +1342,7 @@ input[type="file"]:hover {
   flex-direction: row;
   font-family: "Product Sans Regular";
   font-size: 15px;
-  color: black;
+  ;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 30px;
@@ -1353,7 +1351,7 @@ input[type="file"]:hover {
 #my_informations .input_fields {
   font-family: "Product Sans Regular";
   font-size: 15px;
-  color: black;
+  ;
   resize: none;
   width: 50%;
   text-align: left;
@@ -1452,7 +1450,7 @@ input[type="file"]:hover {
 }
 
 .buttons_delete_support a {
-  border: white solid 2px;
+  border: transparent solid 2px;
   width: 50%;
   text-align: center;
   font-size: 12px;
@@ -1479,7 +1477,7 @@ input[type="file"]:hover {
   text-align: center;
   font-family: "Product Sans Regular";
   text-transform: uppercase;
-  color: black;
+  ;
   font-weight: normal;
   font-size: 15px;
 }
@@ -1500,7 +1498,7 @@ input[type="file"]:hover {
 }
 
 .no_delete {
-  color: black;
+  ;
   text-decoration: none;
 }
 
@@ -1582,7 +1580,7 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   font-weight: lighter;
-  color: black;
+  ;
   margin-left: 10%;
 }
 
@@ -1590,7 +1588,7 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  color: black;
+  ;
   margin-left: 10%;
 }
 
@@ -1604,7 +1602,7 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 1rem;
   font-weight: lighter;
-  color: black;
+  ;
   padding: 10px;
   border: gray 1px solid;
   outline: none;
@@ -1640,7 +1638,7 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 6rem;
   font-weight: lighter;
-  color: black;
+  ;
   padding: 10px;
   border-radius: 10px;
   border: gray 1px solid;
@@ -1658,7 +1656,7 @@ input[type="file"]:hover {
 .button_create_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  color: black;
+  ;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
@@ -1766,7 +1764,7 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   font-weight: lighter;
-  color: black;
+  ;
   margin-left: 10%;
 }
 
@@ -1774,7 +1772,7 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  color: black;
+  ;
   margin-left: 10%;
 }
 
@@ -1788,7 +1786,7 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 1rem;
   font-weight: lighter;
-  color: black;
+  ;
   padding: 10px;
   border: gray 1px solid;
   outline: none;
@@ -1824,7 +1822,7 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 6rem;
   font-weight: lighter;
-  color: black;
+  ;
   padding: 10px;
   border-radius: 10px;
   border: gray 1px solid;
@@ -1842,7 +1840,7 @@ input[type="file"]:hover {
 .button_edit_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  color: black;
+  ;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
@@ -1933,7 +1931,7 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  color: black;
+  ;
   text-align: center;
 }
 
@@ -1992,6 +1990,6 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  color: black;
+  ;
   text-align: center;
 }

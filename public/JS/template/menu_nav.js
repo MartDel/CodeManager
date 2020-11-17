@@ -251,18 +251,111 @@ settings.dark_mode_btn.onchange = () => {
     if (settings.dark_mode_btn.checked) turnOnDarkMode()
     else turnOffDarkMode()
 };
+divelem=document.getElementsByTagName("DIV")
 function turnOnDarkMode() {
-    body.style.filter = "invert(100%) hue-rotate(200deg)";
-    nav.account_logo.style.filter = "invert(100%) hue-rotate(-200deg)";
+    body.style.backgroundColor="#0d0d0d";
+    document.getElementById("menu_label").style.backgroundColor="#0d0d0d";
+    document.getElementById("menu_button").style.backgroundColor="#0d0d0d";
+    document.querySelectorAll('*').forEach(function(node) {
+      node.style.color="white"
+    });
+    document.querySelectorAll('.menu_haut_table_cels_p').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.title_task_modal').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.line_popup').forEach(function(node) {
+      node.style.backgroundColor="#b41e10"
+    });
+    document.querySelectorAll('.onhover_top_animation').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(2000%)"
+    });
+    document.querySelectorAll('.selectedmenu').forEach(function(node) {
+      node.style.backgroundColor="#fce8e6"
+    });
+    document.querySelectorAll('.colorblack').forEach(function(node) {
+      node.style.color="black"
+    });
+    document.querySelectorAll('.colorred').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.grayback').forEach(function(node) {
+      node.style.backgroundColor="#262626"
+    });
+    document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(75%)"
+    });
+    document.querySelectorAll('.brightnessmax').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(2000%)"
+    });
+    document.querySelectorAll('.modal-wrapper').forEach(function(node) {
+      node.style.backgroundColor="#262626"
+    });
+    document.querySelectorAll('.buttons_delete_support').forEach(function(node) {
+      node.style.backgroundColor="transparent"
+    });
+    document.getElementById("findField").style.backgroundColor="#262626";
+    document.getElementById("textarea_pseudo").style.backgroundColor="#262626";
+    document.getElementById("textarea_mail").style.backgroundColor="transparent";
+    document.getElementById("cancel_submit_changes").style.backgroundColor="transparent";
+    document.getElementById("findField").style.color="white";
     settings.night_shift_btn.checked = false;
 
     // Set dark-mode cookie
     setCookie('dark-mode', 'on')
 }
 function turnOffDarkMode() {
-    body.style.filter = "invert(0%) hue-rotate(0deg)";
-    nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    body.style.backgroundColor="white";
+    document.getElementById("menu_label").style.backgroundColor="white";
+    document.getElementById("menu_button").style.backgroundColor="white";
+    document.querySelectorAll('*').forEach(function(node) {
+      node.style.color="black"
+    });
+    document.querySelectorAll('.menu_haut_table_cels_p').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.title_task_modal').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.line_popup').forEach(function(node) {
+      node.style.backgroundColor="#b41e10"
+    });
+    document.querySelectorAll('.onhover_top_animation').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(0%)"
+    });
+    document.querySelectorAll('.selectedmenu').forEach(function(node) {
+      node.style.backgroundColor="#fce8e6"
+    });
 
+    document.querySelectorAll('.notselectedmenu').forEach(function(node) {
+      node.style.color="black"
+    });
+    document.querySelectorAll('.colorblack').forEach(function(node) {
+      node.style.color="black"
+    });
+    document.querySelectorAll('.colorred').forEach(function(node) {
+      node.style.color="#b41e10"
+    });
+    document.querySelectorAll('.grayback').forEach(function(node) {
+      node.style.backgroundColor="white"
+    });
+    document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(0%)"
+    });
+    document.querySelectorAll('.brightnessmax').forEach(function(node) {
+      node.style.filter="invert(50%) brightness(0%)"
+    });
+    document.querySelectorAll('.modal-wrapper').forEach(function(node) {
+      node.style.backgroundColor="white"
+    });
+    document.querySelectorAll('.buttons_delete_support').forEach(function(node) {
+      node.style.backgroundColor="transparent"
+    });
+    document.getElementById("findField").style.backgroundColor="#f1f3f4";
+    document.getElementById("textarea_pseudo").style.backgroundColor="white";
+    document.getElementById("textarea_mail").style.backgroundColor="white";
+    document.getElementById("cancel_submit_changes").style.backgroundColor="transparent";
     // Set dark-mode cookie
     setCookie('dark-mode', 'off')
 }
@@ -272,7 +365,7 @@ settings.night_shift_btn.onchange = () => {
     if (settings.night_shift_btn.checked) turnOnNightShift()
     else turnOffNightShift()
 };
-var divelem=document.getElementsByTagName("DIV");
+//var divelem=document.getElementsByTagName("DIV");
 
 function turnOnNightShift() {
     /*for (var i = 0; i < divelem.length; i++) {

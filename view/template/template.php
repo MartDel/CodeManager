@@ -57,34 +57,34 @@
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
 		                  </span>
-		                    <p id="text_menu_left_1">Tâches</p>
+		                    <p class="colorred textgauche" id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
 		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
 		                </span>
-		                <p id="text_menu_left_2">Objectifs</p>
+		                <p class="textgauche" id="text_menu_left_2">Objectifs</p>
 		            </li>
 					<a onclick="redirect_team()">
 						<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
 			              </span>
-			                <p id="text_menu_left_3">Team</p>
+			                <p class="textgauche" id="text_menu_left_3">Team</p>
 			            </li>
 					</a>
 		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="Discussion">
 		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
 		              </span>
-		                <p id="text_menu_left_4">Discussion</p>
+		                <p class="textgauche" id="text_menu_left_4">Discussion</p>
 		            </li>
 		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="GitHub">
 		                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
 		              </span>
-		                <p id="text_menu_left_5">GitHub</p>
+		                <p class="textgauche" id="text_menu_left_5">GitHub</p>
 		            </li>
 		        </ul>
 		    </div>

@@ -45,6 +45,7 @@
 
 .ligne_haut_tache p {
   font-size: 14px;
+  color: #b41e10;
   text-transform: uppercase;
 }
 
@@ -344,7 +345,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   width: auto;
   height: calc(100vh - 103px);
   overflow-y: scroll;
-  background-color: white;
+  background-color: none;
 }
 
 .modal-content .modal-wrapper {}
@@ -691,7 +692,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
-  color: black;
+  ;
   width: 95%;
   padding: 10PX;
   left: 0;
@@ -704,7 +705,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
-  color: black;
+  ;
   width: 95%;
   padding: 10PX;
   left: 0;
@@ -726,7 +727,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 #section_ligne_bas button {
   height: 40px;
   width: 100px;
-  background-color: white;
+  background-color: transparent;
   color: #b41e10;
   outline: none;
   border: white 2px solid;
@@ -847,7 +848,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
-  color: black;
+  ;
   width: 95%;
   padding: 10PX;
   left: 0;
@@ -1122,7 +1123,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 /*NO TASK*/
 p[name=task] {
   font-family: "Product Sans Regular";
-  color: Black;
+  ;
   letter-spacing: 0.5 px;
   padding: 10px;
 }
@@ -1147,7 +1148,7 @@ p[name=task] {
   text-align: center;
   font-family: "Product Sans Regular";
   text-transform: uppercase;
-  color: black;
+  ;
   font-weight: normal;
   font-size: 15px;
 }
@@ -1167,7 +1168,7 @@ p[name=task] {
 }
 
 .no_delete_task {
-  color: black;
+  ;
   font-size: 11px;
   text-decoration: none;
 }

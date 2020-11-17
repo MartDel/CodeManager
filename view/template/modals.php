@@ -16,11 +16,11 @@
 <modal id="settings">
     <div id="settings_title">Réglages</div>
     <span id="close_settings" class="close-modal cross_settlings close_settings">&times;</span>
-    <div class="row_settings">
+    <div class="grayback row_settings">
         <p>Mode Sombre : </p>
         <input class="apple-switch" id="dark_mode" type="checkbox">
     </div>
-    <div class="row_settings">
+    <div class="grayback row_settings">
         <p>Night Shift : </p>
         <input class="apple-switch" id="night_shift" type="checkbox">
     </div>
@@ -67,8 +67,8 @@
         <div class="account_change_row">
           <p>Pseudo :</p>
           <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
-          <img id="modify_textarea_pseudo" class="modify_textarea" src="public/img/pencil.png" alt="">
-          <img id="validate_textarea_pseudo" class="validate_textarea" src="public/img/done.png" alt="">
+          <img id="modify_textarea_pseudo" class="brightnessmax modify_textarea" src="public/img/pencil.png" alt="">
+          <img id="validate_textarea_pseudo" class="brightnessmax validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
@@ -118,9 +118,9 @@
     <br><br><br><br>
     <section id="body_project_modal">
         <section id="flex_arrow">
-            <p id="change_title">Changer de projet :</p>
+            <p class="colorred" id="change_title">Changer de projet :</p>
             <section>
-                <div id="projet_princ"><?= $project->getName() ?></div>
+                <div id="projet_princ" class="colorblack"><?= $project->getName() ?></div>
                 <p id="arrow">&#x25BC;</p>
             </section>
         </section>
@@ -128,7 +128,7 @@
         <?php foreach ($project_list as $current_project) { ?>
             <a href="index.php?project=<?= $current_project['id'] ?>">
               <li class="li_swap">
-                <div class="link_swap_project_div">
+                <div class="link_swap_project_div colorblack">
                   <?= $current_project['name'] ?>
                 </div>
               </li>
@@ -146,9 +146,9 @@
         </div>
         <br><br>
         <div class="flex_project_modification">
-          <a id="edit_project_opener" class="close-modal edit_project_button" href="#">Éditer le projet en cours</a>
+          <a id="edit_project_opener" class="colorred close-modal edit_project_button" href="#">Éditer le projet en cours</a>
           <br>
-          <a id="create_project_opener" class="close-modal create_project_button" href="#">Créer un nouveau projet</a>
+          <a id="create_project_opener" class="colorred close-modal create_project_button" href="#">Créer un nouveau projet</a>
         </div>
     </section>
 </modal>
@@ -157,24 +157,24 @@
 
 <modal id="create">
   <section id="header_create_project">
-      <p>Créer un projet</p>
+      <p class="colorred">Créer un projet</p>
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
   <form name="create_project_form" action="index.php?action=createproject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
-      <input name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
+      <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
-      <textarea name="description" id="new_project_desc" placeholder="Description du projet"></textarea><br><br>
+      <textarea class="colorblack" name="description" id="new_project_desc" placeholder="Description du projet"></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
-        <input name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
+        <input class="colorblack" name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
+        <input class="colorblack" name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
       </div>
       <div class="flex_button_create">
         <br><br>
-        <button name="create_project_button" class="button_create_project" type="submit">Créer un nouveau projet</button>
-        <button class="close-modal button_cancel_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
+        <button name="create_project_button" class=" button_create_project" type="submit">Créer un nouveau projet</button>
+        <button class=" close-modal button_cancel_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>
 </modal>
@@ -182,19 +182,19 @@
 <!--Edit project modal-->
 <modal id="edit_project">
   <section id="header_edit_project">
-      <p>Modifier le projet</p>
+      <p class="colorred">Modifier le projet</p>
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
   <form name="edit_project_form" action="index.php?action=editproject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
-      <input name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
+      <input class="colorblack" name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
-      <textarea name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
+      <textarea class="colorblack" name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub" value="<?= $project->getRemotePseudo() ?>" /><br><br>
-        <input name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"  value="<?= $project->getRemoteName() ?>" />
+        <input class="colorblack" name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub" value="<?= $project->getRemotePseudo() ?>" /><br><br>
+        <input class="colorblack" name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"  value="<?= $project->getRemoteName() ?>" />
       </div>
       <div class="flex_button_edit">
         <br><br>
@@ -207,7 +207,7 @@
 
 
 <!--HELP MODAL-->
-<div id="help_modal">
+<div class="grayback" id="help_modal">
     <span class="span_help">
         <img src="public/img/plus.png" alt="" />
         <p> Ajouter</p>

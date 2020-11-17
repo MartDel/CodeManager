@@ -25,34 +25,34 @@ ob_start();
                 <input name="sample" id="select_all" type="checkbox" />
             </span>
             <span title="Nouvelle tâche">
-                <img class="new_task_img" src="public/img/plus.png" alt="">
+                <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
             </span>
             <span title="Rafraîchir">
-                <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+                <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
                 <img class="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
-                <img class="trash" src="public/img/trash.png" alt="" />
+                <img class="brightnessmax trash" src="public/img/trash.png" alt="" />
             </span>
             <div class="flex_title_task">
                 <table>
                     <tr>
                         <td class="user-table-cell">
-                            <p>Utilisateur</p>
+                            <p class="menu_haut_table_cels_p">Utilisateur</p>
                         </td>
                         <td class="title-table-cell">
-                            <p>Titre</p>
+                            <p class="menu_haut_table_cels_p">Titre</p>
                         </td>
                         <td class="desc-table-cell">
-                            <p>Description</p>
+                            <p class="menu_haut_table_cels_p">Description</p>
                         </td>
                         <td class="category-table-cell">
-                            <p>Catégorie</p>
+                            <p class="menu_haut_table_cels_p">Catégorie</p>
                         </td>
                         <td class="date-table-cell">
-                            <p>Date de création</p>
+                            <p class="menu_haut_table_cels_p">Date de création</p>
                         </td>
                     </tr>
                 </table>
@@ -107,16 +107,16 @@ ob_start();
                 <input name="sample" id="select_all2" type="checkbox" />
             </span>
             <span title="Nouvelle tâche">
-                <img class="new_task_img" src="public/img/plus.png" alt="">
+                <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
             </span>
             <span title="Rafraîchir">
-                <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+                <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
                 <img class="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
-                <img class="trash" src="public/img/trash.png" alt="" style="display:none;" />
+                <img class="brightnessmax trash" src="public/img/trash.png" alt="" style="display:none;" />
             </span>
         </div>
         <div class="wrapper-table-task">
@@ -179,7 +179,7 @@ ob_start();
             name="popup_modal_task">
                 <span class="close close-modal">&times;</span>
                 <section class="header_popup">
-                    <p><strong>Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></strong></p>
+                    <strong><p class="title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
                     <br><br>
                 </section>
                 <section class="titre_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
@@ -200,7 +200,7 @@ ob_start();
             <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit">
                 <section id="section_ligne_haut_edit">
                     <br><br><br>
-                    <p><strong>Modifier la tâche</strong></p>
+                    <p class="title_task_modal"><strong>Modifier la tâche</strong></p>
                     <span id="close_edit" class="close_add close-modal">&times;</span>
                 </section>
                 <section id="section_ligne_bas_edit">
