@@ -176,7 +176,7 @@ function checkFileInfo(){
 	$extensions_autorisees = array('jpg', 'jpeg', 'png');
 	list($w, $h) = getimagesize($_FILES['pp']['tmp_name']);
 	if (!in_array($extension_upload, $extensions_autorisees) || $w == null || $h == null) {
-		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .gif, .png", 'index.php?action=' . getLastPage());
+		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .png", 'index.php?action=' . getLastPage());
 	}
 }
 
