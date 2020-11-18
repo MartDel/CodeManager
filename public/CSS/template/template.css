@@ -466,7 +466,7 @@ ul {
 #menu_button {
   width: 39px;
   overflow: hidden;
-  background-color: white;
+  background-color: transparent;
 }
 
 #menu_checkbox {
@@ -477,7 +477,7 @@ ul {
   position: relative;
   display: block;
   height: 29px;
-  background-color: white;
+  background-color: transparent;
   cursor: pointer;
 }
 

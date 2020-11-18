@@ -80,11 +80,11 @@ ob_start();
                         </span>
                         <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
                             <a href="index.php?action=endtask&id=<?= $task->getId() ?>">
-                                <img class="input_img tick" src="public/img/tick.png" alt="" />
+                                <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
                             </a>
                         </span>
                         <span class="span_input_img" title="Éditer">
-                            <img class="input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                            <img class="invertcent input_img tick2" src="public/img/edit_task_bar.png" alt="" />
                         </span>
                         <span class="utilisateur"><?= $task->getAuthor() ?></span>
                         <span class="titre_tache"><?= $task->getName() ?></span>
@@ -149,8 +149,8 @@ ob_start();
                                     <div class="border_all">
                                         <div class="left-side-task-mosaic">
                                             <input type="checkbox" class="check_js to-check2 in-category1" />
-                                            <a href=""><img src="public/img/edit_task_bar.png" class="tick2" alt="" /></a>
-                                            <a href=""><img src="public/img/trash.png" class="trash-btn" alt="" /></a>
+                                            <a href=""><img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" /></a>
+                                            <a href=""><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
                                         </div>
                                         <div class="task_name_mozaic">
                                             <p><?= $task->getName() ?></p>
@@ -179,7 +179,7 @@ ob_start();
             name="popup_modal_task">
                 <span class="close close-modal">&times;</span>
                 <section class="header_popup">
-                    <strong><p class="title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
+                    <strong><p class="colorred title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
                     <br><br>
                 </section>
                 <section class="titre_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
@@ -197,10 +197,10 @@ ob_start();
             </modal>
 
             <!--Tasks edit modals -->
-            <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit">
+            <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit" class="edit_popup_modal">
                 <section id="section_ligne_haut_edit">
                     <br><br><br>
-                    <p class="title_task_modal"><strong>Modifier la tâche</strong></p>
+                    <p class="colorred title_task_modal"><strong>Modifier la tâche</strong></p>
                     <span id="close_edit" class="close_add close-modal">&times;</span>
                 </section>
                 <section id="section_ligne_bas_edit">
@@ -213,8 +213,8 @@ ob_start();
                       <input class="textarea_desc_edit" name="description" type="text" <?= $task->getDescription() ? 'value="' . $task->getDescription() . '"' : 'placeholder="Description"' ?>></input>
                       <h2></h2>
                       <section id="button_line_edit">
-                          <button name="cancel_button_edit_task" class="close-modal" type="button">Annuler</button>
-                          <button name="submit_button_edit_task" type="submit">Valider</button>
+                          <button class="backtrans" name="cancel_button_edit_task" class="close-modal" type="button">Annuler</button>
+                          <button class="backtrans" name="submit_button_edit_task" type="submit">Valider</button>
                       </section>
                     </form>
                 </section>
@@ -226,7 +226,7 @@ ob_start();
     <modal id="add_task">
         <section id="section_ligne_haut">
           <br><br><br>
-            <p><strong>Ajouter une tâche</strong></p>
+            <p><strong class="colorred">Ajouter une tâche</strong></p>
             <span id="close_add" class="close_add close-modal">&times;</span>
         </section>
         <section id="section_ligne_bas">
@@ -250,14 +250,14 @@ ob_start();
 
     <modal id="delete_task">
       <span id="close_settings" class="close-modal close_add">&times;</span>
-      <h1>CONFIRMATION de suppression de tâche(s)</h1>
+      <h1 class="colorred">CONFIRMATION de suppression de tâche(s)</h1>
       <br>
       <h2>Êtes vous sûr(e) de vouloir supprimer *getnumber* tâches ?</h2>
       <br>
       <div id="flex_confirm" class="flex_confirm">
         <p id="no_delete_task" class="close-modal no_delete_task">Non je veux la/les conserver</p>
 
-        <p id="yes_delete_task" class="yes_delete_task">Oui je veux la/les supprimer définitivement</p>
+        <p id="yes_delete_task" class="colorred yes_delete_task">Oui je veux la/les supprimer définitivement</p>
       </div>
     </modal>
 

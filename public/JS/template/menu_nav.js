@@ -289,6 +289,9 @@ function turnOnDarkMode() {
     document.querySelectorAll('.brightnessmax').forEach(function(node) {
       node.style.filter="invert(50%) brightness(2000%)"
     });
+    document.querySelectorAll('.invertcent').forEach(function(node) {
+      node.style.filter="invert(100%) brightness(2000%)"
+    });
     document.querySelectorAll('.modal-wrapper').forEach(function(node) {
       node.style.backgroundColor="#262626"
     });
@@ -311,6 +314,9 @@ function turnOffDarkMode() {
     document.getElementById("menu_button").style.backgroundColor="white";
     document.querySelectorAll('*').forEach(function(node) {
       node.style.color="black"
+    });
+    document.querySelectorAll('.invertcent').forEach(function(node) {
+      node.style.filter="invert(0%) brightness(2000%)"
     });
     document.querySelectorAll('.menu_haut_table_cels_p').forEach(function(node) {
       node.style.color="#b41e10"
@@ -352,6 +358,7 @@ function turnOffDarkMode() {
     document.querySelectorAll('.buttons_delete_support').forEach(function(node) {
       node.style.backgroundColor="transparent"
     });
+
     document.getElementById("findField").style.backgroundColor="#f1f3f4";
     document.getElementById("textarea_pseudo").style.backgroundColor="white";
     document.getElementById("textarea_mail").style.backgroundColor="white";

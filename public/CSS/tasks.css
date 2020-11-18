@@ -740,7 +740,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   height: 40px;
   width: 100px;
   background-color: #b41e10;
-  color: #ffffff;
+  color: white;
   outline: none;
   border: white 2px solid;
   font-family: "Product Sans Regular";
@@ -778,7 +778,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 /*EDIT TASK*/
-#edit .modal-wrapper {
+.edit_popup_modal .modal-wrapper {
   width: 80%;
   height: 65%;
   top: 17%;
@@ -870,7 +870,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 #section_ligne_bas_edit button {
   height: 40px;
   width: 100px;
-  background-color: white;
+  background-color: transparent;
   color: #b41e10;
   outline: none;
   border: white 2px solid;

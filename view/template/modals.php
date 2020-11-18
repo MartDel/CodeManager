@@ -1,20 +1,20 @@
 <!--SEARCH MODALS-->
 <modal id="not_find">
   <span id="close_settings" class="close-modal close_settings">&times;</span>
-  <h1>Erreur de recherche</h1><br><br><br><br>
+  <h1 class="colorred">Erreur de recherche</h1><br><br><br><br>
   <p>L'élément n'a pas été trouvé</p>
 </modal>
 
 <modal id="no_text">
   <span id="close_settings" class="close-modal close_settings">&times;</span>
-  <h1>Erreur de recherche</h1><br><br><br><br>
+  <h1 class="colorred">Erreur de recherche</h1><br><br><br><br>
   <p>Vous n'avez entré aucun texte</p>
 </modal>
 
 
 <!--SETTINGS MODAL-->
 <modal id="settings">
-    <div id="settings_title">Réglages</div>
+    <div class="colorred" id="settings_title">Réglages</div>
     <span id="close_settings" class="close-modal cross_settlings close_settings">&times;</span>
     <div class="grayback row_settings">
         <p>Mode Sombre : </p>
@@ -49,7 +49,7 @@
 
 <!--MY ACCOUNT MODAL-->
 <modal id="my_informations">
-    <h1>Mes Informations</h1>
+    <h1 class="colorred">Mes Informations</h1>
     <div class="account_change_column">
       <a href="#">
         <div class="img_account_change">
@@ -97,13 +97,13 @@
 
 <modal id="delete">
   <span id="close_settings" class="close-modal close_settings">&times;</span>
-  <h1>CONFIRMATION de suppression de compte</h1>
+  <h1 class="colorred">CONFIRMATION de suppression de compte</h1>
   <h2>Êtes vous sûr(e) de vouloir supprimer votre compte ?</h2>
   <br><br>
   <div class="flex_confirm">
-    <a href="#" id="no_delete" class="close-modal no_delete">Non je veux garder mon compte</a>
+    <a href="#" id="no_delete" class="colorblack close-modal no_delete">Non je veux garder mon compte</a>
     <br><br>
-    <a class="yes_delete" href="index.php?action=deleteAccount">Oui je veux supprimer mon compte</a>
+    <a class="colorred yes_delete" href="index.php?action=deleteAccount">Oui je veux supprimer mon compte</a>
 
   </div>
 </modal>
@@ -111,14 +111,14 @@
 <!--SWAP PROJECT MODAL-->
 <modal id="project">
     <section id="header_project_modal">
-        <p>Changer de projet</p>
+        <p class="colorred">Changer de projet</p>
         <span id="close_swap" class="close_swap close-modal">&times;</span>
         <br><br>
     </section>
     <br><br><br><br>
     <section id="body_project_modal">
         <section id="flex_arrow">
-            <p class="colorred" id="change_title">Changer de projet :</p>
+            <p id="change_title">Changer de projet :</p>
             <section>
                 <div id="projet_princ" class="colorblack"><?= $project->getName() ?></div>
                 <p id="arrow">&#x25BC;</p>
