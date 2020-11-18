@@ -315,6 +315,9 @@ function turnOffDarkMode() {
     document.querySelectorAll('*').forEach(function(node) {
       node.style.color="black"
     });
+    document.querySelectorAll('.colorwhite').forEach(function(node) {
+      node.style.color="white"
+    });
     document.querySelectorAll('.invertcent').forEach(function(node) {
       node.style.filter="invert(0%) brightness(2000%)"
     });

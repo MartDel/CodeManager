@@ -205,11 +205,11 @@ ob_start();
                 </section>
                 <section id="section_ligne_bas_edit">
                     <form method="POST" action="index.php?action=edittask&id=<?= $task->getId() ?>">
-                      <h1>Titre de la tâche (80 caractères maximum)</h1>
+                      <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                       <input class="textarea_title" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
-                      <h1>Catégorie de la tâche (20 caractères maximum)</h1>
+                      <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
                       <input class="textarea_title" name="category" type="text" value="Catégorie" maxlength="20" required></input>
-                      <h1>Description de la tâche (Optionnel)</h1>
+                      <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <input class="textarea_desc_edit" name="description" type="text" <?= $task->getDescription() ? 'value="' . $task->getDescription() . '"' : 'placeholder="Description"' ?>></input>
                       <h2></h2>
                       <section id="button_line_edit">
@@ -231,11 +231,11 @@ ob_start();
         </section>
         <section id="section_ligne_bas">
             <form method="POST" action="index.php?action=addtask">
-                <h1>Titre de la tâche (80 caractères maximum)</h1>
+                <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                 <input id="addtask_title" class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
-                <h1>Catégorie de la tâche (20 caractères maximum)</h1>
+                <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
                 <input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
-                <h1>Description de la tâche (Optionnel)</h1>
+                <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
                 <section id="button_line">

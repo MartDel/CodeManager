@@ -1008,7 +1008,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 .wrapper-table-task {
-  background-color: none;
+  background-color: transparent;
+  height: calc(100vh - 103px)
 }
 
 .table-wrapper {
@@ -1033,6 +1034,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .table_col_main {
   border-right: 2px solid lightgray;
   padding-right: 50px;
+  background-color: transparent;
   padding-top: 5px;
 }
 

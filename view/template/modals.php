@@ -58,7 +58,7 @@
               <input class="input_img" size="0" id="input_img" type="file" name="pp" />
               <input type="submit" value="Envoyer" />
             </form>
-            <h3 id="img_text">Changer</h3>
+            <h3 class="colorwhite" id="img_text">Changer</h3>
           </div>
       </a>
       <span id="close_settings" class="close-modal close_settings">&times;</span>
