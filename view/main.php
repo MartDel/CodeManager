@@ -39,20 +39,20 @@ ob_start();
             <div class="flex_title_task">
                 <table>
                     <tr>
-                        <td class="user-table-cell">
+                        <td class="user_title user-table-cell">
                             <p class="menu_haut_table_cels_p">Utilisateur</p>
                         </td>
                         <td class="title-table-cell">
                             <p class="menu_haut_table_cels_p">Titre</p>
                         </td>
-                        <td class="desc-table-cell">
+                        <td class="desc_title desc-table-cell">
                             <p class="menu_haut_table_cels_p">Description</p>
                         </td>
-                        <td class="category-table-cell">
+                        <td class="cate_title category-table-cell">
                             <p class="menu_haut_table_cels_p">Catégorie</p>
                         </td>
                         <td class="date-table-cell">
-                            <p class="menu_haut_table_cels_p">Date de création</p>
+                            <p class="date_title menu_haut_table_cels_p">Date de création</p>
                         </td>
                     </tr>
                 </table>

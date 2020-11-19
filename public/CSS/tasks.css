@@ -1,3 +1,7 @@
+html, body {
+  overflow-x: hidden;
+}
+
 /*LIGNE HAUT TACHE*/
 .section_en_dessous_menu {
   display: -webkit-box;

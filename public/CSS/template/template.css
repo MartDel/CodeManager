@@ -312,8 +312,11 @@ input[type="search"]::-webkit-search-results-decoration {
   width: 100px;
   margin-top: -0px;
   position: relative;
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
+  transition-property: width, margin;
+  transition-duration: 0.3s, 0.3s;
+  transition-delay: 0s, 0.4s;
+  ;
+  ;
 }
 
 .new_task {
@@ -1992,4 +1995,128 @@ input[type="file"]:hover {
   font-weight: lighter;
   ;
   text-align: center;
+}
+
+/* MEDIA QUERIES*/
+@media only screen and (max-width: 820px) {
+  #project_actual {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #findField {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1433px) {
+  .category_tache, .cate_title {
+    display: none;
+  }
+
+  .user-table-cell {
+    width: 10%
+  }
+
+  .title-table-cell {
+    width: 32%
+  }
+
+  .desc-table-cell {
+    width: 39%
+  }
+}
+
+@media only screen and (max-width: 1110px) {
+  .utilisateur, .user_title {
+    display: none;
+  }
+
+  .title-table-cell {
+    padding: 0;
+    width: 29%
+  }
+
+  .desc-table-cell {
+    padding-left: 55px;
+    width: 45%
+  }
+}
+
+@media only screen and (max-width: 865px) {
+  .date, .date-table-cell {
+    display: none;
+  }
+
+  #project .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #create .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #edit_project .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #my_informations .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #settings .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #add_task .modal-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  aside[name=edit_popup_modal] .modal-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  #delete_task .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #delete .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  aside[name=popup_modal_task] .modal-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  #account .modal-wrapper {
+    width: 50%;
+    height: auto%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .desc_tache, .desc_title {
+    display: none;
+  }
+
+  #menu_gauche {
+    margin-left: -100px;
+  }
+}
+
+@media only screen and (max-width: 383px) {
+  #logo {
+    display: none;
+  }
 }

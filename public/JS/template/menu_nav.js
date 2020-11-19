@@ -107,6 +107,9 @@ const project = {
 }
 
 
+
+
+
 project.create_button.onclick=()=>{
   setTimeout(() => modals.show(project.idcreate, ()=>{
     project.name_input.value = '';
@@ -406,16 +409,34 @@ function turnOffNightShift(){
  * LEFT MENU
  */
 menu.burger.onclick = () => {
+    var actualmarginmenu=document.getElementById("menu_gauche").style.marginLeft
     if (menu.open) {
       closeMenu()
 
     }
     else {
       openMenu()
+
+
     }
     menu.open = !menu.open
 };
 function closeMenu(){
+    document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
+
+    setTimeout(()=>{
+      w=parseInt(window.innerWidth);
+      if (w<=500) {
+
+        document.getElementById("menu_gauche").style.marginLeft="-100px";
+
+      } else{
+        document.getElementById("menu_gauche").style.marginLeft="0";
+
+      }
+    },400)
+
+
     for (let i = 0; i < menu.text.length; i++) {
         menu.text[i].style.opacity = "0";
         //hide(menu.text[i]);
@@ -425,19 +446,44 @@ function closeMenu(){
     menu.main_div.style.width = "100px";
     menu.selected.style.paddingRight = "0px";
     setCookie('menu', 'closed')
+
 }
 function openMenu(){
     //setTimeout(() => {
         //for (let i = 0; i < menu.text.length; i++) show(menu.text[i]);
     //}, 0);
-    setTimeout(() => {
-        for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
-    }, 200);
-    menu.main_div.style.width = "260px";
-    menu.selected.style.paddingRight = "90px";
-    for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
+    w=parseInt(window.innerWidth);
+    if (w<=500) {
+      document.getElementById("menu_gauche").style.marginLeft="0";
+      document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
+      setTimeout(() => {
+        setTimeout(() => {
+            for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
+        }, 200);
+        menu.main_div.style.width = "260px";
+        menu.selected.style.paddingRight = "90px";
+        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
+        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
+        document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
+      },400)
+    } else{
+      document.getElementById("menu_gauche").style.marginLeft="0";
+      document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
+      setTimeout(() => {
+        setTimeout(() => {
+            for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
+        }, 200);
+        menu.main_div.style.width = "260px";
+        menu.selected.style.paddingRight = "90px";
+        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
+        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
+        document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
+      },0)
+    }
 
-    for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
+
+
+
     setCookie('menu', 'open')
 
 }
