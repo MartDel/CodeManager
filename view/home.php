@@ -2,6 +2,7 @@
 
 $title = "Page d'accueil";
 $cssfile = "index";
+$jsfile = "home";
 $_SESSION['last_page'] = 'home';
 ob_start();
 
@@ -29,7 +30,7 @@ ob_start();
 <div id="petite_presentation">
     <p>CodeManager et GitHub :<br> une façon intelligente de développer en groupe</p>
     <div></div>
-    <p id="seconde_ligne">Une méthode pour faciliter la communication et <br>la gestion des projet communs</p>
+    <p id="seconde_ligne">Une méthode pour faciliter la communication <br>et la gestion des projet communs</p>
     <a href="index.php?action=signup" id="inscription_div">
         INSCRIVEZ-VOUS GRATUITEMENT
     </a>
@@ -54,41 +55,42 @@ ob_start();
 
 <div id="infos_generales_site">
     <div class="flex_horizon">
-        <img class="img_index_desc" src="public/img/shareindex.png">
-        <h1>Concentrez-vous sur l'organisation</h1>
+        <img class="img_index_desc show-on-scroll" src="public/img/shareindex.png">
+        <h1 class="show-on-scroll">Concentrez-vous sur l'organisation</h1>
         <div id="flex_p">
-            <p>Un travail basé sur la cohésion au sein de l'équipe. <br>Un travail plus que collaboratif.</p>
-            <p>Un projet commun.<br>Le partage entre les participants.</p>
-            <p>Un outil pour répartir le travail, partager ses documents et suivre l'avancement du projet.</p>
+            <p class="p1 show-on-scroll" >Un travail basé sur la cohésion au sein de l'équipe. <br>Un travail plus que collaboratif.</p>
+            <p class="p2 show-on-scroll" >Un projet commun.<br>Le partage entre les participants.</p>
+            <p class="p3 show-on-scroll" >Un outil pour répartir le travail, partager ses documents et suivre l'avancement du projet.</p>
         </div>
         <br><br><br>
         <div class="séparation"></div>
         <br><br><br>
-        <img class="img_index_desc" src="public/img/objectiveindex.png">
-        <h1>Atteignez vos objectifs</h1>
+        <img class="img_index_desc show-on-scroll" src="public/img/objectiveindex.png">
+        <h1 class="show-on-scroll">Atteignez vos objectifs</h1>
         <div id="flex_p">
-            <p>Une répartition du travail intelligente.<br>Travailler efficaceent et intelligemment</p>
-            <p>Une gestion simple mais efficace de l'avancement<br>L'attribution de différents rôles au sein du projet
+            <p class="p1 show-on-scroll">Une répartition du travail intelligente.<br>Travailler efficaceent et intelligemment</p>
+            <p class="p2 show-on-scroll">Une gestion simple mais efficace de l'avancement<br>L'attribution de différents rôles au sein du projet
             </p>
-            <p>Des objectifs à atteidre pour avancer et pour terminer votre projet sans retard.</p>
+            <p class="p3 show-on-scroll">Des objectifs à atteidre pour avancer et pour terminer votre projet sans retard.</p>
         </div>
         <br><br><br>
         <!--<div class="séparation"></div>-->
         <br><br><br>
         <div id="bcc_icons">
-            <h1>Des fonctionnalités pour faciliter et sécuriser le travail</h1>
-            <br><br><br>
-            <div id="flex_p">
-                <div class="flexcol">
+          <h1 class="title_white show-on-scroll">Des fonctionnalités pour faciliter et sécuriser le travail</h1>
+            <div class="flex_icons_white" id="flex_p">
+
+
+                <div class="p1 show-on-scroll flexcol">
                     <img src="public/img/documentindex.png">
                     <h2 class="fonctionnalites"><strong>Fichiers à la demande</strong></h2>
                 </div>
-                <div class="flexcol">
+                <div class="p2 show-on-scroll flexcol">
                     <img src="public/img/listindex.png">
                     <h2 class="fonctionnalites"><strong>Des tâches et objectifs pour avancer rapidement</strong>
                     </h2>
                 </div>
-                <div class="flexcol">
+                <div class="p3 show-on-scroll flexcol">
                     <img src="public/img/uploadindex.png">
                     <h2 class="fonctionnalites"><strong>Plusieurs fichiers de sauvegarde</strong></h2>
                 </div>

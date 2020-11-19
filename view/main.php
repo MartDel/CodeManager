@@ -197,10 +197,10 @@ ob_start();
             </modal>
 
             <!--Tasks edit modals -->
-            <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit" class="edit_popup_modal">
+            <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit" name="edit_popup_modal">
                 <section id="section_ligne_haut_edit">
                     <br><br><br>
-                    <p class="colorred title_task_modal"><strong>Modifier la tâche</strong></p>
+                    <p class="colorred title_task_modal"><strong class="colorred">Modifier la tâche</strong></p>
                     <span id="close_edit" class="close_add close-modal">&times;</span>
                 </section>
                 <section id="section_ligne_bas_edit">
