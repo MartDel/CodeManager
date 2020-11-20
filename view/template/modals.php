@@ -25,9 +25,9 @@
         <input class="apple-switch" id="night_shift" type="checkbox">
     </div>
     <div class="row_settings_title" id="col_settings">
-        <form class="form_bug_report" method="POST" action="">
+        <form class="form_bug_report" method="POST" action="index.php?action=reportbug">
             <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
-            <textarea id="textarea_bug" placeholder="Message" name="bug_report_textarea" id=""></textarea>
+            <textarea id="textarea_bug" placeholder="Message" name="mess" id=""></textarea>
             <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
         </form>
         <br>

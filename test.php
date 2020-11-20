@@ -12,4 +12,4 @@ for ($i=0; $i < 25; $i++) {
     $task->pushToDB();
 }
 
-// header('Location: index.php');
+header('Location: index.php');

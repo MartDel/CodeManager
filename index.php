@@ -41,6 +41,8 @@ try{
 			elseif ($action == 'editPP') editPP(); // Change profile picture
 			elseif ($action == 'deleteAccount') deleteAccount();
 			elseif ($action == "logout") logout(); // Logout the current user
+			// Settings
+			elseif ($action == "reportbug") reportBug($_POST); // Report a bug
 			else header('Location: index.php');
 		} else {
 			showMainPage(); // Tasks list page

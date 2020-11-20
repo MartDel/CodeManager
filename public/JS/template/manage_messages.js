@@ -1,8 +1,8 @@
 function checkMessage(){
     const search = window.location.search
     const params = new URLSearchParams(search)
-    if(params.has('error')){
-        try {
+    try {
+        if(params.has('error')){
             const error = params.get('error').split('+')
             let info = {
                 title: error[0],
@@ -15,10 +15,15 @@ function checkMessage(){
                 info.callback = window[error[4]]
             }
             showMessage('error', info.title, info.message, info.callback)
-        } catch (e) {
-            console.log("Format d'erreur inconnu");
-            console.log(e);
+        } else if (params.has('info')) {
+            const infos = params.get('error').split('+')
+            const title = infos[0]
+            const message = infos[1]
+            showMessage('info', title, message)            
         }
+    } catch (e) {
+        console.log("Format d'erreur inconnu");
+        console.log(e);
     }
 }
 

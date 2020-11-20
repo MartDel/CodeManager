@@ -227,26 +227,17 @@ function logout(){
 }
 
 /**
- * Set $_SESSION['project_id'] with data in $_GET
+ * Send a mail to admins to report a bug
+ * @param Object $data All of bug data
  */
-function setCurrentProject(){
-    if(isset($_GET['project'])){
-        $project_id = htmlspecialchars($_GET['project']);
-        if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
+function reportBug($data){
+    $mess = isset($data['mess']) ? htmlspecialchars($data['mess']) : false;
+    if(!$mess) header('Location: index.php?action=' . getLastPage());
+    if(sendMail($mess)){
+        showMessage('Mail envoyé', 'Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!');
+    } else {
+        throw new CustomException('Erreur', "Une erreur est survenue lors de l'envoi du mail. Veuillez réessayer plus tard.", 'index.php?action=' . getLastPage());
     }
-}
-
-/**
- * Create remote link with POST data
- * @param Object $data POST data
- * @return String The remote link, null if there isn't enough information
- */
-function createRemote($data){
-    if(isset($data['github_pseudo']) && htmlspecialchars($data['github_pseudo']) != ''
-    && isset($data['remote']) && htmlspecialchars($data['remote']) != '') {
-        return 'https://github.com/' . htmlspecialchars($data['github_pseudo']) . '/' . htmlspecialchars($data['remote']);
-    }
-    return null;
 }
 
 function test(){
