@@ -2113,6 +2113,23 @@ input[type="file"]:hover {
   #menu_gauche {
     margin-left: -100px;
   }
+
+  #flex_arrow {
+    flex-direction: column;
+  }
+
+  #header_project_modal p {
+    position: relative;
+  }
+
+  #change_title {
+    margin-left: 0;
+  }
+
+  #flex_arrow section {
+    position: relative;
+    margin-top: 0px;
+  }
 }
 
 @media only screen and (max-width: 383px) {

@@ -393,7 +393,7 @@ function turnOnNightShift() {
     body.style.filter = "sepia(15%)";
     nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
     //settings.dark_mode_btn.checked = false;
-
+    turnOffDarkMode();
     // Set dark-mode cookie
     setCookie('night-shift', 'on')
 }
