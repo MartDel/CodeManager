@@ -68,6 +68,20 @@ class Task extends DatabaseManager
         $del->closeCursor();
     }
 
+    /**
+     * Update a task from the database
+     */
+    public function update(){
+        $db = self::dbConnect();
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name, description=:description WHERE id=:id');
+        $update->execute([
+            'name' => $this->name,
+            'description' => $this->description ? $this->description : null,
+            'id' => $this->id
+        ]);
+        $update->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**
@@ -101,19 +115,6 @@ class Task extends DatabaseManager
         return isset($data['id']) ? new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description']) : null;
     }
 
-    // SETTERS
-
-    public function setIsDone($is_done){
-        $db = self::dbConnect();
-        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
-        $set->execute([
-            'id' => $this->getId(),
-            'value' => $is_done ? 1 : 0
-        ]);
-        $set->closeCursor();
-        $this->is_done = $is_done;
-    }
-
     // GETTERS
 
     public function getId(){
@@ -144,5 +145,24 @@ class Task extends DatabaseManager
         $data = $query->fetch();
         $query->closeCursor();
         return isset($data['pseudo']) ? $data['pseudo'] : null;
+    }
+
+    // SETTERS
+
+    public function setName($name){
+        $this->name = $name;
+    }
+    public function setDescription($desc){
+        $this->description = $desc;
+    }
+    public function setIsDone($is_done){
+        $db = self::dbConnect();
+        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
+        $set->execute([
+            'id' => $this->getId(),
+            'value' => $is_done ? 1 : 0
+        ]);
+        $set->closeCursor();
+        $this->is_done = $is_done;
     }
 }

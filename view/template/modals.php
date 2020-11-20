@@ -63,7 +63,7 @@
       </a>
       <span id="close_settings" class="close-modal close_settings">&times;</span>
       <br><br>
-      <form class="" action="#" method="post">
+      <form class="" action="index.php?action=editaccount" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
           <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
@@ -119,7 +119,7 @@
     <section id="body_project_modal">
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
-            
+
             <form class="form-select-user" action="index.php?project=<?= $current_project['id'] ?>" method="post">
               <select class="select-general" name="select-general">
                 <option value="none"><?= $project->getName() ?></option>

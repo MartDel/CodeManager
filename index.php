@@ -26,6 +26,7 @@ try{
 			// Tasks page
 			if ($action == 'tasks') showMainPage();
 			elseif ($action == "addtask") addTask($_POST); // Add a new task
+			elseif ($action == "edittask") editTask($_POST); // Add a new task
 			elseif ($action == "endtask") endTask($_GET); // End a task
 			elseif ($action == 'deletetasks') deleteTasks($_GET); // Delete selected tasks
 			// Team page

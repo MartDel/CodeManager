@@ -104,7 +104,7 @@ function showProjectCommits(){
 }
 
 /**
- * Add a new task in database
+ * Add a new task in the database
  * @param Object $data All of task data
  */
 function addTask($data){
@@ -117,8 +117,24 @@ function addTask($data){
 }
 
 /**
+ * Edit a task in the database
+ * @param Object $data All of task data
+ */
+function editTask($data){
+    if(!isset($data['title']) || htmlspecialchars($data['title']) == '') {
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+    }
+    $task = Task::getTaskById(htmlspecialchars($_GET['id']), $_SESSION['project_id']);
+    if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", 'index.php?action=' . getLastPage());
+    $task->setName(htmlspecialchars($data['title']));
+    $task->setDescription(htmlspecialchars($data['description']));
+    $task->update();
+    header('Location: index.php');
+}
+
+/**
  * End a task
- * @param Object $data
+ * @param Object $data GET object
  */
 function endTask($data){
     if(!isset($data['id'])) header('Location: index.php');
@@ -146,6 +162,7 @@ function deleteTasks($data){
     foreach ($tasks_array as $task_id) {
         $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
         if($current_task) $current_task->delete();
+        // echo $current_task->getId() . '<br>';
     }
     header('Location: index.php');
 }
