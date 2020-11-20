@@ -19,7 +19,7 @@ function checkMessage(){
             const infos = params.get('error').split('+')
             const title = infos[0]
             const message = infos[1]
-            showMessage('info', title, message)            
+            showMessage('info', title, message)
         }
     } catch (e) {
         console.log("Format d'erreur inconnu");
@@ -60,12 +60,12 @@ function focusEmail(){
 
 function focusTitleAddTask() {
     modals.show(addtask.id)
-    // Focus sur le champ title
+    setTimeout(() => document.querySelector('#addtask_title').focus(), 1000)
 }
 
 function focusNameCreateProject(){
     modals.show(project.id)
-    // Focus sur le champ name
+    setTimeout(() => document.querySelector('#new_project_name').focus(), 1000)
 }
 
 function openPhpMyAdmin(){

@@ -226,7 +226,7 @@ function createRemote($data){
 /**
  * Send an e-mail with a message
  * @param String $message The message to sens
- * @return bool If everything is ok
+ * @return bool status
  */
 function sendMail($message){
 	// Headers
