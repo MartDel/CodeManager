@@ -315,8 +315,7 @@ input[type="search"]::-webkit-search-results-decoration {
   transition-property: width, margin;
   transition-duration: 0.3s, 0.3s;
   transition-delay: 0s, 0.4s;
-  ;
-  ;
+  margin-left: 0px;
 }
 
 .new_task {
@@ -1114,7 +1113,7 @@ input.apple-switch:checked:after {
   right: 0;
 }
 
-.form-select-user .select-general:hover {
+.select-general:hover {
   cursor: pointer;
 }
 
