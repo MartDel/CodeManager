@@ -175,9 +175,10 @@ function wOnload(){
             for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0.2s";
             menu.main_div.style.transition = "all 0.2s";
             menu.selected.style.transition = "all 0.2s";
-            closeMenu()
+            closeMenu();
         },1000)
     } else{
+      //avoid animation to disaprear
       document.getElementById("menu_gauche").style.transitionDuration="0s, 0s";
       ww=parseInt(window.innerWidth);
       if (ww<=500) {
