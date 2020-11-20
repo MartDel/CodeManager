@@ -119,22 +119,21 @@
     <section id="body_project_modal">
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
-            <section>
-                <div id="projet_princ" class="colorblack"><?= $project->getName() ?></div>
-                <p id="arrow">&#x25BC;</p>
-            </section>
+            
+            <form class="form-select-user" action="index.php?project=<?= $current_project['id'] ?>" method="post">
+              <select class="select-general" name="select-general">
+                <option value="none"><?= $project->getName() ?></option>
+                <?php foreach ($project_list as $current_project) { ?>
+                    <a href="index.php?project=<?= $current_project['id'] ?>">
+                      <option value="current"><?= $current_project['name'] ?></option>
+                    </a>
+                <?php } ?>
+              </select>
+            </form>
         </section>
-        <ul id="ul_swap">
-        <?php foreach ($project_list as $current_project) { ?>
-            <a href="index.php?project=<?= $current_project['id'] ?>">
-              <li class="li_swap">
-                <div class="link_swap_project_div colorblack">
-                  <?= $current_project['name'] ?>
-                </div>
-              </li>
-            </a>
-        <?php } ?>
-        </ul>
+
+
+
         <br><br>
         <div id="div_form_new_project"></div>
         <div class="info_current_project">

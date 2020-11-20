@@ -1096,6 +1096,28 @@ input.apple-switch:checked:after {
   overflow-y: scroll;
 }
 
+.form-select-user .select-general {
+  background-color: white;
+  border-left: #bebebe 2px solid;
+  border-right: #bebebe 2px solid;
+  border-bottom: #bebebe 2px solid;
+  font-family: "Product Sans Regular";
+  font-size: 1.1rem;
+  width: 300px;
+  text-align: center;
+  text-align-last: center;
+  padding: 10px;
+  margin-right: 45px;
+  margin-top: -21px;
+  z-index: 999;
+  position: absolute;
+  right: 0;
+}
+
+.form-select-user .select-general:hover {
+  cursor: pointer;
+}
+
 #body_project_modal li {
   left: 0;
   padding: 0;
@@ -2126,9 +2148,10 @@ input[type="file"]:hover {
     margin-left: 0;
   }
 
-  #flex_arrow section {
+  .form-select-user .select-general {
     position: relative;
     margin-top: 0px;
+    margin-right: 0;
   }
 }
 

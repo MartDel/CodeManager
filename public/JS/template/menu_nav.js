@@ -230,7 +230,7 @@ window.onclick = (event) => {
     }
 
     // Close project list
-    if (
+    /*if (
         event.target !== project.swap.master &&
         event.target !== project.swap.list &&
         project.swap.list.style.display == "block"
@@ -238,7 +238,7 @@ window.onclick = (event) => {
         project.swap.list.style.display = "none";
         project.swap.master.style.border = "rgb(190, 190, 190) 2px solid";
         project.swap.arrow.innerHTML = "&#x25BC;";
-    }
+    }*/
 };
 
 /*
@@ -511,7 +511,7 @@ redirect_team = () =>{
 /*
  * SWAP PROJECT MODAL
  */
-project.swap.master.onclick = () => {
+/*project.swap.master.onclick = () => {
     if (project.swap.list.style.display == "block") {
         project.swap.list.style.display = "none";
         //swap.master.style.border = "white 2px solid";
@@ -553,7 +553,7 @@ for (let i = 0; i < project.swap.li.length; i++) {
             }
         }
     };
-}
+}*/
 
 document.getElementById("close_swap").onclick = () => {
     project.name_input.value = "";

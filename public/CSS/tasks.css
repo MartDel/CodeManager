@@ -989,6 +989,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   flex-direction: column;
   width: auto;
   background-color: none;
+  transition: all 0.2s;
   text-align: center;
 }
 
