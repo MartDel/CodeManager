@@ -324,6 +324,7 @@ function turnOnDarkMode() {
     document.getElementById("cancel_submit_changes").style.backgroundColor="transparent";
     document.getElementById("findField").style.color="white";
     settings.night_shift_btn.checked = false;
+    turnOffNightShift()
 
     // Set dark-mode cookie
     setCookie('dark-mode', 'on')
