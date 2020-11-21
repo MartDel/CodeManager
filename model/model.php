@@ -136,6 +136,7 @@ function countDoneTasks($tasks){
  * @return array An array of tasks
  */
 function orderByCategory($tasks){
+	if(!$tasks) return null;
 	$r = [
 		'-1' => []
 	];

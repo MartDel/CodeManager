@@ -150,9 +150,9 @@ ob_start();
                                                 <div class="border_all">
                                                     <div class="left-side-task-mosaic">
                                                         <input type="checkbox" class="check_js to-check2 in-category1" />
-                                                        <a href=""><img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" /></a>
-                                                        <a href=""><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
-                                                        <a href=""><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
+                                                        <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
+                                                        <a href="index.php?action=endTask&id=<?= $task->getId() ?>"><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
+                                                        <a href="index.php?action=deleteTasks&tasks=<?= $task->getId() ?>"><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
                                                     </div>
                                                     <div class="task_name_mozaic">
                                                         <p><?= $task->getName() ?></p>
