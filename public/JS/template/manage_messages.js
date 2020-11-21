@@ -68,6 +68,10 @@ function focusNameCreateProject(){
     setTimeout(() => document.querySelector('#new_project_name').focus(), 1000)
 }
 
+function openEditAccount(){
+    modals.show(project.id)
+}
+
 function openPhpMyAdmin(){
     window.open("http://localhost:80/phpmyadmin", "_blank")
 }

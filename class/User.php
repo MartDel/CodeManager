@@ -67,13 +67,28 @@ class User extends DatabaseManager
      */
     public function setPictureName($name){
         $db = self::dbConnect();
-        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture = :pname WHERE id=:id");
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture=:pname WHERE id=:id");
         $set->execute([
             'pname' => $name,
             'id' => $this->id
         ]);
         $set->closeCursor();
         $this->picture = $name;
+    }
+
+    /**
+     * Set the user's pseudo
+     * @param String $pseudo The pseudo
+     */
+    public function setPseudo($pseudo){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET pseudo=:pseudo WHERE id=:id");
+        $set->execute([
+            'pseudo' => $pseudo,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->pseudo = $pseudo;
     }
 
     /**
@@ -140,6 +155,20 @@ class User extends DatabaseManager
         $data = $login_query->fetch();
         $login_query->closeCursor();
         return isset($data['login_id']) ? $data['login_id'] : null;
+    }
+
+    /**
+    * Get an user by his id
+    * @param int $id User's id
+    * @return User User object reprenting the current user
+    */
+    public static function getUserById($id){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $query->execute([$id]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
     }
 
     /**

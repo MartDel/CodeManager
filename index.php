@@ -21,8 +21,9 @@ $_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] 
 try{
 	date_default_timezone_set('UTC');
 	if(isset($_SESSION['user_id'])){ // Connected
-		if(isset($_GET['action'])) executeFunction(htmlspecialchars($_GET['action']));
-		else tasks(); // Tasks list page
+		if(!isset($_GET['action'])) $action = 'tasks';
+		else $action = htmlspecialchars($_GET['action']);
+		executeFunction($action, true);
 	} else { // Disconnected
 		if(isset($_GET['action'])) executeFunction(htmlspecialchars($_GET['action']));
 		else {
