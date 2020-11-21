@@ -16,6 +16,7 @@ function tasks(){
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     $tasks = Task::getAllTasks($_SESSION['project_id']);
+    $tasksByCategory = orderByCategory($tasks);
     $nb_tasks = isset($tasks) ? countNotDoneTasks($tasks) : 0;
     $nb_done_tasks = isset($tasks) ? countDoneTasks($tasks) : 0;
     require('view/main.php');

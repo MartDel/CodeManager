@@ -121,47 +121,50 @@ ob_start();
         </div>
         <div class="wrapper-table-task">
             <div class="table-wrapper mozaic_all_table">
-                <?php if (isset($tasks)): ?>
-                <table class="table_contain">
-                    <tbody>
-                        <?php if ($nb_tasks == 0): ?>
-                            <p name="task">Toutes les tâches sont terminées !</p>
-                        <?php elseif ($nb_done_tasks == 0): ?>
-                            <p name="done_task">Il n'y a aucune tâche terminée.</p>
-                        <?php endif; ?>
+                <?php if (isset($tasksByCategory)): ?>
+                    <?php if ($nb_tasks == 0): ?>
+                        <p name="task">Toutes les tâches sont terminées !</p>
+                    <?php elseif ($nb_done_tasks == 0): ?>
+                        <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                    <?php endif; ?>
+                    <?php foreach ($tasksByCategory as $category_id => $tasks): ?>
+                        <table class="table_contain">
+                            <tbody>
+                                <tr class="table_row_main categories">
+                                    <td class="table_col_main category-name">
+                                        <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
+                                        <p>
+                                            <label for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
+                                        </p>
+                                    </td>
+                                </tr>
 
-                        <tr class="table_row_main categories">
-                            <td class="table_col_main category-name">
-                                <input type="checkbox" class="to-check2 category-check" id="category1" />
-                                <p>
-                                    <label for="category1">Catégorie n°1</label>
-                                </p>
-                            </td>
-                        </tr>
-
-                        <!-- Tasks in the category -->
-                        <?php foreach ($tasks as $task) { if ($task->getAuthor()): ?>
-                            <tr
-                            class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                            name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
-                            id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
-                                <td class="table_col_main">
-                                    <div class="border_all">
-                                        <div class="left-side-task-mosaic">
-                                            <input type="checkbox" class="check_js to-check2 in-category1" />
-                                            <a href=""><img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" /></a>
-                                            <a href=""><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
-                                            <a href=""><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
-                                        </div>
-                                        <div class="task_name_mozaic">
-                                            <p><?= $task->getName() ?></p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endif; } ?>
-                    </tbody>
-                </table>
+                                <!-- Tasks in the category -->
+                                <?php foreach ($tasks as $task): ?>
+                                    <?php if ($task->getAuthor()): ?>
+                                        <tr
+                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
+                                        name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
+                                        id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                                            <td class="table_col_main">
+                                                <div class="border_all">
+                                                    <div class="left-side-task-mosaic">
+                                                        <input type="checkbox" class="check_js to-check2 in-category1" />
+                                                        <a href=""><img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" /></a>
+                                                        <a href=""><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
+                                                        <a href=""><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
+                                                    </div>
+                                                    <div class="task_name_mozaic">
+                                                        <p><?= $task->getName() ?></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <p>Pas de tâche pour le moment...</p>
                 <?php endif; ?>

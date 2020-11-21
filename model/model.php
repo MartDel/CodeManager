@@ -130,6 +130,30 @@ function countDoneTasks($tasks){
 	return $counter;
 }
 
+/**
+ * Create an array to order tasks by category
+ * @param array $tasks The array not ordered
+ * @return array An array of tasks
+ */
+function orderByCategory($tasks){
+	$r = [
+		'-1' => []
+	];
+	foreach ($tasks as $task) {
+		$category = $task->getCategoryId();
+		if(!$category) $category = '-1';
+		if(!isset($r[$category])) $r[$category] = [];
+		array_push($r[$category], $task);
+	}
+	return $r;
+}
+
+function getCategoryNameById($id){
+	$category = Category::getCategoryById($id);
+	if($category) return $category->getName();
+	return null;
+}
+
 // GitHub page
 
 /**
