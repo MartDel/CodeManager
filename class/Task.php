@@ -74,11 +74,12 @@ class Task extends DatabaseManager
      */
     public function update(){
         $db = self::dbConnect();
-        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name, description=:description, category_id=:category WHERE id=:id');
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name, description=:description, category_id=:category, is_done=:is_done WHERE id=:id');
         $update->execute([
             'name' => $this->name,
             'description' => $this->description ? $this->description : null,
             'category' => $this->category_id ? $this->category_id : null,
+            'is_done' => $this->is_done ? 1 : 0,
             'id' => $this->id
         ]);
         $update->closeCursor();
@@ -142,23 +143,8 @@ class Task extends DatabaseManager
 
     // SETTERS
 
-    public function setName($name){
-        $this->name = $name;
-    }
-    public function setDescription($desc){
-        $this->description = $desc;
-    }
-    public function setCategoryID($id){
-        $this->category_id = $id;
-    }
-    public function setIsDone($is_done){
-        $db = self::dbConnect();
-        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
-        $set->execute([
-            'id' => $this->getId(),
-            'value' => $is_done ? 1 : 0
-        ]);
-        $set->closeCursor();
-        $this->is_done = $is_done;
-    }
+    public function setName($name){ $this->name = $name; }
+    public function setDescription($desc){ $this->description = $desc; }
+    public function setCategoryID($id){ $this->category_id = $id; }
+    public function setIsDone($is_done){ $this->is_done = $is_done; }
 }

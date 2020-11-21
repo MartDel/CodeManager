@@ -44,6 +44,19 @@ class Category extends DatabaseManager
         $add->closeCursor();
     }
 
+    /**
+     * Update a category from the database
+     */
+    public function update(){
+        $db = self::dbConnect();
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name WHERE id=:id');
+        $update->execute([
+            'name' => $this->name,
+            'id' => $this->id
+        ]);
+        $update->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**
@@ -66,4 +79,8 @@ class Category extends DatabaseManager
     public function getId(){ return $this->id; }
     public function getName(){ return $this->name; }
     public function getProjectId(){ return $this->project_id; }
+
+    // SETTERS
+
+    public function setName($name){ $this->name = $name; }
 }

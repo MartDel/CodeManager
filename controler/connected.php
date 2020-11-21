@@ -60,6 +60,7 @@ function endTask(){
     if($task){
         $done_task = $task->getIsDone();
         $task->setIsDone(!$done_task);
+        $task->update();
         $params = $done_task ? '?endTask' : '';
         header('Location: index.php' . $params);
     } else {
@@ -93,6 +94,23 @@ function addCategory(){
     }
     $category = new Category($data['name'], $_SESSION['project_id']);
     $category->pushToDB();
+    header('Location: index.php');
+}
+
+/**
+ * Edit a category from the database
+ */
+function editCategory(){
+    $data = secure($_POST);
+    if(!isset($data['name']) && $data['name'] != ''){
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+    }
+    $category = Category::getCategoryById(htmlspecialchars($_GET['id']));
+    if($category->getProjectId() != $_SESSION['project_id']){
+        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php?action=' . getLastPage());
+    }
+    $category->setName($data['name']);
+    $category->update();
     header('Location: index.php');
 }
 
