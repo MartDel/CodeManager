@@ -31,6 +31,19 @@ class Category extends DatabaseManager
         }
     }
 
+    /**
+     * Add category to the database
+     */
+    public function pushToDB(){
+        $db = self::dbConnect();
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, project_id) VALUES(:name, :project)');
+        $add->execute([
+            'name' => $this->name,
+            'project' => $this->project_id
+        ]);
+        $add->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**

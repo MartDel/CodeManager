@@ -84,6 +84,19 @@ function deleteTasks(){
 }
 
 /**
+ * Add a category to the database
+ */
+function addCategory(){
+    $data = secure($_POST);
+    if(!isset($data['name']) && $data['name'] != ''){
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+    }
+    $category = new Category($data['name'], $_SESSION['project_id']);
+    $category->pushToDB();
+    header('Location: index.php');
+}
+
+/**
  * Show the team page
  * @return [type] [description]
  */
