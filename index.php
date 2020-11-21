@@ -20,47 +20,14 @@ $_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] 
 
 try{
 	date_default_timezone_set('UTC');
-	if(isset($_SESSION['pseudo'])){ // Connected
-		if(isset($_GET['action'])){
-			$action = htmlspecialchars($_GET["action"]);
-			// Tasks page
-			if ($action == 'tasks') showMainPage();
-			elseif ($action == "addtask") addTask($_POST); // Add a new task
-			elseif ($action == "edittask") editTask($_POST); // Add a new task
-			elseif ($action == "endtask") endTask($_GET); // End a task
-			elseif ($action == 'deletetasks') deleteTasks($_GET); // Delete selected tasks
-			// Team page
-			elseif ($action == 'team') showTeamPage();
-			// GitHub page
-			elseif ($action == "commits") showProjectCommits();
-			// Projects
-			elseif ($action == 'createproject') createProject($_POST); // Add a new project
-			elseif ($action == 'editproject') editProject($_POST); // Add a new project
-			elseif ($action == 'deleteproject') deleteProject(); // Delete the project
-			// Account
-			elseif ($action == 'editPP') editPP(); // Change profile picture
-			elseif ($action == 'deleteAccount') deleteAccount();
-			elseif ($action == "logout") logout(); // Logout the current user
-			// Settings
-			elseif ($action == "reportbug") reportBug($_POST); // Report a bug
-			else header('Location: index.php');
-		} else {
-			showMainPage(); // Tasks list page
-		}
+	if(isset($_SESSION['user_id'])){ // Connected
+		if(isset($_GET['action'])) executeFunction(htmlspecialchars($_GET['action']));
+		else tasks(); // Tasks list page
 	} else { // Disconnected
-		if(isset($_GET['action'])){
-			$action = htmlspecialchars($_GET["action"]);
-			if ($action == "signup") require('view/signup.php'); // SignUp page
-			elseif ($action == 'test') /* test(); */ require('view/test.php');
-			elseif ($action == "checkSignUp") checkSignUp($_POST); // Check SignUp
-			elseif ($action == "signin") require('view/signin.php'); // SignIn page
-			elseif ($action == "checkSignIn") checkSignIn($_POST); // Check SignIn
-			elseif ($action == "home") require('view/home.php'); // Home page
-			else header('Location: index.php');
-		} else {
-			if (isset($_COOKIE['auth'])) {
-				checkCookie(); // Check if user's cookies are correct
-			} else require('view/home.php'); // Home page
+		if(isset($_GET['action'])) executeFunction(htmlspecialchars($_GET['action']));
+		else {
+			if (isset($_COOKIE['auth'])) checkCookie(); // Check if user's cookies are correct
+			else require('view/home.php'); // Home page
 		}
 	}
 } catch(CustomException $e){

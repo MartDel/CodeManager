@@ -79,7 +79,7 @@ ob_start();
                             <input class="input_img check_js to_check" type="checkbox" />
                         </span>
                         <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
-                            <a href="index.php?action=endtask&id=<?= $task->getId() ?>">
+                            <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
                                 <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
                             </a>
                         </span>
@@ -205,7 +205,7 @@ ob_start();
                     <span id="close_edit" class="close_add close-modal">&times;</span>
                 </section>
                 <section id="section_ligne_bas_edit">
-                    <form method="POST" action="index.php?action=edittask&id=<?= $task->getId() ?>">
+                    <form method="POST" action="index.php?action=editTask&id=<?= $task->getId() ?>">
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                       <input class="textarea_title" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
                       <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
@@ -231,7 +231,7 @@ ob_start();
             <span id="close_add" class="close_add close-modal">&times;</span>
         </section>
         <section id="section_ligne_bas">
-            <form method="POST" action="index.php?action=addtask">
+            <form method="POST" action="index.php?action=addTask">
                 <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                 <input id="addtask_title" class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
                 <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>

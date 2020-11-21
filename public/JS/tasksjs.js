@@ -307,7 +307,7 @@ function deleteTasks(id_list){
     })
     // console.log(id_list.length);
     // console.log('?action=deletetasks&tasks=' + str);
-    window.location.search = '?action=deletetasks&tasks=' + str
+    window.location.search = '?action=deleteTasks&tasks=' + str
 }
 
 // First display

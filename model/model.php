@@ -8,10 +8,10 @@ function checkNewUserData($data){
 	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
 		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 	}
-	$pseudo = htmlspecialchars($data['pseudo']);
-	$mail = htmlspecialchars($data['mail']);
-	$firstname = htmlspecialchars($data['firstname']);
-	$lastname = htmlspecialchars($data['lastname']);
+	$pseudo = $data['pseudo'];
+	$mail = $data['mail'];
+	$firstname = $data['firstname'];
+	$lastname = $data['lastname'];
 	$password = $data['password'];
 	$confirm = $data['confirm'];
 	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") {
@@ -33,10 +33,10 @@ function checkNewUserData($data){
  * @param Object $data User's data
  */
 function addUser($data){
-	$pseudo = htmlspecialchars($data['pseudo']);
-	$mail = htmlspecialchars($data['mail']);
-	$firstname = htmlspecialchars($data['firstname']);
-	$lastname = htmlspecialchars($data['lastname']);
+	$pseudo = $data['pseudo'];
+	$mail = $data['mail'];
+	$firstname = $data['firstname'];
+	$lastname = $data['lastname'];
 	$user = new User($pseudo, $mail, $firstname, $lastname);
 	$user->pushToDB($data['password'], genUniqueId());
 	connectUser($data['pseudo'], true);
@@ -44,13 +44,11 @@ function addUser($data){
 
 /**
  * Check if there are errors in user's data
- * @param String $l User's pseudo or email
- * @param String $p User's password
+ * @param String $login User's pseudo or email
+ * @param String $password User's password
  * @param boolean $is_hashed True if the password is hashed
  */
-function checkConnection($l, $p, $is_hashed) {
-	$login = htmlspecialchars($l);
-	$password = $p;
+function checkConnection($login, $password, $is_hashed) {
 	$user = new User($login, $login, '', '');
 	if(!$user->accountExist()){
 		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
@@ -216,9 +214,8 @@ function setCurrentProject(){
  * @return String The remote link, null if there isn't enough information
  */
 function createRemote($data){
-    if(isset($data['github_pseudo']) && htmlspecialchars($data['github_pseudo']) != ''
-    && isset($data['remote']) && htmlspecialchars($data['remote']) != '') {
-        return 'https://github.com/' . htmlspecialchars($data['github_pseudo']) . '/' . htmlspecialchars($data['remote']);
+    if(isset($data['github_pseudo']) && $data['github_pseudo'] != '' && isset($data['remote']) && $data['remote'] != '') {
+        return 'https://github.com/' . $data['github_pseudo'] . '/' . $data['remote'];
     }
     return null;
 }
@@ -302,4 +299,16 @@ function genUniqueId($length = 13){
 	// If 'random_bytes' doesn't exists
 	// $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
     return substr(bin2hex($bytes), 0, $length);
+}
+
+/**
+ * Add a security to user entries
+ * @param Object $object The user's data
+ * @return Object The securised user's data
+ */
+function secure($object){
+	foreach ($object as $key => $value) {
+		$object[$key] = htmlspecialchars($value);
+	}
+	return $object;
 }

@@ -160,7 +160,7 @@
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
-  <form name="create_project_form" action="index.php?action=createproject" method="POST">
+  <form name="create_project_form" action="index.php?action=createProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
       <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
@@ -185,7 +185,7 @@
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
-  <form name="edit_project_form" action="index.php?action=editproject" method="POST">
+  <form name="edit_project_form" action="index.php?action=editProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
       <input class="colorblack" name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
