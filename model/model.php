@@ -308,7 +308,11 @@ function genUniqueId($length = 13){
  */
 function secure($object){
 	foreach ($object as $key => $value) {
-		$object[$key] = htmlspecialchars($value);
+		$final = htmlspecialchars($value)
+		if(strlen($final) > 255 && $key != 'description' && $key != 'message' && $key != 'mess'){
+			throw new CustomException('Chaine trop longue', "Une des données envoyées est trop longue. Veillez à ce qu'elle ne dépasse pas une longuer de 255.", 'index.php?action=' . getLastPage());
+		}
+		$object[$key] = $final;
 	}
 	return $object;
 }

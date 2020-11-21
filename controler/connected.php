@@ -79,7 +79,6 @@ function deleteTasks(){
     foreach ($tasks_array as $task_id) {
         $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
         if($current_task) $current_task->delete();
-        // echo $current_task->getId() . '<br>';
     }
     header('Location: index.php');
 }
