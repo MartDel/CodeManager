@@ -115,6 +115,20 @@ function editCategory(){
 }
 
 /**
+ * Delete a category
+ */
+function deleteCategory(){
+    $data = secure($_GET);
+    if(!isset($data['id'])) header('Location: index.php');
+    $category = Category::getCategoryById($id);
+    if($category->getProjectId() != $_SESSION['project_id']){
+        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php?action=' . getLastPage());
+    }
+    $category->delete(isset($data['deleteTasks']));
+    header('Location: index.php');
+}
+
+/**
  * Show the team page
  * @return [type] [description]
  */

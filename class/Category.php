@@ -57,6 +57,28 @@ class Category extends DatabaseManager
         $update->closeCursor();
     }
 
+    /**
+     * Delete a category from the database
+     * @param bool $delete_tasks True if the user want to delete all of tasks linked to this category
+     */
+    public function delete($delete_tasks = false){
+        // Delete the category
+        $db = self::dbConnect();
+        $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $del->execute([$this->id]);
+        $del->closeCursor();
+
+        if($delete_tasks){ // Delete all of tasks linked to this category
+            $tasks = $db->prepare('DELETE FROM ' . Task::TABLE_NAME . 'WHERE category_id=?');
+            $tasks->execute([$this->id]);
+            $tasks->closeCursor();
+        } else {
+            $update = $db->prepare('UPDATE ' . Task::TABLE_NAME . ' SET category_id=NULL WHERE category_id=?');
+            $update->execute([$this->id]);
+            $update->closeCursor();
+        }
+    }
+
     // STATIC FUNCTIONS
 
     /**

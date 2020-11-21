@@ -16,7 +16,7 @@ class Task extends DatabaseManager
 
     const TABLE_NAME = "tasks";
 
-    function __construct($name, $project_id, $is_done, $create_date, $author_id, $description, $category_id){
+    function __construct($name, $project_id, $is_done, $create_date, $author_id, $description, $category_id = null){
         $this->name = $name;
         $this->project_id = $project_id;
         $this->is_done = $is_done;
