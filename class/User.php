@@ -168,7 +168,8 @@ class User extends DatabaseManager
         $query->execute([$id]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        if(isset($data['id'])) return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        return null;
     }
 
     /**
@@ -182,7 +183,8 @@ class User extends DatabaseManager
         $query->execute([$login, $login]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        if(isset($data['id'])) return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        return null;
     }
 
     /**
@@ -191,8 +193,8 @@ class User extends DatabaseManager
     * @return User User object reprenting the current user
     */
     public static function getUserByLoginId($hashed_login){
-        $db = self::dbConnect();
         $user = null;
+        $db = self::dbConnect();
         $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME);
         $query->execute();
         while($data = $query->fetch()){

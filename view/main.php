@@ -89,7 +89,7 @@ ob_start();
                         <span class="utilisateur"><?= $task->getAuthor() ?></span>
                         <span class="titre_tache"><?= $task->getName() ?></span>
                         <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
-                        <span class="category_tache"><?= "Catégorie de la tâche (Front, back etc...)" ?></span>
+                        <span class="category_tache"><?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></span>
                         <span class="date"><?= $task->getCreateDate() ?></span>
                     </li></button>
                 <?php endif; } ?>
