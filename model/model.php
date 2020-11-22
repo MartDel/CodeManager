@@ -149,6 +149,11 @@ function orderByCategory($tasks){
 	return $r;
 }
 
+/**
+ * Get a category name with its id
+ * @param int $id The category id
+ * @return string The category name
+ */
 function getCategoryNameById($id){
 	$category = Category::getCategoryById($id);
 	if($category) return $category->getName();

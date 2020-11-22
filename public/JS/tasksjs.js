@@ -35,6 +35,7 @@ const select_all = {
     trash: document.getElementsByClassName("trash")[0],
     delete_task:"delete_task",
     yes_task:document.getElementById("yes_delete_task"),
+    nb_tasks: document.getElementById('nb_tasks')
 };
 const select_all2 = {
     select_all: document.getElementById("select_all2"),
@@ -300,6 +301,18 @@ function getTaskCategory(input){
     }
     return null
 }
+function getTasksToDelete1(){
+    let id_list = []
+    for (let i = 0; i < select_all.checkbox.length; i++) {
+        const checkbox = select_all.checkbox[i]
+        if(checkbox.checked){
+            const task = checkbox.parentElement.parentElement.parentElement
+            const task_id = task.id.replace('task', '')
+            id_list.push(task_id)
+        }
+    }
+    return id_list
+}
 function deleteTasks(id_list){
     let str = ''
     id_list.forEach((id, i) => {
@@ -316,23 +329,10 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
 select_all.trash.onclick = () => {
+    select_all.nb_tasks.innerText = getTasksToDelete1().length
     modals.show(select_all.delete_task)
 }
-select_all.yes_task.onclick = () => {
-  // Delete tasks
-  let id_list = []
-  for (let i = 0; i < select_all.checkbox.length; i++) {
-      const checkbox = select_all.checkbox[i]
-      if(checkbox.checked){
-          const task = checkbox.parentElement.parentElement.parentElement
-          const task_id = task.id.replace('task', '')
-          id_list.push(task_id)
-      }
-  }
-  deleteTasks(id_list)
-}
-
-
+select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete1())
 
 // Second display
 select_all2.select_all.onclick = () => selectAll(select_all2)
@@ -368,7 +368,6 @@ select_all2.trash.onclick = () => {
         const checkbox = select_all2.checkbox[i]
         if(checkbox.checked && !checkbox.classList.contains('category-check')){
             const task = checkbox.parentElement.parentElement.parentElement.parentElement
-            console.log(task.id);
             const task_id = task.id.replace('task', '')
             id_list.push(task_id)
         }

@@ -149,7 +149,7 @@ ob_start();
                                             <td class="table_col_main">
                                                 <div class="border_all">
                                                     <div class="left-side-task-mosaic">
-                                                        <input type="checkbox" class="check_js to-check2 in-category1" />
+                                                        <input type="checkbox" class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>" />
                                                         <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
                                                         <a href="index.php?action=endTask&id=<?= $task->getId() ?>"><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
                                                         <a href="index.php?action=deleteTasks&tasks=<?= $task->getId() ?>"><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
@@ -256,7 +256,7 @@ ob_start();
       <span id="close_settings" class="close-modal close_add">&times;</span>
       <h1 class="colorred">CONFIRMATION de suppression de tâche(s)</h1>
       <br>
-      <h2>Êtes vous sûr(e) de vouloir supprimer *getnumber* tâches ?</h2>
+      <h2>Êtes vous sûr(e) de vouloir supprimer <span id="nb_tasks">0</span> tâche(s) ?</h2>
       <br>
       <div id="flex_confirm" class="flex_confirm">
         <p id="no_delete_task" class="close-modal no_delete_task">Non je veux la/les conserver</p>
