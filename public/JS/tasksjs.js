@@ -66,6 +66,28 @@ window.onload = () => {
     wOnload()
     checkMessage()
 
+    // Set display
+    if (getCookie('display')==="2") {
+      display.first.style.display="none"
+      display.second.style.display="block"
+      display.open.style.display="none";
+      display.open.style.opacity="0"
+      display.global.style.borderRadius="50%";
+      display.category_2.src="public/img/category_1.png"
+      display.global.style.height="39px";
+      display.category_1.src="public/img/category_2.png"
+    } else {
+      display.first.style.display="block"
+      display.second.style.display="none"
+      display.open.style.display="none";
+      display.open.style.opacity="0";
+      display.global.style.borderRadius="50%";
+      display.global.style.height="39px";
+      display.category_2.src="public/img/category_2.png"
+      display.category_1.src="public/img/category_1.png"
+    }
+
+
     // Hide or show done tasks
     const search = window.location.search
     const params = new URLSearchParams(search)
