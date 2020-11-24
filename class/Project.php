@@ -49,6 +49,16 @@ class Project extends DatabaseManager
             'remote' => $this->remote ? $this->remote : null
         ]);
         $add->closeCursor();
+
+        // Update id
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND author_id=:author_id');
+        $query->execute([
+            'name' => $this->name,
+            'author_id' => $this->author_id
+        ]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        $this->id = $data['id'];
     }
 
     /**

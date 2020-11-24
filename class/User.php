@@ -11,7 +11,6 @@ class User extends DatabaseManager
     private $firstname;
     private $lastname;
     private $picture;
-    // private $role;
 
     const TABLE_NAME = "users";
 
@@ -178,27 +177,34 @@ class User extends DatabaseManager
 
     // GETTERS
 
-    public function getId(){
-        return $this->id;
+    public function getId(){ return $this->id; }
+    public function getPseudo(){ return $this->pseudo; }
+    public function getMail(){ return $this->mail; }
+    public function getFirstname(){ return $this->firstname; }
+    public function getLastname(){ return $this->lastname; }
+    public function getPictureName(){ return $this->picture; }
+
+    public function getRole(){
+        $team_row = Team::getRowByUserId($this->id);
+        if($team_row) return $team_row->getRole();
+        return null;
     }
-    public function getPseudo(){
-        return $this->pseudo;
+
+    public function getFinalRole(){
+        $perm = $this->getPermissions();
+        switch ($perm) {
+            case 0: return 'Consultant';
+            case 1: return 'Développeur';
+            case 2: return 'Administrateur';
+            default: return 'Erreur permissions';
+        }
     }
-    public function getMail(){
-        return $this->mail;
+
+    public function getPermissions(){
+        $team_row = Team::getRowByUserId($this->id);
+        if($team_row) return (int) $team_row->getPermissions();
+        return 0;
     }
-    public function getFirstname(){
-        return $this->firstname;
-    }
-    public function getLastname(){
-        return $this->lastname;
-    }
-    public function getPictureName(){
-        return $this->picture;
-    }
-    // public function getRole(){
-    //     return $this->role;
-    // }
 
     // SETTERS
 

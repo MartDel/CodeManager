@@ -14,7 +14,6 @@ require("class/simple_html_dom.php");
 require("class/DatabaseManager.php");
 require("class/User.php");
 require("class/Task.php");
-require("class/Role.php");
 require('class/Project.php');
 require('class/Category.php');
 require('class/Team.php');
@@ -24,6 +23,7 @@ $_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] 
 try{
 	date_default_timezone_set('UTC');
 	if(isset($_SESSION['user_id'])){ // Connected
+		updateSession();
 		if(!isset($_GET['action'])) $action = 'tasks';
 		else $action = htmlspecialchars($_GET['action']);
 		executeFunction($action, true);

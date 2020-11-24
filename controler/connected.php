@@ -138,6 +138,7 @@ function team(){
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
+    $users = Team::getAllUsers($_SESSION['project_id']);
     require('view/team.php');
 }
 
@@ -197,6 +198,9 @@ function createProject(){
 
     $project = new Project($data['name'], $_SESSION['user_id'], $data['description'], $remote);
     $project->pushToDB();
+    $team_row = new Team($project->getId(), $_SESSION['user_id']);
+    $team_row->setPermission(2);
+    $team_row->pushToDB();
     header('Location: index.php?project=' . $project->getDatabaseId());
 }
 

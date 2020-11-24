@@ -87,6 +87,8 @@ function connectUser($login, $auto){
 	$_SESSION['mail'] = $user->getMail();
 	$_SESSION['firstname'] = $user->getFirstname();
 	$_SESSION['lastname'] = $user->getLastname();
+	$_SESSION['role'] = $user->getFinalRole();
+    $_SESSION['permissions'] = $user->getPermissions();
 	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	$project = Project::getFirstProject($user_id);

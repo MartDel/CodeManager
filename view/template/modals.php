@@ -123,11 +123,13 @@
             <form class="form-select-user" action="index.php?project=<?= $current_project['id'] ?>" method="post">
               <select class="select-general" name="select-general">
                 <option value="none"><?= $project->getName() ?></option>
-                <?php foreach ($project_list as $current_project) { ?>
-                    <a href="index.php?project=<?= $current_project['id'] ?>">
-                      <option value="current"><?= $current_project['name'] ?></option>
-                    </a>
-                <?php } ?>
+                <?php foreach ($project_list as $current_project): ?>
+                    <?php if ($current_project['id'] != $project->getId()): ?>
+                        <a href="index.php?project=<?= $current_project['id'] ?>">
+                            <option value="current"><?= $current_project['name'] ?></option>
+                        </a>
+                    <?php endif; ?>
+                <?php endforeach; ?>
               </select>
             </form>
         </section>
@@ -198,7 +200,7 @@
       <div class="flex_button_edit">
         <br><br>
         <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
-        <a class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Supprimer le projet</a>
+        <a class="close-modal button_cancel_edit_project" name="cancel_create_project_button" href="index.php?action=deleteProject">Supprimer le projet</a>
         <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>
