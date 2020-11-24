@@ -199,7 +199,8 @@ function createProject(){
     $team_row = new Team($project->getId(), $_SESSION['user_id']);
     $team_row->setPermissions(2);
     $team_row->pushToDB();
-    header('Location: index.php?project=' . $project->getDatabaseId());
+    $_SESSION['project_id'] = $project->getId();
+    header('Location: index.php');
 }
 
 /**
