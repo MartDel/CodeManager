@@ -8,6 +8,7 @@ error_reporting(-1);
 session_start();
 require("controler/controler.php");
 require('class/Passwords.php');
+require('class/InformationMessage.php');
 require('class/CustomException.php');
 require("class/simple_html_dom.php");
 require("class/DatabaseManager.php");
@@ -16,6 +17,7 @@ require("class/Task.php");
 require("class/Role.php");
 require('class/Project.php');
 require('class/Category.php');
+require('class/Team.php');
 $hostname = 'localhost/CodeManager';
 $_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] : '';
 
@@ -33,7 +35,7 @@ try{
 		}
 	}
 } catch(CustomException $e){
-	header('Location: ' . $e->getRedirection() . '&error=' . $e->getUrlEncoded());
+	header('Location: ' . $e->getRedirection() . $e->getUrlEncoded());
 } catch(Exception $e){
 	echo 'Erreur : ' . $e->getMessage();
 }

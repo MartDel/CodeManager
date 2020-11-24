@@ -394,17 +394,19 @@ ob_start();
 
     <modal id="add">
       <span id="close_account_modal" class="close-modal close_account_modal">&times;</span>
-      
-      <h1>Ajouter un collaborateur</h1>
-      <br><br>
-      <h2>Adresse e-mail du collaborateur :</h2>
-      <br>
-      <input type="email" name="" placeholder="Adresse e-mail du collaborateur" value=""></input>
-      <br><br><br>
-      <div class="flex_add_user">
-        <a href="#" class="yes_add_user">Valider</a>
-        <a href="#" class="close-modal no_add_user">Annuler</a>
-      </div>
+      <form action="index.php?action=searchUser" method="post">
+          <h1>Ajouter un collaborateur</h1>
+          <br><br>
+          <h2>Adresse e-mail du collaborateur :</h2>
+          <br>
+          <input type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
+          <br><br><br>
+          <div class="flex_add_user">
+            <a href="#" class="yes_add_user">Valider</a>
+            <input type="submit" value="Valider" />
+            <a href="#" class="close-modal no_add_user">Annuler</a>
+          </div>
+      </form>
     </modal>
     <?php require('template/modals.php'); ?>
 </div>

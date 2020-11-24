@@ -91,7 +91,7 @@ function deleteTasks(){
 function addCategory(){
     $data = secure($_POST);
     if(!isset($data['name']) && $data['name'] != ''){
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
     }
     $category = new Category($data['name'], $_SESSION['project_id']);
     $category->pushToDB();
@@ -104,11 +104,11 @@ function addCategory(){
 function editCategory(){
     $data = secure($_POST);
     if(!isset($data['name']) && $data['name'] != ''){
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
     }
     $category = Category::getCategoryById(htmlspecialchars($_GET['id']));
     if($category->getProjectId() != $_SESSION['project_id']){
-        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php');
     }
     $category->setName($data['name']);
     $category->update();
@@ -123,7 +123,7 @@ function deleteCategory(){
     if(!isset($data['id'])) header('Location: index.php');
     $category = Category::getCategoryById($id);
     if($category->getProjectId() != $_SESSION['project_id']){
-        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php');
     }
     $category->delete(isset($data['deleteTasks']));
     header('Location: index.php');
@@ -131,7 +131,6 @@ function deleteCategory(){
 
 /**
  * Show the team page
- * @return [type] [description]
  */
 function team(){
     // Get projects infos
@@ -140,6 +139,34 @@ function team(){
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     require('view/team.php');
+}
+
+/**
+ * Search an user in the database
+ */
+function searchUser(){
+    $data = secure($_POST);
+    $user = User::getUserByLogin($data['mail']);
+    if($user){
+        $found = new InformationMessage('Utilisateur trouvé !', "L'utilisateur '" . $user->getPseudo() . "' a été trouvé. Voulez-vous l'ajouter à votre équipe?", 'index.php?action=team', 'addUser');
+        $found->setBtn('add');
+        $found->setArg($user->getMail());
+        $found->redirect();
+    } else {
+        $not_found = new CustomException('Mauvaise nouvelle...', "Aucun utilisateur n'a été trouvé. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
+        $not_found->setBtn('reload');
+        throw $not_found;
+    }
+}
+
+function addUserToTeam(){
+    $data = secure($_GET);
+    $user = User::getUserByLogin($data['mail']);
+    if(!$user) header('Location: index.php?action=team');
+    $team = new Team($_SESSION['project_id'], $user->getId());
+    $team->pushToDB();
+    $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", 'index.php?action=team');
+    $added->redirect();
 }
 
 /**

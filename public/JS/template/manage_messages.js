@@ -2,24 +2,17 @@ function checkMessage(){
     const search = window.location.search
     const params = new URLSearchParams(search)
     try {
-        if(params.has('error')){
-            const error = params.get('error').split('+')
-            let info = {
-                title: error[0],
-                message: error[1],
-                file: error[2],
-                line: error[3],
-                callback: null
-            }
-            if(error[4] && error[4] !== ''){
-                info.callback = window[error[4]]
-            }
-            showMessage('error', info.title, info.message, info.callback)
-        } else if (params.has('info')) {
-            const infos = params.get('error').split('+')
-            const title = infos[0]
-            const message = infos[1]
-            showMessage('info', title, message)
+        if(params.has('error') || params.has('info')){
+            let type;
+            if(params.has('info')) type = 'info'
+            else type = 'error'
+            const title = params.get('title')
+            const message = params.get('message')
+            const msg = new Message(type, title, message)
+            if(params.has('callback_name')) msg.dynamic = window[params.get('callback_name')]
+            if(params.has('btn')) msg.btn2 = params.get('btn')
+            if(params.has('arg')) msg.arg = params.get('arg')
+            msg.show()
         }
     } catch (e) {
         console.log("Format d'erreur inconnu");
@@ -46,17 +39,12 @@ function focusInput(key, value){
     }
 }
 
-function focusEmptyInput(){
-    focusInput('value', '')
-}
+function focusEmptyInput(){ focusInput('value', '') }
+function focusPassword(){ focusInput('type', 'password') }
+function focusEmail(){ focusInput('type', 'email') }
 
-function focusPassword(){
-    focusInput('type', 'password')
-}
-
-function focusEmail(){
-    focusInput('type', 'email')
-}
+function openEditAccount(){ modals.show(project.id) }
+function openAddUserModal(){ modals.show(add.id) }
 
 function focusTitleAddTask() {
     modals.show(addtask.id)
@@ -68,10 +56,5 @@ function focusNameCreateProject(){
     setTimeout(() => document.querySelector('#new_project_name').focus(), 1000)
 }
 
-function openEditAccount(){
-    modals.show(project.id)
-}
-
-function openPhpMyAdmin(){
-    window.open("http://localhost:80/phpmyadmin", "_blank")
-}
+function addUser(email){ window.location.search = '?action=addUserToTeam&mail=' + encodeURIComponent(email) }
+function openPhpMyAdmin(){ window.open("http://localhost:80/phpmyadmin", "_blank") }

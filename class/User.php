@@ -15,8 +15,7 @@ class User extends DatabaseManager
 
     const TABLE_NAME = "users";
 
-    function __construct($pseudo, $mail, $firstname, $lastname)
-    {
+    function __construct($pseudo, $mail, $firstname, $lastname){
         $this->pseudo = $pseudo;
         $this->mail = $mail;
         $this->firstname = $firstname;
@@ -45,6 +44,7 @@ class User extends DatabaseManager
     /**
     * Upload the new user to the database
     * @param  string $password The user's password
+    * @param  string $login_id The user's login id
     */
     public function pushToDB($password, $login_id){
         $db = self::dbConnect();
@@ -59,36 +59,6 @@ class User extends DatabaseManager
             'login_id' => $login_id
         ]);
         $add->closeCursor();
-    }
-
-    /**
-     * Set the user's picture in the database
-     * @param String $name Picture name
-     */
-    public function setPictureName($name){
-        $db = self::dbConnect();
-        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture=:pname WHERE id=:id");
-        $set->execute([
-            'pname' => $name,
-            'id' => $this->id
-        ]);
-        $set->closeCursor();
-        $this->picture = $name;
-    }
-
-    /**
-     * Set the user's pseudo
-     * @param String $pseudo The pseudo
-     */
-    public function setPseudo($pseudo){
-        $db = self::dbConnect();
-        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET pseudo=:pseudo WHERE id=:id");
-        $set->execute([
-            'pseudo' => $pseudo,
-            'id' => $this->id
-        ]);
-        $set->closeCursor();
-        $this->pseudo = $pseudo;
     }
 
     /**
@@ -229,4 +199,27 @@ class User extends DatabaseManager
     // public function getRole(){
     //     return $this->role;
     // }
+
+    // SETTERS
+
+    public function setPictureName($name){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture=:pname WHERE id=:id");
+        $set->execute([
+            'pname' => $name,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->picture = $name;
+    }
+    public function setPseudo($pseudo){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET pseudo=:pseudo WHERE id=:id");
+        $set->execute([
+            'pseudo' => $pseudo,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->pseudo = $pseudo;
+    }
 }
