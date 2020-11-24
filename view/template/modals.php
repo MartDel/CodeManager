@@ -195,7 +195,7 @@
       <div class="flex_button_edit">
         <br><br>
         <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
-        <a class="close-modal button_cancel_edit_project" name="cancel_create_project_button" href="index.php?action=deleteProject">Supprimer le projet</a>
+        <a class="button_cancel_edit_project" name="cancel_create_project_button" href="index.php?action=deleteProject">Supprimer le projet</a>
         <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>

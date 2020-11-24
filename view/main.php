@@ -193,7 +193,7 @@ ob_start();
                 <section class="descriptif_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
                     <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
                     <br><br>
-                    <p><strong>Catégorie :</strong> Front etc...</p>
+                    <p><strong>Catégorie :</strong> <?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></p>
                     <br><br>
                     <br><br>
                     <i class="no-decoration">Par <?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
@@ -212,7 +212,7 @@ ob_start();
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                       <input class="textarea_title" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
                       <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
-                      <input class="textarea_title" name="category" type="text" value="Catégorie" maxlength="20" required></input>
+                      <input class="textarea_title" name="category" type="text" <?= $task->getCategoryId() ? 'value="' . $task->getCategory() . '"' : 'placeholder="Divers"' ?> maxlength="20" required></input>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <input class="textarea_desc_edit" name="description" type="text" <?= $task->getDescription() ? 'value="' . $task->getDescription() . '"' : 'placeholder="Description"' ?>></input>
                       <h2></h2>
