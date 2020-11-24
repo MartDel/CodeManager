@@ -396,19 +396,3 @@ select_all2.trash.onclick = () => {
     }
     deleteTasks(id_list)
 }
-
-
-function setURLParams(params){
-    // Get file name
-    let file_name = null
-    const path = window.location.pathname.split('/')
-    path.forEach((item, i) => {
-        if(i === path.length-1) file_name = item
-    })
-
-    const obj = {
-        title: document.title,
-        url: file_name + '?' + params
-    }
-    history.pushState(obj, obj.title, obj.url)
-}

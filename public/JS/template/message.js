@@ -43,5 +43,27 @@ class Message {
             cmessage.classList.remove('hide')
         }, 500)
         window.cmessage = null
+        const search = window.location.search
+        const params = new URLSearchParams(search)
+        setURLParams(params.has('action') ? 'action=' + params.get('action') : '')
     }
+}
+
+/**
+ * Change Url without reloading
+ * @param {String} params Url params
+ */
+function setURLParams(params){
+    // Get file name
+    let file_name = null
+    const path = window.location.pathname.split('/')
+    path.forEach((item, i) => {
+        if(i === path.length-1) file_name = item
+    })
+
+    const obj = {
+        title: document.title,
+        url: file_name + '?' + params
+    }
+    history.pushState(obj, obj.title, obj.url)
 }

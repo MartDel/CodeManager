@@ -195,7 +195,7 @@ function wOnload(){
 
 
     }
-    
+
     // Turn ON/OFF dark mode
     if (getCookie('dark-mode') === 'on') {
         turnOnDarkMode()
