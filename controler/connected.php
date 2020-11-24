@@ -11,7 +11,6 @@
  */
 function tasks(){
     // Get project and projects list
-    setCurrentProject();
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
@@ -134,7 +133,6 @@ function deleteCategory(){
  */
 function team(){
     // Get projects infos
-    setCurrentProject();
     $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
@@ -199,7 +197,7 @@ function createProject(){
     $project = new Project($data['name'], $_SESSION['user_id'], $data['description'], $remote);
     $project->pushToDB();
     $team_row = new Team($project->getId(), $_SESSION['user_id']);
-    $team_row->setPermission(2);
+    $team_row->setPermissions(2);
     $team_row->pushToDB();
     header('Location: index.php?project=' . $project->getDatabaseId());
 }
@@ -234,6 +232,15 @@ function deleteProject(){
     }
     $_SESSION['project_id'] = Project::getFirstProject($_SESSION['user_id'])->getId();
 
+    header('Location: index.php');
+}
+
+function switchProject(){
+    $data = secure($_POST);
+    if(isset($data['project'])){
+        $project_id = $data['project'];
+        if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
+    }
     header('Location: index.php');
 }
 

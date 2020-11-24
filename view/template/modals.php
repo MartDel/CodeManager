@@ -120,21 +120,16 @@
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
 
-            <form class="form-select-user" action="index.php?project=<?= $current_project['id'] ?>" method="post">
-              <select class="select-general" name="select-general">
-                <option value="none"><?= $project->getName() ?></option>
+            <form class="form-select-user" action="index.php?action=switchProject" method="post">
+              <select class="select-general" name="project" onchange='if(this.value != <?= $_SESSION['project_id'] ?>) { this.form.submit(); }'>
                 <?php foreach ($project_list as $current_project): ?>
-                    <?php if ($current_project['id'] != $project->getId()): ?>
-                        <a href="index.php?project=<?= $current_project['id'] ?>">
-                            <option value="current"><?= $current_project['name'] ?></option>
-                        </a>
-                    <?php endif; ?>
+                    <option value="<?= $current_project['id'] ?>" <?= $current_project['id'] == $_SESSION['project_id'] ? 'selected' : '' ?>>
+                        <?= $current_project['name'] ?>
+                    </option>
                 <?php endforeach; ?>
               </select>
             </form>
         </section>
-
-
 
         <br><br>
         <div id="div_form_new_project"></div>

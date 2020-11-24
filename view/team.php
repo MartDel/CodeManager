@@ -17,18 +17,8 @@ ob_start();
       </span>
     </div>
     <div class="main-table-user">
-        <?= var_dump($project_list) ?>
       <table>
         <tr>
-            <td>
-              <div class="img_user_profile">
-                <img src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profile" />
-              </div>
-              <h1><?= $_SESSION['pseudo'] ?></h1>
-              <p><?= $_SESSION['mail'] ?></p>
-              <br>
-              <p><?= $_SESSION['role'] ?></p>
-            </td>
           <?php foreach ($users as $user): ?>
               <td>
                 <div class="img_user_profile">

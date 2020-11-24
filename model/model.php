@@ -231,16 +231,6 @@ function cropImage($tmpName, $fileName){
 }
 
 /**
- * Set $_SESSION['project_id'] with data in $_GET
- */
-function setCurrentProject(){
-    if(isset($_GET['project'])){
-        $project_id = htmlspecialchars($_GET['project']);
-        if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
-    }
-}
-
-/**
  * Create remote link with POST data
  * @param Object $data POST data
  * @return String The remote link, null if there isn't enough information

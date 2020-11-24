@@ -185,7 +185,7 @@ class User extends DatabaseManager
     public function getPictureName(){ return $this->picture; }
 
     public function getRole(){
-        $team_row = Team::getRowByUserId($this->id);
+        $team_row = new Team($_SESSION['project_id'], $this->id);
         if($team_row) return $team_row->getRole();
         return null;
     }
@@ -201,7 +201,7 @@ class User extends DatabaseManager
     }
 
     public function getPermissions(){
-        $team_row = Team::getRowByUserId($this->id);
+        $team_row = new Team($_SESSION['project_id'], $this->id);
         if($team_row) return (int) $team_row->getPermissions();
         return 0;
     }

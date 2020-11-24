@@ -16,22 +16,26 @@ class Team extends DatabaseManager
     function __construct($project_id, $user_id){
         $this->project_id = $project_id;
         $this->user_id = $user_id;
-        $this->permissions = 0;
-        $this->role = null;
 
         // Get row id
         try {
             $db = self::dbConnect();
-            $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE project_id=:project AND user_id=:user');
+            $query = $db->prepare('SELECT id, permissions, role FROM ' . self::TABLE_NAME . ' WHERE project_id=:project AND user_id=:user');
             $query->execute([
                 'project' => $this->project_id,
                 'user' => $this->user_id
             ]);
             $data = $query->fetch();
             $query->closeCursor();
-            $this->id = isset($data['id']) ? $data['id'] : null;
+            if(isset($data['id'])){
+                $this->id = $data['id'];
+                $this->permissions = $data['permissions'];
+                $this->role = $data['role'];
+            } else throw new Exception();
         } catch (Exception $e) {
             $this->id = null;
+            $this->permissions = 0;
+            $this->role = null;
         }
 
     }
@@ -91,4 +95,9 @@ class Team extends DatabaseManager
     public function getUserId(){ return $this->user_id; }
     public function getPermissions(){ return $this->permissions; }
     public function getRole(){ return $this->role; }
+
+    // SETTERS
+
+    public function setPermissions($perm){ $this->permissions = $perm; }
+    public function setRole($role){ $this->role = $role; }
 }
