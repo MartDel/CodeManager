@@ -75,6 +75,9 @@ class User extends DatabaseManager
         $del = $db->prepare('DELETE FROM ' . Task::TABLE_NAME . ' WHERE author_id=?');
         $del->execute([$this->id]);
 
+        $del = $db->prepare('DELETE FROM ' . Team::TABLE_NAME . ' WHERE user_id=?');
+        $del->execute([$this->id]);
+
         $del->closeCursor();
     }
 

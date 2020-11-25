@@ -158,6 +158,9 @@ function searchUser(){
     }
 }
 
+/**
+ * Add a contributor to the current team
+ */
 function addUserToTeam(){
     $data = secure($_GET);
     $user = User::getUserByLogin($data['mail']);
@@ -165,6 +168,20 @@ function addUserToTeam(){
     $team = new Team($_SESSION['project_id'], $user->getId());
     $team->pushToDB();
     $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", 'index.php?action=team');
+    $added->redirect();
+}
+
+/**
+ *  Remove a contributor from the current team
+ */
+function removeUserFromTeam(){
+    $data = secure($_GET);
+    $user = User::getUserById($data['id']);
+    if(!$user) header('Location: index.php?action=team');
+    $team = new Team($_SESSION['project_id'], $user->getId());
+    if(!$team->exists()) header('Location: index.php?action=team');
+    $team->delete();
+    $added = new InformationMessage('Utilisateur écarté du projet !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été supprimé de votre équipe.", 'index.php?action=team');
     $added->redirect();
 }
 

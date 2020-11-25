@@ -54,6 +54,22 @@ class Team extends DatabaseManager
         $add->closeCursor();
     }
 
+    /**
+     * Delete a Team row from the database
+     */
+    public function delete(){
+        $db = self::dbConnect();
+        $del = $db->prepare('DELETE FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $del->execute([$this->id]);
+        $del->closeCursor();
+    }
+
+    /**
+     * Check if the Team row exists
+     * @return bool if it exists or not
+     */
+    public function exists(){ return (bool) $this->id; }
+
     // STATICS FUNCTIONS
 
     /**

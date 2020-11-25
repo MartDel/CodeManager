@@ -28,7 +28,7 @@ ob_start();
                 <p><?= $user->getMail() ?></p>
                 <br>
                 <p><?= $user->getFinalRole() ?></p>
-                <a href="#">
+                <a href="index.php?action=removeUserFromTeam&id=<?= $user->getId() ?>">
                   <div class="delete_user_div">
                     <img src="public/img/trash.png" alt="">
                     <h2>Supprimer le collaborateur</h2>
