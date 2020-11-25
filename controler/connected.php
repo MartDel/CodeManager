@@ -236,6 +236,9 @@ function deleteProject(){
     header('Location: index.php');
 }
 
+/**
+ * Change current project
+ */
 function switchProject(){
     $data = secure($_POST);
     if(isset($data['project'])){

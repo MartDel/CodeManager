@@ -45,6 +45,7 @@ function signin(){ require('view/signin.php'); }
   * Check if all of signin data is correct by checking the database
   */
  function checkSignIn(){
+     sleep(1);
      $data = secure($_POST);
      if(!isset($data['login']) || !isset($data['password'])) {
          throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
