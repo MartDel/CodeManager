@@ -146,16 +146,21 @@ function team(){
 function searchUser(){
     $data = secure($_POST);
     $user = User::getUserByLogin($data['mail']);
-    if($user){
-        $found = new InformationMessage('Utilisateur trouvé !', "L'utilisateur '" . $user->getPseudo() . "' a été trouvé. Voulez-vous l'ajouter à votre équipe?", 'index.php?action=team', 'addUser');
-        $found->setBtn('add');
-        $found->setArg($user->getMail());
-        $found->redirect();
-    } else {
+    if(!$user){
         $not_found = new CustomException('Mauvaise nouvelle...', "Aucun utilisateur n'a été trouvé. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
         $not_found->setBtn('reload');
         throw $not_found;
     }
+    $team_row = new Team($_SESSION['project_id'], $user->getId());
+    if($team_row->exists()){
+        $not_found = new CustomException('Mauvaise nouvelle...', "L'utilisateur trouvé est déjà dans votre équipe. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
+        $not_found->setBtn('reload');
+        throw $not_found;
+    }
+    $found = new InformationMessage('Utilisateur trouvé !', "L'utilisateur '" . $user->getPseudo() . "' a été trouvé. Voulez-vous l'ajouter à votre équipe?", 'index.php?action=team', 'addUser');
+    $found->setBtn('add');
+    $found->setArg($user->getMail());
+    $found->redirect();
 }
 
 /**
@@ -166,6 +171,7 @@ function addUserToTeam(){
     $user = User::getUserByLogin($data['mail']);
     if(!$user) header('Location: index.php?action=team');
     $team = new Team($_SESSION['project_id'], $user->getId());
+    if($team->exists()) header('Location: index.php?action=team');
     $team->pushToDB();
     $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", 'index.php?action=team');
     $added->redirect();

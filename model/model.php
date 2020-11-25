@@ -9,7 +9,6 @@ function checkUserData(){
 		$project = Project::getFirstProject($_SESSION['user_id']);
 		if($project) $_SESSION['project_id'] = $project->getId();
 	    else {
-			// echo 'pas de projet';
 			session_destroy();
 			throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=signin', 'openPhpMyAdmin');
 		}
