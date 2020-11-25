@@ -7,7 +7,10 @@ require('model/model.php');
  * @param bool $name If the user must be connected or not
  */
 function executeFunction($name, $connected = false){
-    if($connected) require('controler/connected.php');
+    if($connected) {
+        require('controler/connected.php');
+        checkUserData();
+    }
     if(function_exists($name)) $name();
     else header('Location: index.php');
 }

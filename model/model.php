@@ -1,6 +1,22 @@
 <?php
 
 /**
+ * Check if all user's data are correct
+ */
+function checkUserData(){
+    $team = new Team($_SESSION['project_id'], $_SESSION['user_id']);
+	if(!$team->exists()){
+		$project = Project::getFirstProject($_SESSION['user_id']);
+		if($project) $_SESSION['project_id'] = $project->getId();
+	    else {
+			// echo 'pas de projet';
+			session_destroy();
+			throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=signin', 'openPhpMyAdmin');
+		}
+	}
+}
+
+/**
  * Check if there are errors in new user's data
  * @param Object $data User's data
  */
