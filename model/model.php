@@ -82,14 +82,6 @@ function checkConnection($login, $password, $is_hashed) {
 function connectUser($login, $auto){
 	$user = User::getUserByLogin($login);
 	$user_id = $user->getId();
-	$_SESSION['user_id'] = $user_id;
-	$_SESSION['pseudo'] = $user->getPseudo();
-	$_SESSION['mail'] = $user->getMail();
-	$_SESSION['firstname'] = $user->getFirstname();
-	$_SESSION['lastname'] = $user->getLastname();
-	$_SESSION['role'] = $user->getFinalRole();
-    $_SESSION['permissions'] = $user->getPermissions();
-	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	$project = Project::getFirstProject($user_id);
 	if($project) $_SESSION['project_id'] = $project->getId();
@@ -97,6 +89,15 @@ function connectUser($login, $auto){
 		session_destroy();
 		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . getLastPage(), 'openPhpMyAdmin');
 	}
+
+	$_SESSION['user_id'] = $user_id;
+	$_SESSION['pseudo'] = $user->getPseudo();
+	$_SESSION['mail'] = $user->getMail();
+	$_SESSION['firstname'] = $user->getFirstname();
+	$_SESSION['lastname'] = $user->getLastname();
+	$_SESSION['role'] = $user->getFinalRole();
+	$_SESSION['permissions'] = $user->getPermissions();
+	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	if($auto){
 		$auth = password_hash(User::getUniqueId($user->getPseudo()), PASSWORD_DEFAULT);

@@ -11,7 +11,7 @@
  */
 function tasks(){
     // Get project and projects list
-    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     $tasks = Task::getAllTasks($_SESSION['project_id']);
@@ -133,7 +133,7 @@ function deleteCategory(){
  */
 function team(){
     // Get projects infos
-    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     $users = Team::getAllUsers($_SESSION['project_id']);
@@ -180,6 +180,9 @@ function removeUserFromTeam(){
     if(!$user) header('Location: index.php?action=team');
     $team = new Team($_SESSION['project_id'], $user->getId());
     if(!$team->exists()) header('Location: index.php?action=team');
+    if($team->getPermissions() == 2) {
+        throw new CustomException('Action refusée...', "Vous n'avez pas le droit de retirer l'administrateur du projet. Dommage pas vrai?", 'index.php?action=team');
+    }
     $team->delete();
     $added = new InformationMessage('Utilisateur écarté du projet !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été supprimé de votre équipe.", 'index.php?action=team');
     $added->redirect();
@@ -241,7 +244,7 @@ function editProject(){
  * Delete the current project from the database
  */
 function deleteProject(){
-    $project = Project::getProjectById($_SESSION['project_id'], $_SESSION['user_id']);
+    $project = Project::getProjectById($_SESSION['project_id']);
     $project->delete();
 
     if(count(Project::getAllProjects($_SESSION['user_id'])) == 0){

@@ -28,12 +28,14 @@ ob_start();
                 <p><?= $user->getMail() ?></p>
                 <br>
                 <p><?= $user->getFinalRole() ?></p>
-                <a href="index.php?action=removeUserFromTeam&id=<?= $user->getId() ?>">
-                  <div class="delete_user_div">
-                    <img src="public/img/trash.png" alt="">
-                    <h2>Supprimer le collaborateur</h2>
-                  </div>
-                </a>
+                <?php if ($user->getId() != $_SESSION['user_id']): ?>
+                    <a href="index.php?action=removeUserFromTeam&id=<?= $user->getId() ?>">
+                      <div class="delete_user_div">
+                        <img src="public/img/trash.png" alt="">
+                        <h2>Supprimer le collaborateur</h2>
+                      </div>
+                    </a>
+                <?php endif; ?>
               </td>
           <?php endforeach; ?>
         </tr>

@@ -123,8 +123,8 @@
             <form class="form-select-user" action="index.php?action=switchProject" method="post">
               <select class="select-general" name="project" onchange='if(this.value != <?= $_SESSION['project_id'] ?>) { this.form.submit(); }'>
                 <?php foreach ($project_list as $current_project): ?>
-                    <option value="<?= $current_project['id'] ?>" <?= $current_project['id'] == $_SESSION['project_id'] ? 'selected' : '' ?>>
-                        <?= $current_project['name'] ?>
+                    <option value="<?= $current_project->getId() ?>" <?= $current_project->getId() == $_SESSION['project_id'] ? 'selected' : '' ?>>
+                        <?= $current_project->getName() ?>
                     </option>
                 <?php endforeach; ?>
               </select>

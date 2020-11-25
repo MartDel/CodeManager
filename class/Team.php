@@ -89,21 +89,6 @@ class Team extends DatabaseManager
         return $r;
     }
 
-    /**
-     * Get a row with a user id
-     * @param int $user_id The user's id
-     * @return Team A Team object
-     */
-    public static function getRowByUserId($user_id){
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE user_id=?');
-        $query->execute([$user_id]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        if(isset($data['id'])) return new Team($data['project_id'], $data['user_id']);
-        return null;
-    }
-
     // GETTERS
 
     public function getId(){ return $this->id; }
