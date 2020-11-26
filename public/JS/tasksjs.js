@@ -228,8 +228,13 @@ function showModal(event) {
     }
     if(!id) return;
 
-    if (contain(tasks.btn.tick2, event.target)) modals.show(id + '_edit')
-    else if(!contain(tasks.btn.check_js, event.target)
+    if (contain(tasks.btn.tick2, event.target)) {
+        if(permissions != 0) modals.show(id + '_edit')
+        else {
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
+            err.show()
+        }
+    } else if(!contain(tasks.btn.check_js, event.target)
     && !contain(tasks.btn.tick, event.target)
     && !contain(tasks.btn.trash, event.target)) modals.show(id + '_modal');
 }
@@ -244,11 +249,18 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 for (let i = 0; i < addtask.show_btns.length; i++) {
-    addtask.show_btns[i].onclick = () => modals.show(addtask.id,()=>{
-      addtask.title.value="";
-      addtask.cate.value="";
-      addtask.desc_input.value="";
-    })
+    addtask.show_btns[i].onclick = () => {
+        if(permissions != 0){
+            modals.show(addtask.id,()=>{
+                addtask.title.value="";
+                addtask.cate.value="";
+                addtask.desc_input.value="";
+            })
+        } else {
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation d'ajouter une tâche.")
+            err.show()
+        }
+    }
 }
 /*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";

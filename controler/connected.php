@@ -26,6 +26,10 @@ function tasks(){
  */
 function addTask(){
     $data = secure($_POST);
+    if($_SESSION['permissions'] == 0){
+        header('Location: index.php?action=team');
+        return;
+    }
     if(!isset($data['title']) || $data['title'] == '') {
         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusTitleAddTask');
     }
@@ -39,6 +43,10 @@ function addTask(){
  */
 function editTask(){
     $data = secure($_POST);
+    if($_SESSION['permissions'] == 0){
+        header('Location: index.php?action=team');
+        return;
+    }
     if(!isset($data['title']) || $data['title'] == '') {
         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
     }
