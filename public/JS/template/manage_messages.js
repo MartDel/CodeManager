@@ -13,6 +13,9 @@ function checkMessage(){
             if(params.has('btn')) msg.btn2 = params.get('btn')
             if(params.has('arg')) msg.arg = params.get('arg')
             msg.show()
+
+            // Clear url
+            setURLParams(params.has('action') ? 'action=' + params.get('action') : '')
         }
     } catch (e) {
         console.log("Format d'erreur inconnu");

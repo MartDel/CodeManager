@@ -43,9 +43,6 @@ class Message {
             cmessage.classList.remove('hide')
         }, 500)
         window.cmessage = null
-        const search = window.location.search
-        const params = new URLSearchParams(search)
-        setURLParams(params.has('action') ? 'action=' + params.get('action') : '')
     }
 }
 
