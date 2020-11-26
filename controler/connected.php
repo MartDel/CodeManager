@@ -27,11 +27,11 @@ function tasks(){
 function addTask(){
     $data = secure($_POST);
     if($_SESSION['permissions'] == 0){
-        header('Location: index.php?action=team');
+        header('Location: index.php');
         return;
     }
     if(!isset($data['title']) || $data['title'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusTitleAddTask');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=tasks', 'focusTitleAddTask');
     }
     $task = new Task($data['title'], $_SESSION['project_id'], false, null, $_SESSION['user_id'], $data['description']);
     $task->pushToDB();
@@ -44,14 +44,14 @@ function addTask(){
 function editTask(){
     $data = secure($_POST);
     if($_SESSION['permissions'] == 0){
-        header('Location: index.php?action=team');
+        header('Location: index.php');
         return;
     }
     if(!isset($data['title']) || $data['title'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
     }
     $task = Task::getTaskById(htmlspecialchars($_GET['id']), $_SESSION['project_id']);
-    if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", 'index.php?action=' . getLastPage());
+    if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", 'index.php');
     $task->setName($data['title']);
     $task->setDescription($data['description']);
     $task->update();
@@ -63,6 +63,9 @@ function editTask(){
  */
 function endTask(){
     $data = secure($_GET);
+    if($_SESSION['permissions'] == 0){
+        throw new CustomException('Action refusée...', "Vous n'avez pas l'autorisation de marquer une tâche comme terminée.", 'index.php');
+    }
     if(!isset($data['id'])){
         header('Location: index.php');
         return;
@@ -116,7 +119,7 @@ function addCategory(){
 
 /**
  * Edit a category from the database
- */
+ */getLastPage
 function editCategory(){
     $data = secure($_POST);
     if(!isset($data['name']) && $data['name'] != ''){
