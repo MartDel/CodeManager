@@ -120,17 +120,21 @@ project.create_button.onclick=()=>{
   }), 500)
 }
 project.edit_button.onclick=()=>{
-  var tempname = document.getElementById('edit_project_name').value
-  var tempdesc= document.getElementById('edit_project_desc').value
-  var tempgit_username= document.getElementById('edit_project_git_name').value
-  var tempgit_project= document.getElementById('edit_project_git_repo').value
-  setTimeout(() => modals.show(project.idedit,()=>{
-    project.name_edit.value=tempname
-    project.desc_edit.value=tempdesc
-    project.git_username_edit.value=tempgit_username
-    project.git_project_edit.value=tempgit_project
-
-  }), 500)
+    if(permissions == 2){
+        var tempname = document.getElementById('edit_project_name').value
+        var tempdesc= document.getElementById('edit_project_desc').value
+        var tempgit_username= document.getElementById('edit_project_git_name').value
+        var tempgit_project= document.getElementById('edit_project_git_repo').value
+        setTimeout(() => modals.show(project.idedit,()=>{
+            project.name_edit.value=tempname
+            project.desc_edit.value=tempdesc
+            project.git_username_edit.value=tempgit_username
+            project.git_project_edit.value=tempgit_project
+        }), 500)
+    } else {
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation nécessaire pour modifier le projet.")
+        err.show()
+    }
 }
 
 document.getElementById("input_img").onchange = function() {

@@ -96,6 +96,10 @@
 
 		<?php require('message.php'); ?>
 
+		<script type="text/javascript">
+			const permissions = <?= $_SESSION['permissions'] ?>
+		</script>
+
 		<!-- Implementations -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>

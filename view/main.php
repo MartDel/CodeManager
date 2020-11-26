@@ -269,10 +269,6 @@ ob_start();
 
 </div>
 
-<script type="text/javascript">
-    const permissions = <?= $_SESSION['permissions'] ?>
-</script>
-
 <?php
 $content = ob_get_clean();
 require('template/template.php');

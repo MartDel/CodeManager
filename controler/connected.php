@@ -123,7 +123,7 @@ function addCategory(){
 
 /**
  * Edit a category from the database
- */getLastPage
+ */
 function editCategory(){
     $data = secure($_POST);
     if(!isset($data['name']) && $data['name'] != ''){
@@ -223,6 +223,10 @@ function addUserToTeam(){
  */
 function removeUserFromTeam(){
     $data = secure($_GET);
+    if($_SESSION['permissions'] != 2) {
+        header('Location: index.php?action=team');
+        return;
+    }
     $user = User::getUserById($data['id']);
     if(!$user){
         header('Location: index.php?action=team');
@@ -230,10 +234,6 @@ function removeUserFromTeam(){
     }
     $team = new Team($_SESSION['project_id'], $user->getId());
     if(!$team->exists()){
-        header('Location: index.php?action=team');
-        return;
-    }
-    if($_SESSION['permissions'] != 2) {
         header('Location: index.php?action=team');
         return;
     }
@@ -285,6 +285,10 @@ function createProject(){
  */
 function editProject(){
     $data = secure($_POST);
+    if($_SESSION['permissions'] != 2) {
+        header('Location: index.php?action=' . getLastPage());
+        return;
+    }
     if(!isset($data['name']) || $data['name'] == '') {
         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameEditProject');
     }
@@ -301,6 +305,10 @@ function editProject(){
  * Delete the current project from the database
  */
 function deleteProject(){
+    if($_SESSION['permissions'] != 2) {
+        header('Location: index.php?action=' . getLastPage());
+        return;
+    }
     $project = Project::getProjectById($_SESSION['project_id']);
     $project->delete();
 
