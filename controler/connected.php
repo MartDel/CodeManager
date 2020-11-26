@@ -331,7 +331,8 @@ function reportBug(){
     $mess = isset($data['mess']) ? $data['mess'] : false;
     if(!$mess) header('Location: index.php?action=' . getLastPage());
     if(sendMail($mess)){
-        showMessage('Mail envoyé', 'Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!');
+        $success = new InformationMessage('Mail envoyé', "Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!", 'index.php?action=' . getLastPage());
+        $success->redirect();
     } else {
         throw new CustomException('Erreur', "Une erreur est survenue lors de l'envoi du mail. Veuillez réessayer plus tard.", 'index.php?action=' . getLastPage());
     }

@@ -258,6 +258,8 @@ function createRemote($data){
     return null;
 }
 
+// Other functions
+
 /**
  * Send an e-mail with a message
  * @param String $message The message to sens
@@ -281,7 +283,7 @@ function sendMail($message){
 	?>
 	<h1 style="text-align:center;">Remarque de <?= $_SESSION['pseudo'] ?> <i>(<?= $_SESSION['user_id'] ?>)</i></h1>
 	<section>
-		<h2>Informations sur l'utilisateur :</h2>
+		<h2>Informations sur l'utilisateur :</OTHER h2>
 		<ul>
 			<li><strong>Pseudo : </strong><?= $_SESSION['pseudo'] ?></li>
 			<li><strong>Addresse mail : </strong><?= $_SESSION['mail'] ?></li>
@@ -297,15 +299,6 @@ function sendMail($message){
 	$msg = ob_get_clean();
 
 	return mail($to, $subject, $msg, $headers);
-}
-
-/**
- * Show a green message
- * @param String $title The message title
- * @param String $message The messgae text
- */
-function showMessage($title, $message){
-	header('Location: index.php?action=' . getLastPage() . '&info=' . urlencode($title . '+' . $message));
 }
 
 // Functions
