@@ -158,6 +158,10 @@ function team(){
 function searchUser(){
     $data = secure($_POST);
     $user = User::getUserByLogin($data['mail']);
+    if($_SESSION['permissions'] != 2){
+        header('Location: index.php?action=team');
+        return;
+    }
     if(!$user){
         $not_found = new CustomException('Mauvaise nouvelle...', "Aucun utilisateur n'a été trouvé. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
         $not_found->setBtn('reload');
@@ -181,6 +185,10 @@ function searchUser(){
 function addUserToTeam(){
     $data = secure($_GET);
     $user = User::getUserByLogin($data['mail']);
+    if($_SESSION['permissions'] != 2){
+        header('Location: index.php?action=team');
+        return;
+    }
     if(!$user){
         header('Location: index.php?action=team');
         return;
