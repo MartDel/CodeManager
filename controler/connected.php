@@ -55,7 +55,10 @@ function editTask(){
  */
 function endTask(){
     $data = secure($_GET);
-    if(!isset($data['id'])) header('Location: index.php');
+    if(!isset($data['id'])){
+        header('Location: index.php');
+        return;
+    }
     $task = Task::getTaskById($data['id'], $_SESSION['project_id']);
     if($task){
         $done_task = $task->getIsDone();
@@ -63,9 +66,9 @@ function endTask(){
         $task->update();
         $params = $done_task ? '?endTask' : '';
         header('Location: index.php' . $params);
-    } else {
-        header('Location: index.php');
+        return;
     }
+    header('Location: index.php');
 }
 
 /**
@@ -73,10 +76,16 @@ function endTask(){
  */
 function deleteTasks(){
     $data = secure($_GET);
-    if(!isset($data['tasks'])) header('Location: index.php');
+    if(!isset($data['tasks'])){
+        header('Location: index.php');
+        return;
+    }
     $tasks = $data['tasks'];
     $tasks_array = explode(' ', $tasks);
-    if(count($tasks_array) == 0) header('Location: index.php');
+    if(count($tasks_array) == 0){
+        header('Location: index.php');
+        return;
+    }
     foreach ($tasks_array as $task_id) {
         $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
         if($current_task) $current_task->delete();
@@ -119,7 +128,10 @@ function editCategory(){
  */
 function deleteCategory(){
     $data = secure($_GET);
-    if(!isset($data['id'])) header('Location: index.php');
+    if(!isset($data['id'])){
+        header('Location: index.php');
+        return;
+    }
     $category = Category::getCategoryById($id);
     if($category->getProjectId() != $_SESSION['project_id']){
         throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php');
@@ -169,9 +181,15 @@ function searchUser(){
 function addUserToTeam(){
     $data = secure($_GET);
     $user = User::getUserByLogin($data['mail']);
-    if(!$user) header('Location: index.php?action=team');
+    if(!$user){
+        header('Location: index.php?action=team');
+        return;
+    }
     $team = new Team($_SESSION['project_id'], $user->getId());
-    if($team->exists()) header('Location: index.php?action=team');
+    if($team->exists()){
+        header('Location: index.php?action=team');
+        return;
+    }
     $team->pushToDB();
     $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", 'index.php?action=team');
     $added->redirect();
@@ -183,11 +201,21 @@ function addUserToTeam(){
 function removeUserFromTeam(){
     $data = secure($_GET);
     $user = User::getUserById($data['id']);
-    if(!$user) header('Location: index.php?action=team');
+    if(!$user){
+        header('Location: index.php?action=team');
+        return;
+    }
     $team = new Team($_SESSION['project_id'], $user->getId());
-    if(!$team->exists()) header('Location: index.php?action=team');
+    if(!$team->exists()){
+        header('Location: index.php?action=team');
+        return;
+    }
+    if($_SESSION['permissions'] != 2) {
+        header('Location: index.php?action=team');
+        return;
+    }
     if($team->getPermissions() == 2) {
-        throw new CustomException('Action refusée...', "Vous n'avez pas le droit de retirer l'administrateur du projet. Dommage pas vrai?", 'index.php?action=team');
+        throw new CustomException('Action refusée...', "Vous ne pouvez pas vous retirer du projet.", 'index.php?action=team');
     }
     $team->delete();
     $added = new InformationMessage('Utilisateur écarté du projet !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été supprimé de votre équipe.", 'index.php?action=team');
@@ -329,7 +357,10 @@ function logout(){
 function reportBug(){
     $data = secure($_POST);
     $mess = isset($data['mess']) ? $data['mess'] : false;
-    if(!$mess) header('Location: index.php?action=' . getLastPage());
+    if(!$mess){
+        header('Location: index.php?action=' . getLastPage());
+        return;
+    }
     if(sendMail($mess)){
         $success = new InformationMessage('Mail envoyé', "Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!", 'index.php?action=' . getLastPage());
         $success->redirect();

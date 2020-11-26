@@ -28,7 +28,7 @@ ob_start();
                 <p><?= $user->getMail() ?></p>
                 <br>
                 <p><?= $user->getFinalRole() ?></p>
-                <?php if ($user->getId() != $_SESSION['user_id']): ?>
+                <?php if ($user->getId() != $_SESSION['user_id'] && $_SESSION['permissions'] == 2): ?>
                     <a href="index.php?action=removeUserFromTeam&id=<?= $user->getId() ?>">
                       <div class="delete_user_div">
                         <img src="public/img/trash.png" alt="">

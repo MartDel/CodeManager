@@ -42,9 +42,7 @@ function signin(){ require('view/signin.php'); }
      if($user){
          connectUser($user->getPseudo(), false);
          header("Location: index.php");
-     } else {
-         logout();
-     }
+     } else logout();
  }
 
  function test(){
