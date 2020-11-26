@@ -87,6 +87,10 @@ function endTask(){
  */
 function deleteTasks(){
     $data = secure($_GET);
+    if($_SESSION['permissions'] == 0){
+        header('Location: index.php');
+        return;
+    }
     if(!isset($data['tasks'])){
         header('Location: index.php');
         return;

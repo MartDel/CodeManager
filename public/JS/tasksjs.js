@@ -348,12 +348,15 @@ function getTasksToDelete1(){
     return id_list
 }
 function deleteTasks(id_list){
+    if(permissions == 0){
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
+        err.show()
+        return;
+    }
     let str = ''
     id_list.forEach((id, i) => {
         str += id + (i === id_list.length-1 ? '' : '+')
     })
-    // console.log(id_list.length);
-    // console.log('?action=deletetasks&tasks=' + str);
     window.location.search = '?action=deleteTasks&tasks=' + str
 }
 
