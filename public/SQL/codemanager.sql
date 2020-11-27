@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 23 nov. 2020 à 13:34
+-- Généré le : ven. 27 nov. 2020 à 11:44
 -- Version du serveur :  8.0.22-0ubuntu0.20.10.2
 -- Version de PHP : 7.4.9
 
@@ -68,6 +68,20 @@ CREATE TABLE `tasks` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `permissions` int NOT NULL DEFAULT '0',
+  `role` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
@@ -105,6 +119,12 @@ ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -130,6 +150,12 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT pour la table `tasks`
 --
 ALTER TABLE `tasks`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `teams`
+--
+ALTER TABLE `teams`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
