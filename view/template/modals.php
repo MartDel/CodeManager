@@ -66,14 +66,14 @@
       <form class="" action="index.php?action=editaccount" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
-          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
+          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled="true" value="<?= $_SESSION['pseudo'] ?>"></input>
           <img id="modify_textarea_pseudo" class="brightnessmax modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pseudo" class="brightnessmax validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon adresse Mail : </p>
-          <input class="input_fields" name="mail" disabled=true value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
+          <input class="input_fields" name="mail" disabled="true" value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
         </div>
 
         <!-- <div class="account_change_row">
@@ -83,7 +83,7 @@
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
         </div> -->
         <br><br>
-        <button type="button" type="button" class="close-modal" id="cancel_submit_changes" name="button">Annuler</button>
+        <button type="button" id="cancel_submit_changes" name="button">Annuler</button>
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
