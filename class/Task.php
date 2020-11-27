@@ -12,17 +12,18 @@ class Task extends DatabaseManager
     private $create_date;
     private $author_id;
     private $description;
+    private $category_id;
 
     const TABLE_NAME = "tasks";
 
-    function __construct($name, $project_id, $is_done, $create_date, $author_id, $description)
-    {
+    function __construct($name, $project_id, $is_done, $create_date, $author_id, $description, $category_id = null){
         $this->name = $name;
         $this->project_id = $project_id;
         $this->is_done = $is_done;
         $this->create_date = $create_date;
         $this->author_id = $author_id;
         $this->description = $description;
+        $this->category_id = $category_id;
 
         // Get task id
         try {
@@ -39,7 +40,6 @@ class Task extends DatabaseManager
         } catch (Exception $e) {
             $this->id = null;
         }
-
     }
 
     /**
@@ -47,13 +47,14 @@ class Task extends DatabaseManager
      */
     public function pushToDB(){
         $db = self::dbConnect();
-        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, author_id, create_date, is_done, project_id) VALUES(:name, :description, :author, NOW(), :is_done, :project_id)');
+        $add = $db->prepare('INSERT INTO ' . self::TABLE_NAME . '(name, description, category_id, author_id, create_date, is_done, project_id) VALUES(:name, :description, :category, :author, NOW(), :is_done, :project)');
         $add->execute([
             'name' => $this->name,
             'description' => $this->description ? $this->description : null,
+            'category' => $this->category_id ? $this->category_id : null,
             'author' => $this->author_id,
             'is_done' => $this->is_done ? 1 : 0,
-            'project_id' => $this->project_id
+            'project' => $this->project_id
         ]);
         $add->closeCursor();
     }
@@ -68,6 +69,22 @@ class Task extends DatabaseManager
         $del->closeCursor();
     }
 
+    /**
+     * Update a task from the database
+     */
+    public function update(){
+        $db = self::dbConnect();
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET name=:name, description=:description, category_id=:category, is_done=:is_done WHERE id=:id');
+        $update->execute([
+            'name' => $this->name,
+            'description' => $this->description ? $this->description : null,
+            'category' => $this->category_id ? $this->category_id : null,
+            'is_done' => $this->is_done ? 1 : 0,
+            'id' => $this->id
+        ]);
+        $update->closeCursor();
+    }
+
     // STATIC FUNCTIONS
 
     /**
@@ -77,11 +94,11 @@ class Task extends DatabaseManager
     */
     public static function getAllTasks($project_id){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE project_id=? ORDER BY create_date DESC');
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE project_id=? ORDER BY create_date DESC, category_id');
         $query->execute([$project_id]);
         $tasks = null;
         while($task = $query->fetch()){
-            $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author_id'], $task['description']);
+            $tasks[] = new Task($task['name'], $task['project_id'], $task['is_done'], $task['create_date'], $task['author_id'], $task['description'], $task['category_id']);
         }
         $query->closeCursor();
         return $tasks;
@@ -98,51 +115,36 @@ class Task extends DatabaseManager
         $query->execute([$id, $project]);
         $data = $query->fetch();
         $query->closeCursor();
-        return isset($data['id']) ? new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description']) : null;
-    }
-
-    // SETTERS
-
-    public function setIsDone($is_done){
-        $db = self::dbConnect();
-        $set = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET is_done=:value WHERE id=:id');
-        $set->execute([
-            'id' => $this->getId(),
-            'value' => $is_done ? 1 : 0
-        ]);
-        $set->closeCursor();
-        $this->is_done = $is_done;
+        return isset($data['id']) ? new Task($data['name'], $data['project_id'], $data['is_done'], $data['create_date'], $data['author_id'], $data['description'], $data['category_id']) : null;
     }
 
     // GETTERS
 
-    public function getId(){
-        return $this->id;
-    }
-    public function getName(){
-        return $this->name;
-    }
-    public function getProjectId(){
-        return $this->project_id;
-    }
-    public function getIsDone(){
-        return $this->is_done == 1 ? true : false;
-    }
-    public function getCreateDate(){
-        return date("d/m/Y", strtotime($this->create_date));
-    }
-    public function getAuthorId(){
-        return $this->author_id;
-    }
-    public function getDescription(){
-        return $this->description;
-    }
+    public function getId(){ return $this->id; }
+    public function getName(){ return $this->name; }
+    public function getProjectId(){ return $this->project_id; }
+    public function getIsDone(){ return $this->is_done == 1 ? true : false; }
+    public function getCreateDate(){ return date("d/m/Y", strtotime($this->create_date)); }
+    public function getAuthorId(){ return $this->author_id; }
+    public function getDescription(){ return $this->description; }
+    public function getCategoryId(){ return $this->category_id; }
+
     public function getAuthor(){
-        $db = self::dbConnect();
-        $query = $db->prepare('SELECT pseudo FROM ' . User::TABLE_NAME . ' WHERE id=?');
-        $query->execute([$this->author_id]);
-        $data = $query->fetch();
-        $query->closeCursor();
-        return isset($data['pseudo']) ? $data['pseudo'] : null;
+        $author = User::getUserById($this->author_id);
+        if($author) return $author->getPseudo();
+        return null;
     }
+
+    public function getCategory(){
+        $category = Category::getCategoryById($this->category_id);
+        if($category) return $category->getName();
+        return null;
+    }
+
+    // SETTERS
+
+    public function setName($name){ $this->name = $name; }
+    public function setDescription($desc){ $this->description = $desc; }
+    public function setCategoryID($id){ $this->category_id = $id; }
+    public function setIsDone($is_done){ $this->is_done = $is_done; }
 }

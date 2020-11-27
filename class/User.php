@@ -11,12 +11,10 @@ class User extends DatabaseManager
     private $firstname;
     private $lastname;
     private $picture;
-    // private $role;
 
     const TABLE_NAME = "users";
 
-    function __construct($pseudo, $mail, $firstname, $lastname)
-    {
+    function __construct($pseudo, $mail, $firstname, $lastname){
         $this->pseudo = $pseudo;
         $this->mail = $mail;
         $this->firstname = $firstname;
@@ -45,6 +43,7 @@ class User extends DatabaseManager
     /**
     * Upload the new user to the database
     * @param  string $password The user's password
+    * @param  string $login_id The user's login id
     */
     public function pushToDB($password, $login_id){
         $db = self::dbConnect();
@@ -62,21 +61,6 @@ class User extends DatabaseManager
     }
 
     /**
-     * Set the user's picture in the database
-     * @param String $name Picture name
-     */
-    public function setPictureName($name){
-        $db = self::dbConnect();
-        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture = :pname WHERE id=:id");
-        $set->execute([
-            'pname' => $name,
-            'id' => $this->id
-        ]);
-        $set->closeCursor();
-        $this->picture = $name;
-    }
-
-    /**
      * Delete an user from the database
      */
     public function delete(){
@@ -89,6 +73,9 @@ class User extends DatabaseManager
         $del->execute([$this->id]);
 
         $del = $db->prepare('DELETE FROM ' . Task::TABLE_NAME . ' WHERE author_id=?');
+        $del->execute([$this->id]);
+
+        $del = $db->prepare('DELETE FROM ' . Team::TABLE_NAME . ' WHERE user_id=?');
         $del->execute([$this->id]);
 
         $del->closeCursor();
@@ -143,6 +130,21 @@ class User extends DatabaseManager
     }
 
     /**
+    * Get an user by his id
+    * @param int $id User's id
+    * @return User User object reprenting the current user
+    */
+    public static function getUserById($id){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE id=?');
+        $query->execute([$id]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        if(isset($data['id'])) return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        return null;
+    }
+
+    /**
     * Get an user by his login
     * @param string $login User's pseudo or email
     * @return User User object reprenting the current user
@@ -153,7 +155,8 @@ class User extends DatabaseManager
         $query->execute([$login, $login]);
         $data = $query->fetch();
         $query->closeCursor();
-        return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        if(isset($data['id'])) return new User($data['pseudo'], $data['mail'], $data['firstname'], $data['lastname']);
+        return null;
     }
 
     /**
@@ -162,8 +165,8 @@ class User extends DatabaseManager
     * @return User User object reprenting the current user
     */
     public static function getUserByLoginId($hashed_login){
-        $db = self::dbConnect();
         $user = null;
+        $db = self::dbConnect();
         $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME);
         $query->execute();
         while($data = $query->fetch()){
@@ -177,25 +180,55 @@ class User extends DatabaseManager
 
     // GETTERS
 
-    public function getId(){
-        return $this->id;
+    public function getId(){ return $this->id; }
+    public function getPseudo(){ return $this->pseudo; }
+    public function getMail(){ return $this->mail; }
+    public function getFirstname(){ return $this->firstname; }
+    public function getLastname(){ return $this->lastname; }
+    public function getPictureName(){ return $this->picture; }
+
+    public function getRole(){
+        $team_row = new Team($_SESSION['project_id'], $this->id);
+        if($team_row) return $team_row->getRole();
+        return null;
     }
-    public function getPseudo(){
-        return $this->pseudo;
+
+    public function getFinalRole(){
+        $perm = $this->getPermissions();
+        switch ($perm) {
+            case 0: return 'Consultant';
+            case 1: return 'Développeur';
+            case 2: return 'Administrateur';
+            default: return 'Erreur permissions';
+        }
     }
-    public function getMail(){
-        return $this->mail;
+
+    public function getPermissions(){
+        $team_row = new Team($_SESSION['project_id'], $this->id);
+        if($team_row) return (int) $team_row->getPermissions();
+        return 0;
     }
-    public function getFirstname(){
-        return $this->firstname;
+
+    // SETTERS
+
+    public function setPictureName($name){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET picture=:pname WHERE id=:id");
+        $set->execute([
+            'pname' => $name,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->picture = $name;
     }
-    public function getLastname(){
-        return $this->lastname;
+    public function setPseudo($pseudo){
+        $db = self::dbConnect();
+        $set = $db->prepare("UPDATE " . self::TABLE_NAME . " SET pseudo=:pseudo WHERE id=:id");
+        $set->execute([
+            'pseudo' => $pseudo,
+            'id' => $this->id
+        ]);
+        $set->closeCursor();
+        $this->pseudo = $pseudo;
     }
-    public function getPictureName(){
-        return $this->picture;
-    }
-    // public function getRole(){
-    //     return $this->role;
-    // }
 }

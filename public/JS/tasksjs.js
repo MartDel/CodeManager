@@ -35,6 +35,7 @@ const select_all = {
     trash: document.getElementsByClassName("trash")[0],
     delete_task:"delete_task",
     yes_task:document.getElementById("yes_delete_task"),
+    nb_tasks: document.getElementById('nb_tasks')
 };
 const select_all2 = {
     select_all: document.getElementById("select_all2"),
@@ -64,6 +65,28 @@ window.onload = () => {
     // Menu/nav onload function and check if there is a message to print
     wOnload()
     checkMessage()
+
+    // Set display
+    if (getCookie('display')==="2") {
+      display.first.style.display="none"
+      display.second.style.display="block"
+      display.open.style.display="none";
+      display.open.style.opacity="0"
+      display.global.style.borderRadius="50%";
+      display.category_2.src="public/img/category_1.png"
+      display.global.style.height="39px";
+      display.category_1.src="public/img/category_2.png"
+    } else {
+      display.first.style.display="block"
+      display.second.style.display="none"
+      display.open.style.display="none";
+      display.open.style.opacity="0";
+      display.global.style.borderRadius="50%";
+      display.global.style.height="39px";
+      display.category_2.src="public/img/category_2.png"
+      display.category_1.src="public/img/category_1.png"
+    }
+
 
     // Hide or show done tasks
     const search = window.location.search
@@ -205,8 +228,13 @@ function showModal(event) {
     }
     if(!id) return;
 
-    if (contain(tasks.btn.tick2, event.target)) modals.show(id + '_edit')
-    else if(!contain(tasks.btn.check_js, event.target)
+    if (contain(tasks.btn.tick2, event.target)) {
+        if(permissions != 0) modals.show(id + '_edit')
+        else {
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
+            err.show()
+        }
+    } else if(!contain(tasks.btn.check_js, event.target)
     && !contain(tasks.btn.tick, event.target)
     && !contain(tasks.btn.trash, event.target)) modals.show(id + '_modal');
 }
@@ -221,11 +249,18 @@ for (let i = 0; i < tasks_done.list.length; i++) {
  * ADD TASK MODAL
  */
 for (let i = 0; i < addtask.show_btns.length; i++) {
-    addtask.show_btns[i].onclick = () => modals.show(addtask.id,()=>{
-      addtask.title.value="";
-      addtask.cate.value="";
-      addtask.desc_input.value="";
-    })
+    addtask.show_btns[i].onclick = () => {
+        if(permissions != 0){
+            modals.show(addtask.id,()=>{
+                addtask.title.value="";
+                addtask.cate.value="";
+                addtask.desc_input.value="";
+            })
+        } else {
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation d'ajouter une tâche.")
+            err.show()
+        }
+    }
 }
 /*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
@@ -300,12 +335,29 @@ function getTaskCategory(input){
     }
     return null
 }
+function getTasksToDelete1(){
+    let id_list = []
+    for (let i = 0; i < select_all.checkbox.length; i++) {
+        const checkbox = select_all.checkbox[i]
+        if(checkbox.checked){
+            const task = checkbox.parentElement.parentElement.parentElement
+            const task_id = task.id.replace('task', '')
+            id_list.push(task_id)
+        }
+    }
+    return id_list
+}
 function deleteTasks(id_list){
+    if(permissions == 0){
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
+        err.show()
+        return;
+    }
     let str = ''
     id_list.forEach((id, i) => {
         str += id + (i === id_list.length-1 ? '' : '+')
     })
-    window.location.search = '?action=deletetasks&tasks=' + str
+    window.location.search = '?action=deleteTasks&tasks=' + str
 }
 
 // First display
@@ -314,23 +366,10 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
 select_all.trash.onclick = () => {
+    select_all.nb_tasks.innerText = getTasksToDelete1().length
     modals.show(select_all.delete_task)
 }
-select_all.yes_task.onclick = () => {
-  // Delete tasks
-  let id_list = []
-  for (let i = 0; i < select_all.checkbox.length; i++) {
-      const checkbox = select_all.checkbox[i]
-      if(checkbox.checked){
-          const task = checkbox.parentElement.parentElement.parentElement
-          const task_id = task.id.replace('task', '')
-          id_list.push(task_id)
-      }
-  }
-  deleteTasks(id_list)
-}
-
-
+select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete1())
 
 // Second display
 select_all2.select_all.onclick = () => selectAll(select_all2)
@@ -366,26 +405,9 @@ select_all2.trash.onclick = () => {
         const checkbox = select_all2.checkbox[i]
         if(checkbox.checked && !checkbox.classList.contains('category-check')){
             const task = checkbox.parentElement.parentElement.parentElement.parentElement
-            console.log(task.id);
             const task_id = task.id.replace('task', '')
             id_list.push(task_id)
         }
     }
     deleteTasks(id_list)
-}
-
-
-function setURLParams(params){
-    // Get file name
-    let file_name = null
-    const path = window.location.pathname.split('/')
-    path.forEach((item, i) => {
-        if(i === path.length-1) file_name = item
-    })
-
-    const obj = {
-        title: document.title,
-        url: file_name + '?' + params
-    }
-    history.pushState(obj, obj.title, obj.url)
 }

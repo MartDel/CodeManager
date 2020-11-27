@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : lun. 09 nov. 2020 à 22:06
+-- Généré le : ven. 27 nov. 2020 à 11:44
 -- Version du serveur :  8.0.22-0ubuntu0.20.10.2
 -- Version de PHP : 7.4.9
 
@@ -21,6 +21,18 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `codemanager`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `project_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -46,11 +58,25 @@ CREATE TABLE `tasks` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `categorie_id` int DEFAULT NULL,
+  `category_id` int DEFAULT NULL,
   `author_id` int NOT NULL,
   `create_date` datetime NOT NULL,
   `is_done` tinyint(1) NOT NULL DEFAULT '0',
   `project_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` int NOT NULL,
+  `project_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `permissions` int NOT NULL DEFAULT '0',
+  `role` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -75,6 +101,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Index pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `projects`
 --
 ALTER TABLE `projects`
@@ -84,6 +116,12 @@ ALTER TABLE `projects`
 -- Index pour la table `tasks`
 --
 ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `teams`
+--
+ALTER TABLE `teams`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -97,6 +135,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `projects`
 --
 ALTER TABLE `projects`
@@ -106,6 +150,12 @@ ALTER TABLE `projects`
 -- AUTO_INCREMENT pour la table `tasks`
 --
 ALTER TABLE `tasks`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `teams`
+--
+ALTER TABLE `teams`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --

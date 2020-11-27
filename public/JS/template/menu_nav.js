@@ -120,17 +120,21 @@ project.create_button.onclick=()=>{
   }), 500)
 }
 project.edit_button.onclick=()=>{
-  var tempname = document.getElementById('edit_project_name').value
-  var tempdesc= document.getElementById('edit_project_desc').value
-  var tempgit_username= document.getElementById('edit_project_git_name').value
-  var tempgit_project= document.getElementById('edit_project_git_repo').value
-  setTimeout(() => modals.show(project.idedit,()=>{
-    project.name_edit.value=tempname
-    project.desc_edit.value=tempdesc
-    project.git_username_edit.value=tempgit_username
-    project.git_project_edit.value=tempgit_project
-
-  }), 500)
+    if(permissions == 2){
+        var tempname = document.getElementById('edit_project_name').value
+        var tempdesc= document.getElementById('edit_project_desc').value
+        var tempgit_username= document.getElementById('edit_project_git_name').value
+        var tempgit_project= document.getElementById('edit_project_git_repo').value
+        setTimeout(() => modals.show(project.idedit,()=>{
+            project.name_edit.value=tempname
+            project.desc_edit.value=tempdesc
+            project.git_username_edit.value=tempgit_username
+            project.git_project_edit.value=tempgit_project
+        }), 500)
+    } else {
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation nécessaire pour modifier le projet.")
+        err.show()
+    }
 }
 
 document.getElementById("input_img").onchange = function() {
@@ -195,26 +199,6 @@ function wOnload(){
       },0)
 
 
-    }
-
-    if (getCookie('display')==="2") {
-      display.first.style.display="none"
-      display.second.style.display="block"
-      display.open.style.display="none";
-      display.open.style.opacity="0"
-      display.global.style.borderRadius="50%";
-      display.category_2.src="public/img/category_1.png"
-      display.global.style.height="39px";
-      display.category_1.src="public/img/category_2.png"
-    } else {
-      display.first.style.display="block"
-      display.second.style.display="none"
-      display.open.style.display="none";
-      display.open.style.opacity="0";
-      display.global.style.borderRadius="50%";
-      display.global.style.height="39px";
-      display.category_2.src="public/img/category_2.png"
-      display.category_1.src="public/img/category_1.png"
     }
 
     // Turn ON/OFF dark mode
@@ -325,6 +309,7 @@ function turnOnDarkMode() {
     document.getElementById("cancel_submit_changes").style.backgroundColor="transparent";
     document.getElementById("findField").style.color="white";
     settings.night_shift_btn.checked = false;
+    turnOffNightShift()
 
     // Set dark-mode cookie
     setCookie('dark-mode', 'on')

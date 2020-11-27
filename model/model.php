@@ -1,6 +1,21 @@
 <?php
 
 /**
+ * Check if all user's data are correct
+ */
+function checkUserData(){
+    $team = new Team($_SESSION['project_id'], $_SESSION['user_id']);
+	if(!$team->exists()){
+		$project = Project::getFirstProject($_SESSION['user_id']);
+		if($project) $_SESSION['project_id'] = $project->getId();
+	    else {
+			session_destroy();
+			throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=signin', 'openPhpMyAdmin');
+		}
+	}
+}
+
+/**
  * Check if there are errors in new user's data
  * @param Object $data User's data
  */
@@ -8,10 +23,10 @@ function checkNewUserData($data){
 	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
 		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
 	}
-	$pseudo = htmlspecialchars($data['pseudo']);
-	$mail = htmlspecialchars($data['mail']);
-	$firstname = htmlspecialchars($data['firstname']);
-	$lastname = htmlspecialchars($data['lastname']);
+	$pseudo = $data['pseudo'];
+	$mail = $data['mail'];
+	$firstname = $data['firstname'];
+	$lastname = $data['lastname'];
 	$password = $data['password'];
 	$confirm = $data['confirm'];
 	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") {
@@ -33,10 +48,10 @@ function checkNewUserData($data){
  * @param Object $data User's data
  */
 function addUser($data){
-	$pseudo = htmlspecialchars($data['pseudo']);
-	$mail = htmlspecialchars($data['mail']);
-	$firstname = htmlspecialchars($data['firstname']);
-	$lastname = htmlspecialchars($data['lastname']);
+	$pseudo = $data['pseudo'];
+	$mail = $data['mail'];
+	$firstname = $data['firstname'];
+	$lastname = $data['lastname'];
 	$user = new User($pseudo, $mail, $firstname, $lastname);
 	$user->pushToDB($data['password'], genUniqueId());
 	connectUser($data['pseudo'], true);
@@ -44,13 +59,11 @@ function addUser($data){
 
 /**
  * Check if there are errors in user's data
- * @param String $l User's pseudo or email
- * @param String $p User's password
+ * @param String $login User's pseudo or email
+ * @param String $password User's password
  * @param boolean $is_hashed True if the password is hashed
  */
-function checkConnection($l, $p, $is_hashed) {
-	$login = htmlspecialchars($l);
-	$password = $p;
+function checkConnection($login, $password, $is_hashed) {
 	$user = new User($login, $login, '', '');
 	if(!$user->accountExist()){
 		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
@@ -84,12 +97,6 @@ function checkConnection($l, $p, $is_hashed) {
 function connectUser($login, $auto){
 	$user = User::getUserByLogin($login);
 	$user_id = $user->getId();
-	$_SESSION['user_id'] = $user_id;
-	$_SESSION['pseudo'] = $user->getPseudo();
-	$_SESSION['mail'] = $user->getMail();
-	$_SESSION['firstname'] = $user->getFirstname();
-	$_SESSION['lastname'] = $user->getLastname();
-	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	$project = Project::getFirstProject($user_id);
 	if($project) $_SESSION['project_id'] = $project->getId();
@@ -97,6 +104,15 @@ function connectUser($login, $auto){
 		session_destroy();
 		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . getLastPage(), 'openPhpMyAdmin');
 	}
+
+	$_SESSION['user_id'] = $user_id;
+	$_SESSION['pseudo'] = $user->getPseudo();
+	$_SESSION['mail'] = $user->getMail();
+	$_SESSION['firstname'] = $user->getFirstname();
+	$_SESSION['lastname'] = $user->getLastname();
+	$_SESSION['role'] = $user->getFinalRole();
+	$_SESSION['permissions'] = $user->getPermissions();
+	if($user->getPictureName()) $_SESSION['pp'] = $user->getPictureName();
 
 	if($auto){
 		$auth = password_hash(User::getUniqueId($user->getPseudo()), PASSWORD_DEFAULT);
@@ -130,6 +146,36 @@ function countDoneTasks($tasks){
 		if ($task->getIsDone()) $counter++;
 	}
 	return $counter;
+}
+
+/**
+ * Create an array to order tasks by category
+ * @param array $tasks The array not ordered
+ * @return array An array of tasks
+ */
+function orderByCategory($tasks){
+	if(!$tasks) return null;
+	$r = [
+		'-1' => []
+	];
+	foreach ($tasks as $task) {
+		$category = $task->getCategoryId();
+		if(!$category) $category = '-1';
+		if(!isset($r[$category])) $r[$category] = [];
+		array_push($r[$category], $task);
+	}
+	return $r;
+}
+
+/**
+ * Get a category name with its id
+ * @param int $id The category id
+ * @return string The category name
+ */
+function getCategoryNameById($id){
+	$category = Category::getCategoryById($id);
+	if($category) return $category->getName();
+	return null;
 }
 
 // GitHub page
@@ -200,6 +246,61 @@ function cropImage($tmpName, $fileName){
 	}
 }
 
+/**
+ * Create remote link with POST data
+ * @param Object $data POST data
+ * @return String The remote link, null if there isn't enough information
+ */
+function createRemote($data){
+    if(isset($data['github_pseudo']) && $data['github_pseudo'] != '' && isset($data['remote']) && $data['remote'] != '') {
+        return 'https://github.com/' . $data['github_pseudo'] . '/' . $data['remote'];
+    }
+    return null;
+}
+
+// Other functions
+
+/**
+ * Send an e-mail with a message
+ * @param String $message The message to sens
+ * @return bool status
+ */
+function sendMail($message){
+	// Headers
+	$to = "martin-delebecque@outlook.fr";
+	$subject = "Remarque de " . $_SESSION['pseudo'];
+	$headers = "From: CodeManager <server@codemanager.com>\r\n";
+	$headers .= "Reply-To: CodeManager <server@codemanager.com>\r\n";
+	$headers .= "Return-Path: CodeManager <server@codemanager.com>\r\n";
+	$headers .= "Organization: CodeManager\r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-type: text/html; charset=utf-8\r\n";
+	$headers .= "X-Priority: 3\r\n";
+	$headers .= "X-Mailer: PHP". phpversion() ."\r\n" ;
+
+	// Message
+	ob_start();
+	?>
+	<h1 style="text-align:center;">Remarque de <?= $_SESSION['pseudo'] ?> <i>(<?= $_SESSION['user_id'] ?>)</i></h1>
+	<section>
+		<h2>Informations sur l'utilisateur :</OTHER h2>
+		<ul>
+			<li><strong>Pseudo : </strong><?= $_SESSION['pseudo'] ?></li>
+			<li><strong>Addresse mail : </strong><?= $_SESSION['mail'] ?></li>
+			<li><strong>Prénom : </strong><?= $_SESSION['firstname'] ?></li>
+			<li><strong>Nom : </strong><?= $_SESSION['lastname'] ?></li>
+		</ul>
+	</section>
+	<section>
+		<h2>Message de l'utilisateur :</h2>
+		<p><?= $message ?></p>
+	</section>
+	<?php
+	$msg = ob_get_clean();
+
+	return mail($to, $subject, $msg, $headers);
+}
+
 // Functions
 
 /**
@@ -229,4 +330,20 @@ function genUniqueId($length = 13){
 	// If 'random_bytes' doesn't exists
 	// $bytes = openssl_random_pseudo_bytes(ceil($lenght / 2));
     return substr(bin2hex($bytes), 0, $length);
+}
+
+/**
+ * Add a security to user entries
+ * @param Object $object The user's data
+ * @return Object The securised user's data
+ */
+function secure($object){
+	foreach ($object as $key => $value) {
+		$final = htmlspecialchars($value);
+		if((strlen($final) > 255 || preg_match('#"#', $_POST['text'])) && $key != 'description' && $key != 'message' && $key != 'mess'){
+			throw new CustomException('Données non valide', "Une des données envoyées n'est pas correcte. Veillez à ce qu'elle ne dépasse pas une longuer de 255 et qu'elle ne contienne pas de \".", 'index.php?action=' . getLastPage());
+		}
+		$object[$key] = $final;
+	}
+	return $object;
 }

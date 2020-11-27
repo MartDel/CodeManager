@@ -19,372 +19,25 @@ ob_start();
     <div class="main-table-user">
       <table>
         <tr>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
-          <td>
-            <div class="img_user_profile">
-              <img src="public/img/switzerland.png" alt="">
-            </div>
-            <h1>Username</h1>
-            <p>email adress</p>
-            <br>
-            <p>Rôle</p>
-            <a href="#">
-              <div class="delete_user_div">
-                <img src="public/img/trash.png" alt="">
-                <h2>Supprimer le collaborateur</h2>
-              </div>
-            </a>
-          </td>
+          <?php foreach ($users as $user): ?>
+              <td>
+                <div class="img_user_profile">
+                  <img src="public/img/<?= $user->getPictureName() ? 'users/' . $user->getPictureName() : 'defaultuser.png' ?>" alt="Photo de profile de <?= $user->getPseudo() ?>" />
+                </div>
+                <h1><?= $user->getPseudo() ?></h1>
+                <p><?= $user->getMail() ?></p>
+                <br>
+                <p><?= $user->getFinalRole() ?></p>
+                <?php if ($user->getId() != $_SESSION['user_id'] && $_SESSION['permissions'] == 2): ?>
+                    <a href="index.php?action=removeUserFromTeam&id=<?= $user->getId() ?>">
+                      <div class="delete_user_div">
+                        <img src="public/img/trash.png" alt="">
+                        <h2>Supprimer le collaborateur</h2>
+                      </div>
+                    </a>
+                <?php endif; ?>
+              </td>
+          <?php endforeach; ?>
         </tr>
       </table>
     </div>
@@ -394,17 +47,19 @@ ob_start();
 
     <modal id="add">
       <span id="close_account_modal" class="close-modal close_account_modal">&times;</span>
-      
-      <h1>Ajouter un collaborateur</h1>
-      <br><br>
-      <h2>Adresse e-mail du collaborateur :</h2>
-      <br>
-      <input type="email" name="" placeholder="Adresse e-mail du collaborateur" value=""></input>
-      <br><br><br>
-      <div class="flex_add_user">
-        <a href="#" class="yes_add_user">Valider</a>
-        <a href="#" class="close-modal no_add_user">Annuler</a>
-      </div>
+      <form action="index.php?action=searchUser" method="post">
+          <h1>Ajouter un collaborateur</h1>
+          <br><br>
+          <h2>Adresse e-mail du collaborateur :</h2>
+          <br>
+          <input type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
+          <br><br><br>
+          <div class="flex_add_user">
+            <a href="#" class="yes_add_user">Valider</a>
+            <input type="submit" value="Valider" />
+            <a href="#" class="close-modal no_add_user">Annuler</a>
+          </div>
+      </form>
     </modal>
     <?php require('template/modals.php'); ?>
 </div>

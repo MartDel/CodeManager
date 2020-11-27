@@ -1,24 +1,25 @@
 function checkMessage(){
     const search = window.location.search
     const params = new URLSearchParams(search)
-    if(params.has('error')){
-        try {
-            const error = params.get('error').split('+')
-            let info = {
-                title: error[0],
-                message: error[1],
-                file: error[2],
-                line: error[3],
-                callback: null
-            }
-            if(error[4] && error[4] !== ''){
-                info.callback = window[error[4]]
-            }
-            showMessage('error', info.title, info.message, info.callback)
-        } catch (e) {
-            console.log("Format d'erreur inconnu");
-            console.log(e);
+    try {
+        if(params.has('error') || params.has('info')){
+            let type;
+            if(params.has('info')) type = 'info'
+            else type = 'error'
+            const title = params.get('title')
+            const message = params.get('message')
+            const msg = new Message(type, title, message)
+            if(params.has('callback_name')) msg.dynamic = window[params.get('callback_name')]
+            if(params.has('btn')) msg.btn2 = params.get('btn')
+            if(params.has('arg')) msg.arg = params.get('arg')
+            msg.show()
+
+            // Clear url
+            setURLParams(params.has('action') ? 'action=' + params.get('action') : '')
         }
+    } catch (e) {
+        console.log("Format d'erreur inconnu");
+        console.log(e);
     }
 }
 
@@ -41,28 +42,22 @@ function focusInput(key, value){
     }
 }
 
-function focusEmptyInput(){
-    focusInput('value', '')
-}
+function focusEmptyInput(){ focusInput('value', '') }
+function focusPassword(){ focusInput('type', 'password') }
+function focusEmail(){ focusInput('type', 'email') }
 
-function focusPassword(){
-    focusInput('type', 'password')
-}
-
-function focusEmail(){
-    focusInput('type', 'email')
-}
+function openEditAccount(){ modals.show(project.id) }
+function openAddUserModal(){ modals.show(add.id) }
 
 function focusTitleAddTask() {
     modals.show(addtask.id)
-    // Focus sur le champ title
+    setTimeout(() => document.querySelector('#addtask_title').focus(), 1000)
 }
 
 function focusNameCreateProject(){
     modals.show(project.id)
-    // Focus sur le champ name
+    setTimeout(() => document.querySelector('#new_project_name').focus(), 1000)
 }
 
-function openPhpMyAdmin(){
-    window.open("http://localhost:80/phpmyadmin", "_blank")
-}
+function addUser(email){ window.location.search = '?action=addUserToTeam&mail=' + encodeURIComponent(email) }
+function openPhpMyAdmin(){ window.open("http://localhost:80/phpmyadmin", "_blank") }

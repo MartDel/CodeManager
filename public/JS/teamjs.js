@@ -11,5 +11,9 @@ window.onload = () => {
 
 
 add.button.onclick=()=>{
-  modals.show(add.id)
+    if(permissions == 2) modals.show(add.id)
+    else{
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation nécessaire pour ajouter un utilisateurà l'équipe.")
+        err.show()
+    }
 }

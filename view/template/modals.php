@@ -25,9 +25,9 @@
         <input class="apple-switch" id="night_shift" type="checkbox">
     </div>
     <div class="row_settings_title" id="col_settings">
-        <form class="form_bug_report" method="POST" action="">
+        <form class="form_bug_report" method="POST" action="index.php?action=reportbug">
             <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
-            <textarea id="textarea_bug" placeholder="Message" name="bug_report_textarea" id=""></textarea>
+            <textarea id="textarea_bug" placeholder="Message" name="mess" id=""></textarea>
             <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
         </form>
         <br>
@@ -63,7 +63,7 @@
       </a>
       <span id="close_settings" class="close-modal close_settings">&times;</span>
       <br><br>
-      <form class="" action="#" method="post">
+      <form class="" action="index.php?action=editaccount" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
           <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled=true value="<?= $_SESSION['pseudo'] ?>"></input>
@@ -119,20 +119,17 @@
     <section id="body_project_modal">
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
-            
-            <form class="form-select-user" action="index.php?project=<?= $current_project['id'] ?>" method="post">
-              <select class="select-general" name="select-general">
-                <option value="none"><?= $project->getName() ?></option>
-                <?php foreach ($project_list as $current_project) { ?>
-                    <a href="index.php?project=<?= $current_project['id'] ?>">
-                      <option value="current"><?= $current_project['name'] ?></option>
-                    </a>
-                <?php } ?>
+
+            <form class="form-select-user" action="index.php?action=switchProject" method="post">
+              <select class="select-general" name="project" onchange='if(this.value != <?= $_SESSION['project_id'] ?>) { this.form.submit(); }'>
+                <?php foreach ($project_list as $current_project): ?>
+                    <option value="<?= $current_project->getId() ?>" <?= $current_project->getId() == $_SESSION['project_id'] ? 'selected' : '' ?>>
+                        <?= $current_project->getName() ?>
+                    </option>
+                <?php endforeach; ?>
               </select>
             </form>
         </section>
-
-
 
         <br><br>
         <div id="div_form_new_project"></div>
@@ -160,7 +157,7 @@
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
-  <form name="create_project_form" action="index.php?action=createproject" method="POST">
+  <form name="create_project_form" action="index.php?action=createProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
       <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
@@ -185,7 +182,7 @@
       <span id="close_swap" class="close_swap close-modal">&times;</span>
       <br><br><br><br>
   </section>
-  <form name="edit_project_form" action="index.php?action=editproject" method="POST">
+  <form name="edit_project_form" action="index.php?action=editProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
       <input class="colorblack" name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
       <h1>Description du projet (optionnel)</h1>
@@ -198,7 +195,7 @@
       <div class="flex_button_edit">
         <br><br>
         <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
-        <a class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Supprimer le projet</a>
+        <a class="button_cancel_edit_project" name="cancel_create_project_button" href="index.php?action=deleteProject">Supprimer le projet</a>
         <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
       </div>
   </form>

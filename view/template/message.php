@@ -4,7 +4,7 @@
     <div class="interact">
         <button type="button" id="close_message">&times;</button>
         <button type="button" id="action" style="display:none;">
-            <ion-icon name="eye"></ion-icon>
+            <ion-icon name="eye" id="icon"></ion-icon>
         </button>
     </div>
 </aside>
