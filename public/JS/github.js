@@ -1,26 +1,43 @@
 const commits = {
-    username: username.value,
-    project: project.value,
+    username: document.getElementById('username').value,
+    project: document.getElementById('project').value,
     ul: document.getElementById('commits'),
     loading: document.getElementById('loading'),
-    more: document.getElementById('more')
+    more: document.getElementById('more'),
+    switch_branch: document.getElementById('switch_branch')
 }
+const params = new URLSearchParams(window.location.search)
 
 window.onload = () => {
-    getMoreCommits()
+    const branch = params.has('branch') ? params.get('branch') : 'master'
+    getMoreCommits(branch)
+    commits.switch_branch.value = branch
 }
 
-function getCommits(callback, sha = null){
-    const url = "https://api.github.com/repos/" + commits.username + "/" + commits.project + "/commits" + (sha ? '?sha=' + sha : '')
+commits.switch_branch.onchange = (event) => {
+    const branch = commits.switch_branch.value
+    commits.ul.innerHTML = ''
+    getMoreCommits(branch)
+    params.set('branch', branch)
+    setURLParams(params.toString())
+}
+
+function getCommits(callback, sha = 'master'){
+    const url = "https://api.github.com/repos/" + commits.username + "/" + commits.project + "/commits?sha=" + sha
     fetch(url)
         .then((response) => { return response.json() })
         .then((data) => {
             setTimeout(() => { callback(data) }, 500)
         })
-        .catch((error) => { console.error(error) });
+        .catch((error) => {
+            const err = new Message('error', 'Mauvaise nouvelle...', "Une erreur s'est produite. Vérifiez votre connexion Internet.")
+            err.dynamic = () => location.reload()
+            err.btn2 = 'refresh'
+            err.show()
+        });
 }
 
-function getMoreCommits(last_sha = null){
+function getMoreCommits(last_sha = 'master'){
     commits.loading.style.display = 'block'
     commits.more.style.display =  'none'
     getCommits((data) => {
@@ -28,6 +45,20 @@ function getMoreCommits(last_sha = null){
         if(data.length === 30){
             commits.more.style.display =  'inline-block'
             commits.more.onclick = () => getMoreCommits(data[data.length-1].sha)
+        }
+        console.log(data);
+
+        if(data.message){
+            const err = new Message('error', 'Mauvaise nouvelle...', "Une erreur s'est produite. Vérifiez votre connexion Internet.")
+            err.dynamic = () => location.reload()
+            err.btn2 = 'refresh'
+            err.show()
+            return;
+        }
+
+        if(data.length == 0){
+            // Pas de commits
+            return;
         }
 
         data.forEach((json) => {

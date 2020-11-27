@@ -17,6 +17,7 @@ require("class/Task.php");
 require('class/Project.php');
 require('class/Category.php');
 require('class/Team.php');
+require('class/Commit.php');
 $hostname = 'localhost/CodeManager';
 $_SESSION['last_page'] = isset($_SESSION['last_page']) ? $_SESSION['last_page'] : '';
 

@@ -288,6 +288,7 @@ function commits(){
     $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
+    // Check if the repository exists
     $commits_available = false;
     if($project->getRemotePseudo() && $project->getRemoteName()){
         $url = "https://github.com/" . $project->getRemotePseudo() . "/" . $project->getRemoteName();
@@ -295,6 +296,8 @@ function commits(){
         $string = $array[0];
         if(strpos($string,"200")) $commits_available = true;
     }
+
+    if($commits_available) $branches = Commit::getAllBranches($project->getRemotePseudo(), $project->getRemoteName());
     require('view/github.php');
 }
 
@@ -410,15 +413,6 @@ function deleteAccount(){
     // Delete profile picture
     unlink('public/img/users/' . $user->getPictureName());
     logout();
-}
-
-/**
- * Logout the current user
- */
-function logout(){
-    session_destroy();
-	setcookie('auth', '', time() + 365*24*3600, '/', null, false, true);
-    header('Location: index.php');
 }
 
 /**

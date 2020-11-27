@@ -301,6 +301,18 @@ function sendMail($message){
 	return mail($to, $subject, $msg, $headers);
 }
 
+function httpRequest($url){
+    $opts = [
+        'http' => [
+            'method' => "GET",
+            'header' => "User-Agent: martdel\r\n"
+        ]
+    ];
+    $context = stream_context_create($opts);
+    $raw = file_get_contents($url, false, $context);
+    return json_decode($raw);
+}
+
 // Functions
 
 /**
