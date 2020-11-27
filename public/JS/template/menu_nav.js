@@ -615,6 +615,9 @@ textarea.pseudo_validate.onclick = () => {
   if (newplaceholder_pseudo != textarea.pseudo.value) {
     //textarea.pseudo.value = newplaceholder_pseudo;
     change.button.innerHTML = "Effectuer les changements";
+    change.button.classList.remove("close-modal");
+    change.button.classList.add("none");
+    change.button.type = "submit";
   }
   textarea.pseudo_validate.style.marginRight = "50px";
   textarea.pseudo_validate.style.opacity = "0";

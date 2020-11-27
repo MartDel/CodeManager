@@ -83,7 +83,7 @@
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
         </div> -->
         <br><br>
-        <button type="button" class="close-modal" id="cancel_submit_changes" name="button">Annuler</button>
+        <button type="button" type="button" class="close-modal" id="cancel_submit_changes" name="button">Annuler</button>
       </form>
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
