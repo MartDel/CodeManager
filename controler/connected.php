@@ -283,7 +283,7 @@ function editUserFromTeam(){
 /**
  * Get all of project commits and show them (test)
  */
-function commits(){
+function github(){
     // Get projects infos
     $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);

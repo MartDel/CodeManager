@@ -492,7 +492,7 @@ function openMenu(){
 
   //}
 //}
-redirect_index = () =>{
+const redirect_index = () =>{
   //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
   //openMenu();
   setTimeout(() => {
@@ -500,11 +500,16 @@ redirect_index = () =>{
   }, 300);
 
 }
-redirect_team = () =>{
+const redirect_team = () =>{
   //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
   //openMenu();
   setTimeout(() => {
       window.location.href = 'index.php?action=team'
+  }, 300);
+}
+const redirect_github = () =>{
+  setTimeout(() => {
+      window.location.href = 'index.php?action=github'
   }, 300);
 }
 

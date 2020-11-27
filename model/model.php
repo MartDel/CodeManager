@@ -351,7 +351,7 @@ function genUniqueId($length = 13){
  */
 function secure($object){
 	foreach ($object as $key => $value) {
-		$final = htmlspecialchars($value);
+		$final = trim(htmlspecialchars($value));
 		if(strlen($final) > 255 && $key != 'description' && $key != 'message' && $key != 'mess'){
 			throw new CustomException('Données non valide', "Une des données envoyées n'est pas correcte. Veillez à ce qu'elle ne dépasse pas une longuer de 255 et qu'elle ne contienne pas de \".", 'index.php?action=' . getLastPage());
 		}

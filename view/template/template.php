@@ -80,12 +80,14 @@
 		              </span>
 		                <p class="textgauche" id="text_menu_left_4">Discussion</p>
 		            </li>
-		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
-		              <span title="GitHub">
-		                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
-		              </span>
-		                <p class="textgauche" id="text_menu_left_5">GitHub</p>
-		            </li>
+		            <a onclick="redirect_github()">
+						<li class="<?= $page == 'github' ? '' : 'not' ?>selectedmenu">
+			              <span title="GitHub">
+			                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
+			              </span>
+			                <p class="textgauche" id="text_menu_left_5">GitHub</p>
+			            </li>
+					</a>
 		        </ul>
 		    </div>
 		    <section id="copyright">
