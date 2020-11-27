@@ -55,6 +55,20 @@ class Team extends DatabaseManager
     }
 
     /**
+     * Update a team row from the database
+     */
+    public function update(){
+        $db = self::dbConnect();
+        $update = $db->prepare('UPDATE ' . self::TABLE_NAME . ' SET role=:role, permissions=:perm WHERE id=:id');
+        $update->execute([
+            'role' => $this->role ? $this->role : null,
+            'permissions' => $this->permissions,
+            'id' => $this->id
+        ]);
+        $update->closeCursor();
+    }
+
+    /**
      * Delete a Team row from the database
      */
     public function delete(){

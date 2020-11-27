@@ -246,6 +246,41 @@ function removeUserFromTeam(){
 }
 
 /**
+ * Edit user role and permissions from the current the team
+ */
+function editUserFromTeam(){
+    $post = secure($_POST);
+    $get = secure($_GET);
+    if($_SESSION['permissions'] != 2) {
+        header('Location: index.php?action=team');
+        return;
+    }
+    $user = User::getUserById($get['id']);
+    if(!$user){
+        header('Location: index.php?action=team');
+        return;
+    }
+    $team = new Team($_SESSION['project_id'], $user->getId());
+    if(!$team->exists()){
+        header('Location: index.php?action=team');
+        return;
+    }
+    if(!isset($post['perm'])){
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs du formulaire.", 'index.php?action=team');
+    }
+
+    if(isset($post['role']) && $post['role'] != '') $role = $post['role'];
+    else $role = null;
+    $perm = $post['perm'] == 'on' ? 1 : 0;
+    $perm = $team->getPermissions() == 2 ? 2 : $perm;
+
+    $team->setRole($role);
+    $team->setPermissions($perm);
+    $team->update();
+    header('Location: index.php?action=team');
+}
+
+/**
  * Get all of project commits and show them (test)
  */
 function commits(){
