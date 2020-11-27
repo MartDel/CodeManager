@@ -4,7 +4,8 @@ const commits = {
     ul: document.getElementById('commits'),
     loading: document.getElementById('loading'),
     more: document.getElementById('more'),
-    switch_branch: document.getElementById('switch_branch')
+    switch_branch: document.getElementById('switch_branch'),
+    no_commit: document.getElementById('no_commit')
 }
 const params = new URLSearchParams(window.location.search)
 
@@ -30,34 +31,29 @@ function getCommits(callback, sha = 'master'){
             setTimeout(() => { callback(data) }, 500)
         })
         .catch((error) => {
-            const err = new Message('error', 'Mauvaise nouvelle...', "Une erreur s'est produite. Vérifiez votre connexion Internet.")
-            err.dynamic = () => location.reload()
-            err.btn2 = 'refresh'
-            err.show()
+            errorGitHub()
         });
 }
 
 function getMoreCommits(last_sha = 'master'){
     commits.loading.style.display = 'block'
     commits.more.style.display =  'none'
+    commits.no_commit.style.display =  'none'
     getCommits((data) => {
         commits.loading.style.display = 'none'
         if(data.length === 30){
             commits.more.style.display =  'inline-block'
             commits.more.onclick = () => getMoreCommits(data[data.length-1].sha)
         }
-        console.log(data);
 
         if(data.message){
-            const err = new Message('error', 'Mauvaise nouvelle...', "Une erreur s'est produite. Vérifiez votre connexion Internet.")
-            err.dynamic = () => location.reload()
-            err.btn2 = 'refresh'
-            err.show()
+            errorGitHub()
             return;
         }
 
         if(data.length == 0){
             // Pas de commits
+            commits.no_commit.style.display = 'block'
             return;
         }
 
@@ -70,4 +66,13 @@ function getMoreCommits(last_sha = 'master'){
             }
         })
     }, last_sha)
+}
+
+function errorGitHub(){
+    commits.switch_branch.value = 'master'
+    commits.ul.innerHTML = ''
+    params.delete('branch')
+    setURLParams(params.toString())
+    const err = new Message('error', 'Mauvaise nouvelle...', "Une erreur s'est produite. Vérifiez votre connexion Internet.")
+    err.show()
 }

@@ -15,6 +15,7 @@
               <?php endforeach; ?>
             </select>
             <br>
+            <p id="no_commit" style="display:none">Aucun commit sur cette branche</p>
             <ul id="commits"></ul>
             <p id="loading" style="display:none;">Chargement...</p>
             <button type="button" id="more" style="display:none;" title="Cliquez ici pour affichez des commits plus anciens">Afficher plus de commits</button>
