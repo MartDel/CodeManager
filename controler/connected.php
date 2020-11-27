@@ -288,8 +288,13 @@ function commits(){
     $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
-    // $commits = $project->getRemotePseudo() && $project->getRemoteName() ? Commit::getAllCommits($project->getRemotePseudo(), $project->getRemoteName()) : null;
-    $commits_available = $project->getRemotePseudo() && $project->getRemoteName();
+    $commits_available = false;
+    if($project->getRemotePseudo() && $project->getRemoteName()){
+        $url = "https://github.com/" . $project->getRemotePseudo() . "/" . $project->getRemoteName();
+        $array = get_headers($url);
+        $string = $array[0];
+        if(strpos($string,"200")) $commits_available = true;
+    }
     require('view/github.php');
 }
 

@@ -1,13 +1,14 @@
 const commits = {
     username: username.value,
     project: project.value,
-    show: document.getElementById('show'),
     ul: document.getElementById('commits'),
     loading: document.getElementById('loading'),
     more: document.getElementById('more')
 }
 
-commits.show.onclick = () => getMoreCommits()
+window.onload = () => {
+    getMoreCommits()
+}
 
 function getCommits(callback, sha = null){
     const url = "https://api.github.com/repos/" + commits.username + "/" + commits.project + "/commits" + (sha ? '?sha=' + sha : '')
@@ -20,7 +21,6 @@ function getCommits(callback, sha = null){
 }
 
 function getMoreCommits(last_sha = null){
-    commits.show.style.display = 'none'
     commits.loading.style.display = 'block'
     commits.more.style.display =  'none'
     getCommits((data) => {
