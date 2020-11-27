@@ -34,17 +34,6 @@ function signin(){ require('view/signin.php'); }
      header("Location: index.php");
  }
 
- /**
-  * Check if user's cookies are correct
-  */
- function checkCookie(){
-     $user = User::getUserByLoginId(htmlspecialchars($_COOKIE['auth']));
-     if($user){
-         connectUser($user->getPseudo(), false);
-         header("Location: index.php");
-     } else logout();
- }
-
  function test(){
      // $url = 'https://www.ecosia.org';
      // $url = 'https://www.google.com';

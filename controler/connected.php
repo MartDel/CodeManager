@@ -284,14 +284,13 @@ function editUserFromTeam(){
  * Get all of project commits and show them (test)
  */
 function commits(){
-    $github_user = 'MartDel';
-    $project_name = 'CodeManager';
-    $commits = getCommits($github_user, $project_name);
-    foreach ($commits as $key => $commit) {
-        $current = $commit->commit;
-        $author = $current->author;
-        echo $author->name . ' : ' . $current->message . ' | Date : ' . date("H:i:s d/m/Y", strtotime($author->date)) . '<br>';
-    }
+    // Get projects infos
+    $project = Project::getProjectById($_SESSION['project_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+
+    // $commits = $project->getRemotePseudo() && $project->getRemoteName() ? Commit::getAllCommits($project->getRemotePseudo(), $project->getRemoteName()) : null;
+    $commits_available = $project->getRemotePseudo() && $project->getRemoteName();
+    require('view/github.php');
 }
 
 /**

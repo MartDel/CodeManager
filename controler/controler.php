@@ -11,7 +11,7 @@ function executeFunction($name, $connected = false){
         require('controler/connected.php');
         checkUserData();
     } else require('controler/disconnected.php');
-    
+
     if(function_exists($name)) $name();
     else header('Location: index.php');
 }
@@ -23,4 +23,15 @@ function updateSession(){
     $user = User::getUserById($_SESSION['user_id']);
     $_SESSION['role'] = $user->getFinalRole();
     $_SESSION['permissions'] = $user->getPermissions();
+}
+
+/**
+ * Check if user's cookies are correct
+ */
+function checkCookie(){
+    $user = User::getUserByLoginId(htmlspecialchars($_COOKIE['auth']));
+    if($user){
+        connectUser($user->getPseudo(), false);
+        header("Location: index.php");
+    } else logout();
 }
