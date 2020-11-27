@@ -1,18 +1,31 @@
 const commits = {
     username: document.getElementById('username').value,
     project: document.getElementById('project').value,
+    container: document.getElementById('container'),
     ul: document.getElementById('commits'),
     loading: document.getElementById('loading'),
-    more: document.getElementById('more'),
     switch_branch: document.getElementById('switch_branch'),
-    no_commit: document.getElementById('no_commit')
+    no_commit: document.getElementById('no_commit'),
 }
 const params = new URLSearchParams(window.location.search)
+let delay = true
+let last_sha = null
 
 window.onload = () => {
     const branch = params.has('branch') ? params.get('branch') : 'master'
     getMoreCommits(branch)
     commits.switch_branch.value = branch
+}
+
+commits.container.onscroll = (event) => {
+    // console.log(commits.container.scrollTop, commits.container.scrollHeight - commits.container.offsetHeight);
+    const current = commits.container.scrollTop
+    const limit = commits.container.scrollHeight - commits.container.offsetHeight
+    if(delay && current >= limit && window.last_sha){
+        delay = false
+        getMoreCommits(window.last_sha)
+        setTimeout(() => delay = true, 1000)
+    }
 }
 
 commits.switch_branch.onchange = (event) => {
@@ -37,14 +50,10 @@ function getCommits(callback, sha = 'master'){
 
 function getMoreCommits(last_sha = 'master'){
     commits.loading.style.display = 'block'
-    commits.more.style.display =  'none'
     commits.no_commit.style.display =  'none'
     getCommits((data) => {
         commits.loading.style.display = 'none'
-        if(data.length === 30){
-            commits.more.style.display =  'inline-block'
-            commits.more.onclick = () => getMoreCommits(data[data.length-1].sha)
-        }
+        window.last_sha = data.length === 30 ? data[data.length-1].sha : null
 
         if(data.message){
             errorGitHub()

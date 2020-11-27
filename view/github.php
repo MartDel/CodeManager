@@ -4,20 +4,32 @@
         <meta charset="utf-8">
         <title>GitHub</title>
         <link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
+        <style media="screen" type="text/css">
+            #container{
+                padding: 5px;
+                position: absolute;
+                top: 15%;
+                left: 20%;
+                height: 50%;
+                width: 60%;
+                border: 1px solid black;
+                overflow-y: scroll;
+            }
+        </style>
     </head>
     <body>
         <?php if ($commits_available): ?>
             <select name="branch" id="switch_branch">
-              <?php foreach ($branches as $branch): ?>
-                  <option value="<?= $branch ?>">
-                      <?= $branch ?>
-                  </option>
-              <?php endforeach; ?>
+                <?php foreach ($branches as $branch): ?>
+                    <option value="<?= $branch ?>"><?= $branch ?></option>
+                <?php endforeach; ?>
             </select>
             <br>
-            <p id="no_commit" style="display:none">Aucun commit sur cette branche</p>
-            <ul id="commits"></ul>
-            <p id="loading" style="display:none;">Chargement...</p>
+            <div id="container">
+                <ul id="commits"></ul>
+                <p id="loading" style="display:none;">Chargement...</p>
+                <p id="no_commit" style="display:none">Aucun commit sur cette branche</p>
+            </div>
             <button type="button" id="more" style="display:none;" title="Cliquez ici pour affichez des commits plus anciens">Afficher plus de commits</button>
         <?php else: ?>
             <p>Dépôt GitHub manquant...</p>
