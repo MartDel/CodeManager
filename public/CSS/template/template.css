@@ -824,7 +824,7 @@ input.apple-switch:checked:after {
   font-size: 1rem;
   font-weight: 500;
   margin-top: 20px;
-  margin-left: calc(50% - 50px);
+  margin-left: calc(50% - 25px);
 }
 
 #bug_submission:hover {
@@ -2049,7 +2049,7 @@ input[type="file"]:hover {
   }
 }
 
-@media only screen and (max-width: 1110px) {
+@media only screen and (max-width: 1240px) {
   .utilisateur, .user_title {
     display: none;
   }
@@ -2065,7 +2065,7 @@ input[type="file"]:hover {
   }
 }
 
-@media only screen and (max-width: 865px) {
+@media only screen and (max-width: 1000px) {
   .date, .date-table-cell {
     display: none;
   }
