@@ -35,3 +35,12 @@ function checkCookie(){
         header("Location: index.php");
     } else logout();
 }
+
+/**
+ * Logout the current user
+ */
+function logout(){
+    session_destroy();
+	setcookie('auth', '', time() + 365*24*3600, '/', null, false, true);
+    header('Location: index.php');
+}
