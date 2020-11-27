@@ -63,17 +63,17 @@
       </a>
       <span id="close_settings" class="close-modal close_settings">&times;</span>
       <br><br>
-      <form class="" action="index.php?action=editaccount" method="post">
+      <form class="" action="index.php?action=editAccount" method="post">
         <div class="account_change_row">
           <p>Pseudo :</p>
-          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled="true" value="<?= $_SESSION['pseudo'] ?>"></input>
+          <input class="input_fields" id="textarea_pseudo" tabindex="1" name="pseudo" disabled="true" value="<?= $_SESSION['pseudo'] ?>" />
           <img id="modify_textarea_pseudo" class="brightnessmax modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pseudo" class="brightnessmax validate_textarea" src="public/img/done.png" alt="">
         </div>
 
         <div class="account_change_row">
           <p>Mon adresse Mail : </p>
-          <input class="input_fields" name="mail" disabled="true" value="<?= $_SESSION['mail'] ?>" id="textarea_mail" ></input>
+          <input class="input_fields" name="mail" disabled="true" value="<?= $_SESSION['mail'] ?>" id="textarea_mail" />
         </div>
 
         <!-- <div class="account_change_row">
