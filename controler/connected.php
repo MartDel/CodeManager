@@ -396,11 +396,11 @@ function editAccount(){
     if(!isset($data['pseudo']) || $data['pseudo'] == '') {
         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameEditProject');
     }
-    $project = User::getUserById($_SESSION['user_id']);
     if(User::getUserByLogin($data['pseudo'])) {
         throw new CustomException('Pseudo non disponible', "Ce nom d'utilisateur est déjà utilisé. Veuillez réessayer avec un autre nom d'utilisateur.", 'index.php?action=' . getLastPage(), 'openEditAccount');
     }
-    $project->setPseudo($data['pseudo']);
+    $user = User::getUserById($_SESSION['user_id']);
+    $user->setPseudo($data['pseudo']);
     header('Location: index.php');
 }
 
