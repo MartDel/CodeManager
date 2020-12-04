@@ -236,15 +236,25 @@ ob_start();
         <section id="section_ligne_bas">
             <form method="POST" action="index.php?action=addTask">
                 <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
-                <input id="addtask_title" class="textarea_title" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
+                <input id="addtask_title" class="textarea_title input" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
                 <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
-                <input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>
+                <!--<input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>-->
+                <div class="category_flex">
+                  <select class="" name="">
+                    <option selected="selected">Divers</option>
+                    <option>uyguiuyguyg</option>
+                    <option>uyguiuyguyg</option>
+                    <option>uyguiuyguyg</option>
+                  </select>
+                  <button type="button" name="" id="new_cat_button">Nouvelle Catégorie</button>
+                  <input type="text" placeholder="Nom de la catégorie" id="input_new_cat"></input>
+                </div>
                 <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
                 <h2></h2>
                 <section id="button_line">
-                    <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal" type="button">Annuler</button>
-                    <button name="submit_button_create_task" type="submit">Valider</button>
+                    <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal boutons_bas" type="button">Annuler</button>
+                    <button name="submit_button_create_task" class="boutons_bas" type="submit">Valider</button>
                 </section>
             </form>
         </section>

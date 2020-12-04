@@ -302,6 +302,13 @@ function github(){
 }
 
 /**
+ * New project form
+ */
+function noProject(){
+    require('view/project_creation.php');
+}
+
+/**
  * Add a new project to the database
  */
 function createProject(){
