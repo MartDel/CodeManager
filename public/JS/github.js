@@ -5,9 +5,9 @@ const commits = {
     ul: document.getElementById('commits'),
     loading: document.getElementById('loading'),
     switch_branch: document.getElementById('switch_branch'),
-    no_commit: document.getElementById('no_commit'),
+    no_commit: document.getElementById('no_commit')
 }
-const params = new URLSearchParams(window.location.search)
+const params = new URLSearchParams(location.search)
 let delay = true
 let last_sha = null
 
@@ -17,8 +17,7 @@ window.onload = () => {
     commits.switch_branch.value = branch
 }
 
-commits.container.onscroll = (event) => {
-    // console.log(commits.container.scrollTop, commits.container.scrollHeight - commits.container.offsetHeight);
+commits.container.onscroll = () => {
     const current = commits.container.scrollTop
     const limit = commits.container.scrollHeight - commits.container.offsetHeight
     if(delay && current >= limit && window.last_sha){
@@ -28,7 +27,7 @@ commits.container.onscroll = (event) => {
     }
 }
 
-commits.switch_branch.onchange = (event) => {
+commits.switch_branch.onchange = () => {
     const branch = commits.switch_branch.value
     commits.ul.innerHTML = ''
     getMoreCommits(branch)
@@ -56,6 +55,7 @@ function getMoreCommits(last_sha = 'master'){
         window.last_sha = data.length === 30 ? data[data.length-1].sha : null
 
         if(data.message){
+            // Erreur GitHub
             errorGitHub()
             return;
         }
