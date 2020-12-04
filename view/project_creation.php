@@ -14,7 +14,7 @@ ob_start();
 </div>
 <div class="form_container">
   <br>
-  <form action="index.php?action=checkSignIn" method="post">
+  <form action="index.php?action=createProject" method="post">
     <h1>Nom du Projet (20 caractères max.)</h1>
     <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
     <h1>Description du projet (optionnel)</h1>

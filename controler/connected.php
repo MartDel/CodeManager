@@ -361,7 +361,12 @@ function deleteProject(){
     $project = Project::getProjectById($_SESSION['project_id']);
     $project->delete();
 
-    $_SESSION['project_id'] = Project::getFirstProject($_SESSION['user_id'])->getId();
+    $project = Project::getFirstProject($_SESSION['user_id']);
+    if(!$project){
+        header('Location: index.php?action=noProject');
+        return;
+    }
+    $_SESSION['project_id'] = $project->getId();
 
     header('Location: index.php');
 }
