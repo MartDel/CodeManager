@@ -25,8 +25,24 @@ const addtask = {
     title:document.getElementById("addtask_title"),
     cate:document.getElementById("addtask_cate"),
     desc_input: document.getElementById("textarea_desc"),
+    buttoncate:document.getElementById("new_cat_button"),
+    inputcate:document.getElementById("input_new_cat"),
 
 };
+
+addtask.buttoncate.onclick=()=>{
+  addtask.buttoncate.style.opacity=0;
+
+  setTimeout(()=>{
+    addtask.buttoncate.style.display="none";
+    addtask.inputcate.style.display="flex";
+  },300);
+  setTimeout(()=>{
+    addtask.inputcate.style.opacity=1;
+
+  },350);
+
+}
 
 // Selectall
 const select_all = {

@@ -626,7 +626,7 @@ textarea.pseudo_validate.onclick = () => {
   }
   textarea.pseudo_validate.style.marginRight = "50px";
   textarea.pseudo_validate.style.opacity = "0";
-  textarea.pseudo.disabled=true;
+  //textarea.pseudo.disabled=true;
 }
 
 // change.mail.onclick = () => {
