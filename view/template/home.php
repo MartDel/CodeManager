@@ -28,8 +28,8 @@
 		<script type="text/javascript" src="public/JS/template/message.js"></script>
 		<script type="text/javascript" src="public/JS/template/manage_messages.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
-		<?php if(isset($jsfile)){ ?>
+		<?php if(isset($jsfile)): ?>
 			<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
-		<?php } ?>
+		<?php endif; ?>
 	</body>
 </html>

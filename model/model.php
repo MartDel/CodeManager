@@ -1,18 +1,40 @@
 <?php
 
 /**
+ * Update new informations
+ */
+function updateSession(){
+    if(!isset($_SESSION['project_id'])) return;
+    $user = User::getUserById($_SESSION['user_id']);
+    $_SESSION['role'] = $user->getFinalRole();
+    $_SESSION['permissions'] = $user->getPermissions();
+}
+
+/**
+ * Check if user's cookies are correct
+ */
+function checkCookie(){
+    $user = User::getUserByLoginId(htmlspecialchars($_COOKIE['auth']));
+    if($user){
+        connectUser($user->getPseudo(), false);
+        header("Location: index.php");
+    } else logout();
+}
+
+/**
  * Check if all user's data are correct
  */
-function checkUserData(){
-    $team = new Team($_SESSION['project_id'], $_SESSION['user_id']);
-	if(!$team->exists()){
-		$project = Project::getFirstProject($_SESSION['user_id']);
-		if($project) $_SESSION['project_id'] = $project->getId();
-	    else {
-			session_destroy();
-			throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=signin', 'openPhpMyAdmin');
-		}
-	}
+function checkUserData($redirectToNoProject){
+    $redirect = false;
+    if(isset($_SESSION['project_id'])){
+        $team = new Team($_SESSION['project_id'], $_SESSION['user_id']);
+    	if(!$team->exists()){
+    		$project = Project::getFirstProject($_SESSION['user_id']);
+    		if($project) $_SESSION['project_id'] = $project->getId();
+    	    else $redirect = true;
+    	}
+    } else $redirect = true;
+    if(!$redirectToNoProject && $redirect) header('Location: index.php?action=noProject');
 }
 
 /**
@@ -100,10 +122,6 @@ function connectUser($login, $auto){
 
 	$project = Project::getFirstProject($user_id);
 	if($project) $_SESSION['project_id'] = $project->getId();
-    else {
-		session_destroy();
-		throw new CustomException('Pas de projet', "Vous n'avez pas de projet... Il faut modifier la base de données manuellement.", 'index.php?action=' . getLastPage(), 'openPhpMyAdmin');
-	}
 
 	$_SESSION['user_id'] = $user_id;
 	$_SESSION['pseudo'] = $user->getPseudo();
