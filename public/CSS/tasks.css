@@ -845,6 +845,19 @@ aside[name=edit_popup_modal] .modal-wrapper {
   left: 10%;
 }
 
+#section_ligne_bas_edit textarea {
+  resize: none;
+  font-family: "Product Sans Regular";
+  font-size: 14px;
+  height: 150px;
+  width: 95%;
+  padding: 10PX;
+  left: 0;
+  border-radius: 10px;
+  outline: none;
+  border: gray 1px solid;
+}
+
 #section_ligne_haut_edit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -904,7 +917,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   /*background-color: red;*/
 }
 
-#section_ligne_bas_edit input {
+#section_ligne_bas_edit .input {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -927,7 +940,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   ;
 }
 
-#section_ligne_bas_edit button {
+#section_ligne_bas_edit .backtrans {
   height: 40px;
   width: 100px;
   background-color: transparent;
@@ -939,7 +952,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-weight: 500;
 }
 
-#section_ligne_bas_edit button:hover {
+#section_ligne_bas_edit .backtrans:hover {
   height: 40px;
   width: 100px;
   background-color: #b41e10;
