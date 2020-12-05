@@ -626,7 +626,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 .category_flex select {
-  background-color: white;
+  background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
@@ -634,6 +634,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   text-align: center;
   text-align-last: center;
   padding: 10px;
+  color: black;
 }
 
 .category_flex select:hover {
@@ -641,7 +642,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 #new_cat_button {
-  background-color: white;
+  background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
@@ -650,10 +651,10 @@ aside[name~=popup_modal_task] .modal-wrapper {
   text-align: center;
   text-align-last: center;
   padding: 10px;
-  color: green;
   display: flex;
   opacity: 1;
   transition: opacity 0.3s;
+  color: black
 }
 
 #new_cat_button:hover {
@@ -663,6 +664,46 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 #input_new_cat {
+  height: 17px;
+  display: none;
+  opacity: 0;
+  width: 20%;
+  resize: none;
+  font-family: "Product Sans Regular";
+  font-size: 14px;
+  margin-top: 0.4%;
+  margin-left: 10px;
+  padding: 10PX;
+  left: 0;
+  border-radius: 10px;
+  outline: none;
+  border: gray 1px solid;
+  transition: opacity 0.3s;
+}
+
+#new_cat_button2 {
+  background-color: transparent;
+  border: #bebebe 2px solid;
+  font-family: "Product Sans Regular";
+  font-size: 1.1rem;
+  width: 200px;
+  margin-left: 10px;
+  text-align: center;
+  text-align-last: center;
+  padding: 10px;
+  color: black;
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+#new_cat_button2:hover {
+  cursor: pointer;
+  background-color: #b41e10;
+  color: white;
+}
+
+#input_new_cat2 {
   height: 17px;
   display: none;
   opacity: 0;

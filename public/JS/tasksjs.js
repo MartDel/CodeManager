@@ -27,6 +27,8 @@ const addtask = {
     desc_input: document.getElementById("textarea_desc"),
     buttoncate:document.getElementById("new_cat_button"),
     inputcate:document.getElementById("input_new_cat"),
+    buttoncate2:document.getElementById("new_cat_button2"),
+    inputcate2:document.getElementById("input_new_cat2"),
 
 };
 
@@ -39,9 +41,18 @@ addtask.buttoncate.onclick=()=>{
   },300);
   setTimeout(()=>{
     addtask.inputcate.style.opacity=1;
-
   },350);
+}
+addtask.buttoncate2.onclick=()=>{
+  addtask.buttoncate2.style.opacity=0;
 
+  setTimeout(()=>{
+    addtask.buttoncate2.style.display="none";
+    addtask.inputcate2.style.display="flex";
+  },300);
+  setTimeout(()=>{
+    addtask.inputcate2.style.opacity=1;
+  },350);
 }
 
 // Selectall
