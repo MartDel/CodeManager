@@ -298,7 +298,7 @@ span[title="Spprimer"] {
 /*MODAL*/
 /* Modal Content/Box */
 aside[name~=popup_modal_task] .modal-wrapper {
-  width: 80%;
+  width: 50%;
   font-family: "Product Sans Regular";
   background-color: white;
   height: auto
@@ -634,6 +634,10 @@ aside[name~=popup_modal_task] .modal-wrapper {
   text-align: center;
   text-align-last: center;
   padding: 10px;
+}
+
+.category_flex select:hover {
+  cursor: pointer;
 }
 
 #new_cat_button {

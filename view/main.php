@@ -226,7 +226,7 @@ ob_start();
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
                       <h2></h2>
                       <section id="button_line_edit">
-                          <button class="backtrans" name="cancel_button_edit_task" class="close-modal" type="button">Annuler</button>
+                          <button class="backtrans close-modal" name="cancel_button_edit_task"type="button">Annuler</button>
                           <button class="backtrans" name="submit_button_edit_task" type="submit">Valider</button>
                       </section>
                     </form>
