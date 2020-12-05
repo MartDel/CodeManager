@@ -196,6 +196,20 @@ function getCategoryNameById($id){
 	return null;
 }
 
+/**
+ * Add a category to the database
+ * @param string $name The category name
+ * @return int The category id
+ */
+function addCategory($name){
+    $category = new Category($name, $_SESSION['project_id']);
+    if($category->getId()){
+        throw new CustomException('Categorie déjà existante', "La categorie que vous tentez de créer existe déjà...", 'index.php?action=tasks');
+    }
+    $category->pushToDB();
+    return $category->getDatabaseId();
+}
+
 // GitHub page
 
 /**

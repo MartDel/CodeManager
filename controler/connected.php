@@ -18,6 +18,8 @@ function tasks(){
     $tasksByCategory = orderByCategory($tasks);
     $nb_tasks = isset($tasks) ? countNotDoneTasks($tasks) : 0;
     $nb_done_tasks = isset($tasks) ? countDoneTasks($tasks) : 0;
+
+    $categories = Category::getAllCategories($_SESSION['project_id']);
     require('view/main.php');
 }
 
@@ -33,7 +35,9 @@ function addTask(){
     if(!isset($data['title']) || $data['title'] == '') {
         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=tasks', 'focusTitleAddTask');
     }
-    $task = new Task($data['title'], $_SESSION['project_id'], false, null, $_SESSION['user_id'], $data['description']);
+    $category = isset($data['category']) && $data['category'] != '-1' ? $data['category'] : null;
+    $category = isset($data['add_category']) && $data['add_category'] != '' ? addCategory($data['add_category']) : $category;
+    $task = new Task($data['title'], $_SESSION['project_id'], false, null, $_SESSION['user_id'], $data['description'], $category);
     $task->pushToDB();
     header('Location: index.php');
 }
@@ -105,53 +109,6 @@ function deleteTasks(){
         $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
         if($current_task) $current_task->delete();
     }
-    header('Location: index.php');
-}
-
-/**
- * Add a category to the database
- */
-function addCategory(){
-    $data = secure($_POST);
-    if(!isset($data['name']) && $data['name'] != ''){
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
-    }
-    $category = new Category($data['name'], $_SESSION['project_id']);
-    $category->pushToDB();
-    header('Location: index.php');
-}
-
-/**
- * Edit a category from the database
- */
-function editCategory(){
-    $data = secure($_POST);
-    if(!isset($data['name']) && $data['name'] != ''){
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
-    }
-    $category = Category::getCategoryById(htmlspecialchars($_GET['id']));
-    if($category->getProjectId() != $_SESSION['project_id']){
-        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php');
-    }
-    $category->setName($data['name']);
-    $category->update();
-    header('Location: index.php');
-}
-
-/**
- * Delete a category
- */
-function deleteCategory(){
-    $data = secure($_GET);
-    if(!isset($data['id'])){
-        header('Location: index.php');
-        return;
-    }
-    $category = Category::getCategoryById($id);
-    if($category->getProjectId() != $_SESSION['project_id']){
-        throw new CustomException('Action refusée', "Vous n'avez pas le droit de modifier cette catégorie.", 'index.php');
-    }
-    $category->delete(isset($data['deleteTasks']));
     header('Location: index.php');
 }
 
