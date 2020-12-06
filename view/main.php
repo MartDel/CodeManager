@@ -210,14 +210,23 @@ ob_start();
                 <section id="section_ligne_bas_edit">
                     <form method="POST" action="index.php?action=editTask&id=<?= $task->getId() ?>">
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
-                      <input class="textarea_title" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
+                      <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
                       <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
-                      <input class="textarea_title" name="category" type="text" <?= $task->getCategoryId() ? 'value="' . $task->getCategory() . '"' : 'placeholder="Divers"' ?> maxlength="20" required></input>
+                      <div class="category_flex">
+                        <select class="" name="">
+                          <option selected="selected">Divers</option>
+                          <option>uyguiuyguyg</option>
+                          <option>uyguiuyguyg</option>
+                          <option>uyguiuyguyg</option>
+                        </select>
+                        <button type="button" name="" id="new_cat_button2">Nouvelle Catégorie</button>
+                        <input type="text" placeholder="Nom de la catégorie" id="input_new_cat2"></input>
+                      </div>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
-                      <input class="textarea_desc_edit" name="description" type="text" <?= $task->getDescription() ? 'value="' . $task->getDescription() . '"' : 'placeholder="Description"' ?>></input>
+                      <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
                       <h2></h2>
                       <section id="button_line_edit">
-                          <button class="backtrans" name="cancel_button_edit_task" class="close-modal" type="button">Annuler</button>
+                          <button class="backtrans close-modal" name="cancel_button_edit_task"type="button">Annuler</button>
                           <button class="backtrans" name="submit_button_edit_task" type="submit">Valider</button>
                       </section>
                     </form>

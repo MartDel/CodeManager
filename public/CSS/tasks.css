@@ -298,7 +298,7 @@ span[title="Spprimer"] {
 /*MODAL*/
 /* Modal Content/Box */
 aside[name~=popup_modal_task] .modal-wrapper {
-  width: 80%;
+  width: 50%;
   font-family: "Product Sans Regular";
   background-color: white;
   height: auto
@@ -626,7 +626,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 .category_flex select {
-  background-color: white;
+  background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
@@ -634,10 +634,15 @@ aside[name~=popup_modal_task] .modal-wrapper {
   text-align: center;
   text-align-last: center;
   padding: 10px;
+  color: black;
+}
+
+.category_flex select:hover {
+  cursor: pointer;
 }
 
 #new_cat_button {
-  background-color: white;
+  background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
@@ -646,10 +651,10 @@ aside[name~=popup_modal_task] .modal-wrapper {
   text-align: center;
   text-align-last: center;
   padding: 10px;
-  color: green;
   display: flex;
   opacity: 1;
   transition: opacity 0.3s;
+  color: black
 }
 
 #new_cat_button:hover {
@@ -659,6 +664,46 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 #input_new_cat {
+  height: 17px;
+  display: none;
+  opacity: 0;
+  width: 20%;
+  resize: none;
+  font-family: "Product Sans Regular";
+  font-size: 14px;
+  margin-top: 0.4%;
+  margin-left: 10px;
+  padding: 10PX;
+  left: 0;
+  border-radius: 10px;
+  outline: none;
+  border: gray 1px solid;
+  transition: opacity 0.3s;
+}
+
+#new_cat_button2 {
+  background-color: transparent;
+  border: #bebebe 2px solid;
+  font-family: "Product Sans Regular";
+  font-size: 1.1rem;
+  width: 200px;
+  margin-left: 10px;
+  text-align: center;
+  text-align-last: center;
+  padding: 10px;
+  color: black;
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+#new_cat_button2:hover {
+  cursor: pointer;
+  background-color: #b41e10;
+  color: white;
+}
+
+#input_new_cat2 {
   height: 17px;
   display: none;
   opacity: 0;
@@ -845,6 +890,19 @@ aside[name=edit_popup_modal] .modal-wrapper {
   left: 10%;
 }
 
+#section_ligne_bas_edit textarea {
+  resize: none;
+  font-family: "Product Sans Regular";
+  font-size: 14px;
+  height: 150px;
+  width: 95%;
+  padding: 10PX;
+  left: 0;
+  border-radius: 10px;
+  outline: none;
+  border: gray 1px solid;
+}
+
 #section_ligne_haut_edit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -904,7 +962,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   /*background-color: red;*/
 }
 
-#section_ligne_bas_edit input {
+#section_ligne_bas_edit .input {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -927,7 +985,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   ;
 }
 
-#section_ligne_bas_edit button {
+#section_ligne_bas_edit .backtrans {
   height: 40px;
   width: 100px;
   background-color: transparent;
@@ -939,7 +997,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-weight: 500;
 }
 
-#section_ligne_bas_edit button:hover {
+#section_ligne_bas_edit .backtrans:hover {
   height: 40px;
   width: 100px;
   background-color: #b41e10;

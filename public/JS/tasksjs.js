@@ -27,22 +27,11 @@ const addtask = {
     desc_input: document.getElementById("textarea_desc"),
     buttoncate:document.getElementById("new_cat_button"),
     inputcate:document.getElementById("input_new_cat"),
+    buttoncate2:document.getElementById("new_cat_button2"),
+    inputcate2:document.getElementById("input_new_cat2"),
 
 };
 
-addtask.buttoncate.onclick=()=>{
-  addtask.buttoncate.style.opacity=0;
-
-  setTimeout(()=>{
-    addtask.buttoncate.style.display="none";
-    addtask.inputcate.style.display="flex";
-  },300);
-  setTimeout(()=>{
-    addtask.inputcate.style.opacity=1;
-
-  },350);
-
-}
 
 // Selectall
 const select_all = {
@@ -245,7 +234,13 @@ function showModal(event) {
     if(!id) return;
 
     if (contain(tasks.btn.tick2, event.target)) {
-        if(permissions != 0) modals.show(id + '_edit')
+        if(permissions != 0) {
+          modals.show(id + '_edit',()=>{
+          addtask.buttoncate2.style.opacity=1;
+          addtask.buttoncate2.style.display="flex";
+          addtask.inputcate2.style.display="none";
+          addtask.inputcate2.style.opacity=0;
+        })}
         else {
             const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
             err.show()
@@ -269,14 +264,42 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
         if(permissions != 0){
             modals.show(addtask.id,()=>{
                 addtask.title.value="";
-                addtask.cate.value="";
                 addtask.desc_input.value="";
+                addtask.buttoncate.style.display="flex";
+                addtask.inputcate.style.display="none";
+                addtask.inputcate.style.opacity=0;
+                addtask.buttoncate.style.opacity=1;
+
             })
         } else {
             const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation d'ajouter une tâche.")
             err.show()
         }
     }
+}
+
+
+addtask.buttoncate.onclick=()=>{
+  addtask.buttoncate.style.opacity=0;
+
+  setTimeout(()=>{
+    addtask.buttoncate.style.display="none";
+    addtask.inputcate.style.display="flex";
+  },300);
+  setTimeout(()=>{
+    addtask.inputcate.style.opacity=1;
+  },350);
+}
+addtask.buttoncate2.onclick=()=>{
+  addtask.buttoncate2.style.opacity=0;
+
+  setTimeout(()=>{
+    addtask.buttoncate2.style.display="none";
+    addtask.inputcate2.style.display="flex";
+  },300);
+  setTimeout(()=>{
+    addtask.inputcate2.style.opacity=1;
+  },350);
 }
 /*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
