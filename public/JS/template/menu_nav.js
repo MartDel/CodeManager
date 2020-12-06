@@ -289,6 +289,9 @@ function turnOnDarkMode() {
     document.querySelectorAll('img').forEach(function(node) {
       node.style.filter="invert(50%)"
     })
+    document.querySelectorAll('.tasks_done').forEach(function(node) {
+      node.style.filter="invert(0%) grayscale(100%)"
+    })
     document.querySelectorAll('#logo').forEach(function(node) {
       node.style.filter="invert(0%)"
     })
@@ -323,9 +326,8 @@ function turnOffDarkMode() {
     }
   });
   document.querySelectorAll('body').forEach(function(node) {
-    if (node.style.color=="white") {
+
       node.style.color="black"
-    }
       node.style.backgroundColor="white"
   });
   document.querySelectorAll('.flex_title_task').forEach(function(node) {
@@ -340,8 +342,17 @@ function turnOffDarkMode() {
     }
 
   });
+  document.querySelectorAll('.menu_gauche a').forEach(function(node) {
+    if (node.style.color=="white") {
+      node.style.color="black"
+    }
+
+  });
 
   document.querySelectorAll('img').forEach(function(node) {
+    node.style.filter="invert(0%) brightness(100%)"
+  })
+  document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
     node.style.filter="invert(0%) brightness(0%)"
   })
   document.querySelectorAll('#logo').forEach(function(node) {

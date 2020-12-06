@@ -116,7 +116,7 @@ ob_start();
                 <img class="tasks_done" src="public/img/task_done0.png" alt="" />
             </span>
             <span title="Supprimer">
-                <img class="brightnessmax trash" src="public/img/trash.png" alt="" style="display:none;" />
+                <img class="brightnessmax trash trashsecond" src="public/img/trash.png" alt="" style="display:none;" />
             </span>
         </div>
         <div class="wrapper-table-task">
@@ -152,7 +152,7 @@ ob_start();
                                                         <input type="checkbox" class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>" />
                                                         <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
                                                         <a href="index.php?action=endTask&id=<?= $task->getId() ?>"><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
-                                                        <a href="index.php?action=deleteTasks&tasks=<?= $task->getId() ?>"><img src="public/img/trash.png" class="invertcent trash-btn" alt="" /></a>
+
                                                     </div>
                                                     <div class="task_name_mozaic">
                                                         <p><?= $task->getName() ?></p>

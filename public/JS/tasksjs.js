@@ -450,3 +450,7 @@ select_all2.trash.onclick = () => {
     }
     deleteTasks(id_list)
 }
+
+document.getElementsByClassName('trashsecond')[0].onclick=()=> {
+  modals.show(select_all.delete_task)
+}
