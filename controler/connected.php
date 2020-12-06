@@ -366,6 +366,7 @@ function editAccount(){
     }
     $user = User::getUserById($_SESSION['user_id']);
     $user->setPseudo($data['pseudo']);
+    $_SESSION['pseudo'] = $data['pseudo'];
     header('Location: index.php');
 }
 
