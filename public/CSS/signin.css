@@ -6,14 +6,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: black;
-  height:100vh;
+  height: 100vh;
   font-family: "Product Sans Medium Regular";
 }
 
 a {
   text-decoration: none;
 }
-
 
 @font-face {
   font-family: 'happy_monkeyregular';
@@ -106,85 +105,110 @@ a {
   src: local("Product Sans Black Italic"), url("../fonts/google-sans-cufonfonts-webfont/ProductSans-BlackItalic.woff") format("woff");
 }
 
-
-
 /*
 
 MAIN
 
  */
-
-.back_to_main{
-  filter:invert(100%);
-  position:absolute;
-  top:0;
-  left:0;
-  width:30px;
-  height:auto;
+.back_to_main {
+  filter: invert(100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: auto;
   margin-top: 30px;
-  margin-left:20px;
+  margin-left: 20px;
 }
-.title_form_container{
-  position:absolute;
-  color:white;
-  background:none;
-  width:100vw;
+
+.title_form_container {
+  position: absolute;
+  color: white;
+  background: none;
+  width: 100vw;
   text-align: center;
   font-family: "Product Sans Medium Regular";
-  margin-top:15vh;
+  margin-top: 15vh;
   font-size: 2vh;
+}
 
-}
-.form_container{
+.form_container {
   background-color: white;
-  position:fixed;
-  margin-top:25vh;
-  margin-left:37.5vw;
-  min-width:25vw;
-  min-height:50vh;
+  position: fixed;
+  margin-top: 25vh;
+  margin-left: 37.5vw;
+  min-width: 25vw;
+  min-height: 50vh;
 }
-.input_text{
-  width:calc(80% - 24px);
-  margin-left:10%;
-  padding:10px;
+
+.input_text {
+  width: calc(80% - 24px);
+  margin-left: 10%;
+  padding: 10px;
   background-color: #FFFFFF;
   font-family: "Product Sans Medium Regular";
   border-radius: 0px;
-  outline:none;
-  border:2px solid white;
-  border-bottom:2px black solid;
-  margin-top:40px;
+  outline: none;
+  border: 2px solid white;
+  border-bottom: 2px black solid;
+  margin-top: 40px;
 }
-.label_container{
-  margin-top:50px;
-  width:calc(80% - 24px);
-  margin-left:10%;
+
+.label_container {
+  margin-top: 50px;
+  width: calc(80% - 24px);
+  margin-left: 10%;
 }
-.button_submit_signin{
+
+.button_submit_signin {
   background-color: white;
-  color:black;
-  outline:none;
-  border:black 2px solid;
+  color: black;
+  outline: none;
+  border: black 2px solid;
   font-family: "Product Sans Medium Regular";
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
   padding-right: 30px;
-  width:calc(50%);
+  width: calc(50%);
   margin-left: 25%;
 }
-.button_submit_signin:hover{
+
+.button_submit_signin:hover {
   background-color: lightgray;
-  cursor:pointer;
+  cursor: pointer;
 }
-p{
+
+p {
   font-family: "Product Sans Medium Regular";
-  color:black;
+  color: black;
   font-size: 11px;
   text-align: center;
 }
-p a{
+
+p a {
   text-decoration: none;
-  color:black;
+  color: black;
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 1390px) {
+  .form_container {
+    width: calc(40vw);
+    margin-left: 30vw;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .form_container {
+    width: calc(80vw);
+    margin-left: 10vw;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .form_container {
+    width: calc(95vw);
+    margin-left: 2.5vw;
+  }
 }
