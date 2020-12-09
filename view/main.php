@@ -66,7 +66,7 @@ ob_start();
                 <?php if ($nb_tasks == 0): ?>
                     <p name="task">Toutes les tâches sont terminées !</p>
                 <?php elseif ($nb_done_tasks == 0): ?>
-                    <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                    <p name="task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
 
                 <!-- Tasks btn -->
@@ -94,7 +94,7 @@ ob_start();
                     </li></button>
                 <?php endif; } ?>
             <?php else: ?>
-                <p>Pas de tâche pour le moment...</p>
+                <p name="task">Pas de tâche pour le moment...</p>
             <?php endif; ?>
             </ul>
         </section>
@@ -125,7 +125,7 @@ ob_start();
                     <?php if ($nb_tasks == 0): ?>
                         <p name="task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p name="task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $tasks): ?>
                         <table class="table_contain">
@@ -166,7 +166,7 @@ ob_start();
                         </table>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>Pas de tâche pour le moment...</p>
+                    <p name="task">Pas de tâche pour le moment...</p>
                 <?php endif; ?>
             </div>
         </div>

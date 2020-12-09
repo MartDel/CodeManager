@@ -1244,9 +1244,9 @@ aside[name=edit_popup_modal] .modal-wrapper {
 /*NO TASK*/
 p[name=task] {
   font-family: "Product Sans Regular";
-  ;
   letter-spacing: 0.5 px;
-  padding: 10px;
+  text-align: center;
+  font-size: 14px;
 }
 
 /*DELETE TASK*/
