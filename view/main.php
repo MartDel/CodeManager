@@ -249,14 +249,14 @@ ob_start();
                 <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
                 <!--<input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>-->
                 <div class="category_flex">
-                  <select class="" name="">
-                    <option selected="selected">Divers</option>
-                    <option>uyguiuyguyg</option>
-                    <option>uyguiuyguyg</option>
-                    <option>uyguiuyguyg</option>
+                  <select name="category">
+                    <option selected="selected" value="-1">Divers</option>
+                    <?php foreach ($categories as $category): ?>
+                        <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+                    <?php endforeach; ?>
                   </select>
-                  <button type="button" name="" id="new_cat_button">Nouvelle Catégorie</button>
-                  <input type="text" placeholder="Nom de la catégorie" id="input_new_cat"></input>
+                  <button type="button" id="new_cat_button">Nouvelle Catégorie</button>
+                  <input type="text" placeholder="Nom de la catégorie" id="input_new_cat" name="add_category" />
                 </div>
                 <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>

@@ -81,6 +81,18 @@ class Category extends DatabaseManager
 
     // STATIC FUNCTIONS
 
+    public static function getAllCategories($project_id){
+        $r = [];
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE project_id=?');
+        $query->execute([$project_id]);
+        while($category = $query->fetch()){
+            array_push($r, new Category($category['name'], $category['project_id']));
+        }
+        $query->closeCursor();
+        return $r;
+    }
+
     /**
     * Get a category by its id
     * @param int $id The category id
@@ -101,6 +113,18 @@ class Category extends DatabaseManager
     public function getId(){ return $this->id; }
     public function getName(){ return $this->name; }
     public function getProjectId(){ return $this->project_id; }
+
+    public function getDatabaseId(){
+        $db = self::dbConnect();
+        $query = $db->prepare('SELECT id FROM ' . self::TABLE_NAME . ' WHERE name=:name AND project_id=:project');
+        $query->execute([
+            'name' => $this->name,
+            'project' => $this->project_id
+        ]);
+        $data = $query->fetch();
+        $query->closeCursor();
+        return isset($data['id']) ? $data['id'] : null;
+    }
 
     // SETTERS
 

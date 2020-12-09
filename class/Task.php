@@ -94,7 +94,7 @@ class Task extends DatabaseManager
     */
     public static function getAllTasks($project_id){
         $db = self::dbConnect();
-        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE project_id=? ORDER BY create_date DESC, category_id');
+        $query = $db->prepare('SELECT * FROM ' . self::TABLE_NAME . ' WHERE project_id=? ORDER BY category_id DESC, create_date DESC');
         $query->execute([$project_id]);
         $tasks = null;
         while($task = $query->fetch()){
