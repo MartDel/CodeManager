@@ -16,13 +16,13 @@ ob_start();
   <br>
   <form action="index.php?action=createProject" method="post">
     <h1>Nom du Projet (20 caractères max.)</h1>
-    <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
+    <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" autofocus required /><br><br>
     <h1>Description du projet (optionnel)</h1>
     <textarea class="colorblack" name="description" id="new_project_desc" placeholder="Description du projet"></textarea><br><br>
     <h2>GitHub (optionnel)</h2>
     <div class="flex_git_links">
-      <input class="colorblack" name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
-      <input class="colorblack" name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
+      <input class="colorblack" name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub" /><br><br>
+      <input class="colorblack" name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub" />
     </div>
     <div class="flex_button_create">
       <br><br>

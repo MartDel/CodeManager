@@ -16,7 +16,7 @@ ob_start();
 </div>
 <div class="form_container">
   <form action="index.php?action=checkSignIn" method="post">
-    <input class="input_text" id="pseudo_field" type="text" name="login" placeholder="Pseudo / Addresse mail" required />
+    <input class="input_text" id="pseudo_field" type="text" name="login" placeholder="Pseudo / Addresse mail" autofocus required />
     <br>
     <input class="input_text" id="passwd_field" type="password" name="password" placeholder="Mot de passe" required />
     <br>
