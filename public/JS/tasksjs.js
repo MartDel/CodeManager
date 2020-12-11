@@ -399,11 +399,6 @@ function getTasksToDelete2(){
     return id_list
 }
 function deleteTasks(id_list){
-    if(permissions == 0){
-        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
-        err.show()
-        return;
-    }
     let str = ''
     id_list.forEach((id, i) => {
         str += id + (i === id_list.length-1 ? '' : '+')
@@ -417,6 +412,11 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
 select_all.trash.onclick = () => {
+    if(permissions == 0){
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
+        err.show()
+        return;
+    }
     select_all.nb_tasks.innerText = getTasksToDelete1().length
     modals.show(select_all.delete_task)
     select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete1())
@@ -450,6 +450,11 @@ for (let i = 0; i < select_all2.categories.length; i++) {
     }
 }
 select_all2.trash.onclick = () => {
+    if(permissions == 0){
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
+        err.show()
+        return;
+    }
     select_all.nb_tasks.innerText = getTasksToDelete2().length
     modals.show(select_all.delete_task)
     select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete2())
