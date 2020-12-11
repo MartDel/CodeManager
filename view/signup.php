@@ -16,7 +16,7 @@ ob_start();
 <div class="form_container">
   <form action="index.php?action=checkSignUp" method="post">
       <div class="name_container_flex">
-        <input class="input_text_name" type="text" name="firstname" placeholder="Prénom" required />
+        <input class="input_text_name" type="text" name="firstname" placeholder="Prénom" autofocus required />
         <br>
         <input class="input_text_name" type="text" name="lastname" placeholder="Nom" required />
         <br><br>

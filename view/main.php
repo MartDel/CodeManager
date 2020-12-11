@@ -128,12 +128,17 @@ ob_start();
                         <p name="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
+                        <?php if (count($cat_tasks)): ?>
                         <table class="table_contain">
                             <tbody>
                                 <tr class="table_row_main categories">
                                     <td class="table_col_main category-name">
                                       </br>
+<<<<<<< HEAD
                                       <div class="">
+=======
+                                      <div>
+>>>>>>> c0a5550754c039ceafbc6a43b318b1347e53a57e
                                         <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
                                         <p>
                                             <label title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>" for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
@@ -167,6 +172,7 @@ ob_start();
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>Pas de tâche pour le moment...</p>

@@ -6,6 +6,11 @@ function showTemplateModal(id){
     modal.style.display = null
     modal.removeAttribute('aria-hidden')
     modal.setAttribute('aria-modal', 'true')
+
+    // Auto focus
+    const inputs = modal.getElementsByTagName('input')
+    if(inputs.length != 0) inputs[0].focus()
+
     window.cmodal = modal
     window.cmodal.addEventListener('click', closeTemplateModal)
     forEach(window.cmodal.getElementsByClassName('close-modal'), item => item.addEventListener('click', closeTemplateModal))
