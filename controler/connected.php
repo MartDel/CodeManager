@@ -261,9 +261,7 @@ function github(){
 /**
  * New project form
  */
-function noProject(){
-    require('view/project_creation.php');
-}
+function noProject(){ require('view/project_creation.php'); }
 
 /**
  * Add a new project to the database
@@ -304,7 +302,9 @@ function editProject(){
 
     $project = new Project($data['name'], $_SESSION['user_id'], $data['description'], $remote);
     $project->update($_SESSION['project_id']);
-    header('Location: index.php');
+
+    $success = new InformationMessage('Projet modifié', "Votre projet a été modifié avec succés !", 'index.php?action=' . getLastPage());
+    $success->redirect();
 }
 
 /**
@@ -325,7 +325,8 @@ function deleteProject(){
     }
     $_SESSION['project_id'] = $project->getId();
 
-    header('Location: index.php');
+    $success = new InformationMessage('Projet supprimé', "Votre projet a été supprimé avec succés !", 'index.php');
+    $success->redirect();
 }
 
 /**
@@ -353,7 +354,8 @@ function editPP(){
 
     cropImage($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
 
-    header('Location: index.php?action=' . getLastPage('tasks'));
+    $success = new InformationMessage('Photo de profil modifiée', "Votre photo de profil a été modifiée avec succés !", 'index.php?action=' . getLastPage());
+    $success->redirect();
 }
 
 function editAccount(){
@@ -367,7 +369,9 @@ function editAccount(){
     $user = User::getUserById($_SESSION['user_id']);
     $user->setPseudo($data['pseudo']);
     $_SESSION['pseudo'] = $data['pseudo'];
-    header('Location: index.php');
+
+    $success = new InformationMessage('Profil modifié', "Votre profil a été modifié avec succés !", 'index.php?action=' . getLastPage());
+    $success->redirect();
 }
 
 /**
