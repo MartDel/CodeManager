@@ -4,7 +4,7 @@ require('model/model.php');
 /**
  * Execute a function with its string name
  * @param string $name The function name
- * @param bool $name If the user must be connected or not
+ * @param bool $connected If the user is connected
  */
 function executeFunction($name, $connected = false){
     if($connected) {
@@ -12,7 +12,7 @@ function executeFunction($name, $connected = false){
         checkUserData($name == 'noProject');
     } else require('controler/disconnected.php');
 
-    if(function_exists($name)) $name();
+    if(function_exists($name) && $name != 'executeFunction') $name();
     else header('Location: index.php');
 }
 
