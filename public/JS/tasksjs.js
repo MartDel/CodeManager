@@ -288,6 +288,7 @@ addtask.buttoncate.onclick=()=>{
   },300);
   setTimeout(()=>{
     addtask.inputcate.style.opacity=1;
+    addtask.inputcate.focus()
   },350);
 }
 addtask.buttoncate2.onclick=()=>{
