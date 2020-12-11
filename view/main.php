@@ -127,7 +127,7 @@ ob_start();
                     <?php elseif ($nb_done_tasks == 0): ?>
                         <p name="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
-                    <?php foreach ($tasksByCategory as $category_id => $tasks): ?>
+                    <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
                         <table class="table_contain">
                             <tbody>
                                 <tr class="table_row_main categories">
@@ -145,7 +145,7 @@ ob_start();
                                 </tr>
 
                                 <!-- Tasks in the category -->
-                                <?php foreach ($tasks as $task): ?>
+                                <?php foreach ($cat_tasks as $task): ?>
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
                                         class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
