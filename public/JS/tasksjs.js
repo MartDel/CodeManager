@@ -386,6 +386,18 @@ function getTasksToDelete1(){
     }
     return id_list
 }
+function getTasksToDelete2(){
+    let id_list = []
+    for (let i = 0; i < select_all2.checkbox.length; i++) {
+        const checkbox = select_all2.checkbox[i]
+        if(checkbox.checked && !checkbox.classList.contains('category-check')){
+            const task = checkbox.parentElement.parentElement.parentElement.parentElement
+            const task_id = task.id.replace('task', '')
+            id_list.push(task_id)
+        }
+    }
+    return id_list
+}
 function deleteTasks(id_list){
     if(permissions == 0){
         const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
@@ -407,8 +419,8 @@ for (let i = 0; i < select_all.checkbox.length; i++) {
 select_all.trash.onclick = () => {
     select_all.nb_tasks.innerText = getTasksToDelete1().length
     modals.show(select_all.delete_task)
+    select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete1())
 }
-select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete1())
 
 // Second display
 select_all2.select_all.onclick = () => selectAll(select_all2)
@@ -438,19 +450,7 @@ for (let i = 0; i < select_all2.categories.length; i++) {
     }
 }
 select_all2.trash.onclick = () => {
-    // Delete tasks
-    let id_list = []
-    for (let i = 0; i < select_all2.checkbox.length; i++) {
-        const checkbox = select_all2.checkbox[i]
-        if(checkbox.checked && !checkbox.classList.contains('category-check')){
-            const task = checkbox.parentElement.parentElement.parentElement.parentElement
-            const task_id = task.id.replace('task', '')
-            id_list.push(task_id)
-        }
-    }
-    deleteTasks(id_list)
-}
-
-document.getElementsByClassName('trashsecond')[0].onclick=()=> {
-  modals.show(select_all.delete_task)
+    select_all.nb_tasks.innerText = getTasksToDelete2().length
+    modals.show(select_all.delete_task)
+    select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete2())
 }
