@@ -144,14 +144,14 @@ MAIN
 .input_text {
   width: calc(80% - 24px);
   margin-left: 10%;
-  padding: 10px;
+  padding: 20px;
   background-color: #FFFFFF;
   font-family: "Product Sans Medium Regular";
   border-radius: 0px;
   outline: none;
   border: 2px solid white;
   border-bottom: 2px black solid;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .label_container {
@@ -207,27 +207,31 @@ form h2 {
 }
 
 form input {
-  width: 80%;
-  height: 25px;
-  padding: 5px;
-  border-radius: 10px;
-  border: gray solid 2px;
-  margin-left: calc(10% - 5px);
+  width: calc(80% - 24px);
+  margin-left: 10%;
+  padding: 10px;
+  background-color: #FFFFFF;
   font-family: "Product Sans Medium Regular";
+  border-radius: 0px;
   outline: none;
+  border: 2px solid white;
+  border-bottom: 2px black solid;
+  margin-top: 10px;
 }
 
 form textarea {
-  width: 80%;
+  width: calc(80% - 24px);
+  margin-left: 10%;
+  padding: 10px;
+  background-color: #FFFFFF;
   font-family: "Product Sans Medium Regular";
-  font-weight: lighter;
-  resize: none;
-  height: 50px;
-  padding: 5px;
-  border-radius: 10px;
-  border: gray solid 2px;
-  margin-left: calc(10% - 5px);
+  border-radius: 0px;
   outline: none;
+  border: 2px solid white;
+  border-bottom: 2px black solid;
+  margin-top: 10px;
+  height: 17px;
+  resize: none;
 }
 
 form button {
@@ -247,4 +251,33 @@ form button:hover {
   background-color: #b41e10;
   border: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  .form_container {
+    width: calc(50vw - 20px);
+    margin-left: 25vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .form_container {
+    width: calc(70vw - 20px);
+    margin-left: 15vw;
+  }
+
+  .form_title {
+    font-size: 25px;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .form_container {
+    width: calc(100vw - 20px);
+    margin-left: 10px;
+  }
+
+  .form_title {
+    font-size: 20px;
+  }
 }
