@@ -128,6 +128,7 @@ ob_start();
                         <p name="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
+                        <?php if (count($cat_tasks)): ?>
                         <table class="table_contain">
                             <tbody>
                                 <tr class="table_row_main categories">
@@ -169,6 +170,7 @@ ob_start();
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>Pas de tâche pour le moment...</p>
