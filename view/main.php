@@ -134,9 +134,7 @@ ob_start();
                                 <tr class="table_row_main categories">
                                     <td class="table_col_main category-name">
                                       </br>
-                                      <div class="">
-
-
+                                      <div>
                                         <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
                                         <p>
                                             <label for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
