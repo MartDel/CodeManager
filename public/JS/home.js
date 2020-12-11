@@ -14,7 +14,11 @@ loop =()=> {
 
   scroll(loop);
 }
-
+window.onload = ()=>{
+  document.querySelectorAll('*').forEach(function(node) {
+    node.scrollLeft = 0;  
+  })
+}
 loop()
 
 function isElementInViewport(el) {

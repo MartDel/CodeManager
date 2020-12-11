@@ -1210,6 +1210,9 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-family: "Product Sans Regular";
   width: 242px;
   padding-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   border: none;
 }
 
@@ -1222,6 +1225,9 @@ aside[name=edit_popup_modal] .modal-wrapper {
   display: flex;
   flex-direction: row;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .category-name p {
@@ -1232,6 +1238,9 @@ aside[name=edit_popup_modal] .modal-wrapper {
 
 .category-name label {
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .category-name input {
