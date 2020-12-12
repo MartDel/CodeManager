@@ -5,6 +5,7 @@ $cssfile = "tasks";
 $jsfile = "tasksjs";
 $_SESSION['last_page'] = 'tasks';
 ob_start();
+//Page task
 ?>
     <!--Select type of display -->
     <div id="select_display_global" class="select_display_global">
