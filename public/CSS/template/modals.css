@@ -18,7 +18,7 @@
   padding: 20px;
   background-color: #fff;
   color: #000;
-  animation: slideIn .5s both;
+  animation: slideIn .4s both;
   overflow-y: auto;
 }
 

@@ -226,7 +226,7 @@ function wOnload(){
 
 window.onclick = (event) => {
     // Close help modal
-    if (help.modal.style.display === "block" && event.target !== help.show_btn) {
+    if (help.modal.style.display === "block" && event.target !== help.show_btn ) {
         help.show_btn.classList.remove("help_logo_onclick");
         help.show_btn.style.filter = "invert(25%)";
         hide(help.modal);
@@ -351,6 +351,9 @@ function turnOffDarkMode() {
 
   document.querySelectorAll('img').forEach(function(node) {
     node.style.filter="invert(0%) brightness(100%)"
+  })
+  document.querySelectorAll('#help_modal img').forEach(function(node) {
+    node.style.filter="invert(25%) grayscale(100%) brightness(100%)"
   })
   document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
     node.style.filter="invert(0%) brightness(0%)"

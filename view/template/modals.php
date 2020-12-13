@@ -135,13 +135,13 @@
         <div id="div_form_new_project"></div>
         <div class="info_current_project">
           <br>
-          <h1>Nom du Projet : <?= $project->getName() ?></h1>
+          <h1><strong><u>Nom du Projet : </u></strong><?= $project->getName() ?></h1>
           <br>
-          <h1>Description du Projet : <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
+          <h1><strong><u>Description du Projet : </u></strong><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
-          <h1>Pseudo GitHub : <?= $project->getRemotePseudo() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <h1><strong><u>Pseudo GitHub :</u></strong> <?= $project->getRemotePseudo() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
-          <h1>Nom du prpjet GitHub : <?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <h1><strong><u>Nom du projet GitHub :</u> </strong><?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
         </div>
         <br><br>

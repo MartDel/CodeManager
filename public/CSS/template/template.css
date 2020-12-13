@@ -866,8 +866,8 @@ input.apple-switch:checked:after {
 #help_modal img {
   width: 25px;
   padding-right: 10px;
-  -webkit-filter: invert(25%);
-  filter: invert(25%);
+  -webkit-filter: invert(25%) grayscale(100%);
+  filter: invert(25%) grayscale(100%);
 }
 
 #help_modal h1 {
