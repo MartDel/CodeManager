@@ -1564,6 +1564,7 @@ input[type="file"]:hover {
   background-color: rgba(0, 255, 98, 0);
   text-align: center;
   top: 0;
+  margin-left: -20px;
   margin-top: 36px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;
@@ -1748,6 +1749,7 @@ input[type="file"]:hover {
   background-color: rgba(0, 255, 98, 0);
   text-align: center;
   top: 0;
+  margin-left: -20px;
   margin-top: 36px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;

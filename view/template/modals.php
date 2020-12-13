@@ -193,8 +193,8 @@
       <textarea class="colorblack" name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input class="colorblack" name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub" value="<?= $project->getRemotePseudo() ?>" /><br><br>
-        <input class="colorblack" name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"  value="<?= $project->getRemoteName() ?>" />
+        <input class="colorblack" name="github_pseudo" id="edit_project_git_name" placeholder=" <?= $project->getRemotePseudo() ? $project->getRemoteName() : 'Pas de GitHub associé' ?>" value="<?= $project->getRemotePseudo() ?>" /><br><br>
+        <input class="colorblack" name="remote" id="edit_project_git_repo" placeholder=" <?= $project->getRemotePseudo() ? $project->getRemoteName() : 'Pas de GitHub associé' ?>" value="<?= $project->getRemoteName() ?>" />
       </div>
       <div class="flex_button_edit">
         <br><br>
