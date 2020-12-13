@@ -19,7 +19,7 @@
   background-color: #fff;
   color: #000;
   animation: slideIn .5s both;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .modal .modal-wrapper::-webkit-scrollbar {

@@ -11,6 +11,10 @@ body {
   display: none
 }
 
+.modal .modal-wrapper::-webkit-scrollbar {
+  display: flex;
+}
+
 body {
   opacity: 0;
 }
@@ -984,8 +988,8 @@ input.apple-switch:checked:after {
 }
 
 #project .modal-wrapper {
-  width: 70%;
-  height: 50%;
+  width: 60%;
+  height: 65%;
   top: 5%;
   left: 15%;
 }
@@ -1011,6 +1015,7 @@ input.apple-switch:checked:after {
 #header_project_modal p {
   position: absolute;
   width: 100%;
+  margin-left: -20px;
   background-color: rgba(0, 255, 98, 0);
   text-align: center;
   top: 0;

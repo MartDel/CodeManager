@@ -139,6 +139,10 @@
           <br>
           <h1>Description du Projet : <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
+          <h1>Pseudo GitHub : <?= $project->getRemotePseudo() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <br>
+          <h1>Nom du prpjet GitHub : <?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <br>
         </div>
         <br><br>
         <div class="flex_project_modification">
