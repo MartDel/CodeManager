@@ -64,9 +64,9 @@ ob_start();
             <?php if (isset($tasks)): ?>
                 <!--Error messages -->
                 <?php if ($nb_tasks == 0): ?>
-                    <p>Toutes les tâches sont terminées !</p>
+                    <p id="message-task-none">Toutes les tâches sont terminées !</p>
                 <?php elseif ($nb_done_tasks == 0): ?>
-                    <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                    <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
 
                 <!-- Tasks btn -->
@@ -94,7 +94,7 @@ ob_start();
                     </li></button>
                 <?php endif; } ?>
             <?php else: ?>
-                <p>Pas de tâche pour le moment...</p>
+                <p id="message-task-none">Pas de tâche pour le moment...</p>
             <?php endif; ?>
             </ul>
         </section>
@@ -123,9 +123,9 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p>Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
                         <?php if (count($cat_tasks)): ?>
@@ -171,7 +171,7 @@ ob_start();
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>Pas de tâche pour le moment...</p>
+                    <p id="message-task-none">Pas de tâche pour le moment...</p>
                 <?php endif; ?>
             </div>
         </div>

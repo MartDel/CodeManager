@@ -2032,7 +2032,7 @@ input[type="file"]:hover {
 }
 
 @media only screen and (max-width: 1433px) {
-  .category_tache, .cate_title {
+  .utilisateur, .user_title {
     display: none;
   }
 
@@ -2050,7 +2050,7 @@ input[type="file"]:hover {
 }
 
 @media only screen and (max-width: 1240px) {
-  .utilisateur, .user_title {
+  .category_tache, .cate_title {
     display: none;
   }
 

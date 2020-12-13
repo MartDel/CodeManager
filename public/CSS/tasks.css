@@ -1316,6 +1316,13 @@ p[name=task] {
   cursor: pointer;
 }
 
+#message-task-none {
+  font-family: "Product Sans Regular";
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-size: 15px;
+}
+
 @-webkit-keyframes ModalComing {
   0% {
     display: block;
