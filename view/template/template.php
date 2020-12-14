@@ -61,7 +61,7 @@
 		                    <p class="colorred textgauche" id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
-		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
+		            <li class="<?= $page == 'objectives' ? '' : 'not' ?>selectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
 		                </span>
