@@ -208,36 +208,77 @@
 
 <!--HELP MODAL-->
 <div class="grayback" id="help_modal">
-    <span class="span_help">
-        <img src="public/img/plus.png" alt="" />
-        <p> Ajouter</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/checkbox.png" alt="" />
-        <p> Sélectionner / Tout sélectionner</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/refresh.png" alt="" />
-        <p> Rafraîchir</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/tick.png" alt="" />
-        <p>Marquer comme effectuée</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/task_done0.png" alt="" />
-        <p>Voir les tâches effectuées</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/edit_task_bar.png" alt="" />
-        <p> Éditer la tâche</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/trash.png" alt="" />
-        <p> Supprimer la/les tâche(s)</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/gear.png" alt="" />
-        <p> Réglages</p>
-    </span>
+    <h1>Aide</h1>
+    <ul>
+      <li><strong>Général<strong></li>
+    </ul>
+    <table>
+      <tr>
+        <td>
+          <img src="public/img/menu12.png" alt="" />
+          <p>Ouvrir / Fermer le menu</p>
+        </td>
+        <td>
+          <img src="public/img/file_swap.png" alt="" />
+          <p>Changer / Modifier / Créer un projet</p>
+        </td>
+        <td>
+          <img src="public/img/gear.png" alt="" />
+          <p>Réglages</p>
+        </td>
+        <td>
+          <img src="public/img/question.png" alt="" />
+          <p>Afficher l'aide</p>
+        </td>
+        <td>
+          <img id="account_help" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
+          <p>Mon Compte</p>
+        </td>
+      </tr>
+    </table>
+    <ul>
+      <li><strong>Tâches<strong></li>
+    </ul>
+    <table>
+      <tr>
+        <td>
+          <img src="public/img/plus.png" alt="" />
+          <p>Ajouter une tâche</p>
+        </td>
+        <td>
+          <img src="public/img/edit_task_bar.png" alt="" />
+          <p>Éditer la tâche</p>
+        </td>
+        <td>
+          <img src="public/img/trash.png" alt="" />
+          <p>Supprimer la/les tâche(s)</p>
+        </td>
+        <td>
+          <img src="public/img/tick.png" alt="" />
+          <p>Marquer la tâche comme effectuée</p>
+        </td>
+        <td>
+          <img src="public/img/task_done0.png" alt="" />
+          <p>Voir les tâches effectuées</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="public/img/checkbox.png" alt="" />
+          <p>Sélectionner / Tout sélectionner</p>
+        </td>
+        <td>
+          <img src="public/img/refresh.png" alt="" />
+          <p>Rafraîchir la page</p>
+        </td>
+        <td>
+          <img src="public/img/category_1.png" alt="" />
+          <p>Affichage Liste</p>
+        </td>
+        <td>
+          <img src="public/img/category_2.png" alt="" />
+          <p>Affichage Mosaïque</p>
+        </td>
+      </tr>
+    </table>
 </div>
