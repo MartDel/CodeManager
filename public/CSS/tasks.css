@@ -641,7 +641,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   cursor: pointer;
 }
 
-.new_cat_button {
+#new_cat_button {
   background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
@@ -657,13 +657,13 @@ aside[name~=popup_modal_task] .modal-wrapper {
   color: black
 }
 
-.new_cat_button:hover {
+#new_cat_button:hover {
   cursor: pointer;
   background-color: #b41e10;
   color: white;
 }
 
-.input_new_cat {
+#input_new_cat {
   height: 17px;
   display: none;
   opacity: 0;
@@ -681,7 +681,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-.new_cat_button2 {
+#new_cat_button2 {
   background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
@@ -697,13 +697,13 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-.new_cat_button2:hover {
+#new_cat_button2:hover {
   cursor: pointer;
   background-color: #b41e10;
   color: white;
 }
 
-.input_new_cat2 {
+#input_new_cat2 {
   height: 17px;
   display: none;
   opacity: 0;
