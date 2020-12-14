@@ -64,9 +64,9 @@ ob_start();
             <?php if (isset($tasks)): ?>
                 <!--Error messages -->
                 <?php if ($nb_tasks == 0): ?>
-                    <p>Toutes les tâches sont terminées !</p>
+                    <p id="message-task-none">Toutes les tâches sont terminées !</p>
                 <?php elseif ($nb_done_tasks == 0): ?>
-                    <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                    <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
 
                 <!-- Tasks btn -->
@@ -94,7 +94,7 @@ ob_start();
                     </li></button>
                 <?php endif; } ?>
             <?php else: ?>
-                <p>Pas de tâche pour le moment...</p>
+                <p id="message-task-none">Pas de tâche pour le moment...</p>
             <?php endif; ?>
             </ul>
         </section>
@@ -123,24 +123,28 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p>Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p name="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
-                    <?php foreach ($tasksByCategory as $category_id => $tasks): ?>
+                    <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
+                        <?php if (count($cat_tasks)): ?>
                         <table class="table_contain">
                             <tbody>
                                 <tr class="table_row_main categories">
                                     <td class="table_col_main category-name">
+                                      </br>
+                                      <div>
                                         <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
                                         <p>
-                                            <label for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
+                                            <label title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>" for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
                                         </p>
+                                      </div>
                                     </td>
                                 </tr>
 
                                 <!-- Tasks in the category -->
-                                <?php foreach ($tasks as $task): ?>
+                                <?php foreach ($cat_tasks as $task): ?>
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
                                         class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
@@ -164,9 +168,10 @@ ob_start();
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <p>Pas de tâche pour le moment...</p>
+                    <p id="message-task-none">Pas de tâche pour le moment...</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -211,7 +216,7 @@ ob_start();
                     <form method="POST" action="index.php?action=editTask&id=<?= $task->getId() ?>">
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                       <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
-                      <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
+                      <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                       <div class="category_flex">
                         <select class="" name="">
                           <option selected="selected">Divers</option>
@@ -220,7 +225,7 @@ ob_start();
                           <option>uyguiuyguyg</option>
                         </select>
                         <button type="button" name="" id="new_cat_button2">Nouvelle Catégorie</button>
-                        <input type="text" placeholder="Nom de la catégorie" id="input_new_cat2"></input>
+                        <input maxlength=15 type="text" placeholder="Nom de la catégorie" id="input_new_cat2"></input>
                       </div>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
@@ -246,7 +251,7 @@ ob_start();
             <form method="POST" action="index.php?action=addTask">
                 <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                 <input id="addtask_title" class="textarea_title input" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
-                <h1 class="colorred">Catégorie de la tâche (20 caractères maximum)</h1>
+                <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                 <!--<input id="addtask_cate" class="textarea_title" name="category" type="text" placeholder="Catégorie" maxlength="20" required></input>-->
                 <div class="category_flex">
                   <select name="category">
@@ -256,7 +261,7 @@ ob_start();
                     <?php endforeach; ?>
                   </select>
                   <button type="button" id="new_cat_button">Nouvelle Catégorie</button>
-                  <input type="text" placeholder="Nom de la catégorie" id="input_new_cat" name="add_category" />
+                  <input maxlength=15 type="text" placeholder="Nom de la catégorie" id="input_new_cat" name="add_category" />
                 </div>
                 <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>

@@ -135,9 +135,13 @@
         <div id="div_form_new_project"></div>
         <div class="info_current_project">
           <br>
-          <h1>Nom du Projet : <?= $project->getName() ?></h1>
+          <h1><strong><u>Nom du Projet : </u></strong><?= $project->getName() ?></h1>
           <br>
-          <h1>Description du Projet : <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
+          <h1><strong><u>Description du Projet : </u></strong><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
+          <br>
+          <h1><strong><u>Pseudo GitHub :</u></strong> <?= $project->getRemotePseudo() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <br>
+          <h1><strong><u>Nom du projet GitHub :</u> </strong><?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
         </div>
         <br><br>
@@ -189,8 +193,8 @@
       <textarea class="colorblack" name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input class="colorblack" name="github_pseudo" id="edit_project_git_name" placeholder="Pseudo GitHub" value="<?= $project->getRemotePseudo() ?>" /><br><br>
-        <input class="colorblack" name="remote" id="edit_project_git_repo" placeholder="Nom du projet GitHub"  value="<?= $project->getRemoteName() ?>" />
+        <input class="colorblack" name="github_pseudo" id="edit_project_git_name" placeholder=" <?= $project->getRemotePseudo() ? $project->getRemoteName() : 'Pas de GitHub associé' ?>" value="<?= $project->getRemotePseudo() ?>" /><br><br>
+        <input class="colorblack" name="remote" id="edit_project_git_repo" placeholder=" <?= $project->getRemotePseudo() ? $project->getRemoteName() : 'Pas de GitHub associé' ?>" value="<?= $project->getRemoteName() ?>" />
       </div>
       <div class="flex_button_edit">
         <br><br>
@@ -204,36 +208,77 @@
 
 <!--HELP MODAL-->
 <div class="grayback" id="help_modal">
-    <span class="span_help">
-        <img src="public/img/plus.png" alt="" />
-        <p> Ajouter</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/checkbox.png" alt="" />
-        <p> Sélectionner / Tout sélectionner</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/refresh.png" alt="" />
-        <p> Rafraîchir</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/tick.png" alt="" />
-        <p>Marquer comme effectuée</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/task_done0.png" alt="" />
-        <p>Voir les tâches effectuées</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/edit_task_bar.png" alt="" />
-        <p> Éditer la tâche</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/trash.png" alt="" />
-        <p> Supprimer la/les tâche(s)</p>
-    </span>
-    <span class="span_help">
-        <img src="public/img/gear.png" alt="" />
-        <p> Réglages</p>
-    </span>
+    <h1>Aide</h1>
+    <ul>
+      <li><strong>Général<strong></li>
+    </ul>
+    <table>
+      <tr>
+        <td>
+          <img src="public/img/menu12.png" alt="" />
+          <p>Ouvrir / Fermer le menu</p>
+        </td>
+        <td>
+          <img src="public/img/file_swap.png" alt="" />
+          <p>Changer / Modifier / Créer un projet</p>
+        </td>
+        <td>
+          <img src="public/img/gear.png" alt="" />
+          <p>Réglages</p>
+        </td>
+        <td>
+          <img src="public/img/question.png" alt="" />
+          <p>Afficher l'aide</p>
+        </td>
+        <td>
+          <img id="account_help" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
+          <p>Mon Compte</p>
+        </td>
+      </tr>
+    </table>
+    <ul>
+      <li><strong>Tâches<strong></li>
+    </ul>
+    <table>
+      <tr>
+        <td>
+          <img src="public/img/plus.png" alt="" />
+          <p>Ajouter une tâche</p>
+        </td>
+        <td>
+          <img src="public/img/edit_task_bar.png" alt="" />
+          <p>Éditer la tâche</p>
+        </td>
+        <td>
+          <img src="public/img/trash.png" alt="" />
+          <p>Supprimer la/les tâche(s)</p>
+        </td>
+        <td>
+          <img src="public/img/tick.png" alt="" />
+          <p>Marquer la tâche comme effectuée</p>
+        </td>
+        <td>
+          <img src="public/img/task_done0.png" alt="" />
+          <p>Voir les tâches effectuées</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <img src="public/img/checkbox.png" alt="" />
+          <p>Sélectionner / Tout sélectionner</p>
+        </td>
+        <td>
+          <img src="public/img/refresh.png" alt="" />
+          <p>Rafraîchir la page</p>
+        </td>
+        <td>
+          <img src="public/img/category_1.png" alt="" />
+          <p>Affichage Liste</p>
+        </td>
+        <td>
+          <img src="public/img/category_2.png" alt="" />
+          <p>Affichage Mosaïque</p>
+        </td>
+      </tr>
+    </table>
 </div>

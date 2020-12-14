@@ -224,34 +224,11 @@ function wOnload(){
     document.querySelector('#modals').style.display = 'block'
 }
 
-window.onclick = (event) => {
-    // Close help modal
-    if (help.modal.style.display === "block" && event.target !== help.show_btn) {
-        help.show_btn.classList.remove("help_logo_onclick");
-        help.show_btn.style.filter = "invert(25%)";
-        hide(help.modal);
-    }
 
-    // Close project list
-    /*if (
-        event.target !== project.swap.master &&
-        event.target !== project.swap.list &&
-        project.swap.list.style.display == "block"
-    ) {
-        project.swap.list.style.display = "none";
-        project.swap.master.style.border = "rgb(190, 190, 190) 2px solid";
-        project.swap.arrow.innerHTML = "&#x25BC;";
-    }*/
-};
 
 /*
  * SETTINGS
- */
-// Dark mode
-/*
-document.getElementById("close_settings").onclick =()=>{
-  document.getElementById("textarea_bug").innerHTML = "";
-}*/
+*/
 
 settings.dark_mode_btn.onchange = () => {
     if (settings.dark_mode_btn.checked) turnOnDarkMode()
@@ -351,6 +328,9 @@ function turnOffDarkMode() {
 
   document.querySelectorAll('img').forEach(function(node) {
     node.style.filter="invert(0%) brightness(100%)"
+  })
+  document.querySelectorAll('#help_modal img').forEach(function(node) {
+    node.style.filter="invert(25%) grayscale(100%) brightness(100%)"
   })
   document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
     node.style.filter="invert(0%) brightness(0%)"
@@ -747,11 +727,27 @@ settings.show_btn.onclick = () => {
 /*
  * HELP MODAL
  */
+
+ window.onclick = (event) => {
+     // Close help modal
+     if (help.modal.style.display === "block" && event.target !== help.show_btn ) {
+         help.show_btn.classList.remove("help_logo_onclick");
+         help.show_btn.style.filter = "invert(25%)";
+         hide(help.modal);
+     }
+ };
 help.show_btn.onclick = () => {
+  if (help.modal.style.display=="block") {
+    help.show_btn.classList.remove("help_logo_onclick");
+    help.show_btn.style.filter = "invert(25%)";
+    hide(help.modal);
+  } else {
     help.show_btn.classList.add("help_logo_onclick");
     help.show_btn.style.filter =
         "invert(100%) hue-rotate(160deg) grayscale(100%)";
     show(help.modal);
+  }
+
 };
 
 /*

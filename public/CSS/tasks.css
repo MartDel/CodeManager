@@ -641,7 +641,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   cursor: pointer;
 }
 
-#new_cat_button {
+.new_cat_button {
   background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
@@ -657,13 +657,13 @@ aside[name~=popup_modal_task] .modal-wrapper {
   color: black
 }
 
-#new_cat_button:hover {
+.new_cat_button:hover {
   cursor: pointer;
   background-color: #b41e10;
   color: white;
 }
 
-#input_new_cat {
+.input_new_cat {
   height: 17px;
   display: none;
   opacity: 0;
@@ -681,7 +681,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-#new_cat_button2 {
+.new_cat_button2 {
   background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
@@ -697,13 +697,13 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-#new_cat_button2:hover {
+.new_cat_button2:hover {
   cursor: pointer;
   background-color: #b41e10;
   color: white;
 }
 
-#input_new_cat2 {
+.input_new_cat2 {
   height: 17px;
   display: none;
   opacity: 0;
@@ -756,6 +756,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 #section_ligne_haut p {
   position: absolute;
   width: 100%;
+  margin-left: -20px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;
   text-transform: uppercase;
@@ -923,6 +924,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 #section_ligne_haut_edit p {
   position: absolute;
   width: 100%;
+  margin-left: -20px;
   font-family: "Product Sans Regular";
   font-size: 1.25rem;
   text-transform: uppercase;
@@ -1205,25 +1207,42 @@ aside[name=edit_popup_modal] .modal-wrapper {
   text-align: center;
   text-transform: uppercase;
   color: #b41e10;
+  background-color: none;
   font-size: 14px;
   font-family: "Product Sans Regular";
-  width: 240px;
+  width: 242px;
+  padding-right: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   border: none;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left: 20%;
+}
+
+.category-name div {
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  background-color: none;
   display: flex;
   flex-direction: row;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .category-name p {
-  text-align: center;
+  text-align: left;
   margin: 0;
   padding: 0
 }
 
 .category-name label {
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .category-name input {
@@ -1297,6 +1316,13 @@ p[name=task] {
 .yes_delete_task:hover, .no_delete_task:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+#message-task-none {
+  font-family: "Product Sans Regular";
+  letter-spacing: 0.5px;
+  text-align: center;
+  font-size: 15px;
 }
 
 @-webkit-keyframes ModalComing {

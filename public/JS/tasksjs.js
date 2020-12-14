@@ -288,6 +288,7 @@ addtask.buttoncate.onclick=()=>{
   },300);
   setTimeout(()=>{
     addtask.inputcate.style.opacity=1;
+    addtask.inputcate.focus()
   },350);
 }
 addtask.buttoncate2.onclick=()=>{
@@ -328,22 +329,6 @@ function selectAll(display){
 function manageCheckbox(event) {
     const c_checkbox = event.target;
     const display = c_checkbox.classList.contains('to-check2') ? select_all2 : select_all
-    // console.log(display);
-
-    if (c_checkbox.checked) display.trash.style.display = "inline-block";
-    else {
-        let all_selected = true
-        for (let i = 0; i < display.checkbox.length; i++) {
-            if (!display.checkbox[i].checked) all_selected = false;
-        }
-        display.select_all.checked = all_selected;
-
-        let hide = true;
-        for (let i = 0; i < display.checkbox.length; i++) {
-            if (display.checkbox[i].checked) hide = false;
-        }
-        if (hide) display.trash.style.display = "none";
-    }
 
     // To check or not to check selectAll checkbox
     let all_selected = true
@@ -366,6 +351,21 @@ function manageCheckbox(event) {
         && getTaskCategory(display.checkbox[i]) === category) category_selected = false;
     }
     document.getElementById(category).checked = category_selected
+
+    if (c_checkbox.checked) display.trash.style.display = "inline-block";
+    else {
+        let all_selected = true
+        for (let i = 0; i < display.checkbox.length; i++) {
+            if (!display.checkbox[i].checked) all_selected = false;
+        }
+        display.select_all.checked = all_selected;
+
+        let hide = true;
+        for (let i = 0; i < display.checkbox.length; i++) {
+            if (display.checkbox[i].checked) hide = false;
+        }
+        if (hide) display.trash.style.display = "none";
+    }
 }
 function getTaskCategory(input){
     const classes = input.classList
