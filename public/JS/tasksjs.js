@@ -38,6 +38,7 @@ const select_all = {
     select_all: document.getElementById("select_all"),
     checkbox: document.getElementsByClassName("to_check"),
     trash: document.getElementsByClassName("trash")[0],
+    trash2: document.getElementsByClassName("trash2")[0],
     delete_task:"delete_task",
     yes_task:document.getElementById("yes_delete_task"),
     nb_tasks: document.getElementById('nb_tasks')
@@ -411,6 +412,7 @@ select_all.select_all.onclick = () => selectAll(select_all)
 for (let i = 0; i < select_all.checkbox.length; i++) {
     select_all.checkbox[i].onclick = manageCheckbox
 }
+
 select_all.trash.onclick = () => {
     if(permissions == 0){
         const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une ou plusieurs tâches.")
