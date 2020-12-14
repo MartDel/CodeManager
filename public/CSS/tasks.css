@@ -34,7 +34,6 @@ html, body {
   top: 0;
   margin-top: -27px;
   margin-left: 110px;
-  width: 90.5%;
   font-family: "Product Sans Regular";
   background-color: none;
 }
@@ -257,39 +256,46 @@ span[title="Spprimer"] {
   text-shadow: none;
   font-size: .8rem;
   letter-spacing: .2px;
-  width: 100%;
+}
+
+.container-list {
+  background-color: transparent;
+  width: calc(100% - 170px);
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .utilisateur {
-  width: 80%;
-  margin-left: 20px;
   font-weight: bold;
+  width: 11.3%;
 }
 
 .titre_tache {
-  width: 200%;
-  margin-left: 10px;
+  margin-left: 0px;
   font-weight: bold;
   text-align: left;
+  width: 28.5%;
+  margin-left: 5px;
 }
 
 .desc_tache {
-  margin-left: 10px;
+  margin-left: 0px;
   text-align: left;
-  width: 250%;
+  width: 35.5%;
+  margin-left: 5px;
 }
 
 .date {
-  margin-right: 62px;
   text-align: right;
-  width: 100%;
-  /*background-color: rgb(255, 0, 0);*/
+  flex-grow: 1;
 }
 
 .category_tache {
   text-align: left;
-  width: 70%;
-  margin-left: 10px
+  margin-left: 0px;
+  width: 11%;
+  margin-left: 5px;
 }
 
 .input_img {

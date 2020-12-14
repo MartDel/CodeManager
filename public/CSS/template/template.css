@@ -2048,39 +2048,25 @@ input[type="file"]:hover {
   .utilisateur, .user_title {
     display: none;
   }
-
-  .user-table-cell {
-    width: 10%
-  }
-
-  .title-table-cell {
-    width: 32%
-  }
-
-  .desc-table-cell {
-    width: 39%
-  }
 }
 
 @media only screen and (max-width: 1240px) {
   .category_tache, .cate_title {
     display: none;
   }
-
-  .title-table-cell {
-    padding: 0;
-    width: 29%
-  }
-
-  .desc-table-cell {
-    padding-left: 55px;
-    width: 45%
-  }
 }
 
 @media only screen and (max-width: 1000px) {
   .date, .date-table-cell {
     display: none;
+  }
+
+  .titre_tache {
+    width: 45%
+  }
+
+  .desc_tache {
+    width: 50%
   }
 
   #project .modal-wrapper {

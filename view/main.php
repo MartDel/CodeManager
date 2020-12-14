@@ -74,7 +74,8 @@ ob_start();
                     <button
                     name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
                     class="myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                    id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>"><li>
+                    id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                    <li>
                         <span class="span_input_img" title="Sélectionner">
                             <input class="input_img check_js to_check" type="checkbox" />
                         </span>
@@ -86,11 +87,23 @@ ob_start();
                         <span class="span_input_img" title="Éditer">
                             <img class="invertcent input_img tick2" src="public/img/edit_task_bar.png" alt="" />
                         </span>
-                        <span class="utilisateur"><?= $task->getAuthor() ?></span>
-                        <span class="titre_tache"><?= $task->getName() ?></span>
-                        <span class="desc_tache"><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
-                        <span class="category_tache"><?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></span>
-                        <span class="date"><?= $task->getCreateDate() ?></span>
+                        <div class="container-list">
+                          <div class=utilisateur>
+                            <span><?= $task->getAuthor() ?></span>
+                          </div>
+                          <div class="titre_tache">
+                            <span><?= $task->getName() ?></span>
+                          </div>
+                          <div class="desc_tache">
+                            <span><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                          </div>
+                          <div class="category_tache">
+                            <span><?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></span>
+                          </div>
+                          <div class="date">
+                            <span><?= $task->getCreateDate() ?></span>
+                          </div>
+                        </div>
                     </li></button>
                 <?php endif; } ?>
             <?php else: ?>
