@@ -270,10 +270,8 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
             modals.show(addtask.id,()=>{
                 addtask.title.value="";
                 addtask.desc_input.value="";
-                addtask.buttoncate.style.display="flex";
-                addtask.inputcate.style.display="none";
-                addtask.inputcate.style.opacity=0;
-                addtask.buttoncate.style.opacity=1;
+                $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
+                $(addtask.inputcate2).css('display', "none").css('opacity', 0)
 
             })
         } else {
@@ -301,11 +299,8 @@ $(addtask.buttoncate2).click(function () {
     $btn.css('opacity', 0)
     setTimeout(()=>{
         $btn.css('display', 'none')
-        $input.css('display', 'flex')
+        $input.css('display', 'flex').css('opacity', 1).focus()
     }, 300);
-    setTimeout(()=>{
-        $input.css('opacity', 1)
-    }, 350);
 })
 /*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
