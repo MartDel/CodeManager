@@ -27,8 +27,8 @@ const addtask = {
     desc_input: document.getElementById("textarea_desc"),
     buttoncate:document.getElementById("new_cat_button"),
     inputcate:document.getElementById("input_new_cat"),
-    buttoncate2:document.getElementById("new_cat_button2"),
-    inputcate2:document.getElementById("input_new_cat2"),
+    buttoncate2: ".new_cat_button2",
+    inputcate2: ".input_new_cat2"
 
 };
 
@@ -280,29 +280,30 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
 }
 
 
-addtask.buttoncate.onclick=()=>{
-  addtask.buttoncate.style.opacity=0;
-
-  setTimeout(()=>{
-    addtask.buttoncate.style.display="none";
-    addtask.inputcate.style.display="flex";
-  },300);
-  setTimeout(()=>{
-    addtask.inputcate.style.opacity=1;
-    addtask.inputcate.focus()
-  },350);
-}
-addtask.buttoncate2.onclick=()=>{
-  addtask.buttoncate2.style.opacity=0;
-
-  setTimeout(()=>{
-    addtask.buttoncate2.style.display="none";
-    addtask.inputcate2.style.display="flex";
-  },300);
-  setTimeout(()=>{
-    addtask.inputcate2.style.opacity=1;
-  },350);
-}
+// addtask.buttoncate.onclick=()=>{
+//   addtask.buttoncate.style.opacity=0;
+//
+//   setTimeout(()=>{
+//     addtask.buttoncate.style.display="none";
+//     addtask.inputcate.style.display="flex";
+//   },300);
+//   setTimeout(()=>{
+//     addtask.inputcate.style.opacity=1;
+//     addtask.inputcate.focus()
+//   },350);
+// }
+$(addtask.buttoncate2).click(() => {
+    const $btn = $(this)
+    const $input = $btn.parent().children(addtask.inputcate2)
+    $btn.css('opacity', 0)
+    setTimeout(()=>{
+        $btn.css('display', 'none')
+        $input.css('display', 'flex')
+    }, 300);
+    setTimeout(()=>{
+        $input.css('opacity', 1)
+    }, 350);
+})
 /*addtask.cancel_btn.onclick = () => {
     addtask.title_input.value = "";
     addtask.desc_input.value = "";

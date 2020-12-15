@@ -268,8 +268,8 @@ ob_start();
                           <option>uyguiuyguyg</option>
                           <option>uyguiuyguyg</option>
                         </select>
-                        <button type="button" name="" id="new_cat_button2">Nouvelle Catégorie</button>
-                        <input maxlength=15 type="text" placeholder="Nom de la catégorie" id="input_new_cat2"></input>
+                        <button type="button" name="" class="new_cat_button2">Nouvelle Catégorie</button>
+                        <input maxlength=15 type="text" placeholder="Nom de la catégorie" class="input_new_cat2" />
                       </div>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
