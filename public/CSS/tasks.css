@@ -319,16 +319,18 @@ aside[name~=popup_modal_task] .modal-wrapper {
   width: 50%;
   font-family: "Product Sans Regular";
   background-color: white;
-  height: auto
+  height: auto;
+  padding: 0;
 }
 
 /* The Close Button */
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 35px;
   font-weight: bold;
-  margin-top: -5px;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 .close:hover,
@@ -348,75 +350,68 @@ aside[name~=popup_modal_task] .modal-wrapper {
   /*border-right: red 5px solid;*/
 }
 
+/*NEW*/
 .done-task {
   text-decoration: line-through;
 }
 
-.done-task .no-decorations {
-  text-decoration: none;
-}
-
-.list_task {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: auto;
-  height: calc(100vh - 103px);
-  overflow-y: scroll;
-  background-color: none;
-}
-
-.modal-content .modal-wrapper {}
-
-.titre_popup {
-  width: 97%;
-  white-space: initial;
-  overflow: hidden;
-  margin-top: 20px;
-  font-size: 1rem;
-}
-
-.descriptif_popup {
-  width: 97%;
-  white-space: initial;
-  overflow-x: hidden;
-  word-wrap: break-word;
-}
-
-.descriptif_popup p {
-  font-family: "Product Sans Regular";
-  font-size: 1rem;
-}
-
-.line_popup {
-  background-color: rgba(141, 141, 141, 0.342);
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 1px;
-  width: 97%;
-}
-
-#logo_popup {
-  width: auto;
-  height: 50px;
-}
-
-.header_popup {
-  font-family: "Product Sans Regular";
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  margin-top: -15px;
+.top-colour {
+  background-color: white;
+  margin: 0;
+  width: calc(100% - 40px);
+  padding: 20px;
   color: #b41e10;
   text-align: center;
+  height: 18vh;
+  font-size: 18px;
+  align-items: center;
+}
+
+.top-colour h1 {
+  padding: 0;
+  margin: 0;
+  margin-top: calc(9vh - 9px)
+}
+
+.bottom-colour {
+  width: calc(100% - 80px);
+  padding: 40px;
+  background-color: #eaeaea
+}
+
+.bottom-colour h3 {
+  color: black;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+}
+
+.details-task {
+  width: calc(100% - 160px);
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.bottom-task-modal {
   width: 100%;
 }
 
-.header_popup p {
+.bottom-task-modal td {
+  width: 50%;
+  padding: 10px;
+  align-items: center;
   text-align: center;
+  color: black;
+}
+
+.bottom-task-modal td span a {
+  color: black;
+  text-decoration: none;
+}
+
+.bottom-task-modal img {
+  width: 25px;
+  height: 25px;
+  margin: 0
 }
 
 /*MENU BURGER ICON*/

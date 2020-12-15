@@ -196,11 +196,9 @@ ob_start();
     <?php if (isset($tasks)): ?>
         <?php foreach ($tasks as $task){ if ($task->getAuthor()): ?>
             <!-- Tasks modals -->
-            <modal
-            id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_modal"
-            name="popup_modal_task">
+            <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_modal" name="popup_modal_task">
                 <span class="close close-modal">&times;</span>
-                <section class="header_popup">
+                <!--<section class="header_popup">
                     <strong><p class="colorred title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
                     <br><br>
                 </section>
@@ -215,7 +213,40 @@ ob_start();
                     <br><br>
                     <br><br>
                     <i class="no-decoration">Par <?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-                </section>
+                </section>-->
+                <div class="top-colour">
+                  <h1>Détails de la tâche <?= $task->getIsDone() ? 'effectuée ' : '' ?></h1>
+                </div>
+                <div class="bottom-colour">
+                  <h3>Par <?= $task->getAuthor() ?>, le <?= $task->getCreateDate() ?> : </h3>
+                  <h3><strong>Détails de la tâche : </strong></h3>
+                  <br>
+                  <div class="details-task" >
+                      <h3><u>Titre de la tâche : </u><?= $task->getName() ?></h3>
+                      <h3><u>Description de la tâche : </u><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></h3>
+                      <h3><u>Catégorie de la tâche : </u><?= $task->getCategoryId() ? $task->getCategory() : 'Divers' ?></h3>
+                      <br><br>
+                      <table class="bottom-task-modal">
+                        <tr>
+                          <td>
+                            <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
+                                <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
+                                    <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
+                                    <p>Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?> effectuée</p>
+                                </a>
+                            </span>
+                          </td>
+                          <td>
+                            <span title="Supprimer la tâche">
+                                <img class="brightnessmax trash2 close-modal" src="public/img/trash.png" alt="" />
+                                <p class="trash2">Supprimer la tâche</p>
+                            </span>
+                          </td>
+                        </tr>
+                      </table>
+
+                  </div>
+                </div>
             </modal>
 
             <!--Tasks edit modals -->
