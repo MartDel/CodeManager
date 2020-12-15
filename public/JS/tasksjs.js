@@ -243,10 +243,8 @@ function showModal(event) {
     if (contain(tasks.btn.tick2, event.target)) {
         if(permissions != 0) {
           modals.show(id + '_edit',()=>{
-          addtask.buttoncate2.style.opacity=1;
-          addtask.buttoncate2.style.display="flex";
-          addtask.inputcate2.style.display="none";
-          addtask.inputcate2.style.opacity=0;
+          $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
+          $(addtask.inputcate2).css('display', "none").css('opacity', 0)
         })}
         else {
             const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
@@ -285,7 +283,6 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
     }
 }
 
-
 // addtask.buttoncate.onclick=()=>{
 //   addtask.buttoncate.style.opacity=0;
 //
@@ -298,7 +295,7 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
 //     addtask.inputcate.focus()
 //   },350);
 // }
-$(addtask.buttoncate2).click(() => {
+$(addtask.buttoncate2).click(function () {
     const $btn = $(this)
     const $input = $btn.parent().children(addtask.inputcate2)
     $btn.css('opacity', 0)
