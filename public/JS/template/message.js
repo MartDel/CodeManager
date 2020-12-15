@@ -1,6 +1,5 @@
 let cmessage = null
 let ctype = null
-
 class Message {
     constructor(type, title, content) {
         this.type = type === 'info' ? type : 'error'
