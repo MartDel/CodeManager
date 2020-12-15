@@ -58,6 +58,11 @@ function editTask(){
     if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", 'index.php');
     $task->setName($data['title']);
     $task->setDescription($data['description']);
+
+    $category = isset($data['category']) && $data['category'] != '-1' ? $data['category'] : null;
+    $category = isset($data['add_category']) && $data['add_category'] != '' ? addCategory($data['add_category']) : $category;
+    $task->setCategoryId($category);
+    
     $task->update();
     header('Location: index.php');
 }

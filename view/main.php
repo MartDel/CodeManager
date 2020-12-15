@@ -198,22 +198,6 @@ ob_start();
             <!-- Tasks modals -->
             <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_modal" name="popup_modal_task">
                 <span class="close close-modal">&times;</span>
-                <!--<section class="header_popup">
-                    <strong><p class="colorred title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
-                    <br><br>
-                </section>
-                <section class="titre_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
-                    <strong><?= $task->getName() ?></strong>
-                </section>
-                <div class="line_popup"></div>
-                <section class="descriptif_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
-                    <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
-                    <br><br>
-                    <p><strong>Catégorie :</strong> <?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></p>
-                    <br><br>
-                    <br><br>
-                    <i class="no-decoration">Par <?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
-                </section>-->
                 <div class="top-colour">
                   <h1>Détails de la tâche <?= $task->getIsDone() ? 'effectuée ' : '' ?></h1>
                 </div>
@@ -268,14 +252,14 @@ ob_start();
                       <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
                       <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                       <div class="category_flex">
-                        <select class="" name="">
-                          <option selected="selected">Divers</option>
-                          <option>uyguiuyguyg</option>
-                          <option>uyguiuyguyg</option>
-                          <option>uyguiuyguyg</option>
+                        <select name="category">
+                            <option selected="selected" value="-1">Divers</option>
+                            <?php foreach ($categories as $category): ?>
+                                <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+                            <?php endforeach; ?>
                         </select>
                         <button type="button" name="" class="new_cat_button2">Nouvelle Catégorie</button>
-                        <input maxlength=15 type="text" placeholder="Nom de la catégorie" class="input_new_cat2" />
+                        <input maxlength=15 type="text" placeholder="Nom de la catégorie" class="input_new_cat2" name="add_category" />
                       </div>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>

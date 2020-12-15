@@ -145,6 +145,6 @@ class Task extends DatabaseManager
 
     public function setName($name){ $this->name = $name; }
     public function setDescription($desc){ $this->description = $desc; }
-    public function setCategoryID($id){ $this->category_id = $id; }
+    public function setCategoryId($id){ $this->category_id = $id; }
     public function setIsDone($is_done){ $this->is_done = $is_done; }
 }

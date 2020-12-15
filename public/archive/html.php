@@ -18,3 +18,20 @@
       </form>
   </section>
 </modal>
+
+<section class="header_popup">
+    <strong><p class="colorred title_task_modal">Tâche<?= $task->getIsDone() ? ' effectuée' : '' ?></p></strong>
+    <br><br>
+</section>
+<section class="titre_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
+    <strong><?= $task->getName() ?></strong>
+</section>
+<div class="line_popup"></div>
+<section class="descriptif_popup<?= $task->getIsDone() ? ' done-task' : '' ?>">
+    <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?>
+    <br><br>
+    <p><strong>Catégorie :</strong> <?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></p>
+    <br><br>
+    <br><br>
+    <i class="no-decoration">Par <?= $task->getAuthor() ?> le <?= $task->getCreateDate() ?></i>
+</section>
