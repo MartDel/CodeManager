@@ -29,7 +29,6 @@ const addtask = {
     inputcate:document.getElementById("input_new_cat"),
     buttoncate2: ".new_cat_button2",
     inputcate2: ".input_new_cat2"
-
 };
 
 
@@ -58,7 +57,7 @@ let display = {
     first:document.getElementById("firstdisplay"),
     second:document.getElementById("seconddisplay"),
     category_1:document.getElementById("category_1"),
-    category_2:document.getElementById("category_2")
+    category_2:document.getElementById("category_2"),
 }
 
 /*
@@ -123,8 +122,7 @@ function showTasks(print) {
         const inputs = tasks.list[i].getElementsByTagName('input')
         manageActivesInputs(inputs, print)
     }
-
-    manageCategoryNames()
+    manageCategoryNames(!print)
 }
 function showDoneTasks(print) {
     for (let i = 0; i < tasks_done.list.length; i++) {
@@ -134,8 +132,6 @@ function showDoneTasks(print) {
         const inputs = tasks_done.list[i].getElementsByTagName('input')
         manageActivesInputs(inputs, print)
     }
-
-    manageCategoryNames()
 }
 function manageActivesInputs(inputs, active){
     for (let i = 0; i < inputs.length; i++) {
@@ -145,13 +141,23 @@ function manageActivesInputs(inputs, active){
         }
     }
 }
-function manageCategoryNames() {
-    const show_category_names = document.getElementsByClassName('active').length !== 0
-    for (let i = 0; i < select_all2.category_names.length; i++) {
-        select_all2.category_names[i]
-        if(show_category_names) show(select_all2.category_names[i])
-        else hide(select_all2.category_names[i])
-    }
+/**
+ * Show/hide some categories
+ * @param  {bool} done_task If the tasks must be done or not
+ */
+function manageCategoryNames(done_task) {
+    $('.table_contain').toArray().forEach((table, i) => {
+        const rows = table.rows
+        let useful_tasks = 0
+        for (let i = 0; i < rows.length; i++) {
+            if(rows[i].id.indexOf('task') !== -1){
+                if((rows[i].id.indexOf('done_') !== -1 && done_task)
+                || (rows[i].id.indexOf('done_') === -1 && !done_task)) useful_tasks++
+            }
+        }
+        if(useful_tasks === 0) $(table).css('display', 'none')
+        else $(table).css('display', 'table')
+    })
 }
 for (let i = 0; i < tasks_done.btn.length; i++) {
     tasks_done.btn[i].onclick = (event) => {
