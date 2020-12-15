@@ -112,6 +112,14 @@ function deleteTasks(){
     header('Location: index.php');
 }
 
+function objectives(){
+    // Get projects infos
+    $project = Project::getProjectById($_SESSION['project_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+
+    require('view/objectives.php');
+}
+
 /**
  * Show the team page
  */
@@ -240,22 +248,33 @@ function editUserFromTeam(){
 /**
  * Get all of project commits and show them (test)
  */
+function chat(){
+    // Get projects infos
+    $project = Project::getProjectById($_SESSION['project_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+
+    require('view/talk.php');
+}
+
+/**
+ * Get all of project commits and show them (test)
+ */
 function github(){
     // Get projects infos
     $project = Project::getProjectById($_SESSION['project_id']);
     $project_list = Project::getAllProjects($_SESSION['user_id']);
 
     // Check if the repository exists
-    $commits_available = false;
-    if($project->getRemotePseudo() && $project->getRemoteName()){
-        $url = "https://github.com/" . $project->getRemotePseudo() . "/" . $project->getRemoteName();
-        $array = get_headers($url);
-        $string = $array[0];
-        if(strpos($string,"200")) $commits_available = true;
-    }
-
-    if($commits_available) $branches = Commit::getAllBranches($project->getRemotePseudo(), $project->getRemoteName());
-    require('view/github.php');
+    // $commits_available = false;
+    // if($project->getRemotePseudo() && $project->getRemoteName()){
+    //     $url = "https://github.com/" . $project->getRemotePseudo() . "/" . $project->getRemoteName();
+    //     $array = get_headers($url);
+    //     $string = $array[0];
+    //     if(strpos($string,"200")) $commits_available = true;
+    // }
+    //
+    // if($commits_available) $branches = Commit::getAllBranches($project->getRemotePseudo(), $project->getRemoteName());
+    require('view/gitpage.php');
 }
 
 /**
