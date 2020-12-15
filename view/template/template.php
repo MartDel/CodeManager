@@ -108,7 +108,7 @@
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 		<!-- JS code -->
-		<script type="text/javascript" src="public/JS/template/message.js"></script>
+		<script type="text/javascript" src="public/JS/template/Message.js"></script>
 		<script type="text/javascript" src="public/JS/template/manage_messages.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
 		<script type="text/javascript" src="public/JS/template/menu_nav.js"></script>
