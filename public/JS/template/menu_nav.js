@@ -1,5 +1,4 @@
-// Menu element
-let menu = {
+const menu = {
     open: false,
     main_div: document.getElementById("menu_gauche"),
     text: [
@@ -80,62 +79,81 @@ let change = {
 }
 
 // Project elements
+// const project = {
+//     id: 'project',
+//     swap: {
+//         master: document.getElementById("projet_princ"),
+//         list: document.getElementById("ul_swap"),
+//         li: document.getElementsByClassName("li_swap"),
+//         arrow: document.getElementById("arrow"),
+//     },
+//     icon: document.getElementById("switch_logo_img"),
+//     actual: document.getElementById("project_actual"),
+//     name_input: document.getElementById('new_project_name'),
+//     desc_input: document.getElementById('new_project_desc'),
+//     git_username_input: document.getElementById('new_project_git_name'),
+//     git_project_input: document.getElementById('new_project_git_repo'),
+//     name_edit: document.getElementById('edit_project_name'),
+//     desc_edit: document.getElementById('edit_project_desc'),
+//     git_username_edit: document.getElementById('edit_project_git_name'),
+//     git_project_edit: document.getElementById('edit_project_git_repo'),
+//     idcreate:"create",
+//     create_button:document.getElementById("create_project_opener"),
+//     idedit:"edit_project",
+//     edit_button:document.getElementById("edit_project_opener"),
+//
+//
+// }
+
+// Project
+
 const project = {
-    id: 'project',
-    swap: {
-        master: document.getElementById("projet_princ"),
-        list: document.getElementById("ul_swap"),
-        li: document.getElementsByClassName("li_swap"),
-        arrow: document.getElementById("arrow"),
+    modal: '#project',
+    btns: ['#switch_logo_img','#project_actual'],
+    add: {
+        modal: '#create',
+        btn: '#create_project_opener',
+        form: "form[name='create_project_form']"
     },
-    icon: document.getElementById("switch_logo_img"),
-    actual: document.getElementById("project_actual"),
-    name_input: document.getElementById('new_project_name'),
-    desc_input: document.getElementById('new_project_desc'),
-    git_username_input: document.getElementById('new_project_git_name'),
-    git_project_input: document.getElementById('new_project_git_repo'),
-    name_edit: document.getElementById('edit_project_name'),
-    desc_edit: document.getElementById('edit_project_desc'),
-    git_username_edit: document.getElementById('edit_project_git_name'),
-    git_project_edit: document.getElementById('edit_project_git_repo'),
-    idcreate:"create",
-    create_button:document.getElementById("create_project_opener"),
-    idedit:"edit_project",
-    edit_button:document.getElementById("edit_project_opener"),
-
-
-}
-
-
-
-
-
-project.create_button.onclick=()=>{
-  setTimeout(() => modals.show(project.idcreate, ()=>{
-    project.name_input.value = '';
-    project.desc_input.value = '';
-    project.git_username_input.value = '';
-    project.git_project_input.value = '';
-
-  }), 500)
-}
-project.edit_button.onclick=()=>{
-    if(permissions == 2){
-        var tempname = document.getElementById('edit_project_name').value
-        var tempdesc= document.getElementById('edit_project_desc').value
-        var tempgit_username= document.getElementById('edit_project_git_name').value
-        var tempgit_project= document.getElementById('edit_project_git_repo').value
-        setTimeout(() => modals.show(project.idedit,()=>{
-            project.name_edit.value=tempname
-            project.desc_edit.value=tempdesc
-            project.git_username_edit.value=tempgit_username
-            project.git_project_edit.value=tempgit_project
-        }), 500)
-    } else {
-        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation nécessaire pour modifier le projet.")
-        err.show()
+    edit: {
+        modal: '#edit_project',
+        btn: '#edit_project_opener',
+        form: "form[name='edit_project_form']"
     }
 }
+
+// Open project modal
+project.btns.forEach((item) => {
+    $(item).click(function (){
+        modals.show(project.modal.substring(1))
+    })
+})
+
+// Open modal to create project
+$(project.add.btn).click(function (){
+    setTimeout(() => modals.show(project.add.modal.substring(1), ()=>{
+        $(project.add.form).find('input[placeholder], textarea[placeholder]').val('')
+    }), 500)
+})
+
+// Open modal to edit the current project
+$(project.edit.btn).click(function (){
+    if(permissions !== 2){
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation nécessaire pour modifier le projet.")
+        err.show()
+        return
+    }
+    // Save old inputs values
+    let values = []
+    $(project.edit.form).find('input[placeholder], textarea[placeholder]').each(function (i) {
+        values[i] = $(this).val()
+    })
+    setTimeout(() => modals.show(project.edit.modal.substring(1), () => {
+        $(project.edit.form).find('input[placeholder], textarea[placeholder]').each(function (i) {
+            $(this).val(values[i])
+        })
+    }), 500)
+})
 
 document.getElementById("input_img").onchange = function() {
     document.getElementById("form_add_img").submit();
@@ -544,15 +562,6 @@ document.querySelectorAll('.form-select-user').forEach(function(node) {
     node.submit();
   }
 });
-
-document.getElementById("close_swap").onclick = () => {
-    project.name_input.value = "";
-    project.desc_input.value = "";
-    project.git_username_input.value = "";
-    project.git_project_input.value = "";
-};
-project.icon.onclick = () => modals.show(project.id)
-project.actual.onclick = () => modals.show(project.id)
 
 /*
  * ACCOUNT MODAL
