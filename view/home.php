@@ -28,7 +28,7 @@ ob_start();
     </div>
 </div>
 <div id="petite_presentation">
-    <p>CodeManager et GitHub :<br> une façon intelligente de développer en groupe</p>
+    <p>CodeManager :<br> une façon intelligente de développer en groupe</p>
     <div></div>
     <p id="seconde_ligne">Une méthode pour faciliter la communication <br>et la gestion des projet communs</p>
     <a href="index.php?action=signup" id="inscription_div">
@@ -59,19 +59,19 @@ ob_start();
         <h1 class="show-on-scroll">Concentrez-vous sur l'organisation</h1>
         <div id="flex_p">
             <p class="p1 show-on-scroll" >Un travail basé sur la cohésion au sein de l'équipe. <br>Un travail plus que collaboratif.</p>
-            <p class="p2 show-on-scroll" >Un projet commun.<br>Le partage entre les participants.</p>
-            <p class="p3 show-on-scroll" >Un outil pour répartir le travail, partager ses documents et suivre l'avancement du projet.</p>
+            <p class="p2 show-on-scroll" >Gérez facilement les particpants, et attribuez leur un rôle et des permissions spécifiques.</p>
+            <p class="p3 show-on-scroll" >Un outil pour répartir le travail, suivre l'avancement et discuter du projet au sein même de la plateforme.</p>
         </div>
         <br><br><br>
         <div class="séparation"></div>
         <br><br><br>
         <img class="img_index_desc show-on-scroll" src="public/img/objectiveindex.png">
-        <h1 class="show-on-scroll">Atteignez vos objectifs</h1>
+        <h1 class="show-on-scroll">Soyez efficace dans votre travail</h1>
         <div id="flex_p">
-            <p class="p1 show-on-scroll">Une répartition du travail intelligente.<br>Travailler efficaceent et intelligemment</p>
-            <p class="p2 show-on-scroll">Une gestion simple mais efficace de l'avancement<br>L'attribution de différents rôles au sein du projet
+            <p class="p1 show-on-scroll">Une répartition du travail intelligente, grâce à un système de tâches et d'objectifs avancé</p>
+            <p class="p2 show-on-scroll">Une gestion simple mais efficace de l'avancement.<br>L'attribution de différents rôles et permissions au sein du projet
             </p>
-            <p class="p3 show-on-scroll">Des objectifs à atteidre pour avancer et pour terminer votre projet sans retard.</p>
+            <p class="p3 show-on-scroll">Des objectifs à atteindre pour avancer et pour terminer votre projet sans retard.</p>
         </div>
         <br><br><br>
         <!--<div class="séparation"></div>-->
@@ -79,20 +79,18 @@ ob_start();
         <div id="bcc_icons">
           <h1 class="title_white show-on-scroll">Des fonctionnalités pour faciliter et sécuriser le travail</h1>
             <div class="flex_icons_white" id="flex_p">
-
-
-                <div class="p1 show-on-scroll flexcol">
-                    <img src="public/img/documentindex.png">
-                    <h2 class="fonctionnalites"><strong>Fichiers à la demande</strong></h2>
-                </div>
                 <div class="p2 show-on-scroll flexcol">
                     <img src="public/img/listindex.png">
                     <h2 class="fonctionnalites"><strong>Des tâches et objectifs pour avancer rapidement</strong>
                     </h2>
                 </div>
                 <div class="p3 show-on-scroll flexcol">
-                    <img src="public/img/uploadindex.png">
-                    <h2 class="fonctionnalites"><strong>Plusieurs fichiers de sauvegarde</strong></h2>
+                    <img src="public/img/permission.png">
+                    <h2 class="fonctionnalites"><strong>Des permissions et rôles pour gérer l'équipe</strong></h2>
+                </div>
+                <div class="p3 show-on-scroll flexcol">
+                    <img src="public/img/githublogo.png">
+                    <h2 class="fonctionnalites"><strong>Une vision globale du GitHub</strong></h2>
                 </div>
             </div>
         </div>
