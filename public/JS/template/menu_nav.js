@@ -1,35 +1,3 @@
-const menu = {
-    open: false,
-    main_div: document.getElementById("menu_gauche"),
-    text: [
-        document.getElementById("text_menu_left_1"),
-        document.getElementById("text_menu_left_2"),
-        document.getElementById("text_menu_left_3"),
-        document.getElementById("text_menu_left_4"),
-        document.getElementById("text_menu_left_5")
-    ],
-    img: document.getElementsByClassName("img_menu_gauche_js"), // Array
-    selected: document.getElementsByClassName("selectedmenu")[0],
-    not_selected: document.getElementsByClassName("notselectedmenu"), // Array
-    burger: document.getElementById("menu_checkbox")
-};
-
-// Settings element
-const settings = {
-    id: 'settings',
-    modal: document.getElementById("bcc_settings"),
-    show_btn: document.getElementById("gear_logo_img"),
-    close_btn: document.getElementById("close_settings"),
-    dark_mode_btn: document.getElementById("dark_mode"),
-    night_shift_btn: document.getElementById("night_shift"),
-    bug_input: document.getElementById("textarea_bug")
-};
-
-// Nav buttons
-const nav = {
-    account_logo: document.getElementById("account_logo_img")
-}
-
 // Help elements
 const help = {
     modal: document.getElementById("help_modal"),
@@ -43,22 +11,7 @@ let search = {
 }
 
 // Account elements
-let account = {
-    id: 'account',
-    modal: document.getElementById("account_white_bc"),
-    show_btn: document.getElementById("account_logo_img"),
-    close: document.getElementById("close_account_modal"),
-    option: document.getElementById("button_option"),
-    back: document.getElementById("account_background"),
-    redirectinfos: document.getElementById("button_my_account"),
-    open_confirm:document.getElementById("confirm_open"),
-    delete:"delete",
-};
-let accountinfos = {
-  id: "my_informations",
-  no_delete:document.getElementById("no_delete"),
 
-}
 let textarea = {
   pseudo:document.getElementById("textarea_pseudo"),
   pseudo_validate:document.getElementById("validate_textarea_pseudo"),
@@ -78,32 +31,80 @@ let change = {
   form : document.getElementById("form_add_img"),
 }
 
-// Project elements
-// const project = {
-//     id: 'project',
-//     swap: {
-//         master: document.getElementById("projet_princ"),
-//         list: document.getElementById("ul_swap"),
-//         li: document.getElementsByClassName("li_swap"),
-//         arrow: document.getElementById("arrow"),
-//     },
-//     icon: document.getElementById("switch_logo_img"),
-//     actual: document.getElementById("project_actual"),
-//     name_input: document.getElementById('new_project_name'),
-//     desc_input: document.getElementById('new_project_desc'),
-//     git_username_input: document.getElementById('new_project_git_name'),
-//     git_project_input: document.getElementById('new_project_git_repo'),
-//     name_edit: document.getElementById('edit_project_name'),
-//     desc_edit: document.getElementById('edit_project_desc'),
-//     git_username_edit: document.getElementById('edit_project_git_name'),
-//     git_project_edit: document.getElementById('edit_project_git_repo'),
-//     idcreate:"create",
-//     create_button:document.getElementById("create_project_opener"),
-//     idedit:"edit_project",
-//     edit_button:document.getElementById("edit_project_opener"),
-//
-//
-// }
+// Left menu
+
+const menu = {
+    btn: '#menu_checkbox',
+    div: '#menu_gauche',
+    texts: '.textgauche',
+    images: '.img_menu_gauche_js',
+    not_selected: '.notselectedmenu',
+    selected: '.selectedmenu',
+    ///////////////////:
+    open: false,
+    main_div: document.getElementById("menu_gauche"),
+    text: [
+        document.getElementById("text_menu_left_1"),
+        document.getElementById("text_menu_left_2"),
+        document.getElementById("text_menu_left_3"),
+        document.getElementById("text_menu_left_4"),
+        document.getElementById("text_menu_left_5")
+    ],
+    img: document.getElementsByClassName("img_menu_gauche_js"), // Array
+    // selected: document.getElementsByClassName("selectedmenu")[0],
+    // not_selected: document.getElementsByClassName("notselectedmenu"), // Array
+    burger: document.getElementById("menu_checkbox")
+}
+
+$(menu.burger).click(function () {
+    if (menu.open) closeMenu()
+    else  openMenu()
+    menu.open = !menu.open
+})
+function closeMenu(){
+    $(menu.div).css('transition-delay', "0s, 0s").css('width', '100px')
+    $(menu.texts).css('opacity', 0)
+    $(menu.images).css('margin-left', "-23px")
+    $(menu.not_selected).css('padding-right', "0px")
+    $(menu.selected).css('padding-right', "0px")
+
+    setTimeout(() => {
+        const width = parseInt(window.innerWidth);
+        if (width <= 500) $(menu.div).css('margin-left', '-100px')
+        else $(menu.div).css('margin-left', '0')
+    }, 400)
+
+    setCookie('menu', 'closed')
+}
+function openMenu(){
+    $(menu.div).css('margin-left', "0").css('transition-delay', '0s, 0s')
+    const width = parseInt(window.innerWidth);
+    if (width <= 500) {
+        setTimeout(() => {
+            $(menu.div).css('width', "260px")
+            $(menu.selected).css('padding-right', "90px")
+            $(menu.images).css('margin-left', "0px")
+            $(menu.not_selected).css('padding-right', "90px")
+        },400)
+        setTimeout(() => {
+            $(menu.texts).css('opacity', 1)
+        }, 600);
+    } else{
+        $(menu.div).css('width', "260px")
+        $(menu.selected).css('padding-right', "90px")
+        $(menu.images).css('margin-left', "0px")
+        $(menu.not_selected).css('padding-right', "90px")
+        setTimeout(() => {
+            $(menu.texts).css('opacity', 1)
+        }, 200);
+    }
+    setCookie('menu', 'open')
+}
+
+// Search into the page
+
+const input_search = document.getElementById("findField")
+const body = document.getElementsByTagName("body")[0];
 
 // Project
 
@@ -155,220 +156,109 @@ $(project.edit.btn).click(function (){
     }), 500)
 })
 
-document.getElementById("input_img").onchange = function() {
-    document.getElementById("form_add_img").submit();
-};
+// Settings
 
-// Search input
-const input_search = document.getElementById("findField")
-const body = document.getElementsByTagName("body")[0];
-
-/*
-=========================
-======= MAIN CODE =======
-=========================
-*/
-
-/**
- * Executed when the JS is loaded
- */
-function wOnload(){
-    // Manage Menu
-    setTimeout(() => {
-        document.getElementsByTagName("BODY")[0].style.opacity="1";
-    },450)
-    if (getCookie('menu') === 'open') {
-        for (let i = 0; i < menu.text.length; i++) {
-                menu.text[i].style.transition = "all 0s";
-                //hide(menu.text[i]);
-        }
-        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0s";
-        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0s";
-        menu.main_div.style.transition = "all 0s";
-        menu.selected.style.transition = "all 0s";
-        openMenu();
-
-        setTimeout(() => {
-            for (let i = 0; i < menu.text.length; i++) {
-                menu.text[i].style.transition = "all 0.2s";
-                //hide(menu.text[i]);
-            }
-            for (let i = 0; i < menu.img.length; i++) menu.img[i].style.transition = "all 0.2s";
-            for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.transition = "all 0.2s";
-            menu.main_div.style.transition = "all 0.2s";
-            menu.selected.style.transition = "all 0.2s";
-            closeMenu();
-        },1000)
-    } else{
-      //avoid animation to disaprear
-      document.getElementById("menu_gauche").style.transitionDuration="0s, 0s";
-      ww=parseInt(window.innerWidth);
-      if (ww<=500) {
-
-        document.getElementById("menu_gauche").style.marginLeft="-100px";
-
-      } else{
-        document.getElementById("menu_gauche").style.marginLeft="0";
-
-      }
-      setTimeout(() => {
-        closeMenu();
-        document.getElementById("menu_gauche").style.transitionDuration="0.3s, 0.3s";
-      },0)
-
-
-    }
-
-    // Turn ON/OFF dark mode
-      if (getCookie('dark-mode') === 'on') {
-          turnOnDarkMode()
-          settings.dark_mode_btn.checked = true
-      } else {
-          turnOffDarkMode()
-          settings.dark_mode_btn.checked = false
-      }
-
-
-    // Turn ON/OFF night shift
-    if (getCookie('night-shift') === 'on') {
-        turnOnNightShift()
-        settings.night_shift_btn.checked = true
-    } else {
-        turnOffNightShift()
-        settings.night_shift_btn.checked = false
-    }
-
-    // Print modal div
-    document.querySelector('#modals').style.display = 'block'
+const settings = {
+    modal: '#bcc_settings',
+    btn: '#gear_logo_img',
+    edit: {
+        dark_mode: '#dark_mode',
+        night_shift: '#night_shift',
+        NS_changes: '#account_logo_img'
+    },
+    input: '#textarea_bug',
+    ////////////////////////////////////
+    id: 'settings',
+    show_btn: document.getElementById("gear_logo_img"),
+    close_btn: document.getElementById("close_settings"),
+    dark_mode_btn: document.getElementById("dark_mode"),
+    night_shift_btn: document.getElementById("night_shift"),
+    bug_input: document.getElementById("textarea_bug")
 }
 
+// Show settings modal
+$(settings.btn).click(function () {
+    modals.show(settings.modal, () => {
+        $(settings.input).val('')
+    })
+})
 
-
-/*
- * SETTINGS
-*/
-
-settings.dark_mode_btn.onchange = () => {
-    if (settings.dark_mode_btn.checked) turnOnDarkMode()
+// Turn ON/OFF dark-mode
+$(settings.edit.dark_mode).change(function (){
+    if (this.checked) turnOnDarkMode()
     else turnOffDarkMode()
-};
-divelem=document.getElementsByTagName("DIV")
+})
 function turnOnDarkMode() {
-    document.querySelectorAll('div').forEach(function(node) {
-      if (node.style.color=="black") {
-        node.style.color="white"
-      }
-      if (node.style.backgroundColor=="white") {
-        node.style.backgroundColor="#1C1C1C"
-      }
-    });
-    document.querySelectorAll('body').forEach(function(node) {
-      if (node.style.color=="black") {
-        node.style.color="white"
-      }
-        node.style.backgroundColor="#1C1C1C"
-    });
-    document.querySelectorAll('.flex_title_task').forEach(function(node) {
-        node.style.backgroundColor="transparent"
-    });
-    document.querySelectorAll('#firstdisplay li').forEach(function(node) {
-        node.style.color="white"
-    });
-    document.querySelectorAll('*').forEach(function(node) {
-      if (node.style.color=="black") {
-        node.style.color="white"
-      }
+    // Dark-mode for all elements
+    $('*').each(function (){
+        const $node = $(this)
+        if ($node.css('color') === "black") $node.css('color', "white")
+    })
+    // Dark-mode for the body
+    const $body = $('body').css('background-color', '#1C1C1C')
+    if ($body.css('color') === 'black') $body.css('color', 'white')
+    // Dark-mode for div
+    $('div').each(function (){
+        const $node = $(this)
+        if($node.css('color') === 'black') $node.css('color', 'white')
+        if ($node.css('background-color') === 'white') $node.css('background-color', '#1C1C1C')
+    })
+    // Dark-mode for images
+    $('img').css('filter', "invert(50%)")
+    // Dark-mode for the logo
+    $('#logo').css('filter', "invert(0%)")
+    // Dark-mode for done tasks
+    $('.tasks_done').css('filter', "invert(0%) grayscale(100%)")
+    // Dark-mode for categories
+    $('#category_1').css('filter', "invert(100%)")
+    $('#category_2').css('filter', "invert(100%)")
+    // Dark-mode for ???
+    $('.flex_title_task').css('background-color', "transparent")
+    $('#firstdisplay li').css('color', "white")
+    $('#findField').css('color', "black")
+    $('.category_flex select option').css('color', "black").css('backgroundColor', "white")
 
-    });
-
-    document.querySelectorAll('img').forEach(function(node) {
-      node.style.filter="invert(50%)"
-    })
-    document.querySelectorAll('.tasks_done').forEach(function(node) {
-      node.style.filter="invert(0%) grayscale(100%)"
-    })
-    document.querySelectorAll('#logo').forEach(function(node) {
-      node.style.filter="invert(0%)"
-    })
-    document.querySelectorAll('#category_1').forEach(function(node) {
-      node.style.filter="invert(100%)"
-    })
-    document.querySelectorAll('#category_2').forEach(function(node) {
-      node.style.filter="invert(100%)"
-    })
-    document.querySelectorAll('#findField').forEach(function(node) {
-      node.style.color="black"
-    })
-    document.querySelectorAll('.category_flex select option').forEach(function(node) {
-      node.style.color="black"
-      node.style.backgroundColor="white"
-    })
-
-
-    settings.night_shift_btn.checked = false;
+    // Turn off night-shift
+    $(settings.edit.night_shift).attr('checked', 'off')
     turnOffNightShift()
 
     // Set dark-mode cookie
     setCookie('dark-mode', 'on')
 }
 function turnOffDarkMode() {
-  document.querySelectorAll('div').forEach(function(node) {
-    if (node.style.color=="white") {
-      node.style.color="black"
-    }
-    if (node.style.backgroundColor=="#1C1C1C") {
-      node.style.backgroundColor="white"
-    }
-  });
-  document.querySelectorAll('body').forEach(function(node) {
+    // Reset all elements
+    $('*').each(function (){
+        const $node = $(this)
+        if ($node.css('color') === "white") $node.css('color', "black")
+    })
+    // Reset the body
+    $('body').css('background-color', 'white').css('color', 'black')
+    // Reset div
+    $('div').each(function (){
+        const $node = $(this)
+        if($node.css('color') === 'white') $node.css('color', 'black')
+        if ($node.css('background-color') === '#1C1C1C') $node.css('background-color', 'white')
+    })
+    // Reset images
+    $('img').css('filter', "invert(0%) brightness(100%)")
+    // Reset the logo
+    $('#logo').css('filter', "invert(0%)")
+    // Reset categories
+    $('#category_1').css('filter', "invert(100%)")
+    $('#category_2').css('filter', "invert(100%)")
+    // Reset left menu
+    $('.menu_gauche a').each(function (){
+        const $node = $(this)
+        if ($node.css('color') === "white") $node.css('color', "black")
+    })
+    // Dark-mode for ???
+    $('.flex_title_task').css('background-color', "transparent")
+    $('#firstdisplay li').css('color', "black")
+    $('#findField').css('color', "black")
+    $('.category_flex select option').css('color', "black").css('background-color', "white")
+    $('#help_modal img').css('filter', "invert(25%) grayscale(100%) brightness(100%)")
+    $('.img_menu_gauche_js').css('filter', "invert(0%) brightness(0%)")
 
-      node.style.color="black"
-      node.style.backgroundColor="white"
-  });
-  document.querySelectorAll('.flex_title_task').forEach(function(node) {
-      node.style.backgroundColor="transparent"
-  });
-  document.querySelectorAll('#firstdisplay li').forEach(function(node) {
-      node.style.color="black"
-  });
-  document.querySelectorAll('*').forEach(function(node) {
-    if (node.style.color=="white") {
-      node.style.color="black"
-    }
-
-  });
-  document.querySelectorAll('.menu_gauche a').forEach(function(node) {
-    if (node.style.color=="white") {
-      node.style.color="black"
-    }
-
-  });
-
-  document.querySelectorAll('img').forEach(function(node) {
-    node.style.filter="invert(0%) brightness(100%)"
-  })
-  document.querySelectorAll('#help_modal img').forEach(function(node) {
-    node.style.filter="invert(25%) grayscale(100%) brightness(100%)"
-  })
-  document.querySelectorAll('.img_menu_gauche_js').forEach(function(node) {
-    node.style.filter="invert(0%) brightness(0%)"
-  })
-  document.querySelectorAll('#logo').forEach(function(node) {
-    node.style.filter="invert(0%)"
-  })
-  document.querySelectorAll('#category_1').forEach(function(node) {
-    node.style.filter="invert(100%)"
-  })
-  document.querySelectorAll('#category_2').forEach(function(node) {
-    node.style.filter="invert(100%)"
-  })
-  document.querySelectorAll('#findField').forEach(function(node) {
-    node.style.color="black"
-  })
-  document.querySelectorAll('.category_flex select option').forEach(function(node) {
-    node.style.color="black"
-    node.style.backgroundColor="white"
-  })
     // Set dark-mode cookie
     setCookie('dark-mode', 'off')
 }
@@ -377,191 +267,113 @@ function turnOffDarkMode() {
 settings.night_shift_btn.onchange = () => {
     if (settings.night_shift_btn.checked) turnOnNightShift()
     else turnOffNightShift()
-};
-//var divelem=document.getElementsByTagName("DIV");
-
+}
 function turnOnNightShift() {
-    /*for (var i = 0; i < divelem.length; i++) {
-
-      if (divelem[i].style.backgroundColor == "white") {
-        divelem[i].style.filter = "sepia(70%)";
-      } else {
-        divelem[i].style.filter = "sepia(0%)";
-      }
-    }*/
-    settings.dark_mode_btn.checked = false;
-    body.style.filter = "sepia(15%)";
-    nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
-    //settings.dark_mode_btn.checked = false;
+    // Turn off dark-mode
+    $(settings.edit.dark_mode).attr('checked', 'off')
     turnOffDarkMode();
-    // Set dark-mode cookie
+
+    $('body').css('filter', "sepia(15%)")
+    $(settings.edit.NS_chanches).css('filter', "invert(0%) hue-rotate(0deg)")
+
+    // Set night-shift cookie
     setCookie('night-shift', 'on')
 }
 function turnOffNightShift(){
-    body.style.filter = "sepia(0%)";
-    nav.account_logo.style.filter = "invert(0%) hue-rotate(0deg)";
+    $('body').css('filter', "sepia(0%)")
+    $(settings.edit.NS_chanches).css('filter', "invert(0%) hue-rotate(0deg)")
 
-    // Set dark-mode cookie
+    // Set night-shift cookie
     setCookie('night-shift', 'off')
 }
 
-/*
- * LEFT MENU
- */
-menu.burger.onclick = () => {
-    var actualmarginmenu=document.getElementById("menu_gauche").style.marginLeft
-    if (menu.open) {
-      closeMenu()
+// Account
 
-    }
-    else {
-      openMenu()
-
-
-    }
-    menu.open = !menu.open
+const account = {
+    edit: {
+        form_img: '#form_add_img',
+        img: '#input_img'
+    },
+    //////////////////////
+    id: 'account',
+    modal: document.getElementById("account_white_bc"),
+    show_btn: document.getElementById("account_logo_img"),
+    close: document.getElementById("close_account_modal"),
+    option: document.getElementById("button_option"),
+    back: document.getElementById("account_background"),
+    redirectinfos: document.getElementById("button_my_account"),
+    open_confirm:document.getElementById("confirm_open"),
+    delete:"delete",
 };
-function closeMenu(){
-    document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
-    setTimeout(()=>{
-      w=parseInt(window.innerWidth);
-      if (w<=500) {
-
-        document.getElementById("menu_gauche").style.marginLeft="-100px";
-
-      } else{
-        document.getElementById("menu_gauche").style.marginLeft="0";
-
-      }
-    },400)
-    for (let i = 0; i < menu.text.length; i++) {
-        menu.text[i].style.opacity = "0";
-        //hide(menu.text[i]);
-    }
-    for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "-23px";
-    for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "0px";
-    menu.main_div.style.width = "100px";
-    menu.selected.style.paddingRight = "0px";
-    setCookie('menu', 'closed')
-
+const accountinfos = {
+  id: "my_informations",
+  no_delete:document.getElementById("no_delete"),
 }
-function openMenu(){
-    //setTimeout(() => {
-        //for (let i = 0; i < menu.text.length; i++) show(menu.text[i]);
-    //}, 0);
-    w=parseInt(window.innerWidth);
-    if (w<=500) {
-      document.getElementById("menu_gauche").style.marginLeft="0";
-      document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
-      setTimeout(() => {
+
+$(account.edit.img).change(function (){
+    $(account.edit.form_img).submit()
+})
+
+/*
+
+ */
+
+/**
+ * Executed when the JS is loaded
+ */
+function wOnload(){
+    // Manage Menu
+    setTimeout(() => {
+        $('body').css('opacity', "1")
+    },450)
+    if (getCookie('menu') === 'open') {
+        $(menu.texts).css('transition', 'all 0s')
+        $(menu.images).css('transition', "all 0s")
+        $(menu.not_selected).css('transition', "all 0s")
+        $(menu.div).css('transition', "all 0s")
+        $(menu.selected).css('transition', "all 0s")
+        openMenu();
+
         setTimeout(() => {
-            for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
-        }, 200);
-        menu.main_div.style.width = "260px";
-        menu.selected.style.paddingRight = "90px";
-        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
-        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
-        document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
-      },400)
+            $(menu.texts).css('transition', 'all 0.2s')
+            $(menu.images).css('transition', "all 0.2s")
+            $(menu.not_selected).css('transition', "all 0.2s")
+            $(menu.div).css('transition', "all 0.2s")
+            $(menu.selected).css('transition', "all 0.2s")
+            closeMenu();
+        }, 1000)
     } else{
-      document.getElementById("menu_gauche").style.marginLeft="0";
-      document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
-      setTimeout(() => {
-        setTimeout(() => {
-            for (let i = 0; i < menu.text.length; i++) menu.text[i].style.opacity = "1";
-        }, 200);
-        menu.main_div.style.width = "260px";
-        menu.selected.style.paddingRight = "90px";
-        for (let i = 0; i < menu.img.length; i++) menu.img[i].style.marginLeft = "0px";
-        for (let i = 0; i < menu.not_selected.length; i++) menu.not_selected[i].style.paddingRight = "90px";
-        document.getElementById("menu_gauche").style.transitionDelay="0s, 0s";
-      },0)
+        // Avoid animation to disaprear
+        $(menu.div).css('transition-duration', "0s, 0s")
+        const width = parseInt(window.innerWidth);
+        if (width <= 500) $(menu.div).css('margin-left', '-100px')
+        else $(menu.div).css('margin-left', '0')
+        closeMenu();
+        $(menu.div).css('transition-duration', "0.3s, 0.3s")
     }
 
+    // Turn ON/OFF dark mode
+      if (getCookie('dark-mode') === 'on') {
+          turnOnDarkMode()
+          $(settings.edit.dark_mode).attr('checked', 'on')
+      } else {
+          turnOffDarkMode()
+          $(settings.edit.dark_mode).attr('checked', 'off')
+      }
 
 
-
-    setCookie('menu', 'open')
-
-}
-//for (let i = 0; i < menu.img.length; i++){
-  //menu.img[i].onclick=()=>{
-
-  //}
-//}
-const redirect_index = () =>{
-  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
-  //openMenu();
-  setTimeout(() => {
-      window.location.href = 'index.php'
-  }, 300);
-
-}
-const redirect_team = () =>{
-  //document.getElementsByTagName("*").onmouseover.style.cursor = "wait";
-  //openMenu();
-  setTimeout(() => {
-      window.location.href = 'index.php?action=team'
-  }, 300);
-}
-const redirect_github = () =>{
-  setTimeout(() => {
-      window.location.href = 'index.php?action=github'
-  }, 300);
-}
-
-/*
- * SWAP PROJECT MODAL
- */
-/*project.swap.master.onclick = () => {
-    if (project.swap.list.style.display == "block") {
-        project.swap.list.style.display = "none";
-        //swap.master.style.border = "white 2px solid";
-        project.swap.arrow.innerHTML = "&#x25BC;";
+    // Turn ON/OFF night shift
+    if (getCookie('night-shift') === 'on') {
+        turnOnNightShift()
+        $(settings.edit.night_shift).attr('checked', 'on')
     } else {
-        project.swap.list.style.display = "block";
-        project.swap.master.style.borderLeft = "rgb(190, 190, 190) 2px solid";
-        project.swap.master.style.borderRight = "rgb(190, 190, 190) 2px solid";
-        project.swap.master.style.borderTop = "rgb(190, 190, 190) 2px solid";
-        project.swap.arrow.innerHTML = "&#9650;";
+        turnOffNightShift()
+        $(settings.edit.night_shift).attr('checked', 'off')
     }
-};
 
-project.swap.arrow.onclick = () => {
-    if (project.swap.list.style.display == "block") {
-        project.swap.list.style.display = "none";
-        //swap.master.style.border = "white 2px solid";
-        project.swap.arrow.innerHTML = "&#x25BC;";
-    } else {
-        project.swap.list.style.display = "block";
-        project.swap.master.style.borderLeft = "rgb(190, 190, 190) 2px solid";
-        project.swap.master.style.borderRight = "rgb(190, 190, 190) 2px solid";
-        project.swap.master.style.borderTop = "rgb(190, 190, 190) 2px solid";
-        project.swap.arrow.innerHTML = "&#9650;";
-    }
-};
-for (let i = 0; i < project.swap.li.length; i++) {
-    project.swap.li[i].onclick = (event) => {
-        const swap_l_li = event.target;
-        project.swap.master.innerHTML = swap_l_li.innerHTML;
-        project.swap.list.style.display = "none";
-        project.swap.arrow.innerHTML = "&#x25BC;";
-        for (let i = 0; i < project.swap.li.length; i++) {
-            if (project.swap.master.innerHTML == project.swap.li[i].innerHTML) {
-                project.swap.li[i].style.backgroundColor = "rgb(190, 190, 190)";
-                project.swap.master.style.border = "rgb(190, 190, 190) 2px solid";
-            } else {
-                project.swap.li[i].style.backgroundColor = "white";
-            }
-        }
-    };
-}*/
-
-document.querySelectorAll('.form-select-user').forEach(function(node) {
-  node.onchange=()=>{
-    node.submit();
-  }
-});
+    // Print modal div
+    $('#modals').css('display', 'block')
+}
 
 /*
  * ACCOUNT MODAL
@@ -616,50 +428,6 @@ textarea.pseudo_validate.onclick = () => {
   textarea.pseudo_validate.style.opacity = "0";
   //textarea.pseudo.disabled=true;
 }
-
-// change.mail.onclick = () => {
-//   textarea.mail.disabled=false;
-//   textarea.mail_validate.style.marginRight = "100px";
-//   textarea.mail_validate.style.opacity = "1";
-//   textarea.mail.focus();
-//   textarea.pseudo_validate.click();
-//   textarea.pass_validate.click();
-// }
-//
-// textarea.mail_validate.onclick = () => {
-//   const newplaceholder_mail = textarea.mail.value;
-//   if (newplaceholder_mail != "") {
-//     textarea.mail.value ="";
-//     textarea.mail.value = newplaceholder_mail;
-//     change.button.innerHTML = "Effectuer les changements";
-//     change.button.type = "submit"
-//   }
-//   textarea.mail_validate.style.marginRight = "50px";
-//   textarea.mail_validate.style.opacity = "0";
-//   textarea.mail.disabled=true;
-// }
-//
-// change.pass.onclick = () => {
-//   textarea.pass.disabled=false;
-//   textarea.pass_validate.style.marginRight = "100px";
-//   textarea.pass_validate.style.opacity = "1";
-//   textarea.pass.focus();
-//   textarea.mail_validate.click();
-//   textarea.pseudo_validate.click();
-// }
-//
-// textarea.pass_validate.onclick = () => {
-//   const newplaceholder_pass = textarea.pass.value;
-//   if (newplaceholder_pass != "") {
-//     textarea.pass.value ="";
-//     change.button.innerHTML = "Effectuer les changements";
-//     change.button.type = "submit";
-//     textarea.pass.value = newplaceholder_pass;
-//   }
-//   textarea.pass_validate.style.marginRight = "50px";
-//   textarea.pass_validate.style.opacity = "0";
-//   textarea.pass.disabled=true;
-// }
 
 change.button.onclick = () => {
   textarea.pseudo_validate.click();
@@ -722,16 +490,6 @@ function FindNext() {
     if (supported && !found) modals.show(search.not_find);
     //else alert("Your browser does not support this example!");
 }
-
-/*
- * SETTINGS MODAL
- */
-settings.show_btn.onclick = () => {
-    modals.show(settings.id, ()=>{
-      settings.bug_input.value = "";
-    })
-};
-
 
 /*
  * HELP MODAL
