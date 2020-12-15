@@ -20,7 +20,7 @@ function tasks(){
     $nb_done_tasks = isset($tasks) ? countDoneTasks($tasks) : 0;
 
     $categories = Category::getAllCategories($_SESSION['project_id']);
-    require('view/main.php');
+    require('view/tasks.php');
 }
 
 /**
@@ -62,7 +62,7 @@ function editTask(){
     $category = isset($data['category']) && $data['category'] != '-1' ? $data['category'] : null;
     $category = isset($data['add_category']) && $data['add_category'] != '' ? addCategory($data['add_category']) : $category;
     $task->setCategoryId($category);
-    
+
     $task->update();
     header('Location: index.php');
 }
