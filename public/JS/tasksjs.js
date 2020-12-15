@@ -341,16 +341,16 @@ function manageCheckbox(event) {
 
     // Get current category
     const category = getTaskCategory(c_checkbox)
-    if (!category) return;
-    // To check or not to check category checkbox
-    let category_selected = true
-    for (let i = 0; i < display.checkbox.length; i++) {
-        if (display.checkbox[i].classList.contains('active')
-        && !display.checkbox[i].checked
-        && !display.checkbox[i].classList.contains('category-check')
-        && getTaskCategory(display.checkbox[i]) === category) category_selected = false;
+    if (category) { // To check or not to check category checkbox
+        let category_selected = true
+        for (let i = 0; i < display.checkbox.length; i++) {
+            if (display.checkbox[i].classList.contains('active')
+            && !display.checkbox[i].checked
+            && !display.checkbox[i].classList.contains('category-check')
+            && getTaskCategory(display.checkbox[i]) === category) category_selected = false;
+        }
+        document.getElementById(category).checked = category_selected
     }
-    document.getElementById(category).checked = category_selected
 
     if (c_checkbox.checked) display.trash.style.display = "inline-block";
     else {
