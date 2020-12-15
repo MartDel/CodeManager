@@ -15,8 +15,7 @@ ob_start();
   <h1 class="form_title">Connexion</h1>
 </div>
 <div class="form_container">
-<form action="#" method="post">
-  <!-- <form action="index.php?action=checkSignIn" method="post"> -->
+  <form action="index.php?action=checkSignIn" method="post">
     <input class="input_text" id="pseudo_field" type="text" name="login" placeholder="Pseudo / Addresse mail" autofocus required />
     <br>
     <input class="input_text" id="passwd_field" type="password" name="password" placeholder="Mot de passe" required />

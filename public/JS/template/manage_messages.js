@@ -27,9 +27,9 @@ function checkMessage(){
  * Functions
  */
 
-function focusEmptyInput(){ $("input[value='']").focus() }
-function focusPassword(){ $("input[type='password']").focus() }
-function focusEmail(){ $("input[type='email']").focus() }
+function focusEmptyInput(){ $("input:first").focus() }
+function focusPassword(){ $("input[type='password']:first").focus() }
+function focusEmail(){ $("input[type='email']:first").focus() }
 
 function openEditAccount(){ modals.show(project.id) }
 function openAddUserModal(){ modals.show(add.id) }
