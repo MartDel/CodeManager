@@ -30,6 +30,8 @@ class Message {
             }
         }
 
+        setTimeout(this.close, 4000)
+
         window.cmessage = mess
         window.ctype = this.type
     }
