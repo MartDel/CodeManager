@@ -350,7 +350,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
   /*border-right: red 5px solid;*/
 }
 
-/*NEW*/
 .done-task {
   text-decoration: line-through;
 }
@@ -395,15 +394,19 @@ aside[name~=popup_modal_task] .modal-wrapper {
   width: 100%;
 }
 
+.bottom-task-modal td div:hover {
+  cursor: pointer;
+}
+
 .bottom-task-modal td {
-  width: 50%;
+  width: 33%;
   padding: 10px;
   align-items: center;
   text-align: center;
   color: black;
 }
 
-.bottom-task-modal td span a {
+.bottom-task-modal td div a {
   color: black;
   text-decoration: none;
 }
@@ -694,7 +697,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-#new_cat_button2 {
+.new_cat_button2 {
   background-color: transparent;
   border: #bebebe 2px solid;
   font-family: "Product Sans Regular";
@@ -710,13 +713,13 @@ aside[name~=popup_modal_task] .modal-wrapper {
   transition: opacity 0.3s;
 }
 
-#new_cat_button2:hover {
+.new_cat_button2:hover {
   cursor: pointer;
   background-color: #b41e10;
   color: white;
 }
 
-#input_new_cat2 {
+.input_new_cat2 {
   height: 17px;
   display: none;
   opacity: 0;

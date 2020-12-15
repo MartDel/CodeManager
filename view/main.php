@@ -229,18 +229,24 @@ ob_start();
                       <table class="bottom-task-modal">
                         <tr>
                           <td>
-                            <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
+                            <div class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
                                 <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
                                     <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
                                     <p>Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?> effectuée</p>
                                 </a>
-                            </span>
+                            </div>
                           </td>
                           <td>
-                            <span title="Supprimer la tâche">
+                            <div onclick="setTimeout(()=>{modals.show('task<?= $task->getId() ?>_edit')},500)" class="close-modal" title="Éditer la tâche">
+                                <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
+                                <p class="trash2">Editer la tâche</p>
+                            </div>
+                          </td>
+                          <td>
+                            <div onclick="setTimeout(() => deleteTask(<?= $task->getId() ?>), 500)" class="close-modal" title="Supprimer la tâche">
                                 <img class="brightnessmax trash2 close-modal" src="public/img/trash.png" alt="" />
                                 <p class="trash2">Supprimer la tâche</p>
-                            </span>
+                            </div>
                           </td>
                         </tr>
                       </table>

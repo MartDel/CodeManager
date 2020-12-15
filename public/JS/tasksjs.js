@@ -468,3 +468,14 @@ select_all2.trash.onclick = () => {
     modals.show(select_all.delete_task)
     select_all.yes_task.onclick = () => deleteTasks(getTasksToDelete2())
 }
+
+function deleteTask(id){
+      if(permissions == 0){
+          const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de supprimer une tâche.")
+          err.show()
+          return;
+      }
+      select_all.nb_tasks.innerText = 1
+      select_all.yes_task.onclick = () => window.location.search = '?action=deleteTasks&tasks=' + id
+      modals.show(select_all.delete_task)
+}
