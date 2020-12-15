@@ -20,7 +20,6 @@
 		<?= $content ?>
 
 		<!-- Implementations -->
-		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 		<!-- JS code -->
