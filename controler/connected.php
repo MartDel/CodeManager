@@ -371,6 +371,11 @@ function switchProject(){
 function editPP(){
     checkFileInfo();
 
+    // Delete existing pp
+    if(isset($_SESSION['pp'])){
+        unlink('public/img/users/' . $_SESSION['pp']);
+    }
+
     $user = getCurrentUser();
 	$extension = pathinfo($_FILES['pp']['name'])['extension'];
     $user->setPictureName($_SESSION['user_id'] . '.' . $extension);
