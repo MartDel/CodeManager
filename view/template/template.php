@@ -111,7 +111,7 @@
 		<script type="text/javascript" src="public/JS/template/Message.js"></script>
 		<script type="text/javascript" src="public/JS/template/manage_messages.js"></script>
 		<script type="text/javascript" src="public/JS/template/modal.js"></script>
-		<script type="text/javascript" src="public/JS/template/menu_nav.js"></script>
+		<script type="text/javascript" src="public/JS/template/template.js"></script>
 		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
 	</body>
 </html>
