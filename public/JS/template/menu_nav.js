@@ -10,27 +10,6 @@ let search = {
   no_text:"no_text"
 }
 
-// Account elements
-
-let textarea = {
-  pseudo:document.getElementById("textarea_pseudo"),
-  pseudo_validate:document.getElementById("validate_textarea_pseudo"),
-  mail:document.getElementById("textarea_mail"),
-  mail_validate:document.getElementById("validate_textarea_mail"),
-  pass:document.getElementById("textarea_pass"),
-  pass_validate:document.getElementById("validate_textarea_pass"),
-
-}
-let change = {
-  pseudo:document.getElementById("modify_textarea_pseudo"),
-  mail:document.getElementById("modify_textarea_mail"),
-  pass:document.getElementById("modify_textarea_pass"),
-  button : document.getElementById("cancel_submit_changes"),
-  img:document.getElementById("img_account_changeimg"),
-  imgtext:document.getElementById("img_text"),
-  form : document.getElementById("form_add_img"),
-}
-
 // Left menu
 
 const menu = {
@@ -40,26 +19,12 @@ const menu = {
     images: '.img_menu_gauche_js',
     not_selected: '.notselectedmenu',
     selected: '.selectedmenu',
-    ///////////////////:
-    open: false,
-    main_div: document.getElementById("menu_gauche"),
-    text: [
-        document.getElementById("text_menu_left_1"),
-        document.getElementById("text_menu_left_2"),
-        document.getElementById("text_menu_left_3"),
-        document.getElementById("text_menu_left_4"),
-        document.getElementById("text_menu_left_5")
-    ],
-    img: document.getElementsByClassName("img_menu_gauche_js"), // Array
-    // selected: document.getElementsByClassName("selectedmenu")[0],
-    // not_selected: document.getElementsByClassName("notselectedmenu"), // Array
-    burger: document.getElementById("menu_checkbox")
+    burger: '#menu_checkbox'
 }
 
 $(menu.burger).click(function () {
-    if (menu.open) closeMenu()
-    else  openMenu()
-    menu.open = !menu.open
+    if (getCookie('menu') === 'open') closeMenu()
+    else openMenu()
 })
 function closeMenu(){
     $(menu.div).css('transition-delay', "0s, 0s").css('width', '100px')
@@ -126,13 +91,13 @@ const project = {
 // Open project modal
 project.btns.forEach((item) => {
     $(item).click(function (){
-        modals.show(project.modal.substring(1))
+        modals.show(project.modal)
     })
 })
 
 // Open modal to create project
 $(project.add.btn).click(function (){
-    setTimeout(() => modals.show(project.add.modal.substring(1), ()=>{
+    setTimeout(() => modals.show(project.add.modal, ()=>{
         $(project.add.form).find('input[placeholder], textarea[placeholder]').val('')
     }), 500)
 })
@@ -149,7 +114,7 @@ $(project.edit.btn).click(function (){
     $(project.edit.form).find('input[placeholder], textarea[placeholder]').each(function (i) {
         values[i] = $(this).val()
     })
-    setTimeout(() => modals.show(project.edit.modal.substring(1), () => {
+    setTimeout(() => modals.show(project.edit.modal, () => {
         $(project.edit.form).find('input[placeholder], textarea[placeholder]').each(function (i) {
             $(this).val(values[i])
         })
@@ -159,7 +124,7 @@ $(project.edit.btn).click(function (){
 // Settings
 
 const settings = {
-    modal: '#bcc_settings',
+    modal: '#settings',
     btn: '#gear_logo_img',
     edit: {
         dark_mode: '#dark_mode',
@@ -219,7 +184,7 @@ function turnOnDarkMode() {
     $('.category_flex select option').css('color', "black").css('backgroundColor', "white")
 
     // Turn off night-shift
-    $(settings.edit.night_shift).attr('checked', 'off')
+    $(settings.edit.night_shift)[0].checked = false
     turnOffNightShift()
 
     // Set dark-mode cookie
@@ -260,7 +225,7 @@ function turnOffDarkMode() {
     $('.img_menu_gauche_js').css('filter', "invert(0%) brightness(0%)")
 
     // Set dark-mode cookie
-    setCookie('dark-mode', 'off')
+    setCookie('dark-mode', null)
 }
 
 // Night shift
@@ -270,7 +235,7 @@ settings.night_shift_btn.onchange = () => {
 }
 function turnOnNightShift() {
     // Turn off dark-mode
-    $(settings.edit.dark_mode).attr('checked', 'off')
+    $(settings.edit.dark_mode)[0].checked = false
     turnOffDarkMode();
 
     $('body').css('filter', "sepia(15%)")
@@ -284,34 +249,104 @@ function turnOffNightShift(){
     $(settings.edit.NS_chanches).css('filter', "invert(0%) hue-rotate(0deg)")
 
     // Set night-shift cookie
-    setCookie('night-shift', 'off')
+    setCookie('night-shift', null)
 }
 
 // Account
 
 const account = {
-    edit: {
-        form_img: '#form_add_img',
-        img: '#input_img'
+    modal: '#my_informations',
+    btn: '#button_my_account',
+    select: {
+        modal: '#account',
+        btn: '#account_logo_img',
+        settings_btn: '#button_option'
     },
-    //////////////////////
-    id: 'account',
-    modal: document.getElementById("account_white_bc"),
-    show_btn: document.getElementById("account_logo_img"),
-    close: document.getElementById("close_account_modal"),
-    option: document.getElementById("button_option"),
-    back: document.getElementById("account_background"),
-    redirectinfos: document.getElementById("button_my_account"),
-    open_confirm:document.getElementById("confirm_open"),
-    delete:"delete",
-};
-const accountinfos = {
-  id: "my_informations",
-  no_delete:document.getElementById("no_delete"),
+    edit: {
+        img: {
+            form: '#form_add_img',
+            input: '#input_img',
+            text: '#img_text',
+            img: '#img_account_changeimg'
+        },
+        text: {
+            input: '#textarea_pseudo',
+            old_value: $('#textarea_psueudo').val(), // Update it if you updated account.edit.text.input
+            validate: '#validate_textarea_pseudo',
+            btn: 'modify_textarea_pseudo',
+            submit: '#cancel_submit_changes'
+        }
+    },
+    delete: {
+        modal: '#delete',
+        confirm: '#confirm_open',
+        cancel: '#no_delete'
+    }
 }
 
-$(account.edit.img).change(function (){
-    $(account.edit.form_img).submit()
+// Show select modal
+$(account.select.btn).click(function () {
+    modals.show(account.select.modal)
+})
+// Show account modal by select modal
+$(account.btn).click(function (){
+    setTimeout(() => modals.show(account.modal, ()=>{
+        $(account.edit.text.validate).css('marginRight', "50px").css('opacity', "0")
+        $(account.edit.text.input).attr('disabled', true)
+        $(account.edit.text.submit).html("Annuler")
+    }), 500)
+})
+// Show settings modal by select modal
+$(account.select.settings_btn).click(function () {
+    setTimeout(() => {
+        modals.show(settings.modal, () => {
+            $(settings.input).val('')
+        })
+    }, 500)
+})
+
+// Edit profil picture
+$(account.edit.img.img).change(function (){
+    $(account.edit.img.form).submit()
+})
+// Change profil picture btn on hover
+$(account.edit.img.form)
+    .mouseenter(function (){
+        $(account.edit.img.img).css('filter', "brightness(40%)")
+        $(account.edit.img.text).css('opacity', "1")
+    }).mouseleave(function (){
+        $(account.edit.img.img).css('filter', "brightness(100%)")
+        $(account.edit.img.text).css('opacity', "0")
+    })
+
+// Enable edit pseudo
+$(account.edit.edit_btn).click(function (){
+    $(account.edit.validate).css('margin-right', "100px").css('opacity', "1")
+    $(account.edit.input).attr('disabled', false).focus()
+})
+// Validate changes (without submit)
+$(account.edit.text.validate).click(function (){
+    $(this).css('margin-right', '50px').css('opacity', 0)
+    if ($(account.edit.text.input).val() !== account.edit.text.old_value) {
+        $(account.edit.text.submit)
+            .addClass('none').removeClass('close-modal')
+            .attr('type', 'submit').text('Effectuer les changements')
+    }
+})
+// Submit changes
+$(account.edit.text.submit).click(function (){
+    $(account.edit.text.validate).click();
+    setTimeout(() => {
+        $(this).html("Annuler").attr('type', 'button')
+    }, 500)
+})
+
+// Delete account
+$(account.delete.confirm).click(function (){
+    setTimeout(() => modals.show(account.delete.modal), 500)
+})
+$(account.delete.cancel).click(function (){
+    setTimeout(() => modals.show(account.modal), 500)
 })
 
 /*
@@ -353,96 +388,26 @@ function wOnload(){
     }
 
     // Turn ON/OFF dark mode
-      if (getCookie('dark-mode') === 'on') {
-          turnOnDarkMode()
-          $(settings.edit.dark_mode).attr('checked', 'on')
-      } else {
-          turnOffDarkMode()
-          $(settings.edit.dark_mode).attr('checked', 'off')
-      }
+    if (getCookie('dark-mode') === 'on') {
+        turnOnDarkMode()
+        $(settings.edit.dark_mode)[0].checked = true
+    } else {
+        turnOffDarkMode()
+        $(settings.edit.dark_mode)[0].checked = false
+    }
 
 
     // Turn ON/OFF night shift
     if (getCookie('night-shift') === 'on') {
         turnOnNightShift()
-        $(settings.edit.night_shift).attr('checked', 'on')
+        $(settings.edit.night_shift)[0].checked = true
     } else {
         turnOffNightShift()
-        $(settings.edit.night_shift).attr('checked', 'off')
+        $(settings.edit.night_shift)[0].checked = false
     }
 
     // Print modal div
     $('#modals').css('display', 'block')
-}
-
-/*
- * ACCOUNT MODAL
- */
-account.show_btn.onclick = () => {
-    modals.show(account.id)
-};
-account.option.onclick = () => {
-    setTimeout(() => modals.show(settings.id), 500)
-};
-account.redirectinfos.onclick = () => {
-    setTimeout(() => modals.show(accountinfos.id, ()=>{
-      textarea.pseudo_validate.style.marginRight = "50px";
-      textarea.pseudo_validate.style.opacity = "0";
-      change.button.innerHTML = "Annuler";
-      textarea.pseudo.disabled=true;
-
-    }), 500)
-};
-
-
-//CHANGE INFORMATIONS Account
-function hover_change(){
-  change.img.style.filter = "brightness(40%)";
-  change.imgtext.style.opacity = "1";
-}
-function leave_change(){
-  change.img.style.filter = "brightness(100%)";
-  change.imgtext.style.opacity = "0";
-}
-
-change.pseudo.onclick = () => {
-  textarea.pseudo.disabled=false;
-  textarea.pseudo_validate.style.marginRight = "100px";
-  textarea.pseudo_validate.style.opacity = "1";
-  textarea.pseudo.focus();
-
-  //textarea.mail_validate.click();
-  //textarea.pass_validate.click();
-
-}
-var newplaceholder_pseudo = textarea.pseudo.value;
-textarea.pseudo_validate.onclick = () => {
-  if (newplaceholder_pseudo != textarea.pseudo.value) {
-    //textarea.pseudo.value = newplaceholder_pseudo;
-    change.button.innerHTML = "Effectuer les changements";
-    change.button.classList.remove("close-modal");
-    change.button.classList.add("none");
-    change.button.type = "submit";
-  }
-  textarea.pseudo_validate.style.marginRight = "50px";
-  textarea.pseudo_validate.style.opacity = "0";
-  //textarea.pseudo.disabled=true;
-}
-
-change.button.onclick = () => {
-  textarea.pseudo_validate.click();
-  setTimeout(() => change.button.innerHTML = "Annuler", 500)
-  setTimeout(() => change.button.type = "button", 500)
-
-}
-
-//DELETE Account
-
-account.open_confirm.onclick = () =>{
-  setTimeout(() => modals.show(account.delete), 500)
-}
-accountinfos.no_delete.onclick = () =>{
-  setTimeout(() => modals.show(accountinfos.id), 500)
 }
 
 /*

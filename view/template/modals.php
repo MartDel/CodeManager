@@ -54,7 +54,7 @@
       <a href="#">
         <div class="img_account_change">
           <img id="img_account_changeimg" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
-            <form id="form_add_img" class="form_add_img" action="index.php?action=editPP" method="post" enctype="multipart/form-data" onmouseover="hover_change()" onmouseleave="leave_change()">
+            <form id="form_add_img" class="form_add_img" action="index.php?action=editPP" method="post" enctype="multipart/form-data">
               <input class="input_img" size="0" id="input_img" type="file" name="pp" />
               <input type="submit" value="Envoyer" />
             </form>

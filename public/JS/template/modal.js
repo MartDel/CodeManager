@@ -62,6 +62,7 @@ const modals = new Vue({
     },
     methods: {
         show(id, closing = null){
+            id = id.indexOf('#') === -1 ? id : id.substring(1)
             showTemplateModal(id)
             window.callback = closing
         },
