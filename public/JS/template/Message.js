@@ -1,6 +1,5 @@
 let cmessage = null
 let ctype = null
-
 class Message {
     constructor(type, title, content) {
         this.type = type === 'info' ? type : 'error'
@@ -12,18 +11,18 @@ class Message {
     }
 
     show(){
-        const mess = document.getElementById('message')
-        mess.classList.add('show-' + this.type)
-        mess.querySelector('#title').innerHTML = this.title
-        mess.querySelector('#content').innerHTML = this.content
-        mess.querySelector('#close_message').onclick = this.close
+        const $mess = $('#message')
+        $mess.addClass('show-' + this.type)
+        $mess.find('#title').text(this.title)
+        $mess.find('#content').text(this.content)
+        $mess.find('#close_message').click(this.close)
 
         // Dynamic button
         if(this.dynamic){
-            const btn = mess.querySelector('#action')
-            btn.style.display = 'flex'
-            btn.querySelector('#icon').name = this.btn2
-            btn.onclick = () => {
+            const $btn = $mess.find('#action')
+            $btn.find('#icon').attr('name', this.btn2)
+            $btn.css('display', 'flex')
+            $btn[0].onclick = () => {
                 this.close()
                 if(this.arg) setTimeout(() => this.dynamic(this.arg), 1000)
                 else setTimeout(this.dynamic, 1000)
@@ -32,17 +31,17 @@ class Message {
 
         setTimeout(this.close, 4000)
 
-        window.cmessage = mess
+        window.cmessage = $mess
         window.ctype = this.type
     }
 
     close(){
-        const cmessage = window.cmessage
-        if(!cmessage) return
-        cmessage.classList.add('hide')
+        const $cmessage = window.cmessage
+        if(!$cmessage) return
+        $cmessage.addClass('hide')
         setTimeout(() => {
-            cmessage.classList.remove('show-' + window.ctype)
-            cmessage.classList.remove('hide')
+            $cmessage.removeClass('show-' + window.ctype)
+            $cmessage.removeClass('hide')
         }, 500)
         window.cmessage = null
     }

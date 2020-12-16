@@ -471,3 +471,19 @@ function deleteTask(id){
       select_all.yes_task.onclick = () => window.location.search = '?action=deleteTasks&tasks=' + id
       modals.show(select_all.delete_task)
 }
+
+/**
+ * Show a specific element
+ * @param  {DOM element} element Element to show
+ */
+function show(element){
+    element.style.display = "block";
+}
+
+/**
+ * Hide a specific element
+ * @param  {DOM element} element Element to hide
+ */
+function hide(element){
+    element.style.display = "none";
+}
