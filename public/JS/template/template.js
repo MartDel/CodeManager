@@ -1,15 +1,3 @@
-// Help elements
-const help = {
-    modal: document.getElementById("help_modal"),
-    show_btn: document.getElementById("help_logo_img"),
-};
-//SEARCH
-
-let search = {
-  not_find:"not_find",
-  no_text:"no_text"
-}
-
 // Left menu
 
 const menu = {
@@ -68,8 +56,47 @@ function openMenu(){
 
 // Search into the page
 
-const input_search = document.getElementById("findField")
-const body = document.getElementsByTagName("body")[0];
+const search = {
+    input: "#findField",
+    modal: '#not_find'
+}
+
+$(search.input).keyup(function (e){
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        FindNext();
+    }
+})
+function FindNext() {
+    const str = $(search.input).val();
+
+    // If void STOP
+    if (str === "") return
+
+    let supported = false;
+    let found = false;
+    if (window.find) {
+        // If some content is selected, the start position of the search
+        // will be the end position of the selection
+        supported = true;
+        found = window.find(str);
+    } else if (document.selection && document.selection.createRange) {
+        let textRange = document.selection.createRange();
+        if (textRange.findText) {
+            // If some content is selected, the start position of the search
+            // will be the position after the start position of the selection
+            supported = true;
+            if (textRange.text.length > 0) {
+                textRange.collapse(true);
+                textRange.move("character", 1);
+            }
+            found = textRange.findText(str);
+            if (found) textRange.select();
+        }
+    }
+
+    if (supported && !found) modals.show(search.modal);
+}
 
 // Project
 
@@ -130,15 +157,7 @@ const settings = {
         dark_mode: '#dark_mode',
         night_shift: '#night_shift',
         NS_changes: '#account_logo_img'
-    },
-    input: '#textarea_bug',
-    ////////////////////////////////////
-    id: 'settings',
-    show_btn: document.getElementById("gear_logo_img"),
-    close_btn: document.getElementById("close_settings"),
-    dark_mode_btn: document.getElementById("dark_mode"),
-    night_shift_btn: document.getElementById("night_shift"),
-    bug_input: document.getElementById("textarea_bug")
+    }
 }
 
 // Show settings modal
@@ -228,11 +247,11 @@ function turnOffDarkMode() {
     setCookie('dark-mode', null)
 }
 
-// Night shift
-settings.night_shift_btn.onchange = () => {
-    if (settings.night_shift_btn.checked) turnOnNightShift()
+// Turn ON/OFF night-shift
+$(settings.edit.night_shift).change(function (){
+    if ($(settings.edit.night_shift)[0].checked) turnOnNightShift()
     else turnOffNightShift()
-}
+})
 function turnOnNightShift() {
     // Turn off dark-mode
     $(settings.edit.dark_mode)[0].checked = false
@@ -251,6 +270,33 @@ function turnOffNightShift(){
     // Set night-shift cookie
     setCookie('night-shift', null)
 }
+
+// Help
+
+const help = {
+    modal: "#help_modal",
+    btn: "#help_logo_img"
+}
+
+window.onclick = (e) => {
+    // Close help modal
+    const $help = $(help.modal)
+    const $btn = $(help.btn)
+    if ($help.css('display') === "block" && e.target !== $btn[0]) {
+        $btn.removeClass("help_logo_onclick").css('filter', "invert(25%)")
+        $help.css('display', 'none')
+    }
+}
+$(help.btn).click(function (){
+    const $help = $(help.modal)
+    if ($help.css('display') === "block") {
+        $(this).removeClass("help_logo_onclick").css('filter', "invert(25%)")
+        $help.css('display', 'none')
+    } else {
+        $(this).addClass("help_logo_onclick").css('filter', "invert(100%) hue-rotate(160deg) grayscale(100%)")
+        $help.css('display', 'block')
+    }
+})
 
 // Account
 
@@ -271,9 +317,9 @@ const account = {
         },
         text: {
             input: '#textarea_pseudo',
-            old_value: $('#textarea_psueudo').val(), // Update it if you updated account.edit.text.input
+            old_value: $('#textarea_pseudo').val(), // Update it if you updated account.edit.text.input
             validate: '#validate_textarea_pseudo',
-            btn: 'modify_textarea_pseudo',
+            btn: '#modify_textarea_pseudo',
             submit: '#cancel_submit_changes'
         }
     },
@@ -320,17 +366,20 @@ $(account.edit.img.form)
     })
 
 // Enable edit pseudo
-$(account.edit.edit_btn).click(function (){
-    $(account.edit.validate).css('margin-right', "100px").css('opacity', "1")
-    $(account.edit.input).attr('disabled', false).focus()
+$(account.edit.text.btn).click(function (){
+    console.log('enable');
+    $(account.edit.text.validate).css('margin-right', "100px").css('opacity', "1")
+    $(account.edit.text.input).attr('disabled', false).focus()
 })
 // Validate changes (without submit)
 $(account.edit.text.validate).click(function (){
+    console.log('validate');
     $(this).css('margin-right', '50px').css('opacity', 0)
     if ($(account.edit.text.input).val() !== account.edit.text.old_value) {
         $(account.edit.text.submit)
             .addClass('none').removeClass('close-modal')
             .attr('type', 'submit').text('Effectuer les changements')
+            [0].removeEventListener('click', closeTemplateModal)
     }
 })
 // Submit changes
@@ -350,17 +399,16 @@ $(account.delete.cancel).click(function (){
 })
 
 /*
-
- */
+=========================
+======= FUNCTIONS =======
+=========================
+*/
 
 /**
  * Executed when the JS is loaded
  */
 function wOnload(){
     // Manage Menu
-    setTimeout(() => {
-        $('body').css('opacity', "1")
-    },450)
     if (getCookie('menu') === 'open') {
         $(menu.texts).css('transition', 'all 0s')
         $(menu.images).css('transition', "all 0s")
@@ -386,6 +434,9 @@ function wOnload(){
         closeMenu();
         $(menu.div).css('transition-duration', "0.3s, 0.3s")
     }
+    setTimeout(() => {
+        $('body').css('opacity', "1")
+    },450)
 
     // Turn ON/OFF dark mode
     if (getCookie('dark-mode') === 'on') {
@@ -409,118 +460,6 @@ function wOnload(){
     // Print modal div
     $('#modals').css('display', 'block')
 }
-
-/*
- * SEARCH BAR
- */
-input_search.addEventListener("keyup", (event) => {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        FindNext();
-    }
-})
-function FindNext() {
-    //If void
-    const str = document.getElementById("findField").value;
-    if (str == "") {
-        //modals.show(search.no_text);
-        return;
-    }
-
-    let supported = false;
-    let found = false;
-    if (window.find) {
-        supported = true;
-        // if some content is selected, the start position of the search
-        // will be the end position of the selection
-        found = window.find(str);
-    } else {
-        if (document.selection && document.selection.createRange) {
-            let textRange = document.selection.createRange();
-            if (textRange.findText) {
-                supported = true;
-                // if some content is selected, the start position of the search
-                // will be the position after the start position of the selection
-                if (textRange.text.length > 0) {
-                    textRange.collapse(true);
-                    textRange.move("character", 1);
-                }
-
-                found = textRange.findText(str);
-                if (found) textRange.select();
-            }
-        }
-    }
-
-    if (supported && !found) modals.show(search.not_find);
-    //else alert("Your browser does not support this example!");
-}
-
-/*
- * HELP MODAL
- */
-
- window.onclick = (event) => {
-     // Close help modal
-     if (help.modal.style.display === "block" && event.target !== help.show_btn ) {
-         help.show_btn.classList.remove("help_logo_onclick");
-         help.show_btn.style.filter = "invert(25%)";
-         hide(help.modal);
-     }
- };
-help.show_btn.onclick = () => {
-  if (help.modal.style.display=="block") {
-    help.show_btn.classList.remove("help_logo_onclick");
-    help.show_btn.style.filter = "invert(25%)";
-    hide(help.modal);
-  } else {
-    help.show_btn.classList.add("help_logo_onclick");
-    help.show_btn.style.filter =
-        "invert(100%) hue-rotate(160deg) grayscale(100%)";
-    show(help.modal);
-  }
-
-};
-
-/*
-=========================
-======= FUNCTIONS =======
-=========================
-*/
-
-/**
- * Check if a value is contained in a specific array
- * @param  {Array} array Array to analyse
- * @param  {various} value Value to check
- * @return {Boolean}
- */
-function contain(array, value){
-    let r = false;
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === value) r = true;
-    }
-    return r;
-}
-
-/**
- * Show a specific element
- * @param  {DOM element} element Element to show
- */
-function show(element){
-    element.style.display = "block";
-}
-
-/**
- * Hide a specific element
- * @param  {DOM element} element Element to hide
- */
-function hide(element){
-    element.style.display = "none";
-}
-
-/*
- * COOKIES FUNCTIONS
- */
 
 /**
  * Get a specific cookie by its name
