@@ -352,7 +352,7 @@ $(account.select.settings_btn).click(function () {
 })
 
 // Edit profil picture
-$(account.edit.img.img).change(function (){
+$(account.edit.img.input).change(function (){
     $(account.edit.img.form).submit()
 })
 // Change profil picture btn on hover
