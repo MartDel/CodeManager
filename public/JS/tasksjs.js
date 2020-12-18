@@ -487,3 +487,17 @@ function show(element){
 function hide(element){
     element.style.display = "none";
 }
+
+/**
+ * Check if a value is contained in a specific array
+ * @param  {Array} array Array to analyse
+ * @param  {various} value Value to check
+ * @return {Boolean}
+ */
+function contain(array, value){
+    let r = false;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) r = true;
+    }
+    return r;
+}
