@@ -88,7 +88,7 @@
       <br><br><br>
       <div class="account_change_row buttons_delete_support">
         <a href="#" id="confirm_open" class="close-modal">Supprimer mon compte</a>
-        <a href="#">Besoin d'aide ?</a>
+        <a href="mailto:tom.mullier@outlook.fr">Besoin d'aide ?</a>
       </div>
     </div>
 </modal>
