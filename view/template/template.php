@@ -53,21 +53,23 @@
 		    <div id="menu_gauche">
 
 		        <ul>
-		            <a>
-		                <li onclick="redirect_index()" class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
+		            <a href="index.php">
+		                <li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
 		                  </span>
 		                    <p class="colorred textgauche" id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
+						<a href="index.php?action=objectives">
 		            <li class="<?= $page == 'objectives' ? '' : 'not' ?>selectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
 		                </span>
 		                <p class="textgauche" id="text_menu_left_2">Objectifs</p>
 		            </li>
-					<a onclick="redirect_team()">
+					</a>
+					<a href="index.php?action=team">
 						<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
@@ -75,13 +77,15 @@
 			                <p class="textgauche" id="text_menu_left_3">Team</p>
 			            </li>
 					</a>
+					<a href="index.php?action=chat">
 		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="Discussion">
 		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
 		              </span>
 		                <p class="textgauche" id="text_menu_left_4">Discussion</p>
 		            </li>
-		            <a onclick="redirect_github()">
+					</a>
+          <a href="index.php?action=github">
 						<li class="<?= $page == 'github' ? '' : 'not' ?>selectedmenu">
 			              <span title="GitHub">
 			                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />

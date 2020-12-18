@@ -1227,7 +1227,6 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-size: 14px;
   font-family: "Product Sans Regular";
   width: 242px;
-  padding-right: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
