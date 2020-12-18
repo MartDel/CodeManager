@@ -91,25 +91,31 @@ window.onload = () => {
       display.category_2.src="public/img/category_2.png"
       display.category_1.src="public/img/category_1.png"
     }
+}
 
-
-    // Hide or show done tasks
-    const search = window.location.search
-    const params = new URLSearchParams(search)
-    tasks_done.show = params.has('endTask')
-    showTasks(!tasks_done.show)
-    showDoneTasks(tasks_done.show)
-    for (let i = 0; i < tasks_done.btn.length; i++) {
-        if (tasks_done.show) {
-                tasks_done.btn[i].style.filter = "grayscale(0%)";
-                tasks_done.btn[i].style.animation = "0.5s Rotate";
-        } else {
-                tasks_done.btn[i].style.filter = "grayscale(100%)";
-                tasks_done.btn[i].style.animation = "0.5s RotateInv";
+new Vue({
+    el: '#tasks',
+    data: {
+        done_task: false
+    },
+    mounted(){
+        console.log('test');
+        const search = window.location.search
+        const params = new URLSearchParams(search)
+        this.done_task = params.has('endTask')
+        for (let i = 0; i < tasks_done.btn.length; i++) {
+            if (tasks_done.show) {
+                    tasks_done.btn[i].style.filter = "grayscale(0%)";
+                    tasks_done.btn[i].style.animation = "0.5s Rotate";
+            } else {
+                    tasks_done.btn[i].style.filter = "grayscale(100%)";
+                    tasks_done.btn[i].style.animation = "0.5s RotateInv";
+            }
         }
+        console.log(tasks.container);
+        tasks.container.style.opacity = 1
     }
-    tasks.container.style.opacity = 1
-};
+})
 
 /*
  * SHOW DONE TASKS
