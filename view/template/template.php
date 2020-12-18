@@ -58,7 +58,7 @@
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
 		                  </span>
-		                    <p class="colorred textgauche" id="text_menu_left_1">Tâches</p>
+		                    <p  class="colorred textgauche" id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
 						<a href="index.php?action=objectives">

@@ -322,6 +322,10 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-left: 0px;
 }
 
+#menu_gauche a {
+  text-decoration: none;
+}
+
 .new_task {
   margin-top: 25px;
   background-color: none;
@@ -360,6 +364,10 @@ input[type="search"]::-webkit-search-results-decoration {
   padding-right: 0px;
 }
 
+.notselectedmenu {
+  color: black;
+}
+
 #text_menu_left_1,
 #text_menu_left_2,
 #text_menu_left_3,
@@ -368,6 +376,7 @@ input[type="search"]::-webkit-search-results-decoration {
   opacity: 0;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
+  text-decoration: none;
 }
 
 ul {
@@ -2132,6 +2141,11 @@ input[type="file"]:hover {
 
   #menu_gauche {
     margin-left: -100px;
+  }
+
+  #menu_gauche a {
+    text-decoration: none;
+    color: black;
   }
 
   #flex_arrow {
