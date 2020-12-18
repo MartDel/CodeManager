@@ -18,191 +18,189 @@ ob_start();
         </a>
     </div>
 
-    <div id="tasks">
-        <!--List display (first) -->
-        <section id="firstdisplay" class="ligne_et_taches" style="display:block">
-            <div id="ligne_haut_tache_id" class="ligne_haut_tache">
-                <span title="Tout sélectionner">
-                    <input name="sample" id="select_all" type="checkbox" />
-                </span>
-                <span title="Nouvelle tâche">
-                    <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
-                </span>
-                <span title="Rafraîchir">
-                    <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
-                </span>
-                <span title="Tâches effectuées">
-                    <img class="tasks_done" src="public/img/task_done0.png" alt="" />
-                </span>
-                <span title="Supprimer">
-                    <img class="brightnessmax trash" src="public/img/trash.png" alt="" />
-                </span>
-                <div class="flex_title_task">
-                    <table>
-                        <tr>
-                            <td class="user_title user-table-cell">
-                                <p class="menu_haut_table_cels_p">Utilisateur</p>
-                            </td>
-                            <td class="title-table-cell">
-                                <p class="menu_haut_table_cels_p">Titre</p>
-                            </td>
-                            <td class="desc_title desc-table-cell">
-                                <p class="menu_haut_table_cels_p">Description</p>
-                            </td>
-                            <td class="cate_title category-table-cell">
-                                <p class="menu_haut_table_cels_p">Catégorie</p>
-                            </td>
-                            <td class="date-table-cell">
-                                <p class="date_title menu_haut_table_cels_p">Date de création</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+    <!--List display (first) -->
+    <section id="firstdisplay" class="ligne_et_taches" style="display:block">
+        <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+            <span title="Tout sélectionner">
+                <input name="sample" id="select_all" type="checkbox" />
+            </span>
+            <span title="Nouvelle tâche">
+                <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
+            </span>
+            <span title="Rafraîchir">
+                <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+            </span>
+            <span title="Tâches effectuées">
+                <img class="tasks_done" src="public/img/task_done0.png" alt="" @click="switchDoneTask" />
+            </span>
+            <span title="Supprimer">
+                <img class="brightnessmax trash" src="public/img/trash.png" alt="" />
+            </span>
+            <div class="flex_title_task">
+                <table>
+                    <tr>
+                        <td class="user_title user-table-cell">
+                            <p class="menu_haut_table_cels_p">Utilisateur</p>
+                        </td>
+                        <td class="title-table-cell">
+                            <p class="menu_haut_table_cels_p">Titre</p>
+                        </td>
+                        <td class="desc_title desc-table-cell">
+                            <p class="menu_haut_table_cels_p">Description</p>
+                        </td>
+                        <td class="cate_title category-table-cell">
+                            <p class="menu_haut_table_cels_p">Catégorie</p>
+                        </td>
+                        <td class="date-table-cell">
+                            <p class="date_title menu_haut_table_cels_p">Date de création</p>
+                        </td>
+                    </tr>
+                </table>
             </div>
+        </div>
 
-            <section class="list_task" unselectable="off" onselectstart="return true;">
-                <ul id="liste_taches" class="liste_taches" style="opacity:0;">
-                <?php if (isset($tasks)): ?>
-                    <!--Error messages -->
+        <section class="list_task" unselectable="off" onselectstart="return true;">
+            <ul id="liste_taches" class="liste_taches" style="opacity:0;">
+            <?php if (isset($tasks)): ?>
+                <!--Error messages -->
+                <?php if ($nb_tasks == 0): ?>
+                    <p id="message-task-none" v-show="done_task">Toutes les tâches sont terminées !</p>
+                <?php elseif ($nb_done_tasks == 0): ?>
+                    <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
+                <?php endif; ?>
+
+                <!-- Tasks btn -->
+                <?php foreach ($tasks as $task) { if ($task->getAuthor()): ?>
+                    <button
+                    v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
+                    class="myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>"
+                    id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                    <li>
+                        <span class="span_input_img" title="Sélectionner">
+                            <input
+                                class="input_img check_js to_check"
+                                :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''"
+                                type="checkbox" />
+                        </span>
+                        <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
+                            <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
+                                <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
+                            </a>
+                        </span>
+                        <span class="span_input_img" title="Éditer">
+                            <img class="invertcent input_img tick2" src="public/img/edit_task_bar.png" alt="" />
+                        </span>
+                        <div class="container-list">
+                          <div class=utilisateur>
+                            <span><?= $task->getAuthor() ?></span>
+                          </div>
+                          <div class="titre_tache">
+                            <span><?= $task->getName() ?></span>
+                          </div>
+                          <div class="desc_tache">
+                            <span><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
+                          </div>
+                          <div class="category_tache">
+                            <span><?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></span>
+                          </div>
+                          <div class="date">
+                            <span><?= $task->getCreateDate() ?></span>
+                          </div>
+                        </div>
+                    </li></button>
+                <?php endif; } ?>
+            <?php else: ?>
+                <p id="message-task-none">Pas de tâche pour le moment...</p>
+            <?php endif; ?>
+            </ul>
+        </section>
+    </section>
+
+    <!-- Array display (2nd) -->
+    <section id="seconddisplay" class="ligne_et_taches" style="display:none">
+        <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+            <span title="Tout sélectionner">
+                <input name="sample" id="select_all2" type="checkbox" />
+            </span>
+            <span title="Nouvelle tâche">
+                <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
+            </span>
+            <span title="Rafraîchir">
+                <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+            </span>
+            <span title="Tâches effectuées">
+                <img class="tasks_done" src="public/img/task_done0.png" alt="" @click="switchDoneTask" />
+            </span>
+            <span title="Supprimer">
+                <img class="brightnessmax trash trashsecond" src="public/img/trash.png" alt="" style="display:none;" />
+            </span>
+        </div>
+        <div class="wrapper-table-task">
+            <div class="table-wrapper mozaic_all_table">
+                <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p id="message-task-none" v-show="done_task">Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none" v-show="task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
                         <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
+                    <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
+                        <?php if (count($cat_tasks)): ?>
+                        <table class="table_contain">
+                            <tbody>
+                                <tr class="table_row_main categories">
+                                    <td class="table_col_main category-name">
+                                      </br>
+                                      <div>
+                                        <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
+                                        <p>
+                                            <label
+                                            title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>"
+                                            for="category<?= $category_id ?>">
+                                                <?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>
+                                            </label>
+                                        </p>
+                                      </div>
+                                    </td>
+                                </tr>
 
-                    <!-- Tasks btn -->
-                    <?php foreach ($tasks as $task) { if ($task->getAuthor()): ?>
-                        <button
-                        v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
-                        class="myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                        id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
-                        <li>
-                            <span class="span_input_img" title="Sélectionner">
-                                <input
-                                    class="input_img check_js to_check"
-                                    :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''"
-                                    type="checkbox" />
-                            </span>
-                            <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
-                                <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
-                                    <img class=" invertcent input_img tick" src="public/img/tick.png" alt="" />
-                                </a>
-                            </span>
-                            <span class="span_input_img" title="Éditer">
-                                <img class="invertcent input_img tick2" src="public/img/edit_task_bar.png" alt="" />
-                            </span>
-                            <div class="container-list">
-                              <div class=utilisateur>
-                                <span><?= $task->getAuthor() ?></span>
-                              </div>
-                              <div class="titre_tache">
-                                <span><?= $task->getName() ?></span>
-                              </div>
-                              <div class="desc_tache">
-                                <span><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></span>
-                              </div>
-                              <div class="category_tache">
-                                <span><?= $task->getCategoryId() ? $task->getCategory() : '<i>Divers</i>' ?></span>
-                              </div>
-                              <div class="date">
-                                <span><?= $task->getCreateDate() ?></span>
-                              </div>
-                            </div>
-                        </li></button>
-                    <?php endif; } ?>
+                                <!-- Tasks in the category -->
+                                <?php foreach ($cat_tasks as $task): ?>
+                                    <?php if ($task->getAuthor()): ?>
+                                        <tr
+                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
+                                        v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
+                                        id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                                            <td class="table_col_main">
+                                                <div class="border_all">
+                                                    <div class="left-side-task-mosaic">
+                                                        <input
+                                                            type="checkbox"
+                                                            class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>"
+                                                            :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''" />
+                                                        <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
+                                                        <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
+                                                            <img src="public/img/tick.png" class="invertcent trash-btn" alt="" />
+                                                        </a>
+
+                                                    </div>
+                                                    <div class="task_name_mozaic">
+                                                        <p><?= $task->getName() ?></p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 <?php else: ?>
                     <p id="message-task-none">Pas de tâche pour le moment...</p>
                 <?php endif; ?>
-                </ul>
-            </section>
-        </section>
-
-        <!-- Array display (2nd) -->
-        <section id="seconddisplay" class="ligne_et_taches" style="display:none">
-            <div id="ligne_haut_tache_id" class="ligne_haut_tache">
-                <span title="Tout sélectionner">
-                    <input name="sample" id="select_all2" type="checkbox" />
-                </span>
-                <span title="Nouvelle tâche">
-                    <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
-                </span>
-                <span title="Rafraîchir">
-                    <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
-                </span>
-                <span title="Tâches effectuées">
-                    <img class="tasks_done" src="public/img/task_done0.png" alt="" />
-                </span>
-                <span title="Supprimer">
-                    <img class="brightnessmax trash trashsecond" src="public/img/trash.png" alt="" style="display:none;" />
-                </span>
             </div>
-            <div class="wrapper-table-task">
-                <div class="table-wrapper mozaic_all_table">
-                    <?php if (isset($tasksByCategory)): ?>
-                        <?php if ($nb_tasks == 0): ?>
-                            <p id="message-task-none" v-show="task">Toutes les tâches sont terminées !</p>
-                        <?php elseif ($nb_done_tasks == 0): ?>
-                            <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
-                        <?php endif; ?>
-                        <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
-                            <?php if (count($cat_tasks)): ?>
-                            <table class="table_contain">
-                                <tbody>
-                                    <tr class="table_row_main categories">
-                                        <td class="table_col_main category-name">
-                                          </br>
-                                          <div>
-                                            <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
-                                            <p>
-                                                <label
-                                                title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>"
-                                                for="category<?= $category_id ?>">
-                                                    <?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>
-                                                </label>
-                                            </p>
-                                          </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Tasks in the category -->
-                                    <?php foreach ($cat_tasks as $task): ?>
-                                        <?php if ($task->getAuthor()): ?>
-                                            <tr
-                                            class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                                            v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
-                                            id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
-                                                <td class="table_col_main">
-                                                    <div class="border_all">
-                                                        <div class="left-side-task-mosaic">
-                                                            <input
-                                                                type="checkbox"
-                                                                class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>"
-                                                                :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''" />
-                                                            <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
-                                                            <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
-                                                                <img src="public/img/tick.png" class="invertcent trash-btn" alt="" />
-                                                            </a>
-
-                                                        </div>
-                                                        <div class="task_name_mozaic">
-                                                            <p><?= $task->getName() ?></p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p id="message-task-none">Pas de tâche pour le moment...</p>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
 </section>
 

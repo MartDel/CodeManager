@@ -49,7 +49,7 @@
 		</div>
 
 		<!--MENU DE GAUCHE-->
-		<section class="section_en_dessous_menu">
+		<section class="section_en_dessous_menu" id="app">
 		    <div id="menu_gauche">
 
 		        <ul>

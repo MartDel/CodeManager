@@ -1,20 +1,3 @@
-// Tasks elements
-const tasks = {
-    list: document.getElementsByName("task"),
-    btn: {
-        check_js: document.getElementsByClassName("check_js"),
-        tick: document.getElementsByClassName("tick"),
-        tick2: document.getElementsByClassName("tick2"),
-        trash: document.getElementsByClassName("trash-btn")
-    },
-    container: document.getElementById('liste_taches'),
-}
-let tasks_done = {
-    show: false,
-    btn: document.getElementsByClassName('tasks_done'),
-    list: document.getElementsByName('done_task')
-}
-
 // 'Add task' elements
 const addtask = {
     id: 'add_task',
@@ -50,70 +33,97 @@ const select_all2 = {
     trash: document.getElementsByClassName("trash")[1],
 };
 
-let display = {
-    button:document.getElementsByClassName("selected_display")[0],
-    global:document.getElementById("select_display_global"),
-    open:document.getElementsByClassName("notselected_display")[0],
-    first:document.getElementById("firstdisplay"),
-    second:document.getElementById("seconddisplay"),
-    category_1:document.getElementById("category_1"),
-    category_2:document.getElementById("category_2"),
-}
-
 /*
 =========================
 ======= MAIN CODE =======
 =========================
 */
 
-window.onload = () => {
-    // Menu/nav onload function and check if there is a message to print
-    wOnload()
-    checkMessage()
+const tasks = {
+    list2: ".myBtn",
+    container2: '#liste_taches',
+    done: {
+        btn: '.tasks_done',
+        list: "button[name='done_task']"
+    },
+    ////////////////////////////////
+    list: document.getElementsByName("task"),
+    btn: {
+        check_js: document.getElementsByClassName("check_js"),
+        tick: document.getElementsByClassName("tick"),
+        tick2: document.getElementsByClassName("tick2"),
+        trash: document.getElementsByClassName("trash-btn")
+    },
+    container: document.getElementById('liste_taches'),
+}
+let tasks_done = {
+    show: false,
+    btn: document.getElementsByClassName('tasks_done'),
+    list: document.getElementsByTagName('done_task')
+}
 
-    // Set display
-    if (getCookie('display')==="2") {
-      display.first.style.display="none"
-      display.second.style.display="block"
-      display.open.style.display="none";
-      display.open.style.opacity="0"
-      display.global.style.borderRadius="50%";
-      display.category_2.src="public/img/category_1.png"
-      display.global.style.height="39px";
-      display.category_1.src="public/img/category_2.png"
-    } else {
-      display.first.style.display="block"
-      display.second.style.display="none"
-      display.open.style.display="none";
-      display.open.style.opacity="0";
-      display.global.style.borderRadius="50%";
-      display.global.style.height="39px";
-      display.category_2.src="public/img/category_2.png"
-      display.category_1.src="public/img/category_1.png"
-    }
+const display = {
+    btn: '.selected_display',
+    opened: '.notselected_display',
+    global: '#select_display_global',
+    first: '#firstdisplay',
+    second: '#seconddisplay',
+    category_2: '#category_2',
+    category_1: '#category_1',
 }
 
 new Vue({
-    el: '#tasks',
+    el: '#app',
     data: {
-        done_task: false
+        done_task: true
+    },
+    methods: {
+        switchDoneTask(e){
+            // UPDATE DISPLAY
+            const display = getCookie('display') === '1' ? select_all : select_all2
+            display.select_all.checked = false
+            for (let i = 0; i < display.checkbox.length; i++) {
+                display.checkbox[i].checked = false
+            }
+
+            const $this = $(e.target)
+            if(this.done_task) $this.css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
+            else $this.css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
+
+            setURLParams(this.done_task ? '' : 'endTask')
+            this.done_task = !this.done_task
+        }
     },
     mounted(){
-        console.log('test');
-        const search = window.location.search
-        const params = new URLSearchParams(search)
-        this.done_task = params.has('endTask')
-        for (let i = 0; i < tasks_done.btn.length; i++) {
-            if (tasks_done.show) {
-                    tasks_done.btn[i].style.filter = "grayscale(0%)";
-                    tasks_done.btn[i].style.animation = "0.5s Rotate";
+        window.onload = () => {
+            wOnload()
+            checkMessage()
+
+            // UPDATE DISPLAY
+            // Set display
+            if (getCookie('display')==="2") {
+                $(display.first).css('display', "none")
+                $(display.second).css('display', "block")
+                $(display.category_2).attr('src', "public/img/category_1.png")
+                $(display.category_1).attr('src', "public/img/category_2.png")
             } else {
-                    tasks_done.btn[i].style.filter = "grayscale(100%)";
-                    tasks_done.btn[i].style.animation = "0.5s RotateInv";
+                $(display.first).css('display', "block")
+                $(display.second).css('display', "none")
+                $(display.category_2).attr('src', "public/img/category_2.png")
+                $(display.category_1).attr('src', "public/img/category_1.png")
             }
+            $(display.opened).css('display', 'none').css('opacity', 0)
+            $(display.global).css('border-radius', "50%").css('height', '39px')
+
+            // Show done tasks or not
+            const search = window.location.search
+            const params = new URLSearchParams(search)
+            this.done_task = params.has('endTask')
+            if(this.done_task) $(tasks.done.btn).css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
+            else $(tasks.done.btn).css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
+
+            $(tasks.container2).css('opacity', 1)
         }
-        console.log(tasks.container);
-        tasks.container.style.opacity = 1
     }
 })
 
@@ -165,70 +175,37 @@ function manageCategoryNames(done_task) {
         else $(table).css('display', 'table')
     })
 }
-for (let i = 0; i < tasks_done.btn.length; i++) {
-    tasks_done.btn[i].onclick = (event) => {
-        setURLParams(tasks_done.show ? '' : 'endTask')
-
-        const display = getCookie('display') === '1' ? select_all : select_all2
-        display.select_all.checked = false
-        for (let i = 0; i < display.checkbox.length; i++) {
-            display.checkbox[i].checked = false
-        }
-
-        showTasks(tasks_done.show)
-        showDoneTasks(!tasks_done.show)
-
-        if (!tasks_done.show) {
-            event.target.style.filter = "grayscale(0%)";
-            event.target.style.animation = "0.5s Rotate";
-        } else {
-            event.target.style.filter = "grayscale(100%)";
-            event.target.style.animation = "0.5s RotateInv";
-        }
-
-        tasks_done.show = !tasks_done.show
-    }
-}
 
 
 /*
  * CHANGE DISPLAY
  */
-display.button.onclick =()=>{
-    if (display.open.style.display === "block") {
-        display.open.style.display="none";
-        display.open.style.opacity="0";
-        display.global.style.borderRadius="50%";
-        display.global.style.height="39px";
+$(display.btn).click(function (){
+    if ($(display.opened).css('display') === "block") {
+        $(display.opened).css('display', 'block').css('opacity', 0)
+        $(display.global).css('border-radius', '50%').css('height', '39px')
     } else {
-        display.open.style.display="block";
-        setTimeout(()=>display.open.style.opacity="1",200);
-        display.global.style.borderRadius="500px";
-        display.global.style.height="88px";
+        $(display.opened).css('display', 'block')
+        setTimeout(()=> $(display.opened).css('opacity', 1), 200);
+        $(display.global).css('border-radius', '500px').css('height', '88px')
     }
-}
+})
 function change_display(){
-    if (display.first.style.display === "block") {
-        display.first.style.display="none"
-        display.second.style.display="block"
-        display.open.style.display="none";
-        display.open.style.opacity="0"
-        display.global.style.borderRadius="50%";
-        display.category_2.src="public/img/category_1.png"
-        display.global.style.height="39px";
-        display.category_1.src="public/img/category_2.png"
+    if ($(display.first).css('display') === "block") {
+        $(display.first).css('display', "none")
+        $(display.second).css('display', "block")
+        $(display.category_2).css('src', "public/img/category_1.png")
+        $(display.category_1).css('src', "public/img/category_2.png")
         setCookie("display", "2")
     } else {
-        display.global.style.height="39px";
-        display.first.style.display="block"
-        display.second.style.display="none"
-        display.open.style.display="none";
-        display.open.style.opacity="0";
-        display.global.style.borderRadius="50%";
-        display.category_2.src="public/img/category_2.png"
-        display.category_1.src="public/img/category_1.png"
+        $(display.first).css('display', "block")
+        $(display.second).css('display', "none")
+        $(display.category_2).css('src', "public/img/category_2.png")
+        $(display.category_1).css('src', "public/img/category_1.png")
         setCookie("display", "1")
     }
+    $(display.opened).css('display', "none").css('opacity', 0)
+    $(display.global).css('border-radius', "50%").css('height', "39px")
 }
 
 /*
