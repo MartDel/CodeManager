@@ -369,7 +369,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .top-colour h1 {
   padding: 0;
   margin: 0;
-  margin-top: calc(9vh - 9px)
+  margin-top: calc(9vh - 9px);
+  font-size: 30px;
 }
 
 .bottom-colour {

@@ -575,6 +575,14 @@ body {
   animation: fadein 2s;
 }
 
+.top_resp1 {
+  display: block;
+}
+
+.top_resp2 {
+  display: none;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -605,5 +613,15 @@ body {
 @media only screen and (max-width: 377px) {
   .fonctionnalites {
     font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .top_resp1 {
+    display: none;
+  }
+
+  .top_resp2 {
+    display: block;
   }
 }
