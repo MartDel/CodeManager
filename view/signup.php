@@ -7,7 +7,7 @@ $jsfile = 'template/manage_forms';
 ob_start();
 
 ?>
-<a href="index.php">
+<a href="/">
   <img class="back_to_main" src="public/img/left-arrowback.png" alt="">
 </a>
 <div class="title_form_container">

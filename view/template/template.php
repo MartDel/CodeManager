@@ -37,7 +37,7 @@
 		            </label>
 		        </div>
 		    </div>
-		    <a id="logo_a" href="index.php">
+		    <a id="logo_a" href="/">
 		        <img id="logo" src="public/img/essai_logo.png" />
 		    </a>
 		    <input type="search" autocomplete="off" id="findField" placeholder="Rechercher" />

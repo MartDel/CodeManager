@@ -8,8 +8,8 @@ ob_start();
 
 ?>
 <div id="top_div_title">
-    <a href="index.php" class="top_resp1"><img src="public/img/essai_logo.png" alt=""></a>
-    <a href="index.php" class="top_resp2"><img src="public/img/shortcuticon.png" alt=""></a>
+    <a href="/" class="top_resp1"><img src="public/img/essai_logo.png" alt=""></a>
+    <a href="/" class="top_resp2"><img src="public/img/shortcuticon.png" alt=""></a>
     <div id="button_div">
         <a href="/signup" id="enregistrer">
             <div>
