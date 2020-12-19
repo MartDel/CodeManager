@@ -64,7 +64,7 @@ ob_start();
             <?php if (isset($tasks)): ?>
                 <!--Error messages -->
                 <?php if ($nb_tasks == 0): ?>
-                    <p id="message-task-none" v-show="done_task">Toutes les tâches sont terminées !</p>
+                    <p id="message-task-none" v-show="!done_task">Toutes les tâches sont terminées !</p>
                 <?php elseif ($nb_done_tasks == 0): ?>
                     <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
@@ -139,7 +139,7 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p id="message-task-none" v-show="task">Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none" v-show="!done_task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
                         <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>

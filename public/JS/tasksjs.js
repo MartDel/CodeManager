@@ -46,6 +46,9 @@ const tasks = {
         btn: '.tasks_done',
         list: "button[name='done_task']"
     },
+    categories: {
+        table: '.table_contain'
+    },
     ////////////////////////////////
     list: document.getElementsByName("task"),
     btn: {
@@ -86,12 +89,16 @@ new Vue({
                 display.checkbox[i].checked = false
             }
 
+            // Update btn
             const $this = $(e.target)
             if(this.done_task) $this.css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
             else $this.css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
 
             setURLParams(this.done_task ? '' : 'endTask')
             this.done_task = !this.done_task
+
+            // Update category
+            manageCategoryNames(this.done_task)
         }
     },
     mounted(){
@@ -99,7 +106,6 @@ new Vue({
             wOnload()
             checkMessage()
 
-            // UPDATE DISPLAY
             // Set display
             if (getCookie('display')==="2") {
                 $(display.first).css('display', "none")
@@ -119,60 +125,40 @@ new Vue({
             const search = window.location.search
             const params = new URLSearchParams(search)
             this.done_task = params.has('endTask')
+
+            // Update btn for showing done tasks
             if(this.done_task) $(tasks.done.btn).css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
             else $(tasks.done.btn).css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
+
+            // Update category
+            manageCategoryNames(this.done_task)
 
             $(tasks.container2).css('opacity', 1)
         }
     }
 })
 
-/*
- * SHOW DONE TASKS
- */
-function showTasks(print) {
-    for (let i = 0; i < tasks.list.length; i++) {
-        if (print) show(tasks.list[i])
-        else hide(tasks.list[i])
+// Show done tasks or not
 
-        const inputs = tasks.list[i].getElementsByTagName('input')
-        manageActivesInputs(inputs, print)
-    }
-    manageCategoryNames(!print)
-}
-function showDoneTasks(print) {
-    for (let i = 0; i < tasks_done.list.length; i++) {
-        if (print) show(tasks_done.list[i])
-        else hide(tasks_done.list[i])
-
-        const inputs = tasks_done.list[i].getElementsByTagName('input')
-        manageActivesInputs(inputs, print)
-    }
-}
-function manageActivesInputs(inputs, active){
-    for (let i = 0; i < inputs.length; i++) {
-        if(inputs[i].type === 'checkbox'){
-            if(active) inputs[i].classList.add('active')
-            else inputs[i].classList.remove('active')
-        }
-    }
-}
 /**
  * Show/hide some categories
- * @param  {bool} done_task If the tasks must be done or not
+ * @param {bool} done_task If the tasks must be done or not
  */
 function manageCategoryNames(done_task) {
-    $('.table_contain').toArray().forEach((table, i) => {
-        const rows = table.rows
+    $(tasks.categories.table).each(function (){
+        const $table = $(this)
         let useful_tasks = 0
-        for (let i = 0; i < rows.length; i++) {
-            if(rows[i].id.indexOf('task') !== -1){
-                if((rows[i].id.indexOf('done_') !== -1 && done_task)
-                || (rows[i].id.indexOf('done_') === -1 && !done_task)) useful_tasks++
+        $table.find('tr').each(function (){
+            const $row = $(this)
+            const id = $row.attr('id')
+            if(id !== undefined && id.indexOf('task') !== -1){
+                if((id.indexOf('done_') !== -1 && done_task) || (id.indexOf('done_') === -1 && !done_task)){
+                    useful_tasks++
+                }
             }
-        }
-        if(useful_tasks === 0) $(table).css('display', 'none')
-        else $(table).css('display', 'table')
+        })
+        if(useful_tasks === 0) $table.css('display', 'none')
+        else $table.css('display', 'table')
     })
 }
 
