@@ -11,7 +11,7 @@ ob_start();
         <div class="selected_display div_img_select" >
             <img id="category_1" src="public/img/category_1.png" alt="">
         </div>
-        <a onclick="change_display()" href="#">
+        <a onclick="setDisplay()" href="#">
             <div class="notselected_display div_img_select">
                 <img id="category_2" src="public/img/category_2.png" alt="">
             </div>

@@ -40,8 +40,11 @@ const select_all2 = {
 */
 
 const tasks = {
-    list2: ".myBtn",
+    list2: ".myBtn, .table_row_main",
     container2: '#liste_taches',
+    edit: {
+        btn: '.tick2'
+    },
     done: {
         btn: '.tasks_done',
         list: "button[name='done_task']"
@@ -49,6 +52,7 @@ const tasks = {
     categories: {
         table: '.table_contain'
     },
+    other_btns: ['tick', 'to_check'],
     ////////////////////////////////
     list: document.getElementsByName("task"),
     btn: {
@@ -107,19 +111,7 @@ new Vue({
             checkMessage()
 
             // Set display
-            if (getCookie('display')==="2") {
-                $(display.first).css('display', "none")
-                $(display.second).css('display', "block")
-                $(display.category_2).attr('src', "public/img/category_1.png")
-                $(display.category_1).attr('src', "public/img/category_2.png")
-            } else {
-                $(display.first).css('display', "block")
-                $(display.second).css('display', "none")
-                $(display.category_2).attr('src', "public/img/category_2.png")
-                $(display.category_1).attr('src', "public/img/category_1.png")
-            }
-            $(display.opened).css('display', 'none').css('opacity', 0)
-            $(display.global).css('border-radius', "50%").css('height', '39px')
+            setDisplay(getCookie('display'))
 
             // Show done tasks or not
             const search = window.location.search
@@ -162,10 +154,35 @@ function manageCategoryNames(done_task) {
     })
 }
 
+// Tasks modals
 
-/*
- * CHANGE DISPLAY
- */
+$(tasks.list2).click(function (e){
+    const target = e.target
+
+    const id = $(this).attr('id')
+    if(!id) return;
+
+    if(target.classList.contains(tasks.edit.btn.substring(1))){
+        // Open edit modal
+        if(permissions === 0){
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
+            err.show()
+        }
+        modals.show(id + '_edit', () => {
+            $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
+            $(addtask.inputcate2).css('display', "none").css('opacity', 0)
+        })
+    } else {
+        let btn_clicked = false
+        target.classList.forEach((c_class) => {
+            if(tasks.other_btns.includes(c_class)) btn_clicked = true
+        })
+        if(!btn_clicked) modals.show(id + '_modal')
+    }
+})
+
+// Set diplay
+
 $(display.btn).click(function (){
     if ($(display.opened).css('display') === "block") {
         $(display.opened).css('display', 'block').css('opacity', 0)
@@ -176,59 +193,25 @@ $(display.btn).click(function (){
         $(display.global).css('border-radius', '500px').css('height', '88px')
     }
 })
-function change_display(){
-    if ($(display.first).css('display') === "block") {
+function setDisplay(to_display = null){
+    if(!to_display) to_display = $(display.first).css('display') === "block" ? '2' : '1'
+    if (to_display === '2') {
         $(display.first).css('display', "none")
         $(display.second).css('display', "block")
-        $(display.category_2).css('src', "public/img/category_1.png")
-        $(display.category_1).css('src', "public/img/category_2.png")
+        $(display.category_2).attr('src', "public/img/category_1.png")
+        $(display.category_1).attr('src', "public/img/category_2.png")
         setCookie("display", "2")
     } else {
         $(display.first).css('display', "block")
         $(display.second).css('display', "none")
-        $(display.category_2).css('src', "public/img/category_2.png")
-        $(display.category_1).css('src', "public/img/category_1.png")
+        $(display.category_2).attr('src', "public/img/category_2.png")
+        $(display.category_1).attr('src', "public/img/category_1.png")
         setCookie("display", "1")
     }
     $(display.opened).css('display', "none").css('opacity', 0)
     $(display.global).css('border-radius', "50%").css('height', "39px")
 }
 
-/*
- * MODAL TASK
- */
-function showModal(event) {
-    // Get task id
-    let id = null;
-    const path = event.path;
-    for (let i = 0; i < path.length; i++) {
-        const current_id = path[i].id;
-        if (current_id !== undefined) {
-            if (current_id.indexOf("task") !== -1) id = current_id;
-        }
-    }
-    if(!id) return;
-
-    if (contain(tasks.btn.tick2, event.target)) {
-        if(permissions != 0) {
-          modals.show(id + '_edit',()=>{
-          $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
-          $(addtask.inputcate2).css('display', "none").css('opacity', 0)
-        })}
-        else {
-            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
-            err.show()
-        }
-    } else if(!contain(tasks.btn.check_js, event.target)
-    && !contain(tasks.btn.tick, event.target)
-    && !contain(tasks.btn.trash, event.target)) modals.show(id + '_modal');
-}
-for (let i = 0; i < tasks.list.length; i++) {
-    tasks.list[i].onclick = (event) => showModal(event);
-}
-for (let i = 0; i < tasks_done.list.length; i++) {
-    tasks_done.list[i].onclick = (event) => showModal(event);
-}
 
 /*
  * ADD TASK MODAL
@@ -250,18 +233,6 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
     }
 }
 
-// addtask.buttoncate.onclick=()=>{
-//   addtask.buttoncate.style.opacity=0;
-//
-//   setTimeout(()=>{
-//     addtask.buttoncate.style.display="none";
-//     addtask.inputcate.style.display="flex";
-//   },300);
-//   setTimeout(()=>{
-//     addtask.inputcate.style.opacity=1;
-//     addtask.inputcate.focus()
-//   },350);
-// }
 $(addtask.buttoncate2).click(function () {
     const $btn = $(this)
     const $input = $btn.parent().children(addtask.inputcate2)
