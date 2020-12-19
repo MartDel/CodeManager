@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^home$ index.php?action=home
+RewriteRule ^signin$ index.php?action=signin
+RewriteRule ^signup$ index.php?action=signup
+
+RewriteRule ^tasks$ index.php?action=tasks
+RewriteRule ^team$ index.php?action=team
+RewriteRule ^objectives$ index.php?action=objectives
+RewriteRule ^chat$ index.php?action=chat
+RewriteRule ^github$ index.php?action=github
