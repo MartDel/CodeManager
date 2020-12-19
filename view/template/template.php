@@ -53,7 +53,7 @@
 		    <div id="menu_gauche">
 
 		        <ul>
-		            <a href="index.php">
+		            <a href="/">
 		                <li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
 		                  <span title="Tâches">
 		                    <img class="img_menu_gauche_js" src="public/img/listindex.png" alt="" />
@@ -61,7 +61,7 @@
 		                    <p  class="colorred textgauche" id="text_menu_left_1">Tâches</p>
 		                </li>
 		            </a>
-						<a href="index.php?action=objectives">
+						<a href="/objectives">
 		            <li class="<?= $page == 'objectives' ? '' : 'not' ?>selectedmenu">
 		                <span title="Objectifs">
 		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
@@ -69,7 +69,7 @@
 		                <p class="textgauche" id="text_menu_left_2">Objectifs</p>
 		            </li>
 					</a>
-					<a href="index.php?action=team">
+					<a href="/team">
 						<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
 			              <span title="Team">
 			                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
@@ -77,7 +77,7 @@
 			                <p class="textgauche" id="text_menu_left_3">Team</p>
 			            </li>
 					</a>
-					<a href="index.php?action=chat">
+					<a href="/chat">
 		            <li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
 		              <span title="Discussion">
 		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
@@ -85,7 +85,7 @@
 		                <p class="textgauche" id="text_menu_left_4">Discussion</p>
 		            </li>
 					</a>
-          <a href="index.php?action=github">
+          			<a href="/github">
 						<li class="<?= $page == 'github' ? '' : 'not' ?>selectedmenu">
 			              <span title="GitHub">
 			                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />

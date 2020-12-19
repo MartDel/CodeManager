@@ -33,7 +33,7 @@ ob_start();
       <input class="button_submit_signup" type="submit" value="S'inscrire" />
   </form>
   <br><br>
-  <p>Vous avez déjà un compte ? Connectez-vous <a class="here" href="index.php?action=signin">ici</a></p>
+  <p>Vous avez déjà un compte ? Connectez-vous <a class="here" href="/signin">ici</a></p>
 </div>
 
 <?php require('template/message.php'); ?>
