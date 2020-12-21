@@ -8,10 +8,10 @@ ob_start();
 
 ?>
 <div id="top_div_title">
-    <a href="/" class="top_resp1"><img src="public/img/essai_logo.png" alt=""></a>
-    <a href="/" class="top_resp2"><img src="public/img/shortcuticon.png" alt=""></a>
+    <a href="index.php" class="top_resp1"><img src="public/img/essai_logo.png" alt=""></a>
+    <a href="index.php" class="top_resp2"><img src="public/img/shortcuticon.png" alt=""></a>
     <div id="button_div">
-        <a href="/signup" id="enregistrer">
+        <a href="index.php?action=signup" id="enregistrer">
             <div>
                 <p>Inscription</p>
             </div>
@@ -21,7 +21,7 @@ ob_start();
                 <p>ou</p>
             </div>
         </a>
-        <a href="/signin" id="se_connecter">
+        <a href="index.php?action=signin" id="se_connecter">
             <div>
                 <p>Connexion</p>
             </div>
@@ -32,7 +32,7 @@ ob_start();
     <p>CodeManager :<br> une façon intelligente de développer en groupe</p>
     <div></div>
     <p id="seconde_ligne">Une méthode pour faciliter la communication <br>et la gestion des projet communs</p>
-    <a href="/signup" id="inscription_div">
+    <a href="index.php?action=signup" id="inscription_div">
         INSCRIVEZ-VOUS GRATUITEMENT
     </a>
     <div class="savoir_plus_link">
@@ -105,7 +105,7 @@ ob_start();
             <p>Et c'est totalement <strong>GRATUIT</strong> !</p><br><br>
             <p id="p_different">Ou alors continuez un projet déjà existant en vous connectant ></p>
             <div class="bottom_bottom">
-              <a href="/signin" id="button_espace">
+              <a href="index.php?action=signin" id="button_espace">
                 <div class="button_espace_container">
                       <p>ACCÉDER À MON ESPACE</p>
                 </div>

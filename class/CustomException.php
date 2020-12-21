@@ -10,7 +10,7 @@ class CustomException extends Exception {
         $this->title = $title;
         $this->redirection = $redirection;
         $this->callback_name = $callback_name;
-        $this->btn = null;
+        $this->$btn = null;
         parent::__construct($message);
     }
 

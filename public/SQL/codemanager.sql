@@ -57,7 +57,7 @@ CREATE TABLE `projects` (
 CREATE TABLE `tasks` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   `category_id` int DEFAULT NULL,
   `author_id` int NOT NULL,
   `create_date` datetime NOT NULL,

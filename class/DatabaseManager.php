@@ -6,10 +6,7 @@
 abstract class DatabaseManager
 {
     const DB_HOST = "localhost";
-    // For ouiheberg
-    const DB_NAME = "codeman1_main";
-    // For local linux
-    // const DB_NAME = "codemanager";
+    const DB_NAME = "codemanager";
     const DB_USERNAME = Passwords::DB_USERNAME;
     const DB_PASSWORD = Passwords::DB_PASSWORD;
 

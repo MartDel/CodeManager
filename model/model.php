@@ -298,10 +298,9 @@ function createRemote($data){
  * @return bool status
  */
 function sendMail($message){
-	$to = "admin@codemanager.ouiheberg.net";
+	// Headers
+	$to = "martin-delebecque@outlook.fr";
 	$subject = "Remarque de " . $_SESSION['pseudo'];
-
-    // Headers
 	$headers = "From: CodeManager <server@codemanager.com>\r\n";
 	$headers .= "Reply-To: CodeManager <server@codemanager.com>\r\n";
 	$headers .= "Return-Path: CodeManager <server@codemanager.com>\r\n";
@@ -316,7 +315,7 @@ function sendMail($message){
 	?>
 	<h1 style="text-align:center;">Remarque de <?= $_SESSION['pseudo'] ?> <i>(<?= $_SESSION['user_id'] ?>)</i></h1>
 	<section>
-		<h2>Informations sur l'utilisateur :</h2>
+		<h2>Informations sur l'utilisateur :</OTHER h2>
 		<ul>
 			<li><strong>Pseudo : </strong><?= $_SESSION['pseudo'] ?></li>
 			<li><strong>Addresse mail : </strong><?= $_SESSION['mail'] ?></li>

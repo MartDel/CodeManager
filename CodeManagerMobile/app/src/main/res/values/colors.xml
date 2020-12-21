@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1e88e5</color>
+    <color name="green">#2EA44F</color>
+    <color name="red">#FF3B3B</color>
+    <color name="orange">#FFC03A</color>
+
+    <color name="dark_background">#333333</color>
+    <color name="taskbar_background">#222222</color>
+    <color name="grey">#666</color>
+
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+</resources>

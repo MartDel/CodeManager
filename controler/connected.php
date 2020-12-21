@@ -381,10 +381,7 @@ function editPP(){
     $user->setPictureName($_SESSION['user_id'] . '.' . $extension);
     $_SESSION['pp'] = $user->getPictureName();
 
-    $tmpName = $_FILES['pp']['tmp_name'];
-    $fileName = 'public/img/users/' . $user->getPictureName();
-    move_uploaded_file($tmpName, $fileName);
-    // cropImage($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
+    cropImage($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
 
     $success = new InformationMessage('Photo de profil modifiée', "Votre photo de profil a été modifiée avec succés !", 'index.php?action=' . getLastPage());
     $success->redirect();
