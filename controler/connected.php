@@ -29,17 +29,17 @@ function tasks(){
 function addTask(){
     $data = secure($_POST);
     if($_SESSION['permissions'] == 0){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     if(!isset($data['title']) || $data['title'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=tasks', 'focusTitleAddTask');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/tasks', 'focusTitleAddTask');
     }
     $category = isset($data['category']) && $data['category'] != '-1' ? $data['category'] : null;
     $category = isset($data['add_category']) && $data['add_category'] != '' ? addCategory($data['add_category']) : $category;
     $task = new Task($data['title'], $_SESSION['project_id'], false, null, $_SESSION['user_id'], $data['description'], $category);
     $task->pushToDB();
-    header('Location: index.php');
+    header('Location: /');
 }
 
 /**
@@ -48,14 +48,14 @@ function addTask(){
 function editTask(){
     $data = secure($_POST);
     if($_SESSION['permissions'] == 0){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     if(!isset($data['title']) || $data['title'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/');
     }
     $task = Task::getTaskById(htmlspecialchars($_GET['id']), $_SESSION['project_id']);
-    if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", 'index.php');
+    if(!$task) throw new CustomException('Erreur...', "Une erreur est survenue lors de la récupération de la tâche que vous tentez de modifier.", '/');
     $task->setName($data['title']);
     $task->setDescription($data['description']);
 
@@ -64,7 +64,7 @@ function editTask(){
     $task->setCategoryId($category);
 
     $task->update();
-    header('Location: index.php');
+    header('Location: /');
 }
 
 /**
@@ -73,10 +73,10 @@ function editTask(){
 function endTask(){
     $data = secure($_GET);
     if($_SESSION['permissions'] == 0){
-        throw new CustomException('Action refusée...', "Vous n'avez pas l'autorisation de marquer une tâche comme terminée.", 'index.php');
+        throw new CustomException('Action refusée...', "Vous n'avez pas l'autorisation de marquer une tâche comme terminée.", '/');
     }
     if(!isset($data['id'])){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     $task = Task::getTaskById($data['id'], $_SESSION['project_id']);
@@ -85,10 +85,10 @@ function endTask(){
         $task->setIsDone(!$done_task);
         $task->update();
         $params = $done_task ? '?endTask' : '';
-        header('Location: index.php' . $params);
+        header('Location: /' . $params);
         return;
     }
-    header('Location: index.php');
+    header('Location: /');
 }
 
 /**
@@ -97,24 +97,24 @@ function endTask(){
 function deleteTasks(){
     $data = secure($_GET);
     if($_SESSION['permissions'] == 0){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     if(!isset($data['tasks'])){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     $tasks = $data['tasks'];
     $tasks_array = explode(' ', $tasks);
     if(count($tasks_array) == 0){
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
     foreach ($tasks_array as $task_id) {
         $current_task = Task::getTaskById($task_id, $_SESSION['project_id']);
         if($current_task) $current_task->delete();
     }
-    header('Location: index.php');
+    header('Location: /');
 }
 
 function objectives(){
@@ -144,21 +144,21 @@ function searchUser(){
     $data = secure($_POST);
     $user = User::getUserByLogin($data['mail']);
     if($_SESSION['permissions'] != 2){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     if(!$user){
-        $not_found = new CustomException('Mauvaise nouvelle...', "Aucun utilisateur n'a été trouvé. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
+        $not_found = new CustomException('Mauvaise nouvelle...', "Aucun utilisateur n'a été trouvé. Veulliez réessayer avec une autre addresse e-mail.", '/team', 'openAddUserModal');
         $not_found->setBtn('reload');
         throw $not_found;
     }
     $team_row = new Team($_SESSION['project_id'], $user->getId());
     if($team_row->exists()){
-        $not_found = new CustomException('Mauvaise nouvelle...', "L'utilisateur trouvé est déjà dans votre équipe. Veulliez réessayer avec une autre addresse e-mail.", 'index.php?action=team', 'openAddUserModal');
+        $not_found = new CustomException('Mauvaise nouvelle...', "L'utilisateur trouvé est déjà dans votre équipe. Veulliez réessayer avec une autre addresse e-mail.", '/team', 'openAddUserModal');
         $not_found->setBtn('reload');
         throw $not_found;
     }
-    $found = new InformationMessage('Utilisateur trouvé !', "L'utilisateur '" . $user->getPseudo() . "' a été trouvé. Voulez-vous l'ajouter à votre équipe?", 'index.php?action=team', 'addUser');
+    $found = new InformationMessage('Utilisateur trouvé !', "L'utilisateur '" . $user->getPseudo() . "' a été trouvé. Voulez-vous l'ajouter à votre équipe?", '/team', 'addUser');
     $found->setBtn('add');
     $found->setArg($user->getMail());
     $found->redirect();
@@ -171,20 +171,20 @@ function addUserToTeam(){
     $data = secure($_GET);
     $user = User::getUserByLogin($data['mail']);
     if($_SESSION['permissions'] != 2){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     if(!$user){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $team = new Team($_SESSION['project_id'], $user->getId());
     if($team->exists()){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $team->pushToDB();
-    $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", 'index.php?action=team');
+    $added = new InformationMessage('Utilisateur ajouté !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été ajouté à votre équipe.", '/team');
     $added->redirect();
 }
 
@@ -194,24 +194,24 @@ function addUserToTeam(){
 function removeUserFromTeam(){
     $data = secure($_GET);
     if($_SESSION['permissions'] != 2) {
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $user = User::getUserById($data['id']);
     if(!$user){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $team = new Team($_SESSION['project_id'], $user->getId());
     if(!$team->exists()){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     if($team->getPermissions() == 2) {
-        throw new CustomException('Action refusée...', "Vous ne pouvez pas vous retirer du projet.", 'index.php?action=team');
+        throw new CustomException('Action refusée...', "Vous ne pouvez pas vous retirer du projet.", '/team');
     }
     $team->delete();
-    $added = new InformationMessage('Utilisateur écarté du projet !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été supprimé de votre équipe.", 'index.php?action=team');
+    $added = new InformationMessage('Utilisateur écarté du projet !', "Tout s'est passé comme prévu ! L'utilisateur '" . $user->getPseudo() . "' a été supprimé de votre équipe.", '/team');
     $added->redirect();
 }
 
@@ -222,21 +222,21 @@ function editUserFromTeam(){
     $post = secure($_POST);
     $get = secure($_GET);
     if($_SESSION['permissions'] != 2) {
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $user = User::getUserById($get['id']);
     if(!$user){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     $team = new Team($_SESSION['project_id'], $user->getId());
     if(!$team->exists()){
-        header('Location: index.php?action=team');
+        header('Location: /team');
         return;
     }
     if(!isset($post['perm'])){
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs du formulaire.", 'index.php?action=team');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs du formulaire.", '/team');
     }
 
     if(isset($post['role']) && $post['role'] != '') $role = $post['role'];
@@ -247,7 +247,7 @@ function editUserFromTeam(){
     $team->setRole($role);
     $team->setPermissions($perm);
     $team->update();
-    header('Location: index.php?action=team');
+    header('Location: /team');
 }
 
 /**
@@ -288,7 +288,7 @@ function github(){
 function noProject(){
     // Check current project
     if(isset($_SESSION['project_id'])) {
-        header('Location: index.php');
+        header('Location: /');
         return;
     }
 
@@ -301,7 +301,7 @@ function noProject(){
 function createProject(){
     $data = secure($_POST);
     if(!isset($data['name']) || $data['name'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameCreateProject');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusNameCreateProject');
     }
 
     // Create remote link with remote informations
@@ -313,7 +313,7 @@ function createProject(){
     $team_row->setPermissions(2);
     $team_row->pushToDB();
     $_SESSION['project_id'] = $project->getId();
-    header('Location: index.php');
+    header('Location: /');
 }
 
 /**
@@ -322,11 +322,11 @@ function createProject(){
 function editProject(){
     $data = secure($_POST);
     if($_SESSION['permissions'] != 2) {
-        header('Location: index.php?action=' . getLastPage());
+        header('Location: /' . getLastPage());
         return;
     }
     if(!isset($data['name']) || $data['name'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameEditProject');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusNameEditProject');
     }
 
     // Create remote link with remote informations
@@ -335,7 +335,7 @@ function editProject(){
     $project = new Project($data['name'], $_SESSION['user_id'], $data['description'], $remote);
     $project->update($_SESSION['project_id']);
 
-    $success = new InformationMessage('Projet modifié', "Votre projet a été modifié avec succés !", 'index.php?action=' . getLastPage());
+    $success = new InformationMessage('Projet modifié', "Votre projet a été modifié avec succés !", '/' . getLastPage());
     $success->redirect();
 }
 
@@ -344,7 +344,7 @@ function editProject(){
  */
 function deleteProject(){
     if($_SESSION['permissions'] != 2) {
-        header('Location: index.php?action=' . getLastPage());
+        header('Location: /' . getLastPage());
         return;
     }
     $project = Project::getProjectById($_SESSION['project_id']);
@@ -352,12 +352,12 @@ function deleteProject(){
 
     $project = Project::getFirstProject($_SESSION['user_id']);
     if(!$project){
-        header('Location: index.php?action=noProject');
+        header('Location: /noProject');
         return;
     }
     $_SESSION['project_id'] = $project->getId();
 
-    $success = new InformationMessage('Projet supprimé', "Votre projet a été supprimé avec succés !", 'index.php');
+    $success = new InformationMessage('Projet supprimé', "Votre projet a été supprimé avec succés !", '/');
     $success->redirect();
 }
 
@@ -371,7 +371,7 @@ function switchProject(){
         $team_row = new Team($project_id, $_SESSION['user_id']);
         if($team_row->exists()) $_SESSION['project_id'] = $project_id;
     }
-    header('Location: index.php');
+    header('Location: /');
 }
 
 /**
@@ -392,23 +392,23 @@ function editPP(){
 
     cropImage($_FILES['pp']['tmp_name'], 'public/img/users/' . $user->getPictureName());
 
-    $success = new InformationMessage('Photo de profil modifiée', "Votre photo de profil a été modifiée avec succés !", 'index.php?action=' . getLastPage());
+    $success = new InformationMessage('Photo de profil modifiée', "Votre photo de profil a été modifiée avec succés !", '/' . getLastPage());
     $success->redirect();
 }
 
 function editAccount(){
     $data = secure($_POST);
     if(!isset($data['pseudo']) || $data['pseudo'] == '') {
-        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusNameEditProject');
+        throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusNameEditProject');
     }
     if(User::getUserByLogin($data['pseudo'])) {
-        throw new CustomException('Pseudo non disponible', "Ce nom d'utilisateur est déjà utilisé. Veuillez réessayer avec un autre nom d'utilisateur.", 'index.php?action=' . getLastPage(), 'openEditAccount');
+        throw new CustomException('Pseudo non disponible', "Ce nom d'utilisateur est déjà utilisé. Veuillez réessayer avec un autre nom d'utilisateur.", '/' . getLastPage(), 'openEditAccount');
     }
     $user = User::getUserById($_SESSION['user_id']);
     $user->setPseudo($data['pseudo']);
     $_SESSION['pseudo'] = $data['pseudo'];
 
-    $success = new InformationMessage('Profil modifié', "Votre profil a été modifié avec succés !", 'index.php?action=' . getLastPage());
+    $success = new InformationMessage('Profil modifié', "Votre profil a été modifié avec succés !", '/' . getLastPage());
     $success->redirect();
 }
 
@@ -430,13 +430,13 @@ function reportBug(){
     $data = secure($_POST);
     $mess = isset($data['mess']) ? $data['mess'] : false;
     if(!$mess){
-        header('Location: index.php?action=' . getLastPage());
+        header('Location: /' . getLastPage());
         return;
     }
     if(sendMail($mess)){
-        $success = new InformationMessage('Mail envoyé', "Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!", 'index.php?action=' . getLastPage());
+        $success = new InformationMessage('Mail envoyé', "Les administrateurs du site ont été notifié de votre message. Merci de votre contribution!", '/' . getLastPage());
         $success->redirect();
     } else {
-        throw new CustomException('Erreur', "Une erreur est survenue lors de l'envoi du mail. Veuillez réessayer plus tard.", 'index.php?action=' . getLastPage());
+        throw new CustomException('Erreur', "Une erreur est survenue lors de l'envoi du mail. Veuillez réessayer plus tard.", '/' . getLastPage());
     }
 }
