@@ -19,3 +19,15 @@ L'installation se passe en 2 étapes :
 * Redémarrer Apache (ici il s'agit d'*apache2*) : `sudo service apache2 reload`
 
 Et voilà, l'installation est terminée !
+
+## Fichier ignoré : *class/Passwords.php*
+
+Pour faire fonctionner le site grâce à la base de données il faut obligatoirement ajouter un fichier appelé `Passwords.php` dans le dossier *class* à la racine du projet. Créez-le et glissez-y ce code :
+
+```php
+abstract class Passwords {
+    // Database config
+    const DB_USERNAME = '<DB-login>'; // Remplacer <DB-login> par le login de votre base de données
+    const DB_PASSWORD = '<DB-password>'; // Remplacer <DB-password> par le mot de passe de votre base de données
+}
+```
