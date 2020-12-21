@@ -1,7 +1,4 @@
 <?php
-#!/usr/bin/perl
-use cPanelUserConfig;
-
 session_start();
 require("controler/controler.php");
 require('class/Passwords.php');
