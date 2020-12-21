@@ -139,7 +139,7 @@
           <br>
           <h1><strong><u>Description du Projet : </u></strong><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
-          <h1><strong><u>Pseudo GitHub :</u></strong> <?= $project->getRemotePseudo() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <h1><strong><u>Pseudo GitHub :</u></strong> <?= $project->getRemotePseudo() ? $project->getRemotePseudo() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
           <h1><strong><u>Nom du projet GitHub :</u> </strong><?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
