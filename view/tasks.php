@@ -31,7 +31,7 @@ ob_start();
                 <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
-                <img class="tasks_done" src="public/img/task_done0.png" alt="" />
+                <img class="tasks_done" src="public/img/task_done0.png" alt="" @click="switchDoneTask" />
             </span>
             <span title="Supprimer">
                 <img class="brightnessmax trash" src="public/img/trash.png" alt="" />
@@ -64,20 +64,23 @@ ob_start();
             <?php if (isset($tasks)): ?>
                 <!--Error messages -->
                 <?php if ($nb_tasks == 0): ?>
-                    <p id="message-task-none" name="task">Toutes les tâches sont terminées !</p>
+                    <p id="message-task-none" v-show="done_task">Toutes les tâches sont terminées !</p>
                 <?php elseif ($nb_done_tasks == 0): ?>
-                    <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
+                    <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                 <?php endif; ?>
 
                 <!-- Tasks btn -->
                 <?php foreach ($tasks as $task) { if ($task->getAuthor()): ?>
                     <button
-                    name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
+                    v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
                     class="myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>"
                     id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                     <li>
                         <span class="span_input_img" title="Sélectionner">
-                            <input class="input_img check_js to_check" type="checkbox" />
+                            <input
+                                class="input_img check_js to_check"
+                                :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''"
+                                type="checkbox" />
                         </span>
                         <span class="span_input_img" title="Marquer comme <?= $task->getIsDone() ? 'non ' : '' ?>effectuée">
                             <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
@@ -126,7 +129,7 @@ ob_start();
                 <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
-                <img class="tasks_done" src="public/img/task_done0.png" alt="" />
+                <img class="tasks_done" src="public/img/task_done0.png" alt="" @click="switchDoneTask" />
             </span>
             <span title="Supprimer">
                 <img class="brightnessmax trash trashsecond" src="public/img/trash.png" alt="" style="display:none;" />
@@ -136,9 +139,9 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p id="message-task-none" name="task">Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none" v-show="task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
                         <?php if (count($cat_tasks)): ?>
@@ -150,7 +153,11 @@ ob_start();
                                       <div>
                                         <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
                                         <p>
-                                            <label title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>" for="category<?= $category_id ?>"><?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?></label>
+                                            <label
+                                            title="<?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>"
+                                            for="category<?= $category_id ?>">
+                                                <?= getCategoryNameById($category_id) ? getCategoryNameById($category_id) : 'Divers' ?>
+                                            </label>
                                         </p>
                                       </div>
                                     </td>
@@ -161,14 +168,19 @@ ob_start();
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
                                         class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                                        name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
+                                        v-show="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?>"
                                         id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                                             <td class="table_col_main">
                                                 <div class="border_all">
                                                     <div class="left-side-task-mosaic">
-                                                        <input type="checkbox" class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>" />
+                                                        <input
+                                                            type="checkbox"
+                                                            class="check_js to-check2 in-category<?= $task->getCategoryId() ? $task->getCategoryId() : '-1' ?>"
+                                                            :class="<?= $task->getIsDone() ? 'done_task' : '!done_task' ?> ? 'active' : ''" />
                                                         <img src="public/img/edit_task_bar.png" class="invertcent tick2" alt="" />
-                                                        <a href="index.php?action=endTask&id=<?= $task->getId() ?>"><img src="public/img/tick.png" class="invertcent trash-btn" alt="" /></a>
+                                                        <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
+                                                            <img src="public/img/tick.png" class="invertcent trash-btn" alt="" />
+                                                        </a>
 
                                                     </div>
                                                     <div class="task_name_mozaic">
@@ -189,6 +201,7 @@ ob_start();
             </div>
         </div>
     </section>
+
 </section>
 
 <!-- All of modals -->
