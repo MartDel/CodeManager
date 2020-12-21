@@ -285,7 +285,15 @@ function github(){
 /**
  * New project form
  */
-function noProject(){ require('view/project_creation.php'); }
+function noProject(){
+    // Check current project
+    if(isset($_SESSION['project_id'])) {
+        header('Location: index.php');
+        return;
+    }
+
+    require('view/project_creation.php');
+}
 
 /**
  * Add a new project to the database
