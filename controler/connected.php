@@ -360,7 +360,8 @@ function switchProject(){
     $data = secure($_POST);
     if(isset($data['project'])){
         $project_id = $data['project'];
-        if(Project::projectExist($project_id, $_SESSION['user_id'])) $_SESSION['project_id'] = $project_id;
+        $team_row = new Team($project_id, $_SESSION['user_id']);
+        if($team_row->exists()) $_SESSION['project_id'] = $project_id;
     }
     header('Location: index.php');
 }
