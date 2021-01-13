@@ -361,7 +361,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   padding: 20px;
   color: #b41e10;
   text-align: center;
-  height: 18vh;
+  height: 12vh;
   font-size: 18px;
   align-items: center;
 }
@@ -369,8 +369,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .top-colour h1 {
   padding: 0;
   margin: 0;
-  margin-top: calc(9vh - 9px);
-  font-size: 30px;
+  margin-top: calc(6vh - 9px);
+  font-size: 25px;
 }
 
 .bottom-colour {
@@ -383,6 +383,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   color: black;
   font-weight: 100;
   letter-spacing: 0.5px;
+  font-size: 16px;
 }
 
 .details-task {
