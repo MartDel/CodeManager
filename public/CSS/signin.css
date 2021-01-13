@@ -184,6 +184,7 @@ p {
   color: black;
   font-size: 11px;
   text-align: center;
+  padding: 0 10px 0 10px;
 }
 
 p a {
@@ -210,5 +211,12 @@ p a {
   .form_container {
     width: calc(95vw);
     margin-left: 2.5vw;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .button_submit_signin {
+    width: 80%;
+    margin-left: 10%;
   }
 }
