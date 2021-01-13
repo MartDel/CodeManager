@@ -947,7 +947,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
     width: calc(100% - 22px);
     text-align: left;
     margin-left: 0;
-    display: block;
   }
 }
 
@@ -1088,6 +1087,28 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-top: 20px;
   margin-right: 2%;
   margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 570px) {
+  #button_line_edit {
+    width: 50%;
+    margin-left: 28%;
+    margin-right: 0;
+    left: 0;
+    float: left;
+    clear: both;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 387px) {
+  #button_line_edit {
+    flex-direction: column;
+  }
+
+  .boutons_bas {
+    width: 100%;
+  }
 }
 
 .close_add {
@@ -1339,7 +1360,7 @@ p[name=task] {
 /*MODAL CONFIRM*/
 #delete_task .modal-wrapper {
   width: 40%;
-  height: 25%;
+  height: auto;
 }
 
 #delete_task h1 {
