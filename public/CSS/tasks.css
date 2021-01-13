@@ -724,7 +724,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
   height: 17px;
   display: none;
   opacity: 0;
-  width: 20%;
+  max-width: 300px;
+  min-width: 75px;
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -898,6 +899,55 @@ aside[name~=popup_modal_task] .modal-wrapper {
   color: #b41e10;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 570px) {
+  #button_line {
+    width: 50%;
+    margin-left: 28%;
+    margin-right: 0;
+    left: 0;
+    float: left;
+    clear: both;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 387px) {
+  #button_line {
+    flex-direction: column;
+  }
+
+  .boutons_bas {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 407px) {
+  .category_flex {
+    flex-direction: column;
+    width: 103%
+  }
+
+  .category_flex select {
+    width: 100%;
+  }
+
+  .new_cat_button2 {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    margin-left: 0;
+    display: block;
+  }
+
+  .input_new_cat2 {
+    margin-top: 10px;
+    width: calc(100% - 22px);
+    text-align: left;
+    margin-left: 0;
+    display: block;
+  }
 }
 
 /*EDIT TASK*/
@@ -1240,8 +1290,8 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-right: auto;
   width: fit-content;
   background-color: none;
-  display: flex;
-  flex-direction: row;
+  /*display: flex;
+  flex-direction: row;*/
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
