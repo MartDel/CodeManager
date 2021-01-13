@@ -741,7 +741,7 @@ ul {
 
 #col_settings textarea {
   resize: none;
-  width: 100%;
+  width: 94%;
   height: 100px;
   border: 1px solid #b8b8b8;
   border-radius: 20px;
@@ -770,6 +770,7 @@ ul {
 
 .row_settings_title p {
   text-align: center;
+  width: 105%;
 }
 
 .close_settings {
