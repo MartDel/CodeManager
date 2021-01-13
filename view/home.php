@@ -36,7 +36,7 @@ ob_start();
         INSCRIVEZ-VOUS GRATUITEMENT
     </a>
     <div class="savoir_plus_link">
-      <a href="#infos_generales_site">
+      <a href="#img_scroll_down_container">
           <p id="savoir_plus">EN SAVOIR PLUS ></p>
       </a>
     </div>
@@ -46,7 +46,7 @@ ob_start();
     </div>
 
 </div>
-<div class="img_scroll_down_container">
+<div id="img_scroll_down_container" class="img_scroll_down_container">
   <img class="img_scroll_down" src="public/img/scrolldown.png" alt="">
 </div>
 <!--<video id="videointro" src="../public/../public/img/Codes.mp4" loop autoplay></video>-->
