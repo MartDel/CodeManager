@@ -1936,15 +1936,14 @@ input[type="file"]:hover {
 .flex_button_edit {
   display: flex;
   flex-direction: column;
-  padding-left: 40%;
-  padding-right: 40%;
+  padding-left: 0%;
+  padding-right: 0%;
   padding-bottom: 20px;
 }
 
 .button_edit_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  ;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
