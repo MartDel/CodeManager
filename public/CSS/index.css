@@ -163,9 +163,8 @@ body {
 .img_scroll_down {
   filter: invert(100%);
   width: 40px;
-  margin-left: 0;
   top: 0;
-  margin-left: 50%;
+  margin-left: calc(50% - 20px);
 }
 
 #top_div_title img {
@@ -476,7 +475,8 @@ body {
 #espace_div_bcc {
   background-color: rgb(236, 236, 236);
   width: 100%;
-  height: 90vh;
+  min-height: calc(90vh - 20px);
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -492,8 +492,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-.separator_height {}
 
 #espace_div_bcc .div_img {
   margin-left: 10vw;
@@ -616,12 +614,62 @@ body {
   }
 }
 
+@media only screen and (max-width: 310px) {
+  #disponible_div {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .div_img {
+    display: none;
+  }
+
+  .content_div_espace {
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 420px) {
   .top_resp1 {
     display: none;
   }
 
+  #inscription_div {
+    width: 80%;
+  }
+
   .top_resp2 {
     display: block;
+  }
+
+  #flex_p {
+    flex-direction: column;
+  }
+
+  #bcc_icons {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .flex_horizon p {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 4vh
+  }
+
+  h1 {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .content_div_espace h1 {
+    padding-left: 0%;
+    padding-right: 0%;
+  }
+
+  .flex_icons_white div {
+    width: 80%;
+    margin-left: 10%;
   }
 }
