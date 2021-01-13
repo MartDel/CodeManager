@@ -3,7 +3,7 @@ window.onscroll = () => {
     $('.show-on-scroll').each(function() {
         const $el = $(this)
         if (isElementInViewport(this)) $el.addClass('is-visible')
-        else $el.removeClass('is-visible')
+        //else $el.removeClass('is-visible')
     })
 }
 
