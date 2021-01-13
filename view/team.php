@@ -16,6 +16,9 @@ ob_start();
           <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
       </span>
     </div>
+    <div style="flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
+      Page en développement... :/ (mais néammoins fonctionnelle :D)
+    </div>
     <div class="main-table-user">
       <table>
         <tr>

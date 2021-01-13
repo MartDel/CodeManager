@@ -1312,8 +1312,8 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-right: auto;
   width: fit-content;
   background-color: none;
-  /*display: flex;
-  flex-direction: row;*/
+  display: flex;
+  flex-direction: row;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1411,6 +1411,7 @@ p[name=task] {
   letter-spacing: 0.5px;
   text-align: center;
   font-size: 15px;
+  width: 100%;
 }
 
 @-webkit-keyframes ModalComing {
