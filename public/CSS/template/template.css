@@ -1244,6 +1244,18 @@ input.apple-switch:checked:after {
   box-shadow: #4b4b4b 0px 0px 15px;
 }
 
+@media only screen and (max-width: 480px) {
+  #account .modal-wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  #account .modal-wrapper {
+    width: 70%;
+  }
+}
+
 #bc_img_logo_account {
   background-size: cover;
   height: 125px;
@@ -2160,11 +2172,6 @@ input[type="file"]:hover {
   aside[name=popup_modal_task] .modal-wrapper {
     width: 100%;
     height: auto;
-  }
-
-  #account .modal-wrapper {
-    width: 50%;
-    height: auto%;
   }
 }
 
