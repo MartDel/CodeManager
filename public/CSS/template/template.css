@@ -1333,7 +1333,7 @@ input.apple-switch:checked:after {
 /*MODAL MY INFOS*/
 #my_informations .modal-wrapper {
   width: 40%;
-  height: 60%;
+  height: auto;
 }
 
 #my_informations h1 {
@@ -1452,6 +1452,17 @@ input[type="file"]:hover {
   border-radius: 10px;
   transition: all 0.5s;
   padding: 15px;
+}
+
+@media only screen and (max-width: 530px) {
+  #my_informations .account_change_row {
+    flex-direction: column;
+  }
+
+  #my_informations .input_fields {
+    padding-left: 5px;
+    width: 100%
+  }
 }
 
 #my_informations .input_fields:focus {
