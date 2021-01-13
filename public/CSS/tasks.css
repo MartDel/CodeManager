@@ -1147,7 +1147,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 
 .wrapper-table-task {
   background-color: transparent;
-  height: calc(100vh - 103px)
+  height: calc(100vh - 123px)
 }
 
 .table-wrapper {
@@ -1482,5 +1482,37 @@ p[name=task] {
   100% {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg);
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .table-wrapper {
+    flex-direction: column;
+  }
+
+  .table_col_main {
+    border-color: transparent;
+    padding-right: 0;
+  }
+
+  .wrapper-table-task .table_contain {
+    width: 90%;
+    padding-left: 10%
+  }
+
+  .table_contain tbody {
+    width: 100%;
+  }
+
+  td, .table_row_main {
+    width: 80vw;
+  }
+
+  .wrapper-table-task {
+    padding-bottom: 20px;
+  }
+
+  .border_all {
+    width: calc(100% - 40px);
   }
 }
