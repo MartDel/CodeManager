@@ -1562,7 +1562,7 @@ input[type="file"]:hover {
 /*MODAL CONFIRM*/
 #delete .modal-wrapper {
   width: 40%;
-  height: 25%;
+  height: auto;
 }
 
 #delete h1 {
@@ -1599,7 +1599,7 @@ input[type="file"]:hover {
 }
 
 .no_delete {
-  ;
+  color: black;
   text-decoration: none;
 }
 
@@ -1610,6 +1610,7 @@ input[type="file"]:hover {
 /*CREATE PROJECT MODAL*/
 #create .modal-wrapper {
   width: 60%;
+  height: auto;
 }
 
 #header_create_project {
@@ -1750,15 +1751,15 @@ input[type="file"]:hover {
 .flex_button_create {
   display: flex;
   flex-direction: column;
-  padding-left: 35%;
-  padding-right: 35%;
+  padding-left: 0%;
+  padding-right: 0%;
   padding-bottom: 20px;
 }
 
 .button_create_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  ;
+  width: auto;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
