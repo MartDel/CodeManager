@@ -52,11 +52,10 @@ ob_start();
           <br><br>
           <h2>Adresse e-mail du collaborateur :</h2>
           <br>
-          <input type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
+          <input class="mailadd" type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
           <br><br><br>
           <div class="flex_add_user">
-            <a href="#" class="yes_add_user">Valider</a>
-            <input type="submit" value="Valider" />
+            <input class="yes_add_user" type="submit" value="Valider" />
             <a href="#" class="close-modal no_add_user">Annuler</a>
           </div>
       </form>
