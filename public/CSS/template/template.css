@@ -869,6 +869,20 @@ input.apple-switch:checked:after {
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
   width: 50%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 860px) {
+  #help_modal {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  #help_modal {
+    width: 75%;
+  }
 }
 
 #help_modal h1 {
@@ -906,6 +920,25 @@ input.apple-switch:checked:after {
 #help_modal tr {
   display: flex;
   flex-direction: row;
+}
+
+@media only screen and (max-width: 450px) {
+  #help_modal tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #help_modal {
+    height: 80vh;
+    overflow: auto;
+    width: 60%;
+  }
+
+  #help_modal td {
+    width: calc(100% - 20px);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 #help_modal img {
