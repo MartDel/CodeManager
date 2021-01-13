@@ -1557,7 +1557,7 @@ p[name=task] {
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 500px) {
   .table-wrapper {
     flex-direction: column;
   }
