@@ -1038,7 +1038,7 @@ input.apple-switch:checked:after {
 
 #project .modal-wrapper {
   width: 60%;
-  height: 65%;
+  height: auto;
   top: 5%;
   left: 15%;
 }
