@@ -197,7 +197,7 @@ ob_start();
         <?php foreach ($tasks as $task){ if ($task->getAuthor()): ?>
             <!-- Tasks modals -->
             <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_modal" name="popup_modal_task">
-                <span class="close close-modal">&times;</span>
+                <span class="close_add close-modal">&times;</span>
                 <div class="top-colour">
                   <h1>Détails de la tâche <?= $task->getIsDone() ? 'effectuée ' : '' ?></h1>
                 </div>
@@ -206,9 +206,9 @@ ob_start();
                   <h3><strong>Détails de la tâche : </strong></h3>
                   <br>
                   <div class="details-task" >
-                      <h3><u>Titre de la tâche : </u><?= $task->getName() ?></h3>
-                      <h3><u>Description de la tâche : </u><?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></h3>
-                      <h3><u>Catégorie de la tâche : </u><?= $task->getCategoryId() ? $task->getCategory() : 'Divers' ?></h3>
+                      <h3><u>Titre de la tâche :</u> <?= $task->getName() ?></h3>
+                      <h3><u>Description de la tâche :</u> <?= $task->getDescription() ? $task->getDescription() : '<i>Pas de description</i>' ?></h3>
+                      <h3><u>Catégorie de la tâche :</u> <?= $task->getCategoryId() ? $task->getCategory() : 'Divers' ?></h3>
                       <br><br>
                       <table class="bottom-task-modal">
                         <tr>
