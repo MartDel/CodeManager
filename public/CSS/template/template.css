@@ -869,7 +869,7 @@ input.apple-switch:checked:after {
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
   width: 50%;
-  max-height: 90vh;
+  max-height: 80vh;
   overflow: auto;
 }
 
