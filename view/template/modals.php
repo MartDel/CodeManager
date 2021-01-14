@@ -115,7 +115,7 @@
         <span id="close_swap" class="close_swap close-modal">&times;</span>
         <br><br>
     </section>
-    <br><br><br><br>
+    <br><br>
     <section id="body_project_modal">
         <section id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
@@ -135,13 +135,13 @@
         <div id="div_form_new_project"></div>
         <div class="info_current_project">
           <br>
-          <h1><strong><u>Nom du Projet : </u></strong><?= $project->getName() ?></h1>
+          <h1><strong><u>Nom du Projet :</u></strong> <?= $project->getName() ?></h1>
           <br>
-          <h1><strong><u>Description du Projet : </u></strong><?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
+          <h1><strong><u>Description du Projet :</u></strong> <?= $project->getDescription() ? $project->getDescription() : '<i>Pas de description</i>' ?></h1>
           <br>
-          <h1><strong><u>Pseudo GitHub :</u></strong> <?= $project->getRemotePseudo() ? $project->getRemotePseudo() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <h1><strong><u>Pseudo GitHub :</u> </strong> <?= $project->getRemotePseudo() ? $project->getRemotePseudo() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
-          <h1><strong><u>Nom du projet GitHub :</u> </strong><?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
+          <h1><strong><u>Nom du projet GitHub :</u></strong> <?= $project->getRemoteName() ? $project->getRemoteName() : '<i>Pas de GitHub associé</i>' ?></h1>
           <br>
         </div>
         <br><br>

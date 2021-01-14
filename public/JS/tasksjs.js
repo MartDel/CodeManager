@@ -270,7 +270,7 @@ for (let i = 0; i < addtask.show_btns.length; i++) {
             modals.show(addtask.id,()=>{
                 addtask.title.value="";
                 addtask.desc_input.value="";
-                $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
+                $(addtask.buttoncate2).css('opacity', 1).css('display', 'block')
                 $(addtask.inputcate2).css('display', "none").css('opacity', 0)
 
             })

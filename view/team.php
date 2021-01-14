@@ -16,6 +16,9 @@ ob_start();
           <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
       </span>
     </div>
+    <div style="flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
+      Page en développement... :/ (mais néammoins fonctionnelle :D)
+    </div>
     <div class="main-table-user">
       <table>
         <tr>
@@ -52,11 +55,10 @@ ob_start();
           <br><br>
           <h2>Adresse e-mail du collaborateur :</h2>
           <br>
-          <input type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
+          <input class="mailadd" type="email" name="mail" placeholder="Adresse e-mail du collaborateur" value="" />
           <br><br><br>
           <div class="flex_add_user">
-            <a href="#" class="yes_add_user">Valider</a>
-            <input type="submit" value="Valider" />
+            <input class="yes_add_user" type="submit" value="Valider" />
             <a href="#" class="close-modal no_add_user">Annuler</a>
           </div>
       </form>

@@ -741,7 +741,7 @@ ul {
 
 #col_settings textarea {
   resize: none;
-  width: 100%;
+  width: 94%;
   height: 100px;
   border: 1px solid #b8b8b8;
   border-radius: 20px;
@@ -770,6 +770,7 @@ ul {
 
 .row_settings_title p {
   text-align: center;
+  width: 105%;
 }
 
 .close_settings {
@@ -868,6 +869,20 @@ input.apple-switch:checked:after {
   -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
   width: 50%;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 860px) {
+  #help_modal {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  #help_modal {
+    width: 75%;
+  }
 }
 
 #help_modal h1 {
@@ -905,6 +920,25 @@ input.apple-switch:checked:after {
 #help_modal tr {
   display: flex;
   flex-direction: row;
+}
+
+@media only screen and (max-width: 450px) {
+  #help_modal tr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #help_modal {
+    height: 80vh;
+    overflow: auto;
+    width: 60%;
+  }
+
+  #help_modal td {
+    width: calc(100% - 20px);
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 
 #help_modal img {
@@ -1004,7 +1038,7 @@ input.apple-switch:checked:after {
 
 #project .modal-wrapper {
   width: 60%;
-  height: 65%;
+  height: auto;
   top: 5%;
   left: 15%;
 }
@@ -1210,6 +1244,18 @@ input.apple-switch:checked:after {
   box-shadow: #4b4b4b 0px 0px 15px;
 }
 
+@media only screen and (max-width: 480px) {
+  #account .modal-wrapper {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  #account .modal-wrapper {
+    width: 70%;
+  }
+}
+
 #bc_img_logo_account {
   background-size: cover;
   height: 125px;
@@ -1287,7 +1333,7 @@ input.apple-switch:checked:after {
 /*MODAL MY INFOS*/
 #my_informations .modal-wrapper {
   width: 40%;
-  height: 60%;
+  height: auto;
 }
 
 #my_informations h1 {
@@ -1408,6 +1454,17 @@ input[type="file"]:hover {
   padding: 15px;
 }
 
+@media only screen and (max-width: 530px) {
+  #my_informations .account_change_row {
+    flex-direction: column;
+  }
+
+  #my_informations .input_fields {
+    padding-left: 5px;
+    width: 100%
+  }
+}
+
 #my_informations .input_fields:focus {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
@@ -1505,7 +1562,7 @@ input[type="file"]:hover {
 /*MODAL CONFIRM*/
 #delete .modal-wrapper {
   width: 40%;
-  height: 25%;
+  height: auto;
 }
 
 #delete h1 {
@@ -1542,7 +1599,7 @@ input[type="file"]:hover {
 }
 
 .no_delete {
-  ;
+  color: black;
   text-decoration: none;
 }
 
@@ -1553,6 +1610,7 @@ input[type="file"]:hover {
 /*CREATE PROJECT MODAL*/
 #create .modal-wrapper {
   width: 60%;
+  height: auto;
 }
 
 #header_create_project {
@@ -1693,15 +1751,15 @@ input[type="file"]:hover {
 .flex_button_create {
   display: flex;
   flex-direction: column;
-  padding-left: 35%;
-  padding-right: 35%;
+  padding-left: 0%;
+  padding-right: 0%;
   padding-bottom: 20px;
 }
 
 .button_create_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  ;
+  width: auto;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
@@ -1878,15 +1936,14 @@ input[type="file"]:hover {
 .flex_button_edit {
   display: flex;
   flex-direction: column;
-  padding-left: 40%;
-  padding-right: 40%;
+  padding-left: 0%;
+  padding-right: 0%;
   padding-bottom: 20px;
 }
 
 .button_edit_project {
   font-family: "Product Sans Regular";
   font-size: 1rem;
-  ;
   background-color: rgba(255, 255, 255, 0);
   outline: none;
   border: none;
@@ -2126,11 +2183,6 @@ input[type="file"]:hover {
   aside[name=popup_modal_task] .modal-wrapper {
     width: 100%;
     height: auto;
-  }
-
-  #account .modal-wrapper {
-    width: 50%;
-    height: auto%;
   }
 }
 
