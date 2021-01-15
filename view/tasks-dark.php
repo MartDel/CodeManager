@@ -1,6 +1,6 @@
 <?php
 $title = "Tâches | NameProject";
-$page = 'tasks';
+$page = 'tasks-dark';
 $cssfile = "tasks";
 $jsfile = "tasksjs";
 $_SESSION['last_page'] = 'tasks';
