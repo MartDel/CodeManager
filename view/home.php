@@ -1,6 +1,6 @@
 <?php
 
-$title = "Page d'accueil";
+$title = "Code Manager - Accueil";
 $cssfile = "index";
 $jsfile = "home";
 $_SESSION['last_page'] = 'home';

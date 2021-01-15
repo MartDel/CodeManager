@@ -392,8 +392,23 @@ aside[name~=popup_modal_task] .modal-wrapper {
   padding-right: 80px;
 }
 
+@media only screen and (max-width: 525px) {
+  .details-task {
+    width: calc(100% - 0px);
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 .bottom-task-modal {
   width: 100%;
+}
+
+@media only screen and (max-width: 350px) {
+  .bottom-task-modal {
+    transform: scale(0.8);
+    margin-left: -30px;
+  }
 }
 
 .bottom-task-modal td div:hover {
@@ -857,7 +872,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   outline: none;
   border: white 2px solid;
   font-family: "Product Sans Regular";
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -869,9 +884,10 @@ aside[name~=popup_modal_task] .modal-wrapper {
   outline: none;
   border: white 2px solid;
   font-family: "Product Sans Regular";
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
+  padding: 0;
 }
 
 #button_line {
@@ -920,6 +936,10 @@ aside[name~=popup_modal_task] .modal-wrapper {
   }
 
   .boutons_bas {
+    width: 100%;
+  }
+
+  .boutons_bas:hover {
     width: 100%;
   }
 }
@@ -1062,7 +1082,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   outline: none;
   border: white 2px solid;
   font-family: "Product Sans Regular";
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -1074,7 +1094,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   outline: none;
   border: white 2px solid;
   font-family: "Product Sans Regular";
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -1106,7 +1126,11 @@ aside[name=edit_popup_modal] .modal-wrapper {
     flex-direction: column;
   }
 
-  .boutons_bas {
+  #section_ligne_bas_edit .backtrans {
+    width: 100%;
+  }
+
+  #section_ligne_bas_edit .backtrans:hover {
     width: 100%;
   }
 }
