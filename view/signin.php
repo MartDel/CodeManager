@@ -8,7 +8,7 @@ ob_start();
 
 ?>
 
-<a href="index.php">
+<a href="/">
   <img class="back_to_main" src="public/img/left-arrowback.png" alt="">
 </a>
 <div class="title_form_container">
@@ -31,7 +31,7 @@ ob_start();
     <input class="button_submit_signin" type="submit" value="Se connecter" />
   </form>
   <br><br>
-  <p>Vous n'avez pas encore de compte ? Inscrivez-vous <a class="here" href="index.php?action=signup">ici</a></p>
+  <p>Vous n'avez pas encore de compte ? Inscrivez-vous <a class="here" href="/signup">ici</a></p>
 </div>
 
 <script type="text/javascript">
