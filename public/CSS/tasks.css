@@ -1587,6 +1587,10 @@ p[name=task] {
     flex-direction: column;
   }
 
+  .left-side-task-mosaic img, .left-side-task-mosaic a {
+    display: none;
+  }
+
   .table_col_main {
     border-color: transparent;
     padding-right: 0;
