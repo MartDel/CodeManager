@@ -352,7 +352,7 @@ function httpRequest($url){
  * @param String $error_redirect What returned if $_SESSION['last_page'] doesn't exist
  * @return String The last page name
  */
-function getLastPage($error_redirect = 'home'){
+function getLastPage($error_redirect = '/'){
 	return isset($_SESSION['last_page']) ? $_SESSION['last_page'] : $error_redirect;
 }
 
