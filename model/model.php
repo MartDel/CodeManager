@@ -17,7 +17,7 @@ function checkCookie(){
     $user = User::getUserByLoginId(htmlspecialchars($_COOKIE['auth']));
     if($user){
         connectUser($user->getPseudo(), false);
-        header("Location: index.php");
+        header("Location: /");
     } else logout();
 }
 
@@ -34,7 +34,7 @@ function checkUserData($redirectToNoProject){
     	    else $redirect = true;
     	}
     } else $redirect = true;
-    if(!$redirectToNoProject && $redirect) header('Location: index.php?action=noProject');
+    if(!$redirectToNoProject && $redirect) header('Location: /noProject');
 }
 
 /**
@@ -43,7 +43,7 @@ function checkUserData($redirectToNoProject){
  */
 function checkNewUserData($data){
 	if(!isset($data['pseudo']) || !isset($data['mail']) || !isset($data['password']) || !isset($data['confirm']) || !isset($data['firstname']) || !isset($data['lastname'])) {
-		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusEmptyInput');
 	}
 	$pseudo = $data['pseudo'];
 	$mail = $data['mail'];
@@ -52,16 +52,16 @@ function checkNewUserData($data){
 	$password = $data['password'];
 	$confirm = $data['confirm'];
 	if($pseudo == "" || $mail == "" || $password == "" || $firstname == "" || $lastname == "") {
-		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
+		throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusEmptyInput');
 	}
 	if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-		throw new CustomException('Addresse mail non valide', "L'addresse e-mail n'est pas valide.", 'index.php?action=' . getLastPage(), 'focusEmail');
+		throw new CustomException('Addresse mail non valide', "L'addresse e-mail n'est pas valide.", '/' . getLastPage(), 'focusEmail');
 	}
 	if($password != $confirm) {
-		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
+		throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", '/' . getLastPage(), 'focusPassword');
 	}
 	if((new User($pseudo, $mail, $firstname, $lastname))->accountExist()) {
-		throw new CustomException('Compte déjà existant', "Un compte déja existant a été trouvé avec ces identifiants.", 'index.php?action=' . getLastPage());
+		throw new CustomException('Compte déjà existant', "Un compte déja existant a été trouvé avec ces identifiants.", '/' . getLastPage());
 	}
 }
 
@@ -88,24 +88,24 @@ function addUser($data){
 function checkConnection($login, $password, $is_hashed) {
 	$user = new User($login, $login, '', '');
 	if(!$user->accountExist()){
-		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
+		throw new CustomException('Mauvais identifiants', "L'identifiant ou le mot de passe renseigné n'est pas correct.", '/' . getLastPage(), 'focusEmptyInput');
 	}
 
 	$correct_password = User::getPassword($login);
 	if($correct_password == null) {
-		throw new CustomException('Erreur!', "Une erreur s'est produite.", 'index.php?action=' . getLastPage());
+		throw new CustomException('Erreur!', "Une erreur s'est produite.", '/' . getLastPage());
 	}
 
 	if($is_hashed){
 		if($password != $correct_password){
-			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
+			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", '/' . getLastPage(), 'focusPassword');
 		}
 	} else {
 		if($login == "" || $password == "") {
-			throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
+			throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", '/' . getLastPage(), 'focusEmptyInput');
 		}
 		if(!password_verify($password, $correct_password)) {
-			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", 'index.php?action=' . getLastPage(), 'focusPassword');
+			throw new CustomException('Mot de passe incorrect', "Le mot de passe n'est pas correct.", '/' . getLastPage(), 'focusPassword');
 		}
 	}
 }
@@ -204,7 +204,7 @@ function getCategoryNameById($id){
 function addCategory($name){
     $category = new Category($name, $_SESSION['project_id']);
     if($category->getId()){
-        throw new CustomException('Categorie déjà existante', "La categorie que vous tentez de créer existe déjà...", 'index.php?action=tasks');
+        throw new CustomException('Categorie déjà existante', "La categorie que vous tentez de créer existe déjà...", '/tasks');
     }
     $category->pushToDB();
     return $category->getDatabaseId();
@@ -240,12 +240,12 @@ function getCommits($github_user, $project_name){
 function checkFileInfo(){
 	// Check if there is no error
     if (!isset($_FILES['pp']) || $_FILES['pp']['error'] != 0){
-        throw new CustomException('Erreur', 'Un problème est survenu.', 'index.php?action=' . getLastPage());
+        throw new CustomException('Erreur', 'Un problème est survenu.', '/' . getLastPage());
     }
 
 	// Check the file size
 	if ($_FILES['pp']['size'] > 1000000){
-		throw new CustomException('Fichier trop volumineux', 'Le fichier que vous avez fourni est trop volumineux. Veuillez recommencer avec un fichier moins lourd.', 'index.php?action=' . getLastPage());
+		throw new CustomException('Fichier trop volumineux', 'Le fichier que vous avez fourni est trop volumineux. Veuillez recommencer avec un fichier moins lourd.', '/' . getLastPage());
 	}
 
 	// Check file extension
@@ -254,7 +254,7 @@ function checkFileInfo(){
 	$extensions_autorisees = array('jpg', 'jpeg', 'png');
 	list($w, $h) = getimagesize($_FILES['pp']['tmp_name']);
 	if (!in_array($extension_upload, $extensions_autorisees) || $w == null || $h == null) {
-		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .png", 'index.php?action=' . getLastPage());
+		throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .png", '/' . getLastPage());
 	}
 }
 
@@ -352,7 +352,7 @@ function httpRequest($url){
  * @param String $error_redirect What returned if $_SESSION['last_page'] doesn't exist
  * @return String The last page name
  */
-function getLastPage($error_redirect = 'home'){
+function getLastPage($error_redirect = '/'){
 	return isset($_SESSION['last_page']) ? $_SESSION['last_page'] : $error_redirect;
 }
 
@@ -385,7 +385,7 @@ function secure($object){
 	foreach ($object as $key => $value) {
 		$final = trim(htmlspecialchars($value));
 		if(strlen($final) > 255 && $key != 'description' && $key != 'message' && $key != 'mess'){
-			throw new CustomException('Données non valide', "Une des données envoyées n'est pas correcte. Veillez à ce qu'elle ne dépasse pas une longuer de 255 et qu'elle ne contienne pas de \".", 'index.php?action=' . getLastPage());
+			throw new CustomException('Données non valide', "Une des données envoyées n'est pas correcte. Veillez à ce qu'elle ne dépasse pas une longuer de 255 et qu'elle ne contienne pas de \".", '/' . getLastPage());
 		}
 		$object[$key] = $final;
 	}
