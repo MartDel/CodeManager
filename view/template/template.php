@@ -4,7 +4,6 @@
 	    <title><?= $project->getName() ?> | CodeManager</title>
 		<meta charset="utf-8" />
 		<meta name="color-scheme" content="dark light">
-	  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="HandheldFriendly" content="true" />
 
@@ -112,10 +111,10 @@
 		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 		<!-- JS code -->
-		<script type="text/javascript" src="public/JS/template/Message.js"></script>
-		<script type="text/javascript" src="public/JS/template/manage_messages.js"></script>
-		<script type="text/javascript" src="public/JS/template/modal.js"></script>
-		<script type="text/javascript" src="public/JS/template/template.js"></script>
-		<script type="text/javascript" src="public/JS/<?= $jsfile ?>.js"></script>
+		<script src="public/JS/template/Message.js"></script>
+		<script src="public/JS/template/manage_messages.js"></script>
+		<script src="public/JS/template/modal.js"></script>
+		<script src="public/JS/template/template.js"></script>
+		<script src="public/JS/<?= $jsfile ?>.js"></script>
 	</body>
 </html>
