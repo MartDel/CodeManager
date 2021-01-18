@@ -7,6 +7,8 @@ abstract class DatabaseManager
 {
     const DB_HOST = "localhost";
     const DB_NAME = "codemanager";
+    // OuiHeberg config
+    // const DB_NAME = "codeman1_main";
     const DB_USERNAME = Passwords::DB_USERNAME;
     const DB_PASSWORD = Passwords::DB_PASSWORD;
 
