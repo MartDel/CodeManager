@@ -253,9 +253,9 @@ ob_start();
                       <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                       <div class="category_flex">
                         <select name="category">
-                            <option selected="selected" value="-1">Divers</option>
+                            <option <?php if($task->getCategory()) echo 'selected="selected" '; ?>value="-1">Divers</option>
                             <?php foreach ($categories as $category): ?>
-                                <option value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+                                <option <?php if($task->getCategoryId() == $category->getId()) echo 'selected="selected" '; ?>value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="button" name="" class="new_cat_button2">Nouvelle Catégorie</button>
