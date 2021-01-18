@@ -1190,6 +1190,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   height: 15px;
   height: auto;
   transition: all 0.3s ease;
+  margin-bottom:9px;
   filter: invert(100%);
 }
 
