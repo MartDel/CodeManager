@@ -10,8 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
 
 	    <link rel="icon" type="image/png" href="" />
-			<link rel="shortcut icon" href="public/img/shortcuticon.png" />
-
+		<link rel="shortcut icon" href="public/img/shortcuticon.png" />
 
         <!-- Ionicons -->
         <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>

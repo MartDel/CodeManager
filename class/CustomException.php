@@ -22,7 +22,7 @@ class CustomException extends Exception {
         return '&error' . $title . $message . $callback_name . $btn;
     }
 
-    public function getRedirection() { return $this->redirection; }
+    public function getRedirection() { return 'index.php?action=' . $this->redirection; }
 
     // SETTERS
 
