@@ -168,39 +168,52 @@ $(settings.btn).click(function () {
 })
 
 // Turn ON/OFF dark-mode
+
 $(settings.edit.dark_mode).change(function (){
     if (this.checked) turnOnDarkMode()
     else turnOffDarkMode()
 })
 function turnOnDarkMode() {
     // Dark-mode for all elements
-    $('*').each(function (){
-        const $node = $(this)
-        if ($node.css('color') === "black") $node.css('color', "white")
-    })
-    // Dark-mode for the body
-    const $body = $('body').css('background-color', '#1C1C1C')
-    if ($body.css('color') === 'black') $body.css('color', 'white')
-    // Dark-mode for div
-    $('div').each(function (){
-        const $node = $(this)
-        if($node.css('color') === 'black') $node.css('color', 'white')
-        if ($node.css('background-color') === 'white') $node.css('background-color', '#1C1C1C')
-    })
-    // Dark-mode for images
-    $('img').css('filter', "invert(50%)")
-    // Dark-mode for the logo
-    $('#logo').css('filter', "invert(0%)")
-    // Dark-mode for done tasks
-    $('.tasks_done').css('filter', "invert(0%) grayscale(100%)")
-    // Dark-mode for categories
-    $('#category_1').css('filter', "invert(100%)")
-    $('#category_2').css('filter', "invert(100%)")
-    // Dark-mode for ???
-    $('.flex_title_task').css('background-color', "transparent")
-    $('#firstdisplay li').css('color', "white")
-    $('#findField').css('color', "black")
-    $('.category_flex select option').css('color', "black").css('backgroundColor', "white")
+    
+    //Change css
+    var allLinks = document.head.getElementsByTagName('link');
+    // find and replace the element
+    for (var i = 0; i < allLinks.length; i++) {
+      if ( allLinks[i].href == "public/CSS/tasks.css") {
+        allLinks[i].href = "public/CSS/tasks-dark.css";
+      }
+    }
+    //Darkmode body
+    $('body').css('background-color', "#121212");
+
+    //darkmode for findField
+    $('#findField').css('color', "white");
+    $('#findField').css('background-color', "#373737");
+    $('#findField').css('border-color', "#373737");
+
+    //Darkmode for button actual project
+    $('#project_actual').css('color', "white");
+    $('#project_actual').hover(
+      function(){
+        $('#project_actual').css('border-color', "white")
+      },function(){
+        $('#project_actual').css('border-color', "transparent")
+      }
+    );
+
+    //darkmode icones en haut à droite
+    $('#switch_logo_img').css('filter', "invert(100%)");
+    $('#gear_logo_img').css('filter', "invert(100%)");
+    $('#help_logo_img').css('filter', "invert(100%)");
+
+    //Darkmoded for left menu
+    $('.notselectedmenu').css('color', "white");
+    $('.selectedmenu').css('color', "white");
+    $('.selectedmenu').css('background-color', "#b41e10");
+    $('.img_menu_gauche_js').css('filter', "invert(50%) brightness(20000%)");
+
+
 
     // Turn off night-shift
     $(settings.edit.night_shift)[0].checked = false
@@ -211,37 +224,44 @@ function turnOnDarkMode() {
 }
 function turnOffDarkMode() {
     // Reset all elements
-    $('*').each(function (){
-        const $node = $(this)
-        if ($node.css('color') === "white") $node.css('color', "black")
-    })
-    // Reset the body
-    $('body').css('background-color', 'white').css('color', 'black')
-    // Reset div
-    $('div').each(function (){
-        const $node = $(this)
-        if($node.css('color') === 'white') $node.css('color', 'black')
-        if ($node.css('background-color') === '#1C1C1C') $node.css('background-color', 'white')
-    })
-    // Reset images
-    $('img').css('filter', "invert(0%) brightness(100%)")
-    // Reset the logo
-    $('#logo').css('filter', "invert(0%)")
-    // Reset categories
-    $('#category_1').css('filter', "invert(100%)")
-    $('#category_2').css('filter', "invert(100%)")
-    // Reset left menu
-    $('.menu_gauche a').each(function (){
-        const $node = $(this)
-        if ($node.css('color') === "white") $node.css('color', "black")
-    })
-    // Dark-mode for ???
-    $('.flex_title_task').css('background-color', "transparent")
-    $('#firstdisplay li').css('color', "black")
-    $('#findField').css('color', "black")
-    $('.category_flex select option').css('color', "black").css('background-color', "white")
-    $('#help_modal img').css('filter', "invert(25%) grayscale(100%) brightness(100%)")
-    $('.img_menu_gauche_js').css('filter', "invert(0%) brightness(0%)")
+
+    //Change css
+    var allLinks = document.head.getElementsByTagName('link');
+    // find and replace the element
+    for (var i = 0; i < allLinks.length; i++) {
+      if ( allLinks[i].href == "public/CSS/tasks-dark.css") {
+        allLinks[i].href = "public/CSS/tasks.css";
+      }
+    }
+    //Darkmode body
+    $('body').css('background-color', "white");
+
+    //darkmode for findField
+    $('#findField').css('color', "black");
+    $('#findField').css('background-color', "#f1f3f4");
+    $('#findField').css('border-color', "#f1f3f4");
+
+    //Darkmode for button actual project
+    $('#project_actual').css('color', "black");
+    $('#project_actual').hover(
+      function(){
+        $('#project_actual').css('border-color', "rgba(0, 0, 0, 0.164)")
+      },function(){
+        $('#project_actual').css('border-color', "transparent")
+      }
+    );
+
+    //darkmode icones en haut à droite
+    $('#switch_logo_img').css('filter', "invert(0%)");
+    $('#gear_logo_img').css('filter', "invert(0%)");
+    $('#help_logo_img').css('filter', "invert(0%)");
+
+    //Darkmoded for left menu
+    $('.notselectedmenu').css('color', "black");
+    $('.selectedmenu').css('color', "#b41e10");
+    $('.selectedmenu').css('background-color', "#fce8e6");
+    $('.img_menu_gauche_js').css('filter', "invert(50%) brightness(0%)");
+
 
     // Set dark-mode cookie
     setCookie('dark-mode', null)

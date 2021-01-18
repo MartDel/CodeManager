@@ -4,6 +4,20 @@ html, body {
 }
 
 /*LIGNE HAUT TACHE*/
+
+#menu_haut{
+  background-color:#121212;
+}
+#webapp_cover{
+  background-color:#121212;
+}
+button[name="task"] img{
+  filter:invert(100%);
+}
+aside .modal-wrapper{
+  filter:brightness(75%);
+}
+
 .section_en_dessous_menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,6 +26,7 @@ html, body {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  background-color:#121212;
 }
 
 .ligne_haut_tache {
@@ -103,6 +118,7 @@ html, body {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter:invert(100%);
 }
 
 .ligne_haut_tache #refresh:hover {
@@ -113,6 +129,7 @@ html, body {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter:invert(100%);
 }
 
 .new_task_img:hover {
@@ -136,6 +153,7 @@ html, body {
   margin-left: 15px;
   display: none;
   z-index: 999;
+  filter: invert(100%);
 }
 
 .ligne_haut_tache .trash:hover {
@@ -265,6 +283,7 @@ span[title="Spprimer"] {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
+  color:white
 }
 
 .utilisateur {
@@ -448,7 +467,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
   margin-left: -18px;
   -webkit-transform: translateY(-50%) scale(0.7);
   transform: translateY(-50%) scale(0.7);
-  background-color: white;
 }
 
 #menu_button {
@@ -1226,6 +1244,8 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main:hover .left-side-task-mosaic img {
   transform: scale(1);
   transition: all 0.2s;
+  filter:invert(100%);
+
 }
 
 .table_col_main:hover {
@@ -1240,6 +1260,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-top: 10px;
   transition: all 0.2s;
   transform: scale(0);
+
 }
 
 .wrapper-table-task {
@@ -1291,6 +1312,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: calc(100% - 20px);
   background-color: none;
   padding-right: 10px;
+  color:white;
 }
 
 .mozaic_all_table {
@@ -1437,6 +1459,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
+  color:white
 }
 
 @-webkit-keyframes ModalComing {

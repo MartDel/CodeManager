@@ -447,7 +447,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
   margin-left: -18px;
   -webkit-transform: translateY(-50%) scale(0.7);
   transform: translateY(-50%) scale(0.7);
-  background-color: white;
 }
 
 #menu_button {
@@ -1290,6 +1289,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: calc(100% - 20px);
   background-color: none;
   padding-right: 10px;
+  color:black
 }
 
 .mozaic_all_table {
@@ -1436,6 +1436,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
+  color:black
 }
 
 @-webkit-keyframes ModalComing {

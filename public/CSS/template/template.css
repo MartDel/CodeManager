@@ -419,7 +419,7 @@ ul {
 }
 
 #menu_gauche ul .notselectedmenu:hover {
-  background-color: #f1f3f4;
+  background-color: rgba(220,220,220,0.5);
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -437,9 +437,6 @@ ul {
 }
 
 .selectedmenu:hover {
-  color: #b41e10;
-  background-color: #fce8e6;
-  font-weight: bold;
   cursor: pointer;
 }
 
