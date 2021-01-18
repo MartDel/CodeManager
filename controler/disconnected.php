@@ -9,7 +9,7 @@
 function home(){ require('view/home.php'); }
 function signup(){ require('view/signup.php'); }
 function signin(){ require('view/signin.php'); }
-function dark(){require("view/tasks-dark.php");}
+function dark(){ require("view/tasks-dark.php"); }
 
 
  /**
