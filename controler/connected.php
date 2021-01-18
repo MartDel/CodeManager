@@ -6,6 +6,17 @@
 =====================
  */
 
+function dark(){
+    $project = Project::getProjectById($_SESSION['project_id']);
+    $project_list = Project::getAllProjects($_SESSION['user_id']);
+    $tasks = Task::getAllTasks($_SESSION['project_id']);
+    $tasksByCategory = orderByCategory($tasks);
+    $nb_tasks = isset($tasks) ? countNotDoneTasks($tasks) : 0;
+    $nb_done_tasks = isset($tasks) ? countDoneTasks($tasks) : 0;
+    $categories = Category::getAllCategories($_SESSION['project_id']);
+    require("view/tasks-dark.php");
+}
+
 /**
  * Get tasks stats and show them
  */
@@ -396,6 +407,9 @@ function editPP(){
     $success->redirect();
 }
 
+/**
+ * Edit acount infos
+ */
 function editAccount(){
     $data = secure($_POST);
     if(!isset($data['pseudo']) || $data['pseudo'] == '') {
