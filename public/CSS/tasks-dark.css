@@ -4,18 +4,20 @@ html, body {
 }
 
 /*LIGNE HAUT TACHE*/
+#menu_haut {
+  background-color: #121212;
+}
 
-#menu_haut{
-  background-color:#121212;
+#webapp_cover {
+  background-color: #121212;
 }
-#webapp_cover{
-  background-color:#121212;
+
+button[name="task"] img {
+  filter: invert(100%);
 }
-button[name="task"] img{
-  filter:invert(100%);
-}
-aside .modal-wrapper{
-  filter:brightness(75%);
+
+aside .modal-wrapper {
+  filter: brightness(75%);
 }
 
 .section_en_dessous_menu {
@@ -26,7 +28,7 @@ aside .modal-wrapper{
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  background-color:#121212;
+  background-color: #121212;
 }
 
 .ligne_haut_tache {
@@ -118,7 +120,7 @@ aside .modal-wrapper{
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
-  filter:invert(100%);
+  filter: invert(100%);
 }
 
 .ligne_haut_tache #refresh:hover {
@@ -129,7 +131,7 @@ aside .modal-wrapper{
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
-  filter:invert(100%);
+  filter: invert(100%);
 }
 
 .new_task_img:hover {
@@ -257,6 +259,18 @@ span[title="Spprimer"] {
   width: 100%;
 }
 
+.liste_taches .trytochangethat {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 250px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
+  padding-left: 20px;
+  width: 100%;
+}
+
 .liste_taches li:hover {
   -webkit-box-shadow: 0.5px 0.5px 1px #555;
   box-shadow: 0.5px 0.5px 1px #555;
@@ -283,7 +297,7 @@ span[title="Spprimer"] {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
-  color:white
+  color: white
 }
 
 .utilisateur {
@@ -1210,7 +1224,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   height: 15px;
   height: auto;
   transition: all 0.3s ease;
-  margin-bottom:9px;
+  margin-bottom: 9px;
   filter: invert(100%);
 }
 
@@ -1245,8 +1259,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main:hover .left-side-task-mosaic img {
   transform: scale(1);
   transition: all 0.2s;
-  filter:invert(100%);
-
+  filter: invert(100%);
 }
 
 .table_col_main:hover {
@@ -1261,7 +1274,6 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-top: 10px;
   transition: all 0.2s;
   transform: scale(0);
-
 }
 
 .wrapper-table-task {
@@ -1313,7 +1325,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: calc(100% - 20px);
   background-color: none;
   padding-right: 10px;
-  color:white;
+  color: white;
 }
 
 .mozaic_all_table {
@@ -1460,7 +1472,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
-  color:white
+  color: white
 }
 
 @-webkit-keyframes ModalComing {
