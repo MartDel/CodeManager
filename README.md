@@ -27,7 +27,7 @@ abstract class Passwords {
 
 **N'oubliez pas de compléter le code ci-dessus avec les informations de connexion propre à votre base de données ainsi que la balise ouvrante de php au début du code !**
 
-Sur [CodeManager en ligne](https://www.codemanager.fr) un compte vous a été créé au préalable. Ici vous devez vous inscrire sur la page de connexion.
+Sur [CodeManager en ligne](https://www.codemanager.fr) un compte vous a été créé au préalable. En local vous devez vous inscrire vous-même sur la page *Inscription* du site.
 
 ### Lancer le site
 
