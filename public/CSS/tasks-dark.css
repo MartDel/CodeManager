@@ -1,3 +1,5 @@
+.refresh
+
 /*DARK STYLE FOR DARK MODE*/
 html, body {
   overflow-x: hidden;
@@ -116,14 +118,14 @@ aside .modal-wrapper {
   padding-right: 10px;
 }
 
-.ligne_haut_tache #refresh {
+.refresh {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
   filter: invert(100%);
 }
 
-.ligne_haut_tache #refresh:hover {
+.refresh:hover {
   animation: rotateAddTask 0.5s;
 }
 
@@ -204,7 +206,7 @@ span[title="Spprimer"] {
   transition: all 0.3s ease;*/
 }
 
-#refresh:hover {
+.refresh:hover {
   cursor: pointer;
 }
 
@@ -241,6 +243,10 @@ span[title="Spprimer"] {
 }
 */
 .liste_taches li {
+  height: auto
+}
+
+.liste_taches .trytochangethat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -257,21 +263,10 @@ span[title="Spprimer"] {
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 20px;
   width: 100%;
+  color: white;
 }
 
-.liste_taches .trytochangethat {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 250px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
-  padding-left: 20px;
-  width: 100%;
-}
-
-.liste_taches li:hover {
+.liste_taches .trytochangethat:hover {
   -webkit-box-shadow: 0.5px 0.5px 1px #555;
   box-shadow: 0.5px 0.5px 1px #555;
   cursor: pointer;

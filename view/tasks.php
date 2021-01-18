@@ -28,7 +28,7 @@ ob_start();
           <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
         </span>
         <span title="Rafraîchir">
-          <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+          <img class="brightnessmax refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
         </span>
         <span title="Tâches effectuées">
           <img class="tasks_done" src="public/img/task_done0.png" alt="" />
@@ -71,7 +71,7 @@ ob_start();
             <?php foreach ($tasks as $task) {
     if ($task->getAuthor()): ?>
                 <li>
-                  <button name="<?= $task->getIsDone() ? 'done_' : '' ?>task" class="trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>" id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                  <div name="<?= $task->getIsDone() ? 'done_' : '' ?>task" class="trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>" id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                     <span class="span_input_img" title="Sélectionner">
                       <input class="input_img check_js to_check" type="checkbox" />
                     </span>
@@ -100,12 +100,11 @@ ob_start();
                         <span><?= $task->getCreateDate() ?></span>
                       </div>
                     </div>
-                  </button>
+                  </div>
                 </li>
                 <?php endif;
 } ?>
-
-            </ul>
+        </ul>
           <?php else: ?>
               <p id="message-task-none">Pas de tâche pour le moment...</p>
           <?php endif; ?>
@@ -122,7 +121,7 @@ ob_start();
                 <img class="brightnessmax new_task_img" src="public/img/plus.png" alt="">
             </span>
             <span title="Rafraîchir">
-                <img class="brightnessmax" id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
+                <img class="brightnessmax refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
             </span>
             <span title="Tâches effectuées">
                 <img class="tasks_done" src="public/img/task_done0.png" alt="" />
@@ -145,7 +144,7 @@ ob_start();
                             <tbody>
                                 <tr class="table_row_main categories">
                                     <td class="table_col_main category-name">
-                                      </br>
+                                      <br>
                                       <div>
                                         <input type="checkbox" class="to-check2 category-check" id="category<?= $category_id ?>" />
                                         <p>

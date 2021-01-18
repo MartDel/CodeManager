@@ -98,13 +98,13 @@ html, body {
   padding-right: 10px;
 }
 
-.ligne_haut_tache #refresh {
+.refresh {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
 }
 
-.ligne_haut_tache #refresh:hover {
+.refresh:hover {
   animation: rotateAddTask 0.5s;
 }
 
@@ -183,7 +183,7 @@ span[title="Spprimer"] {
   transition: all 0.3s ease;*/
 }
 
-#refresh:hover {
+.refresh:hover {
   cursor: pointer;
 }
 
@@ -234,12 +234,13 @@ span[title="Spprimer"] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 41px;
+  height: 25px;
   padding-bottom: 10px;
   padding-top: 10px;
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 20px;
   width: 100%;
+  color: black;
 }
 
 .liste_taches .trytochangethat:hover {
