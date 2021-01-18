@@ -175,15 +175,10 @@ $(settings.edit.dark_mode).change(function (){
 })
 function turnOnDarkMode() {
     // Dark-mode for all elements
-    
+
     //Change css
-    var allLinks = document.head.getElementsByTagName('link');
-    // find and replace the element
-    for (var i = 0; i < allLinks.length; i++) {
-      if ( allLinks[i].href == "public/CSS/tasks.css") {
-        allLinks[i].href = "public/CSS/tasks-dark.css";
-      }
-    }
+    var stl = 'public/CSS/tasks-dark.css'
+    $('#stl[rel=stylesheet]').attr('href',stl);
     //Darkmode body
     $('body').css('background-color', "#121212");
 
@@ -226,13 +221,8 @@ function turnOffDarkMode() {
     // Reset all elements
 
     //Change css
-    var allLinks = document.head.getElementsByTagName('link');
-    // find and replace the element
-    for (var i = 0; i < allLinks.length; i++) {
-      if ( allLinks[i].href == "public/CSS/tasks-dark.css") {
-        allLinks[i].href = "public/CSS/tasks.css";
-      }
-    }
+    var stl = 'public/CSS/tasks.css'
+    $('#stl[rel=stylesheet]').attr('href',stl);
     //Darkmode body
     $('body').css('background-color', "white");
 

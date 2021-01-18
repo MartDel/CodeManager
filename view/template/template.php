@@ -9,7 +9,7 @@
 		<meta name="HandheldFriendly" content="true" />
 
 		<!-- CSS -->
-	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
+	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" id="stl"/>
 	    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
 
 		<!-- Template CSS -->
