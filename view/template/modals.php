@@ -43,7 +43,7 @@
     <a id="button_my_account" class="button_my_account close-modal">Mon compte</a>
     <div class="flex_button_account">
         <a id="button_option" class="close-modal button_option">Options</a>
-        <a href="index.php?action=logout" name="deconnexion_button" class="button_deconnect">Déconnexion</a>
+        <a href="index.php?action=logout" class="button_deconnect">Déconnexion</a>
     </div>
 </modal>
 
@@ -172,7 +172,7 @@
       <div class="flex_button_create">
         <br><br>
         <button name="create_project_button" class=" button_create_project" type="submit">Créer un nouveau projet</button>
-        <button class=" close-modal button_cancel_create_project" name="cancel_create_project_button" type="submit">Annuler</button>
+        <button class=" close-modal button_cancel_create_project" type="submit">Annuler</button>
       </div>
   </form>
 </modal>
@@ -197,8 +197,8 @@
       <div class="flex_button_edit">
         <br><br>
         <button name="edit_project_button" class="button_edit_project" type="submit">Modifier le  projet</button>
-        <a class="button_cancel_edit_project" name="cancel_create_project_button" href="index.php?action=deleteProject">Supprimer le projet</a>
-        <button class="close-modal button_cancel_edit_project" name="cancel_create_project_button" type="submit">Annuler</button>
+        <a class="button_cancel_edit_project" href="index.php?action=deleteProject">Supprimer le projet</a>
+        <button class="close-modal button_cancel_edit_project" type="submit">Annuler</button>
       </div>
   </form>
 </modal>

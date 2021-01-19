@@ -19,7 +19,7 @@ ob_start();
     </div>
 
     <!--List display (first) -->
-    <section id="firstdisplay" class="ligne_et_taches" style="display:block">
+    <div id="firstdisplay" class="ligne_et_taches" style="display:block">
       <div class="ligne_haut_tache ligne_haut_tache_id">
         <span title="Tout sélectionner">
           <input name="sample" id="select_all" type="checkbox" />
@@ -58,7 +58,7 @@ ob_start();
           </table>
         </div>
       </div>
-      <section class="list_task">
+      <div class="list_task">
         <?php if (isset($tasks)): ?>
         <!--Error messages -->
         <?php if ($nb_tasks == 0): ?>
@@ -108,11 +108,11 @@ ob_start();
         <?php else: ?>
           <p id="message-task-none">Pas de tâche pour le moment...</p>
         <?php endif; ?>
-        </section>
-    </section>
+        </div>
+    </div>
 
     <!-- Array display (2nd) -->
-    <section id="seconddisplay" class="ligne_et_taches" style="display:none">
+    <div id="seconddisplay" class="ligne_et_taches" style="display:none">
         <div class="ligne_haut_tache ligne_haut_tache_id">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all2" type="checkbox" />
@@ -184,8 +184,8 @@ ob_start();
                 <?php endif; ?>
             </div>
         </div>
-    </section>
-</section>
+    </div>
+</div>
 
 <!-- All of modals -->
 <div id="modals" style="display:none;">

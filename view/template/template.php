@@ -47,7 +47,7 @@
 		</div>
 
 		<!--MENU DE GAUCHE-->
-		<section class="section_en_dessous_menu">
+		<div class="section_en_dessous_menu">
 	    <div id="menu_gauche">
       	<ul>
 					<li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
@@ -102,9 +102,9 @@
 					</li>
         </ul>
 	    </div>
-	    <section id="copyright">
+	    <div id="copyright">
         <p>Copyright ® 2020 CodeManager. All Rights Reserved</p>
-	    </section>
+	    </div>
 
 		<?= $content ?>
 
