@@ -71,7 +71,7 @@ ob_start();
             <?php foreach ($tasks as $task) {
     if ($task->getAuthor()): ?>
                 <li>
-                  <div class="<?= $task->getIsDone() ? 'done_' : '' ?>task trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>" id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                  <div class="<?= $task->getIsDone() ? 'done_' : '' ?>task trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                     <span class="span_input_img" title="Sélectionner">
                       <input class="input_img check_js to_check" type="checkbox" />
                     </span>
@@ -158,8 +158,7 @@ ob_start();
                                 <?php foreach ($cat_tasks as $task): ?>
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
-                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task"
-                                        id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                                             <td class="table_col_main">
                                                 <div class="border_all">
                                                     <div class="left-side-task-mosaic">

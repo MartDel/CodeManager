@@ -152,10 +152,12 @@ function manageCategoryNames(done_task) {
     const rows = table.rows
     let useful_tasks = 0
     for (let i = 0; i < rows.length; i++) {
-      if (rows[i].id.indexOf('task') !== -1) {
-        if ((rows[i].id.indexOf('done_') !== -1 && done_task) ||
-          (rows[i].id.indexOf('done_') === -1 && !done_task)) useful_tasks++
-      }
+        const match = classContains(rows[i].classList, 'task')
+        if (match) {
+            if ((match.indexOf('done_') !== -1 && done_task) || (match.indexOf('done_') === -1 && !done_task)){
+                useful_tasks++
+            }
+        }
     }
     if (useful_tasks === 0) $(table).css('display', 'none')
     else $(table).css('display', 'table')
@@ -236,9 +238,10 @@ function showModal(event) {
   let id = null;
   const path = event.path;
   for (let i = 0; i < path.length; i++) {
-    const current_id = path[i].id;
-    if (current_id !== undefined) {
-      if (current_id.indexOf("task") !== -1) id = current_id;
+    const classes = path[i].classList
+    if(classes !== undefined && (classes.contains('task') || classes.contains('done_task'))){
+        const match = classContains(classes, 'task')
+        if(match) id = match
     }
   }
   if (!id) return;
@@ -508,4 +511,18 @@ function contain(array, value) {
     if (array[i] === value) r = true;
   }
   return r;
+}
+
+/**
+ * Check if a DOM element has a class which contains the string 'classe'
+ * @param {DOMTokenList} classList The DOM classList
+ * @param {String} classe The string to test
+ * @return {String} The matched class (null if nothing is found)
+ */
+function classContains(classList, classe){
+    let r = null
+    classList.forEach((item) => {
+        if(item.indexOf(classe) !== -1) r = item
+    })
+    return r
 }
