@@ -2171,6 +2171,10 @@ input[type="file"]:hover {
     display: none;
   }
 
+  .titre_tache {
+    width: 100%;
+  }
+
   #menu_gauche {
     margin-left: -100px;
   }
