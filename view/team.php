@@ -1,7 +1,7 @@
 <?php
 $title = "Equipe | NameProject";
 $page = 'team';
-$cssfile = "team"; // CSS file name
+$cssfile2 = "team"; // CSS file name
 $jsfile = "teamjs"; // JS file name
 $_SESSION['last_page'] = 'team';
 ob_start();
@@ -16,7 +16,7 @@ ob_start();
           <img id="refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
       </span>
     </div>
-    <div style="flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
+    <div style="color:black;flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
       Page en développement... :/ (mais néammoins fonctionnelle :D)
     </div>
     <div class="main-table-user">
