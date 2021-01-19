@@ -55,7 +55,7 @@ aside .modal-wrapper {
   margin-top: -27px;
   margin-left: 110px;
   font-family: "Product Sans Regular";
-  background-color: none;
+  background-color: transparent;
 }
 
 .flex_title_task table {
@@ -79,7 +79,7 @@ aside .modal-wrapper {
   margin: 0;
   width: 11.3%;
   text-align: center;
-  background-color: none;
+  background-color: transparent;
   padding-left: 0px;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
 }
@@ -90,14 +90,14 @@ aside .modal-wrapper {
   text-align: center;
   padding-left: 0px;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
-  background-color: none;
+  background-color: transparent;
 }
 
 .desc-table-cell {
   margin: 0;
   width: 35.5%;
   text-align: center;
-  background-color: none;
+  background-color: transparent;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 0px;
 }
@@ -108,13 +108,13 @@ aside .modal-wrapper {
   padding-left: 0px;
   width: 11%;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
-  background-color: none;
+  background-color: transparent;
 }
 
 .date-table-cell {
   margin: 0;
   text-align: right;
-  background-color: none;
+  background-color: transparent;
   padding-right: 10px;
 }
 
@@ -221,7 +221,7 @@ span[title="Spprimer"] {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-margin-after: 0;
-  margin-block-end: 0;
+  margin-block-end: 0px;
   -webkit-transition: width 3s ease;
   transition: width 3s ease;
   display: -webkit-box;
@@ -784,7 +784,8 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 #add_task {
-  border: 2px solid black -webkit-box-shadow: #4b4b4b 0px 0px 15px;
+  border: 2px solid black;
+  -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -1246,7 +1247,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   display: flex;
   flex-direction: column;
   width: auto;
-  background-color: none;
+  background-color: transparent;
   transition: all 0.2s;
   text-align: center;
 }
@@ -1282,7 +1283,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 .wrapper-table-task .table_contain {
-  background-color: none;
+  background-color: transparent;
   width: 200px;
   padding-left: 50px;
   border-spacing: 0;
@@ -1318,13 +1319,13 @@ aside[name=edit_popup_modal] .modal-wrapper {
   word-wrap: break-word;
   text-overflow: ellipsis;
   width: calc(100% - 20px);
-  background-color: none;
+  background-color: transparent;
   padding-right: 10px;
   color: white;
 }
 
 .mozaic_all_table {
-  background-color: none;
+  background-color: transparent;
   overflow-y: scroll;
   height: calc(100vh - 103px)
 }
@@ -1332,8 +1333,8 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main p {
   margin-left: 20px;
   margin-top: 0;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
   font-family: "Product Sans Regular";
   font-size: 15px;
 }
@@ -1351,7 +1352,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   text-align: center;
   text-transform: uppercase;
   color: #b41e10;
-  background-color: none;
+  background-color: transparent;
   font-size: 14px;
   font-family: "Product Sans Regular";
   width: 242px;
@@ -1366,7 +1367,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-  background-color: none;
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -1406,7 +1407,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 /*NO TASK*/
 p[name=task] {
   font-family: "Product Sans Regular";
-  letter-spacing: 0.5 px;
+  letter-spacing: 0.5px;
   text-align: center;
   font-size: 14px;
 }

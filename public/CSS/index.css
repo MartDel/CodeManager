@@ -149,8 +149,7 @@ body {
 
 .img_scroll_down_container {
   position: absolute;
-  background-color: none;
-  ;
+  background-color: transparent;
   width: 100vw;
   left: 0;
   z-index: 1000;
@@ -192,7 +191,7 @@ body {
   outline: none;
   text-align: center;
   margin-top: 3vh;
-  transition: all 0.2;
+  transition: all 0.2s;
   word-wrap: break-word;
 }
 

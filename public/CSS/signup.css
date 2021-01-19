@@ -173,7 +173,7 @@ MAIN
   flex-direction: row;
   width: 100%;
   left: 0;
-  background-color: none;
+  background-color: transparent;
 }
 
 .label_container {
