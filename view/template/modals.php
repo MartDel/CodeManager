@@ -1,12 +1,12 @@
 <!--SEARCH MODALS-->
 <modal id="not_find">
-  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <span class="close-modal close_settings">&times;</span>
   <h1 class="colorred">Erreur de recherche</h1><br><br><br><br>
   <p>L'élément n'a pas été trouvé</p>
 </modal>
 
 <modal id="no_text">
-  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <span class="close-modal close_settings">&times;</span>
   <h1 class="colorred">Erreur de recherche</h1><br><br><br><br>
   <p>Vous n'avez entré aucun texte</p>
 </modal>
@@ -15,7 +15,7 @@
 <!--SETTINGS MODAL-->
 <modal id="settings">
     <div class="colorred" id="settings_title">Réglages</div>
-    <span id="close_settings" class="close-modal cross_settlings close_settings">&times;</span>
+    <span class="close-modal cross_settlings close_settings">&times;</span>
     <div class="grayback row_settings">
         <p>Mode Sombre : </p>
         <input class="apple-switch" id="dark_mode" type="checkbox">
@@ -27,7 +27,7 @@
     <div class="row_settings_title" id="col_settings">
         <form class="form_bug_report" method="POST" action="index.php?action=reportbug">
             <p>Vous avez trouvé un Bug ? Faîtes le nous savoir ci dessous : </p>
-            <textarea id="textarea_bug" placeholder="Message" name="mess" id=""></textarea>
+            <textarea id="textarea_bug" placeholder="Message" name="mess" ></textarea>
             <button type="submit" id="bug_submission" name="bug_report_submit_button">Envoyer</button>
         </form>
         <br>
@@ -51,7 +51,6 @@
 <modal id="my_informations">
     <h1 class="colorred">Mes Informations</h1>
     <div class="account_change_column">
-      <a href="#">
         <div class="img_account_change">
           <img id="img_account_changeimg" src="public/img/<?= isset($_SESSION['pp']) ? 'users/' . $_SESSION['pp'] : 'defaultuser.png' ?>" alt="Photo de profil">
             <form id="form_add_img" class="form_add_img" action="index.php?action=editPP" method="post" enctype="multipart/form-data">
@@ -60,8 +59,7 @@
             </form>
             <h3 class="colorwhite" id="img_text">Changer</h3>
           </div>
-      </a>
-      <span id="close_settings" class="close-modal close_settings">&times;</span>
+      <span class="close-modal close_settings">&times;</span>
       <br><br>
       <form class="" action="index.php?action=editAccount" method="post">
         <div class="account_change_row">
@@ -78,7 +76,7 @@
 
         <!-- <div class="account_change_row">
           <p>Mon mot de passe : </p>
-          <input class="input_fields" name="password" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password"></input>
+          <input class="input_fields" name="password" disabled="true" id="textarea_pass" value="Mot De passe en points" type="password">
           <img id="modify_textarea_pass" class="modify_textarea" src="public/img/pencil.png" alt="">
           <img id="validate_textarea_pass" class="validate_textarea" src="public/img/done.png" alt="">
         </div> -->
@@ -96,7 +94,7 @@
 <!--CONFIRMATION SUPPRESSION COMPTE-->
 
 <modal id="delete">
-  <span id="close_settings" class="close-modal close_settings">&times;</span>
+  <span class="close-modal close_settings">&times;</span>
   <h1 class="colorred">CONFIRMATION de suppression de compte</h1>
   <h2>Êtes vous sûr(e) de vouloir supprimer votre compte ?</h2>
   <br><br>
@@ -110,14 +108,14 @@
 
 <!--SWAP PROJECT MODAL-->
 <modal id="project">
-    <section id="header_project_modal">
+    <span id="header_project_modal">
         <p class="colorred">Changer de projet</p>
-        <span id="close_swap" class="close_swap close-modal">&times;</span>
+        <span class="close_swap close-modal">&times;</span>
         <br><br>
-    </section>
+    </span>
     <br><br>
-    <section id="body_project_modal">
-        <section id="flex_arrow">
+    <span id="body_project_modal">
+        <span id="flex_arrow">
             <p id="change_title">Changer de projet :</p>
 
             <form class="form-select-user" action="index.php?action=switchProject" method="post">
@@ -129,7 +127,7 @@
                 <?php endforeach; ?>
               </select>
             </form>
-        </section>
+        </span>
 
         <br><br>
         <div id="div_form_new_project"></div>
@@ -150,26 +148,26 @@
           <br>
           <a id="create_project_opener" class="colorred close-modal create_project_button" href="#">Créer un nouveau projet</a>
         </div>
-    </section>
+    </span>
 </modal>
 
 <!--MODAL CREATE PROJECT-->
 
 <modal id="create">
-  <section id="header_create_project">
+  <span id="header_create_project">
       <p class="colorred">Créer un projet</p>
-      <span id="close_swap" class="close_swap close-modal">&times;</span>
+      <span class="close_swap close-modal">&times;</span>
       <br><br><br><br>
-  </section>
+  </span>
   <form name="create_project_form" action="index.php?action=createProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
-      <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required></input><br><br>
+      <input class="colorblack" name="name" id="new_project_name" maxlength="20" placeholder="Nom du projet" required><br><br>
       <h1>Description du projet (optionnel)</h1>
       <textarea class="colorblack" name="description" id="new_project_desc" placeholder="Description du projet"></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
       <div class="flex_git_links">
-        <input class="colorblack" name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"></input><br><br>
-        <input class="colorblack" name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub"></input>
+        <input class="colorblack" name="github_pseudo" id="new_project_git_name" placeholder="Pseudo GitHub"><br><br>
+        <input class="colorblack" name="remote" id="new_project_git_repo" placeholder="Nom du projet GitHub">
       </div>
       <div class="flex_button_create">
         <br><br>
@@ -181,14 +179,14 @@
 
 <!--Edit project modal-->
 <modal id="edit_project">
-  <section id="header_edit_project">
+  <span id="header_edit_project">
       <p class="colorred">Modifier le projet</p>
-      <span id="close_swap" class="close_swap close-modal">&times;</span>
+      <span class="close_swap close-modal">&times;</span>
       <br><br><br><br>
-  </section>
+  </span>
   <form name="edit_project_form" action="index.php?action=editProject" method="POST">
       <h1>Nom du Projet (20 caractères max.)</h1>
-      <input class="colorblack" name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required></input><br><br>
+      <input class="colorblack" name="name" id="edit_project_name" maxlength="20" placeholder="Nom du projet" value="<?= $project->getName() ?>" required><br><br>
       <h1>Description du projet (optionnel)</h1>
       <textarea class="colorblack" name="description" id="edit_project_desc" placeholder="Description du projet"><?= $project->getDescription() ? $project->getDescription() : '' ?></textarea><br><br>
       <h2>GitHub (optionnel)</h2>
@@ -210,7 +208,7 @@
 <div class="grayback" id="help_modal">
     <h1>Aide</h1>
     <ul>
-      <li><strong>Général<strong></li>
+      <li>Général</li>
     </ul>
     <table>
       <tr>
@@ -237,7 +235,7 @@
       </tr>
     </table>
     <ul>
-      <li><strong>Tâches<strong></li>
+      <li>Tâches</li>
     </ul>
     <table>
       <tr>
@@ -279,6 +277,7 @@
           <img src="public/img/category_2.png" alt="" />
           <p>Affichage Mosaïque</p>
         </td>
+        <td></td>
       </tr>
     </table>
 </div>

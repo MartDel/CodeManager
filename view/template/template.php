@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
     <title><?= $project->getName() ?> | CodeManager</title>
 		<meta charset="utf-8" />
@@ -31,7 +31,7 @@
       	<div id="menu_button">
 	        <input type="checkbox" id="menu_checkbox">
 	        <label for="menu_checkbox" id="menu_label">
-            <div id="menu_text_bar"></div>
+            <span id="menu_text_bar"></span>
 	        </label>
         </div>
     	</div>
@@ -110,7 +110,7 @@
 
 		<?php require('message.php'); ?>
 
-		<script type="text/javascript">
+		<script >
 			const permissions = <?= $_SESSION['permissions'] ?>
 		</script>
 

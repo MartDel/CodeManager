@@ -188,7 +188,7 @@ ob_start();
 </section>
 
 <!-- All of modals -->
-<span id="modals" style="display:none;">
+<div id="modals" style="display:none;">
     <?php if (isset($tasks)): ?>
         <?php foreach ($tasks as $task) {
     if ($task->getAuthor()): ?>
@@ -238,12 +238,12 @@ ob_start();
 
             <!--Tasks edit modals -->
             <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit" name="edit_popup_modal">
-                <section class="section_ligne_haut_edit">
+                <span class="section_ligne_haut_edit">
                     <br><br><br>
                     <p class="colorred title_task_modal"><strong class="colorred">Modifier la tâche</strong></p>
                     <span class="close_edit close_add close-modal">&times;</span>
-                </section>
-                <section class="section_ligne_bas_edit">
+                </span>
+                <span class="section_ligne_bas_edit">
                     <form method="POST" action="index.php?action=editTask&id=<?= $task->getId() ?>">
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                       <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required>
@@ -254,7 +254,9 @@ ob_start();
         echo 'selected="selected" ';
     } ?>value="-1">Divers</option>
                             <?php foreach ($categories as $category): ?>
-                                <option <?php if ($task->getCategoryId() == $category->getId()) echo 'selected="selected" '; ?>value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
+                                <option <?php if ($task->getCategoryId() == $category->getId()) {
+        echo 'selected="selected" ';
+    } ?>value="<?= $category->getId() ?>"><?= $category->getName() ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="button" name="" class="new_cat_button2">Nouvelle Catégorie</button>
@@ -262,13 +264,13 @@ ob_start();
                       </div>
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
-                      <h2></h2>
-                      <section class="button_line_edit">
+
+                      <span class="button_line_edit">
                           <button class="backtrans close-modal" name="cancel_button_edit_task" type="button">Annuler</button>
                           <button class="backtrans" name="submit_button_edit_task" type="submit">Valider</button>
-                      </section>
+                      </span>
                     </form>
-                </section>
+                </span>
             </modal>
         <?php endif;
 } ?>
@@ -276,12 +278,12 @@ ob_start();
 
     <!--Add task modal-->
     <modal id="add_task">
-        <section id="section_ligne_haut">
+        <span id="section_ligne_haut">
           <br><br><br>
             <p><strong class="colorred">Ajouter une tâche</strong></p>
             <span id="close_add" class="close_add close-modal">&times;</span>
-        </section>
-        <section id="section_ligne_bas">
+        </span>
+        <span id="section_ligne_bas">
             <form method="POST" action="index.php?action=addTask">
                 <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
                 <input id="addtask_title" class="textarea_title input" name="title" type="text" placeholder="Titre" maxlength="80" required>
@@ -298,19 +300,19 @@ ob_start();
                 </div>
                 <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                 <textarea id="textarea_desc" name="description" type="text" placeholder="Description"></textarea>
-                <h2></h2>
-                <section id="button_line">
+
+                <span id="button_line">
                     <button name="cancel_button_create_task" id="addtask_cancel" class="close-modal boutons_bas" type="button">Annuler</button>
                     <button name="submit_button_create_task" class="boutons_bas" type="submit">Valider</button>
-                </section>
+                </span>
             </form>
-        </section>
+        </span>
     </modal>
 
     <!--MODAL CONFIRM DELETE TASK-->
 
     <modal id="delete_task">
-      <span id="close_settings" class="close-modal close_add">&times;</span>
+      <span class="close_settings close-modal close_add">&times;</span>
       <h1 class="colorred">CONFIRMATION de suppression de tâche(s)</h1>
       <br>
       <h2>Êtes vous sûr(e) de vouloir supprimer <span id="nb_tasks">0</span> tâche(s) ?</h2>
@@ -324,7 +326,7 @@ ob_start();
 
     <?php require('template/modals.php'); ?>
 
-</span>
+</div>
 
 <?php
 $content = ob_get_clean();
