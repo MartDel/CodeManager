@@ -195,21 +195,21 @@ p a {
 
 @media only screen and (max-width: 1390px) {
   .form_container {
-    width: calc(40vw);
+    width: 40vw;
     margin-left: 30vw;
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 750px) {
   .form_container {
-    width: calc(80vw);
+    width: 80vw;
     margin-left: 10vw;
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 350px) {
   .form_container {
-    width: calc(95vw);
+    width: 95vw;
     margin-left: 2.5vw;
   }
 }

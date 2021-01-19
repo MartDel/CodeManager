@@ -3,7 +3,8 @@
 	<head>
     <title><?= $title ?></title>
     <meta charset="utf-8" />
-
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" />
@@ -23,7 +24,7 @@
 		<!-- JS code -->
 		<script src="public/JS/template/Message.js"></script>
 		<script src="public/JS/template/manage_messages.js"></script>
-		<?php if(isset($jsfile)): ?>
+		<?php if (isset($jsfile)): ?>
 			<script src="public/JS/<?= $jsfile ?>.js"></script>
 		<?php endif; ?>
 	</body>

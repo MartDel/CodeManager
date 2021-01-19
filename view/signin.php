@@ -34,7 +34,7 @@ ob_start();
   <p>Vous n'avez pas encore de compte ? Inscrivez-vous <a class="here" href="index.php?action=signup">ici</a></p>
 </div>
 
-<script type="text/javascript">
+<script>
     window.onload = () => {
         checkMessage()
     }
