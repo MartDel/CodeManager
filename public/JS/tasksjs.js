@@ -1,6 +1,6 @@
 // Tasks elements
 const tasks = {
-  list: document.getElementsByName("task"),
+  list: document.getElementsByClassName("task"),
   btn: {
     check_js: document.getElementsByClassName("check_js"),
     tick: document.getElementsByClassName("tick"),
@@ -12,7 +12,7 @@ const tasks = {
 let tasks_done = {
   show: false,
   btn: document.getElementsByClassName('tasks_done'),
-  list: document.getElementsByName('done_task')
+  list: document.getElementsByClassName('done_task')
 }
 
 // 'Add task' elements

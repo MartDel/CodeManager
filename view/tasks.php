@@ -62,16 +62,16 @@ ob_start();
         <?php if (isset($tasks)): ?>
         <!--Error messages -->
         <?php if ($nb_tasks == 0): ?>
-            <p id="message-task-none" name="task">Toutes les tâches sont terminées !</p>
+            <p id="message-task-none" class="task">Toutes les tâches sont terminées !</p>
         <?php elseif ($nb_done_tasks == 0): ?>
-            <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
+            <p id="message-task-none" class="done_task">Il n'y a aucune tâche terminée.</p>
         <?php endif; ?>
         <ul id="liste_taches" class="liste_taches" style="opacity:0;">
             <!-- Tasks btn -->
             <?php foreach ($tasks as $task) {
     if ($task->getAuthor()): ?>
                 <li>
-                  <div name="<?= $task->getIsDone() ? 'done_' : '' ?>task" class="trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>" id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                  <div class="<?= $task->getIsDone() ? 'done_' : '' ?>task trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?>" id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                     <span class="span_input_img" title="Sélectionner">
                       <input class="input_img check_js to_check" type="checkbox" />
                     </span>
@@ -134,9 +134,9 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p id="message-task-none" name="task">Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none" class="task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p id="message-task-none" name="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p id="message-task-none" class="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
                         <?php if (count($cat_tasks)): ?>
@@ -158,8 +158,7 @@ ob_start();
                                 <?php foreach ($cat_tasks as $task): ?>
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
-                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?>"
-                                        name="<?= $task->getIsDone() ? 'done_' : '' ?>task"
+                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task"
                                         id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
                                             <td class="table_col_main">
                                                 <div class="border_all">
