@@ -1,4 +1,4 @@
-.refresh
+.section_ligne_haut_edit.refresh
 
 /*DARK STYLE FOR DARK MODE*/
 html, body {
@@ -1006,7 +1006,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   left: 10%;
 }
 
-#section_ligne_bas_edit textarea {
+.section_ligne_bas_edit textarea {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -1019,7 +1019,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   border: gray 1px solid;
 }
 
-#section_ligne_haut_edit {
+.section_ligne_haut_edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1032,11 +1032,11 @@ aside[name=edit_popup_modal] .modal-wrapper {
   align-items: center;
 }
 
-#section_ligne_haut_edit img {
+.section_ligne_haut_edit img {
   height: 50px;
 }
 
-#section_ligne_haut_edit p {
+.section_ligne_haut_edit p {
   position: absolute;
   width: 100%;
   margin-left: -20px;
@@ -1047,7 +1047,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   text-align: center;
 }
 
-#section_ligne_bas_edit {
+.section_ligne_bas_edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1059,27 +1059,27 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: 100%;
 }
 
-#section_ligne_bas_edit h1 {
+.section_ligne_bas_edit h1 {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   color: #b41e10;
 }
 
-#section_ligne_bas_edit h2 {
+.section_ligne_bas_edit h2 {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
   color: #d4d1d1;
 }
 
-#section_ligne_bas_edit form {
+.section_ligne_bas_edit form {
   margin-left: 10%;
   width: 80%;
   height: auto;
   /*background-color: red;*/
 }
 
-#section_ligne_bas_edit .input {
+.section_ligne_bas_edit .input {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -1092,17 +1092,17 @@ aside[name=edit_popup_modal] .modal-wrapper {
   border: gray 1px solid;
 }
 
-#section_ligne_bas_edit input[name="title"] {
+.section_ligne_bas_edit input[name="title"] {
   height: 17px;
   overflow-y: hidden;
 }
 
-#section_ligne_bas_edit input[name="description"] {
+.section_ligne_bas_edit input[name="description"] {
   height: 150px;
   ;
 }
 
-#section_ligne_bas_edit .backtrans {
+.section_ligne_bas_edit .backtrans {
   height: 40px;
   width: 100px;
   background-color: transparent;
@@ -1114,7 +1114,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-weight: 500;
 }
 
-#section_ligne_bas_edit .backtrans:hover {
+.section_ligne_bas_edit .backtrans:hover {
   height: 40px;
   width: 100px;
   background-color: #b41e10;
@@ -1127,7 +1127,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   cursor: pointer;
 }
 
-#button_line_edit {
+.button_line_edit {
   right: 0;
   float: right;
   padding: 0;
@@ -1138,7 +1138,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 @media only screen and (max-width: 570px) {
-  #button_line_edit {
+  .button_line_edit {
     width: 50%;
     margin-left: 28%;
     margin-right: 0;
@@ -1150,15 +1150,15 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 @media only screen and (max-width: 387px) {
-  #button_line_edit {
+  .button_line_edit {
     flex-direction: column;
   }
 
-  #section_ligne_bas_edit .backtrans {
+  .section_ligne_bas_edit .backtrans {
     width: 100%;
   }
 
-  #section_ligne_bas_edit .backtrans:hover {
+  .section_ligne_bas_edit .backtrans:hover {
     width: 100%;
   }
 }

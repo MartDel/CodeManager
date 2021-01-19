@@ -20,7 +20,7 @@ ob_start();
 
     <!--List display (first) -->
     <section id="firstdisplay" class="ligne_et_taches" style="display:block">
-      <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+      <div class="ligne_haut_tache ligne_haut_tache_id">
         <span title="Tout sélectionner">
           <input name="sample" id="select_all" type="checkbox" />
         </span>
@@ -105,15 +105,15 @@ ob_start();
                 <?php endif;
 } ?>
         </ul>
-          <?php else: ?>
-              <p id="message-task-none">Pas de tâche pour le moment...</p>
-          <?php endif; ?>
+        <?php else: ?>
+          <p id="message-task-none">Pas de tâche pour le moment...</p>
+        <?php endif; ?>
         </section>
     </section>
 
     <!-- Array display (2nd) -->
     <section id="seconddisplay" class="ligne_et_taches" style="display:none">
-        <div id="ligne_haut_tache_id" class="ligne_haut_tache">
+        <div class="ligne_haut_tache ligne_haut_tache_id">
             <span title="Tout sélectionner">
                 <input name="sample" id="select_all2" type="checkbox" />
             </span>
@@ -188,7 +188,7 @@ ob_start();
 </section>
 
 <!-- All of modals -->
-<div id="modals" style="display:none;">
+<span id="modals" style="display:none;">
     <?php if (isset($tasks)): ?>
         <?php foreach ($tasks as $task) {
     if ($task->getAuthor()): ?>
@@ -238,15 +238,15 @@ ob_start();
 
             <!--Tasks edit modals -->
             <modal id="<?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>_edit" name="edit_popup_modal">
-                <section id="section_ligne_haut_edit">
+                <section class="section_ligne_haut_edit">
                     <br><br><br>
                     <p class="colorred title_task_modal"><strong class="colorred">Modifier la tâche</strong></p>
-                    <span id="close_edit" class="close_add close-modal">&times;</span>
+                    <span class="close_edit close_add close-modal">&times;</span>
                 </section>
-                <section id="section_ligne_bas_edit">
+                <section class="section_ligne_bas_edit">
                     <form method="POST" action="index.php?action=editTask&id=<?= $task->getId() ?>">
                       <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
-                      <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required></input>
+                      <input class="textarea_title input" name="title" type="text" value="<?= $task->getName()?>" maxlength="80" required>
                       <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                       <div class="category_flex">
                         <select name="category">
@@ -263,8 +263,8 @@ ob_start();
                       <h1 class="colorred">Description de la tâche (Optionnel)</h1>
                       <textarea class="textarea_desc_edit" name="description" type="text" placeholder="Description"><?= $task->getDescription()?></textarea>
                       <h2></h2>
-                      <section id="button_line_edit">
-                          <button class="backtrans close-modal" name="cancel_button_edit_task"type="button">Annuler</button>
+                      <section class="button_line_edit">
+                          <button class="backtrans close-modal" name="cancel_button_edit_task" type="button">Annuler</button>
                           <button class="backtrans" name="submit_button_edit_task" type="submit">Valider</button>
                       </section>
                     </form>
@@ -284,7 +284,7 @@ ob_start();
         <section id="section_ligne_bas">
             <form method="POST" action="index.php?action=addTask">
                 <h1 class="colorred">Titre de la tâche (80 caractères maximum)</h1>
-                <input id="addtask_title" class="textarea_title input" name="title" type="text" placeholder="Titre" maxlength="80" required></input>
+                <input id="addtask_title" class="textarea_title input" name="title" type="text" placeholder="Titre" maxlength="80" required>
                 <h1 class="colorred">Catégorie de la tâche (15 caractères maximum)</h1>
                 <div class="category_flex">
                   <select name="category">
@@ -324,7 +324,7 @@ ob_start();
 
     <?php require('template/modals.php'); ?>
 
-</div>
+</span>
 
 <?php
 $content = ob_get_clean();
