@@ -56,9 +56,9 @@ ob_start();
 
 <div id="infos_generales_site">
     <div class="flex_horizon">
-        <img class="img_index_desc show-on-scroll" src="public/img/shareindex.png">
+        <img class="img_index_desc show-on-scroll" src="public/img/shareindex.png" alt="">
         <h1 class="show-on-scroll">Concentrez-vous sur l'organisation</h1>
-        <div id="flex_p">
+        <div class="flex_p">
             <p class="p1 show-on-scroll" >Un travail basé sur la cohésion au sein de l'équipe. <br>Un travail plus que collaboratif.</p>
             <p class="p2 show-on-scroll" >Gérez facilement les particpants, et attribuez leur un rôle et des permissions spécifiques.</p>
             <p class="p3 show-on-scroll" >Un outil pour répartir le travail, suivre l'avancement et discuter du projet au sein même de la plateforme.</p>
@@ -66,9 +66,9 @@ ob_start();
         <br><br><br>
         <div class="séparation"></div>
         <br><br><br>
-        <img class="img_index_desc show-on-scroll" src="public/img/objectiveindex.png">
+        <img class="img_index_desc show-on-scroll" src="public/img/objectiveindex.png" alt="">
         <h1 class="show-on-scroll">Soyez efficace dans votre travail</h1>
-        <div id="flex_p">
+        <div class="flex_p">
             <p class="p1 show-on-scroll">Une répartition du travail intelligente, grâce à un système de tâches et d'objectifs avancé</p>
             <p class="p2 show-on-scroll">Une gestion simple mais efficace de l'avancement.<br>L'attribution de différents rôles et permissions au sein du projet
             </p>
@@ -79,18 +79,18 @@ ob_start();
         <br><br><br>
         <div id="bcc_icons">
           <h1 class="title_white show-on-scroll">Des fonctionnalités pour faciliter et sécuriser le travail</h1>
-            <div class="flex_icons_white" id="flex_p">
+            <div class="flex_icons_white flex_p">
                 <div class="p2 show-on-scroll flexcol">
-                    <img src="public/img/listindex.png">
+                    <img src="public/img/listindex.png" alt="">
                     <h2 class="fonctionnalites"><strong>Des tâches et objectifs pour avancer rapidement</strong>
                     </h2>
                 </div>
                 <div class="p3 show-on-scroll flexcol">
-                    <img src="public/img/permission.png">
+                    <img src="public/img/permission.png" alt="">
                     <h2 class="fonctionnalites"><strong>Des permissions et rôles pour gérer l'équipe</strong></h2>
                 </div>
                 <div class="p3 show-on-scroll flexcol">
-                    <img src="public/img/githublogo.png">
+                    <img src="public/img/githublogo.png" alt="">
                     <h2 class="fonctionnalites"><strong>Une vision globale du GitHub</strong></h2>
                 </div>
             </div>
@@ -114,7 +114,7 @@ ob_start();
 
         </div>
         <div class="div_img">
-          <img src="public/img/spring-swing-rocket.png">
+          <img src="public/img/spring-swing-rocket.png" alt="">
         </div>
     </div>
 </div>

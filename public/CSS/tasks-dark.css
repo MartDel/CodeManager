@@ -1,9 +1,27 @@
+.section_ligne_haut_edit.refresh
+
 /*DARK STYLE FOR DARK MODE*/
 html, body {
   overflow-x: hidden;
 }
 
 /*LIGNE HAUT TACHE*/
+#menu_haut {
+  background-color: #121212;
+}
+
+#webapp_cover {
+  background-color: #121212;
+}
+
+button[name="task"] img {
+  filter: invert(100%);
+}
+
+aside .modal-wrapper {
+  filter: brightness(75%);
+}
+
 .section_en_dessous_menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,6 +30,7 @@ html, body {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  background-color: #121212;
 }
 
 .ligne_haut_tache {
@@ -99,13 +118,14 @@ html, body {
   padding-right: 10px;
 }
 
-.ligne_haut_tache #refresh {
+.refresh {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter: invert(100%);
 }
 
-.ligne_haut_tache #refresh:hover {
+.refresh:hover {
   animation: rotateAddTask 0.5s;
 }
 
@@ -113,6 +133,7 @@ html, body {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter: invert(100%);
 }
 
 .new_task_img:hover {
@@ -136,6 +157,7 @@ html, body {
   margin-left: 15px;
   display: none;
   z-index: 999;
+  filter: invert(100%);
 }
 
 .ligne_haut_tache .trash:hover {
@@ -184,7 +206,7 @@ span[title="Spprimer"] {
   transition: all 0.3s ease;*/
 }
 
-#refresh:hover {
+.refresh:hover {
   cursor: pointer;
 }
 
@@ -221,6 +243,10 @@ span[title="Spprimer"] {
 }
 */
 .liste_taches li {
+  height: auto
+}
+
+.liste_taches .trytochangethat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,9 +263,10 @@ span[title="Spprimer"] {
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 20px;
   width: 100%;
+  color: white;
 }
 
-.liste_taches li:hover {
+.liste_taches .trytochangethat:hover {
   -webkit-box-shadow: 0.5px 0.5px 1px #555;
   box-shadow: 0.5px 0.5px 1px #555;
   cursor: pointer;
@@ -265,6 +292,7 @@ span[title="Spprimer"] {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
+  color: white
 }
 
 .utilisateur {
@@ -448,7 +476,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
   margin-left: -18px;
   -webkit-transform: translateY(-50%) scale(0.7);
   transform: translateY(-50%) scale(0.7);
-  background-color: white;
 }
 
 #menu_button {
@@ -979,7 +1006,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   left: 10%;
 }
 
-#section_ligne_bas_edit textarea {
+.section_ligne_bas_edit textarea {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -992,7 +1019,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   border: gray 1px solid;
 }
 
-#section_ligne_haut_edit {
+.section_ligne_haut_edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1005,11 +1032,11 @@ aside[name=edit_popup_modal] .modal-wrapper {
   align-items: center;
 }
 
-#section_ligne_haut_edit img {
+.section_ligne_haut_edit img {
   height: 50px;
 }
 
-#section_ligne_haut_edit p {
+.section_ligne_haut_edit p {
   position: absolute;
   width: 100%;
   margin-left: -20px;
@@ -1020,7 +1047,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   text-align: center;
 }
 
-#section_ligne_bas_edit {
+.section_ligne_bas_edit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1032,27 +1059,27 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: 100%;
 }
 
-#section_ligne_bas_edit h1 {
+.section_ligne_bas_edit h1 {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   color: #b41e10;
 }
 
-#section_ligne_bas_edit h2 {
+.section_ligne_bas_edit h2 {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
   color: #d4d1d1;
 }
 
-#section_ligne_bas_edit form {
+.section_ligne_bas_edit form {
   margin-left: 10%;
   width: 80%;
   height: auto;
   /*background-color: red;*/
 }
 
-#section_ligne_bas_edit .input {
+.section_ligne_bas_edit .input {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
@@ -1065,17 +1092,17 @@ aside[name=edit_popup_modal] .modal-wrapper {
   border: gray 1px solid;
 }
 
-#section_ligne_bas_edit input[name="title"] {
+.section_ligne_bas_edit input[name="title"] {
   height: 17px;
   overflow-y: hidden;
 }
 
-#section_ligne_bas_edit input[name="description"] {
+.section_ligne_bas_edit input[name="description"] {
   height: 150px;
   ;
 }
 
-#section_ligne_bas_edit .backtrans {
+.section_ligne_bas_edit .backtrans {
   height: 40px;
   width: 100px;
   background-color: transparent;
@@ -1087,7 +1114,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-weight: 500;
 }
 
-#section_ligne_bas_edit .backtrans:hover {
+.section_ligne_bas_edit .backtrans:hover {
   height: 40px;
   width: 100px;
   background-color: #b41e10;
@@ -1100,7 +1127,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   cursor: pointer;
 }
 
-#button_line_edit {
+.button_line_edit {
   right: 0;
   float: right;
   padding: 0;
@@ -1111,7 +1138,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 @media only screen and (max-width: 570px) {
-  #button_line_edit {
+  .button_line_edit {
     width: 50%;
     margin-left: 28%;
     margin-right: 0;
@@ -1123,15 +1150,15 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 @media only screen and (max-width: 387px) {
-  #button_line_edit {
+  .button_line_edit {
     flex-direction: column;
   }
 
-  #section_ligne_bas_edit .backtrans {
+  .section_ligne_bas_edit .backtrans {
     width: 100%;
   }
 
-  #section_ligne_bas_edit .backtrans:hover {
+  .section_ligne_bas_edit .backtrans:hover {
     width: 100%;
   }
 }
@@ -1192,6 +1219,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   height: 15px;
   height: auto;
   transition: all 0.3s ease;
+  margin-bottom: 9px;
   filter: invert(100%);
 }
 
@@ -1226,6 +1254,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main:hover .left-side-task-mosaic img {
   transform: scale(1);
   transition: all 0.2s;
+  filter: invert(100%);
 }
 
 .table_col_main:hover {
@@ -1291,6 +1320,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: calc(100% - 20px);
   background-color: none;
   padding-right: 10px;
+  color: white;
 }
 
 .mozaic_all_table {
@@ -1437,6 +1467,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
+  color: white
 }
 
 @-webkit-keyframes ModalComing {

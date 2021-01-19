@@ -1,7 +1,7 @@
 <?php
 $title = "Tâches | NameProject";
 $page = 'tasks-dark';
-$cssfile = "tasks";
+$cssfile = "tasks-dark";
 $jsfile = "tasksjs";
 $_SESSION['last_page'] = 'tasks';
 ob_start();

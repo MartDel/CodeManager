@@ -433,7 +433,7 @@ body {
   transform: rotateZ(0deg);
 }
 
-#flex_p {
+.flex_p {
   display: flex;
   flex-direction: row;
   width: calc(100vw - 20px);
@@ -643,7 +643,7 @@ body {
     display: block;
   }
 
-  #flex_p {
+  .flex_p {
     flex-direction: column;
   }
 

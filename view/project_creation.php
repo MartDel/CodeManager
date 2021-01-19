@@ -24,11 +24,12 @@ ob_start();
     <div class="flex_button_create">
       <br><br>
       <button name="create_project_button" class=" button_create_project" type="submit">Créer un nouveau projet</button>
+    </div>
   </form>
   <br><br>
 </div>
 
-<script type="text/javascript">
+<script>
     window.onload = () => {
         checkMessage()
     }
