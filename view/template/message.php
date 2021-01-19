@@ -1,6 +1,6 @@
 <aside id="message" class="message">
-    <h2 id="title">bonjour</h2>
-    <p id="content">bonjour</p>
+    <h2 id="title">Titre</h2>
+    <p id="content">Contenu</p>
     <div class="interact">
         <button type="button" id="close_message">&times;</button>
         <button type="button" id="action" style="display:none;">
