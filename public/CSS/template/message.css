@@ -71,7 +71,7 @@
 .show-error, .show-info {
   transform: translateY(155px);
   opacity: 1;
-  transition: opacity 1s, transform .35s;
+  transition: opacity 1s, transform 0.35s;
 }
 
 .show-error {
@@ -84,7 +84,7 @@
 }
 
 .show-error button:hover {
-  background-color: rgba(239, 79, 45, .1);
+  background-color: rgba(239, 79, 45, 0.1);
 }
 
 .show-info {
@@ -97,13 +97,13 @@
 }
 
 .show-info button:hover {
-  background-color: rgba(19, 206, 0, .1);
+  background-color: rgba(19, 206, 0, 0.1);
 }
 
 .hide {
   transform: translateY(0px);
   opacity: 0;
-  transition: opacity 1s, transform .35s;
+  transition: opacity 1s, transform 0.35s;
 }
 
 @media screen and (max-width: 1280px) {
@@ -134,7 +134,7 @@
   }
 
   .message p {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 
   .message .interact {

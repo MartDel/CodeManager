@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
   background-color: #ffffff;
@@ -8,7 +7,7 @@ body {
 }
 
 .list_task::-webkit-scrollbar {
-  display: none
+  display: none;
 }
 
 .modal .modal-wrapper::-webkit-scrollbar {
@@ -25,12 +24,12 @@ body {
 
 ::-webkit-scrollbar {
   width: 8px;
-  background-color: rgb(141, 141, 141);
+  background-color: #8d8d8d;
   border: 3px solid white;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(141, 141, 141);
+  background-color: #8d8d8d;
   border-radius: 10px;
 }
 
@@ -194,10 +193,7 @@ a {
   font-size: 16px;
 }
 
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-results-button, input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
@@ -288,7 +284,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .onhover_top_animation {
   transform: scale(1) rotate(0deg);
-  transition: all 0.2s
+  transition: all 0.2s;
 }
 
 .onhover_top_animation:hover {
@@ -314,7 +310,7 @@ input[type="search"]::-webkit-search-results-decoration {
 #menu_gauche {
   background-color: rgba(255, 255, 255, 0);
   width: 100px;
-  margin-top: -0px;
+  margin-top: 0px;
   position: relative;
   transition-property: width, margin;
   transition-duration: 0.3s, 0.3s;
@@ -332,8 +328,7 @@ input[type="search"]::-webkit-search-results-decoration {
   margin-left: -23px;
 }
 
-.selectedmenu,
-.notselectedmenu {
+.selectedmenu, .notselectedmenu {
   -webkit-transition: padding 0.2s ease;
   transition: padding 0.2s ease;
   padding-right: 0px;
@@ -343,11 +338,7 @@ input[type="search"]::-webkit-search-results-decoration {
   color: black;
 }
 
-#text_menu_left_1,
-#text_menu_left_2,
-#text_menu_left_3,
-#text_menu_left_4,
-#text_menu_left_5 {
+#text_menu_left_1, #text_menu_left_2, #text_menu_left_3, #text_menu_left_4, #text_menu_left_5 {
   opacity: 0;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
@@ -379,8 +370,8 @@ ul {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  font-size: .875rem;
-  letter-spacing: .2px;
+  font-size: 0.875rem;
+  letter-spacing: 0.2px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -398,7 +389,7 @@ ul {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding-right: 200%
+  padding-right: 200%;
 }
 
 #menu_gauche ul .notselectedmenu:hover {
@@ -476,9 +467,7 @@ ul {
   cursor: pointer;
 }
 
-#menu_label:before,
-#menu_label:after,
-#menu_text_bar {
+#menu_label:before, #menu_label:after, #menu_text_bar {
   position: absolute;
   left: 0;
   width: 100%;
@@ -486,8 +475,7 @@ ul {
   background-color: #b41e10;
 }
 
-#menu_label:before,
-#menu_label:after {
+#menu_label:before, #menu_label:after {
   content: '';
   -webkit-transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
   transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
@@ -765,8 +753,7 @@ ul {
   top: 5px;
 }
 
-.close_settings:hover,
-.close_settings:focus {
+.close_settings:hover, .close_settings:focus {
   color: #b41e10;
   text-decoration: none;
   cursor: pointer;
@@ -951,7 +938,6 @@ input.apple-switch:checked:after {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  ;
   margin-left: 10%;
 }
 
@@ -986,7 +972,6 @@ input.apple-switch:checked:after {
 
 .li_swap a {
   text-decoration: none;
-  ;
 }
 
 .link_swap_project_div:hover {
@@ -995,7 +980,6 @@ input.apple-switch:checked:after {
 
 .link_swap_project_div {
   padding: 5px 0 5px 0;
-  ;
 }
 
 #project_modal_container {
@@ -1181,10 +1165,6 @@ input.apple-switch:checked:after {
   cursor: pointer;
 }
 
-#arrow {
-  ;
-}
-
 #arrow:hover {
   cursor: pointer;
 }
@@ -1192,7 +1172,6 @@ input.apple-switch:checked:after {
 #change_title {
   font-family: "Product Sans Regular";
   font-size: 1.1rem;
-  ;
   margin-left: 20px;
 }
 
@@ -1270,9 +1249,7 @@ input.apple-switch:checked:after {
   margin-top: 10px;
 }
 
-.button_my_account,
-.button_option,
-.button_deconnect {
+.button_my_account, .button_option, .button_deconnect {
   color: #b41e10;
   background-color: transparent;
   border: #b41e10 2px solid;
@@ -1289,9 +1266,7 @@ input.apple-switch:checked:after {
   display: block;
 }
 
-.button_my_account:hover,
-.button_option:hover,
-.button_deconnect:hover {
+.button_my_account:hover, .button_option:hover, .button_deconnect:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.041);
 }
@@ -1412,7 +1387,6 @@ input[type="file"]:hover {
   flex-direction: row;
   font-family: "Product Sans Regular";
   font-size: 15px;
-  ;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 30px;
@@ -1421,7 +1395,6 @@ input[type="file"]:hover {
 #my_informations .input_fields {
   font-family: "Product Sans Regular";
   font-size: 15px;
-  ;
   resize: none;
   width: 50%;
   text-align: left;
@@ -1441,7 +1414,7 @@ input[type="file"]:hover {
 
   #my_informations .input_fields {
     padding-left: 5px;
-    width: 100%
+    width: 100%;
   }
 }
 
@@ -1558,7 +1531,6 @@ input[type="file"]:hover {
   text-align: center;
   font-family: "Product Sans Regular";
   text-transform: uppercase;
-  ;
   font-weight: normal;
   font-size: 15px;
 }
@@ -1663,7 +1635,6 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   font-weight: lighter;
-  ;
   margin-left: 10%;
 }
 
@@ -1671,13 +1642,10 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  ;
   margin-left: 10%;
 }
 
-#new_project_name,
-#new_project_git_name,
-#new_project_git_repo {
+#new_project_name, #new_project_git_name, #new_project_git_repo {
   resize: none;
   width: 80%;
   margin-left: 10%;
@@ -1685,17 +1653,13 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 1rem;
   font-weight: lighter;
-  ;
   padding: 10px;
   border: gray 1px solid;
   outline: none;
   border-radius: 10px;
 }
 
-#new_project_name:focus,
-#new_project_git_name:focus,
-#new_project_git_repo:focus,
-#new_project_desc:focus {
+#new_project_name:focus, #new_project_git_name:focus, #new_project_git_repo:focus, #new_project_desc:focus {
   background-color: #ffffff;
   border: #ffffff 1px solid;
   border-radius: 10px;
@@ -1721,7 +1685,6 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 6rem;
   font-weight: lighter;
-  ;
   padding: 10px;
   border-radius: 10px;
   border: gray 1px solid;
@@ -1848,7 +1811,6 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 1rem;
   font-weight: lighter;
-  ;
   margin-left: 10%;
 }
 
@@ -1856,13 +1818,10 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  ;
   margin-left: 10%;
 }
 
-#edit_project_name,
-#edit_project_git_name,
-#edit_project_git_repo {
+#edit_project_name, #edit_project_git_name, #edit_project_git_repo {
   resize: none;
   width: 80%;
   margin-left: 10%;
@@ -1870,17 +1829,13 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 1rem;
   font-weight: lighter;
-  ;
   padding: 10px;
   border: gray 1px solid;
   outline: none;
   border-radius: 10px;
 }
 
-#edit_project_name:focus,
-#edit_project_git_name:focus,
-#edit_project_git_repo:focus,
-#edit_project_desc:focus {
+#edit_project_name:focus, #edit_project_git_name:focus, #edit_project_git_repo:focus, #edit_project_desc:focus {
   background-color: #ffffff;
   border: #ffffff 1px solid;
   border-radius: 10px;
@@ -1906,7 +1861,6 @@ input[type="file"]:hover {
   font-size: 0.8rem;
   height: 6rem;
   font-weight: lighter;
-  ;
   padding: 10px;
   border-radius: 10px;
   border: gray 1px solid;
@@ -2014,7 +1968,6 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  ;
   text-align: center;
 }
 
@@ -2073,7 +2026,6 @@ input[type="file"]:hover {
   font-family: "Product Sans Regular";
   font-size: 0.8rem;
   font-weight: lighter;
-  ;
   text-align: center;
 }
 
@@ -2108,11 +2060,11 @@ input[type="file"]:hover {
   }
 
   .titre_tache {
-    width: 45%
+    width: 45%;
   }
 
   .desc_tache {
-    width: 50%
+    width: 50%;
   }
 
   #project .modal-wrapper {

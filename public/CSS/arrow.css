@@ -1,21 +1,24 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+
 * {
   margin: 0;
   padding: 0;
 }
+
 html, body {
   height: 100%;
 }
 
 section {
-    position: relative;
-    width: 31.33%;
-    height: 350px;
-    display: inline-block;
-    margin: 1%;
-    box-sizing: border-box;
-	float:left;
+  position: relative;
+  width: 31.33%;
+  height: 350px;
+  display: inline-block;
+  margin: 1%;
+  box-sizing: border-box;
+  float: left;
 }
+
 section:nth-child(odd) {
   background: #62beb6;
 }
@@ -32,19 +35,19 @@ section h1 {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: #fff;
-  font : normal 300 20px/1 'Josefin Sans', sans-serif;
+  font: normal 300 20px 'Josefin Sans', sans-serif;
   text-align: center;
   white-space: nowrap;
 }
 
-
-
 #thanks {
   background-color: #fff;
 }
+
 #thanks::after {
   content: none;
 }
+
 #thanks div {
   position: absolute;
   top: 50%;
@@ -54,25 +57,30 @@ section h1 {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
 #thanks h2 {
   margin-bottom: 60px;
   color: #333;
-  font : normal 300 64px/1 'Josefin Sans', sans-serif;
+  font: normal 300 64px 'Josefin Sans', sans-serif;
   text-align: center;
   white-space: nowrap;
 }
+
 #thanks p {
   color: #333;
-  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  font: normal 400 20px 'Josefin Sans', sans-serif;
 }
+
 #thanks p a {
   color: #333;
   text-decoration: none;
-  transition: color .3s;
+  transition: color 0.3s;
 }
+
 #thanks p a:hover {
   color: #888;
 }
+
 .demo a {
   position: absolute;
   bottom: 0;
@@ -82,20 +90,20 @@ section h1 {
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
   color: #fff;
-  font : normal 400 20px/1 'Josefin Sans', sans-serif;
-  letter-spacing: .1em;
+  font: normal 400 20px 'Josefin Sans', sans-serif;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
 }
+
 .demo a:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
-
-
 
 #section01 a {
   padding-top: 60px;
 }
+
 #section01 a span {
   position: absolute;
   top: 0;
@@ -110,11 +118,10 @@ section h1 {
   box-sizing: border-box;
 }
 
-
-
 #section02 a {
   padding-top: 60px;
 }
+
 #section02 a span {
   position: absolute;
   top: 0;
@@ -126,6 +133,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
+
 #section02 a span::after {
   position: absolute;
   top: 50%;
@@ -141,11 +149,10 @@ section h1 {
   box-sizing: border-box;
 }
 
-
-
 #section03 a {
   padding-top: 60px;
 }
+
 #section03 a span {
   position: absolute;
   top: 0;
@@ -157,6 +164,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
+
 #section03 a span::after {
   position: absolute;
   top: 50%;
@@ -171,6 +179,7 @@ section h1 {
   transform: rotate(-45deg);
   box-sizing: border-box;
 }
+
 #section03 a span::before {
   position: absolute;
   top: 0;
@@ -179,49 +188,56 @@ section h1 {
   content: '';
   width: 44px;
   height: 44px;
-  box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
   border-radius: 100%;
   opacity: 0;
   -webkit-animation: sdb03 3s infinite;
   animation: sdb03 3s infinite;
   box-sizing: border-box;
 }
+
 @-webkit-keyframes sdb03 {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 1;
   }
+
   60% {
-    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, 0.1);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
 }
+
 @keyframes sdb03 {
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 1;
   }
+
   60% {
-    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    box-shadow: 0 0 0 60px rgba(255, 255, 255, 0.1);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
 }
 
-
-
 #section04 a {
   padding-top: 60px;
 }
+
 #section04 a span {
   position: absolute;
   top: 0;
@@ -237,34 +253,39 @@ section h1 {
   animation: sdb04 2s infinite;
   box-sizing: border-box;
 }
+
 @-webkit-keyframes sdb04 {
   0% {
     -webkit-transform: rotate(-45deg) translate(0, 0);
   }
+
   20% {
     -webkit-transform: rotate(-45deg) translate(-10px, 10px);
   }
+
   40% {
     -webkit-transform: rotate(-45deg) translate(0, 0);
   }
 }
+
 @keyframes sdb04 {
   0% {
     transform: rotate(-45deg) translate(0, 0);
   }
+
   20% {
     transform: rotate(-45deg) translate(-10px, 10px);
   }
+
   40% {
     transform: rotate(-45deg) translate(0, 0);
   }
 }
 
-
-
 #section05 a {
   padding-top: 70px;
 }
+
 #section05 a span {
   position: absolute;
   top: 0;
@@ -280,38 +301,43 @@ section h1 {
   animation: sdb05 1.5s infinite;
   box-sizing: border-box;
 }
+
 @-webkit-keyframes sdb05 {
   0% {
     -webkit-transform: rotate(-45deg) translate(0, 0);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     -webkit-transform: rotate(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
+
 @keyframes sdb05 {
   0% {
     transform: rotate(-45deg) translate(0, 0);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: rotate(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
 
-
-
 #section06 a {
   padding-top: 70px;
 }
+
 #section06 a span {
   position: absolute;
   top: 0;
@@ -327,38 +353,43 @@ section h1 {
   animation: sdb06 1.5s infinite;
   box-sizing: border-box;
 }
+
 @-webkit-keyframes sdb06 {
   0% {
     -webkit-transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     -webkit-transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
+
 @keyframes sdb06 {
   0% {
     transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
     opacity: 0;
   }
 }
 
-
-
 #section07 a {
   padding-top: 80px;
 }
+
 #section07 a span {
   position: absolute;
   top: 0;
@@ -375,48 +406,56 @@ section h1 {
   opacity: 0;
   box-sizing: border-box;
 }
+
 #section07 a span:nth-of-type(1) {
   -webkit-animation-delay: 0s;
   animation-delay: 0s;
 }
+
 #section07 a span:nth-of-type(2) {
   top: 16px;
-  -webkit-animation-delay: .15s;
-  animation-delay: .15s;
+  -webkit-animation-delay: 0.15s;
+  animation-delay: 0.15s;
 }
+
 #section07 a span:nth-of-type(3) {
   top: 32px;
-  -webkit-animation-delay: .3s;
-  animation-delay: .3s;
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
+
 @-webkit-keyframes sdb07 {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
+
 @keyframes sdb07 {
   0% {
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
 }
 
-
-
 #section08 a {
   padding-top: 60px;
 }
+
 #section08 a span {
   position: absolute;
   top: 0;
@@ -428,6 +467,7 @@ section h1 {
   border-radius: 50px;
   box-sizing: border-box;
 }
+
 #section08 a span::before {
   position: absolute;
   top: 10px;
@@ -441,11 +481,10 @@ section h1 {
   box-sizing: border-box;
 }
 
-
-
 #section09 a {
   padding-top: 80px;
 }
+
 #section09 a span {
   position: absolute;
   top: 0;
@@ -457,6 +496,7 @@ section h1 {
   border-radius: 50px;
   box-sizing: border-box;
 }
+
 #section09 a span::before {
   position: absolute;
   top: 10px;
@@ -469,6 +509,7 @@ section h1 {
   border-radius: 100%;
   box-sizing: border-box;
 }
+
 #section09 a span::after {
   position: absolute;
   bottom: -18px;
@@ -484,11 +525,10 @@ section h1 {
   box-sizing: border-box;
 }
 
-
-
 #section10 a {
   padding-top: 60px;
 }
+
 #section10 a span {
   position: absolute;
   top: 0;
@@ -500,6 +540,7 @@ section h1 {
   border-radius: 50px;
   box-sizing: border-box;
 }
+
 #section10 a span::before {
   position: absolute;
   top: 10px;
@@ -514,34 +555,42 @@ section h1 {
   animation: sdb10 2s infinite;
   box-sizing: border-box;
 }
+
 @-webkit-keyframes sdb10 {
   0% {
     -webkit-transform: translate(0, 0);
     opacity: 0;
   }
+
   40% {
     opacity: 1;
   }
+
   80% {
     -webkit-transform: translate(0, 20px);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
 }
+
 @keyframes sdb10 {
   0% {
     transform: translate(0, 0);
     opacity: 0;
   }
+
   40% {
     opacity: 1;
   }
+
   80% {
     transform: translate(0, 20px);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
