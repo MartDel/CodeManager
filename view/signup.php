@@ -24,7 +24,7 @@ ob_start();
 
       <input class="input_text" type="text" name="pseudo" placeholder="Pseudo" required />
       <br>
-      <input class="input_text" type="email" name="mail" placeholder="Addresse mail" required />
+      <input class="input_text" type="email" name="mail" placeholder="Adresse mail" required />
       <br>
       <input class="input_text" type="password" name="password" placeholder="Mot de passe" required />
       <br>

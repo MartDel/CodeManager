@@ -1,7 +1,5 @@
-.section_ligne_haut_edit.refresh
-
 /*DARK STYLE FOR DARK MODE*/
-html, body {
+.section_ligne_haut_edit.refresh html, body {
   overflow-x: hidden;
 }
 
@@ -55,7 +53,7 @@ aside .modal-wrapper {
   margin-top: -27px;
   margin-left: 110px;
   font-family: "Product Sans Regular";
-  background-color: none;
+  background-color: transparent;
 }
 
 .flex_title_task table {
@@ -79,7 +77,7 @@ aside .modal-wrapper {
   margin: 0;
   width: 11.3%;
   text-align: center;
-  background-color: none;
+  background-color: transparent;
   padding-left: 0px;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
 }
@@ -90,14 +88,14 @@ aside .modal-wrapper {
   text-align: center;
   padding-left: 0px;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
-  background-color: none;
+  background-color: transparent;
 }
 
 .desc-table-cell {
   margin: 0;
   width: 35.5%;
   text-align: center;
-  background-color: none;
+  background-color: transparent;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 0px;
 }
@@ -108,13 +106,13 @@ aside .modal-wrapper {
   padding-left: 0px;
   width: 11%;
   border-right: rgba(141, 141, 141, 0.342) 1px solid;
-  background-color: none;
+  background-color: transparent;
 }
 
 .date-table-cell {
   margin: 0;
   text-align: right;
-  background-color: none;
+  background-color: transparent;
   padding-right: 10px;
 }
 
@@ -198,12 +196,11 @@ span[title="Spprimer"] {
   -ms-flex-positive: 1;
   flex-grow: 1;
   width: 50%;
-  ;
   /*position: absolute;*/
   /*margin-left: 260px;
-  width: calc(100% - 260px);
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;*/
+   width: calc(100% - 260px);
+   -webkit-transition: all 0.3s ease;
+   transition: all 0.3s ease;*/
 }
 
 .refresh:hover {
@@ -221,7 +218,7 @@ span[title="Spprimer"] {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-margin-after: 0;
-  margin-block-end: 0;
+  margin-block-end: 0px;
   -webkit-transition: width 3s ease;
   transition: width 3s ease;
   display: -webkit-box;
@@ -237,13 +234,12 @@ span[title="Spprimer"] {
 }
 
 /*#test_ul {
-    padding: 0;
-    background-color: rgb(255, 0, 0);
-
-}
-*/
+ padding: 0;
+ background-color: rgb(255, 0, 0);
+ }
+ */
 .liste_taches li {
-  height: auto
+  height: auto;
 }
 
 .liste_taches .trytochangethat {
@@ -272,18 +268,14 @@ span[title="Spprimer"] {
   cursor: pointer;
 }
 
-.titre_tache,
-.utilisateur,
-.desc_tache,
-.date,
-.category_tache {
+.titre_tache, .utilisateur, .desc_tache, .date, .category_tache {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-family: 'Roboto', sans-serif;
   text-shadow: none;
-  font-size: .8rem;
-  letter-spacing: .2px;
+  font-size: 0.8rem;
+  letter-spacing: 0.2px;
 }
 
 .container-list {
@@ -292,7 +284,7 @@ span[title="Spprimer"] {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
-  color: white
+  color: white;
 }
 
 .utilisateur {
@@ -362,8 +354,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   margin-right: 10px;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #b41e10;
   text-decoration: none;
   cursor: pointer;
@@ -405,7 +396,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .bottom-colour {
   width: calc(100% - 80px);
   padding: 40px;
-  background-color: #eaeaea
+  background-color: #eaeaea;
 }
 
 .bottom-colour h3 {
@@ -460,7 +451,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 .bottom-task-modal img {
   width: 25px;
   height: 25px;
-  margin: 0
+  margin: 0;
 }
 
 /*MENU BURGER ICON*/
@@ -495,9 +486,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   cursor: pointer;
 }
 
-#menu_label:before,
-#menu_label:after,
-#menu_text_bar {
+#menu_label:before, #menu_label:after, #menu_text_bar {
   position: absolute;
   left: 0;
   width: 100%;
@@ -505,8 +494,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   background-color: #b41e10;
 }
 
-#menu_label:before,
-#menu_label:after {
+#menu_label:before, #menu_label:after {
   content: '';
   -webkit-transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
   transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
@@ -715,7 +703,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   display: flex;
   opacity: 1;
   transition: opacity 0.3s;
-  color: black
+  color: black;
 }
 
 #new_cat_button:hover {
@@ -784,11 +772,12 @@ aside[name~=popup_modal_task] .modal-wrapper {
 }
 
 #add_task {
-  border: 2px solid black -webkit-box-shadow: #4b4b4b 0px 0px 15px;
+  border: 2px solid black;
+  -webkit-box-shadow: #4b4b4b 0px 0px 15px;
   box-shadow: #4b4b4b 0px 0px 15px;
   overflow-y: scroll;
   overflow-x: hidden;
-  z-index: 9999
+  z-index: 9999;
 }
 
 #add_task .modal-wrapper {
@@ -874,7 +863,6 @@ aside[name~=popup_modal_task] .modal-wrapper {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
-  ;
   width: 95%;
   padding: 10PX;
   left: 0;
@@ -939,8 +927,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
   font-weight: bold;
 }
 
-.close_add:hover,
-.close_add:focus {
+.close_add:hover, .close_add:focus {
   color: #b41e10;
   text-decoration: none;
   cursor: pointer;
@@ -975,7 +962,7 @@ aside[name~=popup_modal_task] .modal-wrapper {
 @media only screen and (max-width: 407px) {
   .category_flex {
     flex-direction: column;
-    width: 103%
+    width: 103%;
   }
 
   .category_flex select {
@@ -1083,7 +1070,6 @@ aside[name=edit_popup_modal] .modal-wrapper {
   resize: none;
   font-family: "Product Sans Regular";
   font-size: 14px;
-  ;
   width: 95%;
   padding: 10PX;
   left: 0;
@@ -1099,7 +1085,6 @@ aside[name=edit_popup_modal] .modal-wrapper {
 
 .section_ligne_bas_edit input[name="description"] {
   height: 150px;
-  ;
 }
 
 .section_ligne_bas_edit .backtrans {
@@ -1174,8 +1159,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-weight: bold;
 }
 
-.close_add:hover,
-.close_add:focus {
+.close_add:hover, .close_add:focus {
   color: #b41e10;
   text-decoration: none;
   cursor: pointer;
@@ -1246,7 +1230,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   display: flex;
   flex-direction: column;
   width: auto;
-  background-color: none;
+  background-color: transparent;
   transition: all 0.2s;
   text-align: center;
 }
@@ -1273,7 +1257,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 
 .wrapper-table-task {
   background-color: transparent;
-  height: calc(100vh - 123px)
+  height: calc(100vh - 123px);
 }
 
 .table-wrapper {
@@ -1282,7 +1266,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 }
 
 .wrapper-table-task .table_contain {
-  background-color: none;
+  background-color: transparent;
   width: 200px;
   padding-left: 50px;
   border-spacing: 0;
@@ -1292,7 +1276,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   font-family: "Product Sans Regular";
   color: #b41e10;
   font-size: 18px;
-  text-align: center
+  text-align: center;
 }
 
 .table_col_main {
@@ -1318,22 +1302,22 @@ aside[name=edit_popup_modal] .modal-wrapper {
   word-wrap: break-word;
   text-overflow: ellipsis;
   width: calc(100% - 20px);
-  background-color: none;
+  background-color: transparent;
   padding-right: 10px;
   color: white;
 }
 
 .mozaic_all_table {
-  background-color: none;
+  background-color: transparent;
   overflow-y: scroll;
-  height: calc(100vh - 103px)
+  height: calc(100vh - 103px);
 }
 
 .table_col_main p {
   margin-left: 20px;
   margin-top: 0;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
   font-family: "Product Sans Regular";
   font-size: 15px;
 }
@@ -1351,7 +1335,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   text-align: center;
   text-transform: uppercase;
   color: #b41e10;
-  background-color: none;
+  background-color: transparent;
   font-size: 14px;
   font-family: "Product Sans Regular";
   width: 242px;
@@ -1366,7 +1350,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-  background-color: none;
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -1378,7 +1362,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .category-name p {
   text-align: left;
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 .category-name label {
@@ -1406,7 +1390,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 /*NO TASK*/
 p[name=task] {
   font-family: "Product Sans Regular";
-  letter-spacing: 0.5 px;
+  letter-spacing: 0.5px;
   text-align: center;
   font-size: 14px;
 }
@@ -1431,7 +1415,6 @@ p[name=task] {
   text-align: center;
   font-family: "Product Sans Regular";
   text-transform: uppercase;
-  ;
   font-weight: normal;
   font-size: 15px;
 }
@@ -1451,7 +1434,6 @@ p[name=task] {
 }
 
 .no_delete_task {
-  ;
   font-size: 11px;
   text-decoration: none;
 }
@@ -1467,7 +1449,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
-  color: white
+  color: white;
 }
 
 @-webkit-keyframes ModalComing {
@@ -1630,7 +1612,7 @@ p[name=task] {
 
   .wrapper-table-task .table_contain {
     width: 90%;
-    padding-left: 10%
+    padding-left: 10%;
   }
 
   .table_contain tbody {

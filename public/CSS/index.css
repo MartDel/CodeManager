@@ -1,8 +1,7 @@
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
-  background-color: rgb(54, 57, 63);
+  background-color: #36393f;
   height: 100%;
   width: 100vw;
 }
@@ -88,7 +87,6 @@ body {
 
 #div_img_accueil {
   width: 100vw;
-  ;
   height: 100vh;
   overflow: hidden;
   /*filter:blur(0px);*/
@@ -103,9 +101,9 @@ body {
   position: fixed;
   align-items: center;
   z-index: 9999;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   width: calc(100vw - 0px);
-  color: rgb(91, 92, 96);
+  color: #5b5c60;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding-bottom: 1vh;
 }
@@ -123,7 +121,7 @@ body {
   height: 40%;
   margin-left: 30%;
   z-index: 2;
-  margin-top: 25%
+  margin-top: 25%;
 }
 
 #petite_presentation {
@@ -134,7 +132,6 @@ body {
   width: calc(100% - 20px - 5%);
   text-align: left;
   font-size: 4vh;
-  ;
   margin-left: 5%;
   margin-top: 15vh;
   /*background-color: #fff;*/
@@ -144,13 +141,12 @@ body {
 }
 
 #petite_presentation p {
-  width: 95%
+  width: 95%;
 }
 
 .img_scroll_down_container {
   position: absolute;
-  background-color: none;
-  ;
+  background-color: transparent;
   width: 100vw;
   left: 0;
   z-index: 1000;
@@ -173,7 +169,7 @@ body {
   float: left;
   margin-left: 1%;
   margin-top: 1.5vh;
-  padding-right: 0.7vw
+  padding-right: 0.7vw;
 }
 
 #seconde_ligne {
@@ -183,7 +179,7 @@ body {
 #inscription_div {
   background: none;
   position: absolute;
-  border: 2px rgb(255, 255, 255) solid;
+  border: 2px white solid;
   color: white;
   border-radius: 5px;
   width: 40%;
@@ -192,7 +188,7 @@ body {
   outline: none;
   text-align: center;
   margin-top: 3vh;
-  transition: all 0.2;
+  transition: all 0.2s;
   word-wrap: break-word;
 }
 
@@ -217,12 +213,12 @@ body {
 }
 
 /*#div_général_connexion{
-    width:50vw;
-    float:right
-}
-#div_général_connexion p{
-    float:right
-}*/
+ width:50vw;
+ float:right
+ }
+ #div_général_connexion p{
+ float:right
+ }*/
 #button_div {
   background-color: rgba(255, 0, 0, 0);
   right: 0;
@@ -239,7 +235,7 @@ body {
 }
 
 #se_connecter {
-  border: rgb(91, 92, 96) 2px solid;
+  border: #5b5c60 2px solid;
   font-size: 2.5vh;
   text-align: center;
   right: 0;
@@ -270,7 +266,6 @@ body {
 #enregistrer:hover {
   cursor: pointer;
   background-color: white;
-  ;
   border: transparent 2px solid;
   text-decoration: underline;
 }
@@ -295,7 +290,6 @@ body {
   font-style: italic;
   font-family: georgia, "times new roman", norasi, serif;
   font-size: 2vh;
-  ;
   /*margin-top: 25vh;*/
 }
 
@@ -308,7 +302,7 @@ body {
 #infos_generales_site {
   display: flex;
   flex-direction: column;
-  background-color: rgb(247, 247, 247);
+  background-color: #f7f7f7;
 }
 
 .flex_horizon {
@@ -332,17 +326,16 @@ body {
   margin-left: calc(50% - 10vh);
   opacity: 0;
   transform: translateY(4em) rotateZ(-5deg);
-  transition: transform 2s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 2s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
 /*.img_index_desc_div{
-    background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    height:40vh;
-    width:40vh;
-}*/
+ background-color: rgb(255, 255, 255);
+ border-radius: 50%;
+ height:40vh;
+ width:40vh;
+ }*/
 .flex_horizon p {
   padding-left: 2%;
   padding-right: 2%;
@@ -350,20 +343,18 @@ body {
   font-style: italic;
   width: 70vw;
   font-size: 2.3vh;
-  color: rgb(46, 46, 46);
+  color: #2e2e2e;
   margin-top: 15vh;
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
 .p1 {
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
@@ -375,8 +366,7 @@ body {
 .p2 {
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
@@ -389,8 +379,7 @@ body {
 .p3 {
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
@@ -406,8 +395,7 @@ body {
   font-size: 3.7vh;
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
@@ -422,8 +410,7 @@ body {
   font-size: 3.7vh;
   opacity: 0;
   transform: translateY(4em);
-  transition: transform 3s .25s cubic-bezier(0, 1, .3, 1),
-    opacity .2s .25s ease-out;
+  transition: transform 3s 0.25s cubic-bezier(0, 1, 0.3, 1), opacity 0.2s 0.25s ease-out;
   will-change: transform, opacity;
 }
 
@@ -452,9 +439,9 @@ body {
   padding-right: 2%;
   width: 100%;
   font-size: 20px;
-  color: rgb(46, 46, 46);
+  color: #2e2e2e;
   /*margin-top: 15vh;*/
-  left: 0
+  left: 0;
 }
 
 .flexcol {
@@ -473,14 +460,14 @@ body {
 }
 
 #espace_div_bcc {
-  background-color: rgb(236, 236, 236);
+  background-color: #ececec;
   width: 100%;
   min-height: calc(90vh - 20px);
   padding-bottom: 20px;
   display: flex;
   align-items: center;
   flex-direction: row;
-  color: rgb(0, 0, 0);
+  color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 2.2vh;
 }
@@ -504,17 +491,17 @@ body {
 }
 
 .bottom_bottom {
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 .button_espace_container {
   width: auto;
-  background-color: rgb(91, 92, 96);
+  background-color: #5b5c60;
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   font-size: 2vh;
-  border: rgb(91, 92, 96) 3px solid;
+  border: #5b5c60 3px solid;
   outline: none;
   padding: 0;
   text-align: center;
@@ -527,9 +514,9 @@ body {
 }
 
 #button_espace:focus {
-  border: rgb(83, 84, 88) 3px solid;
+  border: #535458 3px solid;
   border-radius: 0px;
-  background-color: rgb(83, 84, 88);
+  background-color: #535458;
 }
 
 #p_different {
@@ -549,7 +536,7 @@ body {
   background-color: rgba(0, 0, 0, 0.164);
   height: 2px;
   width: 70%;
-  margin-left: 15%
+  margin-left: 15%;
 }
 
 #bcc_icons h2 {
@@ -565,7 +552,7 @@ body {
 }
 
 #bcc_icons img {
-  filter: invert(100%)
+  filter: invert(100%);
 }
 
 /*ANIMATIONS*/
@@ -655,7 +642,7 @@ body {
   .flex_horizon p {
     width: 80%;
     margin-left: 10%;
-    margin-top: 4vh
+    margin-top: 4vh;
   }
 
   h1 {

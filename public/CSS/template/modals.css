@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  animation: fadeIn .3s both;
+  animation: fadeIn 0.3s both;
   z-index: 1000;
 }
 
@@ -18,7 +18,7 @@
   padding: 20px;
   background-color: #fff;
   color: #000;
-  animation: slideIn .4s both;
+  animation: slideIn 0.4s both;
   overflow-y: auto;
 }
 
