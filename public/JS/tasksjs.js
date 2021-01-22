@@ -258,7 +258,10 @@ function showModal(event) {
     }
   } else if (!contain(tasks.btn.check_js, event.target) &&
     !contain(tasks.btn.tick, event.target) &&
-    !contain(tasks.btn.trash, event.target)) modals.show(id + '_modal');
+    !contain(tasks.btn.trash, event.target)){
+        if($('#' + id + '_modal').toArray().length === 0) return;
+        modals.show(id + '_modal');
+    }
 }
 for (let i = 0; i < tasks.list.length; i++) {
   tasks.list[i].onclick = (event) => showModal(event);
