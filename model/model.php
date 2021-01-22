@@ -265,7 +265,7 @@ function checkFileInfo(){
  */
 function cropImage($tmpName, $fileName){
 	list($w, $h) = getimagesize($tmpName);
-	if($w == $h){ // Square image
+	if($w == $h || !class_exists('Imagick')){ // Square image
 	    move_uploaded_file($tmpName, $fileName);
 	} else{
 	    $image = new Imagick($tmpName);
