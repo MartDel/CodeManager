@@ -254,7 +254,7 @@ function checkFileInfo(){
 	$extensions_autorisees = array('jpg', 'jpeg', 'png');
 	list($w, $h) = getimagesize($_FILES['pp']['tmp_name']);
 	if (!in_array($extension_upload, $extensions_autorisees) || $w == null || $h == null) {
-	throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .png", getLastPage());
+        throw new CustomException('Extension incorrecte', "L'extension de votre fichier ne correspond pas à nos critères. Veuillez recommencer avec les extensions suivantes: .jpg, .jpeg, .png", getLastPage());
 	}
 }
 
@@ -265,7 +265,7 @@ function checkFileInfo(){
  */
 function cropImage($tmpName, $fileName){
 	list($w, $h) = getimagesize($tmpName);
-	if($w == $h){ // Square image
+	if($w == $h || !class_exists('Imagick')){ // Square image
 	    move_uploaded_file($tmpName, $fileName);
 	} else{
 	    $image = new Imagick($tmpName);
