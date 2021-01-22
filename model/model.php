@@ -299,7 +299,7 @@ function createRemote($data){
  */
 function sendMail($message){
 	// Headers
-	$to = "martin-delebecque@outlook.fr";
+	$to = "admin@codemanager.fr";
 	$subject = "Remarque de " . $_SESSION['pseudo'];
 	$headers = "From: CodeManager <server@codemanager.com>\r\n";
 	$headers .= "Reply-To: CodeManager <server@codemanager.com>\r\n";
