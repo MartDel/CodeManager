@@ -5,9 +5,7 @@ const addtask = {
   show_btns: document.getElementsByClassName("new_task_img"),
   cancel_btn: document.getElementById("addtask_cancel"),
   title_input: document.querySelector(".textarea_title"),
-  title: document.getElementById("addtask_title"),
   cate: document.getElementById("addtask_cate"),
-  desc_input: document.getElementById("textarea_desc"),
   buttoncate: document.getElementById("new_cat_button"),
   inputcate: document.getElementById("input_new_cat"),
   buttoncate2: ".new_cat_button2",
@@ -40,18 +38,26 @@ const select_all2 = {
 */
 
 const tasks = {
-    list2: ".myBtn",
+    list: ".task",
+    list1: ".myBtn",
     container2: '#liste_taches',
     done: {
         btn: '.tasks_done',
-        list: "button[name='done_task']"
+        list: '.done_task',
+        tick: ".tick",
+        tick2: ".tick2",
+        check_js: ".check_js"
+    },
+    add: {
+        id: 'add_task',
+        show_btns: ".new_task_img",
+        title: document.getElementById("addtask_title"),
+        desc_input: document.getElementById("textarea_desc"),
+        buttoncate: ".new_cat_button2",
+        inputcate: ".input_new_cat2"
     },
     ////////////////////////////////
-    list: document.getElementsByName("task"),
     btn: {
-        check_js: document.getElementsByClassName("check_js"),
-        tick: document.getElementsByClassName("tick"),
-        tick2: document.getElementsByClassName("tick2"),
         trash: document.getElementsByClassName("trash-btn")
     },
     container: document.getElementById('liste_taches'),
@@ -59,7 +65,7 @@ const tasks = {
 let tasks_done = {
     show: false,
     btn: document.getElementsByClassName('tasks_done'),
-    list: document.getElementsByTagName('done_task')
+    list: '.done_task'
 }
 
 const display = {
@@ -131,55 +137,56 @@ new Vue({
  * SHOW DONE TASKS
  */
 function showTasks(print) {
-  for (let i = 0; i < tasks.list.length; i++) {
-    if (print) show(tasks.list[i])
-    else hide(tasks.list[i])
-
-    const inputs = tasks.list[i].getElementsByTagName('input')
-    manageActivesInputs(inputs, print)
-  }
-  manageCategoryNames(!print)
+    $(tasks.list).each(function (){
+        if(print) show(this)
+        else hide(this)
+        manageActivesInputs($(this).find('input'), print)
+    })
+    manageCategoryNames(!print)
 }
-
 function showDoneTasks(print) {
-  for (let i = 0; i < tasks_done.list.length; i++) {
-    if (print) show(tasks_done.list[i])
-    else hide(tasks_done.list[i])
-
-    const inputs = tasks_done.list[i].getElementsByTagName('input')
-    manageActivesInputs(inputs, print)
-  }
+    $(tasks_done.list).each(function (){
+        if(print) show(this)
+        else hide(this)
+        manageActivesInputs($(this).find('input'), print)
+    })
+    manageCategoryNames(!print)
 }
 
+/**
+ * Set checkboxes to active or inactive
+ * @param  {JQuery} inputs Inputs list
+ * @param  {bool} active If it should be active or not
+ */
 function manageActivesInputs(inputs, active) {
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].type === 'checkbox') {
-      if (active) inputs[i].classList.add('active')
-      else inputs[i].classList.remove('active')
-    }
-  }
+    inputs.each(function (){
+        if(this.type === 'checkbox') {
+          if (active) $(this).addClass('active')
+          else $(this).removeClass('active')
+        }
+    })
 }
+
 /**
  * Show/hide some categories
  * @param  {bool} done_task If the tasks must be done or not
  */
 function manageCategoryNames(done_task) {
-  $('.table_contain').toArray().forEach((table, i) => {
-    const rows = table.rows
-    let useful_tasks = 0
-    for (let i = 0; i < rows.length; i++) {
-        const match = classContains(rows[i].classList, 'task')
-        if (match) {
-            if ((match.indexOf('done_') !== -1 && done_task) || (match.indexOf('done_') === -1 && !done_task)){
-                useful_tasks++
+    $('.table_contain').each(function (){
+        const $rows = $(this.rows)
+        let useful_tasks = 0
+        $rows.each(function (){
+            const match = classContains(this.classList, 'task')
+            if (match) {
+                if ((match.indexOf('done_') !== -1 && done_task) || (match.indexOf('done_') === -1 && !done_task)){
+                    useful_tasks++
+                }
             }
-        }
-    }
-    if (useful_tasks === 0) $(table).css('display', 'none')
-    else $(table).css('display', 'table')
-  })
+        })
+        if (useful_tasks === 0) $(this).css('display', 'none')
+        else $(this).css('display', 'table')
+    })
 }
-
 
 /*
  * CHANGE DISPLAY
@@ -216,74 +223,52 @@ function change_display(){
  * MODAL TASK
  */
 function showModal(event) {
-  // Get task id
-  let id = null;
-  const path = event.path;
-  for (let i = 0; i < path.length; i++) {
-    const classes = path[i].classList
-    if(classes !== undefined && (classes.contains('task') || classes.contains('done_task'))){
-        const match = classContains(classes, 'task')
-        if(match) id = match
+    // Get task id
+    let id = null;
+    const path = event.path;
+    for (let i = 0; i < path.length; i++) {
+        const classes = path[i].classList
+        if(classes !== undefined && (classes.contains('task') || classes.contains('done_task'))){
+            const match = classContains(classes, 'task')
+            if(match) id = match
+        }
     }
-  }
-  if (!id) return;
+    if (!id) return;
 
-  if (contain(tasks.btn.tick2, event.target)) {
-    if (permissions != 0) {
-      modals.show(id + '_edit', () => {
-        $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
-        $(addtask.inputcate2).css('display', "none").css('opacity', 0)
-      })
-    } else {
-      const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
-      err.show()
-    }
-  } else if (!contain(tasks.btn.check_js, event.target) &&
-    !contain(tasks.btn.tick, event.target) &&
-    !contain(tasks.btn.trash, event.target)){
+    if (contain($(tasks.btn.tick2), event.target)) {
+        if (permissions != 0) {
+            modals.show(id + '_edit', () => {
+                $(addtask.buttoncate2).css('opacity', 1).css('display', 'flex')
+                $(addtask.inputcate2).css('display', "none").css('opacity', 0)
+            })
+        } else {
+            const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation de modifier une tâche.")
+            err.show()
+        }
+    } else if (!contain($(tasks.btn.check_js), event.target) && !contain($(tasks.btn.tick), event.target) && !contain($(tasks.btn.trash), event.target)){
         if($('#' + id + '_modal').toArray().length === 0) return;
         modals.show(id + '_modal');
     }
 }
-for (let i = 0; i < tasks.list.length; i++) {
-  tasks.list[i].onclick = (event) => showModal(event);
-}
-for (let i = 0; i < tasks_done.list.length; i++) {
-  tasks_done.list[i].onclick = (event) => showModal(event);
-}
+$(tasks.list).click(function (event){ showModal(event) })
+$(tasks_done.list).click(function (event){ showModal(event) })
 
 /*
  * ADD TASK MODAL
  */
-for (let i = 0; i < addtask.show_btns.length; i++) {
-  addtask.show_btns[i].onclick = () => {
+$(tasks.add.show_btns).click(function (){
     if (permissions != 0) {
-      modals.show(addtask.id, () => {
-        addtask.title.value = "";
-        addtask.desc_input.value = "";
-        $(addtask.buttoncate2).css('opacity', 1).css('display', 'block')
-        $(addtask.inputcate2).css('display', "none").css('opacity', 0)
-
-      })
+        modals.show(tasks.add.id, () => {
+            $(tasks.add.title).attr('value', "")
+            $(tasks.add.desc_input).attr('value', "")
+            $(tasks.add.buttoncate).css('opacity', 1).css('display', 'block')
+            $(tasks.add.inputcate).css('display', "none").css('opacity', 0)
+        })
     } else {
-      const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation d'ajouter une tâche.")
-      err.show()
+        const err = new Message('error', 'Action refusée...', "Vous n'avez pas l'autorisation d'ajouter une tâche.")
+        err.show()
     }
-  }
-}
-
-// addtask.buttoncate.onclick=()=>{
-//   addtask.buttoncate.style.opacity=0;
-//
-//   setTimeout(()=>{
-//     addtask.buttoncate.style.display="none";
-//     addtask.inputcate.style.display="flex";
-//   },300);
-//   setTimeout(()=>{
-//     addtask.inputcate.style.opacity=1;
-//     addtask.inputcate.focus()
-//   },350);
-// }
+})
 $(addtask.buttoncate2).click(function() {
   const $btn = $(this)
   const $input = $btn.parent().children(addtask.inputcate2)

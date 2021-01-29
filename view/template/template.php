@@ -8,19 +8,18 @@
 		<meta name="HandheldFriendly" content="true" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 		<!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" id="stl"/>
-    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile2 ?>.css"/>
-    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
+	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile ?>.css" id="stl"/>
+	    <link rel="stylesheet" type="text/css" href="public/CSS/<?= $cssfile2 ?>.css"/>
+	    <link rel="stylesheet" type="text/css" href="public/CSS/transitions.css" />
 
 		<!-- Template CSS -->
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/modals.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/message.css" />
 		<link rel="stylesheet" type="text/css" href="public/CSS/template/template.css" />
 
-    <link rel="shortcut icon" href="public/img/shortcuticon.png" />
-  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+	    <link rel="shortcut icon" href="public/img/shortcuticon.png" />
+	  	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
 
 		<!-- Ionicons -->
 		<script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
@@ -50,10 +49,10 @@
 		</div>
 
 		<!--MENU DE GAUCHE-->
-		<div class="section_en_dessous_menu">
+		<div class="section_en_dessous_menu" id="app">
 	    <div id="menu_gauche">
       	<ul>
-					<li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
+			<li class="<?= $page == 'tasks' ? '' : 'not' ?>selectedmenu">
 	          <a href="index.php?action=tasks">
               <div>
                 <span title="Tâches">
@@ -62,47 +61,47 @@
                 <p class="colorred textgauche" id="text_menu_left_1">Tâches</p>
           		</div>
 	          </a>
-					</li>
-					<li class="<?= $page == 'objectives' ? '' : 'not' ?>selectedmenu">
-						<a href="index.php?action=objectives">
-							<div>
-                <span title="Objectifs">
-                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
-                </span>
-                <p class="textgauche" id="text_menu_left_2">Objectifs</p>
-							</div>
-						</a>
-					</li>
-					<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
-						<a href="index.php?action=team">
-							<div>
-	              <span title="Team">
-	                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
-	              </span>
-                <p class="textgauche" id="text_menu_left_3">Team</p>
-							</div>
-						</a>
-					</li>
-					<li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
-						<a href="index.php?action=chat">
-							<div>
-	              <span title="Discussion">
-	                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
-	              </span>
-                <p class="textgauche" id="text_menu_left_4">Discussion</p>
-							</div>
-						</a>
-					</li>
-					<li class="<?= $page == 'github' ? '' : 'not' ?>selectedmenu">
+			</li>
+			<li class="<?= $page == 'objectives' ? '' : 'not' ?>selectedmenu">
+				<a href="index.php?action=objectives">
+					<div>
+		                <span title="Objectifs">
+		                  <img class="img_menu_gauche_js" src="public/img/objectiveindex.png" alt="" />
+		                </span>
+                		<p class="textgauche" id="text_menu_left_2">Objectifs</p>
+					</div>
+				</a>
+			</li>
+			<li id="menu3" class="<?= $page == 'team' ? '' : 'not' ?>selectedmenu">
+				<a href="index.php?action=team">
+					<div>
+		              <span title="Team">
+		                <img class="img_menu_gauche_js" src="public/img/group.png" alt="" />
+		              </span>
+            			<p class="textgauche" id="text_menu_left_3">Team</p>
+					</div>
+				</a>
+			</li>
+			<li class="<?= $page == 'other' ? '' : 'not' ?>selectedmenu">
+				<a href="index.php?action=chat">
+					<div>
+		              <span title="Discussion">
+		                <img class="img_menu_gauche_js" src="public/img/people.png" alt="" />
+		              </span>
+                		<p class="textgauche" id="text_menu_left_4">Discussion</p>
+					</div>
+				</a>
+			</li>
+			<li class="<?= $page == 'github' ? '' : 'not' ?>selectedmenu">
       			<a href="index.php?action=github">
-							<div>
-	              <span title="GitHub">
-	                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
-	              </span>
-                <p class="textgauche" id="text_menu_left_5">GitHub</p>
-							</div>
-						</a>
-					</li>
+					<div>
+		              <span title="GitHub">
+		                <img class="img_menu_gauche_js" src="public/img/network.png" alt="" />
+		              </span>
+                		<p class="textgauche" id="text_menu_left_5">GitHub</p>
+					</div>
+				</a>
+			</li>
         </ul>
 	    </div>
 	    <div id="copyright">
