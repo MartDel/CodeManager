@@ -11,7 +11,7 @@ ob_start();
         <div class="selected_display div_img_select" >
             <img id="category_1" src="public/img/category_1.png" alt="">
         </div>
-        <a onclick="change_display()" href="#">
+        <a onclick="setDisplay()" href="#">
             <div class="notselected_display div_img_select">
                 <img id="category_2" src="public/img/category_2.png" alt="">
             </div>
@@ -134,7 +134,7 @@ ob_start();
             <div class="table-wrapper mozaic_all_table">
                 <?php if (isset($tasksByCategory)): ?>
                     <?php if ($nb_tasks == 0): ?>
-                        <p id="message-task-none" class="task">Toutes les tâches sont terminées !</p>
+                        <p id="message-task-none" v-show="!done_task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
                         <p id="message-task-none" class="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>

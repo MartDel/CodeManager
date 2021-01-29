@@ -41,6 +41,9 @@ const tasks = {
     list: ".task",
     list1: ".myBtn",
     container2: '#liste_taches',
+    edit: {
+        btn: '.tick2'
+    },
     done: {
         btn: '.tasks_done',
         list: '.done_task',
@@ -56,6 +59,10 @@ const tasks = {
         buttoncate: ".new_cat_button2",
         inputcate: ".input_new_cat2"
     },
+    categories: {
+        table: '.table_contain'
+    },
+    other_btns: ['tick', 'to_check'],
     ////////////////////////////////
     btn: {
         trash: document.getElementsByClassName("trash-btn")
@@ -92,12 +99,16 @@ new Vue({
                 display.checkbox[i].checked = false
             }
 
+            // Update btn
             const $this = $(e.target)
             if(this.done_task) $this.css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
             else $this.css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
 
             setURLParams(this.done_task ? '' : 'endTask')
             this.done_task = !this.done_task
+
+            // Update category
+            manageCategoryNames(this.done_task)
         }
     },
     mounted(){
@@ -105,28 +116,20 @@ new Vue({
             wOnload()
             checkMessage()
 
-            // UPDATE DISPLAY
             // Set display
-            if (getCookie('display')==="2") {
-                $(display.first).css('display', "none")
-                $(display.second).css('display', "block")
-                $(display.category_2).attr('src', "public/img/category_1.png")
-                $(display.category_1).attr('src', "public/img/category_2.png")
-            } else {
-                $(display.first).css('display', "block")
-                $(display.second).css('display', "none")
-                $(display.category_2).attr('src', "public/img/category_2.png")
-                $(display.category_1).attr('src', "public/img/category_1.png")
-            }
-            $(display.opened).css('display', 'none').css('opacity', 0)
-            $(display.global).css('border-radius', "50%").css('height', '39px')
+            setDisplay(getCookie('display'))
 
             // Show done tasks or not
             const search = window.location.search
             const params = new URLSearchParams(search)
             this.done_task = params.has('endTask')
+
+            // Update btn for showing done tasks
             if(this.done_task) $(tasks.done.btn).css('filter', 'grayscale(0%)').css('animation', '0.5s Rotate')
             else $(tasks.done.btn).css('filter', 'grayscale(100%)').css('animation', '0.5s RotateInv')
+
+            // Update category
+            manageCategoryNames(this.done_task)
 
             $(tasks.container2).css('opacity', 1)
         }
@@ -169,7 +172,7 @@ function manageActivesInputs(inputs, active) {
 
 /**
  * Show/hide some categories
- * @param  {bool} done_task If the tasks must be done or not
+ * @param {bool} done_task If the tasks must be done or not
  */
 function manageCategoryNames(done_task) {
     $('.table_contain').each(function (){
@@ -201,18 +204,19 @@ $(display.btn).click(function (){
         $(display.global).css('border-radius', '500px').css('height', '88px')
     }
 })
-function change_display(){
-    if ($(display.first).css('display') === "block") {
+function setDisplay(to_display = null){
+    if(!to_display) to_display = $(display.first).css('display') === "block" ? '2' : '1'
+    if (to_display === '2') {
         $(display.first).css('display', "none")
         $(display.second).css('display', "block")
-        $(display.category_2).css('src', "public/img/category_1.png")
-        $(display.category_1).css('src', "public/img/category_2.png")
+        $(display.category_2).attr('src', "public/img/category_1.png")
+        $(display.category_1).attr('src', "public/img/category_2.png")
         setCookie("display", "2")
     } else {
         $(display.first).css('display', "block")
         $(display.second).css('display', "none")
-        $(display.category_2).css('src', "public/img/category_2.png")
-        $(display.category_1).css('src', "public/img/category_1.png")
+        $(display.category_2).attr('src', "public/img/category_2.png")
+        $(display.category_1).attr('src', "public/img/category_1.png")
         setCookie("display", "1")
     }
     $(display.opened).css('display', "none").css('opacity', 0)
