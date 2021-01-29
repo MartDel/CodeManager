@@ -182,7 +182,7 @@ function manageCategoryNames(done_task) {
  */
 $(display.btn).click(function (){
     if ($(display.opened).css('display') === "block") {
-        $(display.opened).css('display', 'block').css('opacity', 0)
+        $(display.opened).css('display', 'none').css('opacity', 0)
         $(display.global).css('border-radius', '50%').css('height', '39px')
     } else {
         $(display.opened).css('display', 'block')
