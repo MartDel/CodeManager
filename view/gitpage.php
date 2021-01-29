@@ -7,7 +7,7 @@ $_SESSION['last_page'] = 'tasks';
 ob_start();
 ?>
 
-<div style="flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
+<div style="color:black;flex-grow:1;text-align:center; align-items:center;font-family:'Product Sans Regular';">
   Page en développement... :/
 </div>
 

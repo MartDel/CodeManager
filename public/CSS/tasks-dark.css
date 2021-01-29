@@ -1,8 +1,25 @@
-html, body {
+/*DARK STYLE FOR DARK MODE*/
+.section_ligne_haut_edit.refresh html, body {
   overflow-x: hidden;
 }
 
 /*LIGNE HAUT TACHE*/
+#menu_haut {
+  background-color: #121212;
+}
+
+#webapp_cover {
+  background-color: #121212;
+}
+
+button[name="task"] img {
+  filter: invert(100%);
+}
+
+aside .modal-wrapper {
+  filter: brightness(75%);
+}
+
 .section_en_dessous_menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,6 +28,7 @@ html, body {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  background-color: #121212;
 }
 
 .ligne_haut_tache {
@@ -102,6 +120,7 @@ html, body {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter: invert(100%);
 }
 
 .refresh:hover {
@@ -112,6 +131,7 @@ html, body {
   height: 15px;
   margin-top: 12.5px;
   margin-left: 15px;
+  filter: invert(100%);
 }
 
 .new_task_img:hover {
@@ -135,6 +155,7 @@ html, body {
   margin-left: 15px;
   display: none;
   z-index: 999;
+  filter: invert(100%);
 }
 
 .ligne_haut_tache .trash:hover {
@@ -197,7 +218,7 @@ span[title="Spprimer"] {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-margin-after: 0;
-  margin-block-end: 0;
+  margin-block-end: 0px;
   -webkit-transition: width 3s ease;
   transition: width 3s ease;
   display: -webkit-box;
@@ -238,11 +259,12 @@ span[title="Spprimer"] {
   border-bottom: rgba(141, 141, 141, 0.342) 1px solid;
   padding-left: 20px;
   width: 100%;
-  color: black;
+  color: white;
 }
 
 .liste_taches .trytochangethat:hover {
-  border-bottom: #8d8d8d 1px solid;
+  -webkit-box-shadow: 0.5px 0.5px 1px #555;
+  box-shadow: 0.5px 0.5px 1px #555;
   cursor: pointer;
 }
 
@@ -262,6 +284,7 @@ span[title="Spprimer"] {
   margin-left: 20px;
   display: flex;
   flex-direction: row;
+  color: white;
 }
 
 .utilisateur {
@@ -1215,6 +1238,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main:hover .left-side-task-mosaic img {
   transform: scale(1);
   transition: all 0.2s;
+  filter: invert(100%);
 }
 
 .table_col_main:hover {
@@ -1280,7 +1304,7 @@ aside[name=edit_popup_modal] .modal-wrapper {
   width: calc(100% - 20px);
   background-color: transparent;
   padding-right: 10px;
-  color: black;
+  color: white;
 }
 
 .mozaic_all_table {
@@ -1292,8 +1316,8 @@ aside[name=edit_popup_modal] .modal-wrapper {
 .table_col_main p {
   margin-left: 20px;
   margin-top: 0;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
   font-family: "Product Sans Regular";
   font-size: 15px;
 }
@@ -1425,7 +1449,7 @@ p[name=task] {
   text-align: center;
   font-size: 15px;
   width: 100%;
-  color: black;
+  color: white;
 }
 
 @-webkit-keyframes ModalComing {

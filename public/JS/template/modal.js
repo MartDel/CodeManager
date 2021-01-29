@@ -8,7 +8,7 @@ function showTemplateModal(id){
     modal.setAttribute('aria-modal', 'true')
 
     // Auto focus
-    $('input:first').focus()
+    $(modal).find('input:first').focus()
 
     window.cmodal = modal
     window.cmodal.addEventListener('click', closeTemplateModal)

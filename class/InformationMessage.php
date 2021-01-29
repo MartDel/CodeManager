@@ -28,7 +28,7 @@ class InformationMessage {
         return '&info' . $title . $message . $callback_name . $btn . $arg;
     }
 
-    public function getRedirection() { return $this->redirection; }
+    public function getRedirection() { return 'index.php?action=' . $this->redirection; }
 
     // SETTERS
 

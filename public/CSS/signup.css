@@ -1,5 +1,4 @@
-html,
-body {
+html, body {
   padding: 0;
   margin: 0;
   background-image: url("../img/codebcc2.jpg");
@@ -106,9 +105,7 @@ a {
 }
 
 /*
-
-MAIN
-
+ MAIN
  */
 .back_to_main {
   filter: invert(100%);
@@ -173,7 +170,7 @@ MAIN
   flex-direction: row;
   width: 100%;
   left: 0;
-  background-color: none;
+  background-color: transparent;
 }
 
 .label_container {
@@ -206,6 +203,7 @@ p {
   color: black;
   font-size: 11px;
   text-align: center;
+  padding: 0 10px 0 10px;
 }
 
 p a {
@@ -239,5 +237,29 @@ p a {
   .form_container {
     width: calc(95vw - 20px);
     margin-left: 2.5vw;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .button_submit_signup {
+    width: 80%;
+    margin-left: 10%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .name_container_flex {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: auto;
+  }
+
+  input[name="pseudo"] {
+    margin-top: -8px;
+  }
+
+  .input_text_name {
+    width: calc(80% - 24px);
   }
 }

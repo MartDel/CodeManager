@@ -9,6 +9,8 @@
 function home(){ require('view/home.php'); }
 function signup(){ require('view/signup.php'); }
 function signin(){ require('view/signin.php'); }
+function dark(){ require("view/tasks-dark.php"); }
+
 
  /**
   * Check if all of signup data is correct and upload to the database
@@ -27,7 +29,7 @@ function signin(){ require('view/signin.php'); }
      sleep(1);
      $data = secure($_POST);
      if(!isset($data['login']) || !isset($data['password'])) {
-         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", 'index.php?action=' . getLastPage(), 'focusEmptyInput');
+         throw new CustomException('Formulaire incorrect', "Veuillez remplir tous les champs.", getLastPage(), 'focusEmptyInput');
      }
      checkConnection($data['login'], $data['password'], false);
      connectUser($data['login'], $data['auto']);
