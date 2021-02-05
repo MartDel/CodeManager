@@ -88,7 +88,7 @@ const display = {
 new Vue({
     el: '#app',
     data: {
-        done_task: true
+        done_task: false
     },
     methods: {
         switchDoneTask(e){
@@ -108,7 +108,14 @@ new Vue({
             this.done_task = !this.done_task
 
             // Update category
-            manageCategoryNames(this.done_task)
+            // manageCategoryNames(this.done_task)
+        },
+        showCategory(id){
+            const $table = $('#category' + id).parents('.table_contain')
+            const rows = $table.find('tr').not(':hidden').length
+            console.log($table.find('tr').not(':hidden'));
+            console.log(id + ' -> ' + rows);
+            return rows < 1
         }
     },
     mounted(){
@@ -139,36 +146,36 @@ new Vue({
 /*
  * SHOW DONE TASKS
  */
-function showTasks(print) {
-    $(tasks.list).each(function (){
-        if(print) show(this)
-        else hide(this)
-        manageActivesInputs($(this).find('input'), print)
-    })
-    manageCategoryNames(!print)
-}
-function showDoneTasks(print) {
-    $(tasks_done.list).each(function (){
-        if(print) show(this)
-        else hide(this)
-        manageActivesInputs($(this).find('input'), print)
-    })
-    manageCategoryNames(!print)
-}
+// function showTasks(print) {
+//     $(tasks.list).each(function (){
+//         if(print) show(this)
+//         else hide(this)
+//         manageActivesInputs($(this).find('input'), print)
+//     })
+//     manageCategoryNames(!print)
+// }
+// function showDoneTasks(print) {
+//     $(tasks_done.list).each(function (){
+//         if(print) show(this)
+//         else hide(this)
+//         manageActivesInputs($(this).find('input'), print)
+//     })
+//     manageCategoryNames(!print)
+// }
 
 /**
  * Set checkboxes to active or inactive
  * @param  {JQuery} inputs Inputs list
  * @param  {bool} active If it should be active or not
  */
-function manageActivesInputs(inputs, active) {
-    inputs.each(function (){
-        if(this.type === 'checkbox') {
-          if (active) $(this).addClass('active')
-          else $(this).removeClass('active')
-        }
-    })
-}
+// function manageActivesInputs(inputs, active) {
+//     inputs.each(function (){
+//         if(this.type === 'checkbox') {
+//           if (active) $(this).addClass('active')
+//           else $(this).removeClass('active')
+//         }
+//     })
+// }
 
 /**
  * Show/hide some categories

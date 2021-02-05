@@ -31,7 +31,7 @@ ob_start();
           <img class="brightnessmax refresh" src="public/img/refresh.png" alt="" onclick="location.reload()" />
         </span>
         <span title="Tâches effectuées">
-          <img class="tasks_done" src="public/img/task_done0.png" alt="" />
+          <img class="tasks_done" src="public/img/task_done0.png" alt="" @click="switchDoneTask" />
         </span>
         <span title="Supprimer">
           <img class="brightnessmax trash" src="public/img/trash.png" alt="" />
@@ -62,16 +62,18 @@ ob_start();
         <?php if (isset($tasks)): ?>
         <!--Error messages -->
         <?php if ($nb_tasks == 0): ?>
-            <p id="message-task-none" class="task">Toutes les tâches sont terminées !</p>
+            <p id="message-task-none" v-show="!done_task">Toutes les tâches sont terminées !</p>
         <?php elseif ($nb_done_tasks == 0): ?>
-            <p id="message-task-none" class="done_task">Il n'y a aucune tâche terminée.</p>
+            <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
         <?php endif; ?>
         <ul id="liste_taches" class="liste_taches" style="opacity:0;">
             <!-- Tasks btn -->
-            <?php foreach ($tasks as $task) {
-    if ($task->getAuthor()): ?>
+            <?php foreach ($tasks as $task) : ?>
+                <?php if ($task->getAuthor()): ?>
                 <li>
-                  <div class="<?= $task->getIsDone() ? 'done_' : '' ?>task trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                  <div
+                  class="trytochangethat myBtn<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>"
+                  v-show="<?= $task->getIsDone() ? '' : '!' ?>done_task">
                     <span class="span_input_img" title="Sélectionner">
                       <input class="input_img check_js to_check" type="checkbox" />
                     </span>
@@ -102,8 +104,7 @@ ob_start();
                     </div>
                   </div>
                 </li>
-                <?php endif;
-} ?>
+            <?php endif; endforeach; ?>
         </ul>
         <?php else: ?>
           <p id="message-task-none">Pas de tâche pour le moment...</p>
@@ -136,11 +137,11 @@ ob_start();
                     <?php if ($nb_tasks == 0): ?>
                         <p id="message-task-none" v-show="!done_task">Toutes les tâches sont terminées !</p>
                     <?php elseif ($nb_done_tasks == 0): ?>
-                        <p id="message-task-none" class="done_task">Il n'y a aucune tâche terminée.</p>
+                        <p id="message-task-none" v-show="done_task">Il n'y a aucune tâche terminée.</p>
                     <?php endif; ?>
                     <?php foreach ($tasksByCategory as $category_id => $cat_tasks): ?>
                         <?php if (count($cat_tasks)): ?>
-                        <table class="table_contain">
+                        <table class="table_contain" v-show="showCategory(<?= $category_id ?>)">
                             <tbody>
                                 <tr class="table_row_main categories">
                                     <td class="table_col_main category-name">
@@ -162,7 +163,8 @@ ob_start();
                                 <?php foreach ($cat_tasks as $task): ?>
                                     <?php if ($task->getAuthor()): ?>
                                         <tr
-                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>">
+                                        class="table_row_main<?= $task->getIsDone() ? ' done-task' : '' ?> <?= $task->getIsDone() ? 'done_' : '' ?>task<?= $task->getId() ?>"
+                                        v-show="<?= $task->getIsDone() ? '' : '!' ?>done_task">
                                             <td class="table_col_main">
                                                 <div class="border_all">
                                                     <div class="left-side-task-mosaic">
@@ -174,7 +176,6 @@ ob_start();
                                                         <a href="index.php?action=endTask&id=<?= $task->getId() ?>">
                                                             <img src="public/img/tick.png" class="invertcent trash-btn" alt="" />
                                                         </a>
-
                                                     </div>
                                                     <div class="task_name_mozaic">
                                                         <p><?= $task->getName() ?></p>
